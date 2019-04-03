@@ -15,13 +15,17 @@ enum ImageAsset: String {
     case home
     case profile_normal
     case profile
-//    case Icons_36px_Cart_Normal
-//    case Icons_36px_Cart_Selected
-//    case Icons_36px_Catalog_Normal
-//    case Icons_36px_Catalog_Selected
-//    case Image_Logo02
+    case Task_36px_noraml
+    case Task_36px
+    case Statistic_24px_normal
+    case Statistic_24px
+    case Tips_24px_normal
+    case Tips_24px
+    case Idea_24px_normal
+    case Idea_24px
     
     
+    case Bullhorn_36px
 }
 
 extension UIImage {

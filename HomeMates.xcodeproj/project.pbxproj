@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B9261C792253858A0033ABC9 /* STTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C782253858A0033ABC9 /* STTabBarViewController.swift */; };
+		B9261C792253858A0033ABC9 /* HMTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C782253858A0033ABC9 /* HMTabBarViewController.swift */; };
 		B9261C7B225386030033ABC9 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C7A225386030033ABC9 /* UIStoryboard+Extension.swift */; };
 		B9261C7D225386810033ABC9 /* Task.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9261C7C225386810033ABC9 /* Task.storyboard */; };
 		B9261C7F225386930033ABC9 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9261C7E225386930033ABC9 /* Profile.storyboard */; };
@@ -15,15 +15,17 @@
 		B9261C83225386C40033ABC9 /* Lobby.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9261C82225386C40033ABC9 /* Lobby.storyboard */; };
 		B9261C85225387070033ABC9 /* Statistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9261C84225387070033ABC9 /* Statistics.storyboard */; };
 		B9261C87225389FB0033ABC9 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C86225389FB0033ABC9 /* UIImage+Extension.swift */; };
+		B9261C89225392C60033ABC9 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C88225392C60033ABC9 /* UIColor+Extension.swift */; };
+		B9261C8B2253AB500033ABC9 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C8A2253AB500033ABC9 /* UIView+Extension.swift */; };
+		B9261C90225447C90033ABC9 /* LobbyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C8F225447C90033ABC9 /* LobbyHeaderView.swift */; };
 		B9D71AA022534D4F00F242DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D71A9F22534D4F00F242DA /* AppDelegate.swift */; };
-		B9D71AA222534D4F00F242DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D71AA122534D4F00F242DA /* ViewController.swift */; };
 		B9D71AA522534D4F00F242DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D71AA322534D4F00F242DA /* Main.storyboard */; };
 		B9D71AA722534D5100F242DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9D71AA622534D5100F242DA /* Assets.xcassets */; };
 		B9D71AAA22534D5100F242DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D71AA822534D5100F242DA /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B9261C782253858A0033ABC9 /* STTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STTabBarViewController.swift; sourceTree = "<group>"; };
+		B9261C782253858A0033ABC9 /* HMTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMTabBarViewController.swift; sourceTree = "<group>"; };
 		B9261C7A225386030033ABC9 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		B9261C7C225386810033ABC9 /* Task.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Task.storyboard; sourceTree = "<group>"; };
 		B9261C7E225386930033ABC9 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
@@ -31,9 +33,11 @@
 		B9261C82225386C40033ABC9 /* Lobby.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Lobby.storyboard; sourceTree = "<group>"; };
 		B9261C84225387070033ABC9 /* Statistics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Statistics.storyboard; sourceTree = "<group>"; };
 		B9261C86225389FB0033ABC9 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		B9261C88225392C60033ABC9 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		B9261C8A2253AB500033ABC9 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView+Extension.swift"; path = "../../../../../appworkSchool_iOS/專題實作/STYLiSH/Stylish-iOS/STYLiSH/Extension/UIView+Extension.swift"; sourceTree = "<group>"; };
+		B9261C8F225447C90033ABC9 /* LobbyHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyHeaderView.swift; sourceTree = "<group>"; };
 		B9D71A9C22534D4F00F242DA /* HomeMates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeMates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9D71A9F22534D4F00F242DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B9D71AA122534D4F00F242DA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B9D71AA422534D4F00F242DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B9D71AA622534D5100F242DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9D71AA922534D5100F242DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,7 +59,6 @@
 			isa = PBXGroup;
 			children = (
 				B9261C772253856E0033ABC9 /* Base */,
-				B9D71AA122534D4F00F242DA /* ViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -63,6 +66,7 @@
 		B9261C73225384B60033ABC9 /* VIew */ = {
 			isa = PBXGroup;
 			children = (
+				B9261C8C225446F50033ABC9 /* Lobby */,
 				B9D71AA322534D4F00F242DA /* Main.storyboard */,
 				B9261C82225386C40033ABC9 /* Lobby.storyboard */,
 				B9261C7E225386930033ABC9 /* Profile.storyboard */,
@@ -85,7 +89,9 @@
 			isa = PBXGroup;
 			children = (
 				B9261C7A225386030033ABC9 /* UIStoryboard+Extension.swift */,
+				B9261C88225392C60033ABC9 /* UIColor+Extension.swift */,
 				B9261C86225389FB0033ABC9 /* UIImage+Extension.swift */,
+				B9261C8A2253AB500033ABC9 /* UIView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -101,9 +107,17 @@
 		B9261C772253856E0033ABC9 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				B9261C782253858A0033ABC9 /* STTabBarViewController.swift */,
+				B9261C782253858A0033ABC9 /* HMTabBarViewController.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		B9261C8C225446F50033ABC9 /* Lobby */ = {
+			isa = PBXGroup;
+			children = (
+				B9261C8F225447C90033ABC9 /* LobbyHeaderView.swift */,
+			);
+			path = Lobby;
 			sourceTree = "<group>";
 		};
 		B9D71A9322534D4F00F242DA = {
@@ -212,11 +226,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9D71AA222534D4F00F242DA /* ViewController.swift in Sources */,
+				B9261C8B2253AB500033ABC9 /* UIView+Extension.swift in Sources */,
 				B9D71AA022534D4F00F242DA /* AppDelegate.swift in Sources */,
 				B9261C87225389FB0033ABC9 /* UIImage+Extension.swift in Sources */,
+				B9261C89225392C60033ABC9 /* UIColor+Extension.swift in Sources */,
+				B9261C90225447C90033ABC9 /* LobbyHeaderView.swift in Sources */,
 				B9261C7B225386030033ABC9 /* UIStoryboard+Extension.swift in Sources */,
-				B9261C792253858A0033ABC9 /* STTabBarViewController.swift in Sources */,
+				B9261C792253858A0033ABC9 /* HMTabBarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +381,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R66LF8J636;
 				INFOPLIST_FILE = HomeMates/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -383,6 +400,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R66LF8J636;
 				INFOPLIST_FILE = HomeMates/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

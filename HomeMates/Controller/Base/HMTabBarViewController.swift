@@ -65,28 +65,28 @@ private enum Tab {
         case .task:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.profile_normal),
-                selectedImage: UIImage.asset(.profile)
+                image: UIImage.asset(.Task_36px),
+                selectedImage: UIImage.asset(.Task_36px_noraml)
             )
             
         case .statistics:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.profile_normal),
-                selectedImage: UIImage.asset(.profile)
+                image: UIImage.asset(.Statistic_24px_normal),
+                selectedImage: UIImage.asset(.Statistic_24px)
             )
             
         case .more:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.profile_normal),
-                selectedImage: UIImage.asset(.profile)
+                image: UIImage.asset(.Idea_24px_normal),
+                selectedImage: UIImage.asset(.Idea_24px)
             )
         }
     }
 }
 
-class STTabBarViewController: UITabBarController, UITabBarControllerDelegate {
+class HMTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
     private let tabs: [Tab] = [.lobby, .profile, .task, .statistics, .more]
     
