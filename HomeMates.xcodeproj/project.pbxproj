@@ -18,6 +18,9 @@
 		B9261C89225392C60033ABC9 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C88225392C60033ABC9 /* UIColor+Extension.swift */; };
 		B9261C8B2253AB500033ABC9 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C8A2253AB500033ABC9 /* UIView+Extension.swift */; };
 		B9261C90225447C90033ABC9 /* LobbyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C8F225447C90033ABC9 /* LobbyHeaderView.swift */; };
+		B9261C9322545A9D0033ABC9 /* TasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C9122545A9D0033ABC9 /* TasksTableViewCell.swift */; };
+		B9261C9422545A9D0033ABC9 /* TasksTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9261C9222545A9D0033ABC9 /* TasksTableViewCell.xib */; };
+		B9261C97225489110033ABC9 /* TaskObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C96225489110033ABC9 /* TaskObject.swift */; };
 		B9D71AA022534D4F00F242DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D71A9F22534D4F00F242DA /* AppDelegate.swift */; };
 		B9D71AA522534D4F00F242DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D71AA322534D4F00F242DA /* Main.storyboard */; };
 		B9D71AA722534D5100F242DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9D71AA622534D5100F242DA /* Assets.xcassets */; };
@@ -36,6 +39,9 @@
 		B9261C88225392C60033ABC9 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		B9261C8A2253AB500033ABC9 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView+Extension.swift"; path = "../../../../../appworkSchool_iOS/專題實作/STYLiSH/Stylish-iOS/STYLiSH/Extension/UIView+Extension.swift"; sourceTree = "<group>"; };
 		B9261C8F225447C90033ABC9 /* LobbyHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyHeaderView.swift; sourceTree = "<group>"; };
+		B9261C9122545A9D0033ABC9 /* TasksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewCell.swift; sourceTree = "<group>"; };
+		B9261C9222545A9D0033ABC9 /* TasksTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TasksTableViewCell.xib; sourceTree = "<group>"; };
+		B9261C96225489110033ABC9 /* TaskObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskObject.swift; sourceTree = "<group>"; };
 		B9D71A9C22534D4F00F242DA /* HomeMates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeMates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9D71A9F22534D4F00F242DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9D71AA422534D4F00F242DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -66,6 +72,7 @@
 		B9261C73225384B60033ABC9 /* VIew */ = {
 			isa = PBXGroup;
 			children = (
+				B9261C9522545AA70033ABC9 /* TableViewCell */,
 				B9261C8C225446F50033ABC9 /* Lobby */,
 				B9D71AA322534D4F00F242DA /* Main.storyboard */,
 				B9261C82225386C40033ABC9 /* Lobby.storyboard */,
@@ -81,6 +88,7 @@
 		B9261C74225384BC0033ABC9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B9261C96225489110033ABC9 /* TaskObject.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -118,6 +126,15 @@
 				B9261C8F225447C90033ABC9 /* LobbyHeaderView.swift */,
 			);
 			path = Lobby;
+			sourceTree = "<group>";
+		};
+		B9261C9522545AA70033ABC9 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				B9261C9122545A9D0033ABC9 /* TasksTableViewCell.swift */,
+				B9261C9222545A9D0033ABC9 /* TasksTableViewCell.xib */,
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 		B9D71A9322534D4F00F242DA = {
@@ -213,6 +230,7 @@
 				B9261C7D225386810033ABC9 /* Task.storyboard in Resources */,
 				B9261C7F225386930033ABC9 /* Profile.storyboard in Resources */,
 				B9D71AA722534D5100F242DA /* Assets.xcassets in Resources */,
+				B9261C9422545A9D0033ABC9 /* TasksTableViewCell.xib in Resources */,
 				B9261C83225386C40033ABC9 /* Lobby.storyboard in Resources */,
 				B9D71AA522534D4F00F242DA /* Main.storyboard in Resources */,
 				B9261C85225387070033ABC9 /* Statistics.storyboard in Resources */,
@@ -228,8 +246,10 @@
 			files = (
 				B9261C8B2253AB500033ABC9 /* UIView+Extension.swift in Sources */,
 				B9D71AA022534D4F00F242DA /* AppDelegate.swift in Sources */,
+				B9261C97225489110033ABC9 /* TaskObject.swift in Sources */,
 				B9261C87225389FB0033ABC9 /* UIImage+Extension.swift in Sources */,
 				B9261C89225392C60033ABC9 /* UIColor+Extension.swift in Sources */,
+				B9261C9322545A9D0033ABC9 /* TasksTableViewCell.swift in Sources */,
 				B9261C90225447C90033ABC9 /* LobbyHeaderView.swift in Sources */,
 				B9261C7B225386030033ABC9 /* UIStoryboard+Extension.swift in Sources */,
 				B9261C792253858A0033ABC9 /* HMTabBarViewController.swift in Sources */,

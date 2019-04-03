@@ -20,76 +20,79 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p4B-oM-ulB">
-                                <rect key="frame" x="0.0" y="-10" width="375" height="250"/>
+                                <rect key="frame" x="0.0" y="-10" width="375" height="200"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="喜愛做家事的一家人" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSW-hC-zZy">
-                                        <rect key="frame" x="95.5" y="40" width="184" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home ID:  88888888" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rzq-oo-xek">
-                                        <rect key="frame" x="178.5" y="212" width="146.5" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NdB-1l-vfG">
-                                        <rect key="frame" x="0.0" y="170" width="375" height="80"/>
+                                        <rect key="frame" x="0.0" y="160" width="375" height="40"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Bullhorn_36px" translatesAutoresizingMaskIntoConstraints="NO" id="GVb-yh-ohy">
-                                                <rect key="frame" x="176" y="8" width="28" height="28"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bullhorn_36px" translatesAutoresizingMaskIntoConstraints="NO" id="GVb-yh-ohy">
+                                                <rect key="frame" x="20" y="5" width="30" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="0x5-pk-h0g"/>
-                                                    <constraint firstAttribute="width" constant="36" id="hJe-b2-SxJ"/>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="pJH-Lc-jW8"/>
-                                                    <constraint firstAttribute="height" constant="36" id="uio-9t-bxI"/>
+                                                    <constraint firstAttribute="height" constant="30" id="0x5-pk-h0g"/>
+                                                    <constraint firstAttribute="width" constant="30" id="pJH-Lc-jW8"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" name="Y0"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="l7E-tD-AB9"/>
+                                            <constraint firstItem="GVb-yh-ohy" firstAttribute="centerY" secondItem="NdB-1l-vfG" secondAttribute="centerY" id="TBW-d2-EoN"/>
+                                            <constraint firstItem="GVb-yh-ohy" firstAttribute="leading" secondItem="NdB-1l-vfG" secondAttribute="leading" constant="20" id="jhi-ll-izE"/>
+                                            <constraint firstAttribute="height" constant="40" id="l7E-tD-AB9"/>
                                         </constraints>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gS1-K9-dBz">
-                                        <rect key="frame" x="20" y="80" width="150" height="150"/>
+                                        <rect key="frame" x="40" y="60" width="80" height="80"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="150" id="CaO-eV-ez6"/>
-                                            <constraint firstAttribute="width" constant="150" id="HUX-1m-2IT"/>
+                                            <constraint firstAttribute="height" constant="80" id="Epb-f4-KuY"/>
+                                            <constraint firstAttribute="width" constant="80" id="K85-QN-kqD"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="lkCornerRadius">
                                                 <real key="value" value="75"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="jqCornerRadius">
-                                                <real key="value" value="75"/>
+                                                <real key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="jqTest">
+                                                <real key="value" value="500"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nab-jX-pBU">
-                                        <rect key="frame" x="328" y="143" width="30" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="喜愛做家事的一家人" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSW-hC-zZy">
+                                        <rect key="frame" x="150" y="68" width="184" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home ID:  88888888" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rzq-oo-xek">
+                                        <rect key="frame" x="150" y="120" width="147" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="6AM-9j-hGL"/>
-                                            <constraint firstAttribute="height" constant="24" id="xfh-18-Xzb"/>
+                                            <constraint firstAttribute="height" constant="20" id="jZ7-w4-wiZ"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nab-jX-pBU">
+                                        <rect key="frame" x="324" y="118" width="31" height="24"/>
                                         <state key="normal" image="OtherMember"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="Y1"/>
                                 <constraints>
-                                    <constraint firstItem="nab-jX-pBU" firstAttribute="leading" secondItem="Rzq-oo-xek" secondAttribute="trailing" id="0q9-h4-exY"/>
-                                    <constraint firstItem="gS1-K9-dBz" firstAttribute="leading" secondItem="p4B-oM-ulB" secondAttribute="leading" constant="20" id="2it-eZ-asP"/>
+                                    <constraint firstItem="pSW-hC-zZy" firstAttribute="centerY" secondItem="gS1-K9-dBz" secondAttribute="centerY" constant="-20" id="3LD-og-uK8"/>
+                                    <constraint firstItem="gS1-K9-dBz" firstAttribute="leading" secondItem="p4B-oM-ulB" secondAttribute="leading" constant="40" id="B75-ZR-XTF"/>
                                     <constraint firstItem="NdB-1l-vfG" firstAttribute="leading" secondItem="p4B-oM-ulB" secondAttribute="leading" id="DNr-sC-qoI"/>
-                                    <constraint firstItem="Rzq-oo-xek" firstAttribute="bottom" secondItem="gS1-K9-dBz" secondAttribute="bottom" id="EMg-5a-QrJ"/>
-                                    <constraint firstAttribute="height" constant="250" id="JU7-c5-ftH"/>
-                                    <constraint firstItem="pSW-hC-zZy" firstAttribute="top" secondItem="p4B-oM-ulB" secondAttribute="top" constant="40" id="P82-U8-fLt"/>
+                                    <constraint firstItem="Rzq-oo-xek" firstAttribute="bottom" secondItem="gS1-K9-dBz" secondAttribute="bottom" id="EIr-Oc-Iap"/>
+                                    <constraint firstAttribute="height" constant="200" id="JU7-c5-ftH"/>
+                                    <constraint firstAttribute="trailing" secondItem="nab-jX-pBU" secondAttribute="trailing" constant="20" id="M1D-ET-Hhj"/>
+                                    <constraint firstItem="pSW-hC-zZy" firstAttribute="leading" secondItem="gS1-K9-dBz" secondAttribute="trailing" constant="30" id="OPV-0A-bYC"/>
+                                    <constraint firstItem="nab-jX-pBU" firstAttribute="centerY" secondItem="Rzq-oo-xek" secondAttribute="centerY" id="ZAv-eT-c5J"/>
+                                    <constraint firstItem="Rzq-oo-xek" firstAttribute="leading" secondItem="pSW-hC-zZy" secondAttribute="leading" id="eKg-p3-E2E"/>
                                     <constraint firstAttribute="bottom" secondItem="NdB-1l-vfG" secondAttribute="bottom" id="kjy-eT-sLn"/>
-                                    <constraint firstItem="pSW-hC-zZy" firstAttribute="centerX" secondItem="p4B-oM-ulB" secondAttribute="centerX" id="lGh-r8-xbj"/>
                                     <constraint firstAttribute="trailing" secondItem="NdB-1l-vfG" secondAttribute="trailing" id="pde-oc-kt6"/>
-                                    <constraint firstItem="gS1-K9-dBz" firstAttribute="top" secondItem="p4B-oM-ulB" secondAttribute="top" constant="80" id="tdg-L6-BCl"/>
-                                    <constraint firstAttribute="trailing" secondItem="nab-jX-pBU" secondAttribute="trailing" constant="20" id="x9D-Ai-sFB"/>
+                                    <constraint firstItem="gS1-K9-dBz" firstAttribute="top" secondItem="p4B-oM-ulB" secondAttribute="top" constant="60" id="wjI-R3-0f9"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="jqCornerRadius">
@@ -98,7 +101,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yPU-2H-rY1">
-                                <rect key="frame" x="0.0" y="240" width="375" height="427"/>
+                                <rect key="frame" x="0.0" y="190" width="375" height="477"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
