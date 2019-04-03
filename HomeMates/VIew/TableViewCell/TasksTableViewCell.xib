@@ -43,7 +43,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djh-Vm-S9V">
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djh-Vm-S9V">
                         <rect key="frame" x="243" y="44.5" width="50" height="30"/>
                         <color key="backgroundColor" name="Y2"/>
                         <constraints>
@@ -61,25 +61,43 @@
                         </userDefinedRuntimeAttributes>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="這裡是家庭成員的名字" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0RN-Pe-QGG">
-                        <rect key="frame" x="76" y="20" width="153" height="18"/>
+                        <rect key="frame" x="76" y="12" width="153" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="任務名稱底家" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovV-4u-RGL">
-                        <rect key="frame" x="76" y="44" width="92" height="30.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="任務名稱底家" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovV-4u-RGL">
+                        <rect key="frame" x="76" y="34" width="92" height="50.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="積分放在這" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7C-DR-feW">
-                        <rect key="frame" x="76" y="80.5" width="77" height="18"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="積分放在這" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7C-DR-feW">
+                        <rect key="frame" x="76" y="88.5" width="76.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="雙週任務" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aw5-qs-8Zo">
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="雙週任務" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aw5-qs-8Zo">
                         <rect key="frame" x="228" y="80.5" width="62" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="62" id="bbm-GO-adM"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" name="Y4"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50 點" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0y-HS-z66">
+                        <rect key="frame" x="288" y="73.5" width="67" height="33"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                        <color key="textColor" name="Y4"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="累計積分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hrz-b3-IqO">
+                        <rect key="frame" x="214" y="88.5" width="62" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="62" id="clN-D6-YSd"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
@@ -91,16 +109,20 @@
                     <constraint firstItem="a7J-EE-SG2" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6wg-63-0yg"/>
                     <constraint firstItem="SMu-4E-Fsk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="CYO-zr-5hb"/>
                     <constraint firstItem="SMu-4E-Fsk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="IPN-sj-SVF"/>
-                    <constraint firstItem="0RN-Pe-QGG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="PB1-7a-2eI"/>
+                    <constraint firstItem="A0y-HS-z66" firstAttribute="bottom" secondItem="K7C-DR-feW" secondAttribute="bottom" id="LsV-Sw-WPJ"/>
+                    <constraint firstItem="0RN-Pe-QGG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="PB1-7a-2eI"/>
+                    <constraint firstItem="hrz-b3-IqO" firstAttribute="bottom" secondItem="A0y-HS-z66" secondAttribute="bottom" id="TYT-9H-Zfc"/>
                     <constraint firstItem="a7J-EE-SG2" firstAttribute="leading" secondItem="djh-Vm-S9V" secondAttribute="trailing" constant="12" id="TZy-7n-i1F"/>
-                    <constraint firstAttribute="bottom" secondItem="K7C-DR-feW" secondAttribute="bottom" constant="20" id="TlL-b6-7Tq"/>
-                    <constraint firstItem="K7C-DR-feW" firstAttribute="top" secondItem="ovV-4u-RGL" secondAttribute="bottom" constant="6" id="WK0-gb-OGP"/>
+                    <constraint firstAttribute="bottom" secondItem="K7C-DR-feW" secondAttribute="bottom" constant="12" id="TlL-b6-7Tq"/>
+                    <constraint firstItem="K7C-DR-feW" firstAttribute="top" secondItem="ovV-4u-RGL" secondAttribute="bottom" constant="4" id="WK0-gb-OGP"/>
                     <constraint firstAttribute="bottom" secondItem="aw5-qs-8Zo" secondAttribute="bottom" constant="20" id="YAf-DS-pKT"/>
                     <constraint firstAttribute="trailing" secondItem="aw5-qs-8Zo" secondAttribute="trailing" constant="85" id="Z2G-e1-rdN"/>
                     <constraint firstAttribute="trailing" secondItem="a7J-EE-SG2" secondAttribute="trailing" constant="20" id="aWX-Sv-HPK"/>
-                    <constraint firstItem="ovV-4u-RGL" firstAttribute="top" secondItem="0RN-Pe-QGG" secondAttribute="bottom" constant="6" id="gyC-XN-MYu"/>
+                    <constraint firstItem="A0y-HS-z66" firstAttribute="leading" secondItem="hrz-b3-IqO" secondAttribute="trailing" constant="12" id="amu-Bn-1eK"/>
+                    <constraint firstItem="ovV-4u-RGL" firstAttribute="top" secondItem="0RN-Pe-QGG" secondAttribute="bottom" constant="4" id="gyC-XN-MYu"/>
                     <constraint firstItem="ovV-4u-RGL" firstAttribute="leading" secondItem="SMu-4E-Fsk" secondAttribute="trailing" constant="12" id="irW-0H-d4j"/>
                     <constraint firstItem="0RN-Pe-QGG" firstAttribute="leading" secondItem="SMu-4E-Fsk" secondAttribute="trailing" constant="12" id="l5t-k3-IEB"/>
+                    <constraint firstAttribute="trailing" secondItem="A0y-HS-z66" secondAttribute="trailing" constant="20" id="obq-2h-X8f"/>
                     <constraint firstItem="K7C-DR-feW" firstAttribute="leading" secondItem="SMu-4E-Fsk" secondAttribute="trailing" constant="12" id="vHh-Dj-l3X"/>
                 </constraints>
             </tableViewCellContentView>
@@ -113,6 +135,8 @@
                 <outlet property="taskNameText" destination="ovV-4u-RGL" id="Bea-u9-HQk"/>
                 <outlet property="taskPeriodText" destination="aw5-qs-8Zo" id="vuk-01-Qpd"/>
                 <outlet property="taskRightBtn" destination="a7J-EE-SG2" id="yoI-j9-esp"/>
+                <outlet property="taskTotalPoints" destination="A0y-HS-z66" id="4VA-wi-0XN"/>
+                <outlet property="totalPointsText" destination="hrz-b3-IqO" id="BQ3-l7-fri"/>
             </connections>
             <point key="canvasLocation" x="47.10144927536232" y="55.915178571428569"/>
         </tableViewCell>
