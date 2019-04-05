@@ -32,6 +32,8 @@ class LobbyViewController: UIViewController {
         super.viewDidLoad()
 
         tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
+        tableView.jq_registerHeaderWithNib(identifier: String(describing: LobbyHeaderView.self), bundle: nil)
+        tableView.jq_registerHeaderWithNib(identifier: String(describing: TaskHeaderView.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: LobbyHeaderCell.self), bundle: nil)
         
     }
@@ -47,13 +49,15 @@ extension LobbyViewController: UITableViewDataSource {
         return taskListTitle[section]
     }
 
-//    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
-//        view.tintColor = UIColor.white
-//        let header = view as! UITableViewHeaderFooterView
-//        header.textLabel?.font = UIFont(name: "Noto Sans Chakma Regular", size: 18)
-//        header.textLabel?.textColor = UIColor.Y4
-//    }
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
+        view.tintColor = UIColor.white
+        let header = view as! UITableViewHeaderFooterView
+        header.backgroundColor = UIColor.white
+        header.textLabel?.font = UIFont(name: "Noto Sans Chakma Regular", size: 18)
+        header.textLabel?.textColor = UIColor.Y4
+    }
     
+
 //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 //        switch section {
 //        case 0:
@@ -62,10 +66,11 @@ extension LobbyViewController: UITableViewDataSource {
 //            return header
 //
 //        case 1, 2:
-//            let header = tableView.dequeueReusableCell(withIdentifier: String(describing: TaskHeaderCell.self))
-//            guard let headerTitle = header as? TaskHeaderCell else { return header }
-//            headerTitle.taskTitleText.text = taskListTitle[section]
-//            return headerTitle
+//
+//            guard let subHeader = view as? TaskHeaderView else { return nil}
+//            subHeader.taskHeaderText.text = taskListTitle[section]
+//            return subHeader
+//
 //        default:
 //            return nil
 //        }
@@ -74,9 +79,9 @@ extension LobbyViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 0:
-            return 0
+            return CGFloat.leastNormalMagnitude
         case 1, 2:
-            return 50
+            return 40
         default:
             return 0
         }
@@ -106,6 +111,7 @@ extension LobbyViewController: UITableViewDataSource {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: LobbyHeaderCell.self), for: indexPath)
             guard let headerCell = cell as? LobbyHeaderCell else { return cell}
+            headerCell.groupID.text = "Here is test ID"
             return headerCell
             
         case 1:
