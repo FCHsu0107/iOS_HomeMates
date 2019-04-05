@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E9B27DAC4A97C50CD1D1CFC /* Pods_HomeMates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0D5E2E1A5658A395EF06F5E /* Pods_HomeMates.framework */; };
 		B9261C792253858A0033ABC9 /* HMTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C782253858A0033ABC9 /* HMTabBarViewController.swift */; };
 		B9261C7B225386030033ABC9 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C7A225386030033ABC9 /* UIStoryboard+Extension.swift */; };
 		B9261C7D225386810033ABC9 /* Task.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9261C7C225386810033ABC9 /* Task.storyboard */; };
@@ -27,6 +28,9 @@
 		B94D15A722560AA500F43B78 /* LobbyHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B94D15A522560AA500F43B78 /* LobbyHeaderCell.xib */; };
 		B94D15A92257198B00F43B78 /* TaskHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15A82257198B00F43B78 /* TaskHeaderView.swift */; };
 		B94D15AB22571F8600F43B78 /* LobbyHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B94D15AA22571F8600F43B78 /* LobbyHeaderView.xib */; };
+		B94D15AF225721C500F43B78 /* ProfileHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15AD225721C500F43B78 /* ProfileHeaderViewCell.swift */; };
+		B94D15B0225721C500F43B78 /* ProfileHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B94D15AE225721C500F43B78 /* ProfileHeaderViewCell.xib */; };
+		B94D15B322572A2200F43B78 /* HMBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15B222572A2200F43B78 /* HMBaseViewController.swift */; };
 		B9D71AA022534D4F00F242DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D71A9F22534D4F00F242DA /* AppDelegate.swift */; };
 		B9D71AA522534D4F00F242DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D71AA322534D4F00F242DA /* Main.storyboard */; };
 		B9D71AA722534D5100F242DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9D71AA622534D5100F242DA /* Assets.xcassets */; };
@@ -34,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A0D5E2E1A5658A395EF06F5E /* Pods_HomeMates.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomeMates.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9261C782253858A0033ABC9 /* HMTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMTabBarViewController.swift; sourceTree = "<group>"; };
 		B9261C7A225386030033ABC9 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		B9261C7C225386810033ABC9 /* Task.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Task.storyboard; sourceTree = "<group>"; };
@@ -54,12 +59,17 @@
 		B94D15A522560AA500F43B78 /* LobbyHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LobbyHeaderCell.xib; sourceTree = "<group>"; };
 		B94D15A82257198B00F43B78 /* TaskHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskHeaderView.swift; sourceTree = "<group>"; };
 		B94D15AA22571F8600F43B78 /* LobbyHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LobbyHeaderView.xib; sourceTree = "<group>"; };
+		B94D15AD225721C500F43B78 /* ProfileHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewCell.swift; sourceTree = "<group>"; };
+		B94D15AE225721C500F43B78 /* ProfileHeaderViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderViewCell.xib; sourceTree = "<group>"; };
+		B94D15B222572A2200F43B78 /* HMBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMBaseViewController.swift; sourceTree = "<group>"; };
 		B9D71A9C22534D4F00F242DA /* HomeMates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeMates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9D71A9F22534D4F00F242DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9D71AA422534D4F00F242DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B9D71AA622534D5100F242DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9D71AA922534D5100F242DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B9D71AAB22534D5100F242DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D95E51F3504518D6A60A4E46 /* Pods-HomeMates.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeMates.debug.xcconfig"; path = "Target Support Files/Pods-HomeMates/Pods-HomeMates.debug.xcconfig"; sourceTree = "<group>"; };
+		E5C452DD2D14E69356D08726 /* Pods-HomeMates.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeMates.release.xcconfig"; path = "Target Support Files/Pods-HomeMates/Pods-HomeMates.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,15 +77,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E9B27DAC4A97C50CD1D1CFC /* Pods_HomeMates.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6027FDD169EC46F3E3A6B242 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A0D5E2E1A5658A395EF06F5E /* Pods_HomeMates.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B9261C72225384A50033ABC9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B94D15B1225721D000F43B78 /* Profile */,
 				B9261C9B2254955A0033ABC9 /* Lobby */,
 				B9261C772253856E0033ABC9 /* Base */,
 			);
@@ -87,6 +107,7 @@
 			children = (
 				B9261C9522545AA70033ABC9 /* TableViewCell */,
 				B9261C8C225446F50033ABC9 /* Lobby */,
+				B94D15AC2257217E00F43B78 /* Profile */,
 				B9D71AA322534D4F00F242DA /* Main.storyboard */,
 				B9261C82225386C40033ABC9 /* Lobby.storyboard */,
 				B9261C7E225386930033ABC9 /* Profile.storyboard */,
@@ -130,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				B9261C782253858A0033ABC9 /* HMTabBarViewController.swift */,
+				B94D15B222572A2200F43B78 /* HMBaseViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -163,11 +185,29 @@
 			path = Lobby;
 			sourceTree = "<group>";
 		};
+		B94D15AC2257217E00F43B78 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				B94D15AD225721C500F43B78 /* ProfileHeaderViewCell.swift */,
+				B94D15AE225721C500F43B78 /* ProfileHeaderViewCell.xib */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		B94D15B1225721D000F43B78 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		B9D71A9322534D4F00F242DA = {
 			isa = PBXGroup;
 			children = (
 				B9D71A9E22534D4F00F242DA /* HomeMates */,
 				B9D71A9D22534D4F00F242DA /* Products */,
+				C75B0ED5492584CA900C8D58 /* Pods */,
+				6027FDD169EC46F3E3A6B242 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -193,6 +233,16 @@
 			path = HomeMates;
 			sourceTree = "<group>";
 		};
+		C75B0ED5492584CA900C8D58 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D95E51F3504518D6A60A4E46 /* Pods-HomeMates.debug.xcconfig */,
+				E5C452DD2D14E69356D08726 /* Pods-HomeMates.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -200,9 +250,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B9D71AAE22534D5100F242DA /* Build configuration list for PBXNativeTarget "HomeMates" */;
 			buildPhases = (
+				93A4507F3EF7B890DACBC5D6 /* [CP] Check Pods Manifest.lock */,
 				B9D71A9822534D4F00F242DA /* Sources */,
 				B9D71A9922534D4F00F242DA /* Frameworks */,
 				B9D71A9A22534D4F00F242DA /* Resources */,
+				B756100DE390F1E6304BDA6B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -258,6 +310,7 @@
 				B94D15A722560AA500F43B78 /* LobbyHeaderCell.xib in Resources */,
 				B9261C7F225386930033ABC9 /* Profile.storyboard in Resources */,
 				B9D71AA722534D5100F242DA /* Assets.xcassets in Resources */,
+				B94D15B0225721C500F43B78 /* ProfileHeaderViewCell.xib in Resources */,
 				B9261C9422545A9D0033ABC9 /* TasksTableViewCell.xib in Resources */,
 				B9261C83225386C40033ABC9 /* Lobby.storyboard in Resources */,
 				B9D71AA522534D4F00F242DA /* Main.storyboard in Resources */,
@@ -266,6 +319,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		93A4507F3EF7B890DACBC5D6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HomeMates-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B756100DE390F1E6304BDA6B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HomeMates/Pods-HomeMates-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HomeMates/Pods-HomeMates-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B9D71A9822534D4F00F242DA /* Sources */ = {
@@ -282,7 +382,9 @@
 				B94D15A92257198B00F43B78 /* TaskHeaderView.swift in Sources */,
 				B9261C90225447C90033ABC9 /* LobbyHeaderView.swift in Sources */,
 				B94D15A622560AA500F43B78 /* LobbyHeaderCell.swift in Sources */,
+				B94D15B322572A2200F43B78 /* HMBaseViewController.swift in Sources */,
 				B9261C7B225386030033ABC9 /* UIStoryboard+Extension.swift in Sources */,
+				B94D15AF225721C500F43B78 /* ProfileHeaderViewCell.swift in Sources */,
 				B9261C792253858A0033ABC9 /* HMTabBarViewController.swift in Sources */,
 				B9261C9F2254C2B20033ABC9 /* TableView+Extension.swift in Sources */,
 			);
@@ -428,6 +530,7 @@
 		};
 		B9D71AAF22534D5100F242DA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D95E51F3504518D6A60A4E46 /* Pods-HomeMates.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -447,6 +550,7 @@
 		};
 		B9D71AB022534D5100F242DA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5C452DD2D14E69356D08726 /* Pods-HomeMates.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

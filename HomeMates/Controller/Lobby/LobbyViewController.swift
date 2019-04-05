@@ -21,7 +21,6 @@ class LobbyViewController: UIViewController {
     }
     
     //mock data
-    
     var taskListTitle: [String] = ["","完成任務", "任務清單"]
     var checkTaskList: [TaskObject] = [TaskObject(taskName: "拖地", publisherName: "System", executorName: "Mother", taskPoint: 1, taskPriodDay: 1, image: "home_normal"), TaskObject(taskName: "掃地", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1, image: "home_normal"), TaskObject(taskName: "掃地", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1, image: "home_normal"), TaskObject(taskName: "掃地", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1, image: "home_normal"), TaskObject(taskName: "掃地", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1, image: "home_normal")]
     
@@ -32,13 +31,12 @@ class LobbyViewController: UIViewController {
         super.viewDidLoad()
 
         tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
-        tableView.jq_registerHeaderWithNib(identifier: String(describing: LobbyHeaderView.self), bundle: nil)
-        tableView.jq_registerHeaderWithNib(identifier: String(describing: TaskHeaderView.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: LobbyHeaderCell.self), bundle: nil)
         
+        tableView.jq_registerHeaderWithNib(identifier: String(describing: LobbyHeaderView.self), bundle: nil)
+        tableView.jq_registerHeaderWithNib(identifier: String(describing: TaskHeaderView.self), bundle: nil)
+        
     }
-    
-
 
 }
 
