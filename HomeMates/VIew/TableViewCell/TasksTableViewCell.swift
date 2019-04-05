@@ -40,7 +40,7 @@ class TasksTableViewCell: UITableViewCell {
         
     }
 
-    func loadData(image: String, member: String, task: String, point: Int, status: TaskStatus, doneTimes: Int?) {
+    func loadData(image: String, member: String, task: String, point: Int, status: taskCellStatus, doneTimes: Int?) {
         
         taskImage.image = UIImage(named: image)
         switch status {
@@ -102,7 +102,7 @@ class TasksTableViewCell: UITableViewCell {
 }
 
 
-enum TaskStatus {
+enum taskCellStatus {
     case checkTask
     case acceptSpecialTask
     case contribution

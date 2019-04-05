@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B904CBCD2255F0CB00C1DA7C /* TaskHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904CBCB2255F0CB00C1DA7C /* TaskHeaderCell.swift */; };
+		B904CBCE2255F0CB00C1DA7C /* TaskHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B904CBCC2255F0CB00C1DA7C /* TaskHeaderCell.xib */; };
 		B9261C792253858A0033ABC9 /* HMTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C782253858A0033ABC9 /* HMTabBarViewController.swift */; };
 		B9261C7B225386030033ABC9 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C7A225386030033ABC9 /* UIStoryboard+Extension.swift */; };
 		B9261C7D225386810033ABC9 /* Task.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9261C7C225386810033ABC9 /* Task.storyboard */; };
@@ -24,6 +26,8 @@
 		B9261C9922548D640033ABC9 /* LobbyHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9261C9822548D640033ABC9 /* LobbyHeaderView.xib */; };
 		B9261C9D225495840033ABC9 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C9C225495840033ABC9 /* LobbyViewController.swift */; };
 		B9261C9F2254C2B20033ABC9 /* TableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C9E2254C2B20033ABC9 /* TableView+Extension.swift */; };
+		B94D15A622560AA500F43B78 /* LobbyHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15A422560AA500F43B78 /* LobbyHeaderCell.swift */; };
+		B94D15A722560AA500F43B78 /* LobbyHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B94D15A522560AA500F43B78 /* LobbyHeaderCell.xib */; };
 		B9D71AA022534D4F00F242DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D71A9F22534D4F00F242DA /* AppDelegate.swift */; };
 		B9D71AA522534D4F00F242DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D71AA322534D4F00F242DA /* Main.storyboard */; };
 		B9D71AA722534D5100F242DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9D71AA622534D5100F242DA /* Assets.xcassets */; };
@@ -31,6 +35,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B904CBCB2255F0CB00C1DA7C /* TaskHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskHeaderCell.swift; sourceTree = "<group>"; };
+		B904CBCC2255F0CB00C1DA7C /* TaskHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskHeaderCell.xib; sourceTree = "<group>"; };
 		B9261C782253858A0033ABC9 /* HMTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMTabBarViewController.swift; sourceTree = "<group>"; };
 		B9261C7A225386030033ABC9 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		B9261C7C225386810033ABC9 /* Task.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Task.storyboard; sourceTree = "<group>"; };
@@ -48,6 +54,8 @@
 		B9261C9822548D640033ABC9 /* LobbyHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LobbyHeaderView.xib; sourceTree = "<group>"; };
 		B9261C9C225495840033ABC9 /* LobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
 		B9261C9E2254C2B20033ABC9 /* TableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+Extension.swift"; sourceTree = "<group>"; };
+		B94D15A422560AA500F43B78 /* LobbyHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyHeaderCell.swift; sourceTree = "<group>"; };
+		B94D15A522560AA500F43B78 /* LobbyHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LobbyHeaderCell.xib; sourceTree = "<group>"; };
 		B9D71A9C22534D4F00F242DA /* HomeMates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeMates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9D71A9F22534D4F00F242DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9D71AA422534D4F00F242DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -133,6 +141,8 @@
 			children = (
 				B9261C8F225447C90033ABC9 /* LobbyHeaderView.swift */,
 				B9261C9822548D640033ABC9 /* LobbyHeaderView.xib */,
+				B94D15A422560AA500F43B78 /* LobbyHeaderCell.swift */,
+				B94D15A522560AA500F43B78 /* LobbyHeaderCell.xib */,
 			);
 			path = Lobby;
 			sourceTree = "<group>";
@@ -142,6 +152,8 @@
 			children = (
 				B9261C9122545A9D0033ABC9 /* TasksTableViewCell.swift */,
 				B9261C9222545A9D0033ABC9 /* TasksTableViewCell.xib */,
+				B904CBCB2255F0CB00C1DA7C /* TaskHeaderCell.swift */,
+				B904CBCC2255F0CB00C1DA7C /* TaskHeaderCell.xib */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -242,10 +254,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B904CBCE2255F0CB00C1DA7C /* TaskHeaderCell.xib in Resources */,
 				B9261C9922548D640033ABC9 /* LobbyHeaderView.xib in Resources */,
 				B9D71AAA22534D5100F242DA /* LaunchScreen.storyboard in Resources */,
 				B9261C81225386AF0033ABC9 /* More.storyboard in Resources */,
 				B9261C7D225386810033ABC9 /* Task.storyboard in Resources */,
+				B94D15A722560AA500F43B78 /* LobbyHeaderCell.xib in Resources */,
 				B9261C7F225386930033ABC9 /* Profile.storyboard in Resources */,
 				B9D71AA722534D5100F242DA /* Assets.xcassets in Resources */,
 				B9261C9422545A9D0033ABC9 /* TasksTableViewCell.xib in Resources */,
@@ -265,11 +279,13 @@
 				B9261C8B2253AB500033ABC9 /* UIView+Extension.swift in Sources */,
 				B9261C9D225495840033ABC9 /* LobbyViewController.swift in Sources */,
 				B9D71AA022534D4F00F242DA /* AppDelegate.swift in Sources */,
+				B904CBCD2255F0CB00C1DA7C /* TaskHeaderCell.swift in Sources */,
 				B9261C97225489110033ABC9 /* TaskObject.swift in Sources */,
 				B9261C87225389FB0033ABC9 /* UIImage+Extension.swift in Sources */,
 				B9261C89225392C60033ABC9 /* UIColor+Extension.swift in Sources */,
 				B9261C9322545A9D0033ABC9 /* TasksTableViewCell.swift in Sources */,
 				B9261C90225447C90033ABC9 /* LobbyHeaderView.swift in Sources */,
+				B94D15A622560AA500F43B78 /* LobbyHeaderCell.swift in Sources */,
 				B9261C7B225386030033ABC9 /* UIStoryboard+Extension.swift in Sources */,
 				B9261C792253858A0033ABC9 /* HMTabBarViewController.swift in Sources */,
 				B9261C9F2254C2B20033ABC9 /* TableView+Extension.swift in Sources */,

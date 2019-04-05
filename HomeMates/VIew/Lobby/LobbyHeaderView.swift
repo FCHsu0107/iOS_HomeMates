@@ -9,13 +9,11 @@
 import UIKit
 
 class LobbyHeaderView: UITableViewHeaderFooterView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
+    
+    @IBOutlet weak var groupName: UILabel!
+    
+    @IBOutlet weak var groupID: UILabel!
+    
+    @IBOutlet weak var lubbyBulletin: UILabel!
+    
 }

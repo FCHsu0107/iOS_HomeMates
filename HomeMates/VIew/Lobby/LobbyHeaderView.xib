@@ -110,6 +110,11 @@
                 <constraint firstItem="V09-OT-dbQ" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="wip-md-umg"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="groupID" destination="smR-dj-80f" id="RW7-84-TbV"/>
+                <outlet property="groupName" destination="xeb-Pd-iXP" id="So4-RN-Qgf"/>
+                <outlet property="lubbyBulletin" destination="4x4-fC-W70" id="PHT-sG-Q5O"/>
+            </connections>
             <point key="canvasLocation" x="-314.39999999999998" y="-214.54272863568218"/>
         </view>
     </objects>
