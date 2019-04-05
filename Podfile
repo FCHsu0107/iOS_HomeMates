@@ -7,6 +7,8 @@ target 'HomeMates' do
 
   # Pods for HomeMates
 
-pod 'IQKeyboardManagerSwift'
+  pod 'IQKeyboardManager'
+  pod 'MJRefresh'
+  pod 'JGProgressHUD'
 
 end

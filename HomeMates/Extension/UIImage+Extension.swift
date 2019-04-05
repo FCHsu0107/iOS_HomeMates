@@ -25,6 +25,8 @@ enum ImageAsset: String {
     case Idea_24px
     
     case Bullhorn_36px
+    
+    case Back_24px
 }
 
 extension UIImage {

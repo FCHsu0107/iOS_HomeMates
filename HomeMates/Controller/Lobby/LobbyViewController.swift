@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LobbyViewController: UIViewController {
+class LobbyViewController: HMBaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     {
@@ -38,6 +38,9 @@ class LobbyViewController: UIViewController {
         
     }
 
+    override var navigationBarIsHidden: Bool {
+        return true
+    }
 }
 
 
@@ -47,10 +50,8 @@ extension LobbyViewController: UITableViewDataSource {
         return taskListTitle[section]
     }
 
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
-        view.tintColor = UIColor.white
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
-        header.backgroundColor = UIColor.white
         header.textLabel?.font = UIFont(name: "Noto Sans Chakma Regular", size: 18)
         header.textLabel?.textColor = UIColor.Y4
     }
@@ -142,13 +143,3 @@ extension LobbyViewController: UITableViewDelegate {
 
 }
 
-
-//enum taskCellStatus {
-//    case checkTask
-//    case acceptSpecialTask
-//    case contribution
-//    case doingTask
-//    case doneTask
-//    case assignNormalTask
-//    case assignRegularTask
-//}
