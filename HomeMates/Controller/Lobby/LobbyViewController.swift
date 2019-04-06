@@ -24,7 +24,7 @@ class LobbyViewController: HMBaseViewController {
     var taskListTitle: [String] = ["","完成任務", "任務清單"]
     var checkTaskList: [TaskObject] = [TaskObject(taskName: "拖地", publisherName: "System", executorName: "Mother", taskPoint: 1, taskPriodDay: 1, image: "home_normal"), TaskObject(taskName: "掃地", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1, image: "home_normal"), TaskObject(taskName: "掃地", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1, image: "home_normal"), TaskObject(taskName: "掃地", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1, image: "home_normal"), TaskObject(taskName: "掃地", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1, image: "home_normal")]
     
-    var willDoTaskList: [TaskObject] = [TaskObject(taskName: "打預防針", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0, image: "home_normal"), TaskObject(taskName: "清洗冷氣機濾網", publisherName: "System", executorName: "Daddyap", taskPoint: 2, taskPriodDay: 0, image: "home_normal"), TaskObject(taskName: "清洗冷氣機濾網", publisherName: "System", executorName: "Daddyap", taskPoint: 2, taskPriodDay: 0, image: "home_normal"), TaskObject(taskName: "清洗冷氣機濾網", publisherName: "System", executorName: "Daddyap", taskPoint: 2, taskPriodDay: 0, image: "home_normal"), TaskObject(taskName: "清洗冷氣機濾網", publisherName: "System", executorName: "Daddyap", taskPoint: 2, taskPriodDay: 0, image: "home_normal")]
+    var willDoTaskList: [TaskObject] = [TaskObject(taskName: "打預防針", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0, image: "home_normal"), TaskObject(taskName: "清洗冷氣機濾網", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0, image: "home_normal"), TaskObject(taskName: "清洗冷氣機濾網", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0, image: "home_normal"), TaskObject(taskName: "清洗冷氣機濾網", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0, image: "home_normal"), TaskObject(taskName: "清洗冷氣機濾網", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0, image: "home_normal")]
     
     
     override func viewDidLoad() {
@@ -118,7 +118,7 @@ extension LobbyViewController: UITableViewDataSource {
            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self), for: indexPath)
             guard let checkCell = cell as? TasksTableViewCell else { return cell }
 
-            checkCell.loadData(image: task.image, member: task.executorName , task: task.taskName, point: task.taskPoint, status: taskCellStatus.checkTask , doneTimes: 0)
+           checkCell.loadData(image: task.image, member: task.executorName ?? "缺" , task: task.taskName, point: task.taskPoint, status: taskCellStatus.checkTask , doneTimes: 0)
             return checkCell
             
         case 2:

@@ -15,12 +15,14 @@ struct TaskObject {
     
     let publisherName: String
     
-    let executorName: String
+    let executorName: String?
     
     let taskPoint: Int
     
     let taskPriodDay: Int
     
     let image:  String
+    
+//    let 
 }
 

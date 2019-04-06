@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QfJ-xO-4cx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j8x-cP-kuP">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,20 +10,60 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Ib Calendar Data Source-->
         <scene sceneID="NfZ-8s-P33">
             <objects>
-                <viewController id="QfJ-xO-4cx" sceneMemberID="viewController">
+                <viewController id="QfJ-xO-4cx" customClass="StatisticsViewController" customModule="HomeMates" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5ic-AA-3R0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pvh-Wz-xRf" customClass="JTAppleCalendarView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="240"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="byS-Yo-lPd"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="ibCalendarDataSource" destination="QfJ-xO-4cx" id="mhf-vo-fTY"/>
+                                    <outlet property="ibCalendarDelegate" destination="QfJ-xO-4cx" id="IuD-fi-gWj"/>
+                                </connections>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Pvh-Wz-xRf" firstAttribute="top" secondItem="710-HS-9KF" secondAttribute="top" id="5YQ-W1-BtE"/>
+                            <constraint firstItem="710-HS-9KF" firstAttribute="trailing" secondItem="Pvh-Wz-xRf" secondAttribute="trailing" id="DbX-wb-go9"/>
+                            <constraint firstItem="Pvh-Wz-xRf" firstAttribute="leading" secondItem="710-HS-9KF" secondAttribute="leading" id="emT-Vv-Z9Z"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="710-HS-9KF"/>
                     </view>
+                    <navigationItem key="navigationItem" id="csF-aD-Vni"/>
+                    <connections>
+                        <outlet property="calendarView" destination="Pvh-Wz-xRf" id="JDx-Go-rVe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3hm-vq-B6c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="143" y="71"/>
+            <point key="canvasLocation" x="1080.8" y="70.614692653673174"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xa1-16-RSa">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="j8x-cP-kuP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Zzg-Jp-Zbp">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="QfJ-xO-4cx" kind="relationship" relationship="rootViewController" id="JdQ-Nu-T20"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ctc-KM-YdX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="141.59999999999999" y="70.614692653673174"/>
         </scene>
     </scenes>
 </document>

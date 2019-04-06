@@ -10,5 +10,6 @@ target 'HomeMates' do
   pod 'IQKeyboardManager'
   pod 'MJRefresh'
   pod 'JGProgressHUD'
-
+  pod 'JTAppleCalendar', '~> 7.0'
+  
 end

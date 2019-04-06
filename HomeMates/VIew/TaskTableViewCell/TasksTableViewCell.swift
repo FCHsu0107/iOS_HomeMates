@@ -45,14 +45,15 @@ class TasksTableViewCell: UITableViewCell {
         taskImage.image = UIImage(named: image)
         switch status {
         case .checkTask:
-            memberNameText.text = member
+
+            memberNameText.text = "執行者：\(member)"
             taskNameText.text = task
             pointText.text = "積分： \(point) 點"
             taskRightBtn.setTitle("確認", for: .normal)
 
         case .acceptSpecialTask:
 
-            memberNameText.text = member
+            memberNameText.text = "發佈人：\(member)"
             taskNameText.text = task
             pointText.text = "積分： \(point) 點"
             taskRightBtn.setTitle("接受", for: .normal)
