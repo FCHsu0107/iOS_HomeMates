@@ -6,21 +6,78 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Statistics View Controller-->
+        <!--Data Source-->
         <scene sceneID="NfZ-8s-P33">
             <objects>
                 <viewController id="QfJ-xO-4cx" customClass="StatisticsViewController" customModule="HomeMates" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5ic-AA-3R0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ag8-sq-ljg" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="64" width="375" height="240"/>
+                                <color key="backgroundColor" red="0.9882352941176471" green="0.8784313725490196" blue="0.46274509803921571" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="RCy-Ge-gW3"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="eventSelectionColor">
+                                        <color key="value" name="Y0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="eventDefaultColor">
+                                        <color key="value" name="P1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
+                                        <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
+                                        <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsMultipleSelection" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
+                                        <color key="value" name="P1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
+                                        <color key="value" name="Y3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsSelection" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="pagingEnabled" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="dataSource" destination="QfJ-xO-4cx" id="jJ0-Ej-3nP"/>
+                                    <outlet property="delegate" destination="QfJ-xO-4cx" id="X8i-Ik-3g0"/>
+                                </connections>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Wie-YA-XpK">
+                                <rect key="frame" x="0.0" y="304" width="375" height="363"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="710-HS-9KF" firstAttribute="bottom" secondItem="Wie-YA-XpK" secondAttribute="bottom" id="EVo-bl-kaP"/>
+                            <constraint firstItem="Wie-YA-XpK" firstAttribute="leading" secondItem="710-HS-9KF" secondAttribute="leading" id="F9r-ZO-HKo"/>
+                            <constraint firstItem="710-HS-9KF" firstAttribute="trailing" secondItem="ag8-sq-ljg" secondAttribute="trailing" id="H3v-rZ-cG0"/>
+                            <constraint firstItem="Wie-YA-XpK" firstAttribute="top" secondItem="ag8-sq-ljg" secondAttribute="bottom" id="VFj-rK-W3K"/>
+                            <constraint firstItem="ag8-sq-ljg" firstAttribute="leading" secondItem="710-HS-9KF" secondAttribute="leading" id="VsW-cA-P6J"/>
+                            <constraint firstItem="ag8-sq-ljg" firstAttribute="top" secondItem="710-HS-9KF" secondAttribute="top" id="eMa-6E-C9J"/>
+                            <constraint firstItem="710-HS-9KF" firstAttribute="trailing" secondItem="Wie-YA-XpK" secondAttribute="trailing" id="sc9-Jw-SJd"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="710-HS-9KF"/>
                     </view>
                     <navigationItem key="navigationItem" id="csF-aD-Vni"/>
+                    <connections>
+                        <outlet property="calendar" destination="ag8-sq-ljg" id="wUz-qu-U1D"/>
+                        <outlet property="calendarHeightConstraint" destination="RCy-Ge-gW3" id="hgl-cU-bSw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3hm-vq-B6c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -45,4 +102,15 @@
             <point key="canvasLocation" x="141.59999999999999" y="70.614692653673174"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="P1">
+            <color red="0.62000000476837158" green="0.2199999988079071" blue="0.32499998807907104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Y0">
+            <color red="0.9882352941176471" green="0.8784313725490196" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Y3">
+            <color red="1" green="0.50980392156862742" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

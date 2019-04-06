@@ -17,7 +17,6 @@
 		B9261C85225387070033ABC9 /* Statistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9261C84225387070033ABC9 /* Statistics.storyboard */; };
 		B9261C87225389FB0033ABC9 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C86225389FB0033ABC9 /* UIImage+Extension.swift */; };
 		B9261C89225392C60033ABC9 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C88225392C60033ABC9 /* UIColor+Extension.swift */; };
-		B9261C8B2253AB500033ABC9 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C8A2253AB500033ABC9 /* UIView+Extension.swift */; };
 		B9261C90225447C90033ABC9 /* LobbyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C8F225447C90033ABC9 /* LobbyHeaderView.swift */; };
 		B9261C9322545A9D0033ABC9 /* TasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C9122545A9D0033ABC9 /* TasksTableViewCell.swift */; };
 		B9261C9422545A9D0033ABC9 /* TasksTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9261C9222545A9D0033ABC9 /* TasksTableViewCell.xib */; };
@@ -35,6 +34,10 @@
 		B94D15BB225749B500F43B78 /* MJRefreshWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15BA225749B500F43B78 /* MJRefreshWrapper.swift */; };
 		B94D15BD225754C700F43B78 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15BC225754C700F43B78 /* ProfileViewController.swift */; };
 		B94D15C522585DA200F43B78 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15C422585DA200F43B78 /* StatisticsViewController.swift */; };
+		B94D15CA225886FB00F43B78 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15C8225886FB00F43B78 /* EventCell.swift */; };
+		B94D15CB225886FB00F43B78 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B94D15C9225886FB00F43B78 /* EventCell.xib */; };
+		B96A9D0B22588C4D00CDBF4A /* EventHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A9D0922588C4D00CDBF4A /* EventHeaderCell.swift */; };
+		B96A9D0C22588C4D00CDBF4A /* EventHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96A9D0A22588C4D00CDBF4A /* EventHeaderCell.xib */; };
 		B9D71AA022534D4F00F242DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D71A9F22534D4F00F242DA /* AppDelegate.swift */; };
 		B9D71AA522534D4F00F242DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D71AA322534D4F00F242DA /* Main.storyboard */; };
 		B9D71AA722534D5100F242DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9D71AA622534D5100F242DA /* Assets.xcassets */; };
@@ -52,7 +55,6 @@
 		B9261C84225387070033ABC9 /* Statistics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Statistics.storyboard; sourceTree = "<group>"; };
 		B9261C86225389FB0033ABC9 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		B9261C88225392C60033ABC9 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
-		B9261C8A2253AB500033ABC9 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView+Extension.swift"; path = "../../../../../appworkSchool_iOS/專題實作/STYLiSH/Stylish-iOS/STYLiSH/Extension/UIView+Extension.swift"; sourceTree = "<group>"; };
 		B9261C8F225447C90033ABC9 /* LobbyHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyHeaderView.swift; sourceTree = "<group>"; };
 		B9261C9122545A9D0033ABC9 /* TasksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewCell.swift; sourceTree = "<group>"; };
 		B9261C9222545A9D0033ABC9 /* TasksTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TasksTableViewCell.xib; sourceTree = "<group>"; };
@@ -70,6 +72,10 @@
 		B94D15BA225749B500F43B78 /* MJRefreshWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJRefreshWrapper.swift; sourceTree = "<group>"; };
 		B94D15BC225754C700F43B78 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = HomeMates/Controller/ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
 		B94D15C422585DA200F43B78 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		B94D15C8225886FB00F43B78 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		B94D15C9225886FB00F43B78 /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
+		B96A9D0922588C4D00CDBF4A /* EventHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHeaderCell.swift; sourceTree = "<group>"; };
+		B96A9D0A22588C4D00CDBF4A /* EventHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventHeaderCell.xib; sourceTree = "<group>"; };
 		B9D71A9C22534D4F00F242DA /* HomeMates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeMates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9D71A9F22534D4F00F242DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9D71AA422534D4F00F242DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -143,7 +149,6 @@
 				B9261C7A225386030033ABC9 /* UIStoryboard+Extension.swift */,
 				B9261C88225392C60033ABC9 /* UIColor+Extension.swift */,
 				B9261C86225389FB0033ABC9 /* UIImage+Extension.swift */,
-				B9261C8A2253AB500033ABC9 /* UIView+Extension.swift */,
 				B9261C9E2254C2B20033ABC9 /* TableView+Extension.swift */,
 			);
 			path = Extension;
@@ -224,6 +229,10 @@
 		B94D15BE22585B7100F43B78 /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
+				B94D15C8225886FB00F43B78 /* EventCell.swift */,
+				B94D15C9225886FB00F43B78 /* EventCell.xib */,
+				B96A9D0922588C4D00CDBF4A /* EventHeaderCell.swift */,
+				B96A9D0A22588C4D00CDBF4A /* EventHeaderCell.xib */,
 			);
 			path = Statistics;
 			sourceTree = "<group>";
@@ -345,10 +354,12 @@
 				B94D15A722560AA500F43B78 /* LobbyHeaderCell.xib in Resources */,
 				B9261C7F225386930033ABC9 /* Profile.storyboard in Resources */,
 				B9D71AA722534D5100F242DA /* Assets.xcassets in Resources */,
+				B96A9D0C22588C4D00CDBF4A /* EventHeaderCell.xib in Resources */,
 				B94D15B0225721C500F43B78 /* ProfileHeaderViewCell.xib in Resources */,
 				B9261C9422545A9D0033ABC9 /* TasksTableViewCell.xib in Resources */,
 				B9261C83225386C40033ABC9 /* Lobby.storyboard in Resources */,
 				B9D71AA522534D4F00F242DA /* Main.storyboard in Resources */,
+				B94D15CB225886FB00F43B78 /* EventCell.xib in Resources */,
 				B9261C85225387070033ABC9 /* Statistics.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,10 +424,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9261C8B2253AB500033ABC9 /* UIView+Extension.swift in Sources */,
 				B9261C9D225495840033ABC9 /* LobbyViewController.swift in Sources */,
 				B94D15B72257487700F43B78 /* HMCompoundViewController.swift in Sources */,
 				B9D71AA022534D4F00F242DA /* AppDelegate.swift in Sources */,
+				B96A9D0B22588C4D00CDBF4A /* EventHeaderCell.swift in Sources */,
 				B9261C97225489110033ABC9 /* TaskObject.swift in Sources */,
 				B9261C87225389FB0033ABC9 /* UIImage+Extension.swift in Sources */,
 				B94D15BD225754C700F43B78 /* ProfileViewController.swift in Sources */,
@@ -429,6 +440,7 @@
 				B94D15A622560AA500F43B78 /* LobbyHeaderCell.swift in Sources */,
 				B94D15B322572A2200F43B78 /* HMBaseViewController.swift in Sources */,
 				B9261C7B225386030033ABC9 /* UIStoryboard+Extension.swift in Sources */,
+				B94D15CA225886FB00F43B78 /* EventCell.swift in Sources */,
 				B94D15AF225721C500F43B78 /* ProfileHeaderViewCell.swift in Sources */,
 				B9261C792253858A0033ABC9 /* HMTabBarViewController.swift in Sources */,
 				B9261C9F2254C2B20033ABC9 /* TableView+Extension.swift in Sources */,

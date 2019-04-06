@@ -7,16 +7,24 @@
 //
 
 import UIKit
+import FSCalendar
 
 class StatisticsViewController: HMBaseViewController {
+    
+    @IBOutlet weak var calendar: FSCalendar!
+    
+    @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        
-        
     }
     
 
 }
+
+extension StatisticsViewController: FSCalendarDataSource, FSCalendarDelegate {
+    
+}
+
 

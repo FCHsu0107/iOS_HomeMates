@@ -17,4 +17,5 @@ class LobbyHeaderView: UITableViewHeaderFooterView {
     @IBOutlet weak var lubbyBulletin: UILabel!
     
     @IBOutlet weak var groupImage: UIImageView!
+    
 }

@@ -117,6 +117,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="groupID" destination="ua9-dG-jSk" id="bLa-xU-Npr"/>
+                <outlet property="groupImage" destination="q1h-s6-dEj" id="l4n-Gp-qVC"/>
                 <outlet property="groupName" destination="iwy-Gm-tme" id="foC-cN-77w"/>
                 <outlet property="lubbyBulletin" destination="JKt-7S-BEQ" id="HH7-54-yBG"/>
             </connections>
