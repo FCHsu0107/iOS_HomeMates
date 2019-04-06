@@ -62,6 +62,9 @@
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="這裡是家庭成員的名字" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0RN-Pe-QGG">
                         <rect key="frame" x="76" y="12" width="153" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="XbR-pH-z0J"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
@@ -128,8 +131,10 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="firstTextContraint" destination="XbR-pH-z0J" id="43l-Qc-scN"/>
                 <outlet property="memberNameText" destination="0RN-Pe-QGG" id="RM4-0S-P8x"/>
                 <outlet property="pointText" destination="K7C-DR-feW" id="AH1-jx-E0t"/>
+                <outlet property="secondTextContraint" destination="gyC-XN-MYu" id="Gbp-Oi-ogj"/>
                 <outlet property="taskImage" destination="SMu-4E-Fsk" id="fGj-mx-bSK"/>
                 <outlet property="taskLeftBtn" destination="djh-Vm-S9V" id="haM-r0-DTU"/>
                 <outlet property="taskNameText" destination="ovV-4u-RGL" id="Bea-u9-HQk"/>
@@ -147,7 +152,7 @@
             <color red="1" green="0.70196078431372544" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Y4">
-            <color red="0.28999999165534973" green="0.22400000691413879" blue="0.18400000035762787" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.29019607843137257" green="0.22352941176470589" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

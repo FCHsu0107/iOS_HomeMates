@@ -21,7 +21,8 @@ class LobbyHeaderCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.groupImage.layer.cornerRadius = 40
+        self.groupImage.layer.cornerRadius = 5
+        self.groupImage.image = UIImage.asset(.home)
         
     }
 

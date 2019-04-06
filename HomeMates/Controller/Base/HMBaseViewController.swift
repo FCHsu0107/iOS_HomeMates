@@ -32,7 +32,7 @@ class HMBaseViewController: UIViewController {
         if navigationBarIsHidden {
             navigationItem.hidesBackButton = true
         }
-        navigationController?.navigationBar.barTintColor = UIColor.Y2
+        navigationController?.navigationBar.barTintColor = UIColor.Y1
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         

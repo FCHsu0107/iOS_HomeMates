@@ -26,9 +26,17 @@ class LobbyViewController: HMBaseViewController {
     
     //mock data
     var taskListTitle: [String] = ["","已完成任務", "特殊任務", "英雄榜"]
-    var checkTaskList: [TaskObject] = [TaskObject(taskName: "拖地", publisherName: "System", executorName: "Mother", taskPoint: 1, taskPriodDay: 1, image: "home_normal"), TaskObject(taskName: "掃地", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1, image: "home_normal"), TaskObject(taskName: "掃地", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1, image: "home_normal"), TaskObject(taskName: "掃地", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1, image: "home_normal"), TaskObject(taskName: "掃地", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1, image: "home_normal")]
+    var checkTaskList: [TaskObject] = [TaskObject(taskName: "拖地", image: "home_normal", publisherName: "System", executorName: "Mother", taskPoint: 1, taskPriodDay: 1),
+                                       TaskObject(taskName: "掃地", image: "home_normal", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1),
+                                       TaskObject(taskName: "掃地", image: "home_normal", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1),
+                                       TaskObject(taskName: "掃地", image: "home_normal", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1),
+                                       TaskObject(taskName: "掃地", image: "home_normal", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1)]
     
-    var willDoTaskList: [TaskObject] = [TaskObject(taskName: "打預防針", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0, image: "home_normal"), TaskObject(taskName: "清洗冷氣機濾網", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0, image: "home_normal"), TaskObject(taskName: "清洗冷氣機濾網", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0, image: "home_normal"), TaskObject(taskName: "清洗冷氣機濾網", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0, image: "home_normal"), TaskObject(taskName: "清洗冷氣機濾網", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0, image: "home_normal")]
+    var willDoTaskList: [TaskObject] = [TaskObject(taskName: "打預防針", image: "home_normal", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0),
+                                        TaskObject(taskName: "清洗冷氣機濾網", image: "home_normal", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0),
+                                        TaskObject(taskName: "清洗冷氣機濾網", image: "home_normal", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0),
+                                        TaskObject(taskName: "清洗冷氣機濾網", image: "home_normal", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0),
+                                        TaskObject(taskName: "清洗冷氣機濾網", image: "home_normal", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0)]
     
     
     override func viewDidLoad() {
@@ -53,7 +61,7 @@ extension LobbyViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.font = UIFont(name: "Noto Sans Chakma Regular", size: 18)
+        header.textLabel?.font = UIFont(name: "Noto Sans Chakma Regular", size: 15)
         header.textLabel?.textColor = UIColor.Y4
     }
     
@@ -111,7 +119,7 @@ extension LobbyViewController: UITableViewDataSource {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: LobbyHeaderCell.self), for: indexPath)
             guard let headerCell = cell as? LobbyHeaderCell else { return cell}
-            headerCell.groupID.text = "Here is test ID"
+            headerCell.groupID.text = "Home ID: 8989889"
             return headerCell
             
         case 1, 2:
@@ -120,11 +128,11 @@ extension LobbyViewController: UITableViewDataSource {
            
            if indexPath.section == 1 {
             let task = checkTaskList[indexPath.row]
-            taskCell.loadData(image: task.image, member: task.executorName ?? "缺" , task: task.taskName, point: task.taskPoint, status: taskCellStatus.checkTask , doneTimes: 0)
+            taskCell.loadData(image: task.image, member: task.executorName ?? "神秘人" , task: task.taskName, point: task.taskPoint, status: taskCellStatus.checkTask , doneTimes: 0, periodTime: nil)
             
            } else {
             let task = willDoTaskList[indexPath.row]
-            taskCell.loadData(image: task.image, member: task.publisherName, task: task.taskName, point: task.taskPoint, status: taskCellStatus.acceptSpecialTask, doneTimes: 0)
+            taskCell.loadData(image: task.image, member: task.publisherName, task: task.taskName, point: task.taskPoint, status: taskCellStatus.acceptSpecialTask, doneTimes: 0, periodTime: nil)
            }
             return taskCell
             

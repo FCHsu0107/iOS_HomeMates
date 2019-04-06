@@ -23,8 +23,15 @@ class ProfileViewController: HMBaseViewController {
     
     //mock data
     var taskListTitle: [String] = ["","當前任務", "任務日誌"]
-    var processTaskList: [TaskObject] = [TaskObject(taskName: "拖地", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1, image: "home_normal"), TaskObject(taskName: "掃地", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1, image: "home_normal"), TaskObject(taskName: "掃地", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1, image: "home_normal"), TaskObject(taskName: "掃地", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1, image: "home_normal"), TaskObject(taskName: "掃地", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1, image: "home_normal")]
-//    var doneTaskList: [Any] = []
+    var processTaskList: [TaskObject] = [
+        TaskObject(taskName: "拖地", image: "home_normal", publisherName: "System", executorName: "阿明", taskPoint: 1, taskPriodDay: 1),
+        TaskObject(taskName: "掃地", image: "home_normal", publisherName: "System", executorName: "阿明", taskPoint: 1, taskPriodDay: 1),
+        TaskObject(taskName: "準備早餐", image: "home_normal", publisherName: "System", executorName: "阿明", taskPoint: 1, taskPriodDay: 1),
+        TaskObject(taskName: "準備午餐", image: "home_normal", publisherName: "System", executorName: "阿明", taskPoint: 1, taskPriodDay: 1)]
+    
+    var doneTaskList: [TaskRecord] = [
+        TaskRecord(taskName: "洗碗", taskImage: "home_normal", executorName: "阿明", taskPoint: 1, taskTimes: 10),
+        TaskRecord(taskName: "倒垃圾", taskImage: "home_normal", executorName: "阿明", taskPoint: 1, taskTimes: 5)]
 
    
     
@@ -46,7 +53,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.font = UIFont(name: "Noto Sans Chakma Regular", size: 18)
+        header.textLabel?.font = UIFont(name: "Noto Sans Chakma Regular", size: 15)
         header.textLabel?.textColor = UIColor.Y4
     }
     
@@ -65,11 +72,14 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         return 0.1
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 1
         case 1: return processTaskList.count
-        case 2: return 3
+        case 2: return doneTaskList.count
         default: return 0
         }
     }
@@ -80,14 +90,26 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfileHeaderViewCell.self), for: indexPath)
             guard let headerCell = cell as? ProfileHeaderViewCell else { return cell}
             return headerCell
-        case 1, 2:
+        case 1:
 
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self), for: indexPath)
             guard let taskCell = cell as? TasksTableViewCell else { return cell }
             
-            let task = processTaskList[indexPath.row]
-            taskCell.loadData(image: task.image, member: task.publisherName, task: task.taskName, point: task.taskPoint, status: taskCellStatus.doingTask, doneTimes: 0)
+                let task = processTaskList[indexPath.row]
+            taskCell.loadData(image: task.image, member: task.publisherName, task: task.taskName, point: task.taskPoint, status: taskCellStatus.doingTask, doneTimes: 0, periodTime: nil)
+            
             return taskCell
+            
+        case 2:
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self), for: indexPath)
+            guard let taskCell = cell as? TasksTableViewCell else { return cell }
+            
+            let task = doneTaskList[indexPath.row]
+            taskCell.loadData(image: task.taskImage, member: task.executorName, task: task.taskName, point: task.taskPoint, status: taskCellStatus.doneTask, doneTimes: task.taskTimes, periodTime: nil)
+            
+            return taskCell
+            
         default:
             return UITableViewCell()
         }

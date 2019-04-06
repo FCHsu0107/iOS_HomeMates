@@ -28,6 +28,38 @@ class TasksTableViewCell: UITableViewCell {
     
     @IBOutlet weak var totalPointsText: UILabel!
     
+    @IBOutlet weak var firstTextContraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var secondTextContraint: NSLayoutConstraint!
+    
+    var hiddenFirstText: Bool? {
+        didSet {
+            if hiddenFirstText == true {
+                memberNameText.isHidden = true
+                firstTextContraint.constant = 0
+                secondTextContraint.constant = 8
+            }
+        }
+    }
+
+    
+    var secondBtnAppear: Bool? {
+        didSet {
+            if secondBtnAppear == true {
+                taskLeftBtn.isHidden = false
+            }
+        }
+    }
+    
+    var showContribution: Bool? {
+        didSet {
+            if showContribution == true {
+                pointText.isHidden = true
+                taskRightBtn.isHidden = true
+            }
+        }
+    }
+    
     var taskObject: TaskObject?
     
     override func awakeFromNib() {
@@ -35,64 +67,62 @@ class TasksTableViewCell: UITableViewCell {
         
     }
 
+        
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
     }
 
-    func loadData(image: String, member: String, task: String, point: Int, status: taskCellStatus, doneTimes: Int?) {
+    
+    func loadData(image: String, member: String, task: String, point: Int, status: taskCellStatus, doneTimes: Int?, periodTime: Int? ) {
         
         taskImage.image = UIImage(named: image)
+        taskNameText.text = task
+        
         switch status {
         case .checkTask:
 
             memberNameText.text = "執行者：\(member)"
-            taskNameText.text = task
             pointText.text = "積分： \(point) 點"
             taskRightBtn.setTitle("確認", for: .normal)
 
         case .acceptSpecialTask:
 
             memberNameText.text = "發佈人：\(member)"
-            taskNameText.text = task
             pointText.text = "積分： \(point) 點"
             taskRightBtn.setTitle("接受", for: .normal)
             
         case .contribution:
+            showContribution = true
             memberNameText.text = member
-            taskNameText.text = task
-            pointText.isHidden = true
-            taskRightBtn.isHidden = true
             
         case .doingTask:
-            memberNameText.isHidden = true
-            taskNameText.text = task
+            hiddenFirstText = true
+            secondBtnAppear = true
+            
             pointText.text = "積分： \(point) 點"
             taskRightBtn.setTitle("完成", for: .normal)
             taskLeftBtn.setTitle("放棄", for: .normal)
-            taskLeftBtn.isHidden = false
             
         case .doneTask:
-            memberNameText.isHidden = true
-            taskNameText.text = task
-            pointText.text = "積分： \(point) 點"
+            hiddenFirstText = true
+           
             taskRightBtn.isHidden = true
-            
             totalPointsText.isHidden = false
             taskTotalPoints.isHidden = false
             
             guard let times = doneTimes else { return }
+            pointText.text = "完成 \(times) 次"
             taskTotalPoints.text = "\(point * times) 點"
             
         case .assignNormalTask:
-            memberNameText.isHidden = true
-            taskNameText.text = task
+            hiddenFirstText = true
             pointText.text = "積分： \(point) 點"
             taskRightBtn.setTitle("接受", for: .normal)
             
         case .assignRegularTask:
-            memberNameText.isHidden = true
-            taskNameText.text = task
+            hiddenFirstText = true
+            
             pointText.text = "積分： \(point) 點"
             taskRightBtn.setTitle("接受", for: .normal)
             taskPeriodText.text = "雙週任務"

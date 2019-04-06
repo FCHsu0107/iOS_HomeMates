@@ -13,6 +13,8 @@ struct TaskObject {
     
     let taskName: String
     
+    let image: String
+    
     let publisherName: String
     
     let executorName: String?
@@ -21,8 +23,5 @@ struct TaskObject {
     
     let taskPriodDay: Int
     
-    let image:  String
-    
-//    let 
 }
 
