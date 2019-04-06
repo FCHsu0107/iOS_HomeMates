@@ -20,8 +20,12 @@ class LobbyViewController: HMBaseViewController {
         }
     }
     
+    override var navigationBarIsHidden: Bool {
+        return true
+    }
+    
     //mock data
-    var taskListTitle: [String] = ["","完成任務", "任務清單"]
+    var taskListTitle: [String] = ["","已完成任務", "特殊任務", "英雄榜"]
     var checkTaskList: [TaskObject] = [TaskObject(taskName: "拖地", publisherName: "System", executorName: "Mother", taskPoint: 1, taskPriodDay: 1, image: "home_normal"), TaskObject(taskName: "掃地", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1, image: "home_normal"), TaskObject(taskName: "掃地", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1, image: "home_normal"), TaskObject(taskName: "掃地", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1, image: "home_normal"), TaskObject(taskName: "掃地", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1, image: "home_normal")]
     
     var willDoTaskList: [TaskObject] = [TaskObject(taskName: "打預防針", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0, image: "home_normal"), TaskObject(taskName: "清洗冷氣機濾網", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0, image: "home_normal"), TaskObject(taskName: "清洗冷氣機濾網", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0, image: "home_normal"), TaskObject(taskName: "清洗冷氣機濾網", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0, image: "home_normal"), TaskObject(taskName: "清洗冷氣機濾網", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0, image: "home_normal")]
@@ -37,10 +41,7 @@ class LobbyViewController: HMBaseViewController {
         tableView.jq_registerHeaderWithNib(identifier: String(describing: TaskHeaderView.self), bundle: nil)
         
     }
-
-    override var navigationBarIsHidden: Bool {
-        return true
-    }
+    
 }
 
 
@@ -49,7 +50,7 @@ extension LobbyViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return taskListTitle[section]
     }
-
+    
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.font = UIFont(name: "Noto Sans Chakma Regular", size: 18)
@@ -113,25 +114,22 @@ extension LobbyViewController: UITableViewDataSource {
             headerCell.groupID.text = "Here is test ID"
             return headerCell
             
-        case 1:
-           let task = checkTaskList[indexPath.row]
+        case 1, 2:
            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self), for: indexPath)
-            guard let checkCell = cell as? TasksTableViewCell else { return cell }
-
-           checkCell.loadData(image: task.image, member: task.executorName ?? "缺" , task: task.taskName, point: task.taskPoint, status: taskCellStatus.checkTask , doneTimes: 0)
-            return checkCell
+            guard let taskCell = cell as? TasksTableViewCell else { return cell }
+           
+           if indexPath.section == 1 {
+            let task = checkTaskList[indexPath.row]
+            taskCell.loadData(image: task.image, member: task.executorName ?? "缺" , task: task.taskName, point: task.taskPoint, status: taskCellStatus.checkTask , doneTimes: 0)
             
-        case 2:
+           } else {
             let task = willDoTaskList[indexPath.row]
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self), for: indexPath)
-            guard let willDoCell = cell as? TasksTableViewCell else { return cell}
+            taskCell.loadData(image: task.image, member: task.publisherName, task: task.taskName, point: task.taskPoint, status: taskCellStatus.acceptSpecialTask, doneTimes: 0)
+           }
+            return taskCell
             
-            willDoCell.loadData(image: task.image, member: task.publisherName, task: task.taskName, point: task.taskPoint, status: taskCellStatus.acceptSpecialTask, doneTimes: 0)
-            
-            return willDoCell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self), for: indexPath)
-            return cell
+            return UITableViewCell()
         }
     }
     

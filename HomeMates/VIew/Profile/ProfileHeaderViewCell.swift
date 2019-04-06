@@ -22,11 +22,15 @@ class ProfileHeaderViewCell: UITableViewCell {
     
     @IBOutlet weak var infoFrameView: UIView!
     
+    @IBOutlet weak var settingsBtn: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         infoFrameView.layer.cornerRadius = 10
-        infoFrameView.layer.shadowOpacity = 0.5
+        infoFrameView.layer.shadowOpacity = 0.1
+        profilePictureImage.layer.cornerRadius = 30
+     
         
     }
 
