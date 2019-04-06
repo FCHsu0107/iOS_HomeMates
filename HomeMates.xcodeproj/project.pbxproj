@@ -34,8 +34,6 @@
 		B94D15B72257487700F43B78 /* HMCompoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15B52257487700F43B78 /* HMCompoundViewController.swift */; };
 		B94D15BB225749B500F43B78 /* MJRefreshWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15BA225749B500F43B78 /* MJRefreshWrapper.swift */; };
 		B94D15BD225754C700F43B78 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15BC225754C700F43B78 /* ProfileViewController.swift */; };
-		B94D15C022585BC200F43B78 /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B94D15BF22585BC200F43B78 /* CalendarCell.xib */; };
-		B94D15C222585BE800F43B78 /* CalenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15C122585BE800F43B78 /* CalenderCell.swift */; };
 		B94D15C522585DA200F43B78 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15C422585DA200F43B78 /* StatisticsViewController.swift */; };
 		B9D71AA022534D4F00F242DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D71A9F22534D4F00F242DA /* AppDelegate.swift */; };
 		B9D71AA522534D4F00F242DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D71AA322534D4F00F242DA /* Main.storyboard */; };
@@ -71,8 +69,6 @@
 		B94D15B52257487700F43B78 /* HMCompoundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMCompoundViewController.swift; sourceTree = "<group>"; };
 		B94D15BA225749B500F43B78 /* MJRefreshWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJRefreshWrapper.swift; sourceTree = "<group>"; };
 		B94D15BC225754C700F43B78 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = HomeMates/Controller/ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
-		B94D15BF22585BC200F43B78 /* CalendarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
-		B94D15C122585BE800F43B78 /* CalenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCell.swift; sourceTree = "<group>"; };
 		B94D15C422585DA200F43B78 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		B9D71A9C22534D4F00F242DA /* HomeMates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeMates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9D71A9F22534D4F00F242DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -228,8 +224,6 @@
 		B94D15BE22585B7100F43B78 /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
-				B94D15BF22585BC200F43B78 /* CalendarCell.xib */,
-				B94D15C122585BE800F43B78 /* CalenderCell.swift */,
 			);
 			path = Statistics;
 			sourceTree = "<group>";
@@ -348,7 +342,6 @@
 				B9261C81225386AF0033ABC9 /* More.storyboard in Resources */,
 				B9261C7D225386810033ABC9 /* Task.storyboard in Resources */,
 				B94D15AB22571F8600F43B78 /* LobbyHeaderView.xib in Resources */,
-				B94D15C022585BC200F43B78 /* CalendarCell.xib in Resources */,
 				B94D15A722560AA500F43B78 /* LobbyHeaderCell.xib in Resources */,
 				B9261C7F225386930033ABC9 /* Profile.storyboard in Resources */,
 				B9D71AA722534D5100F242DA /* Assets.xcassets in Resources */,
@@ -394,18 +387,18 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-HomeMates/Pods-HomeMates-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,7 +421,6 @@
 				B9261C87225389FB0033ABC9 /* UIImage+Extension.swift in Sources */,
 				B94D15BD225754C700F43B78 /* ProfileViewController.swift in Sources */,
 				B94D15BB225749B500F43B78 /* MJRefreshWrapper.swift in Sources */,
-				B94D15C222585BE800F43B78 /* CalenderCell.swift in Sources */,
 				B9261C89225392C60033ABC9 /* UIColor+Extension.swift in Sources */,
 				B9261C9322545A9D0033ABC9 /* TasksTableViewCell.swift in Sources */,
 				B94D15C522585DA200F43B78 /* StatisticsViewController.swift in Sources */,

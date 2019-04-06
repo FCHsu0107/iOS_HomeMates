@@ -10,38 +10,17 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Ib Calendar Data Source-->
+        <!--Statistics View Controller-->
         <scene sceneID="NfZ-8s-P33">
             <objects>
                 <viewController id="QfJ-xO-4cx" customClass="StatisticsViewController" customModule="HomeMates" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5ic-AA-3R0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pvh-Wz-xRf" customClass="JTAppleCalendarView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="240"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="240" id="byS-Yo-lPd"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="ibCalendarDataSource" destination="QfJ-xO-4cx" id="mhf-vo-fTY"/>
-                                    <outlet property="ibCalendarDelegate" destination="QfJ-xO-4cx" id="IuD-fi-gWj"/>
-                                </connections>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Pvh-Wz-xRf" firstAttribute="top" secondItem="710-HS-9KF" secondAttribute="top" id="5YQ-W1-BtE"/>
-                            <constraint firstItem="710-HS-9KF" firstAttribute="trailing" secondItem="Pvh-Wz-xRf" secondAttribute="trailing" id="DbX-wb-go9"/>
-                            <constraint firstItem="Pvh-Wz-xRf" firstAttribute="leading" secondItem="710-HS-9KF" secondAttribute="leading" id="emT-Vv-Z9Z"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="710-HS-9KF"/>
                     </view>
                     <navigationItem key="navigationItem" id="csF-aD-Vni"/>
-                    <connections>
-                        <outlet property="calendarView" destination="Pvh-Wz-xRf" id="JDx-Go-rVe"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3hm-vq-B6c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
