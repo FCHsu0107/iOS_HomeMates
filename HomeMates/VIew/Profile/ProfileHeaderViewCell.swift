@@ -9,10 +9,25 @@
 import UIKit
 
 class ProfileHeaderViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var profilePictureImage: UIImageView!
+    
+    @IBOutlet weak var memberNameText: UILabel!
+    
+    @IBOutlet weak var totalPointText: NSLayoutConstraint!
+    
+    @IBOutlet weak var totalTimesText: UILabel!
+    
+    @IBOutlet weak var contributionText: UILabel!
+    
+    @IBOutlet weak var infoFrameView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        infoFrameView.layer.cornerRadius = 10
+        infoFrameView.layer.shadowOpacity = 0.5
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
