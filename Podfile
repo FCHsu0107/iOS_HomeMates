@@ -11,5 +11,6 @@ target 'HomeMates' do
   pod 'MJRefresh'
   pod 'JGProgressHUD'
   pod 'FSCalendar'
+  pod 'Firebase/Core'
   
 end
