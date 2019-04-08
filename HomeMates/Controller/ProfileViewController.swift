@@ -21,6 +21,8 @@ class ProfileViewController: HMBaseViewController {
         return true
     }
     
+    let taskHeader = TaskListHeaderView()
+    
     //mock data
     var taskListTitle: [String] = ["","當前任務", "任務日誌"]
     var processTaskList: [TaskObject] = [
@@ -46,24 +48,24 @@ class ProfileViewController: HMBaseViewController {
 
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return taskListTitle[section]
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch section {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfileHeaderViewCell.self))
+            guard let headerCell = cell as? ProfileHeaderViewCell else { return cell}
+            return headerCell
+            
+        default:
+            let headerView = taskHeader.taskTitle(tableView: tableView, titleText: taskListTitle[section])
+            return headerView
+        }
     }
-    
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.font = UIFont(name: "Noto Sans Chakma Regular", size: 15)
-        header.textLabel?.textColor = UIColor.Y4
-    }
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 0:
-            return CGFloat.leastNormalMagnitude
-        case 1, 2:
-            return 40
+            return 220
         default:
-            return 0
+            return 40
         }
     }
     
@@ -76,7 +78,6 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0: return 1
         case 1: return processTaskList.count
         case 2: return doneTaskList.count
         default: return 0
@@ -84,27 +85,24 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section{
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfileHeaderViewCell.self), for: indexPath)
-            guard let headerCell = cell as? ProfileHeaderViewCell else { return cell}
-            return headerCell
-        case 1:
-
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self), for: indexPath)
-            guard let taskCell = cell as? TasksTableViewCell else { return cell }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self), for: indexPath)
+        guard let taskCell = cell as? TasksTableViewCell else { return cell }
+        
+        switch indexPath.section {
             
-                let task = processTaskList[indexPath.row]
+        case 1:
+            
+            let task = processTaskList[indexPath.row]
+            
             taskCell.loadData(image: task.image, member: task.publisherName, task: task.taskName, point: task.taskPoint, status: taskCellStatus.doingTask, doneTimes: 0, periodTime: nil)
             
             return taskCell
             
         case 2:
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self), for: indexPath)
-            guard let taskCell = cell as? TasksTableViewCell else { return cell }
-            
             let task = doneTaskList[indexPath.row]
+            
             taskCell.loadData(image: task.taskImage, member: task.executorName, task: task.taskName, point: task.taskPoint, status: taskCellStatus.doneTask, doneTimes: task.taskTimes, periodTime: nil)
             
             return taskCell
@@ -113,6 +111,4 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
     }
-    
-    
 }
