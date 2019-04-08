@@ -97,30 +97,16 @@ class HMTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         viewControllers = tabs.map({ $0.controller() })
         
         delegate = self
+        
+        setStatusBarBackgroundColor(color: UIColor.Y1)
     }
     
-    //MARK: - UITabBarControllerDelegate
-    
-//    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-    
-//        guard let navVC = viewController as? UINavigationController,
-//            let _ = navVC.viewControllers.first as? ProfileViewController
-//            else { return true }
+    func setStatusBarBackgroundColor(color: UIColor?) {
         
-//        guard KeyChainManager.shared.token != nil else {
-//
-//            if let vc = UIStoryboard.auth.instantiateInitialViewController() {
-//
-//                vc.modalPresentationStyle = .overCurrentContext
-//
-//                present(vc, animated: false, completion: nil)
-//            }
-//
-//            return false
-//        }
-//
-//        return true
-//    }
+        guard let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else { return }
+        
+        statusBar.backgroundColor = color
+    }
     
 
 }

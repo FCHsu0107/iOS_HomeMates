@@ -59,11 +59,11 @@ extension LobbyViewController: UITableViewDataSource {
         return taskListTitle[section]
     }
     
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.font = UIFont(name: "Noto Sans Chakma Regular", size: 15)
-        header.textLabel?.textColor = UIColor.Y4
-    }
+//    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+//        let header = view as! UITableViewHeaderFooterView
+//        header.textLabel?.font = UIFont(name: "Noto Sans Chakma Regular", size: 15)
+//        header.textLabel?.textColor = UIColor.Y4
+//    }
     
 
 //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -83,6 +83,16 @@ extension LobbyViewController: UITableViewDataSource {
 //            return nil
 //        }
 //    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 40))
+        if (section == 1 || section == 2) {
+            headerView.backgroundColor = UIColor.white
+            
+        } else {
+            headerView.backgroundColor = UIColor.clear
+        }
+        return headerView
+    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {

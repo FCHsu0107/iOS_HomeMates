@@ -61,7 +61,7 @@
                         </userDefinedRuntimeAttributes>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="這裡是家庭成員的名字" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0RN-Pe-QGG">
-                        <rect key="frame" x="76" y="12" width="153" height="18"/>
+                        <rect key="frame" x="76" y="16" width="153" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="XbR-pH-z0J"/>
                         </constraints>
@@ -70,7 +70,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="任務名稱底家" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovV-4u-RGL">
-                        <rect key="frame" x="76" y="34" width="92" height="50.5"/>
+                        <rect key="frame" x="76" y="38" width="92" height="46.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
@@ -113,7 +113,7 @@
                     <constraint firstItem="SMu-4E-Fsk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="CYO-zr-5hb"/>
                     <constraint firstItem="SMu-4E-Fsk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="IPN-sj-SVF"/>
                     <constraint firstItem="A0y-HS-z66" firstAttribute="bottom" secondItem="K7C-DR-feW" secondAttribute="bottom" id="LsV-Sw-WPJ"/>
-                    <constraint firstItem="0RN-Pe-QGG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="PB1-7a-2eI"/>
+                    <constraint firstItem="0RN-Pe-QGG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="PB1-7a-2eI"/>
                     <constraint firstItem="hrz-b3-IqO" firstAttribute="bottom" secondItem="A0y-HS-z66" secondAttribute="bottom" id="TYT-9H-Zfc"/>
                     <constraint firstItem="a7J-EE-SG2" firstAttribute="leading" secondItem="djh-Vm-S9V" secondAttribute="trailing" constant="12" id="TZy-7n-i1F"/>
                     <constraint firstAttribute="bottom" secondItem="K7C-DR-feW" secondAttribute="bottom" constant="12" id="TlL-b6-7Tq"/>

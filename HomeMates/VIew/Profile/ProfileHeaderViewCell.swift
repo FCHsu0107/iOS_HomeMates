@@ -29,7 +29,7 @@ class ProfileHeaderViewCell: UITableViewCell {
         
         infoFrameView.layer.cornerRadius = 10
         infoFrameView.layer.shadowOpacity = 0.1
-        profilePictureImage.layer.cornerRadius = 30
+        profilePictureImage.layer.cornerRadius = 40
      
         
     }

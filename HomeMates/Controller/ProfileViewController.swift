@@ -26,8 +26,7 @@ class ProfileViewController: HMBaseViewController {
     var processTaskList: [TaskObject] = [
         TaskObject(taskName: "拖地", image: "home_normal", publisherName: "System", executorName: "阿明", taskPoint: 1, taskPriodDay: 1),
         TaskObject(taskName: "掃地", image: "home_normal", publisherName: "System", executorName: "阿明", taskPoint: 1, taskPriodDay: 1),
-        TaskObject(taskName: "準備早餐", image: "home_normal", publisherName: "System", executorName: "阿明", taskPoint: 1, taskPriodDay: 1),
-        TaskObject(taskName: "準備午餐", image: "home_normal", publisherName: "System", executorName: "阿明", taskPoint: 1, taskPriodDay: 1)]
+        TaskObject(taskName: "準備早餐", image: "home_normal", publisherName: "System", executorName: "阿明", taskPoint: 1, taskPriodDay: 1)]
     
     var doneTaskList: [TaskRecord] = [
         TaskRecord(taskName: "洗碗", taskImage: "home_normal", executorName: "阿明", taskPoint: 1, taskTimes: 10),
