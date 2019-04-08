@@ -95,15 +95,14 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             
             let task = processTaskList[indexPath.row]
             
-            taskCell.loadData(image: task.image, member: task.publisherName, task: task.taskName, point: task.taskPoint, status: taskCellStatus.doingTask, doneTimes: 0, periodTime: nil)
+            taskCell.loadData(image: task.image, member: task.publisherName, task: task.taskName, point: task.taskPoint, status: taskCellStatus.doingTask, periodTime: nil)
             
             return taskCell
             
         case 2:
             
             let task = doneTaskList[indexPath.row]
-            
-            taskCell.loadData(image: task.taskImage, member: task.executorName, task: task.taskName, point: task.taskPoint, status: taskCellStatus.doneTask, doneTimes: task.taskTimes, periodTime: nil)
+            taskCell.personalTaskSum(taskName: task.taskName, image: task.taskImage, taskTimes: task.taskTimes, point: task.taskPoint)
             
             return taskCell
             

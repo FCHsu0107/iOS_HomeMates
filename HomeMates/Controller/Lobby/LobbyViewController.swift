@@ -27,7 +27,7 @@ class LobbyViewController: HMBaseViewController {
     let taskHeader = TaskListHeaderView()
     
     //mock data
-    var taskListTitle: [String] = ["","已完成任務", "特殊任務", "英雄榜"]
+    var taskListTitle: [String] = ["","已完成任務", "特殊任務", "本月貢獻度"]
     var checkTaskList: [TaskObject] = [TaskObject(taskName: "拖地", image: "home_normal", publisherName: "System", executorName: "Mother", taskPoint: 1, taskPriodDay: 1),
                                        TaskObject(taskName: "掃地", image: "home_normal", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1),
                                        TaskObject(taskName: "掃地", image: "home_normal", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1)]
@@ -70,7 +70,7 @@ extension LobbyViewController: UITableViewDataSource {
         switch section {
         case 0:
             return 200
-        case 1, 2:
+        case 1, 2, 3:
             return 40
         default:
             return 0
@@ -82,13 +82,14 @@ extension LobbyViewController: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 1: return checkTaskList.count
         case 2: return willDoTaskList.count
+        case 3: return 2
         default:
             return 0
         }
@@ -96,19 +97,25 @@ extension LobbyViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self), for: indexPath)
+        guard let taskCell = cell as? TasksTableViewCell else { return cell }
+        
         switch indexPath.section {
         case 1, 2:
-           let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self), for: indexPath)
-            guard let taskCell = cell as? TasksTableViewCell else { return cell }
            
            if indexPath.section == 1 {
             let task = checkTaskList[indexPath.row]
-            taskCell.loadData(image: task.image, member: task.executorName ?? "神秘人" , task: task.taskName, point: task.taskPoint, status: taskCellStatus.checkTask , doneTimes: 0, periodTime: nil)
+            taskCell.loadData(image: task.image, member: task.executorName ?? "神秘人" , task: task.taskName, point: task.taskPoint, status: taskCellStatus.checkTask, periodTime: nil)
             
            } else {
             let task = willDoTaskList[indexPath.row]
-            taskCell.loadData(image: task.image, member: task.publisherName, task: task.taskName, point: task.taskPoint, status: taskCellStatus.acceptSpecialTask, doneTimes: 0, periodTime: nil)
+            taskCell.loadData(image: task.image, member: task.publisherName, task: task.taskName, point: task.taskPoint, status: taskCellStatus.acceptSpecialTask, periodTime: nil)
            }
+            return taskCell
+            
+        case 3:
+            taskCell.showContributionView(member: "小明", memberImage: "home_normal", personalTotalPoints: 40, persent: 20)
+            
             return taskCell
             
         default:

@@ -74,11 +74,11 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.section == 0 {
             let task = normalTaskList[indexPath.row]
-            taskCell.loadData(image: task.image, member: task.publisherName, task: task.taskName, point: task.taskPoint, status: taskCellStatus.assignNormalTask, doneTimes: 1, periodTime: nil)
+            taskCell.loadData(image: task.image, member: task.publisherName, task: task.taskName, point: task.taskPoint, status: taskCellStatus.assignNormalTask, periodTime: nil)
         } else {
             let task = regularTaskList[indexPath.row]
             
-            taskCell.loadData(image: task.image, member: task.publisherName, task: task.taskName, point: task.taskPoint, status: taskCellStatus.assignRegularTask, doneTimes: 7, periodTime: nil)
+            taskCell.loadData(image: task.image, member: task.publisherName, task: task.taskName, point: task.taskPoint, status: taskCellStatus.assignRegularTask, periodTime: nil)
         }
         return taskCell
     }
