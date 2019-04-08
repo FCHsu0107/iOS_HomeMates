@@ -16,6 +16,7 @@ class TaskListViewController: HMBaseViewController {
             tableView.dataSource = self
         }
     }
+    let taskHeader = TaskListHeaderView()
     
     var taskListTitle: [String] = ["常規任務", "週期性任務"]
     
@@ -41,8 +42,9 @@ class TaskListViewController: HMBaseViewController {
 
 extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return taskListTitle[section]
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+            let headerView = taskHeader.taskTitle(tableView: tableView, titleText: taskListTitle[section])
+            return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -51,12 +53,6 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.1
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.font = UIFont(name: "Noto Sans Chakma Regular", size: 15)
-        header.textLabel?.textColor = UIColor.Y4
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -72,6 +68,7 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self), for: indexPath)
         guard let taskCell = cell as? TasksTableViewCell else { return cell }
         

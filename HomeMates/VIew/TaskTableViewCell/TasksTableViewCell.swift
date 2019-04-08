@@ -37,7 +37,7 @@ class TasksTableViewCell: UITableViewCell {
             if hiddenFirstText == true {
                 memberNameText.isHidden = true
                 firstTextContraint.constant = 0
-                secondTextContraint.constant = 8
+                secondTextContraint.constant = 0
             }
         }
     }
@@ -64,7 +64,7 @@ class TasksTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        btnCornerRadius()
     }
 
         
@@ -73,6 +73,10 @@ class TasksTableViewCell: UITableViewCell {
         
     }
 
+    func btnCornerRadius() {
+        taskRightBtn.layer.cornerRadius = 5
+        taskLeftBtn.layer.cornerRadius = 5
+    }
     
     func loadData(image: String, member: String, task: String, point: Int, status: taskCellStatus, doneTimes: Int?, periodTime: Int? ) {
         

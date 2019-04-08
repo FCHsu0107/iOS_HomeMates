@@ -106,36 +106,50 @@
                                     <constraint firstItem="UNO-2n-Foa" firstAttribute="top" secondItem="S0s-d0-dMD" secondAttribute="bottom" constant="8" id="sPN-bK-eAT"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1le-bz-hmJ">
-                                <rect key="frame" x="160.5" y="20" width="80" height="80"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ENa-kW-vuh">
+                                <rect key="frame" x="160.5" y="18" width="80" height="80"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1le-bz-hmJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="Ax0-fq-wgO"/>
+                                            <constraint firstAttribute="height" constant="80" id="IQu-mG-UhX"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lkCornerRadius">
+                                                <real key="value" value="75"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="jqCornerRadius">
+                                                <real key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="jqTest">
+                                                <real key="value" value="500"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="Ax0-fq-wgO"/>
-                                    <constraint firstAttribute="height" constant="80" id="IQu-mG-UhX"/>
+                                    <constraint firstItem="1le-bz-hmJ" firstAttribute="top" secondItem="ENa-kW-vuh" secondAttribute="top" id="1Oe-qv-ffe"/>
+                                    <constraint firstAttribute="trailing" secondItem="1le-bz-hmJ" secondAttribute="trailing" id="8sZ-y1-mYr"/>
+                                    <constraint firstItem="1le-bz-hmJ" firstAttribute="leading" secondItem="ENa-kW-vuh" secondAttribute="leading" id="V3h-cX-1Y9"/>
+                                    <constraint firstAttribute="height" constant="80" id="dhz-Ab-NdI"/>
+                                    <constraint firstAttribute="width" constant="80" id="nAf-sU-zii"/>
+                                    <constraint firstAttribute="bottom" secondItem="1le-bz-hmJ" secondAttribute="bottom" id="tJn-Dj-IUV"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="lkCornerRadius">
-                                        <real key="value" value="75"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="jqCornerRadius">
-                                        <real key="value" value="40"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="jqTest">
-                                        <real key="value" value="500"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </imageView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" name="Y1"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="m8m-vg-zhh" secondAttribute="bottom" constant="12" id="02a-IW-T8v"/>
-                            <constraint firstItem="1le-bz-hmJ" firstAttribute="centerX" secondItem="7sA-hh-dIV" secondAttribute="centerX" id="4K2-3V-nKh"/>
-                            <constraint firstItem="1le-bz-hmJ" firstAttribute="top" secondItem="7sA-hh-dIV" secondAttribute="top" constant="20" id="Rd1-12-TbO"/>
+                            <constraint firstItem="ENa-kW-vuh" firstAttribute="centerX" secondItem="7sA-hh-dIV" secondAttribute="centerX" id="DfB-fP-R7i"/>
                             <constraint firstAttribute="height" constant="220" id="TSZ-9I-SJf"/>
                             <constraint firstItem="m8m-vg-zhh" firstAttribute="leading" secondItem="7sA-hh-dIV" secondAttribute="leading" constant="30" id="Uxj-U0-XN9"/>
                             <constraint firstAttribute="bottom" secondItem="KI6-DD-HrT" secondAttribute="bottom" id="Xsh-aW-0dG"/>
                             <constraint firstItem="KI6-DD-HrT" firstAttribute="leading" secondItem="7sA-hh-dIV" secondAttribute="leading" id="YNz-nk-Ikw"/>
                             <constraint firstAttribute="trailing" secondItem="m8m-vg-zhh" secondAttribute="trailing" constant="30" id="hpt-d8-z9m"/>
+                            <constraint firstItem="ENa-kW-vuh" firstAttribute="top" secondItem="7sA-hh-dIV" secondAttribute="top" constant="18" id="iCe-4Q-1o5"/>
                             <constraint firstAttribute="trailing" secondItem="KI6-DD-HrT" secondAttribute="trailing" id="ohk-b4-2FQ"/>
                         </constraints>
                     </view>
@@ -152,6 +166,7 @@
                 <outlet property="contributionText" destination="KTg-Hc-UnR" id="bbJ-2n-ayV"/>
                 <outlet property="infoFrameView" destination="m8m-vg-zhh" id="eVg-yf-lhY"/>
                 <outlet property="memberNameText" destination="Y0J-0b-02z" id="GOI-N9-WgO"/>
+                <outlet property="profileImageView" destination="ENa-kW-vuh" id="0S1-8N-3va"/>
                 <outlet property="profilePictureImage" destination="1le-bz-hmJ" id="Gnx-JN-0w4"/>
                 <outlet property="settingsBtn" destination="vxe-Vf-N9g" id="Crs-20-idN"/>
                 <outlet property="totalPointText" destination="ACy-m4-uOf" id="eLs-Wa-yHE"/>
