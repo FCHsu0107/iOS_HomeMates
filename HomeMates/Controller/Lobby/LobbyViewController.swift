@@ -28,13 +28,15 @@ class LobbyViewController: HMBaseViewController {
     
     //mock data
     var taskListTitle: [String] = ["","已完成任務", "特殊任務", "本月貢獻度"]
-    var checkTaskList: [TaskObject] = [TaskObject(taskName: "拖地", image: "home_normal", publisherName: "System", executorName: "Mother", taskPoint: 1, taskPriodDay: 1),
+    var checkTaskList: [TaskObject] = [
+        TaskObject(taskName: "拖地", image: "home_normal", publisherName: "System", executorName: "Mother", taskPoint: 1, taskPriodDay: 1),
                                        TaskObject(taskName: "掃地", image: "home_normal", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1),
                                        TaskObject(taskName: "掃地", image: "home_normal", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1)]
     
-    var willDoTaskList: [TaskObject] = [TaskObject(taskName: "打預防針", image: "home_normal", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0),
-                                        TaskObject(taskName: "清洗冷氣機濾網", image: "home_normal", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0),
-                                        TaskObject(taskName: "清洗冷氣機濾網", image: "home_normal", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0)]
+    var willDoTaskList: [TaskObject] = [
+        TaskObject(taskName: "打預防針", image: "home_normal", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0),
+//                                        TaskObject(taskName: "清洗冷氣機濾網", image: "home_normal", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0)
+    ]
     
     
     override func viewDidLoad() {

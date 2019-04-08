@@ -26,9 +26,8 @@ class TaskListViewController: HMBaseViewController {
     
     var regularTaskList: [TaskObject] = [TaskObject(taskName: "打預防針", image: "home_normal", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0),
                                         TaskObject(taskName: "清洗冷氣機濾網", image: "home_normal", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0),
-                                        TaskObject(taskName: "清洗冷氣機濾網", image: "home_normal", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0),
-                                        TaskObject(taskName: "清洗冷氣機濾網", image: "home_normal", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0),
-                                        TaskObject(taskName: "清洗冷氣機濾網", image: "home_normal", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0)]
+                                        TaskObject(taskName: "更換濾心", image: "home_normal", publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0)
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
