@@ -158,6 +158,4 @@ class TasksTableViewCell: UITableViewCell {
         taskTotalPoints.text = "\(taskTimes * point) 點"
 
     }
-
 }
-
