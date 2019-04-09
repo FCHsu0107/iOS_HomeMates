@@ -32,8 +32,6 @@
 		B94D15C522585DA200F43B78 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15C422585DA200F43B78 /* StatisticsViewController.swift */; };
 		B94D15CA225886FB00F43B78 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15C8225886FB00F43B78 /* EventCell.swift */; };
 		B94D15CB225886FB00F43B78 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B94D15C9225886FB00F43B78 /* EventCell.xib */; };
-		B96A9D0B22588C4D00CDBF4A /* EventHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A9D0922588C4D00CDBF4A /* EventHeaderCell.swift */; };
-		B96A9D0C22588C4D00CDBF4A /* EventHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96A9D0A22588C4D00CDBF4A /* EventHeaderCell.xib */; };
 		B9B10D732258A1780081C856 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B10D722258A1780081C856 /* UIView+Extension.swift */; };
 		B9D295D42258C18F00CF7869 /* TaskRecordObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D295D32258C18F00CF7869 /* TaskRecordObject.swift */; };
 		B9D295D72258CD7D00CF7869 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D295D62258CD7D00CF7869 /* TaskListViewController.swift */; };
@@ -71,8 +69,6 @@
 		B94D15C422585DA200F43B78 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		B94D15C8225886FB00F43B78 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		B94D15C9225886FB00F43B78 /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
-		B96A9D0922588C4D00CDBF4A /* EventHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHeaderCell.swift; sourceTree = "<group>"; };
-		B96A9D0A22588C4D00CDBF4A /* EventHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventHeaderCell.xib; sourceTree = "<group>"; };
 		B9B10D722258A1780081C856 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		B9D295D32258C18F00CF7869 /* TaskRecordObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRecordObject.swift; sourceTree = "<group>"; };
 		B9D295D62258CD7D00CF7869 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
@@ -233,8 +229,6 @@
 			children = (
 				B94D15C8225886FB00F43B78 /* EventCell.swift */,
 				B94D15C9225886FB00F43B78 /* EventCell.xib */,
-				B96A9D0922588C4D00CDBF4A /* EventHeaderCell.swift */,
-				B96A9D0A22588C4D00CDBF4A /* EventHeaderCell.xib */,
 			);
 			path = Statistics;
 			sourceTree = "<group>";
@@ -365,7 +359,6 @@
 				B94D15A722560AA500F43B78 /* LobbyHeaderCell.xib in Resources */,
 				B9261C7F225386930033ABC9 /* Profile.storyboard in Resources */,
 				B9D71AA722534D5100F242DA /* Assets.xcassets in Resources */,
-				B96A9D0C22588C4D00CDBF4A /* EventHeaderCell.xib in Resources */,
 				B94D15B0225721C500F43B78 /* ProfileHeaderViewCell.xib in Resources */,
 				B9261C9422545A9D0033ABC9 /* TasksTableViewCell.xib in Resources */,
 				B9261C83225386C40033ABC9 /* Lobby.storyboard in Resources */,
@@ -443,7 +436,6 @@
 				B9261C9D225495840033ABC9 /* LobbyViewController.swift in Sources */,
 				B9D295D72258CD7D00CF7869 /* TaskListViewController.swift in Sources */,
 				B9D71AA022534D4F00F242DA /* AppDelegate.swift in Sources */,
-				B96A9D0B22588C4D00CDBF4A /* EventHeaderCell.swift in Sources */,
 				B9261C97225489110033ABC9 /* TaskObject.swift in Sources */,
 				B9D295D42258C18F00CF7869 /* TaskRecordObject.swift in Sources */,
 				B9261C87225389FB0033ABC9 /* UIImage+Extension.swift in Sources */,

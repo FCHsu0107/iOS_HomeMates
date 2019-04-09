@@ -32,9 +32,6 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="eventDefaultColor">
                                         <color key="value" name="P1"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
-                                        <integer key="value" value="0"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
                                         <color key="value" cocoaTouchSystemColor="darkTextColor"/>
                                     </userDefinedRuntimeAttribute>
@@ -45,11 +42,11 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
                                         <color key="value" name="P1"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsSelection" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="pagingEnabled" value="YES"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
                                         <color key="value" name="Y3"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsSelection" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="pagingEnabled" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="dataSource" destination="QfJ-xO-4cx" id="jJ0-Ej-3nP"/>
@@ -59,6 +56,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Wie-YA-XpK">
                                 <rect key="frame" x="0.0" y="250" width="375" height="353"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="QfJ-xO-4cx" id="oJM-Sc-w5J"/>
+                                    <outlet property="delegate" destination="QfJ-xO-4cx" id="QSM-Xc-Ai9"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -73,7 +74,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="710-HS-9KF"/>
                     </view>
-                    <navigationItem key="navigationItem" title="統計資料" id="csF-aD-Vni">
+                    <navigationItem key="navigationItem" title="任務紀錄員" id="csF-aD-Vni">
                         <barButtonItem key="rightBarButtonItem" image="Toggle_24px" id="EnN-gB-xsD">
                             <color key="tintColor" name="Y4"/>
                             <connections>
@@ -84,7 +85,7 @@
                     <connections>
                         <outlet property="calendar" destination="ag8-sq-ljg" id="wUz-qu-U1D"/>
                         <outlet property="calendarHeightConstraint" destination="RCy-Ge-gW3" id="hgl-cU-bSw"/>
-                        <outlet property="navigationBtn" destination="EnN-gB-xsD" id="GSY-3E-6Dp"/>
+                        <outlet property="tableView" destination="Wie-YA-XpK" id="hUw-iS-PMG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3hm-vq-B6c" userLabel="First Responder" sceneMemberID="firstResponder"/>

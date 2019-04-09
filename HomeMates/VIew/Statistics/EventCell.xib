@@ -13,37 +13,73 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="106" id="KGk-i7-Jjw" customClass="EventCell" customModule="HomeMates" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="342" height="106"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="EventCell" customModule="HomeMates" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="342" height="136"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="342" height="105.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="342" height="135.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="洗衣服" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7h-cC-z0i">
-                        <rect key="frame" x="16" y="3" width="310" height="86.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="洗衣服" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7h-cC-z0i">
+                        <rect key="frame" x="20" y="46" width="40" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" name="B1"/>
+                        <color key="textColor" name="Y4"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="本日完成任務" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Plj-PQ-7XT">
+                        <rect key="frame" x="16" y="16" width="310" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" name="Y4"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="預計完成任務" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppz-xH-Dg7">
+                        <rect key="frame" x="16" y="82" width="310" height="5.5"/>
+                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                        <color key="textColor" name="Y4"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="洗衣服" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Epo-V8-sRH">
+                        <rect key="frame" x="20" y="99.5" width="306" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" name="Y4"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="執行者：小明" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fil-U2-syV">
+                        <rect key="frame" x="246" y="46" width="80" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="d7h-cC-z0i" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ReM-jn-LOq"/>
-                    <constraint firstAttribute="trailing" secondItem="d7h-cC-z0i" secondAttribute="trailing" constant="16" id="SNj-M4-IQW"/>
-                    <constraint firstAttribute="bottom" secondItem="d7h-cC-z0i" secondAttribute="bottom" constant="16" id="So8-sP-FRY"/>
-                    <constraint firstItem="d7h-cC-z0i" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="bax-Vc-AOc"/>
+                    <constraint firstAttribute="trailing" secondItem="Plj-PQ-7XT" secondAttribute="trailing" constant="16" id="0hH-CP-g7z"/>
+                    <constraint firstItem="Epo-V8-sRH" firstAttribute="top" secondItem="ppz-xH-Dg7" secondAttribute="bottom" constant="12" id="6g7-Qi-eEm"/>
+                    <constraint firstAttribute="trailing" secondItem="ppz-xH-Dg7" secondAttribute="trailing" constant="16" id="9Sr-8y-ieo"/>
+                    <constraint firstAttribute="trailing" secondItem="Epo-V8-sRH" secondAttribute="trailing" constant="16" id="A2i-Fj-zHW"/>
+                    <constraint firstItem="d7h-cC-z0i" firstAttribute="top" secondItem="Plj-PQ-7XT" secondAttribute="bottom" constant="12" id="AkE-H3-rUq"/>
+                    <constraint firstItem="fil-U2-syV" firstAttribute="top" secondItem="d7h-cC-z0i" secondAttribute="top" id="DWC-CL-e2d"/>
+                    <constraint firstAttribute="trailing" secondItem="fil-U2-syV" secondAttribute="trailing" constant="16" id="Fnk-ja-CfT"/>
+                    <constraint firstItem="d7h-cC-z0i" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Gvg-ev-eRy"/>
+                    <constraint firstAttribute="bottom" secondItem="Epo-V8-sRH" secondAttribute="bottom" constant="20" id="R5F-7p-oCH"/>
+                    <constraint firstItem="Plj-PQ-7XT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="W9F-Oi-aOF"/>
+                    <constraint firstItem="ppz-xH-Dg7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ZyM-hU-5QL"/>
+                    <constraint firstItem="Epo-V8-sRH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="cmK-7t-z9L"/>
+                    <constraint firstItem="Plj-PQ-7XT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="no9-9c-bBN"/>
+                    <constraint firstItem="ppz-xH-Dg7" firstAttribute="top" secondItem="d7h-cC-z0i" secondAttribute="bottom" constant="20" id="wbL-Pi-g4P"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="eventText" destination="d7h-cC-z0i" id="8j4-F0-Imf"/>
+                <outlet property="doneEventText" destination="d7h-cC-z0i" id="8j4-F0-Imf"/>
+                <outlet property="excutorNameText" destination="fil-U2-syV" id="LEB-TI-6LO"/>
+                <outlet property="willdoEventText" destination="Epo-V8-sRH" id="7G0-na-45S"/>
             </connections>
-            <point key="canvasLocation" x="140.57971014492756" y="141.29464285714286"/>
+            <point key="canvasLocation" x="140.57971014492756" y="150.66964285714286"/>
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="B1">
-            <color red="0.27843137254901962" green="0.32156862745098042" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="Y4">
+            <color red="0.29019607843137257" green="0.22352941176470589" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
