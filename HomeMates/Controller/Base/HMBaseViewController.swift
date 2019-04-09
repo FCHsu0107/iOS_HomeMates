@@ -46,7 +46,7 @@ class HMBaseViewController: UIViewController {
         super.viewWillAppear(animated)
 
         if navigationBarIsHidden {
-            navigationController?.setNavigationBarHidden(true, animated: true)
+            navigationController?.setNavigationBarHidden(true, animated: false)
         }
 
         if !isEnableIQKeyboard {

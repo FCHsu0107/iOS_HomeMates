@@ -13,5 +13,6 @@ target 'HomeMates' do
   pod 'FSCalendar'
   pod 'Firebase/Core'
   pod 'SwiftLint'
+  pod 'Charts'
   
 end
