@@ -17,6 +17,7 @@ class LobbyViewController: HMBaseViewController {
             tableView.delegate = self
 
             tableView.dataSource = self
+            
         }
     }
     
@@ -27,7 +28,7 @@ class LobbyViewController: HMBaseViewController {
     let taskHeader = TaskListHeaderView()
     
     //mock data
-    var taskListTitle: [String] = ["","已完成任務", "特殊任務", "本月貢獻度"]
+    var taskListTitle: [String] = ["","本月貢獻度", "特殊任務", "已完成任務"]
     var checkTaskList: [TaskObject] = [
         TaskObject(taskName: "拖地", image: "home_normal", publisherName: "System", executorName: "Mother", taskPoint: 1, taskPriodDay: 1),
                                        TaskObject(taskName: "掃地", image: "home_normal", publisherName: "System", executorName: "Daddy", taskPoint: 1, taskPriodDay: 1),
@@ -41,7 +42,6 @@ class LobbyViewController: HMBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: LobbyHeaderCell.self), bundle: nil)
         
@@ -72,10 +72,8 @@ extension LobbyViewController: UITableViewDataSource {
         switch section {
         case 0:
             return 200
-        case 1, 2, 3:
-            return 40
         default:
-            return 0
+            return 40
         }
     }
     
@@ -89,9 +87,9 @@ extension LobbyViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 1: return checkTaskList.count
+        case 3: return checkTaskList.count
         case 2: return willDoTaskList.count
-        case 3: return 2
+        case 1: return 2
         default:
             return 0
         }
@@ -103,9 +101,9 @@ extension LobbyViewController: UITableViewDataSource {
         guard let taskCell = cell as? TasksTableViewCell else { return cell }
         
         switch indexPath.section {
-        case 1, 2:
+        case 2, 3:
            
-           if indexPath.section == 1 {
+           if indexPath.section == 3 {
             let task = checkTaskList[indexPath.row]
             taskCell.loadData(image: task.image, member: task.executorName ?? "神秘人" , task: task.taskName, point: task.taskPoint, status: taskCellStatus.checkTask, periodTime: nil)
             
@@ -115,7 +113,7 @@ extension LobbyViewController: UITableViewDataSource {
            }
             return taskCell
             
-        case 3:
+        case 1:
             taskCell.showContributionView(member: "小明", memberImage: "home_normal", personalTotalPoints: 40, persent: 20)
             
             return taskCell

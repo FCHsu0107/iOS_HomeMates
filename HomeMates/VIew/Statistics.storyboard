@@ -16,11 +16,11 @@
             <objects>
                 <viewController id="QfJ-xO-4cx" customClass="StatisticsViewController" customModule="HomeMates" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5ic-AA-3R0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ag8-sq-ljg" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="64" width="375" height="250"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                 <color key="backgroundColor" red="0.9882352941176471" green="0.8784313725490196" blue="0.46274509803921571" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="RCy-Ge-gW3"/>
@@ -57,7 +57,7 @@
                                 </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Wie-YA-XpK">
-                                <rect key="frame" x="0.0" y="314" width="375" height="353"/>
+                                <rect key="frame" x="0.0" y="250" width="375" height="353"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -73,24 +73,35 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="710-HS-9KF"/>
                     </view>
-                    <navigationItem key="navigationItem" id="csF-aD-Vni"/>
+                    <navigationItem key="navigationItem" title="統計資料" id="csF-aD-Vni">
+                        <barButtonItem key="rightBarButtonItem" image="Toggle_24px" id="EnN-gB-xsD">
+                            <color key="tintColor" name="Y4"/>
+                            <connections>
+                                <action selector="weeklyBtnClicked:" destination="QfJ-xO-4cx" id="LJd-R7-A8d"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="calendar" destination="ag8-sq-ljg" id="wUz-qu-U1D"/>
                         <outlet property="calendarHeightConstraint" destination="RCy-Ge-gW3" id="hgl-cU-bSw"/>
+                        <outlet property="navigationBtn" destination="EnN-gB-xsD" id="GSY-3E-6Dp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3hm-vq-B6c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1080.8" y="70.614692653673174"/>
+            <point key="canvasLocation" x="849" y="71"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xa1-16-RSa">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="j8x-cP-kuP" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Zzg-Jp-Zbp">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Zzg-Jp-Zbp">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.2901960784" green="0.22352941179999999" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -103,6 +114,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Toggle_24px" width="24" height="24"/>
         <namedColor name="P1">
             <color red="0.62000000476837158" green="0.2199999988079071" blue="0.32499998807907104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -111,6 +123,9 @@
         </namedColor>
         <namedColor name="Y3">
             <color red="1" green="0.50980392156862742" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Y4">
+            <color red="0.29019607843137257" green="0.22352941176470589" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
