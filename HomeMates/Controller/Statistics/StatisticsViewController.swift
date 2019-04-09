@@ -63,45 +63,6 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
         print("\(#function)")
     }
 
-    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
-        self.calendarHeightConstraint.constant = bounds.height
-        self.view.layoutIfNeeded()
-    }
-
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print("did select date \(self.dateFormatter.string(from: date))")
-        let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
-        print("selected dates is \(selectedDates)")
-        if monthPosition == .next || monthPosition == .previous {
-            calendar.setCurrentPage(date, animated: true)
-        }
-    }
-
-    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        print("\(self.dateFormatter.string(from: calendar.currentPage))")
-    }
-
-    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        let dateString = self.dateFormatter.string(from: date)
-        if self.datesWithEvent.contains(dateString) {
-            return 1
-        }
-//        if self.datesWithMultipleEvents.contains(dateString) {
-//            return 3
-//        }
-        return 0
-    }
-
-//    func calendar(_ calendar: FSCalendar,
-//    appearance: FSCalendarAppearance,
-//    eventDefaultColorsFor date: Date) -> [UIColor]? {
-//        let key = self.dateFormatter.string(from: date)
-//        if self.datesWithMultipleEvents.contains(key) {
-//            return [UIColor.Y3 ?? UIColor.orange, appearance.eventDefaultColor, UIColor.black]
-//        }
-//        return nil
-//    }
-
     @IBAction func weeklyBtnClicked(_ sender: Any) {
         if self.calendar.scope == .month {
             self.calendar.setScope(.week, animated: true)
@@ -114,6 +75,44 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
 
 extension StatisticsViewController: FSCalendarDataSource, FSCalendarDelegate {
 
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        self.calendarHeightConstraint.constant = bounds.height
+        self.view.layoutIfNeeded()
+    }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        print("did select date \(self.dateFormatter.string(from: date))")
+        let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
+        print("selected dates is \(selectedDates)")
+        if monthPosition == .next || monthPosition == .previous {
+            calendar.setCurrentPage(date, animated: true)
+        }
+    }
+    
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        print("\(self.dateFormatter.string(from: calendar.currentPage))")
+    }
+    
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        let dateString = self.dateFormatter.string(from: date)
+        if self.datesWithEvent.contains(dateString) {
+            return 1
+        }
+        //        if self.datesWithMultipleEvents.contains(dateString) {
+        //            return 3
+        //        }
+        return 0
+    }
+    
+    //    func calendar(_ calendar: FSCalendar,
+    //    appearance: FSCalendarAppearance,
+    //    eventDefaultColorsFor date: Date) -> [UIColor]? {
+    //        let key = self.dateFormatter.string(from: date)
+    //        if self.datesWithMultipleEvents.contains(key) {
+    //            return [UIColor.Y3 ?? UIColor.orange, appearance.eventDefaultColor, UIColor.black]
+    //        }
+    //        return nil
+    //    }
 }
 
 extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -126,6 +125,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
         default: return nil
         }
     }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 0:
@@ -138,6 +138,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.1
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -170,7 +171,5 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             return UITableViewCell()
         }
-
     }
-
 }
