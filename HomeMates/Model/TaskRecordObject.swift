@@ -9,14 +9,14 @@
 import Foundation
 
 struct TaskRecord {
-    
+
     let taskName: String
-    
+
     let taskImage: String
-    
+
     let executorName: String
-    
+
     let taskPoint: Int
-    
+
     let taskTimes: Int
 }

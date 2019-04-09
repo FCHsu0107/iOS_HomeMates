@@ -304,6 +304,7 @@
 				B9D71A9922534D4F00F242DA /* Frameworks */,
 				B9D71A9A22534D4F00F242DA /* Resources */,
 				B756100DE390F1E6304BDA6B /* [CP] Embed Pods Frameworks */,
+				B9B7F529225C993A00A6DA9E /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -424,6 +425,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HomeMates/Pods-HomeMates-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		B9B7F529225C993A00A6DA9E /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

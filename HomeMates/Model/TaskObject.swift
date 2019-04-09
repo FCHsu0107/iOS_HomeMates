@@ -8,20 +8,18 @@
 
 import Foundation
 
-
 struct TaskObject {
-    
-    let taskName: String
-    
-    let image: String
-    
-    let publisherName: String
-    
-    let executorName: String?
-    
-    let taskPoint: Int
-    
-    let taskPriodDay: Int
-    
-}
 
+    let taskName: String
+
+    let image: String
+
+    let publisherName: String
+
+    let executorName: String?
+
+    let taskPoint: Int
+
+    let taskPriodDay: Int
+
+}

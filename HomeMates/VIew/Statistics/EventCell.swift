@@ -11,11 +11,11 @@ import UIKit
 class EventCell: UITableViewCell {
 
     @IBOutlet weak var doneEventText: UILabel!
-    
+
     @IBOutlet weak var excutorNameText: UILabel!
-    
+
     @IBOutlet weak var willdoEventText: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,5 +26,5 @@ class EventCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }

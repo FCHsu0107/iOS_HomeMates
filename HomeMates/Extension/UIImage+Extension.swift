@@ -7,9 +7,9 @@
 //
 
 import UIKit
-
+// swiftlint:disable identifier_name
 enum ImageAsset: String {
-    
+
     // Profile tab - Tab
     case home_normal
     case home
@@ -23,20 +23,19 @@ enum ImageAsset: String {
     case Tips_24px
     case Idea_24px_normal
     case Idea_24px
-    
+
     case Bullhorn_36px
-    
     case Back_24px
-    
     case Setting_36px
-    
     case Toggle_24px
 }
 
 extension UIImage {
-    
+
     static func asset(_ asset: ImageAsset) -> UIImage? {
-        
+
         return UIImage(named: asset.rawValue)
     }
 }
+
+// swiftlint:enable identifier_name

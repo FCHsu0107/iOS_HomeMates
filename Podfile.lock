@@ -52,6 +52,7 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - SwiftLint (0.30.1)
 
 DEPENDENCIES:
   - Firebase/Core
@@ -59,6 +60,7 @@ DEPENDENCIES:
   - IQKeyboardManager
   - JGProgressHUD
   - MJRefresh
+  - SwiftLint
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -73,6 +75,7 @@ SPEC REPOS:
     - JGProgressHUD
     - MJRefresh
     - nanopb
+    - SwiftLint
 
 SPEC CHECKSUMS:
   Firebase: 749a8ff4962f9d8c79dda1966de20f6f77583d67
@@ -86,7 +89,8 @@ SPEC CHECKSUMS:
   JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
 
-PODFILE CHECKSUM: 2fa638255d8a3b7645aa39d59d7212b2e2583a88
+PODFILE CHECKSUM: aadb027bdbe312814952f819e02b404d3b92f65d
 
 COCOAPODS: 1.6.0

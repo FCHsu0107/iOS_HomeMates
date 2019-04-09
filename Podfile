@@ -12,5 +12,6 @@ target 'HomeMates' do
   pod 'JGProgressHUD'
   pod 'FSCalendar'
   pod 'Firebase/Core'
+  pod 'SwiftLint'
   
 end

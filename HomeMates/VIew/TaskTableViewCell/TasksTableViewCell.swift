@@ -11,35 +11,35 @@ import UIKit
 class TasksTableViewCell: UITableViewCell {
 
     @IBOutlet weak var taskImage: UIImageView!
-    
+
     @IBOutlet weak var memberNameText: UILabel!
-    
+
     @IBOutlet weak var taskNameText: UILabel!
-    
+
     @IBOutlet weak var pointText: UILabel!
-    
+
     @IBOutlet weak var taskLeftBtn: UIButton!
-    
+
     @IBOutlet weak var taskRightBtn: UIButton!
-    
+
     @IBOutlet weak var taskPeriodText: UILabel!
-    
+
     @IBOutlet weak var taskTotalPoints: UILabel!
-    
+
     @IBOutlet weak var totalPointsText: UILabel!
-    
+
     @IBOutlet weak var firstTextContraint: NSLayoutConstraint!
-    
+
     @IBOutlet weak var secondTextContraint: NSLayoutConstraint!
-    
+
     @IBOutlet weak var contributionPersentView: UIView!
-    
+
     let progressView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 8))
-    
+
     var showContributionPersent: Bool? {
         didSet {
             if showContributionPersent == true {
-                
+
                 contributionPersentView.isHidden = false
                 progressView.backgroundColor = UIColor.P1
                 contributionPersentView.addSubview(progressView)
@@ -48,7 +48,7 @@ class TasksTableViewCell: UITableViewCell {
             }
         }
     }
-    
+
     var hiddenFirstText: Bool? {
         didSet {
             if hiddenFirstText == true {
@@ -58,7 +58,7 @@ class TasksTableViewCell: UITableViewCell {
             }
         }
     }
-    
+
     var secondBtnAppear: Bool? {
         didSet {
             if secondBtnAppear == true {
@@ -66,7 +66,7 @@ class TasksTableViewCell: UITableViewCell {
             }
         }
     }
-    
+
     var showPersonalPoints: Bool? {
         didSet {
             if showPersonalPoints == true {
@@ -77,16 +77,15 @@ class TasksTableViewCell: UITableViewCell {
             }
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         btnCornerRadius()
     }
 
-        
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
+
     }
 
     private func btnCornerRadius() {
@@ -96,13 +95,18 @@ class TasksTableViewCell: UITableViewCell {
         progressView.layer.cornerRadius = 5
 
     }
-    
-    func loadData(image: String, member: String, task: String, point: Int, status: taskCellStatus, periodTime: Int?) {
-        
+
+    func loadData(image: String,
+                  member: String,
+                  task: String,
+                  point: Int,
+                  status: TaskCellStatus,
+                  periodTime: Int?) {
+
         taskImage.image = UIImage(named: image)
         taskNameText.text = task
         pointText.text = "積分： \(point) 點"
-        
+
         switch status {
         case .checkTask:
 
@@ -113,18 +117,18 @@ class TasksTableViewCell: UITableViewCell {
 
             memberNameText.text = "發佈人：\(member)"
             taskRightBtn.setTitle("接受", for: .normal)
-            
+
         case .doingTask:
             hiddenFirstText = true
             secondBtnAppear = true
 
             taskRightBtn.setTitle("完成", for: .normal)
             taskLeftBtn.setTitle("放棄", for: .normal)
-            
+
         case .assignNormalTask:
             hiddenFirstText = true
             taskRightBtn.setTitle("接受", for: .normal)
-            
+
         case .assignRegularTask:
             hiddenFirstText = true
 
@@ -133,7 +137,7 @@ class TasksTableViewCell: UITableViewCell {
             taskPeriodText.text = "雙週任務"
         }
     }
-    
+
     func showContributionView(member: String, memberImage: String, personalTotalPoints: Int, persent: Int) {
         showContributionPersent = true
         taskImage.image = UIImage(named: memberImage)
@@ -141,7 +145,7 @@ class TasksTableViewCell: UITableViewCell {
         taskNameText.text = "累計積分： \(personalTotalPoints) 點"
         setProgress(CGFloat(persent))
     }
-    
+
     private func setProgress(_ progress: CGFloat) {
         let fullWidth: CGFloat = contributionPersentView.bounds.width
         let newWidth = progress / 100 * fullWidth
@@ -149,7 +153,7 @@ class TasksTableViewCell: UITableViewCell {
             self.progressView.frame.size = CGSize(width: newWidth, height: self.progressView.frame.height)
         }
     }
-    
+
     func personalTaskSum(taskName: String, image: String, taskTimes: Int, point: Int) {
         hiddenFirstText = true
         showPersonalPoints = true
@@ -157,13 +161,12 @@ class TasksTableViewCell: UITableViewCell {
         taskImage.image = UIImage(named: image)
         pointText.text = "完成 \(taskTimes) 次"
         taskTotalPoints.text = "\(taskTimes * point) 點"
-        
+
     }
-    
+
 }
 
-
-enum taskCellStatus {
+enum TaskCellStatus {
     case checkTask
     case acceptSpecialTask
     case doingTask

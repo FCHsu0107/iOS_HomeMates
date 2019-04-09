@@ -8,19 +8,19 @@
 
 import UIKit
 
-extension UITableView{
-    
+extension UITableView {
+
     func jq_registerCellWithNib(identifier: String, bundle: Bundle?) {
-        
+
         let nib = UINib(nibName: identifier, bundle: bundle)
-        
+
         register(nib, forCellReuseIdentifier: identifier)
     }
-    
+
     func jq_registerHeaderWithNib(identifier: String, bundle: Bundle?) {
-        
+
         let nib = UINib(nibName: identifier, bundle: bundle)
-        
+
         register(nib, forHeaderFooterViewReuseIdentifier: identifier)
     }
-} 
+}
