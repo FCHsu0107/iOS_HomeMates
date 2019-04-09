@@ -25,6 +25,7 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
         didSet {
             self.calendar.select(Date())
             self.calendar.scope = .week
+            self.calendar.appearance.headerMinimumDissolvedAlpha = 0.0
         }
     }
 

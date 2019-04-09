@@ -33,8 +33,8 @@ class TasksTableViewCell: UITableViewCell {
     @IBOutlet weak var secondTextContraint: NSLayoutConstraint!
 
     @IBOutlet weak var contributionPersentView: UIView!
-
-    let progressView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 8))
+    
+    let progressView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 6))
 
     var showContributionPersent: Bool? {
         didSet {
@@ -93,7 +93,6 @@ class TasksTableViewCell: UITableViewCell {
         taskLeftBtn.layer.cornerRadius = 5
         contributionPersentView.layer.cornerRadius = 5
         progressView.layer.cornerRadius = 5
-
     }
 
     func loadData(taskObject: TaskObject, status: TaskCellStatus) {
@@ -162,10 +161,3 @@ class TasksTableViewCell: UITableViewCell {
 
 }
 
-enum TaskCellStatus {
-    case checkTask
-    case acceptSpecialTask
-    case doingTask
-    case assignNormalTask
-    case assignRegularTask
-}

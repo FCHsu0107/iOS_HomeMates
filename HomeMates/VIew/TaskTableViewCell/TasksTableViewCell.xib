@@ -66,10 +66,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tUn-P4-yu8">
-                        <rect key="frame" x="76" y="90.5" width="279" height="8"/>
+                        <rect key="frame" x="76" y="88.5" width="273" height="6"/>
                         <color key="backgroundColor" name="Y1"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="8" id="PqU-Ml-heA"/>
+                            <constraint firstAttribute="height" constant="6" id="PqU-Ml-heA"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="積分放在這" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7C-DR-feW">
@@ -105,10 +105,9 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="djh-Vm-S9V" firstAttribute="centerY" secondItem="a7J-EE-SG2" secondAttribute="centerY" id="1yb-At-f1N"/>
-                    <constraint firstAttribute="bottom" secondItem="tUn-P4-yu8" secondAttribute="bottom" constant="20" id="2ii-qS-sr1"/>
                     <constraint firstAttribute="bottom" secondItem="SMu-4E-Fsk" secondAttribute="bottom" id="5N1-rB-kfy"/>
                     <constraint firstItem="a7J-EE-SG2" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6wg-63-0yg"/>
-                    <constraint firstAttribute="trailing" secondItem="tUn-P4-yu8" secondAttribute="trailing" constant="20" id="7Un-aM-2cY"/>
+                    <constraint firstAttribute="trailing" secondItem="tUn-P4-yu8" secondAttribute="trailing" constant="26" id="7Un-aM-2cY"/>
                     <constraint firstItem="SMu-4E-Fsk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="CYO-zr-5hb"/>
                     <constraint firstItem="tUn-P4-yu8" firstAttribute="leading" secondItem="ovV-4u-RGL" secondAttribute="leading" id="HqM-xT-ptN"/>
                     <constraint firstItem="SMu-4E-Fsk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="IPN-sj-SVF"/>
@@ -121,6 +120,7 @@
                     <constraint firstAttribute="trailing" secondItem="aw5-qs-8Zo" secondAttribute="trailing" constant="85" id="Z2G-e1-rdN"/>
                     <constraint firstAttribute="trailing" secondItem="a7J-EE-SG2" secondAttribute="trailing" constant="20" id="aWX-Sv-HPK"/>
                     <constraint firstItem="hrz-b3-IqO" firstAttribute="leading" secondItem="a7J-EE-SG2" secondAttribute="leading" constant="-90" id="bMc-UH-0CU"/>
+                    <constraint firstItem="tUn-P4-yu8" firstAttribute="top" secondItem="ovV-4u-RGL" secondAttribute="bottom" constant="8" id="c04-tU-TWM"/>
                     <constraint firstItem="ovV-4u-RGL" firstAttribute="top" secondItem="0RN-Pe-QGG" secondAttribute="bottom" constant="4" id="gyC-XN-MYu"/>
                     <constraint firstItem="aw5-qs-8Zo" firstAttribute="bottom" secondItem="K7C-DR-feW" secondAttribute="bottom" id="i4V-7i-R0h"/>
                     <constraint firstItem="ovV-4u-RGL" firstAttribute="leading" secondItem="SMu-4E-Fsk" secondAttribute="trailing" constant="12" id="irW-0H-d4j"/>

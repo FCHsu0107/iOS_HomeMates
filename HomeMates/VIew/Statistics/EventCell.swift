@@ -16,6 +16,13 @@ class EventCell: UITableViewCell {
 
     @IBOutlet weak var willdoEventText: UILabel!
 
+    @IBOutlet weak var backgroundViewImage: UIView! {
+        didSet {
+            backgroundViewImage.layer.cornerRadius = 5
+            backgroundViewImage.layer.shadowOpacity = 0.5
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

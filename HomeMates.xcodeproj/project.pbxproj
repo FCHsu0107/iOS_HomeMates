@@ -33,6 +33,7 @@
 		B94D15CA225886FB00F43B78 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15C8225886FB00F43B78 /* EventCell.swift */; };
 		B94D15CB225886FB00F43B78 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B94D15C9225886FB00F43B78 /* EventCell.xib */; };
 		B9B10D732258A1780081C856 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B10D722258A1780081C856 /* UIView+Extension.swift */; };
+		B9B7F52C225CAD5700A6DA9E /* TaskCellStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F52B225CAD5700A6DA9E /* TaskCellStatus.swift */; };
 		B9D295D42258C18F00CF7869 /* TaskRecordObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D295D32258C18F00CF7869 /* TaskRecordObject.swift */; };
 		B9D295D72258CD7D00CF7869 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D295D62258CD7D00CF7869 /* TaskListViewController.swift */; };
 		B9D295D9225A3E1D00CF7869 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9D295D8225A3E1D00CF7869 /* GoogleService-Info.plist */; };
@@ -70,6 +71,7 @@
 		B94D15C8225886FB00F43B78 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		B94D15C9225886FB00F43B78 /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		B9B10D722258A1780081C856 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		B9B7F52B225CAD5700A6DA9E /* TaskCellStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellStatus.swift; sourceTree = "<group>"; };
 		B9D295D32258C18F00CF7869 /* TaskRecordObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRecordObject.swift; sourceTree = "<group>"; };
 		B9D295D62258CD7D00CF7869 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 		B9D295D8225A3E1D00CF7869 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -137,9 +139,9 @@
 		B9261C74225384BC0033ABC9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B9261C96225489110033ABC9 /* TaskObject.swift */,
-				B9D295D32258C18F00CF7869 /* TaskRecordObject.swift */,
+				B9B7F52D225CAD6100A6DA9E /* TaskObject */,
 				B9D295DA225B003300CF7869 /* TaskListHeaderView.swift */,
+				B9B7F52B225CAD5700A6DA9E /* TaskCellStatus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -239,6 +241,15 @@
 				B94D15C422585DA200F43B78 /* StatisticsViewController.swift */,
 			);
 			path = Statistics;
+			sourceTree = "<group>";
+		};
+		B9B7F52D225CAD6100A6DA9E /* TaskObject */ = {
+			isa = PBXGroup;
+			children = (
+				B9261C96225489110033ABC9 /* TaskObject.swift */,
+				B9D295D32258C18F00CF7869 /* TaskRecordObject.swift */,
+			);
+			path = TaskObject;
 			sourceTree = "<group>";
 		};
 		B9D295D52258CD4C00CF7869 /* TaskList */ = {
@@ -463,6 +474,7 @@
 				B9261C89225392C60033ABC9 /* UIColor+Extension.swift in Sources */,
 				B9261C9322545A9D0033ABC9 /* TasksTableViewCell.swift in Sources */,
 				B94D15C522585DA200F43B78 /* StatisticsViewController.swift in Sources */,
+				B9B7F52C225CAD5700A6DA9E /* TaskCellStatus.swift in Sources */,
 				B94D15A622560AA500F43B78 /* LobbyHeaderCell.swift in Sources */,
 				B94D15B322572A2200F43B78 /* HMBaseViewController.swift in Sources */,
 				B9B10D732258A1780081C856 /* UIView+Extension.swift in Sources */,
