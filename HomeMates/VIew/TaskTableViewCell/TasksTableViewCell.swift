@@ -96,26 +96,22 @@ class TasksTableViewCell: UITableViewCell {
 
     }
 
-    func loadData(image: String,
-                  member: String,
-                  task: String,
-                  point: Int,
-                  status: TaskCellStatus,
-                  periodTime: Int?) {
+    func loadData(taskObject: TaskObject, status: TaskCellStatus) {
 
-        taskImage.image = UIImage(named: image)
-        taskNameText.text = task
-        pointText.text = "積分： \(point) 點"
+        taskImage.image = UIImage(named: taskObject.image)
+        taskNameText.text = "任務：\(taskObject.taskName)"
+        pointText.text = "積分： \(taskObject.taskPoint) 點"
 
         switch status {
         case .checkTask:
 
-            memberNameText.text = "執行者：\(member)"
+            guard let executor = taskObject.executorName else { return }
+            memberNameText.text = "執行者：\(executor)"
             taskRightBtn.setTitle("確認", for: .normal)
 
         case .acceptSpecialTask:
 
-            memberNameText.text = "發佈人：\(member)"
+            memberNameText.text = "發佈人：\(taskObject.publisherName)"
             taskRightBtn.setTitle("接受", for: .normal)
 
         case .doingTask:

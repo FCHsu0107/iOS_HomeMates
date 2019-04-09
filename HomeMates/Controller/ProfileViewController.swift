@@ -109,13 +109,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         case 1:
 
             let task = processTaskList[indexPath.row]
-
-            taskCell.loadData(image: task.image,
-                              member: task.publisherName,
-                              task: task.taskName,
-                              point: task.taskPoint,
-                              status: TaskCellStatus.doingTask,
-                              periodTime: nil)
+            taskCell.loadData(taskObject: task, status: TaskCellStatus.doingTask)
 
             return taskCell
 

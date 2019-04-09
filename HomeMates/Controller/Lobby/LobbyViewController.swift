@@ -111,21 +111,12 @@ extension LobbyViewController: UITableViewDataSource {
 
            if indexPath.section == 3 {
             let task = checkTaskList[indexPath.row]
-            taskCell.loadData(image: task.image,
-                              member: task.executorName ?? "神秘人",
-                              task: task.taskName,
-                              point: task.taskPoint,
-                              status: TaskCellStatus.checkTask,
-                              periodTime: nil)
-
+            taskCell.loadData(taskObject: task, status: TaskCellStatus.checkTask)
+            
            } else {
             let task = willDoTaskList[indexPath.row]
-            taskCell.loadData(image: task.image,
-                              member: task.publisherName,
-                              task: task.taskName,
-                              point: task.taskPoint,
-                              status: TaskCellStatus.acceptSpecialTask,
-                              periodTime: nil)
+            taskCell.loadData(taskObject: task, status: TaskCellStatus.acceptSpecialTask)
+    
            }
             return taskCell
 
