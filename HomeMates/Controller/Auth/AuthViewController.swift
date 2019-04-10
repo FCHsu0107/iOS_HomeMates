@@ -20,33 +20,93 @@ class AuthViewController: HMBaseViewController {
     
     @IBOutlet weak var checkTextField: UITextField!
     
-    @IBOutlet weak var authInfoView: UIView!
-//        {
-//        didSet {
-//            authTopView.layer.cornerRadius = 10
-//            authTopView.layer.shadowOpacity = 0.2
-//        }
-//    }
+    @IBOutlet weak var enterbtnLbl: UILabel!
     
-    @IBOutlet weak var enterButton: UIButton!
-//        {
-//        didSet {
-//            enterButton.layer.cornerRadius = 18
-//            enterButton.layer.shadowOpacity = 0.2
-//        }
-//    }
+    @IBOutlet weak var authViewConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var selectModeView: UIView!
-//        {
-//        didSet {
-//            selectModeView.layer.cornerRadius = 18
-//            selectModeView.layer.shadowOpacity = 0.2
-//        }
-//    }
+    @IBOutlet var selectionBarBtn: [UIButton]!
+    
+    @IBOutlet weak var authInfoView: UIView! {
+        didSet {
+            authInfoView.layer.cornerRadius = 10
+            authInfoView.layer.shadowOpacity = 0.2
+        }
+    }
+    
+    @IBOutlet weak var selectMovingBar: UIView! {
+        didSet {
+            selectMovingBar.layer.cornerRadius = 18
+        }
+    }
+    
+    @IBOutlet weak var selectMovingBarCenterXConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var enterButton: UIButton! {
+        didSet {
+            enterButton.layer.cornerRadius = 18
+            enterButton.layer.shadowOpacity = 0.2
+        }
+    }
+    
+    @IBOutlet weak var selectModeBackgroundView: UIView! {
+        didSet {
+            selectModeBackgroundView.layer.cornerRadius = 18
+            selectModeBackgroundView.layer.shadowOpacity = 0.2
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+    @IBAction func onChangeProducts(_ sender: UIButton) {
+        
+        for btn in selectionBarBtn {
+            btn.isSelected = false
+        }
+        sender.isSelected = true
+        
+        moveSelectionBarView(reference: sender)
+        
+        if sender.tag == 0 {
+            setSignUpMode()
+        } else {
+            setLogInMode()
+        }
+    }
+    
+    private func setSignUpMode() {
+        authTopView.tintColor = UIColor.P1
+        authBottomView.tintColor = UIColor.Y2
+        enterButton.backgroundColor = UIColor.Y2
+        enterbtnLbl.text = "Create Account"
+        enterbtnLbl.textColor = UIColor.Y4
+        checkTextField.isHidden = false
+        authViewConstraint.constant = 250
+        selectMovingBar.backgroundColor = UIColor.P1
+    }
+    
+    private func setLogInMode() {
+        authTopView.tintColor = UIColor.Y2
+        authBottomView.tintColor = UIColor.P1
+        enterButton.backgroundColor = UIColor.P1
+        enterbtnLbl.text = "Get Started"
+        enterbtnLbl.textColor = UIColor.white
+        checkTextField.isHidden = true
+        authViewConstraint.constant = 190
+        selectMovingBar.backgroundColor = UIColor.Y2
+        
+    }
+    private func moveSelectionBarView(reference: UIButton) {
+        selectMovingBarCenterXConstraint.isActive = false
+        selectMovingBarCenterXConstraint = selectMovingBar.centerXAnchor.constraint(equalTo: reference.centerXAnchor)
+        
+        selectMovingBarCenterXConstraint.isActive = true
+        
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            self?.view.layoutIfNeeded()
+        })
+        
     }
     
     @IBAction func enterBtnAction(_ sender: Any) {
