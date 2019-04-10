@@ -10,11 +10,11 @@ import UIKit
 
 class EventCell: UITableViewCell {
 
-    @IBOutlet weak var doneEventText: UILabel!
+    @IBOutlet weak var doneEventTextLbl: UILabel!
 
-    @IBOutlet weak var excutorNameText: UILabel!
+    @IBOutlet weak var excutorNameTextLbl: UILabel!
 
-    @IBOutlet weak var willdoEventText: UILabel!
+    @IBOutlet weak var willdoEventTextLbl: UILabel!
 
     @IBOutlet weak var backgroundViewImage: UIView! {
         didSet {

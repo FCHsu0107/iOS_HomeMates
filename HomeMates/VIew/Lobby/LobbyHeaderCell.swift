@@ -10,19 +10,19 @@ import UIKit
 
 class LobbyHeaderCell: UITableViewCell {
 
-    @IBOutlet weak var groupName: UILabel!
+    @IBOutlet weak var groupNameLbl: UILabel!
 
-    @IBOutlet weak var groupID: UILabel!
+    @IBOutlet weak var groupIDLbl: UILabel!
 
-    @IBOutlet weak var lubbyBulletin: UILabel!
+    @IBOutlet weak var lubbyBulletinLbl: UILabel!
 
-    @IBOutlet weak var groupImage: UIImageView!
+    @IBOutlet weak var groupImageView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.groupImage.layer.cornerRadius = 5
-        self.groupImage.image = UIImage.asset(.home)
+        self.groupImageView.layer.cornerRadius = 5
+        self.groupImageView.image = UIImage.asset(.home)
 
     }
 

@@ -62,7 +62,7 @@ extension LobbyViewController: UITableViewDataSource {
         case 0 :
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: LobbyHeaderCell.self))
             guard let headerCell = cell as? LobbyHeaderCell else { return cell}
-            headerCell.groupID.text = "Home ID: 8989889"
+            headerCell.groupIDLbl.text = "Home ID: 8989889"
             return headerCell
 
         default :

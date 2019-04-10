@@ -79,9 +79,9 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="backgroundViewImage" destination="VNM-Oe-6nk" id="V1H-ML-1TP"/>
-                <outlet property="doneEventText" destination="d7h-cC-z0i" id="8j4-F0-Imf"/>
-                <outlet property="excutorNameText" destination="fil-U2-syV" id="LEB-TI-6LO"/>
-                <outlet property="willdoEventText" destination="Epo-V8-sRH" id="7G0-na-45S"/>
+                <outlet property="doneEventTextLbl" destination="d7h-cC-z0i" id="8j4-F0-Imf"/>
+                <outlet property="excutorNameTextLbl" destination="fil-U2-syV" id="LEB-TI-6LO"/>
+                <outlet property="willdoEventTextLbl" destination="Epo-V8-sRH" id="7G0-na-45S"/>
             </connections>
             <point key="canvasLocation" x="140.57971014492756" y="150.66964285714286"/>
         </tableViewCell>

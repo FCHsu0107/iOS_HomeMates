@@ -12,13 +12,13 @@ class ProfileHeaderViewCell: UITableViewCell {
 
     @IBOutlet weak var profilePictureImage: UIImageView!
 
-    @IBOutlet weak var memberNameText: UILabel!
+    @IBOutlet weak var memberNameTextLbl: UILabel!
 
-    @IBOutlet weak var totalPointText: NSLayoutConstraint!
+    @IBOutlet weak var totalPointTextConstraint: NSLayoutConstraint!
 
-    @IBOutlet weak var totalTimesText: UILabel!
+    @IBOutlet weak var totalTimesTextLbl: UILabel!
 
-    @IBOutlet weak var contributionText: UILabel!
+    @IBOutlet weak var contributionTextLbl: UILabel!
 
     @IBOutlet weak var infoFrameView: UIView!
 

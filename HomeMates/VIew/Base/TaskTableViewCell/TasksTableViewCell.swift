@@ -12,25 +12,25 @@ class TasksTableViewCell: UITableViewCell {
 
     @IBOutlet weak var taskImage: UIImageView!
 
-    @IBOutlet weak var memberNameText: UILabel!
+    @IBOutlet weak var memberNameTextLbl: UILabel!
 
-    @IBOutlet weak var taskNameText: UILabel!
+    @IBOutlet weak var taskNameTextLbl: UILabel!
 
-    @IBOutlet weak var pointText: UILabel!
+    @IBOutlet weak var pointTextLbl: UILabel!
 
     @IBOutlet weak var taskLeftBtn: UIButton!
 
     @IBOutlet weak var taskRightBtn: UIButton!
 
-    @IBOutlet weak var taskPeriodText: UILabel!
+    @IBOutlet weak var taskPeriodTextLbl: UILabel!
 
-    @IBOutlet weak var taskTotalPoints: UILabel!
+    @IBOutlet weak var taskTotalPointsLbl: UILabel!
 
-    @IBOutlet weak var totalPointsText: UILabel!
+    @IBOutlet weak var totalPointsTextLbl: UILabel!
 
-    @IBOutlet weak var firstTextContraint: NSLayoutConstraint!
+    @IBOutlet weak var firstTextConstraint: NSLayoutConstraint!
 
-    @IBOutlet weak var secondTextContraint: NSLayoutConstraint!
+    @IBOutlet weak var secondTextConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var contributionPersentView: UIView!
     
@@ -43,7 +43,7 @@ class TasksTableViewCell: UITableViewCell {
                 contributionPersentView.isHidden = false
                 progressView.backgroundColor = UIColor.P1
                 contributionPersentView.addSubview(progressView)
-                pointText.isHidden = true
+                pointTextLbl.isHidden = true
                 taskRightBtn.isHidden = true
             }
         }
@@ -52,9 +52,9 @@ class TasksTableViewCell: UITableViewCell {
     var hiddenFirstText: Bool? {
         didSet {
             if hiddenFirstText == true {
-                memberNameText.isHidden = true
-                firstTextContraint.constant = 0
-                secondTextContraint.constant = 0
+                memberNameTextLbl.isHidden = true
+                firstTextConstraint.constant = 0
+                secondTextConstraint.constant = 0
             }
         }
     }
@@ -70,9 +70,9 @@ class TasksTableViewCell: UITableViewCell {
     var showPersonalPoints: Bool? {
         didSet {
             if showPersonalPoints == true {
-                pointText.isHidden = false
-                totalPointsText.isHidden = false
-                taskTotalPoints.isHidden = false
+                pointTextLbl.isHidden = false
+                totalPointsTextLbl.isHidden = false
+                taskTotalPointsLbl.isHidden = false
                 taskRightBtn.isHidden = true
             }
         }
@@ -98,19 +98,19 @@ class TasksTableViewCell: UITableViewCell {
     func loadData(taskObject: TaskObject, status: TaskCellStatus) {
 
         taskImage.image = UIImage(named: taskObject.image)
-        taskNameText.text = "任務：\(taskObject.taskName)"
-        pointText.text = "積分： \(taskObject.taskPoint) 點"
+        taskNameTextLbl.text = "任務：\(taskObject.taskName)"
+        pointTextLbl.text = "積分： \(taskObject.taskPoint) 點"
 
         switch status {
         case .checkTask:
 
             guard let executor = taskObject.executorName else { return }
-            memberNameText.text = "執行者：\(executor)"
+            memberNameTextLbl.text = "執行者：\(executor)"
             taskRightBtn.setTitle("確認", for: .normal)
 
         case .acceptSpecialTask:
 
-            memberNameText.text = "發佈人：\(taskObject.publisherName)"
+            memberNameTextLbl.text = "發佈人：\(taskObject.publisherName)"
             taskRightBtn.setTitle("接受", for: .normal)
 
         case .doingTask:
@@ -128,16 +128,16 @@ class TasksTableViewCell: UITableViewCell {
             hiddenFirstText = true
 
             taskRightBtn.setTitle("接受", for: .normal)
-            taskPeriodText.isHidden = false
-            taskPeriodText.text = "雙週任務"
+            taskPeriodTextLbl.isHidden = false
+            taskPeriodTextLbl.text = "雙週任務"
         }
     }
 
     func showContributionView(member: String, memberImage: String, personalTotalPoints: Int, persent: Int) {
         showContributionPersent = true
         taskImage.image = UIImage(named: memberImage)
-        memberNameText.text = member
-        taskNameText.text = "累計積分： \(personalTotalPoints) 點"
+        memberNameTextLbl.text = member
+        taskNameTextLbl.text = "累計積分： \(personalTotalPoints) 點"
         setProgress(CGFloat(persent))
     }
 
@@ -152,10 +152,10 @@ class TasksTableViewCell: UITableViewCell {
     func personalTaskSum(taskName: String, image: String, taskTimes: Int, point: Int) {
         hiddenFirstText = true
         showPersonalPoints = true
-        taskNameText.text = taskName
+        taskNameTextLbl.text = taskName
         taskImage.image = UIImage(named: image)
-        pointText.text = "完成 \(taskTimes) 次"
-        taskTotalPoints.text = "\(taskTimes * point) 點"
+        pointTextLbl.text = "完成 \(taskTimes) 次"
+        taskTotalPointsLbl.text = "\(taskTimes * point) 點"
 
     }
 }

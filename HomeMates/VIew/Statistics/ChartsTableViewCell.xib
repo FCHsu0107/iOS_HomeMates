@@ -47,7 +47,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="chartView" destination="EDB-FR-6nC" id="b5D-fc-oBk"/>
-                <outlet property="totalGroupPoints" destination="g6h-ry-qYB" id="K6Z-CG-Ghq"/>
+                <outlet property="totalGroupPointsLbl" destination="g6h-ry-qYB" id="K6Z-CG-Ghq"/>
             </connections>
             <point key="canvasLocation" x="-550.72463768115949" y="77.008928571428569"/>
         </tableViewCell>

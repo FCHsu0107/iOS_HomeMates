@@ -15,7 +15,10 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
         didSet {
             tableView.delegate = self
             tableView.dataSource = self
-            self.tableView.panGestureRecognizer.require(toFail: self.scopeGesture)
+            tableView.jq_registerCellWithNib(identifier: String(describing: EventCell.self), bundle: nil)
+            tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
+            tableView.jq_registerCellWithNib(identifier: String(describing: ChartsTableViewCell.self), bundle: nil)
+            tableView.jq_registerCellWithNib(identifier: String(describing: TrackerTableViewCell.self), bundle: nil)
         }
     }
 
@@ -26,6 +29,7 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
             self.calendar.select(Date())
             self.calendar.scope = .week
             self.calendar.appearance.headerMinimumDissolvedAlpha = 0.0
+            self.calendar.addGestureRecognizer(self.scopeGesture)
         }
     }
 
@@ -50,16 +54,11 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
     var datesWithEvent = ["2019/04/03", "2019/04/04",
                           "2019/04/05", "2019/04/06",
                           "2019/04/10", "2019/04/11"]
+    
     var datesWithMultipleEvents = ["2019/04/07", "2019/04/08", "2019/04/09", "2019/04/10"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        self.view.addGestureRecognizer(self.scopeGesture)
-
-        tableView.jq_registerCellWithNib(identifier: String(describing: EventCell.self), bundle: nil)
-        tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
-        tableView.jq_registerCellWithNib(identifier: String(describing: ChartsTableViewCell.self), bundle: nil)
 
     }
     deinit {
@@ -121,13 +120,13 @@ extension StatisticsViewController: FSCalendarDataSource, FSCalendarDelegate {
 extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let taskHeaderTitle = ["過往貢獻度", "任務分佈", "過往記錄"]
+        
         switch section {
-        case 1:
-            let headerView = taskHeaderView.taskTitle(tableView: tableView, titleText: "過往貢獻度")
+        case 1, 2, 3:
+            let headerView = taskHeaderView.taskTitle(tableView: tableView, titleText: taskHeaderTitle[section - 1])
             return headerView
-        case 2:
-            let headerView = taskHeaderView.taskTitle(tableView: tableView, titleText: "任務分佈")
-            return headerView
+
         default: return nil
         }
     }
@@ -146,14 +145,13 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0: return 1
-        case 1: return 1
-        case 2: return 1
+        case 0, 2, 3: return 1
+        case 1: return 3
         default: return 0
         }
     }
@@ -176,12 +174,19 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
                                                   personalTotalPoints: 50,
                                                   persent: 50)
             return contributionCell
+            
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ChartsTableViewCell.self),
                                                      for: indexPath)
             guard let chartCell = cell as? ChartsTableViewCell else { return cell }
             
             return chartCell
+            
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TrackerTableViewCell.self),
+                                                     for: indexPath)
+            guard let trackerCell = cell as? TrackerTableViewCell else { return cell }
+            return trackerCell
             
         default:
             return UITableViewCell()
