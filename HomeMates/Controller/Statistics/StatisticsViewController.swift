@@ -120,7 +120,7 @@ extension StatisticsViewController: FSCalendarDataSource, FSCalendarDelegate {
 extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let taskHeaderTitle = ["過往貢獻度", "任務分佈", "過往記錄"]
+        let taskHeaderTitle = ["過往紀錄", "任務分佈", "總貢獻度"]
         
         switch section {
         case 1, 2, 3:
@@ -150,8 +150,8 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0, 2, 3: return 1
-        case 1: return 3
+        case 0, 1, 2: return 1
+        case 3: return 3 // member count
         default: return 0
         }
     }
@@ -164,16 +164,13 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             guard let eventCell = cell as? EventCell else { return cell }
 
             return eventCell
+            
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self),
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TrackerTableViewCell.self),
                                                      for: indexPath)
-            guard let contributionCell = cell as? TasksTableViewCell else { return cell}
-
-            contributionCell.showContributionView(member: "哎唷喂啊",
-                                                  memberImage: "profile",
-                                                  personalTotalPoints: 50,
-                                                  persent: 50)
-            return contributionCell
+            guard let trackerCell = cell as? TrackerTableViewCell else { return cell }
+            
+            return trackerCell
             
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ChartsTableViewCell.self),
@@ -183,11 +180,16 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             return chartCell
             
         case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TrackerTableViewCell.self),
-                                                     for: indexPath)
-            guard let trackerCell = cell as? TrackerTableViewCell else { return cell }
-            return trackerCell
             
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self),
+                                                     for: indexPath)
+            guard let contributionCell = cell as? TasksTableViewCell else { return cell}
+            
+            contributionCell.showContributionView(member: "哎唷喂啊",
+                                                  memberImage: "profile",
+                                                  personalTotalPoints: 50,
+                                                  persent: 50)
+            return contributionCell
         default:
             return UITableViewCell()
         }

@@ -101,7 +101,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="groupIDLbl" destination="ua9-dG-jSk" id="bLa-xU-Npr"/>
+                <outlet property="groupIDLbl" destination="ua9-dG-jSk" id="tdH-HL-JnZ"/>
                 <outlet property="groupImageView" destination="q1h-s6-dEj" id="l4n-Gp-qVC"/>
                 <outlet property="groupNameLbl" destination="iwy-Gm-tme" id="foC-cN-77w"/>
                 <outlet property="lubbyBulletinLbl" destination="JKt-7S-BEQ" id="HH7-54-yBG"/>
