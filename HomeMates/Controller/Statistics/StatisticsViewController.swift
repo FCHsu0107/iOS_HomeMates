@@ -47,16 +47,19 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
         return panGesture
         }()
 
-    var datesWithEvent = ["2019/04/03", "2019/04/04", "2019/04/05", "2019/04/06"]
+    var datesWithEvent = ["2019/04/03", "2019/04/04",
+                          "2019/04/05", "2019/04/06",
+                          "2019/04/10", "2019/04/11"]
     var datesWithMultipleEvents = ["2019/04/07", "2019/04/08", "2019/04/09", "2019/04/10"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.addGestureRecognizer(self.scopeGesture)
+//        self.view.addGestureRecognizer(self.scopeGesture)
 
         tableView.jq_registerCellWithNib(identifier: String(describing: EventCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
+        tableView.jq_registerCellWithNib(identifier: String(describing: ChartsTableViewCell.self), bundle: nil)
 
     }
     deinit {
@@ -122,6 +125,9 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             let headerView = taskHeaderView.taskTitle(tableView: tableView, titleText: "過往貢獻度")
             return headerView
+        case 2:
+            let headerView = taskHeaderView.taskTitle(tableView: tableView, titleText: "任務分佈")
+            return headerView
         default: return nil
         }
     }
@@ -140,13 +146,14 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 1
-        case 1: return 3
+        case 1: return 1
+        case 2: return 1
         default: return 0
         }
     }
@@ -154,7 +161,8 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch  indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EventCell.self), for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EventCell.self),
+                                                     for: indexPath)
             guard let eventCell = cell as? EventCell else { return cell }
 
             return eventCell
@@ -168,6 +176,13 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
                                                   personalTotalPoints: 50,
                                                   persent: 50)
             return contributionCell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ChartsTableViewCell.self),
+                                                     for: indexPath)
+            guard let chartCell = cell as? ChartsTableViewCell else { return cell }
+            
+            return chartCell
+            
         default:
             return UITableViewCell()
         }

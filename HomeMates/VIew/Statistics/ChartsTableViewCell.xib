@@ -13,42 +13,43 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="374" id="KGk-i7-Jjw" customClass="ChartsTableViewCell" customModule="HomeMates" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="374"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ChartsTableViewCell" customModule="HomeMates" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="340"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="373.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="339.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="家庭總積分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnV-nO-3z8">
-                        <rect key="frame" x="20" y="8" width="280" height="45.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" name="Y4"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EDB-FR-6nC" customClass="PieChartView" customModule="Charts">
-                        <rect key="frame" x="10" y="63.5" width="300" height="300"/>
+                        <rect key="frame" x="10" y="29.5" width="300" height="300"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="EDB-FR-6nC" secondAttribute="height" multiplier="1:1" id="Y1t-xm-u8I"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="家庭總積分 ：110" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6h-ry-qYB">
+                        <rect key="frame" x="20" y="8" width="280" height="13.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" name="Y4"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="EDB-FR-6nC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="68q-ff-suO"/>
-                    <constraint firstItem="cnV-nO-3z8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="NnM-mL-aVo"/>
-                    <constraint firstAttribute="trailing" secondItem="EDB-FR-6nC" secondAttribute="trailing" constant="10" id="Y1x-dU-GfJ"/>
-                    <constraint firstAttribute="bottom" secondItem="EDB-FR-6nC" secondAttribute="bottom" constant="10" id="YFz-1S-c3N"/>
-                    <constraint firstItem="EDB-FR-6nC" firstAttribute="top" secondItem="cnV-nO-3z8" secondAttribute="bottom" constant="10" id="dQN-JN-dBN"/>
-                    <constraint firstItem="cnV-nO-3z8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="f9Y-bf-sbr"/>
-                    <constraint firstAttribute="trailing" secondItem="cnV-nO-3z8" secondAttribute="trailing" constant="20" id="h0m-eo-Vtq"/>
+                    <constraint firstItem="g6h-ry-qYB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="B8w-yw-WeO"/>
+                    <constraint firstItem="EDB-FR-6nC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="BfG-qn-q0A"/>
+                    <constraint firstAttribute="bottom" secondItem="EDB-FR-6nC" secondAttribute="bottom" constant="10" id="Dpz-Ov-0mP"/>
+                    <constraint firstItem="g6h-ry-qYB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="YlX-V4-wle"/>
+                    <constraint firstAttribute="trailing" secondItem="EDB-FR-6nC" secondAttribute="trailing" constant="10" id="hWG-O2-A2a"/>
+                    <constraint firstAttribute="trailing" secondItem="g6h-ry-qYB" secondAttribute="trailing" constant="20" id="jgk-Gw-jod"/>
+                    <constraint firstItem="EDB-FR-6nC" firstAttribute="top" secondItem="g6h-ry-qYB" secondAttribute="bottom" constant="8" id="uN8-dh-tKy"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="chartView" destination="EDB-FR-6nC" id="b5D-fc-oBk"/>
+                <outlet property="totalGroupPoints" destination="g6h-ry-qYB" id="K6Z-CG-Ghq"/>
             </connections>
-            <point key="canvasLocation" x="-550.72463768115949" y="88.392857142857139"/>
+            <point key="canvasLocation" x="-550.72463768115949" y="77.008928571428569"/>
         </tableViewCell>
     </objects>
     <resources>
