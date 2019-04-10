@@ -30,6 +30,7 @@ class AuthViewController: HMBaseViewController {
         didSet {
             authInfoView.layer.cornerRadius = 10
             authInfoView.layer.shadowOpacity = 0.2
+            authInfoView.layer.shadowOffset = CGSize(width: 0, height: 3)
         }
     }
     
@@ -45,6 +46,7 @@ class AuthViewController: HMBaseViewController {
         didSet {
             enterButton.layer.cornerRadius = 18
             enterButton.layer.shadowOpacity = 0.2
+            enterButton.layer.shadowOffset = CGSize(width: 0, height: 3)
         }
     }
     
@@ -52,6 +54,7 @@ class AuthViewController: HMBaseViewController {
         didSet {
             selectModeBackgroundView.layer.cornerRadius = 18
             selectModeBackgroundView.layer.shadowOpacity = 0.2
+            selectModeBackgroundView.layer.shadowOffset = CGSize(width: 0, height: 3)
         }
     }
     
@@ -67,12 +70,6 @@ class AuthViewController: HMBaseViewController {
         sender.isSelected = true
         
         moveSelectionBarView(reference: sender)
-        
-        if sender.tag == 0 {
-            setSignUpMode()
-        } else {
-            setLogInMode()
-        }
     }
     
     private func setSignUpMode() {
@@ -80,7 +77,6 @@ class AuthViewController: HMBaseViewController {
         authBottomView.tintColor = UIColor.Y2
         enterButton.backgroundColor = UIColor.Y2
         enterbtnLbl.text = "Create Account"
-        enterbtnLbl.textColor = UIColor.Y4
         checkTextField.isHidden = false
         authViewConstraint.constant = 250
         selectMovingBar.backgroundColor = UIColor.P1
@@ -91,22 +87,25 @@ class AuthViewController: HMBaseViewController {
         authBottomView.tintColor = UIColor.P1
         enterButton.backgroundColor = UIColor.P1
         enterbtnLbl.text = "Get Started"
-        enterbtnLbl.textColor = UIColor.white
         checkTextField.isHidden = true
         authViewConstraint.constant = 190
         selectMovingBar.backgroundColor = UIColor.Y2
         
     }
+
     private func moveSelectionBarView(reference: UIButton) {
         selectMovingBarCenterXConstraint.isActive = false
         selectMovingBarCenterXConstraint = selectMovingBar.centerXAnchor.constraint(equalTo: reference.centerXAnchor)
-        
         selectMovingBarCenterXConstraint.isActive = true
-        
+
         UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            if reference.tag == 0 {
+                self?.setSignUpMode()
+            } else {
+                self?.setLogInMode()
+            }
             self?.view.layoutIfNeeded()
         })
-        
     }
     
     @IBAction func enterBtnAction(_ sender: Any) {

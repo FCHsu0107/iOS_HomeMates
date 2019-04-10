@@ -41,6 +41,7 @@
 		B9B7F539225D95B500A6DA9E /* HMBaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F538225D95B500A6DA9E /* HMBaseTextField.swift */; };
 		B9B7F53E225DB6B900A6DA9E /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9B7F53D225DB6B900A6DA9E /* Auth.storyboard */; };
 		B9B7F541225DB73D00A6DA9E /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F540225DB73D00A6DA9E /* AuthViewController.swift */; };
+		B9B7F545225DEA8200A6DA9E /* GroupSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F544225DEA8200A6DA9E /* GroupSelectionViewController.swift */; };
 		B9D295D42258C18F00CF7869 /* TaskRecordObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D295D32258C18F00CF7869 /* TaskRecordObject.swift */; };
 		B9D295D72258CD7D00CF7869 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D295D62258CD7D00CF7869 /* TaskListViewController.swift */; };
 		B9D295D9225A3E1D00CF7869 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9D295D8225A3E1D00CF7869 /* GoogleService-Info.plist */; };
@@ -86,6 +87,7 @@
 		B9B7F538225D95B500A6DA9E /* HMBaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMBaseTextField.swift; sourceTree = "<group>"; };
 		B9B7F53D225DB6B900A6DA9E /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		B9B7F540225DB73D00A6DA9E /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		B9B7F544225DEA8200A6DA9E /* GroupSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSelectionViewController.swift; sourceTree = "<group>"; };
 		B9D295D32258C18F00CF7869 /* TaskRecordObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRecordObject.swift; sourceTree = "<group>"; };
 		B9D295D62258CD7D00CF7869 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 		B9D295D8225A3E1D00CF7869 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				B9B7F540225DB73D00A6DA9E /* AuthViewController.swift */,
+				B9B7F544225DEA8200A6DA9E /* GroupSelectionViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				B94D15BB225749B500F43B78 /* MJRefreshWrapper.swift in Sources */,
 				B9261C89225392C60033ABC9 /* UIColor+Extension.swift in Sources */,
 				B9261C9322545A9D0033ABC9 /* TasksTableViewCell.swift in Sources */,
+				B9B7F545225DEA8200A6DA9E /* GroupSelectionViewController.swift in Sources */,
 				B94D15C522585DA200F43B78 /* StatisticsViewController.swift in Sources */,
 				B9B7F52C225CAD5700A6DA9E /* TaskCellStatus.swift in Sources */,
 				B94D15A622560AA500F43B78 /* LobbyHeaderCell.swift in Sources */,
