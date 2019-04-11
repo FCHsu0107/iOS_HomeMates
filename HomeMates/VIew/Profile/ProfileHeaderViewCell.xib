@@ -128,6 +128,15 @@
                                     <constraint firstAttribute="bottom" secondItem="1le-bz-hmJ" secondAttribute="bottom" id="tJn-Dj-IUV"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmg-fz-5XD">
+                                <rect key="frame" x="340" y="20" width="31" height="30"/>
+                                <state key="normal" title="登出">
+                                    <color key="titleColor" name="Y4"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="QEe-OY-EJc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="Y1"/>
                         <constraints>
@@ -139,6 +148,8 @@
                             <constraint firstAttribute="trailing" secondItem="m8m-vg-zhh" secondAttribute="trailing" constant="30" id="hpt-d8-z9m"/>
                             <constraint firstItem="ENa-kW-vuh" firstAttribute="top" secondItem="7sA-hh-dIV" secondAttribute="top" constant="18" id="iCe-4Q-1o5"/>
                             <constraint firstAttribute="trailing" secondItem="KI6-DD-HrT" secondAttribute="trailing" id="ohk-b4-2FQ"/>
+                            <constraint firstItem="vmg-fz-5XD" firstAttribute="top" secondItem="7sA-hh-dIV" secondAttribute="top" constant="20" id="qL6-Xn-RPw"/>
+                            <constraint firstAttribute="trailing" secondItem="vmg-fz-5XD" secondAttribute="trailing" constant="30" id="wCw-Pw-tCd"/>
                         </constraints>
                     </view>
                 </subviews>

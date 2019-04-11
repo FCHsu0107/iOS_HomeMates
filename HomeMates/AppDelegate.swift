@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManager
 import Firebase
 
 @UIApplicationMain
@@ -16,8 +17,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        IQKeyboardManager.shared().isEnabled = true
+        
+        IQKeyboardManager.shared().shouldResignOnTouchOutside = true
+        
         FirebaseApp.configure()
+        
+//        let semophore = DispatchSemaphore(value: 0)
+        
+        Auth.auth().addStateDidChangeListener { [weak self] (_, user) in
+            
+//            semophore.signal()
+            
+            guard user != nil else {
+            
+                //Login
+                
+                let storyboard = UIStoryboard(name: "Auth", bundle: nil)
+                
+                self?.window?.rootViewController = storyboard.instantiateInitialViewController()
+                
+                return
+            }
+            
+            //Lobby
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            self?.window?.rootViewController = storyboard.instantiateInitialViewController()
+            
+        }
+        
+//        semophore.wait()
+        
         return true
     }
 

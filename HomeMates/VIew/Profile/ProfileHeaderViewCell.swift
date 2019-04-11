@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ProfileHeaderViewCell: UITableViewCell {
 
@@ -43,4 +44,7 @@ class ProfileHeaderViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func logoutBtn(_ sender: Any) {
+        try? Auth.auth().signOut()
+    }
 }

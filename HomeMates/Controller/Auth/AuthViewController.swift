@@ -62,10 +62,23 @@ class AuthViewController: HMBaseViewController {
         }
     }
     var alertView = AlertView()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setStatusBarBackgroundColor(color: UIColor.clear)
+ 
+//        Auth.auth().addStateDidChangeListener { [weak self] (_, user) in
+//            print("yo")
+//        }
+
+    }
+    
+    private func setStatusBarBackgroundColor(color: UIColor?) {
+        guard let statusBar = UIApplication.shared.value(
+            forKeyPath: "statusBarWindow.statusBar") as? UIView else { return }
+        
+        statusBar.backgroundColor = color
     }
     
     @IBAction func onChangeProducts(_ sender: UIButton) {
@@ -124,6 +137,7 @@ class AuthViewController: HMBaseViewController {
     }
     
     @IBAction func enterBtnAction(_ sender: Any) {
+        
         if selectionBarBtn[0].isSelected == true {
             if emailTextField.text?.isEmpty == true {
                 
@@ -134,12 +148,13 @@ class AuthViewController: HMBaseViewController {
                 alertView.sigleActionAlert(title: "錯誤", message: "請確認密碼無誤", clickTitle: "OK", vc: self)
                 
             } else {
+                
                 Auth.auth().createUser(withEmail: emailTextField.text!,
                                        password: passwordTextField.text!) { (authResult, error) in
 
                     if error == nil {
                         print("you have sucessfully signed up")
-                        guard let user = authResult?.user else { return }
+//                        guard let user = authResult?.user else { return }
 //                        user.uid =
                         self.performSegue(withIdentifier: "selectGroupSegue", sender: nil)
                         
@@ -156,15 +171,14 @@ class AuthViewController: HMBaseViewController {
                 alertView.sigleActionAlert(title: "錯誤", message: "請輸入帳號或密碼", clickTitle: "OK", vc: self)
             } else {
                 Auth.auth().signIn(withEmail: emailTextField.text!,
-                                   password: passwordTextField.text!) { (user, error) in
+                                   password: passwordTextField.text!) { (_, error) in
                     if error == nil {
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        if let tabBarVC =
-                                    storyboard.instantiateViewController(
-                                        withIdentifier: String(describing: HMTabBarViewController.self))
-                                        as? HMTabBarViewController {
+
+                        let tabBarVC = storyboard.instantiateViewController(
+                                withIdentifier: String(describing: HMTabBarViewController.self))
                         self.present(tabBarVC, animated: true, completion: nil)
-                                }
+
                     } else {
                         self.alertView.sigleActionAlert(title: "錯誤",
                                                         message: error?.localizedDescription,
