@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class AuthViewController: HMBaseViewController {
 
@@ -19,6 +21,8 @@ class AuthViewController: HMBaseViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBOutlet weak var checkTextField: UITextField!
+    
+    @IBOutlet weak var checkTextLbl: UILabel!
     
     @IBOutlet weak var enterbtnLbl: UILabel!
     
@@ -57,11 +61,13 @@ class AuthViewController: HMBaseViewController {
             selectModeBackgroundView.layer.shadowOffset = CGSize(width: 0, height: 3)
         }
     }
+    var alertView = AlertView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
+    
     @IBAction func onChangeProducts(_ sender: UIButton) {
         
         for btn in selectionBarBtn {
@@ -78,7 +84,8 @@ class AuthViewController: HMBaseViewController {
         enterButton.backgroundColor = UIColor.Y2
         enterbtnLbl.text = "Create Account"
         checkTextField.isHidden = false
-        authViewConstraint.constant = 250
+        checkTextLbl.isHidden = false
+        authViewConstraint.constant = 290
         selectMovingBar.backgroundColor = UIColor.P1
     }
     
@@ -88,7 +95,8 @@ class AuthViewController: HMBaseViewController {
         enterButton.backgroundColor = UIColor.P1
         enterbtnLbl.text = "Get Started"
         checkTextField.isHidden = true
-        authViewConstraint.constant = 190
+        checkTextLbl.isHidden = true
+        authViewConstraint.constant = 230
         selectMovingBar.backgroundColor = UIColor.Y2
         
     }
@@ -109,11 +117,45 @@ class AuthViewController: HMBaseViewController {
     }
     
     @IBAction func enterBtnAction(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let tabBarVC =
-            storyboard.instantiateViewController(
-                withIdentifier: String(describing: HMTabBarViewController.self)) as? HMTabBarViewController {
-            self.present(tabBarVC, animated: true, completion: nil)
-        }
+        if selectionBarBtn[0].isSelected == true {
+            if emailTextField.text?.isEmpty == true {
+                
+                alertView.sigleActionAlert(title: "錯誤", message: "請輸入電子郵件", clickTitle: "收到", vc: self)
+            
+            } else if passwordTextField.text != checkTextField.text || passwordTextField.text?.isEmpty == true {
+                
+                alertView.sigleActionAlert(title: "錯誤", message: "請確認密碼無誤", clickTitle: "OK", vc: self)
+                
+            } else {
+                Auth.auth().createUser(withEmail: emailTextField.text!,
+                                       password: passwordTextField.text!) { (authResult, error) in
+//                    guard let user = authResult?.user else { return }
+                    if error == nil {
+                        print("you have sucessfully signed up")
+                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                if let tabBarVC =
+                                    storyboard.instantiateViewController(
+                                        withIdentifier: String(describing: HMTabBarViewController.self))
+                                        as? HMTabBarViewController {
+                                    self.present(tabBarVC, animated: true, completion: nil)
+                                }
+                    } else {
+                        self.alertView.sigleActionAlert(title: "錯誤",
+                                                        message: error?.localizedDescription,
+                                                        clickTitle: "OK", vc: self)
+                    }
+                }
+            }
+            
+        } else {
+                
+            }
+        
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        if let tabBarVC =
+//            storyboard.instantiateViewController(
+//                withIdentifier: String(describing: HMTabBarViewController.self)) as? HMTabBarViewController {
+//            self.present(tabBarVC, animated: true, completion: nil)
+//        }
     }
 }

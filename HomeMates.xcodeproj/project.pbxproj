@@ -42,6 +42,7 @@
 		B9B7F53E225DB6B900A6DA9E /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9B7F53D225DB6B900A6DA9E /* Auth.storyboard */; };
 		B9B7F541225DB73D00A6DA9E /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F540225DB73D00A6DA9E /* AuthViewController.swift */; };
 		B9B7F545225DEA8200A6DA9E /* GroupSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F544225DEA8200A6DA9E /* GroupSelectionViewController.swift */; };
+		B9B7F548225EEA8E00A6DA9E /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F547225EEA8E00A6DA9E /* AlertView.swift */; };
 		B9D295D42258C18F00CF7869 /* TaskRecordObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D295D32258C18F00CF7869 /* TaskRecordObject.swift */; };
 		B9D295D72258CD7D00CF7869 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D295D62258CD7D00CF7869 /* TaskListViewController.swift */; };
 		B9D295D9225A3E1D00CF7869 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9D295D8225A3E1D00CF7869 /* GoogleService-Info.plist */; };
@@ -88,6 +89,7 @@
 		B9B7F53D225DB6B900A6DA9E /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		B9B7F540225DB73D00A6DA9E /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		B9B7F544225DEA8200A6DA9E /* GroupSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSelectionViewController.swift; sourceTree = "<group>"; };
+		B9B7F547225EEA8E00A6DA9E /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		B9D295D32258C18F00CF7869 /* TaskRecordObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRecordObject.swift; sourceTree = "<group>"; };
 		B9D295D62258CD7D00CF7869 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 		B9D295D8225A3E1D00CF7869 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 		B9261C74225384BC0033ABC9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B9B7F546225EEA7000A6DA9E /* AlertFunction */,
 				B9B7F52D225CAD6100A6DA9E /* TaskObject */,
 				B9B7F52B225CAD5700A6DA9E /* TaskCellStatus.swift */,
 			);
@@ -306,6 +309,14 @@
 				B9B7F544225DEA8200A6DA9E /* GroupSelectionViewController.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		B9B7F546225EEA7000A6DA9E /* AlertFunction */ = {
+			isa = PBXGroup;
+			children = (
+				B9B7F547225EEA8E00A6DA9E /* AlertView.swift */,
+			);
+			path = AlertFunction;
 			sourceTree = "<group>";
 		};
 		B9D295D52258CD4C00CF7869 /* TaskList */ = {
@@ -475,6 +486,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-HomeMates/Pods-HomeMates-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
@@ -487,6 +499,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
@@ -525,6 +538,7 @@
 			files = (
 				B9D295DB225B003300CF7869 /* TaskListHeaderView.swift in Sources */,
 				B9261C9D225495840033ABC9 /* LobbyViewController.swift in Sources */,
+				B9B7F548225EEA8E00A6DA9E /* AlertView.swift in Sources */,
 				B9B7F535225D933600A6DA9E /* TrackerTableViewCell.swift in Sources */,
 				B9D295D72258CD7D00CF7869 /* TaskListViewController.swift in Sources */,
 				B9D71AA022534D4F00F242DA /* AppDelegate.swift in Sources */,
@@ -698,7 +712,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R66LF8J636;
 				INFOPLIST_FILE = HomeMates/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -718,7 +732,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R66LF8J636;
 				INFOPLIST_FILE = HomeMates/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
