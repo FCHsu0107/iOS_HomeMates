@@ -217,7 +217,7 @@
         <!--Group Selection View Controller-->
         <scene sceneID="Nvx-bA-LSv">
             <objects>
-                <viewController id="2x1-Nv-VlG" customClass="GroupSelectionViewController" customModule="HomeMates" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GroupSelectionView" id="2x1-Nv-VlG" customClass="GroupSelectionViewController" customModule="HomeMates" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ivo-cr-4Uk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -116,6 +116,13 @@ class AuthViewController: HMBaseViewController {
         })
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "selectGroupSegue" {
+            guard segue.destination is GroupSelectionViewController else { return }
+//            guard let nextVc = segue.destination as? GroupSelectionViewController else { return }
+        }
+    }
+    
     @IBAction func enterBtnAction(_ sender: Any) {
         if selectionBarBtn[0].isSelected == true {
             if emailTextField.text?.isEmpty == true {
@@ -129,16 +136,13 @@ class AuthViewController: HMBaseViewController {
             } else {
                 Auth.auth().createUser(withEmail: emailTextField.text!,
                                        password: passwordTextField.text!) { (authResult, error) in
-//                    guard let user = authResult?.user else { return }
+
                     if error == nil {
                         print("you have sucessfully signed up")
-                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                                if let tabBarVC =
-                                    storyboard.instantiateViewController(
-                                        withIdentifier: String(describing: HMTabBarViewController.self))
-                                        as? HMTabBarViewController {
-                                    self.present(tabBarVC, animated: true, completion: nil)
-                                }
+                        guard let user = authResult?.user else { return }
+//                        user.uid =
+                        self.performSegue(withIdentifier: "selectGroupSegue", sender: nil)
+                        
                     } else {
                         self.alertView.sigleActionAlert(title: "錯誤",
                                                         message: error?.localizedDescription,
@@ -148,14 +152,26 @@ class AuthViewController: HMBaseViewController {
             }
             
         } else {
-                
+            if emailTextField.text?.isEmpty == true || passwordTextField.text?.isEmpty == true {
+                alertView.sigleActionAlert(title: "錯誤", message: "請輸入帳號或密碼", clickTitle: "OK", vc: self)
+            } else {
+                Auth.auth().signIn(withEmail: emailTextField.text!,
+                                   password: passwordTextField.text!) { (user, error) in
+                    if error == nil {
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        if let tabBarVC =
+                                    storyboard.instantiateViewController(
+                                        withIdentifier: String(describing: HMTabBarViewController.self))
+                                        as? HMTabBarViewController {
+                        self.present(tabBarVC, animated: true, completion: nil)
+                                }
+                    } else {
+                        self.alertView.sigleActionAlert(title: "錯誤",
+                                                        message: error?.localizedDescription,
+                                                        clickTitle: "OK", vc: self)
+                    }
+                }
             }
-        
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        if let tabBarVC =
-//            storyboard.instantiateViewController(
-//                withIdentifier: String(describing: HMTabBarViewController.self)) as? HMTabBarViewController {
-//            self.present(tabBarVC, animated: true, completion: nil)
-//        }
+        }
     }
 }
