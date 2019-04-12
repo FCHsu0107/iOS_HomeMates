@@ -269,14 +269,14 @@
                                         <color key="textColor" name="Y4"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="輸入密碼" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="as4-bt-K0c">
-                                        <rect key="frame" x="28" y="116" width="61.5" height="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="搜尋群組ＩＤ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="as4-bt-K0c">
+                                        <rect key="frame" x="28" y="116" width="92" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" name="Y4"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="確認密碼" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCl-cj-eaQ">
-                                        <rect key="frame" x="28" y="186" width="61.5" height="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="創建新的群組" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCl-cj-eaQ">
+                                        <rect key="frame" x="28" y="186" width="92" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" name="Y4"/>
                                         <nil key="highlightedColor"/>
@@ -314,6 +314,38 @@
                                 <color key="textColor" name="W1"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbV-Bx-6zg">
+                                <rect key="frame" x="107.5" y="505" width="160" height="36"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nw9-2k-pbA">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="36"/>
+                                        <state key="normal" title="搜尋群組">
+                                            <color key="titleColor" name="Y4"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bLF-vh-RZg">
+                                        <rect key="frame" x="80" y="0.0" width="80" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="bwQ-dv-nuo"/>
+                                        </constraints>
+                                        <state key="normal" title="創建群組">
+                                            <color key="titleColor" name="Y4"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="1Td-uA-sbT"/>
+                                    <constraint firstAttribute="bottom" secondItem="Nw9-2k-pbA" secondAttribute="bottom" id="3XT-Fs-7KO"/>
+                                    <constraint firstAttribute="bottom" secondItem="bLF-vh-RZg" secondAttribute="bottom" id="CQd-Pg-vsL"/>
+                                    <constraint firstItem="Nw9-2k-pbA" firstAttribute="top" secondItem="dbV-Bx-6zg" secondAttribute="top" id="Tb0-n0-VoC"/>
+                                    <constraint firstItem="bLF-vh-RZg" firstAttribute="leading" secondItem="Nw9-2k-pbA" secondAttribute="trailing" id="VDP-di-bP9"/>
+                                    <constraint firstAttribute="trailing" secondItem="bLF-vh-RZg" secondAttribute="trailing" id="WiU-np-ASP"/>
+                                    <constraint firstAttribute="width" constant="160" id="Zfq-FZ-yyy"/>
+                                    <constraint firstItem="bLF-vh-RZg" firstAttribute="top" secondItem="dbV-Bx-6zg" secondAttribute="top" id="fS8-t3-g5Z"/>
+                                    <constraint firstItem="Nw9-2k-pbA" firstAttribute="leading" secondItem="dbV-Bx-6zg" secondAttribute="leading" id="zkG-1q-Gxc"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" name="Y1"/>
@@ -322,12 +354,14 @@
                             <constraint firstItem="yAX-0x-NuT" firstAttribute="trailing" secondItem="2cP-hl-UnD" secondAttribute="trailing" id="LHB-9T-NSY"/>
                             <constraint firstItem="yAX-0x-NuT" firstAttribute="trailing" secondItem="oLC-xA-Ww0" secondAttribute="trailing" id="MFR-CO-Fcc"/>
                             <constraint firstItem="CfO-O1-CP0" firstAttribute="top" secondItem="2cP-hl-UnD" secondAttribute="bottom" constant="90" id="Nw9-Fd-vm2"/>
+                            <constraint firstItem="oLC-xA-Ww0" firstAttribute="top" secondItem="dbV-Bx-6zg" secondAttribute="bottom" constant="60" id="Qo8-GN-2ra"/>
                             <constraint firstItem="EyC-dJ-GJh" firstAttribute="top" secondItem="2cP-hl-UnD" secondAttribute="bottom" constant="70" id="SxN-Ak-eW0"/>
                             <constraint firstAttribute="bottom" secondItem="oLC-xA-Ww0" secondAttribute="bottom" id="iK8-7l-zYv"/>
                             <constraint firstItem="2cP-hl-UnD" firstAttribute="top" secondItem="ivo-cr-4Uk" secondAttribute="top" id="sdC-o5-Ehf"/>
                             <constraint firstItem="oLC-xA-Ww0" firstAttribute="leading" secondItem="yAX-0x-NuT" secondAttribute="leading" id="wYd-JF-9NE"/>
                             <constraint firstItem="EyC-dJ-GJh" firstAttribute="centerX" secondItem="ivo-cr-4Uk" secondAttribute="centerX" id="xiq-wB-TVt"/>
                             <constraint firstItem="2cP-hl-UnD" firstAttribute="leading" secondItem="yAX-0x-NuT" secondAttribute="leading" id="z6R-lq-4b1"/>
+                            <constraint firstItem="dbV-Bx-6zg" firstAttribute="centerX" secondItem="ivo-cr-4Uk" secondAttribute="centerX" id="zAr-9W-CjJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yAX-0x-NuT"/>
                     </view>

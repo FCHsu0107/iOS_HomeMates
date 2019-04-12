@@ -11,15 +11,18 @@ import UIKit
 
 class AlertView {
     
-    func sigleActionAlert(title: String, message: String?, clickTitle: String, vc: UIViewController) {
+    func sigleActionAlert(title: String,
+                          message: String?,
+                          clickTitle: String,
+                          showInVc: UIViewController) {
         
         let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let sigleAction = UIAlertAction(title: clickTitle, style:.default, handler: nil)
+        let sigleAction = UIAlertAction(title: clickTitle, style: .default, handler: nil)
         
         controller.addAction(sigleAction)
         
-        vc.present(controller, animated: true, completion: nil)
+        showInVc.present(controller, animated: true, completion: nil)
     }
     
 }

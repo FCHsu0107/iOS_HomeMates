@@ -31,19 +31,21 @@ class LobbyViewController: HMBaseViewController {
     var checkTaskList: [TaskObject] = [
         TaskObject(taskName: "拖地", image: "home_normal",
                    publisherName: "System", executorName: "Mother",
-                   taskPoint: 1, taskPriodDay: 1),
+                   taskPoint: 1, taskPriodDay: 1, completionDate: nil, taskStatus: 3),
         TaskObject(taskName: "掃地", image: "home_normal",
                    publisherName: "System", executorName: "Daddy",
-                   taskPoint: 1, taskPriodDay: 1),
+                   taskPoint: 1, taskPriodDay: 1, completionDate: nil, taskStatus: 3),
         TaskObject(taskName: "掃地", image: "home_normal",
                    publisherName: "System", executorName: "Daddy",
-                   taskPoint: 1, taskPriodDay: 1)]
+                   taskPoint: 1, taskPriodDay: 1, completionDate: nil, taskStatus: 3)]
 
     var willDoTaskList: [TaskObject] = [
         TaskObject(taskName: "打預防針", image: "home_normal",
-                   publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0),
+                   publisherName: "System", executorName: "",
+                   taskPoint: 2, taskPriodDay: 0, completionDate: nil, taskStatus: 1),
         TaskObject(taskName: "清洗冷氣機濾網", image: "home_normal",
-                   publisherName: "System", executorName: "", taskPoint: 2, taskPriodDay: 0)
+                   publisherName: "System", executorName: "",
+                   taskPoint: 2, taskPriodDay: 0, completionDate: nil, taskStatus: 1)
     ]
 
     override func viewDidLoad() {

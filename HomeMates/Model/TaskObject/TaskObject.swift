@@ -21,5 +21,8 @@ struct TaskObject {
     let taskPoint: Int
 
     let taskPriodDay: Int
-
+    
+    let completionDate: Date?
+    
+    let taskStatus: Int
 }

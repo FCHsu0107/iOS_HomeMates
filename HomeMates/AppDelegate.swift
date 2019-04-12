@@ -24,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
+        let db = Firestore.firestore()
+        print(db)
+        
 //        let semophore = DispatchSemaphore(value: 0)
         
         Auth.auth().addStateDidChangeListener { [weak self] (_, user) in

@@ -12,6 +12,7 @@ identifier_name:
     - app
     - nib
     - key
+    - db
 
 excluded:
   - Carthage

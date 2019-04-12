@@ -31,21 +31,27 @@ class ProfileViewController: HMBaseViewController {
                    publisherName: "System",
                    executorName: "阿明",
                    taskPoint: 1,
-                   taskPriodDay: 1),
+                   taskPriodDay: 1,
+                   completionDate: nil,
+                   taskStatus: 2),
         
         TaskObject(taskName: "掃地",
                    image: "home_normal",
                    publisherName: "System",
                    executorName: "阿明",
                    taskPoint: 1,
-                   taskPriodDay: 1),
+                   taskPriodDay: 1,
+                   completionDate: nil,
+                   taskStatus: 2),
         
         TaskObject(taskName: "準備早餐",
                    image: "home_normal",
                    publisherName: "System",
                    executorName: "阿明",
                    taskPoint: 1,
-                   taskPriodDay: 1)]
+                   taskPriodDay: 1,
+                   completionDate: nil,
+                   taskStatus: 2)]
 
     var doneTaskList: [TaskRecord] = [
         TaskRecord(taskName: "洗碗", taskImage: "home_normal", executorName: "阿明", taskPoint: 1, taskTimes: 10),
