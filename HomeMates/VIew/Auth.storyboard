@@ -22,10 +22,16 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AuthTopView" translatesAutoresizingMaskIntoConstraints="NO" id="esF-37-Ouv">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
                                 <color key="tintColor" name="P1"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="esF-37-Ouv" secondAttribute="height" multiplier="375:86" id="hmY-kZ-O1R"/>
+                                </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AuthBottomView" translatesAutoresizingMaskIntoConstraints="NO" id="G44-l7-vwY">
                                 <rect key="frame" x="0.0" y="601" width="375" height="66"/>
                                 <color key="tintColor" name="Y2"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="G44-l7-vwY" secondAttribute="height" multiplier="125:22" id="3Vw-Zx-iXQ"/>
+                                </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BxJ-8k-7Ng">
                                 <rect key="frame" x="47.5" y="176" width="280" height="290"/>
@@ -168,8 +174,8 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="G44-l7-vwY" secondAttribute="bottom" id="5RX-i4-K0a"/>
                             <constraint firstItem="ZPG-zo-gb3" firstAttribute="centerY" secondItem="d8X-bJ-qQD" secondAttribute="centerY" id="8eJ-Nx-NvQ"/>
-                            <constraint firstItem="W8B-Ru-1Vy" firstAttribute="trailing" secondItem="G44-l7-vwY" secondAttribute="trailing" id="8jB-2e-IjE"/>
-                            <constraint firstItem="W8B-Ru-1Vy" firstAttribute="trailing" secondItem="esF-37-Ouv" secondAttribute="trailing" id="8pQ-3n-d5y"/>
+                            <constraint firstAttribute="trailing" secondItem="G44-l7-vwY" secondAttribute="trailing" id="8jB-2e-IjE"/>
+                            <constraint firstAttribute="trailing" secondItem="esF-37-Ouv" secondAttribute="trailing" id="8pQ-3n-d5y"/>
                             <constraint firstItem="Gae-wN-ICx" firstAttribute="leading" secondItem="BY4-Qv-htF" secondAttribute="leading" id="Elv-jj-P0T"/>
                             <constraint firstItem="buA-dK-xB2" firstAttribute="top" secondItem="esF-37-Ouv" secondAttribute="bottom" constant="70" id="EvT-6q-Xzu"/>
                             <constraint firstItem="buA-dK-xB2" firstAttribute="centerX" secondItem="yM8-no-6d7" secondAttribute="centerX" id="HUe-DR-Ume"/>
@@ -179,12 +185,12 @@
                             <constraint firstItem="Gae-wN-ICx" firstAttribute="centerX" secondItem="BY4-Qv-htF" secondAttribute="centerX" id="SxQ-HF-UZX"/>
                             <constraint firstItem="7To-Ao-FSc" firstAttribute="bottom" secondItem="buA-dK-xB2" secondAttribute="bottom" id="bZn-jz-iNh"/>
                             <constraint firstItem="7To-Ao-FSc" firstAttribute="leading" secondItem="buA-dK-xB2" secondAttribute="leading" id="fXY-e3-9dN"/>
-                            <constraint firstItem="esF-37-Ouv" firstAttribute="leading" secondItem="W8B-Ru-1Vy" secondAttribute="leading" id="fad-Qb-gy8"/>
+                            <constraint firstItem="esF-37-Ouv" firstAttribute="leading" secondItem="yM8-no-6d7" secondAttribute="leading" id="fad-Qb-gy8"/>
                             <constraint firstItem="ZPG-zo-gb3" firstAttribute="centerX" secondItem="d8X-bJ-qQD" secondAttribute="centerX" id="hzw-7c-o4n"/>
                             <constraint firstItem="7To-Ao-FSc" firstAttribute="trailing" secondItem="buA-dK-xB2" secondAttribute="trailing" id="ipG-Li-96v"/>
                             <constraint firstItem="Gae-wN-ICx" firstAttribute="centerY" secondItem="BY4-Qv-htF" secondAttribute="centerY" id="jL6-b1-Agz"/>
                             <constraint firstItem="BxJ-8k-7Ng" firstAttribute="centerX" secondItem="yM8-no-6d7" secondAttribute="centerX" id="mQR-s6-gie"/>
-                            <constraint firstItem="G44-l7-vwY" firstAttribute="leading" secondItem="W8B-Ru-1Vy" secondAttribute="leading" id="mQl-dQ-cW1"/>
+                            <constraint firstItem="G44-l7-vwY" firstAttribute="leading" secondItem="yM8-no-6d7" secondAttribute="leading" id="mQl-dQ-cW1"/>
                             <constraint firstItem="BY4-Qv-htF" firstAttribute="centerX" secondItem="yM8-no-6d7" secondAttribute="centerX" id="mwh-8o-iGG"/>
                             <constraint firstItem="Gae-wN-ICx" firstAttribute="trailing" secondItem="BY4-Qv-htF" secondAttribute="trailing" id="rQ3-qh-zJ9"/>
                             <constraint firstItem="esF-37-Ouv" firstAttribute="top" secondItem="yM8-no-6d7" secondAttribute="top" id="tNv-d5-d2U"/>
@@ -225,10 +231,16 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AuthTopView" translatesAutoresizingMaskIntoConstraints="NO" id="2cP-hl-UnD">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
                                 <color key="tintColor" name="P1"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="2cP-hl-UnD" secondAttribute="height" multiplier="375:86" id="SUx-VK-5Ck"/>
+                                </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AuthBottomView" translatesAutoresizingMaskIntoConstraints="NO" id="oLC-xA-Ww0">
                                 <rect key="frame" x="0.0" y="601" width="375" height="66"/>
                                 <color key="tintColor" name="Y2"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="oLC-xA-Ww0" secondAttribute="height" multiplier="125:22" id="gf3-MY-dN7"/>
+                                </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CfO-O1-CP0">
                                 <rect key="frame" x="47.5" y="176" width="280" height="290"/>

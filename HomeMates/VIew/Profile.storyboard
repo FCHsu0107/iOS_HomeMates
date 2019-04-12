@@ -19,9 +19,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sLY-YY-Ue2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                                <color key="backgroundColor" name="Y1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="Y0X-SR-dr9"/>
+                                </constraints>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="2ZP-UN-se1">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" name="Y1"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="aBP-Bk-liO" id="osN-Kx-Bid"/>
                                     <outlet property="delegate" destination="aBP-Bk-liO" id="xBb-1H-lAX"/>
@@ -30,8 +37,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="sLY-YY-Ue2" firstAttribute="top" secondItem="3h9-u5-GU1" secondAttribute="top" id="EWA-tt-wnn"/>
+                            <constraint firstItem="sLY-YY-Ue2" firstAttribute="leading" secondItem="OFX-ZF-l0d" secondAttribute="leading" id="Gdq-dS-Kd1"/>
                             <constraint firstItem="2ZP-UN-se1" firstAttribute="top" secondItem="3h9-u5-GU1" secondAttribute="top" id="JVq-y3-6Zd"/>
                             <constraint firstItem="2ZP-UN-se1" firstAttribute="leading" secondItem="OFX-ZF-l0d" secondAttribute="leading" id="gqN-I9-1OF"/>
+                            <constraint firstItem="sLY-YY-Ue2" firstAttribute="trailing" secondItem="OFX-ZF-l0d" secondAttribute="trailing" id="h79-P6-aUa"/>
                             <constraint firstItem="OFX-ZF-l0d" firstAttribute="trailing" secondItem="2ZP-UN-se1" secondAttribute="trailing" id="j3w-gr-WLZ"/>
                             <constraint firstItem="OFX-ZF-l0d" firstAttribute="bottom" secondItem="2ZP-UN-se1" secondAttribute="bottom" id="rzz-9R-QOh"/>
                         </constraints>

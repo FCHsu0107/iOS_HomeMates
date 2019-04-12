@@ -55,7 +55,7 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Wie-YA-XpK">
                                 <rect key="frame" x="0.0" y="250" width="375" height="353"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" name="W1"/>
                                 <connections>
                                     <outlet property="dataSource" destination="QfJ-xO-4cx" id="oJM-Sc-w5J"/>
                                     <outlet property="delegate" destination="QfJ-xO-4cx" id="QSM-Xc-Ai9"/>
@@ -118,6 +118,9 @@
         <image name="Toggle_24px" width="24" height="24"/>
         <namedColor name="P1">
             <color red="0.62000000476837158" green="0.2199999988079071" blue="0.32499998807907104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="W1">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Y3">
             <color red="1" green="0.50980392156862742" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
