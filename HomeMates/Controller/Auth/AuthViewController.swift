@@ -142,37 +142,37 @@ class AuthViewController: HMBaseViewController {
     @IBAction func enterBtnAction(_ sender: Any) {
         
         if selectionBarBtn[0].isSelected == true {
-//            if emailTextField.text?.isEmpty == true {
-//
-//                alertView.sigleActionAlert(title: "錯誤", message: "請輸入電子郵件", clickTitle: "收到", showInVc: self)
-//
-//            } else if passwordTextField.text != checkTextField.text || passwordTextField.text?.isEmpty == true {
-//
-//                alertView.sigleActionAlert(title: "錯誤", message: "請確認密碼無誤", clickTitle: "OK", showInVc: self)
-//
-//            } else {
+            if emailTextField.text?.isEmpty == true {
+
+                alertView.sigleActionAlert(title: "錯誤", message: "請輸入電子郵件", clickTitle: "收到", showInVc: self)
+
+            } else if passwordTextField.text != checkTextField.text || passwordTextField.text?.isEmpty == true {
+
+                alertView.sigleActionAlert(title: "錯誤", message: "請確認密碼無誤", clickTitle: "OK", showInVc: self)
+
+            } else {
         
-//                Auth.auth().createUser(withEmail: emailTextField.text!,
-//                                       password: passwordTextField.text!) { (authResult, error) in
-//
-//                    if error == nil {
-//                        print("you have sucessfully signed up")
-//                        guard let user = authResult?.user else { return }
-//                        guard let email = user.email else { return }
-//                        self.db.collection("users").document("\(user.uid)").setData([
-//                            "email": email
-//                            ])
-//
+                Auth.auth().createUser(withEmail: emailTextField.text!,
+                                       password: passwordTextField.text!) { (authResult, error) in
+
+                    if error == nil {
+                        print("you have sucessfully signed up")
+                        guard let user = authResult?.user else { return }
+                        guard let email = user.email else { return }
+                        self.db.collection("users").document("\(user.uid)").setData([
+                            UserObject.CodingKeys.email.rawValue: email
+                            ])
+
                         self.performSegue(withIdentifier: "selectGroupSegue", sender: nil)
                         
-//                    } else {
-//                        self.alertView.sigleActionAlert(title: "錯誤",
-//                                                        message: error?.localizedDescription,
-//                                                        clickTitle: "OK", showInVc: self)
-//                    }
-//                }
-//            }
-            
+                    } else {
+                        self.alertView.sigleActionAlert(title: "錯誤",
+                                                        message: error?.localizedDescription,
+                                                        clickTitle: "OK", showInVc: self)
+                    }
+                }
+            }
+
         } else {
             if emailTextField.text?.isEmpty == true || passwordTextField.text?.isEmpty == true {
                 alertView.sigleActionAlert(title: "錯誤", message: "請輸入帳號或密碼", clickTitle: "OK", showInVc: self)

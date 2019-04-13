@@ -134,6 +134,10 @@ extension LobbyViewController: UITableViewDataSource {
             return UITableViewCell()
         }
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else { return }
+    }
 }
 
 extension LobbyViewController: UITableViewDelegate {

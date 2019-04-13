@@ -25,4 +25,23 @@ struct TaskObject {
     let completionDate: Date?
     
     let taskStatus: Int
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case taskName
+        
+        case image
+        
+        case punlisherName
+        
+        case executorName
+        
+        case taskPoint
+        
+        case taskPriodDay
+        
+        case completionDate
+        
+        case taskStatus
+    }
 }

@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         IQKeyboardManager.shared().shouldResignOnTouchOutside = true
         
-        FirebaseApp.configure()
+        FIRFirestoreSerivce.shared.configure()
         
         let db = Firestore.firestore()
         print(db)
