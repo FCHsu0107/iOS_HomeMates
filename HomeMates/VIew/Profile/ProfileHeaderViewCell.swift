@@ -41,10 +41,11 @@ class ProfileHeaderViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
 
     @IBAction func logoutBtn(_ sender: Any) {
-        try? Auth.auth().signOut()
+        FIRAuthService.shared.signOut()
+//        try? Auth.auth().signOut()
+        print("sign out")
     }
 }

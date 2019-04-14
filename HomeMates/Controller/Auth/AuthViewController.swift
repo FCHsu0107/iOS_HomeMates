@@ -71,10 +71,6 @@ class AuthViewController: HMBaseViewController {
         setStatusBarBackgroundColor(color: UIColor.clear)
  
         db = Firestore.firestore()
-        
-//        Auth.auth().addStateDidChangeListener { [weak self] (_, user) in
-//            print("yo")
-//        }
     }
     
     private func setStatusBarBackgroundColor(color: UIColor?) {
@@ -177,21 +173,21 @@ class AuthViewController: HMBaseViewController {
             if emailTextField.text?.isEmpty == true || passwordTextField.text?.isEmpty == true {
                 alertView.sigleActionAlert(title: "錯誤", message: "請輸入帳號或密碼", clickTitle: "OK", showInVc: self)
             } else {
-//                Auth.auth().signIn(withEmail: emailTextField.text!,
-//                                   password: passwordTextField.text!) { (_, error) in
-//                    if error == nil {
+                Auth.auth().signIn(withEmail: emailTextField.text!,
+                                   password: passwordTextField.text!) { (_, error) in
+                    if error == nil {
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
                        let tabBarVC = storyboard.instantiateViewController(
                             withIdentifier: String(describing: HMTabBarViewController.self))
                             self.present(tabBarVC, animated: true, completion: nil)
-//
-//                    } else {
-//                        self.alertView.sigleActionAlert(title: "錯誤",
-//                                                        message: error?.localizedDescription,
-//                                                        clickTitle: "OK", vc: self)
-//                    }
-//                }
+
+                    } else {
+                        self.alertView.sigleActionAlert(title: "錯誤",
+                                                        message: error?.localizedDescription,
+                                                        clickTitle: "OK", showInVc: self)
+                    }
+                }
             }
         }
     }

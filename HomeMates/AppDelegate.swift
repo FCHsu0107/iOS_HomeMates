@@ -8,7 +8,6 @@
 
 import UIKit
 import IQKeyboardManager
-import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,57 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FIRFirestoreSerivce.shared.configure()
         
-        let db = Firestore.firestore()
-        print(db)
-        
 //        let semophore = DispatchSemaphore(value: 0)
-        
-        Auth.auth().addStateDidChangeListener { [weak self] (_, user) in
-            
-//            semophore.signal()
-            
-            guard user != nil else {
-            
-                //Login
-                
-                let storyboard = UIStoryboard(name: "Auth", bundle: nil)
-                
-                self?.window?.rootViewController = storyboard.instantiateInitialViewController()
-                
-                return
-            }
-            
-            //Lobby
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            
-            self?.window?.rootViewController = storyboard.instantiateInitialViewController()
-            
-        }
-        
+//        semophore.signal()
 //        semophore.wait()
         
         return true
-    }
-
-    func applicationWillResignActive(_ application: UIApplication) {
-     
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-      
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        
-    }
-
-    func applicationWillTerminate(_ application: UIApplication) {
-        
     }
 
 }
