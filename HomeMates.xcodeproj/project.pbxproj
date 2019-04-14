@@ -180,6 +180,7 @@
 		B9261C74225384BC0033ABC9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B9B99F442263262900314BB6 /* Firestore */,
 				B9B7F546225EEA7000A6DA9E /* AlertFunction */,
 				B9B99F332261899900314BB6 /* UserObject */,
 				B9B7F52D225CAD6100A6DA9E /* TaskObject */,
@@ -360,6 +361,13 @@
 				B9B99F312261898D00314BB6 /* UserObject.swift */,
 			);
 			path = UserObject;
+			sourceTree = "<group>";
+		};
+		B9B99F442263262900314BB6 /* Firestore */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Firestore;
 			sourceTree = "<group>";
 		};
 		B9D295D52258CD4C00CF7869 /* TaskList */ = {

@@ -13,81 +13,60 @@ class LoadingViewController: UIViewController {
 
     @IBOutlet weak var progressView: UIProgressView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        Auth.auth().addStateDidChangeListener { (_, user) in
-            guard user != nil else {
-                
-                let storyboard = UIStoryboard(name: "Auth", bundle: nil)
-                if let authVc =
-                    storyboard.instantiateViewController(
-                        withIdentifier: String(describing: AuthViewController.self))
-                        as? AuthViewController {
-                    
-                    delegate.window?.rootViewController = authVc
-                }
-                return
-            }
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            if let tabBarVc =
-                storyboard.instantiateViewController(
-                    withIdentifier: String(describing: HMTabBarViewController.self))
-                    as? HMTabBarViewController {
-                
-                self.present(tabBarVc, animated: true, completion: nil)
-                
-                delegate.window?.rootViewController = tabBarVc
-            }
-        }
-    }
-}
-
-
-//override func viewWillAppear(_ animated: Bool) {
-//    super.viewWillAppear(animated)
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
 //
-//    Auth.auth().addStateDidChangeListener { (_, user) in
+//    }
 //
-//        guard user != nil else {
-//
-//            let storyboard = UIStoryboard(name: "LogInAndSignUp", bundle: nil)
-//            if let logInVC =
-//                storyboard.instantiateViewController(
-//                    withIdentifier: String(describing: LogInAndSignUpViewController.self))
-//                    as? LogInAndSignUpViewController {
-//
-//                guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
-//                    return
-//                }
-//
-//                delegate.window?.rootViewController = logInVC
-//            }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        checkStatus()
+//    }
+//    
+//    func checkStatus() {
+//        guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
 //            return
 //        }
-//
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//
-//        if let tabBarVC =
-//            storyboard.instantiateViewController(
-//                withIdentifier: String(describing: TabBarViewController.self)) as? TabBarViewController {
-//            self.present(tabBarVC, animated: true, completion: nil)
-//
-//            guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
+//        
+//        Auth.auth().addStateDidChangeListener { (_, user) in
+//            guard user != nil else {
+//                
+//                let storyboard = UIStoryboard(name: "Auth", bundle: nil)
+//                if let authVc =
+//                    storyboard.instantiateViewController(
+//                        withIdentifier: String(describing: AuthViewController.self))
+//                        as? AuthViewController {
+//                    
+//                    delegate.window?.rootViewController = authVc
+//                }
 //                return
 //            }
-//
-//            delegate.window?.rootViewController = tabBarVC
+//            guard let user = Auth.auth().currentUser else { return }
+//            
+//            let uid = user.uid
+//            
+//            let checkUser = FIRFirestoreSerivce.shared.findUser(uid: uid)
+//            if checkUser == true {
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                if let tabBarVc =
+//                    storyboard.instantiateViewController(
+//                        withIdentifier: String(describing: HMTabBarViewController.self))
+//                        as? HMTabBarViewController {
+//                    
+//                    self.present(tabBarVc, animated: true, completion: nil)
+//                    
+//                    delegate.window?.rootViewController = tabBarVc
+//                }
+//            } else {
+//                let storyboard = UIStoryboard(name: "Auth", bundle: nil)
+//                if let selectGroupVc =
+//                    storyboard.instantiateViewController(
+//                        withIdentifier: String(describing: GroupSelectionViewController.self))
+//                        as? GroupSelectionViewController {
+//                    
+//                    self.present(selectGroupVc, animated: true, completion: nil)
+//                }
+//            }
 //        }
 //    }
-//}
+}

@@ -7,12 +7,36 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class GroupSelectionViewController: UIViewController {
 
+    @IBOutlet weak var userNameTextField: UITextField!
+    
+    @IBOutlet weak var groupNameTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
     
+    @IBAction func createAGroup(_ sender: Any) {
+        if userNameTextField.text?.isEmpty == true {
+            
+        } else {
+            guard let userName = userNameTextField.text else { return }
+            guard let user = Auth.auth().currentUser else { return }
+            let newUser = UserObject(uid: user.uid, name: userName, email: user.email!, picture: nil, selectGroup: "no yet")
+        
+            FIRFirestoreSerivce.shared.create(for: newUser, in: .users)
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if let tabBarVc = storyboard.instantiateViewController(
+                withIdentifier: String(describing: HMTabBarViewController.self))
+                as? HMTabBarViewController {
+                self.present(tabBarVc, animated: true, completion: nil)
+            }
+        }
+    }
 }
+

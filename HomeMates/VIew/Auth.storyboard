@@ -19,14 +19,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AuthTopView" translatesAutoresizingMaskIntoConstraints="NO" id="esF-37-Ouv">
+                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AuthTopView" translatesAutoresizingMaskIntoConstraints="NO" id="esF-37-Ouv">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" name="P1"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="esF-37-Ouv" secondAttribute="height" multiplier="375:86" id="hmY-kZ-O1R"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AuthBottomView" translatesAutoresizingMaskIntoConstraints="NO" id="G44-l7-vwY">
+                            <imageView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AuthBottomView" translatesAutoresizingMaskIntoConstraints="NO" id="G44-l7-vwY">
                                 <rect key="frame" x="0.0" y="601" width="375" height="66"/>
                                 <color key="tintColor" name="Y2"/>
                                 <constraints>
@@ -38,19 +39,19 @@
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="輸入電子郵件" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JRo-8b-1FO">
                                         <rect key="frame" x="20" y="70" width="240" height="30"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="Y4"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="輸入密碼" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e5J-Hw-qfZ">
                                         <rect key="frame" x="20" y="140" width="240" height="30"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="Y4"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="確認密碼" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a39-TH-tNa">
                                         <rect key="frame" x="20" y="210" width="240" height="30"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="Y4"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
@@ -96,7 +97,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BY4-Qv-htF">
                                 <rect key="frame" x="122.5" y="450" width="130" height="36"/>
-                                <color key="backgroundColor" name="Y1"/>
+                                <color key="backgroundColor" name="Y2"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="fb9-Dh-qQC"/>
                                     <constraint firstAttribute="height" constant="36" id="xw7-JW-0BN"/>
@@ -109,7 +110,7 @@
                                     <action selector="enterBtnAction:" destination="6RP-E7-8Qu" eventType="touchUpInside" id="Nix-gG-bEo"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gae-wN-ICx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="創建新帳號" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gae-wN-ICx">
                                 <rect key="frame" x="122.5" y="458.5" width="130" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" name="W1"/>
@@ -136,7 +137,7 @@
                                             <constraint firstAttribute="width" secondItem="d8X-bJ-qQD" secondAttribute="height" multiplier="20:9" id="Z6T-Nj-C6C"/>
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Sign Up">
+                                        <state key="normal" title="註冊">
                                             <color key="titleColor" name="Y4"/>
                                         </state>
                                         <state key="selected">
@@ -153,7 +154,7 @@
                                             <constraint firstAttribute="width" secondItem="DaZ-k7-Dba" secondAttribute="height" multiplier="20:9" id="TJi-yf-3V9"/>
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Log In">
+                                        <state key="normal" title="登入">
                                             <color key="titleColor" name="Y4"/>
                                         </state>
                                         <state key="selected">
@@ -223,19 +224,19 @@
         <!--Group Selection View Controller-->
         <scene sceneID="Nvx-bA-LSv">
             <objects>
-                <viewController storyboardIdentifier="GroupSelectionView" id="2x1-Nv-VlG" customClass="GroupSelectionViewController" customModule="HomeMates" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GroupSelectionViewController" id="2x1-Nv-VlG" customClass="GroupSelectionViewController" customModule="HomeMates" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ivo-cr-4Uk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AuthTopView" translatesAutoresizingMaskIntoConstraints="NO" id="2cP-hl-UnD">
+                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AuthTopView" translatesAutoresizingMaskIntoConstraints="NO" id="2cP-hl-UnD">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
                                 <color key="tintColor" name="P1"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="2cP-hl-UnD" secondAttribute="height" multiplier="375:86" id="SUx-VK-5Ck"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AuthBottomView" translatesAutoresizingMaskIntoConstraints="NO" id="oLC-xA-Ww0">
+                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AuthBottomView" translatesAutoresizingMaskIntoConstraints="NO" id="oLC-xA-Ww0">
                                 <rect key="frame" x="0.0" y="601" width="375" height="66"/>
                                 <color key="tintColor" name="Y2"/>
                                 <constraints>
@@ -251,15 +252,15 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="輸入密碼" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="beu-az-Miy">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="輸入群組ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="beu-az-Miy">
                                         <rect key="frame" x="20" y="140" width="240" height="30"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="Y4"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="確認密碼" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GnR-Lg-kjz">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="輸入群組名稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GnR-Lg-kjz">
                                         <rect key="frame" x="20" y="210" width="240" height="30"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="Y4"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -331,6 +332,9 @@
                                         <state key="normal" title="創建群組">
                                             <color key="titleColor" name="Y4"/>
                                         </state>
+                                        <connections>
+                                            <action selector="createAGroup:" destination="2x1-Nv-VlG" eventType="touchUpInside" id="XZd-Uw-szx"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -366,6 +370,10 @@
                         <viewLayoutGuide key="safeArea" id="yAX-0x-NuT"/>
                     </view>
                     <navigationItem key="navigationItem" id="bzY-yD-R90"/>
+                    <connections>
+                        <outlet property="groupNameTextField" destination="GnR-Lg-kjz" id="jtt-Zj-rhe"/>
+                        <outlet property="userNameTextField" destination="hee-Tp-0EE" id="MNG-XX-c8K"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fT-z7-YAf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

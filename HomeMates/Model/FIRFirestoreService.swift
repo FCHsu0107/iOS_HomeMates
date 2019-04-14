@@ -20,17 +20,9 @@ class FIRFirestoreSerivce {
         FirebaseApp.configure()
     }
     
-    private func reference(to collectionReference: FIRCollectionReference
-//        ,
-//                           subCollection: Bool = false,
-//                           into subCollectionReference: FIRCollectionReference?
-        ) -> CollectionReference {
-        
-//        if !subCollection {
+    private func reference(to collectionReference: FIRCollectionReference) -> CollectionReference {
+
             return Firestore.firestore().collection(collectionReference.rawValue)
-//        } else {
-//            return Firestore.firestore().collection(collectionReference.rawValue).document()
-//        }
     }
     
     func create<T: Encodable>(for encodableObject: T,
@@ -38,7 +30,7 @@ class FIRFirestoreSerivce {
         
         do {
             let json = try encodableObject.toJSON()
-            reference(to: .users).addDocument(data: json)
+            reference(to: collectionReference).addDocument(data: json)
         } catch {
             print(error)
         }
@@ -64,8 +56,25 @@ class FIRFirestoreSerivce {
             } catch {
                 print(error)
             }
-            
         }
+    }
+    
+    func findUser(uid: String) -> Bool {
+        var documentExists: Bool = true
+
+            self.reference(to: .users).document(uid).getDocument() { (document, _) in
+                
+                if let document = document, document.exists {
+                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                    print("Document data: \(dataDescription)")
+                    documentExists = true
+                } else {
+                    print("Document does not exist.")
+                    documentExists = false
+                }
+            }
+        
+        return documentExists
     }
     
     func update<T: Encodable & Identifiable>(for encodableObject: T, in collectionReference: FIRCollectionReference) {

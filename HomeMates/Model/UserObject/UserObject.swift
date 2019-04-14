@@ -14,21 +14,15 @@ protocol Identifiable {
 }
 
 struct UserObject: Codable, Identifiable {
-    var uid: String? = nil
+    var uid: String?
     
     let name: String
     
     let email: String
     
-    let picture: String? = nil
+    let picture: String?
     
     let selectGroup: String
-    
-    init(name: String, email: String, selectGroup: String) {
-        self.name = name
-        self.email = email
-        self.selectGroup = selectGroup
-    }
     
     enum CodingKeys: String, CodingKey {
         
