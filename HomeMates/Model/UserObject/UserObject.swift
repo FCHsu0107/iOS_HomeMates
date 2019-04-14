@@ -14,6 +14,7 @@ protocol Identifiable {
 }
 
 struct UserObject: Codable, Identifiable {
+    
     var uid: String?
     
     let name: String
@@ -34,5 +35,6 @@ struct UserObject: Codable, Identifiable {
         
         case selectGroup
         
+        case uid
     }
 }

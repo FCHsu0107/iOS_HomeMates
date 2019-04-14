@@ -25,16 +25,26 @@ class FIRFirestoreSerivce {
             return Firestore.firestore().collection(collectionReference.rawValue)
     }
     
-    func create<T: Encodable>(for encodableObject: T,
-                              in collectionReference: FIRCollectionReference) {
+    func createUser<T: Encodable>(uid: String,
+                                  for encodableObject: T,
+                                  in collectionReference: FIRCollectionReference) {
         
         do {
             let json = try encodableObject.toJSON()
-            reference(to: collectionReference).addDocument(data: json)
+            reference(to: collectionReference).document(uid).setData(json)
         } catch {
             print(error)
         }
-       
+    }
+    
+    func create<T: Encodable>(for encodableObject: T, in collectionReference: FIRCollectionReference) {
+        do {
+            let json = try encodableObject.toJSON()
+            reference(to: collectionReference).addDocument(data: json)
+            
+        } catch {
+            print(error)
+        }
     }
     
     func read<T: Decodable>(from collectionReference: FIRCollectionReference,

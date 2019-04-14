@@ -25,10 +25,18 @@ class GroupSelectionViewController: UIViewController {
             
         } else {
             guard let userName = userNameTextField.text else { return }
+            guard let groupName = groupNameTextField.text else { return }
             guard let user = Auth.auth().currentUser else { return }
-            let newUser = UserObject(uid: user.uid, name: userName, email: user.email!, picture: nil, selectGroup: "no yet")
+            let newUser = UserObject(uid: user.uid,
+                                     name: userName,
+                                     email: user.email!,
+                                     picture: nil,
+                                     selectGroup: "no yet")
+            
+            let newGroup = GroupObject(name: groupName, picture: "")
         
-            FIRFirestoreSerivce.shared.create(for: newUser, in: .users)
+            FIRFirestoreSerivce.shared.createUser(uid: user.uid, for: newUser, in: .users)
+            FIRFirestoreSerivce.shared.create(for: newGroup, in: .groups)
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             if let tabBarVc = storyboard.instantiateViewController(
@@ -39,4 +47,3 @@ class GroupSelectionViewController: UIViewController {
         }
     }
 }
-
