@@ -19,6 +19,7 @@ struct MemberObject: Codable {
     let permission: Bool
     
     enum CodingKeys: String, CodingKey {
+        
         case userId
         
         case userName

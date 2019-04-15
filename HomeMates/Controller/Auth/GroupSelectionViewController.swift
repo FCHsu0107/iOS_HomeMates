@@ -91,7 +91,7 @@ class GroupSelectionViewController: UIViewController {
                                            clickTitle: "收到",
                                            showInVc: self)
             } else {
-                
+                searchTheGroup()
             }
                 
         } else if selectGroupBtn[1].isSelected == true {
@@ -159,4 +159,12 @@ class GroupSelectionViewController: UIViewController {
             self.present(tabBarVc, animated: true, completion: nil)
         }
     }
+    
+    func searchTheGroup() {
+        FIRFirestoreSerivce.shared.findGroup(shorterGroupId: "kBexZN",
+                                             returning: GroupObject.self) { groups in
+                                                print(groups)
+        }
+    }
+    
 }

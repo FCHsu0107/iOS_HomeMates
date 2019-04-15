@@ -61,8 +61,6 @@ class FIRFirestoreSerivce {
             UserDefaultManager.shared.shorterGroupID = docuID.substring(toIndex: docuID.length - 14)
             print(String(UserDefaultManager.shared.shorterGroupID!))
             
-            
-            
         } catch {
             print(error)
         }
@@ -84,6 +82,26 @@ class FIRFirestoreSerivce {
             
         } catch {
             print(error)
+        }
+    }
+    
+    func findGroup<T: Decodable>(shorterGroupId: String,
+                                 returning objectType: T.Type,
+                                 completion: @escaping ([T]) -> Void) {
+        let ref = reference(to: .groups).whereField(GroupObject.CodingKeys.groupId.rawValue,
+                                                    isEqualTo: shorterGroupId)
+        ref.getDocuments { (snapshot, _) in
+            guard let snapshot = snapshot else { return }
+            do {
+                var objects = [T]()
+                for documet in snapshot.documents {
+                    let object = try documet.decode(as: objectType.self)
+                    objects.append(object)
+                }
+                completion(objects)
+            } catch {
+                print(error)
+            }
         }
     }
     
