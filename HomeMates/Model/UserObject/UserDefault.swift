@@ -15,6 +15,8 @@ class UserDefaultManager {
     
     let userDefaultGroupID: String = "HomeMatesGroupId"
     
+    let userDefaultShorterGroupID: String = "HomeMatesShorterGroupID"
+    
     var userUid: String? {
         set {
             UserDefaults.standard.set(newValue, forKey: userDefaultUserID)
@@ -33,4 +35,12 @@ class UserDefaultManager {
         }
     }
     
+    var shorterGroupID: String? {
+        set {
+            UserDefaults.standard.set(newValue, forKey: userDefaultShorterGroupID)
+        }
+        get {
+            return UserDefaults.standard.value(forKey: userDefaultShorterGroupID) as? String
+        }
+    }
 }

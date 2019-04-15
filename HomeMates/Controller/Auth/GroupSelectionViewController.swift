@@ -111,10 +111,11 @@ class GroupSelectionViewController: UIViewController {
         guard let groupName = groupNameTextField.text else { return }
         guard let user = Auth.auth().currentUser else { return }
 
-        let newGroup = GroupObject(createrId: user.uid,
+        var newGroup = GroupObject(createrId: user.uid,
                                    createrName: userName,
                                    name: groupName,
-                                   picture: nil)
+                                   picture: nil,
+                                   groupId: " ")
         
         FIRFirestoreSerivce.shared.createGroup(for: newGroup, in: .groups)
         
@@ -145,6 +146,11 @@ class GroupSelectionViewController: UIViewController {
                                              in: .groups,
                                              inDocument: UserDefaultManager.shared.groupId!,
                                              inNext: .members)
+        newGroup.groupId = UserDefaultManager.shared.shorterGroupID!
+
+        FIRFirestoreSerivce.shared.createUser(uid: UserDefaultManager.shared.groupId!,
+                                              for: newGroup,
+                                              in: .groups)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let tabBarVc = storyboard.instantiateViewController(

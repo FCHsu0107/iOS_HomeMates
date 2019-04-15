@@ -18,6 +18,8 @@ struct GroupObject: Codable {
     
     let picture: String?
     
+    var groupId: String
+    
     enum CodingKeys: String, CodingKey {
         
         case name
@@ -28,5 +30,6 @@ struct GroupObject: Codable {
         
         case createrName
         
+        case groupId
     }
 }

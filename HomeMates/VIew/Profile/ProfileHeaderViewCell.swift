@@ -46,6 +46,7 @@ class ProfileHeaderViewCell: UITableViewCell {
     }
 
     @IBAction func logoutBtn(_ sender: Any) {
+        UserDefaultManager.shared.groupId = nil
         try? Auth.auth().signOut()
         print("sign out")
     }

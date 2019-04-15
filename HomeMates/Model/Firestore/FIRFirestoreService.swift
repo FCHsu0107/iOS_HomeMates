@@ -55,8 +55,13 @@ class FIRFirestoreSerivce {
                 reference(to: collectionReference).addDocument(data: json)
             guard let ref = ref else { return }
             print(ref.documentID)
-            UserDefaultManager.shared.groupId = ref.documentID
+            let docuID = ref.documentID
+            UserDefaultManager.shared.groupId = docuID
             print(String(UserDefaultManager.shared.groupId!))
+            UserDefaultManager.shared.shorterGroupID = docuID.substring(toIndex: docuID.length - 14)
+            print(String(UserDefaultManager.shared.shorterGroupID!))
+            
+            
             
         } catch {
             print(error)
