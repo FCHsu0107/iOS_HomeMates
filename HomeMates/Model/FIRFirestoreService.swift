@@ -71,32 +71,30 @@ class FIRFirestoreSerivce {
     
     func findUser(uid: String) -> Bool {
         var documentExists: Bool = true
-
-            self.reference(to: .users).document(uid).getDocument() { (document, _) in
+        self.reference(to: .users).document(uid).getDocument() { (document, _) in
                 
-                if let document = document, document.exists {
-                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                    print("Document data: \(dataDescription)")
-                    documentExists = true
-                } else {
-                    print("Document does not exist.")
-                    documentExists = false
-                }
+            if let document = document, document.exists {
+                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                print("Document data: \(dataDescription)")
+                documentExists = true
+            } else {
+                print("Document does not exist.")
+                documentExists = false
             }
-        
+        }
         return documentExists
     }
     
-    func update<T: Encodable & Identifiable>(for encodableObject: T, in collectionReference: FIRCollectionReference) {
+    func update<T: Encodable & Identifiable>(for encodableObject: T,
+                                             in collectionReference: FIRCollectionReference) {
         
         do {
-            let json = try encodableObject.toJSON(excluging: ["uid"])
+            let json = try encodableObject.toJSON(excluding: ["uid"])
             guard let uid = encodableObject.uid else { throw HMError.encodingError }
             reference(to: collectionReference).document(uid).setData(json)
         } catch {
             print(error)
         }
-        
     }
     
     func delete<T: Identifiable>(_ identifiableObject: T,
@@ -109,7 +107,5 @@ class FIRFirestoreSerivce {
         } catch {
             print(error)
         }
-        
     }
-    
 }

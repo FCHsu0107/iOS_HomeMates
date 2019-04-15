@@ -32,9 +32,7 @@ class AuthViewController: HMBaseViewController {
     
     @IBOutlet weak var authInfoView: UIView! {
         didSet {
-            authInfoView.layer.cornerRadius = 10
-            authInfoView.layer.shadowOpacity = 0.2
-            authInfoView.layer.shadowOffset = CGSize(width: 0, height: 3)
+            HMCornerRadius.shared.setLayer(view: authInfoView, cornerRadius: 10)
         }
     }
     
@@ -48,19 +46,16 @@ class AuthViewController: HMBaseViewController {
     
     @IBOutlet weak var enterButton: UIButton! {
         didSet {
-            enterButton.layer.cornerRadius = 18
-            enterButton.layer.shadowOpacity = 0.2
-            enterButton.layer.shadowOffset = CGSize(width: 0, height: 3)
+            HMCornerRadius.shared.setLayer(view: enterButton, cornerRadius: 18)
         }
     }
     
     @IBOutlet weak var selectModeBackgroundView: UIView! {
         didSet {
-            selectModeBackgroundView.layer.cornerRadius = 18
-            selectModeBackgroundView.layer.shadowOpacity = 0.2
-            selectModeBackgroundView.layer.shadowOffset = CGSize(width: 0, height: 3)
+            HMCornerRadius.shared.setLayer(view: selectModeBackgroundView, cornerRadius: 18)
         }
     }
+    
     var alertView = AlertView()
 
     var db: Firestore!
@@ -69,8 +64,6 @@ class AuthViewController: HMBaseViewController {
         super.viewDidLoad()
 
         setStatusBarBackgroundColor(color: UIColor.clear)
- 
-        db = Firestore.firestore()
     }
     
     private func setStatusBarBackgroundColor(color: UIColor?) {
@@ -80,7 +73,7 @@ class AuthViewController: HMBaseViewController {
         statusBar.backgroundColor = color
     }
     
-    @IBAction func onChangeProducts(_ sender: UIButton) {
+    @IBAction func onChangeStatus(_ sender: UIButton) {
         
         for btn in selectionBarBtn {
             btn.isSelected = false
@@ -138,31 +131,31 @@ class AuthViewController: HMBaseViewController {
     @IBAction func enterBtnAction(_ sender: Any) {
         
         if selectionBarBtn[0].isSelected == true {
-            if emailTextField.text?.isEmpty == true {
-
-                alertView.sigleActionAlert(title: "錯誤", message: "請輸入電子郵件", clickTitle: "收到", showInVc: self)
-
-            } else if passwordTextField.text != checkTextField.text || passwordTextField.text?.isEmpty == true {
-
-                alertView.sigleActionAlert(title: "錯誤", message: "請確認密碼無誤", clickTitle: "收到", showInVc: self)
-
-            } else {
-        
-                Auth.auth().createUser(withEmail: emailTextField.text!,
-                                       password: passwordTextField.text!) { (_, error) in
-
-                    if error == nil {
-                        print("you have sucessfully signed up")
+//            if emailTextField.text?.isEmpty == true {
+//
+//                alertView.sigleActionAlert(title: "錯誤", message: "請輸入電子郵件", clickTitle: "收到", showInVc: self)
+//
+//            } else if passwordTextField.text != checkTextField.text || passwordTextField.text?.isEmpty == true {
+//
+//                alertView.sigleActionAlert(title: "錯誤", message: "請確認密碼無誤", clickTitle: "收到", showInVc: self)
+//
+//            } else {
+//
+//                Auth.auth().createUser(withEmail: emailTextField.text!,
+//                                       password: passwordTextField.text!) { (_, error) in
+//
+//                    if error == nil {
+//                        print("you have sucessfully signed up")
 
                         self.performSegue(withIdentifier: "selectGroupSegue", sender: nil)
                         
-                    } else {
-                        self.alertView.sigleActionAlert(title: "錯誤",
-                                                        message: error?.localizedDescription,
-                                                        clickTitle: "收到", showInVc: self)
-                    }
-                }
-            }
+//                    } else {
+//                        self.alertView.sigleActionAlert(title: "錯誤",
+//                                                        message: error?.localizedDescription,
+//                                                        clickTitle: "收到", showInVc: self)
+//                    }
+//                }
+//            }
 
         } else {
             if emailTextField.text?.isEmpty == true || passwordTextField.text?.isEmpty == true {

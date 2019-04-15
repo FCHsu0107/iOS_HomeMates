@@ -14,7 +14,7 @@ enum HMError: Error {
 
 extension Encodable {
     
-    func toJSON(excluging keys: [String] = [String]()) throws -> [String: Any] {
+    func toJSON(excluding keys: [String] = [String]()) throws -> [String: Any] {
         let objectData = try JSONEncoder().encode(self)
         let jsonObject = try JSONSerialization.jsonObject(with: objectData, options: [])
         

@@ -73,6 +73,8 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfileHeaderViewCell.self))
             guard let headerCell = cell as? ProfileHeaderViewCell else { return cell}
+//            headerCell.signoutBtn
+            
             return headerCell
 
         default:

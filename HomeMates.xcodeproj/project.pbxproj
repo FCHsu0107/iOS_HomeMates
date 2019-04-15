@@ -53,6 +53,7 @@
 		B9B99F41226313D300314BB6 /* Loading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9B99F40226313D300314BB6 /* Loading.storyboard */; };
 		B9B99F4322631C6C00314BB6 /* FIRAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F4222631C6C00314BB6 /* FIRAuthService.swift */; };
 		B9B99F462263690C00314BB6 /* GroupObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F452263690C00314BB6 /* GroupObject.swift */; };
+		B9B99F4822641FA100314BB6 /* HMCornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F4722641FA100314BB6 /* HMCornerRadius.swift */; };
 		B9D295D42258C18F00CF7869 /* TaskRecordObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D295D32258C18F00CF7869 /* TaskRecordObject.swift */; };
 		B9D295D72258CD7D00CF7869 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D295D62258CD7D00CF7869 /* TaskListViewController.swift */; };
 		B9D295D9225A3E1D00CF7869 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9D295D8225A3E1D00CF7869 /* GoogleService-Info.plist */; };
@@ -110,6 +111,7 @@
 		B9B99F40226313D300314BB6 /* Loading.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
 		B9B99F4222631C6C00314BB6 /* FIRAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRAuthService.swift; sourceTree = "<group>"; };
 		B9B99F452263690C00314BB6 /* GroupObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupObject.swift; sourceTree = "<group>"; };
+		B9B99F4722641FA100314BB6 /* HMCornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMCornerRadius.swift; sourceTree = "<group>"; };
 		B9D295D32258C18F00CF7869 /* TaskRecordObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRecordObject.swift; sourceTree = "<group>"; };
 		B9D295D62258CD7D00CF7869 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 		B9D295D8225A3E1D00CF7869 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				B9B99F362262C44B00314BB6 /* FIRCollectionReference.swift */,
 				B9B99F4222631C6C00314BB6 /* FIRAuthService.swift */,
 				B9B99F452263690C00314BB6 /* GroupObject.swift */,
+				B9B99F4722641FA100314BB6 /* HMCornerRadius.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -634,6 +637,7 @@
 				B9261C7B225386030033ABC9 /* UIStoryboard+Extension.swift in Sources */,
 				B9B99F352262151100314BB6 /* FIRFirestoreService.swift in Sources */,
 				B94D15CA225886FB00F43B78 /* EventCell.swift in Sources */,
+				B9B99F4822641FA100314BB6 /* HMCornerRadius.swift in Sources */,
 				B94D15AF225721C500F43B78 /* ProfileHeaderViewCell.swift in Sources */,
 				B9261C792253858A0033ABC9 /* HMTabBarViewController.swift in Sources */,
 				B9261C9F2254C2B20033ABC9 /* TableView+Extension.swift in Sources */,

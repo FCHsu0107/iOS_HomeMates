@@ -168,6 +168,7 @@
                 <outlet property="profileImageView" destination="ENa-kW-vuh" id="0S1-8N-3va"/>
                 <outlet property="profilePictureImage" destination="1le-bz-hmJ" id="Gnx-JN-0w4"/>
                 <outlet property="settingsBtn" destination="vxe-Vf-N9g" id="Crs-20-idN"/>
+                <outlet property="signoutBtn" destination="vmg-fz-5XD" id="8wx-ge-E8V"/>
                 <outlet property="totalPointTextConstraint" destination="ACy-m4-uOf" id="eLs-Wa-yHE"/>
                 <outlet property="totalTimesTextLbl" destination="UNO-2n-Foa" id="srW-gV-z3R"/>
             </connections>

@@ -27,6 +27,8 @@ class ProfileHeaderViewCell: UITableViewCell {
 
     @IBOutlet weak var profileImageView: UIView!
 
+    @IBOutlet weak var signoutBtn: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -44,8 +46,7 @@ class ProfileHeaderViewCell: UITableViewCell {
     }
 
     @IBAction func logoutBtn(_ sender: Any) {
-        FIRAuthService.shared.signOut()
-//        try? Auth.auth().signOut()
+        try? Auth.auth().signOut()
         print("sign out")
     }
 }
