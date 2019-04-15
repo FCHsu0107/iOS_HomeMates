@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TaskObject {
+struct TaskObject: Codable {
 
     let taskName: String
 
@@ -32,7 +32,7 @@ struct TaskObject {
         
         case image
         
-        case punlisherName
+        case publisherName
         
         case executorName
         

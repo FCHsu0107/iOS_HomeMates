@@ -8,14 +8,9 @@
 
 import Foundation
 
-protocol Identifiable {
-    
-    var uid: String? { get set }
-}
 
-struct UserObject: Codable, Identifiable {
-    
-    var uid: String?
+
+struct UserObject: Codable {
     
     let name: String
     
@@ -23,7 +18,11 @@ struct UserObject: Codable, Identifiable {
     
     let picture: String?
     
-    let selectGroup: String
+    let creater: Bool
+    
+    let application: Bool?
+    
+    let finishSignUp: Bool
     
     enum CodingKeys: String, CodingKey {
         
@@ -33,8 +32,10 @@ struct UserObject: Codable, Identifiable {
         
         case picture
         
-        case selectGroup
+        case creater
         
-        case uid
+        case application
+        
+        case finishSignUp
     }
 }

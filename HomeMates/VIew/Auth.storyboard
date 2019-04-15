@@ -258,7 +258,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="輸入群組名稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GnR-Lg-kjz">
+                                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="輸入群組名稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GnR-Lg-kjz">
                                         <rect key="frame" x="20" y="240" width="240" height="30"/>
                                         <color key="textColor" name="Y4"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -301,7 +301,7 @@
                                                     <color key="titleColor" name="W1"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="onChangeInfo:" destination="2x1-Nv-VlG" eventType="touchUpInside" id="fuD-dv-c4P"/>
+                                                    <action selector="onChangeInfo:" destination="2x1-Nv-VlG" eventType="touchUpInside" id="P73-W7-0ve"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bLF-vh-RZg">
@@ -316,7 +316,7 @@
                                                     <color key="titleColor" name="W1"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="onChangeInfo:" destination="2x1-Nv-VlG" eventType="touchUpInside" id="2uo-gP-GYt"/>
+                                                    <action selector="onChangeInfo:" destination="2x1-Nv-VlG" eventType="touchUpInside" id="nwc-6P-QCG"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -417,8 +417,8 @@
                         <outlet property="searchGroupIDTextField" destination="beu-az-Miy" id="qHV-IU-muD"/>
                         <outlet property="selectGroupView" destination="dbV-Bx-6zg" id="xj5-bx-Jye"/>
                         <outlet property="userNameTextField" destination="hee-Tp-0EE" id="MNG-XX-c8K"/>
-                        <outletCollection property="selectGroupBtn" destination="bLF-vh-RZg" collectionClass="NSMutableArray" id="qCz-d8-9ey"/>
-                        <outletCollection property="selectGroupBtn" destination="Nw9-2k-pbA" collectionClass="NSMutableArray" id="JfH-UK-BIz"/>
+                        <outletCollection property="selectGroupBtn" destination="Nw9-2k-pbA" collectionClass="NSMutableArray" id="L1C-xi-XkB"/>
+                        <outletCollection property="selectGroupBtn" destination="bLF-vh-RZg" collectionClass="NSMutableArray" id="Ssh-ES-nZK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fT-z7-YAf" userLabel="First Responder" sceneMemberID="firstResponder"/>

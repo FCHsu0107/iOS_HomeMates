@@ -70,6 +70,24 @@ class TaskListViewController: HMBaseViewController {
 
     }
 
+    @IBAction func addTask(_ sender: Any) {
+        let newTask = TaskObject(taskName: "掃地",
+                       image: "home_normal",
+                       publisherName: "System",
+                       executorName: "Daddy",
+                       taskPoint: 1,
+                       taskPriodDay: 1,
+                       completionDate: nil,
+                       taskStatus: 1)
+        print(UserDefaultManager.shared.groupId)
+        guard let groupId = UserDefaultManager.shared.groupId else { return }
+        
+        FIRFirestoreSerivce.shared.createSub(for: newTask,
+                                             in: .groups,
+                                             inDocument: groupId,
+                                             inNext: .tasks)
+        print("add a task")
+    }
 }
 
 extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {

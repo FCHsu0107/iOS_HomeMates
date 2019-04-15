@@ -25,10 +25,16 @@ class FIRFirestoreSerivce {
             return Firestore.firestore().collection(collectionReference.rawValue)
     }
     
+    private func subReference(to collectionReference: FIRCollectionReference,
+                              in document: String,
+                              toNext subCollectionReference: FIRCollectionReference)
+        -> CollectionReference {
+        return Firestore.firestore().collection(collectionReference.rawValue).document(document).collection(subCollectionReference.rawValue)
+    }
+    
     func createUser<T: Encodable>(uid: String,
                                   for encodableObject: T,
                                   in collectionReference: FIRCollectionReference) {
-        
         do {
             let json = try encodableObject.toJSON()
             reference(to: collectionReference).document(uid).setData(json)
@@ -38,9 +44,32 @@ class FIRFirestoreSerivce {
     }
     
     func create<T: Encodable>(for encodableObject: T, in collectionReference: FIRCollectionReference) {
+        var ref: DocumentReference?
         do {
             let json = try encodableObject.toJSON()
-            reference(to: collectionReference).addDocument(data: json)
+            
+            ref = reference(to: collectionReference).addDocument(data: json)
+            guard let ref = ref else { return }
+            print(ref.documentID)
+            UserDefaultManager.shared.groupId = ref.documentID
+            print(UserDefaultManager.shared.userUid)
+            
+        } catch {
+            print(error)
+        }
+    }
+    
+    func createSub<T: Encodable>(for encodableObject: T,
+                                 in collectionReference: FIRCollectionReference,
+                                 inDocument: String,
+                                 inNext subCollectionReference: FIRCollectionReference) {
+        var ref: DocumentReference?
+        do {
+            let json = try encodableObject.toJSON()
+            
+            ref = reference(to: collectionReference).document(inDocument).collection(subCollectionReference.rawValue).addDocument(data: json)
+            guard let ref = ref else { return }
+            print(ref.documentID)
             
         } catch {
             print(error)
@@ -69,41 +98,35 @@ class FIRFirestoreSerivce {
         }
     }
     
-    func findUser(uid: String) -> Bool {
-        var documentExists: Bool = true
-        self.reference(to: .users).document(uid).getDocument() { (document, _) in
-                
-            if let document = document, document.exists {
-                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                print("Document data: \(dataDescription)")
-                documentExists = true
-            } else {
-                print("Document does not exist.")
-                documentExists = false
-            }
+    typealias BoolCompleionHandler = (Bool?) -> Void
+    
+    func findUser(completionHandler completion: @escaping BoolCompleionHandler) {
+        
+        guard let user = Auth.auth().currentUser else { return }
+        let uid = user.uid
+        reference(to: .users).document(uid).getDocument { (querySnapshot, _) in
+            guard let querySnapshot = querySnapshot else { return }
+            
+            completion(querySnapshot.data()![UserObject.CodingKeys.finishSignUp.rawValue] as? Bool)
         }
-        return documentExists
     }
     
-    func update<T: Encodable & Identifiable>(for encodableObject: T,
+    func update<T: Encodable>(for encodableObject: T,
                                              in collectionReference: FIRCollectionReference) {
         
         do {
-            let json = try encodableObject.toJSON(excluding: ["uid"])
-            guard let uid = encodableObject.uid else { throw HMError.encodingError }
-            reference(to: collectionReference).document(uid).setData(json)
+            let json = try encodableObject.toJSON()
+            
+//            reference(to: collectionReference).document(uid).setData(json)
         } catch {
             print(error)
         }
     }
     
-    func delete<T: Identifiable>(_ identifiableObject: T,
-                                 in collectionReference: FIRCollectionReference) {
+    func delete(uid: String, in collectionReference: FIRCollectionReference) {
         do {
-            guard let uid = identifiableObject.uid else { throw HMError.encodingError }
             
             reference(to: collectionReference).document(uid).delete()
-            
         } catch {
             print(error)
         }

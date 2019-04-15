@@ -37,7 +37,11 @@
                         <viewLayoutGuide key="safeArea" id="aa8-GZ-kOc"/>
                     </view>
                     <navigationItem key="navigationItem" title="任務列表" id="0QI-4b-kN3">
-                        <barButtonItem key="rightBarButtonItem" image="Addition_36px" id="1wJ-rG-U0i"/>
+                        <barButtonItem key="rightBarButtonItem" image="Addition_36px" id="1wJ-rG-U0i">
+                            <connections>
+                                <action selector="addTask:" destination="n4N-i4-U6m" id="Dy9-su-0bl"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="3x3-6Y-jpy" id="OLd-jn-9na"/>

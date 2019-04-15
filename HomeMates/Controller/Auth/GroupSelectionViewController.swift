@@ -85,24 +85,39 @@ class GroupSelectionViewController: UIViewController {
     
     @IBAction func startAppBtnAction(_ sender: Any) {
         if selectGroupBtn[0].isSelected == true {
-            
-        } else {
+            if searchGroupIDTextField.text?.isEmpty == true {
+                alertView.sigleActionAlert(title: "注意",
+                                           message: "請輸入群組名稱",
+                                           clickTitle: "收到",
+                                           showInVc: self)
+            } else {
+                
+            }
+                
+        } else if selectGroupBtn[1].isSelected == true {
             if userNameTextField.text?.isEmpty == true {
-                alertView.sigleActionAlert(title: "注意", message: "請輸入群組名稱", clickTitle: "收到", showInVc: self)
+                alertView.sigleActionAlert(title: "注意",
+                                           message: "請輸入群組名稱",
+                                           clickTitle: "收到",
+                                           showInVc: self)
             } else {
                 guard let userName = userNameTextField.text else { return }
                 guard let groupName = groupNameTextField.text else { return }
                 guard let user = Auth.auth().currentUser else { return }
-                let newUser = UserObject(uid: user.uid,
-                                         name: userName,
+                print("get the current user")
+                
+                let newGroup = GroupObject(creater: user.uid, name: groupName, picture: nil)
+
+                FIRFirestoreSerivce.shared.create(for: newGroup, in: .groups)
+                
+                let newUser = UserObject(name: userName,
                                          email: user.email!,
                                          picture: nil,
-                                         selectGroup: "no yet")
-                
-                let newGroup = GroupObject(name: groupName, picture: "")
+                                         creater: true,
+                                         application: false,
+                                         finishSignUp: true)
                 
                 FIRFirestoreSerivce.shared.createUser(uid: user.uid, for: newUser, in: .users)
-                FIRFirestoreSerivce.shared.create(for: newGroup, in: .groups)
                 
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 if let tabBarVc = storyboard.instantiateViewController(

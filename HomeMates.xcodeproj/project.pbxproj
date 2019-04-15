@@ -54,6 +54,7 @@
 		B9B99F4322631C6C00314BB6 /* FIRAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F4222631C6C00314BB6 /* FIRAuthService.swift */; };
 		B9B99F462263690C00314BB6 /* GroupObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F452263690C00314BB6 /* GroupObject.swift */; };
 		B9B99F4822641FA100314BB6 /* HMCornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F4722641FA100314BB6 /* HMCornerRadius.swift */; };
+		B9B99F4B2264660100314BB6 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F4A2264660100314BB6 /* UserDefault.swift */; };
 		B9D295D42258C18F00CF7869 /* TaskRecordObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D295D32258C18F00CF7869 /* TaskRecordObject.swift */; };
 		B9D295D72258CD7D00CF7869 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D295D62258CD7D00CF7869 /* TaskListViewController.swift */; };
 		B9D295D9225A3E1D00CF7869 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9D295D8225A3E1D00CF7869 /* GoogleService-Info.plist */; };
@@ -112,6 +113,7 @@
 		B9B99F4222631C6C00314BB6 /* FIRAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRAuthService.swift; sourceTree = "<group>"; };
 		B9B99F452263690C00314BB6 /* GroupObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupObject.swift; sourceTree = "<group>"; };
 		B9B99F4722641FA100314BB6 /* HMCornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMCornerRadius.swift; sourceTree = "<group>"; };
+		B9B99F4A2264660100314BB6 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		B9D295D32258C18F00CF7869 /* TaskRecordObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRecordObject.swift; sourceTree = "<group>"; };
 		B9D295D62258CD7D00CF7869 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 		B9D295D8225A3E1D00CF7869 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -187,12 +189,9 @@
 				B9B99F442263262900314BB6 /* Firestore */,
 				B9B7F546225EEA7000A6DA9E /* AlertFunction */,
 				B9B99F332261899900314BB6 /* UserObject */,
+				B9B99F492264470300314BB6 /* GroupObject */,
 				B9B7F52D225CAD6100A6DA9E /* TaskObject */,
 				B9B7F52B225CAD5700A6DA9E /* TaskCellStatus.swift */,
-				B9B99F342262151100314BB6 /* FIRFirestoreService.swift */,
-				B9B99F362262C44B00314BB6 /* FIRCollectionReference.swift */,
-				B9B99F4222631C6C00314BB6 /* FIRAuthService.swift */,
-				B9B99F452263690C00314BB6 /* GroupObject.swift */,
 				B9B99F4722641FA100314BB6 /* HMCornerRadius.swift */,
 			);
 			path = Model;
@@ -365,6 +364,7 @@
 			isa = PBXGroup;
 			children = (
 				B9B99F312261898D00314BB6 /* UserObject.swift */,
+				B9B99F4A2264660100314BB6 /* UserDefault.swift */,
 			);
 			path = UserObject;
 			sourceTree = "<group>";
@@ -372,8 +372,19 @@
 		B9B99F442263262900314BB6 /* Firestore */ = {
 			isa = PBXGroup;
 			children = (
+				B9B99F342262151100314BB6 /* FIRFirestoreService.swift */,
+				B9B99F362262C44B00314BB6 /* FIRCollectionReference.swift */,
+				B9B99F4222631C6C00314BB6 /* FIRAuthService.swift */,
 			);
 			path = Firestore;
+			sourceTree = "<group>";
+		};
+		B9B99F492264470300314BB6 /* GroupObject */ = {
+			isa = PBXGroup;
+			children = (
+				B9B99F452263690C00314BB6 /* GroupObject.swift */,
+			);
+			path = GroupObject;
 			sourceTree = "<group>";
 		};
 		B9D295D52258CD4C00CF7869 /* TaskList */ = {
@@ -620,6 +631,7 @@
 				B9B7F539225D95B500A6DA9E /* HMBaseTextField.swift in Sources */,
 				B94D15BB225749B500F43B78 /* MJRefreshWrapper.swift in Sources */,
 				B9261C89225392C60033ABC9 /* UIColor+Extension.swift in Sources */,
+				B9B99F4B2264660100314BB6 /* UserDefault.swift in Sources */,
 				B9261C9322545A9D0033ABC9 /* TasksTableViewCell.swift in Sources */,
 				B9B99F392262D51C00314BB6 /* Encodable+Extension.swift in Sources */,
 				B9B7F545225DEA8200A6DA9E /* GroupSelectionViewController.swift in Sources */,

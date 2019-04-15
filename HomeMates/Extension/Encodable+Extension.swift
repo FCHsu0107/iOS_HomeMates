@@ -23,6 +23,7 @@ extension Encodable {
         for key in keys {
             json[key] = nil
         }
+        
         return json
     }
 }

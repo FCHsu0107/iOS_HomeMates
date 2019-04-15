@@ -87,7 +87,7 @@ class AuthViewController: HMBaseViewController {
         authTopView.tintColor = UIColor.P1
         authBottomView.tintColor = UIColor.Y2
         enterButton.backgroundColor = UIColor.Y2
-        enterbtnLbl.text = "Create Account"
+        enterbtnLbl.text = "創建新帳號"
         checkTextField.isHidden = false
         checkTextLbl.isHidden = false
         authViewConstraint.constant = 290
@@ -98,7 +98,7 @@ class AuthViewController: HMBaseViewController {
         authTopView.tintColor = UIColor.Y2
         authBottomView.tintColor = UIColor.P1
         enterButton.backgroundColor = UIColor.P1
-        enterbtnLbl.text = "Get Started"
+        enterbtnLbl.text = "開始旅程"
         checkTextField.isHidden = true
         checkTextLbl.isHidden = true
         authViewConstraint.constant = 230
@@ -131,31 +131,42 @@ class AuthViewController: HMBaseViewController {
     @IBAction func enterBtnAction(_ sender: Any) {
         
         if selectionBarBtn[0].isSelected == true {
-//            if emailTextField.text?.isEmpty == true {
-//
-//                alertView.sigleActionAlert(title: "錯誤", message: "請輸入電子郵件", clickTitle: "收到", showInVc: self)
-//
-//            } else if passwordTextField.text != checkTextField.text || passwordTextField.text?.isEmpty == true {
-//
-//                alertView.sigleActionAlert(title: "錯誤", message: "請確認密碼無誤", clickTitle: "收到", showInVc: self)
-//
-//            } else {
-//
-//                Auth.auth().createUser(withEmail: emailTextField.text!,
-//                                       password: passwordTextField.text!) { (_, error) in
-//
-//                    if error == nil {
-//                        print("you have sucessfully signed up")
+            if emailTextField.text?.isEmpty == true {
+
+                alertView.sigleActionAlert(title: "錯誤", message: "請輸入電子郵件", clickTitle: "收到", showInVc: self)
+
+            } else if passwordTextField.text != checkTextField.text || passwordTextField.text?.isEmpty == true {
+
+                alertView.sigleActionAlert(title: "錯誤", message: "請確認密碼無誤", clickTitle: "收到", showInVc: self)
+
+            } else {
+
+                Auth.auth().createUser(withEmail: emailTextField.text!,
+                                       password: passwordTextField.text!) { (authResult, error) in
+
+                    if error == nil {
+                        print("you have sucessfully signed up")
+                        
+                        guard let user = authResult?.user else { return }
+                        
+                        let newUser = UserObject(name: " ",
+                                                 email: user.email!,
+                                                 picture: nil,
+                                                 creater: false,
+                                                 application: false,
+                                                 finishSignUp: false)
+                        
+                        FIRFirestoreSerivce.shared.createUser(uid: user.uid, for: newUser, in: .users)
 
                         self.performSegue(withIdentifier: "selectGroupSegue", sender: nil)
                         
-//                    } else {
-//                        self.alertView.sigleActionAlert(title: "錯誤",
-//                                                        message: error?.localizedDescription,
-//                                                        clickTitle: "收到", showInVc: self)
-//                    }
-//                }
-//            }
+                    } else {
+                        self.alertView.sigleActionAlert(title: "錯誤",
+                                                        message: error?.localizedDescription,
+                                                        clickTitle: "收到", showInVc: self)
+                    }
+                }
+            }
 
         } else {
             if emailTextField.text?.isEmpty == true || passwordTextField.text?.isEmpty == true {

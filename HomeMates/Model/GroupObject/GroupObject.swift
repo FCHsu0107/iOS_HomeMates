@@ -10,6 +10,8 @@ import Foundation
 
 struct GroupObject: Codable {
     
+    let creater: String
+    
     let name: String
     
     let picture: String?
@@ -19,6 +21,8 @@ struct GroupObject: Codable {
         case name
         
         case picture
+        
+        case creater
         
     }
 }
