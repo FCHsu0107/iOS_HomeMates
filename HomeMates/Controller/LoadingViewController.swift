@@ -42,7 +42,7 @@ class LoadingViewController: UIViewController {
                 return
             }
             
-            FIRFirestoreSerivce.shared.findUser() { [weak self] bool in
+            FIRFirestoreSerivce.shared.findUser { [weak self] bool in
                 if bool == true {
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     if let tabBarVc =

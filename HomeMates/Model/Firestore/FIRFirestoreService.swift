@@ -29,7 +29,10 @@ class FIRFirestoreSerivce {
                               in document: String,
                               toNext subCollectionReference: FIRCollectionReference)
         -> CollectionReference {
-        return Firestore.firestore().collection(collectionReference.rawValue).document(document).collection(subCollectionReference.rawValue)
+        return Firestore.firestore()
+            .collection(collectionReference.rawValue)
+            .document(document)
+            .collection(subCollectionReference.rawValue)
     }
     
     func createUser<T: Encodable>(uid: String,
@@ -43,16 +46,17 @@ class FIRFirestoreSerivce {
         }
     }
     
-    func create<T: Encodable>(for encodableObject: T, in collectionReference: FIRCollectionReference) {
+    func createGroup<T: Encodable>(for encodableObject: T, in collectionReference: FIRCollectionReference) {
         var ref: DocumentReference?
         do {
             let json = try encodableObject.toJSON()
             
-            ref = reference(to: collectionReference).addDocument(data: json)
+            ref =
+                reference(to: collectionReference).addDocument(data: json)
             guard let ref = ref else { return }
             print(ref.documentID)
             UserDefaultManager.shared.groupId = ref.documentID
-            print(UserDefaultManager.shared.userUid)
+            print(String(UserDefaultManager.shared.groupId!))
             
         } catch {
             print(error)
@@ -67,7 +71,9 @@ class FIRFirestoreSerivce {
         do {
             let json = try encodableObject.toJSON()
             
-            ref = reference(to: collectionReference).document(inDocument).collection(subCollectionReference.rawValue).addDocument(data: json)
+            ref = subReference(to: collectionReference,
+                               in: inDocument,
+                               toNext: subCollectionReference).addDocument(data: json)
             guard let ref = ref else { return }
             print(ref.documentID)
             
@@ -102,17 +108,23 @@ class FIRFirestoreSerivce {
     
     func findUser(completionHandler completion: @escaping BoolCompleionHandler) {
         
-        guard let user = Auth.auth().currentUser else { return }
+        guard let user = Auth.auth().currentUser else {
+            completion(false)
+            return }
         let uid = user.uid
         reference(to: .users).document(uid).getDocument { (querySnapshot, _) in
-            guard let querySnapshot = querySnapshot else { return }
+            guard querySnapshot?.data() != nil else {
+                completion(false)
+                return
+            }
+            print(querySnapshot?.data()![UserObject.CodingKeys.finishSignUp.rawValue] ?? "啊啊啊啊")
             
-            completion(querySnapshot.data()![UserObject.CodingKeys.finishSignUp.rawValue] as? Bool)
+            completion(querySnapshot?.data()![UserObject.CodingKeys.finishSignUp.rawValue] as? Bool)
         }
     }
     
     func update<T: Encodable>(for encodableObject: T,
-                                             in collectionReference: FIRCollectionReference) {
+                              in collectionReference: FIRCollectionReference) {
         
         do {
             let json = try encodableObject.toJSON()
@@ -124,11 +136,8 @@ class FIRFirestoreSerivce {
     }
     
     func delete(uid: String, in collectionReference: FIRCollectionReference) {
-        do {
-            
-            reference(to: collectionReference).document(uid).delete()
-        } catch {
-            print(error)
-        }
+        reference(to: collectionReference).document(uid).delete()
+        
     }
+    
 }

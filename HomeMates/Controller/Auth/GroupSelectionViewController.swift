@@ -101,31 +101,56 @@ class GroupSelectionViewController: UIViewController {
                                            clickTitle: "收到",
                                            showInVc: self)
             } else {
-                guard let userName = userNameTextField.text else { return }
-                guard let groupName = groupNameTextField.text else { return }
-                guard let user = Auth.auth().currentUser else { return }
-                print("get the current user")
-                
-                let newGroup = GroupObject(creater: user.uid, name: groupName, picture: nil)
-
-                FIRFirestoreSerivce.shared.create(for: newGroup, in: .groups)
-                
-                let newUser = UserObject(name: userName,
-                                         email: user.email!,
-                                         picture: nil,
-                                         creater: true,
-                                         application: false,
-                                         finishSignUp: true)
-                
-                FIRFirestoreSerivce.shared.createUser(uid: user.uid, for: newUser, in: .users)
-                
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                if let tabBarVc = storyboard.instantiateViewController(
-                    withIdentifier: String(describing: HMTabBarViewController.self))
-                    as? HMTabBarViewController {
-                    self.present(tabBarVc, animated: true, completion: nil)
-                }
+                createANewGroup()
             }
+        }
+    }
+    
+    func createANewGroup() {
+        guard let userName = userNameTextField.text else { return }
+        guard let groupName = groupNameTextField.text else { return }
+        guard let user = Auth.auth().currentUser else { return }
+
+        let newGroup = GroupObject(createrId: user.uid,
+                                   createrName: userName,
+                                   name: groupName,
+                                   picture: nil)
+        
+        FIRFirestoreSerivce.shared.createGroup(for: newGroup, in: .groups)
+        
+        let newUser = UserObject(name: userName,
+                                 email: user.email!,
+                                 picture: nil,
+                                 creater: true,
+                                 application: false,
+                                 finishSignUp: true)
+        
+        FIRFirestoreSerivce.shared.createUser(uid: user.uid, for: newUser, in: .users)
+        
+        let groupInfoInUser = GroupInfoInUser(isMember: true,
+                                              groupID: UserDefaultManager.shared.groupId!,
+                                              isMainGroup: true)
+        
+        FIRFirestoreSerivce.shared.createSub(for: groupInfoInUser,
+                                             in: .users,
+                                             inDocument: user.uid,
+                                             inNext: .groups)
+        
+        let groupMemnber = MemberObject(userId: user.uid,
+                                        userName: userName,
+                                        isCreator: true,
+                                        permission: true)
+        
+        FIRFirestoreSerivce.shared.createSub(for: groupMemnber,
+                                             in: .groups,
+                                             inDocument: UserDefaultManager.shared.groupId!,
+                                             inNext: .members)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let tabBarVc = storyboard.instantiateViewController(
+            withIdentifier: String(describing: HMTabBarViewController.self))
+            as? HMTabBarViewController {
+            self.present(tabBarVc, animated: true, completion: nil)
         }
     }
 }

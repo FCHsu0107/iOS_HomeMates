@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-
 struct UserObject: Codable {
     
     let name: String
