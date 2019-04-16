@@ -382,8 +382,8 @@
 			isa = PBXGroup;
 			children = (
 				B9B99F342262151100314BB6 /* FIRFirestoreService.swift */,
-				B9B99F362262C44B00314BB6 /* FIRCollectionReference.swift */,
 				B9B99F4222631C6C00314BB6 /* FIRAuthService.swift */,
+				B9B99F362262C44B00314BB6 /* FIRCollectionReference.swift */,
 			);
 			path = Firestore;
 			sourceTree = "<group>";

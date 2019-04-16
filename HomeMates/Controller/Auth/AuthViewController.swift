@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseAuth
 
 class AuthViewController: HMBaseViewController {
 
@@ -57,8 +55,6 @@ class AuthViewController: HMBaseViewController {
     }
     
     var alertView = AlertView()
-
-    var db: Firestore!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -141,29 +137,25 @@ class AuthViewController: HMBaseViewController {
 
             } else {
 
-                Auth.auth().createUser(withEmail: emailTextField.text!,
-                                       password: passwordTextField.text!) { (authResult, error) in
-
+                FIRAuthService.shared.createUser(withEmail: emailTextField.text!,
+                                                 password: passwordTextField.text!) { (user, error) in
                     if error == nil {
-                        print("you have sucessfully signed up")
-                        
-                        guard let user = authResult?.user else { return }
-                        
+                        guard let user = user else { return }
                         let newUser = UserObject(name: " ",
-                                                 email: user.email!,
+                                                 email: (user.email)!,
                                                  picture: nil,
                                                  creater: false,
                                                  application: false,
                                                  finishSignUp: false)
-                        
-                        FIRFirestoreSerivce.shared.createUser(uid: user.uid, for: newUser, in: .users)
-
+                        FIRFirestoreSerivce.shared.createUser(uid: user.uid,
+                                                              for: newUser,
+                                                              in: .users)
                         self.performSegue(withIdentifier: "selectGroupSegue", sender: nil)
-                        
-                    } else {
+                        } else {
                         self.alertView.sigleActionAlert(title: "錯誤",
                                                         message: error?.localizedDescription,
-                                                        clickTitle: "收到", showInVc: self)
+                                                        clickTitle: "收到",
+                                                        showInVc: self)
                     }
                 }
             }
@@ -172,19 +164,19 @@ class AuthViewController: HMBaseViewController {
             if emailTextField.text?.isEmpty == true || passwordTextField.text?.isEmpty == true {
                 alertView.sigleActionAlert(title: "錯誤", message: "請輸入帳號或密碼", clickTitle: "收到", showInVc: self)
             } else {
-                Auth.auth().signIn(withEmail: emailTextField.text!,
-                                   password: passwordTextField.text!) { (_, error) in
+                
+                FIRAuthService.shared.signIn(withEmail: emailTextField.text!,
+                                             password: passwordTextField.text!) { (error) in
                     if error == nil {
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-
-                       let tabBarVC = storyboard.instantiateViewController(
+                        let tabBarVC = storyboard.instantiateViewController(
                             withIdentifier: String(describing: HMTabBarViewController.self))
-                            self.present(tabBarVC, animated: true, completion: nil)
-
+                        self.present(tabBarVC, animated: true, completion: nil)
                     } else {
                         self.alertView.sigleActionAlert(title: "錯誤",
                                                         message: error?.localizedDescription,
                                                         clickTitle: "收到", showInVc: self)
+                        
                     }
                 }
             }

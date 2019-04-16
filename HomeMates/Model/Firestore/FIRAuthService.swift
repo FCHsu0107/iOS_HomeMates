@@ -16,15 +16,45 @@ class FIRAuthService {
     
     static let shared = FIRAuthService()
     
-    func createUser(withEmail: String, password: String, completion: AuthDataResultCallback?) {
-        Auth.auth().createUser(withEmail: withEmail, password: password, completion: completion)
+    func createUser(withEmail: String,
+                    password: String,
+                    completion: @escaping (User?, Error?) -> Void) {
+        Auth.auth().createUser(withEmail: withEmail, password: password) { (auth, err) in
+            if err == nil {
+                guard let user = auth?.user else { return completion(nil, err) }
+                completion(user, err)
+            } else {
+                completion(nil, err)
+            }
+        }
     }
     
-    func signIn(withEmail: String, link: String, completion: AuthDataResultCallback?) {
-        Auth.auth().signIn(withEmail: withEmail, link: link, completion: completion)
+    func signIn(withEmail: String,
+                password: String,
+                completion: @escaping (Error?) -> Void) {
+        Auth.auth().signIn(withEmail: withEmail, password: password) { (_, err) in
+            if err == nil {
+                completion(nil)
+            } else {
+                completion(err)
+            }
+        }
     }
     
     func signOut() {
         try? Auth.auth().signOut()
+    }
+    
+    func addSignUpListener(listener: @escaping (Bool) -> Void) {
+        Auth.auth().addStateDidChangeListener { (_, user) in
+            guard user != nil else {
+                // 登出
+                listener(false)
+                
+                return
+            }
+            // 登入
+            listener(true)
+        }
     }
 }

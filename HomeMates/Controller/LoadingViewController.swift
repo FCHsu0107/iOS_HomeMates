@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 class LoadingViewController: UIViewController {
 
@@ -28,9 +27,8 @@ class LoadingViewController: UIViewController {
             return
         }
         
-        Auth.auth().addStateDidChangeListener { (_, user) in
-            guard user != nil else {
-                
+        FIRAuthService.shared.addSignUpListener { (flag) in
+            if flag == false {
                 let storyboard = UIStoryboard(name: "Auth", bundle: nil)
                 if let authVc =
                     storyboard.instantiateViewController(
@@ -40,22 +38,22 @@ class LoadingViewController: UIViewController {
                     delegate.window?.rootViewController = authVc
                 }
                 return
-            }
-            
-            FIRFirestoreSerivce.shared.findUser { [weak self] bool in
-                if bool == true {
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    if let tabBarVc =
-                        storyboard.instantiateViewController(
-                            withIdentifier: String(describing: HMTabBarViewController.self))
-                            as? HMTabBarViewController {
+                
+            } else {
+                FIRFirestoreSerivce.shared.findUser { [weak self] bool in
+                    if bool == true {
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        if let tabBarVc =
+                            storyboard.instantiateViewController(
+                                withIdentifier: String(describing: HMTabBarViewController.self))
+                                as? HMTabBarViewController {
+                            
+                            self?.present(tabBarVc, animated: true, completion: nil)
+                            
+                            delegate.window?.rootViewController = tabBarVc
+                        }
                         
-                        self?.present(tabBarVc, animated: true, completion: nil)
-                        
-                        delegate.window?.rootViewController = tabBarVc
-                    }
-                    
-                } else {
+                    } else {
                         let storyboard = UIStoryboard(name: "Auth", bundle: nil)
                         if let selectGroupVc =
                             storyboard.instantiateViewController(
@@ -64,6 +62,7 @@ class LoadingViewController: UIViewController {
                             
                             self?.present(selectGroupVc, animated: true, completion: nil)
                             
+                        }
                     }
                 }
             }

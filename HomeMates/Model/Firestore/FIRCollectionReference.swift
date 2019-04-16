@@ -10,8 +10,13 @@ import Foundation
 
 enum FIRCollectionReference: String {
     case users
+    
     case groups
+    
     case applications
+    
     case tasks
+    
     case members
+    
 }
