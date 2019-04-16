@@ -61,15 +61,8 @@ class FIRFirestoreSerivce {
             json["shortcup"] = ref.documentID.substring(toIndex: ref.documentID.length - 14)
             
             reference(to: collectionReference).document(ref.documentID).setData(json)
-//            updateData(json)
-            
-            //call function
-            
             UserDefaultManager.shared.groupId = ref.documentID
-//            print(String(UserDefaultManager.shared.groupId!))
-//            UserDefaultManager.shared.shorterGroupID = docuID.substring(toIndex: docuID.length - 14)
-//            print(String(UserDefaultManager.shared.shorterGroupID!))
-            
+   
         } catch {
             
             print(error)
@@ -97,17 +90,21 @@ class FIRFirestoreSerivce {
     
     func findGroup<T: Decodable>(groupId: String,
                                  returning objectType: T.Type,
-                                 completion: @escaping ([T]) -> Void) {
+                                 completion: @escaping ([T], [String]) -> Void) {
         let ref = reference(to: .groups).whereField(GroupObject.CodingKeys.groupId.rawValue, isEqualTo: groupId)
         ref.getDocuments { (snapshot, _) in
             guard let snapshot = snapshot else { return }
             do {
                 var objects = [T]()
+                var docIds = [String]()
                 for documet in snapshot.documents {
                     let object = try documet.decode(as: objectType.self)
                     objects.append(object)
                 }
-                completion(objects)
+                for document in snapshot.documents {
+                    docIds.append(document.documentID)
+                }
+                completion(objects, docIds)
             } catch {
                 print(error)
             }
@@ -157,13 +154,36 @@ class FIRFirestoreSerivce {
     
     func update<T: Encodable>(for encodableObject: T,
                               in collectionReference: FIRCollectionReference) {
-        
         do {
             let json = try encodableObject.toJSON()
-            
 //            reference(to: collectionReference).document(uid).setData(json)
         } catch {
             print(error)
+        }
+    }
+    
+    func upadeSingleStatus(uid: String, in collectionReference: FIRCollectionReference, status: String, bool: Bool) {
+        reference(to: collectionReference).document(uid).updateData([status: bool]) { err in
+            if let err = err {
+                 print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+    }
+    
+    func updateSubSingleStatus(in collectionReference: FIRCollectionReference,
+                               inDocument: String,
+                               inNext subCollectionReference: FIRCollectionReference,
+                               inNextDoc: String,
+                               status: String,
+                               bool: Bool) {
+        subReference(to: collectionReference, in: inDocument, toNext: subCollectionReference).document(inNextDoc).updateData([status: bool]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
         }
     }
     

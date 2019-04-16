@@ -105,7 +105,7 @@ class GroupSelectionViewController: UIViewController {
 
             } else {
                 guard let groupId = firstGroupIDTextField.text else { return }
-                FIRFirestoreSerivce.shared.findGroup(groupId: groupId, returning: GroupObject.self) { (groups) in
+                FIRFirestoreSerivce.shared.findGroup(groupId: groupId, returning: GroupObject.self) { groups, _  in
                     if groups.count == 0 {
                         self.createANewGroup()
                     } else {
@@ -171,23 +171,63 @@ class GroupSelectionViewController: UIViewController {
     }
     
     func searchTheGroup() {
-
+        guard let userName = userNameTextField.text else { return }
+        guard let user = Auth.auth().currentUser else { return }
+        
         var groupsName: [String] = []
+        var createrId: [String] = []
+        
         guard let groupId = firstGroupIDTextField.text else { return }
-        FIRFirestoreSerivce.shared.findGroup(groupId: groupId, returning: GroupObject.self) { groups in
+        FIRFirestoreSerivce.shared.findGroup(groupId: groupId, returning: GroupObject.self) { groups, docIds  in
             if groups.count == 0 {
                 AlertView.sigleActionAlert(title: "群組不存在", message: "請確認群組 ID 或創立新群組", clickTitle: "收到", showInVc: self)
             } else {
                 for index in groups {
                     groupsName.append(index.createrName)
                 }
-                
-                let alertSheet =
-                    UIAlertController.showAlertSheet(title: "確認加入群組",
-                                                     message: "確認創辦人",
-                                                     action: groupsName) { (index) in
-                    print(index)
+                for index in groups {
+                    createrId.append(index.createrId)
                 }
+                let alertSheet =
+                    UIAlertController.showAlertSheet(title: "確認加入群組", message: "確認創辦人", action: groupsName) { (index) in
+
+                        let memberInfo = MemberObject(userId: user.uid,
+                                                      userName: userName,
+                                                      isCreator: false,
+                                                      permission: false)
+                        FIRFirestoreSerivce.shared.createSub(for: memberInfo,
+                                                             in: .groups,
+                                                             inDocument: docIds[index],
+                                                             inNext: .members)
+                        
+                        let newUser = UserObject(name: userName,
+                                                 email: user.email!,
+                                                 picture: nil,
+                                                 creater: false,
+                                                 application: false,
+                                                 finishSignUp: true)
+                        FIRFirestoreSerivce.shared.createUser(uid: user.uid, for: newUser, in: .users)
+                        
+                        let groupInfoInUser = GroupInfoInUser(isMember: false,
+                                                              groupID: docIds[index],
+                                                              isMainGroup: true)
+                        FIRFirestoreSerivce.shared.createSub(for: groupInfoInUser,
+                                                             in: .users,
+                                                             inDocument: user.uid,
+                                                             inNext: .groups)
+                        
+                        let application = ApplicationObject(applicantId: user.uid,
+                                                            groupCreator: createrId[index],
+                                                            groupId: docIds[index])
+                        FIRFirestoreSerivce.shared.createGroup(for: application, in: .applications)
+                        
+                        FIRFirestoreSerivce.shared.upadeSingleStatus(uid: createrId[index],
+                                                                     in: .users,
+                                                                     status: UserObject.CodingKeys.application.rawValue,
+                                                                     bool: true)
+
+                }
+                
                 self.present(alertSheet, animated: true, completion: nil)
             }
         }
