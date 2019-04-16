@@ -6,9 +6,8 @@
 //  Copyright © 2019 Fu-Chiung HSU. All rights reserved.
 //
 
-// swiftlint:disable identifier_name
 import UIKit
-
+// swiftlint:disable identifier_name
 private enum HMColor: String {
 
     case B1

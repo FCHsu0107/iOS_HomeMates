@@ -47,21 +47,31 @@ class FIRFirestoreSerivce {
     }
     
     func createGroup<T: Encodable>(for encodableObject: T, in collectionReference: FIRCollectionReference) {
+        
         var ref: DocumentReference?
+        
         do {
-            let json = try encodableObject.toJSON()
             
-            ref =
-                reference(to: collectionReference).addDocument(data: json)
+            var json = try encodableObject.toJSON()
+            
+            ref = reference(to: collectionReference).document()
+            
             guard let ref = ref else { return }
-            print(ref.documentID)
-            let docuID = ref.documentID
-            UserDefaultManager.shared.groupId = docuID
-            print(String(UserDefaultManager.shared.groupId!))
-            UserDefaultManager.shared.shorterGroupID = docuID.substring(toIndex: docuID.length - 14)
-            print(String(UserDefaultManager.shared.shorterGroupID!))
+            
+            json["shortcup"] = ref.documentID.substring(toIndex: ref.documentID.length - 14)
+            
+            reference(to: collectionReference).document(ref.documentID).setData(json)
+//            updateData(json)
+            
+            //call function
+            
+            UserDefaultManager.shared.groupId = ref.documentID
+//            print(String(UserDefaultManager.shared.groupId!))
+//            UserDefaultManager.shared.shorterGroupID = docuID.substring(toIndex: docuID.length - 14)
+//            print(String(UserDefaultManager.shared.shorterGroupID!))
             
         } catch {
+            
             print(error)
         }
     }
@@ -85,11 +95,10 @@ class FIRFirestoreSerivce {
         }
     }
     
-    func findGroup<T: Decodable>(shorterGroupId: String,
+    func findGroup<T: Decodable>(groupId: String,
                                  returning objectType: T.Type,
                                  completion: @escaping ([T]) -> Void) {
-        let ref = reference(to: .groups).whereField(GroupObject.CodingKeys.groupId.rawValue,
-                                                    isEqualTo: shorterGroupId)
+        let ref = reference(to: .groups).whereField(GroupObject.CodingKeys.groupId.rawValue, isEqualTo: groupId)
         ref.getDocuments { (snapshot, _) in
             guard let snapshot = snapshot else { return }
             do {

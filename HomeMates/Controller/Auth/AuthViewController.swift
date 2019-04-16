@@ -129,11 +129,11 @@ class AuthViewController: HMBaseViewController {
         if selectionBarBtn[0].isSelected == true {
             if emailTextField.text?.isEmpty == true {
 
-                alertView.sigleActionAlert(title: "錯誤", message: "請輸入電子郵件", clickTitle: "收到", showInVc: self)
-
+                AlertView.sigleActionAlert(title: "錯誤", message: "請輸入電子郵件", clickTitle: "收到", showInVc: self)
+                
             } else if passwordTextField.text != checkTextField.text || passwordTextField.text?.isEmpty == true {
 
-                alertView.sigleActionAlert(title: "錯誤", message: "請確認密碼無誤", clickTitle: "收到", showInVc: self)
+                AlertView.sigleActionAlert(title: "錯誤", message: "請確認密碼無誤", clickTitle: "收到", showInVc: self)
 
             } else {
 
@@ -152,17 +152,17 @@ class AuthViewController: HMBaseViewController {
                                                               in: .users)
                         self.performSegue(withIdentifier: "selectGroupSegue", sender: nil)
                         } else {
-                        self.alertView.sigleActionAlert(title: "錯誤",
-                                                        message: error?.localizedDescription,
-                                                        clickTitle: "收到",
-                                                        showInVc: self)
+                        AlertView.sigleActionAlert(title: "錯誤",
+                                                   message: error?.localizedDescription,
+                                                   clickTitle: "收到",
+                                                   showInVc: self)
                     }
                 }
             }
 
         } else {
             if emailTextField.text?.isEmpty == true || passwordTextField.text?.isEmpty == true {
-                alertView.sigleActionAlert(title: "錯誤", message: "請輸入帳號或密碼", clickTitle: "收到", showInVc: self)
+                AlertView.sigleActionAlert(title: "錯誤", message: "請輸入帳號或密碼", clickTitle: "收到", showInVc: self)
             } else {
                 
                 FIRAuthService.shared.signIn(withEmail: emailTextField.text!,
@@ -173,10 +173,10 @@ class AuthViewController: HMBaseViewController {
                             withIdentifier: String(describing: HMTabBarViewController.self))
                         self.present(tabBarVC, animated: true, completion: nil)
                     } else {
-                        self.alertView.sigleActionAlert(title: "錯誤",
-                                                        message: error?.localizedDescription,
-                                                        clickTitle: "收到", showInVc: self)
-                        
+                        AlertView.sigleActionAlert(title: "錯誤",
+                                                   message: error?.localizedDescription,
+                                                   clickTitle: "收到",
+                                                   showInVc: self)
                     }
                 }
             }

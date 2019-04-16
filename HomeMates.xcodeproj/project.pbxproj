@@ -11,6 +11,8 @@
 		B91D3A9A2264ABD400C1A28F /* MemberObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3A992264ABD400C1A28F /* MemberObject.swift */; };
 		B91D3A9C2264BF1300C1A28F /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3A9B2264BF1300C1A28F /* String+Extension.swift */; };
 		B91D3A9F2264CA0F00C1A28F /* ApplicationObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3A9E2264CA0F00C1A28F /* ApplicationObject.swift */; };
+		B91D3AA1226594EF00C1A28F /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3AA0226594EF00C1A28F /* UIAlertController+Extension.swift */; };
+		B91D3AA32265B28700C1A28F /* ErrorGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3AA22265B28700C1A28F /* ErrorGroup.swift */; };
 		B9261C792253858A0033ABC9 /* HMTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C782253858A0033ABC9 /* HMTabBarViewController.swift */; };
 		B9261C7B225386030033ABC9 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C7A225386030033ABC9 /* UIStoryboard+Extension.swift */; };
 		B9261C7D225386810033ABC9 /* Task.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9261C7C225386810033ABC9 /* Task.storyboard */; };
@@ -74,6 +76,8 @@
 		B91D3A992264ABD400C1A28F /* MemberObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberObject.swift; sourceTree = "<group>"; };
 		B91D3A9B2264BF1300C1A28F /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		B91D3A9E2264CA0F00C1A28F /* ApplicationObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationObject.swift; sourceTree = "<group>"; };
+		B91D3AA0226594EF00C1A28F /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
+		B91D3AA22265B28700C1A28F /* ErrorGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorGroup.swift; sourceTree = "<group>"; };
 		B9261C782253858A0033ABC9 /* HMTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMTabBarViewController.swift; sourceTree = "<group>"; };
 		B9261C7A225386030033ABC9 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		B9261C7C225386810033ABC9 /* Task.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Task.storyboard; sourceTree = "<group>"; };
@@ -201,6 +205,7 @@
 				B9B7F52D225CAD6100A6DA9E /* TaskObject */,
 				B9B7F52B225CAD5700A6DA9E /* TaskCellStatus.swift */,
 				B9B99F4722641FA100314BB6 /* HMCornerRadius.swift */,
+				B91D3AA22265B28700C1A28F /* ErrorGroup.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -216,6 +221,7 @@
 				B9B99F382262D51C00314BB6 /* Encodable+Extension.swift */,
 				B9B99F3A2262DB0400314BB6 /* Snapshot+Entension.swift */,
 				B91D3A9B2264BF1300C1A28F /* String+Extension.swift */,
+				B91D3AA0226594EF00C1A28F /* UIAlertController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -647,6 +653,7 @@
 				B9261C89225392C60033ABC9 /* UIColor+Extension.swift in Sources */,
 				B9B99F4B2264660100314BB6 /* UserDefault.swift in Sources */,
 				B9261C9322545A9D0033ABC9 /* TasksTableViewCell.swift in Sources */,
+				B91D3AA1226594EF00C1A28F /* UIAlertController+Extension.swift in Sources */,
 				B9B99F392262D51C00314BB6 /* Encodable+Extension.swift in Sources */,
 				B9B7F545225DEA8200A6DA9E /* GroupSelectionViewController.swift in Sources */,
 				B94D15C522585DA200F43B78 /* StatisticsViewController.swift in Sources */,
@@ -668,6 +675,7 @@
 				B94D15AF225721C500F43B78 /* ProfileHeaderViewCell.swift in Sources */,
 				B9261C792253858A0033ABC9 /* HMTabBarViewController.swift in Sources */,
 				B9261C9F2254C2B20033ABC9 /* TableView+Extension.swift in Sources */,
+				B91D3AA32265B28700C1A28F /* ErrorGroup.swift in Sources */,
 				B91D3A9C2264BF1300C1A28F /* String+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

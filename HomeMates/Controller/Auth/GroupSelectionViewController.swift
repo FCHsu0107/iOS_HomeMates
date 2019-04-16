@@ -42,11 +42,15 @@ class GroupSelectionViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var firstGroupTextLbl: UILabel!
+    
     @IBOutlet weak var userNameTextField: UITextField!
     
-    @IBOutlet weak var searchGroupIDTextField: UITextField!
+    @IBOutlet weak var secondGroupTextLbl: UILabel!
     
-    @IBOutlet weak var groupNameTextField: UITextField!
+    @IBOutlet weak var firstGroupIDTextField: UITextField!
+    
+    @IBOutlet weak var secondGroupTextField: UITextField!
     
     @IBOutlet var selectGroupBtn: [UIButton]!
     
@@ -73,11 +77,13 @@ class GroupSelectionViewController: UIViewController {
         
         UIView.animate(withDuration: 0.3, animations: { [weak self] in
             if reference.tag == 0 {
-                self?.groupNameTextField.isEnabled = false
-                self?.searchGroupIDTextField.isEnabled = true
+                self?.firstGroupTextLbl.text = "搜尋群組 ID"
+                self?.secondGroupTextLbl.isHidden = true
+                self?.secondGroupTextField.isHidden = true
             } else {
-                self?.groupNameTextField.isEnabled = true
-                self?.searchGroupIDTextField.isEnabled = false
+                self?.firstGroupTextLbl.text = "創立群組 ID"
+                self?.secondGroupTextLbl.isHidden = false
+                self?.secondGroupTextField.isHidden = false
             }
             self?.view.layoutIfNeeded()
         })
@@ -85,37 +91,46 @@ class GroupSelectionViewController: UIViewController {
     
     @IBAction func startAppBtnAction(_ sender: Any) {
         if selectGroupBtn[0].isSelected == true {
-            if searchGroupIDTextField.text?.isEmpty == true {
-                alertView.sigleActionAlert(title: "注意",
-                                           message: "請輸入群組名稱",
-                                           clickTitle: "收到",
-                                           showInVc: self)
+            if firstGroupIDTextField.text?.isEmpty == true || userNameTextField.text?.isEmpty == true {
+                AlertView.sigleActionAlert(title: "注意", message: "請確認基本資料都已填寫", clickTitle: "收到", showInVc: self)
             } else {
                 searchTheGroup()
             }
                 
         } else if selectGroupBtn[1].isSelected == true {
-            if userNameTextField.text?.isEmpty == true {
-                alertView.sigleActionAlert(title: "注意",
-                                           message: "請輸入群組名稱",
-                                           clickTitle: "收到",
-                                           showInVc: self)
+            if userNameTextField.text?.isEmpty == true ||
+                firstGroupIDTextField.text?.isEmpty == true ||
+                secondGroupTextField.text?.isEmpty == true {
+                AlertView.sigleActionAlert(title: "注意", message: "請確認基本資料都已填寫", clickTitle: "收到", showInVc: self)
+
             } else {
-                createANewGroup()
+                guard let groupId = firstGroupIDTextField.text else { return }
+                FIRFirestoreSerivce.shared.findGroup(groupId: groupId, returning: GroupObject.self) { (groups) in
+                    if groups.count == 0 {
+                        self.createANewGroup()
+                    } else {
+                        AlertView.sigleActionAlert(title: "群組 ID 已存在",
+                                                   message: "請選擇其他 ID",
+                                                   clickTitle: "收到",
+                                                   showInVc: self)
+                    }
+                }
             }
         }
     }
     
     func createANewGroup() {
         guard let userName = userNameTextField.text else { return }
-        guard let groupName = groupNameTextField.text else { return }
+        guard let groupName = secondGroupTextField.text else { return }
         guard let user = Auth.auth().currentUser else { return }
+        guard let groupId = firstGroupIDTextField.text else { return }
 
-        var newGroup = GroupObject(createrId: user.uid,
+        let newGroup = GroupObject(createrId: user.uid,
                                    createrName: userName,
                                    name: groupName,
                                    picture: nil,
-                                   groupId: " ")
+                                   shortcup: " ",
+                                   groupId: groupId)
         
         FIRFirestoreSerivce.shared.createGroup(for: newGroup, in: .groups)
         
@@ -146,12 +161,7 @@ class GroupSelectionViewController: UIViewController {
                                              in: .groups,
                                              inDocument: UserDefaultManager.shared.groupId!,
                                              inNext: .members)
-        newGroup.groupId = UserDefaultManager.shared.shorterGroupID!
-
-        FIRFirestoreSerivce.shared.createUser(uid: UserDefaultManager.shared.groupId!,
-                                              for: newGroup,
-                                              in: .groups)
-        
+ 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let tabBarVc = storyboard.instantiateViewController(
             withIdentifier: String(describing: HMTabBarViewController.self))
@@ -161,10 +171,25 @@ class GroupSelectionViewController: UIViewController {
     }
     
     func searchTheGroup() {
-        FIRFirestoreSerivce.shared.findGroup(shorterGroupId: "kBexZN",
-                                             returning: GroupObject.self) { groups in
-                                                print(groups)
+
+        var groupsName: [String] = []
+        guard let groupId = firstGroupIDTextField.text else { return }
+        FIRFirestoreSerivce.shared.findGroup(groupId: groupId, returning: GroupObject.self) { groups in
+            if groups.count == 0 {
+                AlertView.sigleActionAlert(title: "群組不存在", message: "請確認群組 ID 或創立新群組", clickTitle: "收到", showInVc: self)
+            } else {
+                for index in groups {
+                    groupsName.append(index.createrName)
+                }
+                
+                let alertSheet =
+                    UIAlertController.showAlertSheet(title: "確認加入群組",
+                                                     message: "確認創辦人",
+                                                     action: groupsName) { (index) in
+                    print(index)
+                }
+                self.present(alertSheet, animated: true, completion: nil)
+            }
         }
     }
-    
 }

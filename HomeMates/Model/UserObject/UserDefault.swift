@@ -9,22 +9,10 @@
 import Foundation
 
 class UserDefaultManager {
+    
     static let shared = UserDefaultManager()
     
-    let userDefaultUserID: String = "HomeMatesUserUid"
-    
     let userDefaultGroupID: String = "HomeMatesGroupId"
-    
-    let userDefaultShorterGroupID: String = "HomeMatesShorterGroupID"
-    
-    var userUid: String? {
-        set {
-            UserDefaults.standard.set(newValue, forKey: userDefaultUserID)
-        }
-        get {
-            return UserDefaults.standard.value(forKey: userDefaultUserID) as? String
-        }
-    }
     
     var groupId: String? {
         set {
@@ -34,13 +22,5 @@ class UserDefaultManager {
           return UserDefaults.standard.value(forKey: userDefaultGroupID) as? String
         }
     }
-    
-    var shorterGroupID: String? {
-        set {
-            UserDefaults.standard.set(newValue, forKey: userDefaultShorterGroupID)
-        }
-        get {
-            return UserDefaults.standard.value(forKey: userDefaultShorterGroupID) as? String
-        }
-    }
+
 }

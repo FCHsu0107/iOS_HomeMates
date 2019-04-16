@@ -258,7 +258,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="輸入群組名稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GnR-Lg-kjz">
+                                    <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="輸入群組名稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GnR-Lg-kjz">
                                         <rect key="frame" x="20" y="240" width="240" height="30"/>
                                         <color key="textColor" name="Y4"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -276,8 +276,8 @@
                                         <color key="textColor" name="Y4"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="創建新的群組" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCl-cj-eaQ">
-                                        <rect key="frame" x="28" y="216" width="92" height="18"/>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新群組名稱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCl-cj-eaQ">
+                                        <rect key="frame" x="28" y="216" width="77" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" name="Y4"/>
                                         <nil key="highlightedColor"/>
@@ -411,10 +411,12 @@
                         <outlet property="backgroundView" destination="CfO-O1-CP0" id="Wci-2k-fKh"/>
                         <outlet property="baseInfoLbl" destination="EyC-dJ-GJh" id="z2U-uH-gd9"/>
                         <outlet property="enterBtn" destination="jo4-el-K7X" id="ffn-7j-fOt"/>
-                        <outlet property="groupNameTextField" destination="GnR-Lg-kjz" id="jtt-Zj-rhe"/>
+                        <outlet property="firstGroupIDTextField" destination="beu-az-Miy" id="qHV-IU-muD"/>
+                        <outlet property="firstGroupTextLbl" destination="as4-bt-K0c" id="BRW-cV-6i2"/>
                         <outlet property="movingSelectView" destination="GsY-OR-aHm" id="Fc8-Rl-6yl"/>
                         <outlet property="movingViewXContraint" destination="446-kT-2Bg" id="xsg-DP-Xko"/>
-                        <outlet property="searchGroupIDTextField" destination="beu-az-Miy" id="qHV-IU-muD"/>
+                        <outlet property="secondGroupTextField" destination="GnR-Lg-kjz" id="jtt-Zj-rhe"/>
+                        <outlet property="secondGroupTextLbl" destination="DCl-cj-eaQ" id="RoZ-qU-Jry"/>
                         <outlet property="selectGroupView" destination="dbV-Bx-6zg" id="xj5-bx-Jye"/>
                         <outlet property="userNameTextField" destination="hee-Tp-0EE" id="MNG-XX-c8K"/>
                         <outletCollection property="selectGroupBtn" destination="Nw9-2k-pbA" collectionClass="NSMutableArray" id="L1C-xi-XkB"/>

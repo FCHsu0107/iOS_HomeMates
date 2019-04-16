@@ -18,7 +18,9 @@ struct GroupObject: Codable {
     
     let picture: String?
     
-    var groupId: String
+    var shortcup: String
+    
+    let groupId: String
     
     enum CodingKeys: String, CodingKey {
         
@@ -29,6 +31,8 @@ struct GroupObject: Codable {
         case createrId
         
         case createrName
+        
+        case shortcup
         
         case groupId
     }

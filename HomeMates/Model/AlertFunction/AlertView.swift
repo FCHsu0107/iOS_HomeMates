@@ -11,10 +11,10 @@ import UIKit
 
 class AlertView {
     
-    func sigleActionAlert(title: String,
-                          message: String?,
-                          clickTitle: String,
-                          showInVc: UIViewController) {
+    static func sigleActionAlert(title: String,
+                                 message: String?,
+                                 clickTitle: String,
+                                 showInVc: UIViewController) {
         
         let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
@@ -24,5 +24,19 @@ class AlertView {
         
         showInVc.present(controller, animated: true, completion: nil)
     }
-    
+//    
+//    static func showActionsheet(viewController: UIViewController,
+//                                title: String, message: String,
+//                                actions: [(String, UIAlertAction.Style)],
+//                                completion: @escaping (_ index: Int) -> Void) {
+//        let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+//        for (index, (title, style)) in actions.enumerated() {
+//            let alertAction = UIAlertAction(title: title, style: style) { (_) in
+//                completion(index)
+//            }
+//            alertViewController.addAction(alertAction)
+//        }
+//        viewController.present(alertViewController, animated: true, completion: nil)
+//    }
+
 }
