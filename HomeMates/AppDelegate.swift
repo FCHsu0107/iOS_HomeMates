@@ -8,6 +8,7 @@
 
 import UIKit
 import IQKeyboardManager
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         IQKeyboardManager.shared().shouldResignOnTouchOutside = true
         
-        FIRFirestoreSerivce.shared.configure()
+        FirebaseApp.configure()
+//        FIRFirestoreSerivce.shared.configure()
         
 //        let semophore = DispatchSemaphore(value: 0)
 //        semophore.signal()

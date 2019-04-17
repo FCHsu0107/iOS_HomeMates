@@ -125,7 +125,7 @@ class GroupSelectionViewController: UIViewController {
         guard let user = Auth.auth().currentUser else { return }
         guard let groupId = firstGroupIDTextField.text else { return }
 
-        let newGroup = GroupObject(createrId: user.uid,
+        let newGroup = GroupObject(creatorId: user.uid,
                                    createrName: userName,
                                    name: groupName,
                                    picture: nil,
@@ -137,9 +137,10 @@ class GroupSelectionViewController: UIViewController {
         let newUser = UserObject(name: userName,
                                  email: user.email!,
                                  picture: nil,
-                                 creater: true,
+                                 creator: true,
                                  application: false,
-                                 finishSignUp: true)
+                                 finishSignUp: true,
+                                 mainGroupId: UserDefaultManager.shared.groupId!)
         
         FIRFirestoreSerivce.shared.createUser(uid: user.uid, for: newUser, in: .users)
         
@@ -175,7 +176,7 @@ class GroupSelectionViewController: UIViewController {
         guard let user = Auth.auth().currentUser else { return }
         
         var groupsName: [String] = []
-        var createrId: [String] = []
+        var creatorId: [String] = []
         
         guard let groupId = firstGroupIDTextField.text else { return }
         FIRFirestoreSerivce.shared.findGroup(groupId: groupId, returning: GroupObject.self) { groups, docIds  in
@@ -186,7 +187,7 @@ class GroupSelectionViewController: UIViewController {
                     groupsName.append(index.createrName)
                 }
                 for index in groups {
-                    createrId.append(index.createrId)
+                    creatorId.append(index.creatorId)
                 }
                 let alertSheet =
                     UIAlertController.showAlertSheet(title: "確認加入群組", message: "確認創辦人", action: groupsName) { (index) in
@@ -195,6 +196,7 @@ class GroupSelectionViewController: UIViewController {
                                                       userName: userName,
                                                       isCreator: false,
                                                       permission: false)
+                        
                         FIRFirestoreSerivce.shared.createSub(for: memberInfo,
                                                              in: .groups,
                                                              inDocument: docIds[index],
@@ -203,9 +205,11 @@ class GroupSelectionViewController: UIViewController {
                         let newUser = UserObject(name: userName,
                                                  email: user.email!,
                                                  picture: nil,
-                                                 creater: false,
+                                                 creator: false,
                                                  application: false,
-                                                 finishSignUp: true)
+                                                 finishSignUp: true,
+                                                 mainGroupId: docIds[index])
+                        
                         FIRFirestoreSerivce.shared.createUser(uid: user.uid, for: newUser, in: .users)
                         
                         let groupInfoInUser = GroupInfoInUser(isMember: false,
@@ -217,15 +221,23 @@ class GroupSelectionViewController: UIViewController {
                                                              inNext: .groups)
                         
                         let application = ApplicationObject(applicantId: user.uid,
-                                                            groupCreator: createrId[index],
-                                                            groupId: docIds[index])
+                                                            groupCreator: creatorId[index],
+                                                            groupId: docIds[index],
+                                                            applicantName: userName)
+                        
                         FIRFirestoreSerivce.shared.createGroup(for: application, in: .applications)
                         
-                        FIRFirestoreSerivce.shared.upadeSingleStatus(uid: createrId[index],
+                        FIRFirestoreSerivce.shared.upadeSingleStatus(uid: creatorId[index],
                                                                      in: .users,
                                                                      status: UserObject.CodingKeys.application.rawValue,
                                                                      bool: true)
-
+                        
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        if let tabBarVc = storyboard.instantiateViewController(
+                            withIdentifier: String(describing: HMTabBarViewController.self))
+                            as? HMTabBarViewController {
+                            self.present(tabBarVc, animated: true, completion: nil)
+                        }
                 }
                 
                 self.present(alertSheet, animated: true, completion: nil)

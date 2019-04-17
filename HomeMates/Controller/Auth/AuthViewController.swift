@@ -144,9 +144,10 @@ class AuthViewController: HMBaseViewController {
                         let newUser = UserObject(name: " ",
                                                  email: (user.email)!,
                                                  picture: nil,
-                                                 creater: false,
+                                                 creator: false,
                                                  application: false,
-                                                 finishSignUp: false)
+                                                 finishSignUp: false,
+                                                 mainGroupId: " ")
                         FIRFirestoreSerivce.shared.createUser(uid: user.uid,
                                                               for: newUser,
                                                               in: .users)

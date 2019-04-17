@@ -11,7 +11,7 @@ import UIKit
 class LobbyViewController: HMBaseViewController {
 
     @IBOutlet weak var tableView: UITableView! {
-
+        
         didSet {
             tableView.delegate = self
 
@@ -20,6 +20,12 @@ class LobbyViewController: HMBaseViewController {
         }
     }
 
+    var groupInfo: GroupObject? = nil {
+        didSet {
+            print(groupInfo as Any)
+        }
+    }
+    
     override var navigationBarIsHidden: Bool {
         return true
     }
@@ -52,7 +58,14 @@ class LobbyViewController: HMBaseViewController {
         super.viewDidLoad()
         tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: LobbyHeaderCell.self), bundle: nil)
-
+        
+        print("-----------------")
+        FIRFirestoreSerivce.shared.findMainGroup { (object) in
+            self.groupInfo = object
+            self.tableView.reloadData()
+        }
+        
+        print("-------------------end of viewDidLoad")
     }
 
 }
@@ -64,7 +77,7 @@ extension LobbyViewController: UITableViewDataSource {
         case 0 :
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: LobbyHeaderCell.self))
             guard let headerCell = cell as? LobbyHeaderCell else { return cell}
-            headerCell.groupIDLbl.text = "Home ID: 8989889"
+            headerCell.groupInfo = groupInfo
             return headerCell
 
         default :

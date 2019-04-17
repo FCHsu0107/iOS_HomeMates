@@ -16,11 +16,13 @@ struct UserObject: Codable {
     
     let picture: String?
     
-    let creater: Bool
+    let creator: Bool
     
-    let application: Bool?
+    let application: Bool
     
     let finishSignUp: Bool
+    
+    let mainGroupId: String
     
     enum CodingKeys: String, CodingKey {
         
@@ -30,10 +32,12 @@ struct UserObject: Codable {
         
         case picture
         
-        case creater
+        case creator
         
         case application
         
         case finishSignUp
+        
+        case mainGroupId
     }
 }

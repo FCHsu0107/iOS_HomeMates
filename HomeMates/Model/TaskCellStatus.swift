@@ -9,9 +9,14 @@
 import Foundation
 
 enum TaskCellStatus {
+    
     case checkTask
+    
     case acceptSpecialTask
+    
     case doingTask
+    
     case assignNormalTask
+    
     case assignRegularTask
 }

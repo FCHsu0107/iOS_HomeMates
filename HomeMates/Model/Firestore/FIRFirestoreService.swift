@@ -29,11 +29,15 @@ class FIRFirestoreSerivce {
                               in document: String,
                               toNext subCollectionReference: FIRCollectionReference)
         -> CollectionReference {
-        return Firestore.firestore()
-            .collection(collectionReference.rawValue)
-            .document(document)
-            .collection(subCollectionReference.rawValue)
+            return Firestore.firestore()
+                .collection(collectionReference.rawValue)
+                .document(document)
+                .collection(subCollectionReference.rawValue)
     }
+    
+    private let userReference = Firestore.firestore().collection(FIRCollectionReference.users.rawValue)
+    private let groupReference = Firestore.firestore().collection(FIRCollectionReference.groups.rawValue)
+   
     
     func createUser<T: Encodable>(uid: String,
                                   for encodableObject: T,
@@ -141,6 +145,7 @@ class FIRFirestoreSerivce {
             completion(false)
             return }
         let uid = user.uid
+        
         reference(to: .users).document(uid).getDocument { (querySnapshot, _) in
             guard querySnapshot?.data() != nil else {
                 completion(false)
@@ -178,7 +183,9 @@ class FIRFirestoreSerivce {
                                inNextDoc: String,
                                status: String,
                                bool: Bool) {
-        subReference(to: collectionReference, in: inDocument, toNext: subCollectionReference).document(inNextDoc).updateData([status: bool]) { err in
+        subReference(to: collectionReference,
+                     in: inDocument,
+                     toNext: subCollectionReference).document(inNextDoc).updateData([status: bool]) { err in
             if let err = err {
                 print("Error updating document: \(err)")
             } else {
@@ -192,4 +199,63 @@ class FIRFirestoreSerivce {
         
     }
     
+    func findMainGroup(completion: @escaping (GroupObject) -> Void) {
+        let user = Auth.auth().currentUser
+        guard user != nil else { return }
+        let ref = reference(to: .users).document(user!.uid)
+        ref.getDocument { (documnet, err) in
+            if let document = documnet, document.exists {
+                
+                guard document.data() != nil else { return }
+                do {
+                    let object = try document.decode(as: UserObject.self)
+                    let groupId = object.mainGroupId
+                    print("---------------UserObject")
+                    print(document.data())
+                    print(groupId)
+                    self.reference(to: .groups).document(groupId).getDocument(completion: { (snapshot, _) in
+                        print("-----GroupObject-----")
+                        print(snapshot?.data())
+                        do {
+                            guard let snapshot = snapshot else { return }
+                            let object = try snapshot.decode(as: GroupObject.self)
+                            print("---------")
+                            print(object)
+                            completion(object)
+                        } catch {
+                             print("---------")
+                            print(error)
+                        }
+                    })
+                } catch {
+                    print(error)
+                }
+                
+            } else {
+                print(err as Any)
+            }
+        }
+    }
+    
 }
+//func read<T: Decodable>(from collectionReference: FIRCollectionReference,
+//                        returning objectType: T.Type,
+//                        completion: @escaping ([T]) -> Void) {
+//
+//    reference(to: collectionReference).addSnapshotListener { (snapshot, _) in
+//
+//        guard let snapshot = snapshot else { return }
+//
+//        do {
+//            var objects = [T]()
+//            for document in snapshot.documents {
+//                let object = try document.decode(as: objectType.self)
+//                objects.append(object)
+//            }
+//
+//            completion(objects)
+//        } catch {
+//            print(error)
+//        }
+//    }
+//}

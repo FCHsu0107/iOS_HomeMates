@@ -10,7 +10,7 @@ import Foundation
 
 struct GroupObject: Codable {
     
-    let createrId: String
+    let creatorId: String
     
     let createrName: String
     
@@ -28,7 +28,7 @@ struct GroupObject: Codable {
         
         case picture
         
-        case createrId
+        case creatorId
         
         case createrName
         

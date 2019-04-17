@@ -17,15 +17,33 @@ class LobbyHeaderCell: UITableViewCell {
     @IBOutlet weak var lubbyBulletinLbl: UILabel!
 
     @IBOutlet weak var groupImageView: UIImageView!
+    
+    var groupInfo: GroupObject? = nil {
+        didSet {
+            showGroupInfo()
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.groupImageView.layer.cornerRadius = 5
         self.groupImageView.image = UIImage.asset(.home)
-
+        showGroupInfo()
     }
 
+    func showGroupInfo() {
+        
+        guard let groupInfo = groupInfo else {
+            groupNameLbl.text = "資料未載入"
+            groupIDLbl.text = "資料未載入"
+            return }
+        groupNameLbl.text = groupInfo.createrName
+        groupIDLbl.text = "Home ID: \(String(describing: groupInfo.groupId))"
+  
+//        groupImageView.image = groupInfo?.picture
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

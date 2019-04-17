@@ -16,6 +16,8 @@ struct ApplicationObject: Codable {
     
     let groupId: String
     
+    let applicantName: String
+    
     enum CodingKeys: String, CodingKey {
         
         case applicantId
@@ -23,5 +25,7 @@ struct ApplicationObject: Codable {
         case groupCreator
         
         case groupId
+        
+        case applicantName
     }
 }

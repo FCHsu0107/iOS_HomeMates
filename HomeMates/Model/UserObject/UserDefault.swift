@@ -14,12 +14,34 @@ class UserDefaultManager {
     
     let userDefaultGroupID: String = "HomeMatesGroupId"
     
+    let userDefaultUserName: String = "HomeMatesUserName"
+    
+    let userDefaultUserUid: String = "HomeMatesUserUid"
+    
     var groupId: String? {
         set {
             UserDefaults.standard.set(newValue, forKey: userDefaultGroupID)
         }
         get {
           return UserDefaults.standard.value(forKey: userDefaultGroupID) as? String
+        }
+    }
+    
+    var userName: String? {
+        set {
+            UserDefaults.standard.set(newValue, forKey: userDefaultUserName)
+        }
+        get {
+            return UserDefaults.standard.value(forKey: userDefaultUserName) as? String
+        }
+    }
+    
+    var userUid: String? {
+        set {
+           UserDefaults.standard.set(newValue, forKey: userDefaultUserUid)
+        }
+        get {
+            return UserDefaults.standard.value(forKey: userDefaultUserUid) as? String
         }
     }
 
