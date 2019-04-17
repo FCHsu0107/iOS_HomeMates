@@ -35,8 +35,8 @@ class FIRFirestoreSerivce {
                 .collection(subCollectionReference.rawValue)
     }
     
-    private let userReference = Firestore.firestore().collection(FIRCollectionReference.users.rawValue)
-    private let groupReference = Firestore.firestore().collection(FIRCollectionReference.groups.rawValue)
+    private let usersReference = Firestore.firestore().collection(FIRCollectionReference.users.rawValue)
+    private let groupsReference = Firestore.firestore().collection(FIRCollectionReference.groups.rawValue)
    
     
     func createUser<T: Encodable>(uid: String,
@@ -55,7 +55,6 @@ class FIRFirestoreSerivce {
         var ref: DocumentReference?
         
         do {
-            
             var json = try encodableObject.toJSON()
             
             ref = reference(to: collectionReference).document()

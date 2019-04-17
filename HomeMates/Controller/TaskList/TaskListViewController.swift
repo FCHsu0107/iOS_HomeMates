@@ -79,7 +79,6 @@ class TaskListViewController: HMBaseViewController {
                        taskPriodDay: 1,
                        completionDate: nil,
                        taskStatus: 1)
-        print(UserDefaultManager.shared.groupId)
         guard let groupId = UserDefaultManager.shared.groupId else { return }
         
         FIRFirestoreSerivce.shared.createSub(for: newTask,

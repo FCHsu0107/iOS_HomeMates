@@ -16,7 +16,6 @@ class LobbyViewController: HMBaseViewController {
             tableView.delegate = self
 
             tableView.dataSource = self
-
         }
     }
 

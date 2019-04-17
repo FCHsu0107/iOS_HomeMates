@@ -35,8 +35,8 @@ class LobbyHeaderCell: UITableViewCell {
     func showGroupInfo() {
         
         guard let groupInfo = groupInfo else {
-            groupNameLbl.text = "資料未載入"
-            groupIDLbl.text = "資料未載入"
+            groupNameLbl.text = "資料載入中"
+            groupIDLbl.text = "資料載入中"
             return }
         groupNameLbl.text = groupInfo.createrName
         groupIDLbl.text = "Home ID: \(String(describing: groupInfo.groupId))"
