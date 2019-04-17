@@ -201,8 +201,9 @@ class FIRFirestoreSerivce {
     
     func findMainGroup(completion: @escaping (GroupObject) -> Void) {
         let user = Auth.auth().currentUser
-        guard user != nil else { return }
-        let ref = reference(to: .users).document(user!.uid)
+        guard let currentUser = user else { return }
+        
+        let ref = reference(to: .users).document(currentUser.uid)
         ref.getDocument { (documnet, err) in
             if let document = documnet, document.exists {
                 
@@ -210,20 +211,19 @@ class FIRFirestoreSerivce {
                 do {
                     let object = try document.decode(as: UserObject.self)
                     let groupId = object.mainGroupId
-                    print("---------------UserObject")
-                    print(document.data())
-                    print(groupId)
-                    self.reference(to: .groups).document(groupId).getDocument(completion: { (snapshot, _) in
-                        print("-----GroupObject-----")
-                        print(snapshot?.data())
+                    UserDefaultManager.shared.groupId = groupId
+                    UserDefaultManager.shared.userName = object.name
+
+                    self.reference(to: .groups).document(groupId).getDocument(completion: { (snapshot, err) in
+
                         do {
-                            guard let snapshot = snapshot else { return }
+                            guard let snapshot = snapshot else {
+                                print(err as Any)
+                                return }
                             let object = try snapshot.decode(as: GroupObject.self)
-                            print("---------")
-                            print(object)
+
                             completion(object)
                         } catch {
-                             print("---------")
                             print(error)
                         }
                     })

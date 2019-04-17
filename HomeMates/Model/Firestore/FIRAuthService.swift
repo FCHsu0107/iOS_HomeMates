@@ -47,13 +47,17 @@ class FIRAuthService {
     
     func addSignUpListener(listener: @escaping (Bool) -> Void) {
         Auth.auth().addStateDidChangeListener { (_, user) in
-            guard user != nil else {
+            guard let user = user else {
                 // 登出
+                UserDefaults.standard.removeObject(forKey: UserDefaultManager.shared.userDefaultGroupID)
+                UserDefaults.standard.removeObject(forKey: UserDefaultManager.shared.userDefaultUserUid)
+                
                 listener(false)
                 
                 return
             }
             // 登入
+            UserDefaultManager.shared.userUid = user.uid
             listener(true)
         }
     }

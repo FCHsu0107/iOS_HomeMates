@@ -31,15 +31,20 @@ class ProfileHeaderViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        setCorner()
+        
+        memberNameTextLbl.text = UserDefaultManager.shared.userName
 
+    }
+
+    func setCorner() {
         infoFrameView.layer.cornerRadius = 10
         infoFrameView.layer.shadowOpacity = 0.1
         profilePictureImage.layer.cornerRadius = 40
         profileImageView.layer.cornerRadius = 40
         profileImageView.layer.shadowOpacity = 0.1
-
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
