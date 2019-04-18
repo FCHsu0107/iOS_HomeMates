@@ -33,68 +33,60 @@ class LobbyViewController: HMBaseViewController {
 
     //mock data
     var taskListTitle: [String] = ["", "本月貢獻度", "特殊任務", "已完成任務"]
-    var checkTaskList: [TaskObject] = [
-        TaskObject(taskName: "拖地",
-                   image: "home_normal",
-                   publisherName: "System",
-                   executorName: "Mother",
-                   executorUid: "Mother",
-                   taskPoint: 1,
-                   taskPriodDay: 1,
-                   completionDate: nil,
-                   taskStatus: 3),
-        TaskObject(taskName: "掃地",
-                   image: "home_normal",
-                   publisherName: "System",
-                   executorName: "Daddy",
-                   executorUid: "Daddy",
-                   taskPoint: 1,
-                   taskPriodDay: 1,
-                   completionDate: nil,
-                   taskStatus: 3),
-        TaskObject(taskName: "掃地",
-                   image: "home_normal",
-                   publisherName: "System",
-                   executorName: "Daddy",
-                   executorUid: "Daddy",
-                   taskPoint: 1,
-                   taskPriodDay: 1,
-                   completionDate: nil,
-                   taskStatus: 3)]
+    var checkTaskList: [TaskObject] = []
 
-    var willDoTaskList: [TaskObject] = [
-        TaskObject(taskName: "打預防針",
-                   image: "home_normal",
-                   publisherName: "System",
-                   executorName: nil,
-                   executorUid: nil,
-                   taskPoint: 2,
-                   taskPriodDay: 0,
-                   completionDate: nil,
-                   taskStatus: 1),
-        TaskObject(taskName: "清洗冷氣機濾網",
-                   image: "home_normal",
-                   publisherName: "System",
-                   executorName: nil,
-                   executorUid: nil,
-                   taskPoint: 2,
-                   taskPriodDay: 0,
-                   completionDate: nil,
-                   taskStatus: 1)
-    ]
+    var willDoTaskList: [TaskObject] = []
+//        = [
+//        TaskObject(taskName: "打預防針",
+//                   image: "home_normal",
+//                   publisherName: "System",
+//                   executorName: nil,
+//                   executorUid: nil,
+//                   taskPoint: 2,
+//                   taskPriodDay: 0,
+//                   completionDate: nil,
+//                   taskStatus: 1),
+//        TaskObject(taskName: "清洗冷氣機濾網",
+//                   image: "home_normal",
+//                   publisherName: "System",
+//                   executorName: nil,
+//                   executorUid: nil,
+//                   taskPoint: 2,
+//                   taskPriodDay: 0,
+//                   completionDate: nil,
+//                   taskStatus: 1)
+//    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: LobbyHeaderCell.self), bundle: nil)
-        
-        print("-----------------")
-        FIRFirestoreSerivce.shared.findMainGroup { (object) in
-            self.groupInfo = object
-            self.tableView.reloadData()
+
+        FIRFirestoreSerivce.shared.findMainGroup { [weak self] (object) in
+            self?.groupInfo = object
+            self?.tableView.reloadData()
         }
         
-        print("-------------------end of viewDidLoad")
+        FIRFirestoreSerivce.shared.readCheckTasks { [weak self] (tasks) in
+            self?.checkTaskList = []
+            for task in tasks {
+                if task.executorUid != UserDefaultManager.shared.userUid {
+                    self?.checkTaskList.append(task)
+                }
+            }
+            self?.tableView.reloadData()
+        }
+        
+        FIRFirestoreSerivce.shared.readAssigningTasks { [weak self] (tasks) in
+            self?.willDoTaskList = []
+            for task in tasks {
+                if task.taskPriodDay != 1 {
+                    self?.willDoTaskList.append(task)
+                }
+                self?.tableView.reloadData()
+            }
+        }
+        
     }
 
 }

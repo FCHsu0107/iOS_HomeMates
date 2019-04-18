@@ -72,17 +72,14 @@
                             <constraint firstAttribute="height" constant="6" id="PqU-Ml-heA"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="積分放在這" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7C-DR-feW">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="積分放在這" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7C-DR-feW">
                         <rect key="frame" x="76" y="84.5" width="76.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="雙週任務" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aw5-qs-8Zo">
-                        <rect key="frame" x="228" y="84.5" width="62" height="18"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="62" id="bbm-GO-adM"/>
-                        </constraints>
+                        <rect key="frame" x="207.5" y="84.5" width="82.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
@@ -122,6 +119,7 @@
                     <constraint firstItem="hrz-b3-IqO" firstAttribute="leading" secondItem="a7J-EE-SG2" secondAttribute="leading" constant="-90" id="bMc-UH-0CU"/>
                     <constraint firstItem="tUn-P4-yu8" firstAttribute="top" secondItem="ovV-4u-RGL" secondAttribute="bottom" constant="8" id="c04-tU-TWM"/>
                     <constraint firstItem="ovV-4u-RGL" firstAttribute="top" secondItem="0RN-Pe-QGG" secondAttribute="bottom" constant="4" id="gyC-XN-MYu"/>
+                    <constraint firstItem="aw5-qs-8Zo" firstAttribute="leading" secondItem="K7C-DR-feW" secondAttribute="trailing" constant="55" id="gyy-Nf-vuy"/>
                     <constraint firstItem="aw5-qs-8Zo" firstAttribute="bottom" secondItem="K7C-DR-feW" secondAttribute="bottom" id="i4V-7i-R0h"/>
                     <constraint firstItem="ovV-4u-RGL" firstAttribute="leading" secondItem="SMu-4E-Fsk" secondAttribute="trailing" constant="12" id="irW-0H-d4j"/>
                     <constraint firstItem="0RN-Pe-QGG" firstAttribute="leading" secondItem="SMu-4E-Fsk" secondAttribute="trailing" constant="12" id="l5t-k3-IEB"/>

@@ -25,36 +25,7 @@ class ProfileViewController: HMBaseViewController {
 
     //mock data
     var taskListTitle: [String] = ["", "當前任務", "任務日誌"]
-    var processTaskList: [TaskObject] = [
-        TaskObject(taskName: "掃地",
-                   image: "home_normal",
-                   publisherName: "System",
-                   executorName: "阿明",
-                   executorUid: nil,
-                   taskPoint: 1,
-                   taskPriodDay: 1,
-                   completionDate: nil,
-                   taskStatus: 2),
-        
-        TaskObject(taskName: "掃地",
-                   image: "home_normal",
-                   publisherName: "System",
-                   executorName: "阿明",
-                   executorUid: nil,
-                   taskPoint: 1,
-                   taskPriodDay: 1,
-                   completionDate: nil,
-                   taskStatus: 2),
-        
-        TaskObject(taskName: "準備早餐",
-                   image: "home_normal",
-                   publisherName: "System",
-                   executorName: "阿明",
-                   executorUid: nil,
-                   taskPoint: 1,
-                   taskPriodDay: 1,
-                   completionDate: nil,
-                   taskStatus: 2)]
+    var processTaskList: [TaskObject] = []
 
     var doneTaskList: [TaskRecord] = [
         TaskRecord(taskName: "洗碗", taskImage: "home_normal", executorName: "阿明", taskPoint: 1, taskTimes: 10),
@@ -64,6 +35,14 @@ class ProfileViewController: HMBaseViewController {
         super.viewDidLoad()
         tableView.jq_registerCellWithNib(identifier: String(describing: ProfileHeaderViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
+        
+        FIRFirestoreSerivce.shared.readDoingTasks { [weak self] (tasks) in
+            
+            print("_______Tasks_______")
+            print(tasks)
+            self?.processTaskList = tasks
+            self?.tableView.reloadData()  
+        }
 
     }
 

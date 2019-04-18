@@ -19,72 +19,17 @@ class TaskListViewController: HMBaseViewController {
     
     let taskHeader = TaskListHeaderView()
 
-    var taskListTitle: [String] = ["常規任務", "週期性任務"]
+    var taskListTitle: [String] = ["常規任務", "特殊任務"]
 
     var normalTaskList: [TaskObject] = []
-//    {
-//        didSet {
-//            tableView.reloadData()
-//        }
-//    }
-//        [
-//                                       TaskObject(taskName: "掃地",
-//                                                  image: "home_normal",
-//                                                  publisherName: "System",
-//                                                  executorName: nil,
-//                                                  executorUid: nil,
-//                                                  taskPoint: 1,
-//                                                  taskPriodDay: 1,
-//                                                  completionDate: nil,
-//                                                  taskStatus: 1),
-//                                       TaskObject(taskName: "掃地",
-//                                                  image: "home_normal",
-//                                                  publisherName: "System",
-//                                                  executorName: nil,
-//                                                  executorUid: nil,
-//                                                  taskPoint: 1,
-//                                                  taskPriodDay: 1,
-//                                                  completionDate: nil,
-//                                                  taskStatus: 1)]
 
     var regularTaskList: [TaskObject] = []
-//    {
-//        didSet {
-//            tableView.reloadData()
-//        }
-//    }
-//        = [TaskObject(taskName: "打預防針",
-//                                                    image: "home_normal",
-//                                                    publisherName: "System",
-//                                                    executorName: nil,
-//                                                    executorUid: nil,
-//                                                    taskPoint: 2,
-//                                                    taskPriodDay: 0,
-//                                                    completionDate: nil,
-//                                                    taskStatus: 1),
-//                                        TaskObject(taskName: "清洗冷氣機濾網",
-//                                                   image: "home_normal",
-//                                                   publisherName: "System",
-//                                                   executorName: nil,
-//                                                   executorUid: nil,
-//                                                   taskPoint: 2,
-//                                                   taskPriodDay: 0,
-//                                                   completionDate: nil,
-//                                                   taskStatus: 1),
-//                                        TaskObject(taskName: "更換濾心",
-//                                                   image: "home_normal",
-//                                                   publisherName: "System",
-//                                                   executorName: nil,
-//                                                   executorUid: nil,
-//                                                   taskPoint: 2,
-//                                                   taskPriodDay: 0,
-//                                                   completionDate: nil,
-//                                                   taskStatus: 1)]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
+        
         FIRFirestoreSerivce.shared.readAssigningTasks { [weak self] (tasks) in
             self?.normalTaskList = []
             self?.regularTaskList = []

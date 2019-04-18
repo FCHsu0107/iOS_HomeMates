@@ -27,7 +27,7 @@ class TrackerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerVie
         return picker
     }()
     
-    private let pickerOptions = ["洗衣服", "洗碗", "準備早餐", "倒垃圾"]
+    var pickerOptions = ["洗衣服", "洗碗", "準備早餐", "倒垃圾"]
     
     var taskTrackerHandler: ((String) -> Void)?
     

@@ -36,7 +36,7 @@ class TasksTableViewCell: UITableViewCell {
     
     let progressView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 6))
 
-    var showContributionPersent: Bool? {
+    var showContributionPersent: Bool = false {
         didSet {
             if showContributionPersent == true {
 
@@ -49,7 +49,7 @@ class TasksTableViewCell: UITableViewCell {
         }
     }
 
-    var hiddenFirstText: Bool? {
+    var hiddenFirstText: Bool = false {
         didSet {
             if hiddenFirstText == true {
                 memberNameTextLbl.isHidden = true
@@ -59,7 +59,7 @@ class TasksTableViewCell: UITableViewCell {
         }
     }
 
-    var secondBtnAppear: Bool? {
+    var secondBtnAppear: Bool = false {
         didSet {
             if secondBtnAppear == true {
                 taskLeftBtn.isHidden = false
@@ -67,13 +67,18 @@ class TasksTableViewCell: UITableViewCell {
         }
     }
 
-    var showPersonalPoints: Bool? {
+    var showPersonalPoints: Bool = false {
         didSet {
             if showPersonalPoints == true {
                 pointTextLbl.isHidden = false
                 totalPointsTextLbl.isHidden = false
                 taskTotalPointsLbl.isHidden = false
                 taskRightBtn.isHidden = true
+            } else {
+                pointTextLbl.isHidden = true
+                totalPointsTextLbl.isHidden = true
+                taskTotalPointsLbl.isHidden = true
+                taskRightBtn.isHidden = false
             }
         }
     }
@@ -116,6 +121,8 @@ class TasksTableViewCell: UITableViewCell {
         case .doingTask:
             hiddenFirstText = true
             secondBtnAppear = true
+            taskRightBtn.isHidden = false
+            showPersonalPoints = false
 
             taskRightBtn.setTitle("完成", for: .normal)
             taskLeftBtn.setTitle("放棄", for: .normal)
@@ -128,8 +135,8 @@ class TasksTableViewCell: UITableViewCell {
             hiddenFirstText = true
 
             taskRightBtn.setTitle("接受", for: .normal)
-//            taskPeriodTextLbl.isHidden = false
-//            taskPeriodTextLbl.text = "雙週任務"
+            taskPeriodTextLbl.isHidden = false
+            taskPeriodTextLbl.text = "每\(taskObject.taskPriodDay)天一次"
         }
     }
 
