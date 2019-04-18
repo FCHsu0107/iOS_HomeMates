@@ -17,6 +17,8 @@ struct TaskObject: Codable {
     let publisherName: String
 
     let executorName: String?
+    
+    let executorUid: String?
 
     let taskPoint: Int
 
@@ -43,5 +45,7 @@ struct TaskObject: Codable {
         case completionDate
         
         case taskStatus
+        
+        case executorUid
     }
 }

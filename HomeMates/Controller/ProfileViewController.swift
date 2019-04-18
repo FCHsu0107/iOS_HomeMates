@@ -26,10 +26,11 @@ class ProfileViewController: HMBaseViewController {
     //mock data
     var taskListTitle: [String] = ["", "當前任務", "任務日誌"]
     var processTaskList: [TaskObject] = [
-        TaskObject(taskName: "拖地",
+        TaskObject(taskName: "掃地",
                    image: "home_normal",
                    publisherName: "System",
                    executorName: "阿明",
+                   executorUid: nil,
                    taskPoint: 1,
                    taskPriodDay: 1,
                    completionDate: nil,
@@ -39,6 +40,7 @@ class ProfileViewController: HMBaseViewController {
                    image: "home_normal",
                    publisherName: "System",
                    executorName: "阿明",
+                   executorUid: nil,
                    taskPoint: 1,
                    taskPriodDay: 1,
                    completionDate: nil,
@@ -48,6 +50,7 @@ class ProfileViewController: HMBaseViewController {
                    image: "home_normal",
                    publisherName: "System",
                    executorName: "阿明",
+                   executorUid: nil,
                    taskPoint: 1,
                    taskPriodDay: 1,
                    completionDate: nil,

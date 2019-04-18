@@ -8,7 +8,6 @@
 
 import UIKit
 import IQKeyboardManager
-import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,13 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared().isEnabled = true
         
         IQKeyboardManager.shared().shouldResignOnTouchOutside = true
-        
-        FirebaseApp.configure()
-//        FIRFirestoreSerivce.shared.configure()
-        
-//        let semophore = DispatchSemaphore(value: 0)
-//        semophore.signal()
-//        semophore.wait()
+
+        FIRFirestoreSerivce.shared.configure()
         
         return true
     }

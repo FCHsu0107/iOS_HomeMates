@@ -35,10 +35,6 @@ class FIRFirestoreSerivce {
                 .collection(subCollectionReference.rawValue)
     }
     
-    private let usersReference = Firestore.firestore().collection(FIRCollectionReference.users.rawValue)
-    private let groupsReference = Firestore.firestore().collection(FIRCollectionReference.groups.rawValue)
-   
-    
     func createUser<T: Encodable>(uid: String,
                                   for encodableObject: T,
                                   in collectionReference: FIRCollectionReference) {
@@ -136,6 +132,62 @@ class FIRFirestoreSerivce {
         }
     }
     
+    func readAssigningTasks(completionHandler: @escaping ([TaskObject]) -> Void){
+        
+        readGroupTasks(docUid: UserDefaultManager.shared.groupId!, status: 1) { (tasks) in
+            completionHandler(tasks)
+        }
+    }
+    
+    private func readGroupTasks(docUid: String, status: Int, completion: @escaping ([TaskObject]) -> Void) {
+        reference(to: .groups)
+            .document(docUid)
+            .collection(FIRCollectionReference.tasks.rawValue)
+            .whereField(TaskObject.CodingKeys.taskStatus.rawValue, isEqualTo: status)
+            .addSnapshotListener { (snapshot, err) in
+            guard let snapshot = snapshot else {
+                print(err as Any)
+                return }
+            
+            do {
+                var objects = [TaskObject]()
+                for document in snapshot.documents {
+                    let object = try document.decode(as: TaskObject.self)
+                    objects.append(object)
+                }
+                completion(objects)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func readSubGroup<T: Decodable>(docUid: String,
+                                    status: Int,
+                                    returning objectType: T.Type,
+                                    completion: @escaping ([T]) -> Void) {
+        reference(to: .groups)
+            .document(docUid)
+            .collection(FIRCollectionReference.tasks.rawValue)
+            .whereField(TaskObject.CodingKeys.taskStatus.rawValue, isEqualTo: status)
+            .addSnapshotListener { (snapshot, err) in
+            guard let snapshot = snapshot else {
+                print(err as Any)
+                return }
+            
+            do {
+                var objects = [T]()
+                for document in snapshot.documents {
+                    let object = try document.decode(as: objectType.self)
+                    objects.append(object)
+                }
+                completion(objects)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
     typealias BoolCompleionHandler = (Bool?) -> Void
     
     func findUser(completionHandler completion: @escaping BoolCompleionHandler) {
@@ -146,21 +198,23 @@ class FIRFirestoreSerivce {
         let uid = user.uid
         
         reference(to: .users).document(uid).getDocument { (querySnapshot, _) in
-            guard querySnapshot?.data() != nil else {
+            guard let data = querySnapshot?.data() else {
                 completion(false)
                 return
             }
-            print(querySnapshot?.data()![UserObject.CodingKeys.finishSignUp.rawValue] ?? "啊啊啊啊")
+            print(data[UserObject.CodingKeys.finishSignUp.rawValue] as Any)
             
-            completion(querySnapshot?.data()![UserObject.CodingKeys.finishSignUp.rawValue] as? Bool)
+            completion(data[UserObject.CodingKeys.finishSignUp.rawValue] as? Bool)
         }
     }
     
-    func update<T: Encodable>(for encodableObject: T,
+    func update<T: Encodable>(uid: String,
+                              for encodableObject: T,
                               in collectionReference: FIRCollectionReference) {
         do {
             let json = try encodableObject.toJSON()
-//            reference(to: collectionReference).document(uid).setData(json)
+         
+            reference(to: collectionReference).document(uid).setData(json)
         } catch {
             print(error)
         }
@@ -175,23 +229,23 @@ class FIRFirestoreSerivce {
             }
         }
     }
-    
-    func updateSubSingleStatus(in collectionReference: FIRCollectionReference,
-                               inDocument: String,
-                               inNext subCollectionReference: FIRCollectionReference,
-                               inNextDoc: String,
-                               status: String,
-                               bool: Bool) {
-        subReference(to: collectionReference,
-                     in: inDocument,
-                     toNext: subCollectionReference).document(inNextDoc).updateData([status: bool]) { err in
-            if let err = err {
-                print("Error updating document: \(err)")
-            } else {
-                print("Document successfully updated")
-            }
-        }
-    }
+//
+//    func updateSubSingleStatus(in collectionReference: FIRCollectionReference,
+//                               inDocument: String,
+//                               inNext subCollectionReference: FIRCollectionReference,
+//                               inNextDoc: String,
+//                               status: String,
+//                               bool: Bool) {
+//        subReference(to: collectionReference,
+//                     in: inDocument,
+//                     toNext: subCollectionReference).document(inNextDoc).updateData([status: bool]) { err in
+//            if let err = err {
+//                print("Error updating document: \(err)")
+//            } else {
+//                print("Document successfully updated")
+//            }
+//        }
+//    }
     
     func delete(uid: String, in collectionReference: FIRCollectionReference) {
         reference(to: collectionReference).document(uid).delete()
@@ -203,7 +257,7 @@ class FIRFirestoreSerivce {
         guard let currentUser = user else { return }
         
         let ref = reference(to: .users).document(currentUser.uid)
-        ref.getDocument { (documnet, err) in
+        ref.getDocument { [ weak self ](documnet, err) in
             if let document = documnet, document.exists {
                 
                 guard document.data() != nil else { return }
@@ -213,7 +267,7 @@ class FIRFirestoreSerivce {
                     UserDefaultManager.shared.groupId = groupId
                     UserDefaultManager.shared.userName = object.name
 
-                    self.reference(to: .groups).document(groupId).getDocument(completion: { (snapshot, err) in
+                    self?.reference(to: .groups).document(groupId).getDocument(completion: { (snapshot, err) in
 
                         do {
                             guard let snapshot = snapshot else {

@@ -16,57 +16,88 @@ class TaskListViewController: HMBaseViewController {
             tableView.dataSource = self
         }
     }
+    
     let taskHeader = TaskListHeaderView()
 
     var taskListTitle: [String] = ["常規任務", "週期性任務"]
 
-    var normalTaskList: [TaskObject] = [
-                                       TaskObject(taskName: "掃地",
-                                                  image: "home_normal",
-                                                  publisherName: "System",
-                                                  executorName: "Daddy",
-                                                  taskPoint: 1,
-                                                  taskPriodDay: 1,
-                                                  completionDate: nil,
-                                                  taskStatus: 1),
-                                       TaskObject(taskName: "掃地",
-                                                  image: "home_normal",
-                                                  publisherName: "System",
-                                                  executorName: "Daddy",
-                                                  taskPoint: 1,
-                                                  taskPriodDay: 1,
-                                                  completionDate: nil,
-                                                  taskStatus: 1)]
+    var normalTaskList: [TaskObject] = []
+//    {
+//        didSet {
+//            tableView.reloadData()
+//        }
+//    }
+//        [
+//                                       TaskObject(taskName: "掃地",
+//                                                  image: "home_normal",
+//                                                  publisherName: "System",
+//                                                  executorName: nil,
+//                                                  executorUid: nil,
+//                                                  taskPoint: 1,
+//                                                  taskPriodDay: 1,
+//                                                  completionDate: nil,
+//                                                  taskStatus: 1),
+//                                       TaskObject(taskName: "掃地",
+//                                                  image: "home_normal",
+//                                                  publisherName: "System",
+//                                                  executorName: nil,
+//                                                  executorUid: nil,
+//                                                  taskPoint: 1,
+//                                                  taskPriodDay: 1,
+//                                                  completionDate: nil,
+//                                                  taskStatus: 1)]
 
-    var regularTaskList: [TaskObject] = [TaskObject(taskName: "打預防針",
-                                                    image: "home_normal",
-                                                    publisherName: "System",
-                                                    executorName: "",
-                                                    taskPoint: 2,
-                                                    taskPriodDay: 0,
-                                                    completionDate: nil,
-                                                    taskStatus: 1),
-                                        TaskObject(taskName: "清洗冷氣機濾網",
-                                                   image: "home_normal",
-                                                   publisherName: "System",
-                                                   executorName: "",
-                                                   taskPoint: 2,
-                                                   taskPriodDay: 0,
-                                                   completionDate: nil,
-                                                   taskStatus: 1),
-                                        TaskObject(taskName: "更換濾心",
-                                                   image: "home_normal",
-                                                   publisherName: "System",
-                                                   executorName: "",
-                                                   taskPoint: 2,
-                                                   taskPriodDay: 0,
-                                                   completionDate: nil,
-                                                   taskStatus: 1)]
+    var regularTaskList: [TaskObject] = []
+//    {
+//        didSet {
+//            tableView.reloadData()
+//        }
+//    }
+//        = [TaskObject(taskName: "打預防針",
+//                                                    image: "home_normal",
+//                                                    publisherName: "System",
+//                                                    executorName: nil,
+//                                                    executorUid: nil,
+//                                                    taskPoint: 2,
+//                                                    taskPriodDay: 0,
+//                                                    completionDate: nil,
+//                                                    taskStatus: 1),
+//                                        TaskObject(taskName: "清洗冷氣機濾網",
+//                                                   image: "home_normal",
+//                                                   publisherName: "System",
+//                                                   executorName: nil,
+//                                                   executorUid: nil,
+//                                                   taskPoint: 2,
+//                                                   taskPriodDay: 0,
+//                                                   completionDate: nil,
+//                                                   taskStatus: 1),
+//                                        TaskObject(taskName: "更換濾心",
+//                                                   image: "home_normal",
+//                                                   publisherName: "System",
+//                                                   executorName: nil,
+//                                                   executorUid: nil,
+//                                                   taskPoint: 2,
+//                                                   taskPriodDay: 0,
+//                                                   completionDate: nil,
+//                                                   taskStatus: 1)]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
+        FIRFirestoreSerivce.shared.readAssigningTasks { [weak self] (tasks) in
+            self?.normalTaskList = []
+            self?.regularTaskList = []
+            for task in tasks {
+                if task.taskPriodDay == 1 {
+                    self?.normalTaskList.append(task)
+                } else {
+                    self?.regularTaskList.append(task)
+                }
+            }
+            
+            self?.tableView.reloadData()
+        }
 
     }
 
@@ -74,7 +105,8 @@ class TaskListViewController: HMBaseViewController {
         let newTask = TaskObject(taskName: "掃地",
                        image: "home_normal",
                        publisherName: "System",
-                       executorName: "Daddy",
+                       executorName: nil,
+                       executorUid: nil,
                        taskPoint: 1,
                        taskPriodDay: 1,
                        completionDate: nil,
@@ -121,6 +153,7 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: String(describing: TasksTableViewCell.self),
             for: indexPath)
+        
         guard let taskCell = cell as? TasksTableViewCell else { return cell }
 
         if indexPath.section == 0 {

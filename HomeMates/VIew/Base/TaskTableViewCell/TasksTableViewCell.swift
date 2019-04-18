@@ -128,8 +128,8 @@ class TasksTableViewCell: UITableViewCell {
             hiddenFirstText = true
 
             taskRightBtn.setTitle("接受", for: .normal)
-            taskPeriodTextLbl.isHidden = false
-            taskPeriodTextLbl.text = "雙週任務"
+//            taskPeriodTextLbl.isHidden = false
+//            taskPeriodTextLbl.text = "雙週任務"
         }
     }
 
