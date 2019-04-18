@@ -13,7 +13,7 @@ extension UIAlertController {
     static func showAlertSheet(title: String?,
                                message: String?,
                                action: [(String)],
-                               completion: @escaping (_ index: Int)-> Void) -> UIAlertController {
+                               completion: @escaping (_ index: Int) -> Void) -> UIAlertController {
         let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         for (index, (title)) in action.enumerated() {
             let alertAction = UIAlertAction(title: title, style: .default) { (_) in

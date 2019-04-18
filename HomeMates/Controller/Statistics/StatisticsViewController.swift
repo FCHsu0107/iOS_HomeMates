@@ -61,6 +61,11 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
         super.viewDidLoad()
 
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
     deinit {
         print("\(#function)")
     }

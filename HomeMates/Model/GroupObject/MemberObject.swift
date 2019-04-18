@@ -8,7 +8,9 @@
 
 import Foundation
 
-struct MemberObject: Codable {
+struct MemberObject: Codable, Identifiable {
+    
+    var docId: String?
     
     let userId: String
     
@@ -19,6 +21,8 @@ struct MemberObject: Codable {
     let permission: Bool
     
     enum CodingKeys: String, CodingKey {
+        
+        case docId
         
         case userId
         

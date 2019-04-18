@@ -8,7 +8,13 @@
 
 import Foundation
 
-struct GroupObject: Codable {
+protocol Identifiable {
+    var docId: String? { get set }
+}
+
+struct GroupObject: Codable, Identifiable {
+    
+    var docId: String?
     
     let creatorId: String
     
@@ -23,6 +29,8 @@ struct GroupObject: Codable {
     let groupId: String
     
     enum CodingKeys: String, CodingKey {
+        
+        case docId
         
         case name
         

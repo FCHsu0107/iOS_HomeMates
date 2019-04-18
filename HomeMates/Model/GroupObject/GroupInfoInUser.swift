@@ -8,19 +8,27 @@
 
 import Foundation
 
-struct GroupInfoInUser: Codable {
+struct GroupInfoInUser: Codable, Identifiable {
+    
+    var docId: String?
     
     let isMember: Bool
     
     let groupID: String
     
+    let groupName: String
+    
     let isMainGroup: Bool
     
     enum CodingKeys: String, CodingKey {
         
+        case docId
+        
         case isMember
         
         case groupID
+        
+        case groupName
         
         case isMainGroup
     }

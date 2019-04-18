@@ -10,7 +10,7 @@ import UIKit
 
 class TrackerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
 
-    @IBOutlet weak var selectTaskPicker: STBaseTextField!
+    @IBOutlet weak var selectTaskPicker: HMBaseTextField!
     
     @IBOutlet weak var accomplishedDateTextLbl: UILabel!
     

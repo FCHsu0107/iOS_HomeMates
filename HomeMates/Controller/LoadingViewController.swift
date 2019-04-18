@@ -17,8 +17,9 @@ class LoadingViewController: UIViewController {
 
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         checkStatus()
     }
     
@@ -38,9 +39,7 @@ class LoadingViewController: UIViewController {
                 FIRFirestoreSerivce.shared.findUser { [weak self] bool in
                     if bool == true {
                         let tabBarVc = UIStoryboard.main.instantiateInitialViewController()!
-                            
-                            self?.present(tabBarVc, animated: true, completion: nil)
-                            
+                        
                             delegate.window?.rootViewController = tabBarVc
 
                     } else {
@@ -57,4 +56,5 @@ class LoadingViewController: UIViewController {
             }
         }
     }
+    
 }

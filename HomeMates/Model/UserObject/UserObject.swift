@@ -8,7 +8,9 @@
 
 import Foundation
 
-struct UserObject: Codable {
+struct UserObject: Codable, Identifiable {
+    
+    var docId: String?
     
     let name: String
     
@@ -25,6 +27,8 @@ struct UserObject: Codable {
     let mainGroupId: String
     
     enum CodingKeys: String, CodingKey {
+        
+        case docId
         
         case name
         

@@ -64,29 +64,26 @@ class LobbyViewController: HMBaseViewController {
 
         FIRFirestoreSerivce.shared.findMainGroup { [weak self] (object) in
             self?.groupInfo = object
-            self?.tableView.reloadData()
-        }
-        
-        FIRFirestoreSerivce.shared.readCheckTasks { [weak self] (tasks) in
-            self?.checkTaskList = []
-            for task in tasks {
-                if task.executorUid != UserDefaultManager.shared.userUid {
-                    self?.checkTaskList.append(task)
-                }
-            }
-            self?.tableView.reloadData()
-        }
-        
-        FIRFirestoreSerivce.shared.readAssigningTasks { [weak self] (tasks) in
-            self?.willDoTaskList = []
-            for task in tasks {
-                if task.taskPriodDay != 1 {
-                    self?.willDoTaskList.append(task)
+            FIRFirestoreSerivce.shared.readCheckTasks { [weak self] (tasks) in
+                self?.checkTaskList = []
+                for task in tasks {
+                    if task.executorUid != UserDefaultManager.shared.userUid {
+                        self?.checkTaskList.append(task)
+                    } else {}
                 }
                 self?.tableView.reloadData()
             }
+            
+            FIRFirestoreSerivce.shared.readAssigningTasks { [weak self] (tasks) in
+                self?.willDoTaskList = []
+                for task in tasks {
+                    if task.taskPriodDay != 1 {
+                        self?.willDoTaskList.append(task)
+                    }
+                    self?.tableView.reloadData()
+                }
+            }
         }
-        
     }
 
 }

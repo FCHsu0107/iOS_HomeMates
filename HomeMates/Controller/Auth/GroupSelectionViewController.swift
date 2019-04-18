@@ -125,7 +125,8 @@ class GroupSelectionViewController: UIViewController {
         guard let user = Auth.auth().currentUser else { return }
         guard let groupId = firstGroupIDTextField.text else { return }
 
-        let newGroup = GroupObject(creatorId: user.uid,
+        let newGroup = GroupObject(docId: nil,
+                                   creatorId: user.uid,
                                    createrName: userName,
                                    name: groupName,
                                    picture: nil,
@@ -134,7 +135,8 @@ class GroupSelectionViewController: UIViewController {
         
         FIRFirestoreSerivce.shared.createGroup(for: newGroup, in: .groups)
         
-        let newUser = UserObject(name: userName,
+        let newUser = UserObject(docId: nil,
+                                 name: userName,
                                  email: user.email!,
                                  picture: nil,
                                  creator: true,
@@ -144,8 +146,10 @@ class GroupSelectionViewController: UIViewController {
         
         FIRFirestoreSerivce.shared.createUser(uid: user.uid, for: newUser, in: .users)
         
-        let groupInfoInUser = GroupInfoInUser(isMember: true,
+        let groupInfoInUser = GroupInfoInUser(docId: nil,
+                                              isMember: true,
                                               groupID: UserDefaultManager.shared.groupId!,
+                                              groupName: groupName,
                                               isMainGroup: true)
         
         FIRFirestoreSerivce.shared.createSub(for: groupInfoInUser,
@@ -153,7 +157,8 @@ class GroupSelectionViewController: UIViewController {
                                              inDocument: user.uid,
                                              inNext: .groups)
         
-        let groupMemnber = MemberObject(userId: user.uid,
+        let groupMemnber = MemberObject(docId: nil,
+                                        userId: user.uid,
                                         userName: userName,
                                         isCreator: true,
                                         permission: true)
@@ -163,20 +168,16 @@ class GroupSelectionViewController: UIViewController {
                                              inDocument: UserDefaultManager.shared.groupId!,
                                              inNext: .members)
  
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let tabBarVc = storyboard.instantiateViewController(
-            withIdentifier: String(describing: HMTabBarViewController.self))
-            as? HMTabBarViewController {
-            self.present(tabBarVc, animated: true, completion: nil)
-        }
+        let tabBarVc = UIStoryboard.main.instantiateInitialViewController()!
+        self.present(tabBarVc, animated: true, completion: nil)
     }
     
     func searchTheGroup() {
         guard let userName = userNameTextField.text else { return }
         guard let user = Auth.auth().currentUser else { return }
         
-        var groupsName: [String] = []
-        var creatorId: [String] = []
+        var groupResults: [GroupObject] = []
+        var creatorNames: [String] = []
         
         guard let groupId = firstGroupIDTextField.text else { return }
         FIRFirestoreSerivce.shared.findGroup(groupId: groupId, returning: GroupObject.self) { groups, docIds  in
@@ -184,15 +185,17 @@ class GroupSelectionViewController: UIViewController {
                 AlertView.sigleActionAlert(title: "群組不存在", message: "請確認群組 ID 或創立新群組", clickTitle: "收到", showInVc: self)
             } else {
                 for index in groups {
-                    groupsName.append(index.createrName)
+                    creatorNames.append(index.createrName)
+                    groupResults.append(index)
                 }
-                for index in groups {
-                    creatorId.append(index.creatorId)
-                }
+   
                 let alertSheet =
-                    UIAlertController.showAlertSheet(title: "確認加入群組", message: "確認創辦人", action: groupsName) { (index) in
+                    UIAlertController.showAlertSheet(title: "確認加入群組",
+                                                     message: "確認創辦人",
+                                                     action: creatorNames) { (index) in
 
-                        let memberInfo = MemberObject(userId: user.uid,
+                        let memberInfo = MemberObject(docId: nil,
+                                                      userId: user.uid,
                                                       userName: userName,
                                                       isCreator: false,
                                                       permission: false)
@@ -202,7 +205,8 @@ class GroupSelectionViewController: UIViewController {
                                                              inDocument: docIds[index],
                                                              inNext: .members)
                         
-                        let newUser = UserObject(name: userName,
+                        let newUser = UserObject(docId: nil,
+                                                 name: userName,
                                                  email: user.email!,
                                                  picture: nil,
                                                  creator: false,
@@ -212,36 +216,40 @@ class GroupSelectionViewController: UIViewController {
                         
                         FIRFirestoreSerivce.shared.createUser(uid: user.uid, for: newUser, in: .users)
                         
-                        let groupInfoInUser = GroupInfoInUser(isMember: false,
+                        let groupInfoInUser = GroupInfoInUser(docId: nil,
+                                                              isMember: false,
                                                               groupID: docIds[index],
+                                                              groupName: groupResults[index].name,
                                                               isMainGroup: true)
                         FIRFirestoreSerivce.shared.createSub(for: groupInfoInUser,
                                                              in: .users,
                                                              inDocument: user.uid,
                                                              inNext: .groups)
                         
-                        let application = ApplicationObject(applicantId: user.uid,
-                                                            groupCreator: creatorId[index],
+                        let application = ApplicationObject(docId: nil,
+                                                            applicantId: user.uid,
+                                                            groupCreator: groupResults[index].creatorId,
                                                             groupId: docIds[index],
                                                             applicantName: userName)
                         
                         FIRFirestoreSerivce.shared.createGroup(for: application, in: .applications)
                         
-                        FIRFirestoreSerivce.shared.upadeSingleStatus(uid: creatorId[index],
+                        FIRFirestoreSerivce.shared.upadeSingleStatus(uid: groupResults[index].creatorId,
                                                                      in: .users,
                                                                      status: UserObject.CodingKeys.application.rawValue,
                                                                      bool: true)
                         
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        if let tabBarVc = storyboard.instantiateViewController(
-                            withIdentifier: String(describing: HMTabBarViewController.self))
-                            as? HMTabBarViewController {
-                            self.present(tabBarVc, animated: true, completion: nil)
-                        }
+                        let tabBarVc = UIStoryboard.main.instantiateInitialViewController()!
+                        self.present(tabBarVc, animated: true, completion: nil)
+                
                 }
                 
                 self.present(alertSheet, animated: true, completion: nil)
             }
         }
+    }
+    
+    func applyToJoinAGroup() {
+        
     }
 }

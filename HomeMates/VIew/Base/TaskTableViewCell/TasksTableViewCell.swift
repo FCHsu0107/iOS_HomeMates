@@ -34,6 +34,8 @@ class TasksTableViewCell: UITableViewCell {
 
     @IBOutlet weak var contributionPersentView: UIView!
     
+    var clickHandler: ((UITableViewCell) -> Void)?
+    
     let progressView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 6))
 
     var showContributionPersent: Bool = false {
@@ -75,7 +77,7 @@ class TasksTableViewCell: UITableViewCell {
                 taskTotalPointsLbl.isHidden = false
                 taskRightBtn.isHidden = true
             } else {
-                pointTextLbl.isHidden = true
+                pointTextLbl.isHidden = false
                 totalPointsTextLbl.isHidden = true
                 taskTotalPointsLbl.isHidden = true
                 taskRightBtn.isHidden = false
@@ -99,7 +101,7 @@ class TasksTableViewCell: UITableViewCell {
         contributionPersentView.layer.cornerRadius = 5
         progressView.layer.cornerRadius = 5
     }
-
+    
     func loadData(taskObject: TaskObject, status: TaskCellStatus) {
 
         taskImage.image = UIImage(named: taskObject.image)
@@ -138,8 +140,14 @@ class TasksTableViewCell: UITableViewCell {
             taskPeriodTextLbl.isHidden = false
             taskPeriodTextLbl.text = "每\(taskObject.taskPriodDay)天一次"
         }
+        taskRightBtn.addTarget(self, action: #selector(clickBtnAction), for: .touchUpInside)
     }
 
+    @objc func clickBtnAction() {
+        clickHandler?(self)
+        print(self)
+    }
+    
     func showContributionView(member: String, memberImage: String, personalTotalPoints: Int, persent: Int) {
         showContributionPersent = true
         taskImage.image = UIImage(named: memberImage)

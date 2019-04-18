@@ -56,7 +56,7 @@ class FIRFirestoreSerivce {
             ref = reference(to: collectionReference).document()
             
             guard let ref = ref else { return }
-            
+            json["docId"] = ref.documentID
             json["shortcup"] = ref.documentID.substring(toIndex: ref.documentID.length - 14)
             
             reference(to: collectionReference).document(ref.documentID).setData(json)
@@ -74,12 +74,18 @@ class FIRFirestoreSerivce {
                                  inNext subCollectionReference: FIRCollectionReference) {
         var ref: DocumentReference?
         do {
-            let json = try encodableObject.toJSON()
+            var json = try encodableObject.toJSON()
             
             ref = subReference(to: collectionReference,
                                in: inDocument,
-                               toNext: subCollectionReference).addDocument(data: json)
+                               toNext: subCollectionReference).document()
             guard let ref = ref else { return }
+            json["docId"] = ref.documentID
+            subReference(to: collectionReference,
+                         in: inDocument,
+                         toNext: subCollectionReference)
+                .document(ref.documentID)
+                .setData(json)
             print(ref.documentID)
             
         } catch {
@@ -188,10 +194,10 @@ class FIRFirestoreSerivce {
         }
     }
     
-    func readSubGroup<T: Decodable>(docUid: String,
-                                    status: Int,
-                                    returning objectType: T.Type,
-                                    completion: @escaping ([T]) -> Void) {
+    private func readSubGroup<T: Decodable>(docUid: String,
+                                            status: Int,
+                                            returning objectType: T.Type,
+                                            completion: @escaping ([T]) -> Void) {
         reference(to: .groups)
             .document(docUid)
             .collection(FIRCollectionReference.tasks.rawValue)
@@ -229,7 +235,6 @@ class FIRFirestoreSerivce {
                 completion(false)
                 return
             }
-            print(data[UserObject.CodingKeys.finishSignUp.rawValue] as Any)
             
             completion(data[UserObject.CodingKeys.finishSignUp.rawValue] as? Bool)
         }
@@ -240,7 +245,6 @@ class FIRFirestoreSerivce {
                               in collectionReference: FIRCollectionReference) {
         do {
             let json = try encodableObject.toJSON()
-         
             reference(to: collectionReference).document(uid).setData(json)
         } catch {
             print(error)
@@ -255,6 +259,21 @@ class FIRFirestoreSerivce {
                 print("Document successfully updated")
             }
         }
+    }
+    
+    func updateTaskStatus<T: Encodable>(taskUid: String, for encodableOject: T) {
+        
+        do {
+            let json = try encodableOject.toJSON()
+            subReference(to: .groups,
+                         in: UserDefaultManager.shared.groupId!,
+                         toNext: .tasks)
+                .document(taskUid)
+                .setData(json)
+        } catch {
+            print(error)
+        }
+        
     }
 //
 //    func updateSubSingleStatus(in collectionReference: FIRCollectionReference,
@@ -282,7 +301,7 @@ class FIRFirestoreSerivce {
     func findMainGroup(completion: @escaping (GroupObject) -> Void) {
         let user = Auth.auth().currentUser
         guard let currentUser = user else { return }
-        
+        UserDefaultManager.shared.userUid = currentUser.uid
         let ref = reference(to: .users).document(currentUser.uid)
         ref.getDocument { [ weak self ](documnet, err) in
             if let document = documnet, document.exists {
@@ -293,7 +312,7 @@ class FIRFirestoreSerivce {
                     let groupId = object.mainGroupId
                     UserDefaultManager.shared.groupId = groupId
                     UserDefaultManager.shared.userName = object.name
-
+                   
                     self?.reference(to: .groups).document(groupId).getDocument(completion: { (snapshot, err) in
 
                         do {

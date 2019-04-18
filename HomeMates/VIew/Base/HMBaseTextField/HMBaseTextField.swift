@@ -8,7 +8,7 @@
 
 import UIKit
 
-class STBaseTextField: UITextField {
+class HMBaseTextField: UITextField {
     
     override func textRect(forBounds bounds: CGRect) -> CGRect {
         

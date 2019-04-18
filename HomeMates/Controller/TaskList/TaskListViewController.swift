@@ -47,15 +47,17 @@ class TaskListViewController: HMBaseViewController {
     }
 
     @IBAction func addTask(_ sender: Any) {
-        let newTask = TaskObject(taskName: "掃地",
-                       image: "home_normal",
-                       publisherName: "System",
-                       executorName: nil,
-                       executorUid: nil,
-                       taskPoint: 1,
-                       taskPriodDay: 1,
-                       completionDate: nil,
-                       taskStatus: 1)
+        let newTask = TaskObject(docId: nil,
+                                 taskName: "掃地",
+                                 image: "home_normal",
+                                 publisherName: "System",
+                                 executorName: nil,
+                                 executorUid: nil,
+                                 taskPoint: 1,
+                                 taskPriodDay: 1,
+                                 completionDate: nil,
+                                 taskStatus: 1)
+        
         guard let groupId = UserDefaultManager.shared.groupId else { return }
         
         FIRFirestoreSerivce.shared.createSub(for: newTask,
@@ -106,6 +108,16 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
             let task = normalTaskList[indexPath.row]
             taskCell.loadData(taskObject: task, status: TaskCellStatus.assignNormalTask)
             
+            taskCell.clickHandler = { [weak self] cell in
+                guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
+                
+                print(indexPath)
+                var upadeTask = self?.normalTaskList[indexPath.row]
+                upadeTask?.executorName = UserDefaultManager.shared.userName
+                upadeTask?.executorUid = UserDefaultManager.shared.userUid
+                upadeTask?.taskStatus = 2
+                FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: upadeTask!.docId!, for: upadeTask)
+            }
         } else {
             
             let task = regularTaskList[indexPath.row]

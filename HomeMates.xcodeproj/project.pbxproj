@@ -12,6 +12,9 @@
 		B91D3A9C2264BF1300C1A28F /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3A9B2264BF1300C1A28F /* String+Extension.swift */; };
 		B91D3A9F2264CA0F00C1A28F /* ApplicationObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3A9E2264CA0F00C1A28F /* ApplicationObject.swift */; };
 		B91D3AA1226594EF00C1A28F /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3AA0226594EF00C1A28F /* UIAlertController+Extension.swift */; };
+		B91D3AF0226880A600C1A28F /* PieckerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3AEF226880A600C1A28F /* PieckerTextField.swift */; };
+		B91D3AF32268A5A500C1A28F /* TaskMakerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3AF12268A5A500C1A28F /* TaskMakerTableViewCell.swift */; };
+		B91D3AF42268A5A500C1A28F /* TaskMakerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91D3AF22268A5A500C1A28F /* TaskMakerTableViewCell.xib */; };
 		B9261C792253858A0033ABC9 /* HMTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C782253858A0033ABC9 /* HMTabBarViewController.swift */; };
 		B9261C7B225386030033ABC9 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C7A225386030033ABC9 /* UIStoryboard+Extension.swift */; };
 		B9261C7D225386810033ABC9 /* Task.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9261C7C225386810033ABC9 /* Task.storyboard */; };
@@ -76,6 +79,9 @@
 		B91D3A9B2264BF1300C1A28F /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		B91D3A9E2264CA0F00C1A28F /* ApplicationObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationObject.swift; sourceTree = "<group>"; };
 		B91D3AA0226594EF00C1A28F /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
+		B91D3AEF226880A600C1A28F /* PieckerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieckerTextField.swift; sourceTree = "<group>"; };
+		B91D3AF12268A5A500C1A28F /* TaskMakerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskMakerTableViewCell.swift; sourceTree = "<group>"; };
+		B91D3AF22268A5A500C1A28F /* TaskMakerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskMakerTableViewCell.xib; sourceTree = "<group>"; };
 		B9261C782253858A0033ABC9 /* HMTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMTabBarViewController.swift; sourceTree = "<group>"; };
 		B9261C7A225386030033ABC9 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		B9261C7C225386810033ABC9 /* Task.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Task.storyboard; sourceTree = "<group>"; };
@@ -158,6 +164,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B91D3AF52268A8DA00C1A28F /* TaskMakerCell */ = {
+			isa = PBXGroup;
+			children = (
+				B91D3AF12268A5A500C1A28F /* TaskMakerTableViewCell.swift */,
+				B91D3AF22268A5A500C1A28F /* TaskMakerTableViewCell.xib */,
+			);
+			path = TaskMakerCell;
+			sourceTree = "<group>";
+		};
 		B9261C72225384A50033ABC9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +218,7 @@
 				B9B7F52D225CAD6100A6DA9E /* TaskObject */,
 				B9B7F52B225CAD5700A6DA9E /* TaskCellStatus.swift */,
 				B9B99F4722641FA100314BB6 /* HMCornerRadius.swift */,
+				B91D3AEF226880A600C1A28F /* PieckerTextField.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -324,6 +340,7 @@
 		B9B7F537225D959700A6DA9E /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				B91D3AF52268A8DA00C1A28F /* TaskMakerCell */,
 				B9261C9522545AA70033ABC9 /* TaskTableViewCell */,
 				B9B7F53B225D95DC00A6DA9E /* TaskHeaderView */,
 				B9B7F53A225D95CC00A6DA9E /* HMBaseTextField */,
@@ -529,6 +546,7 @@
 				B9D71AA522534D4F00F242DA /* Main.storyboard in Resources */,
 				B9B99F41226313D300314BB6 /* Loading.storyboard in Resources */,
 				B94D15CB225886FB00F43B78 /* EventCell.xib in Resources */,
+				B91D3AF42268A5A500C1A28F /* TaskMakerTableViewCell.xib in Resources */,
 				B9261C85225387070033ABC9 /* Statistics.storyboard in Resources */,
 				B9B7F536225D933600A6DA9E /* TrackerTableViewCell.xib in Resources */,
 			);
@@ -639,6 +657,7 @@
 				B9D295D72258CD7D00CF7869 /* TaskListViewController.swift in Sources */,
 				B91D3A9F2264CA0F00C1A28F /* ApplicationObject.swift in Sources */,
 				B9B99F4D22648E4B00314BB6 /* GroupInfoInUser.swift in Sources */,
+				B91D3AF0226880A600C1A28F /* PieckerTextField.swift in Sources */,
 				B9D71AA022534D4F00F242DA /* AppDelegate.swift in Sources */,
 				B9261C97225489110033ABC9 /* TaskObject.swift in Sources */,
 				B9D295D42258C18F00CF7869 /* TaskRecordObject.swift in Sources */,
@@ -656,6 +675,7 @@
 				B94D15C522585DA200F43B78 /* StatisticsViewController.swift in Sources */,
 				B9B99F3E226311B000314BB6 /* LoadingViewController.swift in Sources */,
 				B9B7F52C225CAD5700A6DA9E /* TaskCellStatus.swift in Sources */,
+				B91D3AF32268A5A500C1A28F /* TaskMakerTableViewCell.swift in Sources */,
 				B9B99F322261898D00314BB6 /* UserObject.swift in Sources */,
 				B94D15A622560AA500F43B78 /* LobbyHeaderCell.swift in Sources */,
 				B9B7F531225CC00000A6DA9E /* ChartsTableViewCell.swift in Sources */,

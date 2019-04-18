@@ -125,7 +125,6 @@ class AuthViewController: HMBaseViewController {
     }
     
     @IBAction func enterBtnAction(_ sender: Any) {
-        
         if selectionBarBtn[0].isSelected == true {
             if emailTextField.text?.isEmpty == true {
 
@@ -134,53 +133,57 @@ class AuthViewController: HMBaseViewController {
             } else if passwordTextField.text != checkTextField.text || passwordTextField.text?.isEmpty == true {
 
                 AlertView.sigleActionAlert(title: "錯誤", message: "請確認密碼無誤", clickTitle: "收到", showInVc: self)
-
+                
             } else {
-
-                FIRAuthService.shared.createUser(withEmail: emailTextField.text!,
-                                                 password: passwordTextField.text!) { (user, error) in
-                    if error == nil {
-                        guard let user = user else { return }
-                        let newUser = UserObject(name: " ",
-                                                 email: (user.email)!,
-                                                 picture: nil,
-                                                 creator: false,
-                                                 application: false,
-                                                 finishSignUp: false,
-                                                 mainGroupId: " ")
-                        FIRFirestoreSerivce.shared.createUser(uid: user.uid,
-                                                              for: newUser,
-                                                              in: .users)
-                        self.performSegue(withIdentifier: "selectGroupSegue", sender: nil)
-                        } else {
-                        AlertView.sigleActionAlert(title: "錯誤",
-                                                   message: error?.localizedDescription,
-                                                   clickTitle: "收到",
-                                                   showInVc: self)
-                    }
-                }
+                createUserDoc()
             }
-
         } else {
             if emailTextField.text?.isEmpty == true || passwordTextField.text?.isEmpty == true {
                 AlertView.sigleActionAlert(title: "錯誤", message: "請輸入帳號或密碼", clickTitle: "收到", showInVc: self)
             } else {
-                
-                FIRAuthService.shared.signIn(withEmail: emailTextField.text!,
-                                             password: passwordTextField.text!) { (error) in
-                    if error == nil {
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let tabBarVC = storyboard.instantiateViewController(
-                            withIdentifier: String(describing: HMTabBarViewController.self))
-                        self.present(tabBarVC, animated: true, completion: nil)
-                    } else {
-                        AlertView.sigleActionAlert(title: "錯誤",
-                                                   message: error?.localizedDescription,
-                                                   clickTitle: "收到",
-                                                   showInVc: self)
-                    }
-                }
+              signInAction()
             }
         }
     }
+    
+    func createUserDoc() {
+        FIRAuthService.shared.createUser(withEmail: emailTextField.text!,
+                                         password: passwordTextField.text!) { (user, error) in
+            if error == nil {
+                guard let user = user else { return }
+                let newUser = UserObject(docId: nil,
+                                         name: " ",
+                                         email: (user.email)!,
+                                         picture: nil,
+                                         creator: false,
+                                         application: false,
+                                         finishSignUp: false,
+                                         mainGroupId: " ")
+                FIRFirestoreSerivce.shared.createUser(uid: user.uid,
+                                                      for: newUser,
+                                                      in: .users)
+                self.performSegue(withIdentifier: "selectGroupSegue", sender: nil)
+            } else {
+                AlertView.sigleActionAlert(title: "錯誤",
+                                           message: error?.localizedDescription,
+                                           clickTitle: "收到",
+                                           showInVc: self)
+            }
+        }
+    }
+    
+    func signInAction() {
+        FIRAuthService.shared.signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (error) in
+            if error == nil {
+                let tabBarVC = UIStoryboard.main.instantiateInitialViewController()!
+                self.present(tabBarVC, animated: true, completion: nil)
+            } else {
+                AlertView.sigleActionAlert(title: "錯誤",
+                                           message: error?.localizedDescription,
+                                           clickTitle: "收到",
+                                           showInVc: self)
+            }
+        }
+    }
+    
 }

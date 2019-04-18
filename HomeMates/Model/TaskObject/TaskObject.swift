@@ -8,7 +8,9 @@
 
 import Foundation
 
-struct TaskObject: Codable {
+struct TaskObject: Codable, Identifiable {
+    
+    var docId: String?
 
     let taskName: String
 
@@ -16,9 +18,9 @@ struct TaskObject: Codable {
 
     let publisherName: String
 
-    let executorName: String?
+    var executorName: String?
     
-    let executorUid: String?
+    var executorUid: String?
 
     let taskPoint: Int
 
@@ -26,9 +28,11 @@ struct TaskObject: Codable {
     
     let completionDate: Date?
     
-    let taskStatus: Int
+    var taskStatus: Int
     
     enum CodingKeys: String, CodingKey {
+        
+        case docId 
         
         case taskName
         
