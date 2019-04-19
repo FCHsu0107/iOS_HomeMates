@@ -15,6 +15,10 @@
 		B91D3AF0226880A600C1A28F /* PieckerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3AEF226880A600C1A28F /* PieckerTextField.swift */; };
 		B91D3AF32268A5A500C1A28F /* TaskMakerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3AF12268A5A500C1A28F /* TaskMakerTableViewCell.swift */; };
 		B91D3AF42268A5A500C1A28F /* TaskMakerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91D3AF22268A5A500C1A28F /* TaskMakerTableViewCell.xib */; };
+		B91D3AF8226970AF00C1A28F /* TotalPointsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3AF6226970AF00C1A28F /* TotalPointsTableViewCell.swift */; };
+		B91D3AF9226970AF00C1A28F /* TotalPointsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91D3AF7226970AF00C1A28F /* TotalPointsTableViewCell.xib */; };
+		B91D3AFC22698CF700C1A28F /* PointGoalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3AFA22698CF700C1A28F /* PointGoalTableViewCell.swift */; };
+		B91D3AFD22698CF700C1A28F /* PointGoalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91D3AFB22698CF700C1A28F /* PointGoalTableViewCell.xib */; };
 		B9261C792253858A0033ABC9 /* HMTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C782253858A0033ABC9 /* HMTabBarViewController.swift */; };
 		B9261C7B225386030033ABC9 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C7A225386030033ABC9 /* UIStoryboard+Extension.swift */; };
 		B9261C7D225386810033ABC9 /* Task.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9261C7C225386810033ABC9 /* Task.storyboard */; };
@@ -82,6 +86,10 @@
 		B91D3AEF226880A600C1A28F /* PieckerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieckerTextField.swift; sourceTree = "<group>"; };
 		B91D3AF12268A5A500C1A28F /* TaskMakerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskMakerTableViewCell.swift; sourceTree = "<group>"; };
 		B91D3AF22268A5A500C1A28F /* TaskMakerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskMakerTableViewCell.xib; sourceTree = "<group>"; };
+		B91D3AF6226970AF00C1A28F /* TotalPointsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalPointsTableViewCell.swift; sourceTree = "<group>"; };
+		B91D3AF7226970AF00C1A28F /* TotalPointsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TotalPointsTableViewCell.xib; sourceTree = "<group>"; };
+		B91D3AFA22698CF700C1A28F /* PointGoalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointGoalTableViewCell.swift; sourceTree = "<group>"; };
+		B91D3AFB22698CF700C1A28F /* PointGoalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PointGoalTableViewCell.xib; sourceTree = "<group>"; };
 		B9261C782253858A0033ABC9 /* HMTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMTabBarViewController.swift; sourceTree = "<group>"; };
 		B9261C7A225386030033ABC9 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		B9261C7C225386810033ABC9 /* Task.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Task.storyboard; sourceTree = "<group>"; };
@@ -270,6 +278,10 @@
 			children = (
 				B9261C9122545A9D0033ABC9 /* TasksTableViewCell.swift */,
 				B9261C9222545A9D0033ABC9 /* TasksTableViewCell.xib */,
+				B91D3AF6226970AF00C1A28F /* TotalPointsTableViewCell.swift */,
+				B91D3AF7226970AF00C1A28F /* TotalPointsTableViewCell.xib */,
+				B91D3AFA22698CF700C1A28F /* PointGoalTableViewCell.swift */,
+				B91D3AFB22698CF700C1A28F /* PointGoalTableViewCell.xib */,
 			);
 			path = TaskTableViewCell;
 			sourceTree = "<group>";
@@ -534,6 +546,7 @@
 				B9D71AAA22534D5100F242DA /* LaunchScreen.storyboard in Resources */,
 				B9261C81225386AF0033ABC9 /* More.storyboard in Resources */,
 				B9D295D9225A3E1D00CF7869 /* GoogleService-Info.plist in Resources */,
+				B91D3AFD22698CF700C1A28F /* PointGoalTableViewCell.xib in Resources */,
 				B9261C7D225386810033ABC9 /* Task.storyboard in Resources */,
 				B94D15A722560AA500F43B78 /* LobbyHeaderCell.xib in Resources */,
 				B9261C7F225386930033ABC9 /* Profile.storyboard in Resources */,
@@ -545,6 +558,7 @@
 				B9261C83225386C40033ABC9 /* Lobby.storyboard in Resources */,
 				B9D71AA522534D4F00F242DA /* Main.storyboard in Resources */,
 				B9B99F41226313D300314BB6 /* Loading.storyboard in Resources */,
+				B91D3AF9226970AF00C1A28F /* TotalPointsTableViewCell.xib in Resources */,
 				B94D15CB225886FB00F43B78 /* EventCell.xib in Resources */,
 				B91D3AF42268A5A500C1A28F /* TaskMakerTableViewCell.xib in Resources */,
 				B9261C85225387070033ABC9 /* Statistics.storyboard in Resources */,
@@ -683,6 +697,7 @@
 				B94D15B322572A2200F43B78 /* HMBaseViewController.swift in Sources */,
 				B9B99F3022602A3800314BB6 /* MoreViewController.swift in Sources */,
 				B9B99F462263690C00314BB6 /* GroupObject.swift in Sources */,
+				B91D3AF8226970AF00C1A28F /* TotalPointsTableViewCell.swift in Sources */,
 				B9B10D732258A1780081C856 /* UIView+Extension.swift in Sources */,
 				B9261C7B225386030033ABC9 /* UIStoryboard+Extension.swift in Sources */,
 				B9B99F352262151100314BB6 /* FIRFirestoreService.swift in Sources */,
@@ -690,6 +705,7 @@
 				B9B99F4822641FA100314BB6 /* HMCornerRadius.swift in Sources */,
 				B91D3A9A2264ABD400C1A28F /* MemberObject.swift in Sources */,
 				B94D15AF225721C500F43B78 /* ProfileHeaderViewCell.swift in Sources */,
+				B91D3AFC22698CF700C1A28F /* PointGoalTableViewCell.swift in Sources */,
 				B9261C792253858A0033ABC9 /* HMTabBarViewController.swift in Sources */,
 				B9261C9F2254C2B20033ABC9 /* TableView+Extension.swift in Sources */,
 				B91D3A9C2264BF1300C1A28F /* String+Extension.swift in Sources */,

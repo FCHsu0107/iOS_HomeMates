@@ -27,14 +27,22 @@ class ProfileViewController: HMBaseViewController {
     var taskListTitle: [String] = ["", "當前任務", "任務日誌"]
     var processTaskList: [TaskObject] = []
 
-    var doneTaskList: [TaskRecord] = [
-        TaskRecord(taskName: "洗碗", taskImage: "home_normal", executorName: "阿明", taskPoint: 1, taskTimes: 10),
-        TaskRecord(taskName: "倒垃圾", taskImage: "home_normal", executorName: "阿明", taskPoint: 1, taskTimes: 5)]
+    var doneTaskList: [TaskRecord] = [TaskRecord(taskName: "洗碗",
+                                                 taskImage: "home_normal",
+                                                 executorName: "UserNametest00",
+                                                 taskPoint: 2,
+                                                 taskTimes: 10),
+                                      TaskRecord(taskName: "倒垃圾",
+                                                 taskImage: "home_normal",
+                                                 executorName: "UserNametest00",
+                                                 taskPoint: 2,
+                                                 taskTimes: 10)]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.jq_registerCellWithNib(identifier: String(describing: ProfileHeaderViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
+        tableView.jq_registerCellWithNib(identifier: String(describing: TotalPointsTableViewCell.self), bundle: nil)
         
         FIRFirestoreSerivce.shared.readDoingTasks { [weak self] (tasks) in
             
@@ -90,28 +98,36 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self),
-                                                 for: indexPath)
-        guard let taskCell = cell as? TasksTableViewCell else { return cell }
+        
 
         switch indexPath.section {
 
         case 1:
-
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self),
+                                                     for: indexPath)
+            guard let taskCell = cell as? TasksTableViewCell else { return cell }
             let task = processTaskList[indexPath.row]
             taskCell.loadData(taskObject: task, status: TaskCellStatus.doingTask)
+            
+            taskCell.clickHandler = {[weak self] cell, tag in
+                guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
+
+                guard var updateTask = self?.processTaskList[indexPath.row] else { return }
+                updateTask.taskStatus += tag
+                FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
+            }
 
             return taskCell
 
         case 2:
 
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TotalPointsTableViewCell.self), for: indexPath)
+            guard let pointsCell = cell as? TotalPointsTableViewCell else { return cell }
             let task = doneTaskList[indexPath.row]
-            taskCell.personalTaskSum(taskName: task.taskName,
-                                     image: task.taskImage,
-                                     taskTimes: task.taskTimes,
-                                     point: task.taskPoint)
-
-            return taskCell
+            pointsCell.loadData(tasksTracker: task)
+            
+            return pointsCell
 
         default:
             return UITableViewCell()

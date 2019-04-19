@@ -106,24 +106,44 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             
             let task = normalTaskList[indexPath.row]
+            
             taskCell.loadData(taskObject: task, status: TaskCellStatus.assignNormalTask)
             
-            taskCell.clickHandler = { [weak self] cell in
-                guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
-                
-                print(indexPath)
-                var upadeTask = self?.normalTaskList[indexPath.row]
-                upadeTask?.executorName = UserDefaultManager.shared.userName
-                upadeTask?.executorUid = UserDefaultManager.shared.userUid
-                upadeTask?.taskStatus = 2
-                FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: upadeTask!.docId!, for: upadeTask)
-            }
+//            taskCell.clickHandler = {[weak self] cell, _ in
+//                guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
+//
+//                guard var updateTask = self?.normalTaskList[indexPath.row] else { return }
+//                updateTask.executorName = UserDefaultManager.shared.userName
+//                updateTask.executorUid = UserDefaultManager.shared.userUid
+//                updateTask.taskStatus = 2
+//                FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
+//            }
+
         } else {
             
             let task = regularTaskList[indexPath.row]
             taskCell.loadData(taskObject: task, status: TaskCellStatus.assignRegularTask)
 
         }
+        taskCell.clickHandler = {[weak self] cell, _ in
+            guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
+            
+            if indexPath.section == 0 {
+                guard var updateTask = self?.normalTaskList[indexPath.row] else { return }
+                updateTask.executorName = UserDefaultManager.shared.userName
+                updateTask.executorUid = UserDefaultManager.shared.userUid
+                updateTask.taskStatus = 2
+                FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
+            } else {
+                guard var updateTask = self?.regularTaskList[indexPath.row] else { return }
+                updateTask.executorName = UserDefaultManager.shared.userName
+                updateTask.executorUid = UserDefaultManager.shared.userUid
+                updateTask.taskStatus = 2
+                FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
+            }
+            
+        }
+        
         return taskCell
     }
 

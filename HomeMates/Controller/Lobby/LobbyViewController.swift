@@ -36,32 +36,13 @@ class LobbyViewController: HMBaseViewController {
     var checkTaskList: [TaskObject] = []
 
     var willDoTaskList: [TaskObject] = []
-//        = [
-//        TaskObject(taskName: "打預防針",
-//                   image: "home_normal",
-//                   publisherName: "System",
-//                   executorName: nil,
-//                   executorUid: nil,
-//                   taskPoint: 2,
-//                   taskPriodDay: 0,
-//                   completionDate: nil,
-//                   taskStatus: 1),
-//        TaskObject(taskName: "清洗冷氣機濾網",
-//                   image: "home_normal",
-//                   publisherName: "System",
-//                   executorName: nil,
-//                   executorUid: nil,
-//                   taskPoint: 2,
-//                   taskPriodDay: 0,
-//                   completionDate: nil,
-//                   taskStatus: 1)
-//    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: LobbyHeaderCell.self), bundle: nil)
-
+        tableView.jq_registerCellWithNib(identifier: String(describing: PointGoalTableViewCell.self), bundle: nil)
+        
         FIRFirestoreSerivce.shared.findMainGroup { [weak self] (object) in
             self?.groupInfo = object
             FIRFirestoreSerivce.shared.readCheckTasks { [weak self] (tasks) in
@@ -134,14 +115,12 @@ extension LobbyViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self),
-                                                 for: indexPath)
-        guard let taskCell = cell as? TasksTableViewCell else { return cell }
-
+        
         switch indexPath.section {
         case 2, 3:
-
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self),
+                                                     for: indexPath)
+            guard let taskCell = cell as? TasksTableViewCell else { return cell }
            if indexPath.section == 3 {
             let task = checkTaskList[indexPath.row]
             taskCell.loadData(taskObject: task, status: TaskCellStatus.checkTask)
@@ -154,12 +133,15 @@ extension LobbyViewController: UITableViewDataSource {
             return taskCell
 
         case 1:
-            taskCell.showContributionView(member: "小明",
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PointGoalTableViewCell.self), for: indexPath)
+            guard let goalCell = cell as? PointGoalTableViewCell else { return cell }
+            goalCell.showContributionView(member: "小明",
                                           memberImage: "home_normal",
                                           personalTotalPoints: 40,
                                           persent: 20)
 
-            return taskCell
+            return goalCell
 
         default:
             return UITableViewCell()

@@ -12,7 +12,7 @@ struct TaskRecord {
 
     let taskName: String
 
-    let taskImage: String
+    let taskImage: String?
 
     let executorName: String
 

@@ -16,7 +16,7 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
             tableView.delegate = self
             tableView.dataSource = self
             tableView.jq_registerCellWithNib(identifier: String(describing: EventCell.self), bundle: nil)
-            tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
+            tableView.jq_registerCellWithNib(identifier: String(describing: PointGoalTableViewCell.self), bundle: nil)
             tableView.jq_registerCellWithNib(identifier: String(describing: ChartsTableViewCell.self), bundle: nil)
             tableView.jq_registerCellWithNib(identifier: String(describing: TrackerTableViewCell.self), bundle: nil)
         }
@@ -186,9 +186,9 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             
         case 3:
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self),
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PointGoalTableViewCell.self),
                                                      for: indexPath)
-            guard let contributionCell = cell as? TasksTableViewCell else { return cell}
+            guard let contributionCell = cell as? PointGoalTableViewCell else { return cell}
             
             contributionCell.showContributionView(member: "哎唷喂啊",
                                                   memberImage: "profile",
