@@ -19,6 +19,8 @@
 		B91D3AF9226970AF00C1A28F /* TotalPointsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91D3AF7226970AF00C1A28F /* TotalPointsTableViewCell.xib */; };
 		B91D3AFC22698CF700C1A28F /* PointGoalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3AFA22698CF700C1A28F /* PointGoalTableViewCell.swift */; };
 		B91D3AFD22698CF700C1A28F /* PointGoalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91D3AFB22698CF700C1A28F /* PointGoalTableViewCell.xib */; };
+		B91D3AFF2269B7DE00C1A28F /* DateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3AFE2269B7DE00C1A28F /* DateProvider.swift */; };
+		B91D3B012269BAF500C1A28F /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3B002269BAF500C1A28F /* Date+Extension.swift */; };
 		B9261C792253858A0033ABC9 /* HMTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C782253858A0033ABC9 /* HMTabBarViewController.swift */; };
 		B9261C7B225386030033ABC9 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C7A225386030033ABC9 /* UIStoryboard+Extension.swift */; };
 		B9261C7D225386810033ABC9 /* Task.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9261C7C225386810033ABC9 /* Task.storyboard */; };
@@ -90,6 +92,8 @@
 		B91D3AF7226970AF00C1A28F /* TotalPointsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TotalPointsTableViewCell.xib; sourceTree = "<group>"; };
 		B91D3AFA22698CF700C1A28F /* PointGoalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointGoalTableViewCell.swift; sourceTree = "<group>"; };
 		B91D3AFB22698CF700C1A28F /* PointGoalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PointGoalTableViewCell.xib; sourceTree = "<group>"; };
+		B91D3AFE2269B7DE00C1A28F /* DateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateProvider.swift; sourceTree = "<group>"; };
+		B91D3B002269BAF500C1A28F /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		B9261C782253858A0033ABC9 /* HMTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMTabBarViewController.swift; sourceTree = "<group>"; };
 		B9261C7A225386030033ABC9 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		B9261C7C225386810033ABC9 /* Task.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Task.storyboard; sourceTree = "<group>"; };
@@ -227,6 +231,7 @@
 				B9B7F52B225CAD5700A6DA9E /* TaskCellStatus.swift */,
 				B9B99F4722641FA100314BB6 /* HMCornerRadius.swift */,
 				B91D3AEF226880A600C1A28F /* PieckerTextField.swift */,
+				B91D3AFE2269B7DE00C1A28F /* DateProvider.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -243,6 +248,7 @@
 				B9B99F3A2262DB0400314BB6 /* Snapshot+Entension.swift */,
 				B91D3A9B2264BF1300C1A28F /* String+Extension.swift */,
 				B91D3AA0226594EF00C1A28F /* UIAlertController+Extension.swift */,
+				B91D3B002269BAF500C1A28F /* Date+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -278,8 +284,6 @@
 			children = (
 				B9261C9122545A9D0033ABC9 /* TasksTableViewCell.swift */,
 				B9261C9222545A9D0033ABC9 /* TasksTableViewCell.xib */,
-				B91D3AF6226970AF00C1A28F /* TotalPointsTableViewCell.swift */,
-				B91D3AF7226970AF00C1A28F /* TotalPointsTableViewCell.xib */,
 				B91D3AFA22698CF700C1A28F /* PointGoalTableViewCell.swift */,
 				B91D3AFB22698CF700C1A28F /* PointGoalTableViewCell.xib */,
 			);
@@ -299,6 +303,8 @@
 			children = (
 				B94D15AD225721C500F43B78 /* ProfileHeaderViewCell.swift */,
 				B94D15AE225721C500F43B78 /* ProfileHeaderViewCell.xib */,
+				B91D3AF6226970AF00C1A28F /* TotalPointsTableViewCell.swift */,
+				B91D3AF7226970AF00C1A28F /* TotalPointsTableViewCell.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -684,6 +690,7 @@
 				B9B99F4B2264660100314BB6 /* UserDefault.swift in Sources */,
 				B9261C9322545A9D0033ABC9 /* TasksTableViewCell.swift in Sources */,
 				B91D3AA1226594EF00C1A28F /* UIAlertController+Extension.swift in Sources */,
+				B91D3AFF2269B7DE00C1A28F /* DateProvider.swift in Sources */,
 				B9B99F392262D51C00314BB6 /* Encodable+Extension.swift in Sources */,
 				B9B7F545225DEA8200A6DA9E /* GroupSelectionViewController.swift in Sources */,
 				B94D15C522585DA200F43B78 /* StatisticsViewController.swift in Sources */,
@@ -693,6 +700,7 @@
 				B9B99F322261898D00314BB6 /* UserObject.swift in Sources */,
 				B94D15A622560AA500F43B78 /* LobbyHeaderCell.swift in Sources */,
 				B9B7F531225CC00000A6DA9E /* ChartsTableViewCell.swift in Sources */,
+				B91D3B012269BAF500C1A28F /* Date+Extension.swift in Sources */,
 				B9B7F541225DB73D00A6DA9E /* AuthViewController.swift in Sources */,
 				B94D15B322572A2200F43B78 /* HMBaseViewController.swift in Sources */,
 				B9B99F3022602A3800314BB6 /* MoreViewController.swift in Sources */,

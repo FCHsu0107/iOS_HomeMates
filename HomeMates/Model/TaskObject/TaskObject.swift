@@ -26,7 +26,9 @@ struct TaskObject: Codable, Identifiable {
 
     let taskPriodDay: Int
     
-    let completionDate: Date?
+    var completionDate: Date?
+    
+    var compleyionDateStamp: Int?
     
     var taskStatus: Int
     
@@ -48,8 +50,11 @@ struct TaskObject: Codable, Identifiable {
         
         case completionDate
         
+        case compleyionDateStamp
+        
         case taskStatus
         
         case executorUid
+
     }
 }

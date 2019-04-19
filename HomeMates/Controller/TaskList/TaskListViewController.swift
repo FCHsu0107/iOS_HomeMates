@@ -56,6 +56,7 @@ class TaskListViewController: HMBaseViewController {
                                  taskPoint: 1,
                                  taskPriodDay: 1,
                                  completionDate: nil,
+                                 compleyionDateStamp: nil,
                                  taskStatus: 1)
         
         guard let groupId = UserDefaultManager.shared.groupId else { return }

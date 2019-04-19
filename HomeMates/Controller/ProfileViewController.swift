@@ -45,9 +45,6 @@ class ProfileViewController: HMBaseViewController {
         tableView.jq_registerCellWithNib(identifier: String(describing: TotalPointsTableViewCell.self), bundle: nil)
         
         FIRFirestoreSerivce.shared.readDoingTasks { [weak self] (tasks) in
-            
-            print("_______Tasks_______")
-            print(tasks)
             self?.processTaskList = tasks
             self?.tableView.reloadData()  
         }
@@ -98,8 +95,6 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        
-
         switch indexPath.section {
 
         case 1:
@@ -115,6 +110,11 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
 
                 guard var updateTask = self?.processTaskList[indexPath.row] else { return }
                 updateTask.taskStatus += tag
+                if tag == 1 {
+                    let timeStamp = Int(DateProvider.shared.getTimeStamp())
+                    updateTask.compleyionDateStamp = timeStamp
+                    
+                }
                 FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
             }
 
@@ -122,7 +122,8 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
 
         case 2:
 
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TotalPointsTableViewCell.self), for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TotalPointsTableViewCell.self),
+                                                     for: indexPath)
             guard let pointsCell = cell as? TotalPointsTableViewCell else { return cell }
             let task = doneTaskList[indexPath.row]
             pointsCell.loadData(tasksTracker: task)
