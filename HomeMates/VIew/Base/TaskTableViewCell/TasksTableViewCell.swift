@@ -69,17 +69,20 @@ class TasksTableViewCell: UITableViewCell {
 
         taskImage.image = UIImage(named: taskObject.image)
         taskNameTextLbl.text = "任務：\(taskObject.taskName)"
-        pointTextLbl.text = "積分： \(taskObject.taskPoint) 點"
-
+        
         switch status {
         case .checkTask:
 
             guard let executor = taskObject.executorName else { return }
+            guard let completionTimeStamp = taskObject.compleyionTimeStamp else { return }
+            let completionDate = DateProvider.shared.getCurrentDate(currentTimeStamp: completionTimeStamp)
+            pointTextLbl.text = "完成日期：\(completionDate)"
             memberNameTextLbl.text = "執行者：\(executor)"
             taskRightBtn.setTitle("確認", for: .normal)
 
         case .acceptSpecialTask:
 
+            pointTextLbl.text = "積分： \(taskObject.taskPoint) 點"
             memberNameTextLbl.text = "發佈人：\(taskObject.publisherName)"
             taskRightBtn.setTitle("接受", for: .normal)
 
@@ -87,18 +90,20 @@ class TasksTableViewCell: UITableViewCell {
             hiddenFirstText = true
             secondBtnAppear = true
             taskRightBtn.isHidden = false
-
+            pointTextLbl.text = "積分： \(taskObject.taskPoint) 點"
             taskRightBtn.setTitle("完成", for: .normal)
             taskLeftBtn.setTitle("放棄", for: .normal)
 
         case .assignNormalTask:
             hiddenFirstText = true
             taskPeriodTextLbl.text = ""
+            pointTextLbl.text = "積分： \(taskObject.taskPoint) 點"
             taskRightBtn.setTitle("接受", for: .normal)
 
         case .assignRegularTask:
             hiddenFirstText = true
 
+            pointTextLbl.text = "積分： \(taskObject.taskPoint) 點"
             taskRightBtn.setTitle("接受", for: .normal)
             taskPeriodTextLbl.isHidden = false
             taskPeriodTextLbl.text = "每\(taskObject.taskPriodDay)天一次"

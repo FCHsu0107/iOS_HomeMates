@@ -72,7 +72,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="雙週任務" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aw5-qs-8Zo">
-                        <rect key="frame" x="207.5" y="84.5" width="82.5" height="18"/>
+                        <rect key="frame" x="228.5" y="84.5" width="61.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
@@ -91,7 +91,6 @@
                     <constraint firstAttribute="trailing" secondItem="aw5-qs-8Zo" secondAttribute="trailing" constant="85" id="Z2G-e1-rdN"/>
                     <constraint firstAttribute="trailing" secondItem="a7J-EE-SG2" secondAttribute="trailing" constant="20" id="aWX-Sv-HPK"/>
                     <constraint firstItem="ovV-4u-RGL" firstAttribute="top" secondItem="0RN-Pe-QGG" secondAttribute="bottom" constant="4" id="gyC-XN-MYu"/>
-                    <constraint firstItem="aw5-qs-8Zo" firstAttribute="leading" secondItem="K7C-DR-feW" secondAttribute="trailing" constant="55" id="gyy-Nf-vuy"/>
                     <constraint firstItem="aw5-qs-8Zo" firstAttribute="bottom" secondItem="K7C-DR-feW" secondAttribute="bottom" id="i4V-7i-R0h"/>
                     <constraint firstItem="ovV-4u-RGL" firstAttribute="leading" secondItem="SMu-4E-Fsk" secondAttribute="trailing" constant="12" id="irW-0H-d4j"/>
                     <constraint firstItem="0RN-Pe-QGG" firstAttribute="leading" secondItem="SMu-4E-Fsk" secondAttribute="trailing" constant="12" id="l5t-k3-IEB"/>

@@ -112,7 +112,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                 updateTask.taskStatus += tag
                 if tag == 1 {
                     let timeStamp = Int(DateProvider.shared.getTimeStamp())
-                    updateTask.compleyionDateStamp = timeStamp
+                    updateTask.compleyionTimeStamp = timeStamp
                     
                 }
                 FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)

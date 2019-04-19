@@ -32,7 +32,7 @@ class LobbyViewController: HMBaseViewController {
     let taskHeader = TaskListHeaderView()
 
     //mock data
-    var taskListTitle: [String] = ["", "本月貢獻度", "特殊任務", "已完成任務"]
+    var taskListTitle: [String] = ["", "本月目標達成率", "特殊任務", "已完成任務"]
     var checkTaskList: [TaskObject] = []
 
     var willDoTaskList: [TaskObject] = []

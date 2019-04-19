@@ -48,15 +48,14 @@ class TaskListViewController: HMBaseViewController {
 
     @IBAction func addTask(_ sender: Any) {
         let newTask = TaskObject(docId: nil,
-                                 taskName: "掃地",
+                                 taskName: "拖地",
                                  image: "home_normal",
                                  publisherName: "System",
                                  executorName: nil,
                                  executorUid: nil,
                                  taskPoint: 1,
                                  taskPriodDay: 1,
-                                 completionDate: nil,
-                                 compleyionDateStamp: nil,
+                                 compleyionTimeStamp: nil,
                                  taskStatus: 1)
         
         guard let groupId = UserDefaultManager.shared.groupId else { return }
