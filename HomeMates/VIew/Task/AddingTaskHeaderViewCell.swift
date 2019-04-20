@@ -18,7 +18,9 @@ class AddingTaskHeaderViewCell: UITableViewCell {
         }
     }
 
-    var taskTypeHandler: ((UITableViewCell) -> Void)?
+    @IBOutlet weak var guideLbl: UILabel!
+    
+    var taskTypeHandler: ((Int) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,13 +31,14 @@ class AddingTaskHeaderViewCell: UITableViewCell {
 
     }
     
-    func loadData(titleText: String) {
+    func loadData(titleText: String, guideText: String) {
         titleNameLbl.text = titleText
+        guideLbl.text = guideText
         addingTaskBtn.addTarget(self, action: #selector(clickBtnAction), for: .touchUpInside)
     }
     
-    @objc func clickBtnAction() {
-        taskTypeHandler?(self)
+    @objc func clickBtnAction(_ sender: UIButton) {
+        taskTypeHandler?(sender.tag)
     }
     
 }

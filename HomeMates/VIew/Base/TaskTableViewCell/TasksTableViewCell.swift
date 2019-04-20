@@ -106,7 +106,7 @@ class TasksTableViewCell: UITableViewCell {
             pointTextLbl.text = "積分： \(taskObject.taskPoint) 點"
             taskRightBtn.setTitle("接受", for: .normal)
             taskPeriodTextLbl.isHidden = false
-            taskPeriodTextLbl.text = "每\(taskObject.taskPriodDay)天一次"
+            taskPeriodTextLbl.text = "每 \(taskObject.taskPriodDay) 天一次"
         }
         taskRightBtn.addTarget(self, action: #selector(clickBtnAction(_:)), for: .touchUpInside)
         taskLeftBtn.addTarget(self, action: #selector(clickBtnAction(_:)), for: .touchUpInside)

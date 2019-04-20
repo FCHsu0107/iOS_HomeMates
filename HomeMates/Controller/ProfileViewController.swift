@@ -104,7 +104,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             let task = processTaskList[indexPath.row]
             taskCell.loadData(taskObject: task, status: TaskCellStatus.doingTask)
             
-            taskCell.clickHandler = {[weak self] cell, tag in
+            taskCell.clickHandler = { [weak self] cell, tag in
                 guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
 
                 guard var updateTask = self?.processTaskList[indexPath.row] else { return }

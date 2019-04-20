@@ -20,4 +20,10 @@ enum FIRCollectionReference: String {
     
     case members
     
+    case dailyTasksList
+    
+    case months
+    
+    case taskTrackers
+    
 }
