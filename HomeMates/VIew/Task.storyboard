@@ -45,22 +45,42 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="3x3-6Y-jpy" id="OLd-jn-9na"/>
+                        <segue destination="EAY-Hn-gKg" kind="show" identifier="AddTaskSegue" id="p5j-pk-oRE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ban-gq-fe6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.2" y="112.89355322338831"/>
         </scene>
-        <!--View Controller-->
+        <!--Task Settings View Controller-->
         <scene sceneID="h53-aU-Xbh">
             <objects>
-                <viewController id="EAY-Hn-gKg" sceneMemberID="viewController">
+                <viewController id="EAY-Hn-gKg" customClass="TaskSettingsViewController" customModule="HomeMates" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aYJ-ub-Uda">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GrO-Ll-dP5">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="EAY-Hn-gKg" id="oEd-gp-vUh"/>
+                                    <outlet property="delegate" destination="EAY-Hn-gKg" id="6ZV-lo-MdZ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZEF-0J-MQS" firstAttribute="bottom" secondItem="GrO-Ll-dP5" secondAttribute="bottom" id="HCt-40-Zfw"/>
+                            <constraint firstItem="GrO-Ll-dP5" firstAttribute="top" secondItem="ZEF-0J-MQS" secondAttribute="top" id="Qyy-ns-L9u"/>
+                            <constraint firstItem="ZEF-0J-MQS" firstAttribute="trailing" secondItem="GrO-Ll-dP5" secondAttribute="trailing" id="vXy-YD-jj0"/>
+                            <constraint firstItem="GrO-Ll-dP5" firstAttribute="leading" secondItem="ZEF-0J-MQS" secondAttribute="leading" id="xLb-IJ-7rs"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ZEF-0J-MQS"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="GrO-Ll-dP5" id="T3r-BA-1OD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GaW-a9-r5m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

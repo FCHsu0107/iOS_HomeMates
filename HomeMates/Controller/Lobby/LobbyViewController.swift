@@ -134,7 +134,8 @@ extension LobbyViewController: UITableViewDataSource {
 
         case 1:
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PointGoalTableViewCell.self), for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PointGoalTableViewCell.self),
+                                                     for: indexPath)
             guard let goalCell = cell as? PointGoalTableViewCell else { return cell }
             goalCell.showContributionView(member: "小明",
                                           memberImage: "home_normal",

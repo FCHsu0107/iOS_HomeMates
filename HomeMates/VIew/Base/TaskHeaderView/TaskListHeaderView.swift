@@ -37,7 +37,7 @@ class TaskListHeaderView {
         headerUnderline.backgroundColor = UIColor.B1
         headerUnderline.sizeToFit()
         headerView.addSubview(headerUnderline)
-
+        
         return headerView
     }
 

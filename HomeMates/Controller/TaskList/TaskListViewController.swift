@@ -19,7 +19,7 @@ class TaskListViewController: HMBaseViewController {
     
     let taskHeader = TaskListHeaderView()
 
-    var taskListTitle: [String] = ["常規任務", "特殊任務"]
+    var taskListTitle: [String] = ["每日任務", "常規任務"]
 
     var normalTaskList: [TaskObject] = []
 
@@ -46,26 +46,35 @@ class TaskListViewController: HMBaseViewController {
 
     }
 
-    @IBAction func addTask(_ sender: Any) {
-        let newTask = TaskObject(docId: nil,
-                                 taskName: "拖地",
-                                 image: "home_normal",
-                                 publisherName: "System",
-                                 executorName: nil,
-                                 executorUid: nil,
-                                 taskPoint: 1,
-                                 taskPriodDay: 1,
-                                 compleyionTimeStamp: nil,
-                                 taskStatus: 1)
-        
-        guard let groupId = UserDefaultManager.shared.groupId else { return }
-        
-        FIRFirestoreSerivce.shared.createSub(for: newTask,
-                                             in: .groups,
-                                             inDocument: groupId,
-                                             inNext: .tasks)
-        print("add a task")
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddTaskSegue" {
+            guard segue.destination is TaskSettingsViewController else { return
+            }
+        }
     }
+    
+    @IBAction func addTask(_ sender: Any) {
+//        let newTask = TaskObject(docId: nil,
+//                                 taskName: "拖地",
+//                                 image: "home_normal",
+//                                 publisherName: "System",
+//                                 executorName: nil,
+//                                 executorUid: nil,
+//                                 taskPoint: 1,
+//                                 taskPriodDay: 1,
+//                                 compleyionTimeStamp: nil,
+//                                 taskStatus: 1)
+//        
+//        guard let groupId = UserDefaultManager.shared.groupId else { return }
+//        
+//        FIRFirestoreSerivce.shared.createSub(for: newTask,
+//                                             in: .groups,
+//                                             inDocument: groupId,
+//                                             inNext: .tasks)
+//        print("add a task")
+       performSegue(withIdentifier: "AddTaskSegue", sender: nil)
+    }
+    
 }
 
 extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {

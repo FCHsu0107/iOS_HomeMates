@@ -21,6 +21,11 @@
 		B91D3AFD22698CF700C1A28F /* PointGoalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91D3AFB22698CF700C1A28F /* PointGoalTableViewCell.xib */; };
 		B91D3AFF2269B7DE00C1A28F /* DateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3AFE2269B7DE00C1A28F /* DateProvider.swift */; };
 		B91D3B012269BAF500C1A28F /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3B002269BAF500C1A28F /* Date+Extension.swift */; };
+		B91D3B04226AE28000C1A28F /* GuideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3B02226AE28000C1A28F /* GuideTableViewCell.swift */; };
+		B91D3B05226AE28000C1A28F /* GuideTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91D3B03226AE28000C1A28F /* GuideTableViewCell.xib */; };
+		B91D3B07226AE3BF00C1A28F /* TaskSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3B06226AE3BF00C1A28F /* TaskSettingsViewController.swift */; };
+		B91D3B0B226AED2900C1A28F /* AddingTaskHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3B09226AED2900C1A28F /* AddingTaskHeaderViewCell.swift */; };
+		B91D3B0C226AED2900C1A28F /* AddingTaskHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91D3B0A226AED2900C1A28F /* AddingTaskHeaderViewCell.xib */; };
 		B9261C792253858A0033ABC9 /* HMTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C782253858A0033ABC9 /* HMTabBarViewController.swift */; };
 		B9261C7B225386030033ABC9 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C7A225386030033ABC9 /* UIStoryboard+Extension.swift */; };
 		B9261C7D225386810033ABC9 /* Task.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9261C7C225386810033ABC9 /* Task.storyboard */; };
@@ -94,6 +99,11 @@
 		B91D3AFB22698CF700C1A28F /* PointGoalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PointGoalTableViewCell.xib; sourceTree = "<group>"; };
 		B91D3AFE2269B7DE00C1A28F /* DateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateProvider.swift; sourceTree = "<group>"; };
 		B91D3B002269BAF500C1A28F /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		B91D3B02226AE28000C1A28F /* GuideTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideTableViewCell.swift; sourceTree = "<group>"; };
+		B91D3B03226AE28000C1A28F /* GuideTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuideTableViewCell.xib; sourceTree = "<group>"; };
+		B91D3B06226AE3BF00C1A28F /* TaskSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSettingsViewController.swift; sourceTree = "<group>"; };
+		B91D3B09226AED2900C1A28F /* AddingTaskHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingTaskHeaderViewCell.swift; sourceTree = "<group>"; };
+		B91D3B0A226AED2900C1A28F /* AddingTaskHeaderViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddingTaskHeaderViewCell.xib; sourceTree = "<group>"; };
 		B9261C782253858A0033ABC9 /* HMTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMTabBarViewController.swift; sourceTree = "<group>"; };
 		B9261C7A225386030033ABC9 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		B9261C7C225386810033ABC9 /* Task.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Task.storyboard; sourceTree = "<group>"; };
@@ -185,6 +195,15 @@
 			path = TaskMakerCell;
 			sourceTree = "<group>";
 		};
+		B91D3B08226AECF800C1A28F /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				B91D3B09226AED2900C1A28F /* AddingTaskHeaderViewCell.swift */,
+				B91D3B0A226AED2900C1A28F /* AddingTaskHeaderViewCell.xib */,
+			);
+			path = Task;
+			sourceTree = "<group>";
+		};
 		B9261C72225384A50033ABC9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +225,7 @@
 				B9B7F537225D959700A6DA9E /* Base */,
 				B9261C8C225446F50033ABC9 /* Lobby */,
 				B94D15AC2257217E00F43B78 /* Profile */,
+				B91D3B08226AECF800C1A28F /* Task */,
 				B94D15BE22585B7100F43B78 /* Statistics */,
 				B9D71AA322534D4F00F242DA /* Main.storyboard */,
 				B9B7F53D225DB6B900A6DA9E /* Auth.storyboard */,
@@ -286,6 +306,8 @@
 				B9261C9222545A9D0033ABC9 /* TasksTableViewCell.xib */,
 				B91D3AFA22698CF700C1A28F /* PointGoalTableViewCell.swift */,
 				B91D3AFB22698CF700C1A28F /* PointGoalTableViewCell.xib */,
+				B91D3B02226AE28000C1A28F /* GuideTableViewCell.swift */,
+				B91D3B03226AE28000C1A28F /* GuideTableViewCell.xib */,
 			);
 			path = TaskTableViewCell;
 			sourceTree = "<group>";
@@ -441,6 +463,7 @@
 			isa = PBXGroup;
 			children = (
 				B9D295D62258CD7D00CF7869 /* TaskListViewController.swift */,
+				B91D3B06226AE3BF00C1A28F /* TaskSettingsViewController.swift */,
 			);
 			path = TaskList;
 			sourceTree = "<group>";
@@ -549,12 +572,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B91D3B05226AE28000C1A28F /* GuideTableViewCell.xib in Resources */,
 				B9D71AAA22534D5100F242DA /* LaunchScreen.storyboard in Resources */,
 				B9261C81225386AF0033ABC9 /* More.storyboard in Resources */,
 				B9D295D9225A3E1D00CF7869 /* GoogleService-Info.plist in Resources */,
 				B91D3AFD22698CF700C1A28F /* PointGoalTableViewCell.xib in Resources */,
 				B9261C7D225386810033ABC9 /* Task.storyboard in Resources */,
 				B94D15A722560AA500F43B78 /* LobbyHeaderCell.xib in Resources */,
+				B91D3B0C226AED2900C1A28F /* AddingTaskHeaderViewCell.xib in Resources */,
 				B9261C7F225386930033ABC9 /* Profile.storyboard in Resources */,
 				B9B7F532225CC00000A6DA9E /* ChartsTableViewCell.xib in Resources */,
 				B9D71AA722534D5100F242DA /* Assets.xcassets in Resources */,
@@ -670,6 +695,7 @@
 			files = (
 				B9D295DB225B003300CF7869 /* TaskListHeaderView.swift in Sources */,
 				B9261C9D225495840033ABC9 /* LobbyViewController.swift in Sources */,
+				B91D3B04226AE28000C1A28F /* GuideTableViewCell.swift in Sources */,
 				B9B7F548225EEA8E00A6DA9E /* AlertView.swift in Sources */,
 				B9B99F372262C44B00314BB6 /* FIRCollectionReference.swift in Sources */,
 				B9B99F4322631C6C00314BB6 /* FIRAuthService.swift in Sources */,
@@ -692,6 +718,7 @@
 				B91D3AA1226594EF00C1A28F /* UIAlertController+Extension.swift in Sources */,
 				B91D3AFF2269B7DE00C1A28F /* DateProvider.swift in Sources */,
 				B9B99F392262D51C00314BB6 /* Encodable+Extension.swift in Sources */,
+				B91D3B07226AE3BF00C1A28F /* TaskSettingsViewController.swift in Sources */,
 				B9B7F545225DEA8200A6DA9E /* GroupSelectionViewController.swift in Sources */,
 				B94D15C522585DA200F43B78 /* StatisticsViewController.swift in Sources */,
 				B9B99F3E226311B000314BB6 /* LoadingViewController.swift in Sources */,
@@ -709,6 +736,7 @@
 				B9B10D732258A1780081C856 /* UIView+Extension.swift in Sources */,
 				B9261C7B225386030033ABC9 /* UIStoryboard+Extension.swift in Sources */,
 				B9B99F352262151100314BB6 /* FIRFirestoreService.swift in Sources */,
+				B91D3B0B226AED2900C1A28F /* AddingTaskHeaderViewCell.swift in Sources */,
 				B94D15CA225886FB00F43B78 /* EventCell.swift in Sources */,
 				B9B99F4822641FA100314BB6 /* HMCornerRadius.swift in Sources */,
 				B91D3A9A2264ABD400C1A28F /* MemberObject.swift in Sources */,
