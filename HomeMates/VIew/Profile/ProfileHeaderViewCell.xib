@@ -109,7 +109,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ENa-kW-vuh">
                                 <rect key="frame" x="160.5" y="18" width="80" height="80"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1le-bz-hmJ">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile_80px" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1le-bz-hmJ">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -176,6 +176,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="Profile_80px" width="80" height="80"/>
         <image name="Setting_36px" width="36" height="36"/>
         <namedColor name="B2">
             <color red="0.25098039215686274" green="0.29019607843137257" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

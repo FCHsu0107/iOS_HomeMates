@@ -51,6 +51,13 @@ class ProfileViewController: HMBaseViewController {
 
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ProfileSettingsSegue" {
+            guard let nextVc = segue.destination as? ProfileSettingsViewController else { return }
+            print(nextVc)
+        }
+    }
+    
 }
 
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
@@ -60,7 +67,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfileHeaderViewCell.self))
             guard let headerCell = cell as? ProfileHeaderViewCell else { return cell}
-            
+            headerCell.settingsBtn.addTarget(self, action: #selector(clickSettingsBtn), for: .touchUpInside)
             return headerCell
 
         default:
@@ -132,5 +139,8 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         default:
             return UITableViewCell()
         }
+    }
+    @objc func clickSettingsBtn() {
+        self.performSegue(withIdentifier: "ProfileSettingsSegue", sender: nil)
     }
 }

@@ -38,7 +38,7 @@
                         <viewLayoutGuide key="safeArea" id="aa8-GZ-kOc"/>
                     </view>
                     <navigationItem key="navigationItem" title="任務列表" id="0QI-4b-kN3">
-                        <barButtonItem key="rightBarButtonItem" image="Addition_36px" id="1wJ-rG-U0i">
+                        <barButtonItem key="rightBarButtonItem" image="Edit_24px" id="1wJ-rG-U0i">
                             <connections>
                                 <action selector="addTask:" destination="n4N-i4-U6m" id="Dy9-su-0bl"/>
                             </connections>
@@ -53,10 +53,10 @@
             </objects>
             <point key="canvasLocation" x="1047.2" y="112.89355322338831"/>
         </scene>
-        <!--Task Settings View Controller-->
+        <!--任務管理-->
         <scene sceneID="h53-aU-Xbh">
             <objects>
-                <viewController id="EAY-Hn-gKg" customClass="TaskSettingsViewController" customModule="HomeMates" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="EAY-Hn-gKg" customClass="TaskSettingsViewController" customModule="HomeMates" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aYJ-ub-Uda">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -80,6 +80,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZEF-0J-MQS"/>
                     </view>
+                    <navigationItem key="navigationItem" title="任務管理" id="wll-st-0QS"/>
                     <connections>
                         <outlet property="tableView" destination="GrO-Ll-dP5" id="T3r-BA-1OD"/>
                     </connections>
@@ -111,7 +112,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Addition_36px" width="36" height="36"/>
+        <image name="Edit_24px" width="24" height="24"/>
         <namedColor name="W1">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -24,6 +24,7 @@
 		B91D3B0C226AED2900C1A28F /* AddingTaskHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91D3B0A226AED2900C1A28F /* AddingTaskHeaderViewCell.xib */; };
 		B91D3B0F226B11F200C1A28F /* TaskListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3B0D226B11F200C1A28F /* TaskListTableViewCell.swift */; };
 		B91D3B10226B11F200C1A28F /* TaskListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91D3B0E226B11F200C1A28F /* TaskListTableViewCell.xib */; };
+		B91D3B12226B62BC00C1A28F /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3B11226B62BC00C1A28F /* ProfileSettingsViewController.swift */; };
 		B9261C792253858A0033ABC9 /* HMTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C782253858A0033ABC9 /* HMTabBarViewController.swift */; };
 		B9261C7B225386030033ABC9 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C7A225386030033ABC9 /* UIStoryboard+Extension.swift */; };
 		B9261C7D225386810033ABC9 /* Task.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9261C7C225386810033ABC9 /* Task.storyboard */; };
@@ -100,6 +101,7 @@
 		B91D3B0A226AED2900C1A28F /* AddingTaskHeaderViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddingTaskHeaderViewCell.xib; sourceTree = "<group>"; };
 		B91D3B0D226B11F200C1A28F /* TaskListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTableViewCell.swift; sourceTree = "<group>"; };
 		B91D3B0E226B11F200C1A28F /* TaskListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskListTableViewCell.xib; sourceTree = "<group>"; };
+		B91D3B11226B62BC00C1A28F /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
 		B9261C782253858A0033ABC9 /* HMTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMTabBarViewController.swift; sourceTree = "<group>"; };
 		B9261C7A225386030033ABC9 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		B9261C7C225386810033ABC9 /* Task.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Task.storyboard; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				B94D15BC225754C700F43B78 /* ProfileViewController.swift */,
+				B91D3B11226B62BC00C1A28F /* ProfileSettingsViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -721,6 +724,7 @@
 				B9261C7B225386030033ABC9 /* UIStoryboard+Extension.swift in Sources */,
 				B9B99F352262151100314BB6 /* FIRFirestoreService.swift in Sources */,
 				B91D3B0B226AED2900C1A28F /* AddingTaskHeaderViewCell.swift in Sources */,
+				B91D3B12226B62BC00C1A28F /* ProfileSettingsViewController.swift in Sources */,
 				B94D15CA225886FB00F43B78 /* EventCell.swift in Sources */,
 				B9B99F4822641FA100314BB6 /* HMCornerRadius.swift in Sources */,
 				B91D3A9A2264ABD400C1A28F /* MemberObject.swift in Sources */,

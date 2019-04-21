@@ -30,6 +30,11 @@ enum ImageAsset: String {
     case Toggle_24px
     
     case Addition_36px
+    
+    case Profile_80px
+    case Home_48px
+    case Edit_36px
+    case Edit_24px
 }
 
 extension UIImage {
