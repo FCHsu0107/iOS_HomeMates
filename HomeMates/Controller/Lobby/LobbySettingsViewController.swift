@@ -27,6 +27,8 @@ class LobbySettingsViewController: HMBaseViewController {
     
     var isSelected: Bool = false
     
+    var actionSheet = UIAlertController()
+    
     var memberList: [MemberObject] = [MemberObject(docId: nil,
                                                    userId: "A2g39Mxa0sMR3u0jtdv2IvgFwAu1",
                                                    userName: "Test01",
@@ -93,7 +95,7 @@ extension LobbySettingsViewController: UITableViewDelegate, UITableViewDataSourc
         
         memberCell.loadData(memberInfo: memberList[indexPath.row])
         memberCell.clickHandler = { cell in
-           guard let indexPaeh = tableView.indexPath(for: cell) else { return }
+           guard let indexPath = tableView.indexPath(for: cell) else { return }
             print(indexPath.row)
         }
         

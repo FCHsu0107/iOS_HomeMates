@@ -52,6 +52,7 @@
 		B94D15CB225886FB00F43B78 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B94D15C9225886FB00F43B78 /* EventCell.xib */; };
 		B959F736226DA57B00D3CA68 /* GroupMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B959F734226DA57B00D3CA68 /* GroupMemberTableViewCell.swift */; };
 		B959F737226DA57B00D3CA68 /* GroupMemberTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B959F735226DA57B00D3CA68 /* GroupMemberTableViewCell.xib */; };
+		B959F739226DD56900D3CA68 /* FirestoreGroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B959F738226DD56900D3CA68 /* FirestoreGroupManager.swift */; };
 		B9B10D732258A1780081C856 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B10D722258A1780081C856 /* UIView+Extension.swift */; };
 		B9B7F52C225CAD5700A6DA9E /* TaskCellStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F52B225CAD5700A6DA9E /* TaskCellStatus.swift */; };
 		B9B7F531225CC00000A6DA9E /* ChartsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F52F225CC00000A6DA9E /* ChartsTableViewCell.swift */; };
@@ -132,6 +133,7 @@
 		B94D15C9225886FB00F43B78 /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		B959F734226DA57B00D3CA68 /* GroupMemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberTableViewCell.swift; sourceTree = "<group>"; };
 		B959F735226DA57B00D3CA68 /* GroupMemberTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupMemberTableViewCell.xib; sourceTree = "<group>"; };
+		B959F738226DD56900D3CA68 /* FirestoreGroupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreGroupManager.swift; sourceTree = "<group>"; };
 		B9B10D722258A1780081C856 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		B9B7F52B225CAD5700A6DA9E /* TaskCellStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellStatus.swift; sourceTree = "<group>"; };
 		B9B7F52F225CC00000A6DA9E /* ChartsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsTableViewCell.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 		B9261C72225384A50033ABC9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B9B99F3C226311B000314BB6 /* LoadingViewController.swift */,
 				B9B7F53F225DB71700A6DA9E /* Auth */,
 				B9261C9B2254955A0033ABC9 /* Lobby */,
 				B94D15B1225721D000F43B78 /* Profile */,
@@ -211,7 +214,6 @@
 				B94D15C322585D4400F43B78 /* Statistics */,
 				B9B99F2C226029FE00314BB6 /* More */,
 				B9261C772253856E0033ABC9 /* Base */,
-				B9B99F3C226311B000314BB6 /* LoadingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -442,6 +444,7 @@
 				B9B99F342262151100314BB6 /* FIRFirestoreService.swift */,
 				B9B99F4222631C6C00314BB6 /* FIRAuthService.swift */,
 				B9B99F362262C44B00314BB6 /* FIRCollectionReference.swift */,
+				B959F738226DD56900D3CA68 /* FirestoreGroupManager.swift */,
 			);
 			path = Firestore;
 			sourceTree = "<group>";
@@ -695,6 +698,7 @@
 				B9261C9D225495840033ABC9 /* LobbyViewController.swift in Sources */,
 				B9B7F548225EEA8E00A6DA9E /* AlertView.swift in Sources */,
 				B9B99F372262C44B00314BB6 /* FIRCollectionReference.swift in Sources */,
+				B959F739226DD56900D3CA68 /* FirestoreGroupManager.swift in Sources */,
 				B9B99F4322631C6C00314BB6 /* FIRAuthService.swift in Sources */,
 				B9B7F535225D933600A6DA9E /* TrackerTableViewCell.swift in Sources */,
 				B9D295D72258CD7D00CF7869 /* TaskListViewController.swift in Sources */,
