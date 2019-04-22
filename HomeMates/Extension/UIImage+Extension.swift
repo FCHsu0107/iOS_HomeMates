@@ -33,10 +33,12 @@ enum ImageAsset: String {
     
     case Profile_80px
     case Home_48px
-    case Edit_36px
     case Edit_24px
     
     case Edit02_24px
+    case Editor_24px
+    
+    case Remove_24px
     
 }
 

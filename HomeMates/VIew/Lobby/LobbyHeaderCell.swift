@@ -18,6 +18,7 @@ class LobbyHeaderCell: UITableViewCell {
 
     @IBOutlet weak var groupImageView: UIImageView!
     
+    @IBOutlet weak var settingsBtn: UIButton!
     var groupInfo: GroupObject? = nil {
         didSet {
             showGroupInfo()

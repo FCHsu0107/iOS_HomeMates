@@ -105,6 +105,7 @@
                 <outlet property="groupImageView" destination="q1h-s6-dEj" id="l4n-Gp-qVC"/>
                 <outlet property="groupNameLbl" destination="iwy-Gm-tme" id="foC-cN-77w"/>
                 <outlet property="lubbyBulletinLbl" destination="JKt-7S-BEQ" id="HH7-54-yBG"/>
+                <outlet property="settingsBtn" destination="gDb-M4-jOE" id="YRy-Z6-KIx"/>
             </connections>
             <point key="canvasLocation" x="-194.20289855072465" y="23.772321428571427"/>
         </tableViewCell>

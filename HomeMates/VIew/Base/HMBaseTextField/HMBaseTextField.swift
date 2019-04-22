@@ -12,16 +12,16 @@ class HMBaseTextField: UITextField {
     
     override func textRect(forBounds bounds: CGRect) -> CGRect {
         
-        return bounds.insetBy(dx: 10, dy: 10)
+        return bounds.insetBy(dx: 4, dy: 0)
     }
     
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
         
-        return bounds.insetBy(dx: 10, dy: 10)
+        return bounds.insetBy(dx: 4, dy: 0)
     }
     
     override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.insetBy(dx: 10, dy: 10)
+        return bounds.insetBy(dx: 4, dy: 0)
     }
     
 }

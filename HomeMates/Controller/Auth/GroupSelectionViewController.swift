@@ -161,7 +161,8 @@ class GroupSelectionViewController: UIViewController {
                                         userId: user.uid,
                                         userName: userName,
                                         isCreator: true,
-                                        permission: true)
+                                        permission: true,
+                                        userPicture: "Profile_80px")
         
         FIRFirestoreSerivce.shared.createSub(for: groupMemnber,
                                              in: .groups,
@@ -178,6 +179,7 @@ class GroupSelectionViewController: UIViewController {
         
         var groupResults: [GroupObject] = []
         var creatorNames: [String] = []
+        var groupNames: [String] = []
         
         guard let groupId = firstGroupIDTextField.text else { return }
         FIRFirestoreSerivce.shared.findGroup(groupId: groupId, returning: GroupObject.self) { groups, docIds  in
@@ -187,18 +189,20 @@ class GroupSelectionViewController: UIViewController {
                 for index in groups {
                     creatorNames.append(index.createrName)
                     groupResults.append(index)
+                    groupNames.append(index.name)
                 }
    
                 let alertSheet =
                     UIAlertController.showAlertSheet(title: "確認加入群組",
-                                                     message: "確認創辦人",
-                                                     action: creatorNames) { (index) in
+                                                     message: "確認群組名稱",
+                                                     action: groupNames) { (index) in
 
                         let memberInfo = MemberObject(docId: nil,
                                                       userId: user.uid,
                                                       userName: userName,
                                                       isCreator: false,
-                                                      permission: false)
+                                                      permission: false,
+                                                      userPicture: "Profile_80px")
                         
                         FIRFirestoreSerivce.shared.createSub(for: memberInfo,
                                                              in: .groups,

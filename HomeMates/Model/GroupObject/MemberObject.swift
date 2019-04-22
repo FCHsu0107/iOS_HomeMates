@@ -20,6 +20,8 @@ struct MemberObject: Codable, Identifiable {
     
     let permission: Bool
     
+    let userPicture: String
+    
     enum CodingKeys: String, CodingKey {
         
         case docId
@@ -31,5 +33,7 @@ struct MemberObject: Codable, Identifiable {
         case isCreator
         
         case permission
+        
+        case userPicture
     }
 }

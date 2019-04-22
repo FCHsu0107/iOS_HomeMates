@@ -89,7 +89,7 @@
                                     <constraint firstAttribute="height" constant="40" id="d92-p0-uEB"/>
                                 </constraints>
                                 <color key="textColor" name="B1"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oy1-aV-1yB">
@@ -106,44 +106,44 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Test00HomeName" placeholder="輸入新目標" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qoq-qg-ipi" customClass="HMBaseTextField" customModule="HomeMates" customModuleProvider="target">
-                                <rect key="frame" x="20" y="317" width="335" height="40"/>
+                                <rect key="frame" x="20" y="311" width="335" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="vRO-Fp-M7h"/>
                                 </constraints>
                                 <color key="textColor" name="B1"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OfE-7I-1UV">
-                                <rect key="frame" x="20" y="357" width="335" height="1"/>
+                                <rect key="frame" x="20" y="351" width="335" height="1"/>
                                 <color key="backgroundColor" name="B5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Wak-9u-j7y"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="60" placeholder="輸入新密碼" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OYf-AD-099" customClass="HMBaseTextField" customModule="HomeMates" customModuleProvider="target">
-                                <rect key="frame" x="20" y="417" width="335" height="40"/>
+                                <rect key="frame" x="20" y="405" width="335" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Dli-Vl-lLi"/>
                                 </constraints>
                                 <color key="textColor" name="B1"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9pf-98-aIt">
-                                <rect key="frame" x="20" y="457" width="335" height="1"/>
+                                <rect key="frame" x="20" y="445" width="335" height="1"/>
                                 <color key="backgroundColor" name="B5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="yJy-0e-HPY"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本月目標" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gN-er-gG8">
-                                <rect key="frame" x="20" y="388" width="69.5" height="21"/>
+                                <rect key="frame" x="20" y="382" width="69.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="B1"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8I-PC-CSm">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8I-PC-CSm">
                                 <rect key="frame" x="149" y="162" width="77" height="30"/>
                                 <state key="normal" title="更換大頭貼">
                                     <color key="titleColor" name="B1"/>
@@ -155,7 +155,7 @@
                             <constraint firstItem="9pf-98-aIt" firstAttribute="trailing" secondItem="OYf-AD-099" secondAttribute="trailing" id="2PJ-Ej-dkS"/>
                             <constraint firstItem="2gN-er-gG8" firstAttribute="leading" secondItem="UeC-RV-t9C" secondAttribute="leading" id="3dc-Ux-YSa"/>
                             <constraint firstItem="3YC-Nz-e5s" firstAttribute="trailing" secondItem="cor-AS-tax" secondAttribute="trailing" constant="20" id="8W0-rD-H0S"/>
-                            <constraint firstItem="qoq-qg-ipi" firstAttribute="top" secondItem="UeC-RV-t9C" secondAttribute="bottom" constant="8" id="9Ak-E0-xjN"/>
+                            <constraint firstItem="qoq-qg-ipi" firstAttribute="top" secondItem="UeC-RV-t9C" secondAttribute="bottom" constant="2" id="9Ak-E0-xjN"/>
                             <constraint firstItem="UeC-RV-t9C" firstAttribute="top" secondItem="Oy1-aV-1yB" secondAttribute="bottom" constant="30" id="EAl-zb-7c6"/>
                             <constraint firstItem="Z8I-PC-CSm" firstAttribute="centerX" secondItem="f96-Yt-DsY" secondAttribute="centerX" id="Eer-E2-YLm"/>
                             <constraint firstItem="00R-dw-r26" firstAttribute="top" secondItem="fHl-Y3-25R" secondAttribute="bottom" constant="40" id="FJx-a4-Fqa"/>
@@ -174,7 +174,7 @@
                             <constraint firstItem="Z8I-PC-CSm" firstAttribute="top" secondItem="fHl-Y3-25R" secondAttribute="bottom" constant="8" id="hGj-7p-zlG"/>
                             <constraint firstItem="9pf-98-aIt" firstAttribute="top" secondItem="OYf-AD-099" secondAttribute="bottom" id="iQH-eI-qMs"/>
                             <constraint firstItem="OfE-7I-1UV" firstAttribute="top" secondItem="qoq-qg-ipi" secondAttribute="bottom" id="loF-rA-1tx"/>
-                            <constraint firstItem="OYf-AD-099" firstAttribute="top" secondItem="2gN-er-gG8" secondAttribute="bottom" constant="8" id="nkc-o8-YM2"/>
+                            <constraint firstItem="OYf-AD-099" firstAttribute="top" secondItem="2gN-er-gG8" secondAttribute="bottom" constant="2" id="nkc-o8-YM2"/>
                             <constraint firstItem="9pf-98-aIt" firstAttribute="leading" secondItem="OYf-AD-099" secondAttribute="leading" id="q6D-Xm-NUZ"/>
                             <constraint firstItem="2gN-er-gG8" firstAttribute="top" secondItem="OfE-7I-1UV" secondAttribute="bottom" constant="30" id="q7z-di-4J6"/>
                             <constraint firstItem="UeC-RV-t9C" firstAttribute="leading" secondItem="cor-AS-tax" secondAttribute="leading" id="u55-yn-df0"/>
@@ -191,7 +191,7 @@
                                 <action selector="dismissView:" destination="6Vt-eS-dAJ" id="457-Sk-JGG"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="修改" id="6by-eC-ABZ">
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="6by-eC-ABZ">
                             <color key="tintColor" red="0.2901960784" green="0.22352941179999999" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="changeUserInfo:" destination="6Vt-eS-dAJ" id="RVd-Oz-LSA"/>

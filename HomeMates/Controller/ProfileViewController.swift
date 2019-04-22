@@ -46,7 +46,10 @@ class ProfileViewController: HMBaseViewController {
         
         FIRFirestoreSerivce.shared.readDoingTasks { [weak self] (tasks) in
             self?.processTaskList = tasks
-            self?.tableView.reloadData()  
+            
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
         }
 
     }
@@ -140,6 +143,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
     }
+    
     @objc func clickSettingsBtn() {
         self.performSegue(withIdentifier: "ProfileSettingsSegue", sender: nil)
     }

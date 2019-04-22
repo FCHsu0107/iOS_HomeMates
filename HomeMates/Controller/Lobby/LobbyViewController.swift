@@ -52,7 +52,10 @@ class LobbyViewController: HMBaseViewController {
                         self?.checkTaskList.append(task)
                     } else {}
                 }
-                self?.tableView.reloadData()
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+                
             }
             
             FIRFirestoreSerivce.shared.readAssigningTasks { [weak self] (tasks) in
@@ -61,12 +64,24 @@ class LobbyViewController: HMBaseViewController {
                     if task.taskPriodDay != 1 {
                         self?.willDoTaskList.append(task)
                     }
-                    self?.tableView.reloadData()
+                    DispatchQueue.main.async {
+                        self?.tableView.reloadData()
+                    }
                 }
             }
         }
     }
 
+    @objc func clickSettingBtn() {
+        self.performSegue(withIdentifier: "LobbySettingsSegue", sender: nil)
+        
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "LobbySettingsSegue" {
+            guard let nextVc = segue.destination as? LobbySettingsViewController else { return }
+            print(nextVc)
+        }
+    }
 }
 
 extension LobbyViewController: UITableViewDataSource {
@@ -77,6 +92,7 @@ extension LobbyViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: LobbyHeaderCell.self))
             guard let headerCell = cell as? LobbyHeaderCell else { return cell}
             headerCell.groupInfo = groupInfo
+            headerCell.settingsBtn.addTarget(self, action: #selector(clickSettingBtn), for: .touchUpInside)
             return headerCell
 
         default :

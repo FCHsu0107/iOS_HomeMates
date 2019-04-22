@@ -25,6 +25,7 @@
 		B91D3B0F226B11F200C1A28F /* TaskListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3B0D226B11F200C1A28F /* TaskListTableViewCell.swift */; };
 		B91D3B10226B11F200C1A28F /* TaskListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91D3B0E226B11F200C1A28F /* TaskListTableViewCell.xib */; };
 		B91D3B12226B62BC00C1A28F /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3B11226B62BC00C1A28F /* ProfileSettingsViewController.swift */; };
+		B921CA73226D8CED001FA942 /* LobbySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B921CA72226D8CED001FA942 /* LobbySettingsViewController.swift */; };
 		B9261C792253858A0033ABC9 /* HMTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C782253858A0033ABC9 /* HMTabBarViewController.swift */; };
 		B9261C7B225386030033ABC9 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C7A225386030033ABC9 /* UIStoryboard+Extension.swift */; };
 		B9261C7D225386810033ABC9 /* Task.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9261C7C225386810033ABC9 /* Task.storyboard */; };
@@ -49,6 +50,8 @@
 		B94D15C522585DA200F43B78 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15C422585DA200F43B78 /* StatisticsViewController.swift */; };
 		B94D15CA225886FB00F43B78 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15C8225886FB00F43B78 /* EventCell.swift */; };
 		B94D15CB225886FB00F43B78 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B94D15C9225886FB00F43B78 /* EventCell.xib */; };
+		B959F736226DA57B00D3CA68 /* GroupMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B959F734226DA57B00D3CA68 /* GroupMemberTableViewCell.swift */; };
+		B959F737226DA57B00D3CA68 /* GroupMemberTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B959F735226DA57B00D3CA68 /* GroupMemberTableViewCell.xib */; };
 		B9B10D732258A1780081C856 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B10D722258A1780081C856 /* UIView+Extension.swift */; };
 		B9B7F52C225CAD5700A6DA9E /* TaskCellStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F52B225CAD5700A6DA9E /* TaskCellStatus.swift */; };
 		B9B7F531225CC00000A6DA9E /* ChartsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F52F225CC00000A6DA9E /* ChartsTableViewCell.swift */; };
@@ -102,6 +105,7 @@
 		B91D3B0D226B11F200C1A28F /* TaskListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTableViewCell.swift; sourceTree = "<group>"; };
 		B91D3B0E226B11F200C1A28F /* TaskListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskListTableViewCell.xib; sourceTree = "<group>"; };
 		B91D3B11226B62BC00C1A28F /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
+		B921CA72226D8CED001FA942 /* LobbySettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbySettingsViewController.swift; sourceTree = "<group>"; };
 		B9261C782253858A0033ABC9 /* HMTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMTabBarViewController.swift; sourceTree = "<group>"; };
 		B9261C7A225386030033ABC9 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		B9261C7C225386810033ABC9 /* Task.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Task.storyboard; sourceTree = "<group>"; };
@@ -126,6 +130,8 @@
 		B94D15C422585DA200F43B78 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		B94D15C8225886FB00F43B78 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		B94D15C9225886FB00F43B78 /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
+		B959F734226DA57B00D3CA68 /* GroupMemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberTableViewCell.swift; sourceTree = "<group>"; };
+		B959F735226DA57B00D3CA68 /* GroupMemberTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupMemberTableViewCell.xib; sourceTree = "<group>"; };
 		B9B10D722258A1780081C856 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		B9B7F52B225CAD5700A6DA9E /* TaskCellStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellStatus.swift; sourceTree = "<group>"; };
 		B9B7F52F225CC00000A6DA9E /* ChartsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsTableViewCell.swift; sourceTree = "<group>"; };
@@ -286,6 +292,8 @@
 			children = (
 				B94D15A422560AA500F43B78 /* LobbyHeaderCell.swift */,
 				B94D15A522560AA500F43B78 /* LobbyHeaderCell.xib */,
+				B959F734226DA57B00D3CA68 /* GroupMemberTableViewCell.swift */,
+				B959F735226DA57B00D3CA68 /* GroupMemberTableViewCell.xib */,
 			);
 			path = Lobby;
 			sourceTree = "<group>";
@@ -305,6 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				B9261C9C225495840033ABC9 /* LobbyViewController.swift */,
+				B921CA72226D8CED001FA942 /* LobbySettingsViewController.swift */,
 			);
 			path = Lobby;
 			sourceTree = "<group>";
@@ -570,6 +579,7 @@
 				B91D3B0C226AED2900C1A28F /* AddingTaskHeaderViewCell.xib in Resources */,
 				B9261C7F225386930033ABC9 /* Profile.storyboard in Resources */,
 				B9B7F532225CC00000A6DA9E /* ChartsTableViewCell.xib in Resources */,
+				B959F737226DA57B00D3CA68 /* GroupMemberTableViewCell.xib in Resources */,
 				B9D71AA722534D5100F242DA /* Assets.xcassets in Resources */,
 				B9B7F53E225DB6B900A6DA9E /* Auth.storyboard in Resources */,
 				B94D15B0225721C500F43B78 /* ProfileHeaderViewCell.xib in Resources */,
@@ -712,7 +722,9 @@
 				B9B7F52C225CAD5700A6DA9E /* TaskCellStatus.swift in Sources */,
 				B9B99F322261898D00314BB6 /* UserObject.swift in Sources */,
 				B94D15A622560AA500F43B78 /* LobbyHeaderCell.swift in Sources */,
+				B959F736226DA57B00D3CA68 /* GroupMemberTableViewCell.swift in Sources */,
 				B9B7F531225CC00000A6DA9E /* ChartsTableViewCell.swift in Sources */,
+				B921CA73226D8CED001FA942 /* LobbySettingsViewController.swift in Sources */,
 				B91D3B012269BAF500C1A28F /* Date+Extension.swift in Sources */,
 				B9B7F541225DB73D00A6DA9E /* AuthViewController.swift in Sources */,
 				B94D15B322572A2200F43B78 /* HMBaseViewController.swift in Sources */,
