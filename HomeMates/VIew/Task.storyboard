@@ -38,7 +38,7 @@
                         <viewLayoutGuide key="safeArea" id="aa8-GZ-kOc"/>
                     </view>
                     <navigationItem key="navigationItem" title="任務列表" id="0QI-4b-kN3">
-                        <barButtonItem key="rightBarButtonItem" image="Edit_24px" id="1wJ-rG-U0i">
+                        <barButtonItem key="rightBarButtonItem" image="Edit02_24px" id="1wJ-rG-U0i">
                             <connections>
                                 <action selector="addTask:" destination="n4N-i4-U6m" id="Dy9-su-0bl"/>
                             </connections>
@@ -112,7 +112,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Edit_24px" width="24" height="24"/>
+        <image name="Edit02_24px" width="24" height="24"/>
         <namedColor name="W1">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
