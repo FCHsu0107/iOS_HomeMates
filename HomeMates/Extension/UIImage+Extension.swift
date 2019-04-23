@@ -39,6 +39,7 @@ enum ImageAsset: String {
     case Editor_24px
     
     case Remove_24px
+    case Housework_48px
     
 }
 

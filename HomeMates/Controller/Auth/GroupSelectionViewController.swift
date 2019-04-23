@@ -54,7 +54,7 @@ class GroupSelectionViewController: UIViewController {
     
     @IBOutlet var selectGroupBtn: [UIButton]!
     
-    var alertView = AlertView()
+//    var alertView = AlertService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,7 +92,7 @@ class GroupSelectionViewController: UIViewController {
     @IBAction func startAppBtnAction(_ sender: Any) {
         if selectGroupBtn[0].isSelected == true {
             if firstGroupIDTextField.text?.isEmpty == true || userNameTextField.text?.isEmpty == true {
-                AlertView.sigleActionAlert(title: "注意", message: "請確認基本資料都已填寫", clickTitle: "收到", showInVc: self)
+                AlertService.sigleActionAlert(title: "注意", message: "請確認基本資料都已填寫", clickTitle: "收到", showInVc: self)
             } else {
                 searchTheGroup()
             }
@@ -101,7 +101,7 @@ class GroupSelectionViewController: UIViewController {
             if userNameTextField.text?.isEmpty == true ||
                 firstGroupIDTextField.text?.isEmpty == true ||
                 secondGroupTextField.text?.isEmpty == true {
-                AlertView.sigleActionAlert(title: "注意", message: "請確認基本資料都已填寫", clickTitle: "收到", showInVc: self)
+                AlertService.sigleActionAlert(title: "注意", message: "請確認基本資料都已填寫", clickTitle: "收到", showInVc: self)
 
             } else {
                 guard let groupId = firstGroupIDTextField.text else { return }
@@ -109,7 +109,7 @@ class GroupSelectionViewController: UIViewController {
                     if groups.count == 0 {
                         self.createANewGroup()
                     } else {
-                        AlertView.sigleActionAlert(title: "群組 ID 已存在",
+                        AlertService.sigleActionAlert(title: "群組 ID 已存在",
                                                    message: "請選擇其他 ID",
                                                    clickTitle: "收到",
                                                    showInVc: self)
@@ -184,7 +184,7 @@ class GroupSelectionViewController: UIViewController {
         guard let groupId = firstGroupIDTextField.text else { return }
         FIRFirestoreSerivce.shared.findGroup(groupId: groupId, returning: GroupObject.self) { groups, docIds  in
             if groups.count == 0 {
-                AlertView.sigleActionAlert(title: "群組不存在", message: "請確認群組 ID 或創立新群組", clickTitle: "收到", showInVc: self)
+                AlertService.sigleActionAlert(title: "群組不存在", message: "請確認群組 ID 或創立新群組", clickTitle: "收到", showInVc: self)
             } else {
                 for index in groups {
                     creatorNames.append(index.createrName)

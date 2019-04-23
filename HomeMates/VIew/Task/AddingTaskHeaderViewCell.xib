@@ -16,22 +16,22 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="AddingTaskHeaderViewCell" customModule="HomeMates" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="93"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="92.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tWp-nl-rHL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="76"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="92.5"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="svW-RU-Pnd">
-                                <rect key="frame" x="20" y="49" width="335" height="1"/>
+                                <rect key="frame" x="20" y="65.5" width="335" height="1"/>
                                 <color key="backgroundColor" name="B1"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="VQk-iV-PKB"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(每天執行的任務，系統將自動加入任務列表中)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="29d-JG-bAB">
-                                <rect key="frame" x="20" y="56" width="296" height="20"/>
+                                <rect key="frame" x="20" y="72.5" width="296" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Pxv-WC-EIa"/>
                                 </constraints>
@@ -40,17 +40,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每日任務" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fme-kp-rg8">
-                                <rect key="frame" x="20" y="16.5" width="70" height="21"/>
+                                <rect key="frame" x="20" y="25" width="70" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="Y4"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Axp-hL-4DC">
-                                <rect key="frame" x="301" y="12" width="50" height="30"/>
+                                <rect key="frame" x="301" y="12" width="50" height="46.5"/>
                                 <color key="backgroundColor" name="Y1"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="0tC-8D-LPf"/>
-                                    <constraint firstAttribute="height" constant="30" id="8IQ-Cb-Gkm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="新增">
@@ -66,7 +65,6 @@
                             <constraint firstItem="Axp-hL-4DC" firstAttribute="top" secondItem="tWp-nl-rHL" secondAttribute="top" constant="12" id="BkN-Qb-cgU"/>
                             <constraint firstAttribute="bottom" secondItem="29d-JG-bAB" secondAttribute="bottom" id="Jky-tX-sqD"/>
                             <constraint firstItem="svW-RU-Pnd" firstAttribute="leading" secondItem="tWp-nl-rHL" secondAttribute="leading" constant="20" id="OZf-2V-tbs"/>
-                            <constraint firstAttribute="height" constant="76" id="Wt4-KZ-9s9"/>
                             <constraint firstItem="29d-JG-bAB" firstAttribute="top" secondItem="svW-RU-Pnd" secondAttribute="bottom" constant="6" id="ZpO-qg-oYX"/>
                             <constraint firstItem="svW-RU-Pnd" firstAttribute="top" secondItem="Axp-hL-4DC" secondAttribute="bottom" constant="7" id="ma0-Kg-WDg"/>
                             <constraint firstItem="fme-kp-rg8" firstAttribute="centerY" secondItem="Axp-hL-4DC" secondAttribute="centerY" id="oBQ-NB-5pw"/>

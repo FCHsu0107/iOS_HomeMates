@@ -54,7 +54,7 @@ class AuthViewController: HMBaseViewController {
         }
     }
     
-    var alertView = AlertView()
+//    var alertView = AlertService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,18 +128,18 @@ class AuthViewController: HMBaseViewController {
         if selectionBarBtn[0].isSelected == true {
             if emailTextField.text?.isEmpty == true {
 
-                AlertView.sigleActionAlert(title: "錯誤", message: "請輸入電子郵件", clickTitle: "收到", showInVc: self)
+                AlertService.sigleActionAlert(title: "錯誤", message: "請輸入電子郵件", clickTitle: "收到", showInVc: self)
                 
             } else if passwordTextField.text != checkTextField.text || passwordTextField.text?.isEmpty == true {
 
-                AlertView.sigleActionAlert(title: "錯誤", message: "請確認密碼無誤", clickTitle: "收到", showInVc: self)
+                AlertService.sigleActionAlert(title: "錯誤", message: "請確認密碼無誤", clickTitle: "收到", showInVc: self)
                 
             } else {
                 createUserDoc()
             }
         } else {
             if emailTextField.text?.isEmpty == true || passwordTextField.text?.isEmpty == true {
-                AlertView.sigleActionAlert(title: "錯誤", message: "請輸入帳號或密碼", clickTitle: "收到", showInVc: self)
+                AlertService.sigleActionAlert(title: "錯誤", message: "請輸入帳號或密碼", clickTitle: "收到", showInVc: self)
             } else {
               signInAction()
             }
@@ -164,7 +164,7 @@ class AuthViewController: HMBaseViewController {
                                                       in: .users)
                 self.performSegue(withIdentifier: "selectGroupSegue", sender: nil)
             } else {
-                AlertView.sigleActionAlert(title: "錯誤",
+                AlertService.sigleActionAlert(title: "錯誤",
                                            message: error?.localizedDescription,
                                            clickTitle: "收到",
                                            showInVc: self)
@@ -178,7 +178,7 @@ class AuthViewController: HMBaseViewController {
                 let tabBarVC = UIStoryboard.main.instantiateInitialViewController()!
                 self.present(tabBarVC, animated: true, completion: nil)
             } else {
-                AlertView.sigleActionAlert(title: "錯誤",
+                AlertService.sigleActionAlert(title: "錯誤",
                                            message: error?.localizedDescription,
                                            clickTitle: "收到",
                                            showInVc: self)

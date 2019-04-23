@@ -101,6 +101,19 @@ extension TaskSettingsViewController: UITableViewDataSource, UITableViewDelegate
         headerCell.taskTypeHandler = { tag in
             
             print(tag)
+            if tag == 0 {
+                AlertService.addSpecialTask(in: self, completion: { (task) in
+                    print(task)
+                })
+            } else if tag == 1 {
+                AlertService.addDailyTask(in: self, completion: { (task) in
+                    print(task)
+                })
+            } else {
+                AlertService.addRegularTask(in: self, completion: { (task) in
+                    print(task)
+                })
+            }
             //加入任務會因為不同的 tag, taskPriodDay 有所不同
             // tag == 0, taskPriodDay = 1
             // tag == 1, taskPriodDay = 依照選擇的天數
