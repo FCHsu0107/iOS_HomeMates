@@ -49,9 +49,10 @@ class FirestoreUserManager {
     
     func createGroupInUser(for encodableObject: GroupInfoInUser) {
         do {
-            let json = try encodableObject.toJSON()
+            var json = try encodableObject.toJSON()
+            json["docId"] = encodableObject.groupID
             reference(userUid: UserDefaultManager.shared.userUid!, to: .groups)
-                .document(UserDefaultManager.shared.groupId!)
+                .document(encodableObject.groupID)
                 .setData(json)
         } catch {
             print(error)
@@ -163,7 +164,8 @@ class FirestoreUserManager {
             .document()
         let trackerId = ref.documentID
         do {
-            let json = try tracker.toJSON()
+            var json = try tracker.toJSON()
+            json["docId"] = trackerId
             refInMonth(userUid: tracker.executorId, monthId: monthId, to: .taskTrackers)
                 .document(trackerId)
                 .setData(json)
@@ -177,12 +179,72 @@ class FirestoreUserManager {
         
         do {
             let json = try tracker.toJSON()
+            
             refInMonth(userUid: tracker.executorId, monthId: monthId, to: .taskTrackers)
                 .document(trackerId)
                 .setData(json)
         } catch {
             print(error)
         }
-        
     }
+    
+    private func readTrackerInMonth(monthId: String,
+                                    completion: @escaping ([TaskTracker]?, Bool) -> Void) {
+        refInMonth(userUid: UserDefaultManager.shared.userUid!, monthId: monthId, to: .taskTrackers)
+            .addSnapshotListener { (snapshots, err) in
+                if err == nil {
+                    guard let snapshots = snapshots else { return }
+                    var objects = [TaskTracker]()
+                    for document in snapshots.documents {
+                        do {
+                            let object = try document.decode(as: TaskTracker.self)
+                            objects.append(object)
+                        } catch {
+                            print(error)
+                        }
+                    }
+                    completion(objects, true)
+                } else {
+                    //err != nil
+                }
+        }
+    }
+    
+    func readTracker(completionHandler: @escaping ( [TaskTracker]?, Bool, Int?) -> Void) {
+        let currentMonth = DateProvider.shared.getCurrentMonths()
+        refInGroup(userUid: UserDefaultManager.shared.userUid!, to: .months)
+            .whereField(MonthObject.CodingKeys.month.rawValue, isEqualTo: currentMonth)
+            .getDocuments { [weak self] (snapshots, err) in
+                
+            if err == nil {
+                guard let snapshots = snapshots else { return }
+                if snapshots.count == 0 {
+                    //本月尚無資訊
+                    completionHandler(nil, false, nil)
+                    
+                } else {
+
+                    var months = [MonthObject]()
+                    var monthGoal: Int?
+                    for document in snapshots.documents {
+                        do {
+                            let month = try document.decode(as: MonthObject.self)
+                            months.append(month)
+                        } catch {
+                            print(error)
+                        }
+                    }
+                    let currentMonthId = months[0].docId!
+                    monthGoal = months[0].goal
+                    self?.readTrackerInMonth(monthId: currentMonthId, completion: { (trckers, flag) in
+                        completionHandler(trckers, flag, monthGoal)
+                    })
+                }
+                
+            } else {
+                //err != nil
+            }
+        }
+    }
+    
 }

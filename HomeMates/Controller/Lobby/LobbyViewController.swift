@@ -142,10 +142,10 @@ extension LobbyViewController: UITableViewDataSource {
             taskCell.loadData(taskObject: task, status: TaskCellStatus.checkTask)
             taskCell.clickHandler = { [weak self] cell, _ in
                 guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
-                guard var updateTask = self?.willDoTaskList[indexPath.row] else { return }
+                guard var updateTask = self?.checkTaskList[indexPath.row] else { return }
                 updateTask.taskStatus = 4
                 FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
-                
+                FirestoreUserManager.shared.addTaskTracker(for: updateTask)
             }
             
            } else {

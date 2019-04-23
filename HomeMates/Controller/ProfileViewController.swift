@@ -27,13 +27,7 @@ class ProfileViewController: HMBaseViewController {
     var taskListTitle: [String] = ["", "當前任務", "任務日誌"]
     var processTaskList: [TaskObject] = []
 
-    var doneTaskList: [TaskTracker] = [TaskTracker(docId: nil,
-                                                   taskName: "洗碗",
-                                                   taskImage: "Housework_48px",
-                                                   executorName: "UserTest00",
-                                                   executorId: "AAAAAAAAAA",
-                                                   totalPoints: 10,
-                                                   taskTimes: 2)]
+    var doneTaskList: [TaskTracker] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +40,18 @@ class ProfileViewController: HMBaseViewController {
             
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
+            }
+        }
+        FirestoreUserManager.shared.readTracker { [weak self] (trackers, flag) in
+            if flag == true {
+                guard let trackers = trackers else { return }
+                self?.doneTaskList = trackers
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+                
+            } else {
+                
             }
         }
 
@@ -67,6 +73,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfileHeaderViewCell.self))
             guard let headerCell = cell as? ProfileHeaderViewCell else { return cell}
+            
             headerCell.settingsBtn.addTarget(self, action: #selector(clickSettingsBtn), for: .touchUpInside)
             return headerCell
 

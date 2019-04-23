@@ -56,7 +56,6 @@ extension TaskSettingsViewController: UITableViewDataSource, UITableViewDelegate
         headerCell.addingTaskBtn.tag = section
         headerCell.taskTypeHandler = { tag in
             
-            print(tag)
             if tag == 0 {
                 AlertService.addSpecialTask(in: self, completion: { (task) in
                     FirestoreGroupManager.shared.addTask(for: task)
