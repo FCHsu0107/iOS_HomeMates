@@ -8,15 +8,37 @@
 
 import Foundation
 
-struct TaskRecord {
+struct TaskTracker: Codable {
 
+    var docId: String?
+    
     let taskName: String
 
     let taskImage: String?
 
     let executorName: String
+    
+    let executorId: String
 
-    let taskPoint: Int
+    var totalPoints: Int
 
-    let taskTimes: Int
+    var taskTimes: Int
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case docId
+        
+        case taskName
+        
+        case taskImage
+        
+        case executorName
+        
+        case totalPoints
+        
+        case taskTimes
+        
+        case executorId
+    }
+    
 }

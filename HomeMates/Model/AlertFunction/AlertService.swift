@@ -34,7 +34,9 @@ class AlertService {
     }
     
     static func addSpecialTask(in presentVc: UIViewController, completion: @escaping (TaskObject) -> Void) {
-        addTask(in: presentVc, taskPriodDay: 0, title: "新增特殊任務", publisherName: UserDefaultManager.shared.userName!) { (task) in
+        addTask(in: presentVc, taskPriodDay: 0,
+                title: "新增特殊任務",
+                publisherName: UserDefaultManager.shared.userName!) { (task) in
             completion(task)
         }
     }

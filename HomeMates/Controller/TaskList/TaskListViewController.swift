@@ -106,7 +106,6 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
             
             taskCell.loadData(taskObject: task, status: TaskCellStatus.assignNormalTask)
             
-
         } else if indexPath.section == 2 {
             
             let task = regularTaskList[indexPath.row]
@@ -142,6 +141,29 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
         return taskCell
     }
 
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else { return }
+        if indexPath.section == 0 {
+            guard specialTaskList.count != 0 else { return }
+            
+            let task = specialTaskList[indexPath.row]
+            FirestoreGroupManager.shared.deleteTask(in: .tasks, docId: task.docId!)
+            
+        } else if indexPath.section == 1 {
+            guard normalTaskList.count != 0 else { return }
+            
+            let task = normalTaskList[indexPath.row]
+            FirestoreGroupManager.shared.deleteTask(in: .tasks, docId: task.docId!)
+        } else {
+            guard regularTaskList.count != 0 else { return }
+            
+            let task = regularTaskList[indexPath.row]
+            FirestoreGroupManager.shared.deleteTask(in: .tasks, docId: task.docId!)
+        }
+    }
+    
     private func updateTaskStatus(taskItem: TaskObject) -> TaskObject {
         var task = taskItem
         task.executorName = UserDefaultManager.shared.userName

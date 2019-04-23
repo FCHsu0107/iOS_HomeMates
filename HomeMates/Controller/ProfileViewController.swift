@@ -27,16 +27,13 @@ class ProfileViewController: HMBaseViewController {
     var taskListTitle: [String] = ["", "當前任務", "任務日誌"]
     var processTaskList: [TaskObject] = []
 
-    var doneTaskList: [TaskRecord] = [TaskRecord(taskName: "洗碗",
-                                                 taskImage: "home_normal",
-                                                 executorName: "UserNametest00",
-                                                 taskPoint: 2,
-                                                 taskTimes: 10),
-                                      TaskRecord(taskName: "倒垃圾",
-                                                 taskImage: "home_normal",
-                                                 executorName: "UserNametest00",
-                                                 taskPoint: 2,
-                                                 taskTimes: 10)]
+    var doneTaskList: [TaskTracker] = [TaskTracker(docId: nil,
+                                                   taskName: "洗碗",
+                                                   taskImage: "Housework_48px",
+                                                   executorName: "UserTest00",
+                                                   executorId: "AAAAAAAAAA",
+                                                   totalPoints: 10,
+                                                   taskTimes: 2)]
 
     override func viewDidLoad() {
         super.viewDidLoad()

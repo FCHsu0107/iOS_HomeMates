@@ -14,10 +14,14 @@ struct MonthObject: Codable {
     
     let month: String
     
+    let goal: Int?
+    
     enum CodingKeys: String, CodingKey {
         
         case docId
         
         case month
+        
+        case goal
     }
 }

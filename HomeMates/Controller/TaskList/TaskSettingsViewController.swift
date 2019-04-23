@@ -156,7 +156,6 @@ extension TaskSettingsViewController: UITableViewDataSource, UITableViewDelegate
             FirestoreGroupManager.shared.deleteTask(in: .regularTaskList, docId: task.docId!)
         }
      
-        
     }
     
 }

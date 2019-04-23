@@ -29,12 +29,12 @@ class TotalPointsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func loadData(tasksTracker: TaskRecord) {
+    func loadData(tasksTracker: TaskTracker) {
         
         taskNameLbl.text = tasksTracker.taskName
         taskImage.image = UIImage(named: tasksTracker.taskImage ?? "home_normal")
         taskTimesLbl.text = "完成  \(String(tasksTracker.taskTimes)) 次"
-        totalPointsLbl.text = "\(tasksTracker.taskPoint * tasksTracker.taskTimes) 點"
+        totalPointsLbl.text = "\(tasksTracker.totalPoints) 點"
         
     }
 }

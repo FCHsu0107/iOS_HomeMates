@@ -146,16 +146,13 @@ class GroupSelectionViewController: UIViewController {
         
         FIRFirestoreSerivce.shared.createUser(uid: user.uid, for: newUser, in: .users)
         
-        let groupInfoInUser = GroupInfoInUser(docId: nil,
+        let groupInfoInUser = GroupInfoInUser(docId: UserDefaultManager.shared.groupId!,
                                               isMember: true,
                                               groupID: UserDefaultManager.shared.groupId!,
                                               groupName: groupName,
                                               isMainGroup: true)
         
-        FIRFirestoreSerivce.shared.createSub(for: groupInfoInUser,
-                                             in: .users,
-                                             inDocument: user.uid,
-                                             inNext: .groups)
+        FirestoreUserManager.shared.createGroupInUser(for: groupInfoInUser)
         
         let groupMemnber = MemberObject(docId: nil,
                                         userId: user.uid,
@@ -184,7 +181,10 @@ class GroupSelectionViewController: UIViewController {
         guard let groupId = firstGroupIDTextField.text else { return }
         FIRFirestoreSerivce.shared.findGroup(groupId: groupId, returning: GroupObject.self) { groups, docIds  in
             if groups.count == 0 {
-                AlertService.sigleActionAlert(title: "群組不存在", message: "請確認群組 ID 或創立新群組", clickTitle: "收到", showInVc: self)
+                AlertService.sigleActionAlert(title: "群組不存在",
+                                              message: "請確認群組 ID 或創立新群組",
+                                              clickTitle: "收到",
+                                              showInVc: self)
             } else {
                 for index in groups {
                     creatorNames.append(index.createrName)
@@ -196,7 +196,7 @@ class GroupSelectionViewController: UIViewController {
                     UIAlertController.showAlertSheet(title: "確認加入群組",
                                                      message: "確認群組名稱",
                                                      action: groupNames) { (index) in
-
+                        groupResults[index].docId = UserDefaultManager.shared.groupId
                         let memberInfo = MemberObject(docId: nil,
                                                       userId: user.uid,
                                                       userName: userName,
@@ -225,10 +225,8 @@ class GroupSelectionViewController: UIViewController {
                                                               groupID: docIds[index],
                                                               groupName: groupResults[index].name,
                                                               isMainGroup: true)
-                        FIRFirestoreSerivce.shared.createSub(for: groupInfoInUser,
-                                                             in: .users,
-                                                             inDocument: user.uid,
-                                                             inNext: .groups)
+
+                        FirestoreUserManager.shared.createGroupInUser(for: groupInfoInUser)
                         
                         let application = ApplicationObject(docId: nil,
                                                             applicantId: user.uid,

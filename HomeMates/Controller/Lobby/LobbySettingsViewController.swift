@@ -96,7 +96,8 @@ extension LobbySettingsViewController: UITableViewDelegate, UITableViewDataSourc
         memberCell.loadData(memberInfo: memberList[indexPath.row])
         memberCell.clickHandler = { cell in
            guard let indexPath = tableView.indexPath(for: cell) else { return }
-            let alertSheet = UIAlertController.showDeleteActionSheet(member: self.memberList[indexPath.row].userName, completion: { (flag) in
+            let alertSheet = UIAlertController.showDeleteActionSheet(member: self.memberList[indexPath.row].userName,
+                                                                     completion: { (flag) in
                 if flag == true {
                     //delete member on the firestore
                 }
