@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--任務列表-->
+        <!--群組任務列表-->
         <scene sceneID="Pcd-FF-OuJ">
             <objects>
                 <viewController id="n4N-i4-U6m" customClass="TaskListViewController" customModule="HomeMates" customModuleProvider="target" sceneMemberID="viewController">
@@ -37,7 +37,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aa8-GZ-kOc"/>
                     </view>
-                    <navigationItem key="navigationItem" title="任務列表" id="0QI-4b-kN3">
+                    <navigationItem key="navigationItem" title="群組任務列表" id="0QI-4b-kN3">
                         <barButtonItem key="rightBarButtonItem" image="Edit02_24px" id="1wJ-rG-U0i">
                             <connections>
                                 <action selector="addTask:" destination="n4N-i4-U6m" id="Dy9-su-0bl"/>

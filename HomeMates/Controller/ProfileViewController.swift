@@ -24,7 +24,7 @@ class ProfileViewController: HMBaseViewController {
     let taskHeader = TaskListHeaderView()
 
     //mock data
-    var taskListTitle: [String] = ["", "當前任務", "任務日誌"]
+    var taskListTitle: [String] = ["", "個人任務清單", "任務日誌"]
     var processTaskList: [TaskObject] = []
 
     var doneTaskList: [TaskTracker] = []
@@ -42,7 +42,7 @@ class ProfileViewController: HMBaseViewController {
                 self?.tableView.reloadData()
             }
         }
-        FirestoreUserManager.shared.readTracker { [weak self] (trackers, flag) in
+        FirestoreUserManager.shared.readTracker { [weak self] (trackers, flag, _)  in
             if flag == true {
                 guard let trackers = trackers else { return }
                 self?.doneTaskList = trackers
