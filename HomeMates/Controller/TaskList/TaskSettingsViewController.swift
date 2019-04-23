@@ -103,22 +103,20 @@ extension TaskSettingsViewController: UITableViewDataSource, UITableViewDelegate
             print(tag)
             if tag == 0 {
                 AlertService.addSpecialTask(in: self, completion: { (task) in
-                    print(task)
+                    FirestoreGroupManager.shared.addTask(for: task)
                 })
             } else if tag == 1 {
                 AlertService.addDailyTask(in: self, completion: { (task) in
-                    print(task)
+                    FirestoreGroupManager.shared.addTask(for: task)
+                    FirestoreGroupManager.shared.addDailyTaskList(task: task)
                 })
             } else {
                 AlertService.addRegularTask(in: self, completion: { (task) in
-                    print(task)
+                    FirestoreGroupManager.shared.addTask(for: task)
+                    FirestoreGroupManager.shared.addRegularTaskList(task: task)
                 })
             }
-            //加入任務會因為不同的 tag, taskPriodDay 有所不同
-            // tag == 0, taskPriodDay = 1
-            // tag == 1, taskPriodDay = 依照選擇的天數
-            // tag == 2, taskPriodDay = 0
-            
+
         }
         return headerCell
         

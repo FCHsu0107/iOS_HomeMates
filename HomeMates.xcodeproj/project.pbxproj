@@ -54,6 +54,7 @@
 		B959F737226DA57B00D3CA68 /* GroupMemberTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B959F735226DA57B00D3CA68 /* GroupMemberTableViewCell.xib */; };
 		B959F739226DD56900D3CA68 /* FirestoreGroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B959F738226DD56900D3CA68 /* FirestoreGroupManager.swift */; };
 		B959F73B226EB91E00D3CA68 /* StatusBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B959F73A226EB91E00D3CA68 /* StatusBackgroundColor.swift */; };
+		B959F73D226EC3E000D3CA68 /* MonthsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B959F73C226EC3E000D3CA68 /* MonthsObject.swift */; };
 		B9B10D732258A1780081C856 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B10D722258A1780081C856 /* UIView+Extension.swift */; };
 		B9B7F52C225CAD5700A6DA9E /* TaskCellStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F52B225CAD5700A6DA9E /* TaskCellStatus.swift */; };
 		B9B7F531225CC00000A6DA9E /* ChartsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F52F225CC00000A6DA9E /* ChartsTableViewCell.swift */; };
@@ -136,6 +137,7 @@
 		B959F735226DA57B00D3CA68 /* GroupMemberTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupMemberTableViewCell.xib; sourceTree = "<group>"; };
 		B959F738226DD56900D3CA68 /* FirestoreGroupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreGroupManager.swift; sourceTree = "<group>"; };
 		B959F73A226EB91E00D3CA68 /* StatusBackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBackgroundColor.swift; sourceTree = "<group>"; };
+		B959F73C226EC3E000D3CA68 /* MonthsObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthsObject.swift; sourceTree = "<group>"; };
 		B9B10D722258A1780081C856 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		B9B7F52B225CAD5700A6DA9E /* TaskCellStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellStatus.swift; sourceTree = "<group>"; };
 		B9B7F52F225CC00000A6DA9E /* ChartsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsTableViewCell.swift; sourceTree = "<group>"; };
@@ -459,6 +461,7 @@
 				B9B99F4C22648E4B00314BB6 /* GroupInfoInUser.swift */,
 				B91D3A992264ABD400C1A28F /* MemberObject.swift */,
 				B91D3A9E2264CA0F00C1A28F /* ApplicationObject.swift */,
+				B959F73C226EC3E000D3CA68 /* MonthsObject.swift */,
 			);
 			path = GroupObject;
 			sourceTree = "<group>";
@@ -713,6 +716,7 @@
 				B9261C97225489110033ABC9 /* TaskObject.swift in Sources */,
 				B9D295D42258C18F00CF7869 /* TaskRecordObject.swift in Sources */,
 				B9B99F3B2262DB0400314BB6 /* Snapshot+Entension.swift in Sources */,
+				B959F73D226EC3E000D3CA68 /* MonthsObject.swift in Sources */,
 				B9261C87225389FB0033ABC9 /* UIImage+Extension.swift in Sources */,
 				B94D15BD225754C700F43B78 /* ProfileViewController.swift in Sources */,
 				B9B7F539225D95B500A6DA9E /* HMBaseTextField.swift in Sources */,

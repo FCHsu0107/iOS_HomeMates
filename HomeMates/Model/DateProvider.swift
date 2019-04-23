@@ -9,6 +9,7 @@
 import Foundation
 
 class DateProvider {
+    
     static let shared = DateProvider()
     
 //    static let 
@@ -27,4 +28,13 @@ class DateProvider {
         return outputFormat.string(from: date as Date)
     }
 
+    func getCurrentMonths() -> String {
+        let currentTimeStamp = getTimeStamp()
+        let date = Date(timeIntervalSince1970: Double(currentTimeStamp)/1000)
+        let outputFormat = DateFormatter()
+        outputFormat.locale = NSLocale(localeIdentifier: "en_US") as Locale
+        outputFormat.dateFormat = "yyyy/MM"
+        
+        return outputFormat.string(from: date as Date)
+    }
 }

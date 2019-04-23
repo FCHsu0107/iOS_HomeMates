@@ -39,7 +39,7 @@ class LobbyHeaderCell: UITableViewCell {
             groupNameLbl.text = "資料載入中"
             groupIDLbl.text = "資料載入中"
             return }
-        groupNameLbl.text = groupInfo.createrName
+        groupNameLbl.text = groupInfo.name
         groupIDLbl.text = "Home ID: \(String(describing: groupInfo.groupId))"
   
 //        groupImageView.image = groupInfo?.picture

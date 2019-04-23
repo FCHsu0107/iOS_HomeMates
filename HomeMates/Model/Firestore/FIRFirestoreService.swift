@@ -86,7 +86,6 @@ class FIRFirestoreSerivce {
                          toNext: subCollectionReference)
                 .document(ref.documentID)
                 .setData(json)
-            print(ref.documentID)
             
         } catch {
             print(error)
