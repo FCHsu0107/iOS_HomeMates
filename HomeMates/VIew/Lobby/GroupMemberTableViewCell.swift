@@ -12,7 +12,7 @@ class GroupMemberTableViewCell: UITableViewCell {
 
     @IBOutlet weak var memberImageView: UIImageView! {
         didSet {
-            memberImageView.layer.cornerRadius = 27
+            memberImageView.layer.cornerRadius = 23
         }
     }
     

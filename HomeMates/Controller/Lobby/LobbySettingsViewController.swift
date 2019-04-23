@@ -51,7 +51,7 @@ class LobbySettingsViewController: HMBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.jq_registerCellWithNib(identifier: String(describing: GroupMemberTableViewCell.self), bundle: nil)
-        
+
     }
 
     @IBAction func clickEditBtn(_ sender: Any) {
@@ -96,13 +96,19 @@ extension LobbySettingsViewController: UITableViewDelegate, UITableViewDataSourc
         memberCell.loadData(memberInfo: memberList[indexPath.row])
         memberCell.clickHandler = { cell in
            guard let indexPath = tableView.indexPath(for: cell) else { return }
+            let alertSheet = UIAlertController.showDeleteActionSheet(member: self.memberList[indexPath.row].userName, completion: { (flag) in
+                if flag == true {
+                    //delete member on the firestore
+                }
+            })
+            self.present(alertSheet, animated: true, completion: nil)
             print(indexPath.row)
         }
         
         return memberCell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return 60
     }
     
 }

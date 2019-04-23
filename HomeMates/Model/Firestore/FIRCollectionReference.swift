@@ -22,6 +22,8 @@ enum FIRCollectionReference: String {
     
     case dailyTasksList
     
+    case regularTaskList
+    
     case months
     
     case taskTrackers

@@ -14,4 +14,13 @@ class FirestoreGroupManager {
     private init() {}
     
     static var shared = FirestoreGroupManager()
+    
+    private func reference(to collectionReference: FIRCollectionReference) -> CollectionReference {
+        
+        return Firestore.firestore()
+            .collection(FIRCollectionReference.groups.rawValue)
+            .document(UserDefaultManager.shared.groupId!)
+            .collection(collectionReference.rawValue)
+    }
+    
 }

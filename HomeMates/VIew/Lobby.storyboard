@@ -81,6 +81,7 @@
                                     <constraint firstAttribute="width" constant="20" id="yPX-l4-n8q"/>
                                 </constraints>
                                 <state key="normal" image="Editor_24px"/>
+                                <state key="selected" image="Tick_20px"/>
                                 <connections>
                                     <action selector="clickEditBtn:" destination="vJS-VE-AjH" eventType="touchUpInside" id="uou-P0-BJG"/>
                                 </connections>
@@ -113,9 +114,9 @@
                             <constraint firstItem="LR4-YV-gkv" firstAttribute="trailing" secondItem="HkG-ja-O0R" secondAttribute="trailing" id="3Vx-5T-AfF"/>
                             <constraint firstItem="GC7-Yi-r5l" firstAttribute="top" secondItem="idq-Ee-uyT" secondAttribute="bottom" constant="16" id="3zH-MR-fWK"/>
                             <constraint firstItem="5rh-pw-oAa" firstAttribute="trailing" secondItem="GC7-Yi-r5l" secondAttribute="trailing" id="4xN-tT-KRc"/>
-                            <constraint firstItem="HkG-ja-O0R" firstAttribute="top" secondItem="GNs-sp-xiL" secondAttribute="bottom" constant="10" id="AS2-3G-PJ8"/>
                             <constraint firstItem="GNs-sp-xiL" firstAttribute="top" secondItem="GC7-Yi-r5l" secondAttribute="bottom" constant="16" id="By9-xR-boI"/>
                             <constraint firstItem="5rh-pw-oAa" firstAttribute="bottom" secondItem="GC7-Yi-r5l" secondAttribute="bottom" id="I49-zd-DfA"/>
+                            <constraint firstItem="HkG-ja-O0R" firstAttribute="top" secondItem="GNs-sp-xiL" secondAttribute="bottom" constant="10" id="Kt3-m0-USY"/>
                             <constraint firstItem="LR4-YV-gkv" firstAttribute="bottom" secondItem="HkG-ja-O0R" secondAttribute="bottom" id="MQz-fm-aPD"/>
                             <constraint firstItem="idq-Ee-uyT" firstAttribute="centerX" secondItem="34Z-6s-y9E" secondAttribute="centerX" id="OZa-9p-qpP"/>
                             <constraint firstItem="5rh-pw-oAa" firstAttribute="leading" secondItem="GC7-Yi-r5l" secondAttribute="leading" id="Rlp-6k-CPV"/>
@@ -164,6 +165,7 @@
     <resources>
         <image name="Editor_24px" width="24" height="24"/>
         <image name="Home_48px" width="48" height="48"/>
+        <image name="Tick_20px" width="20" height="20"/>
         <namedColor name="B1">
             <color red="0.27843137254901962" green="0.32156862745098042" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
