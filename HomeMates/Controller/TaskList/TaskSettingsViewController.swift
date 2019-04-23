@@ -17,67 +17,9 @@ class TaskSettingsViewController: HMBaseViewController {
         }
     }
     
-    var dailyTaskList: [TaskObject] = [ TaskObject(docId: nil,
-                                                   taskName: "洗碗",
-                                                   image: "home_normal",
-                                                   publisherName: "System",
-                                                   executorName: nil,
-                                                   executorUid: nil,
-                                                   taskPoint: 1,
-                                                   taskPriodDay: 1,
-                                                   compleyionTimeStamp: nil,
-                                                   taskStatus: 1),
-                                        TaskObject(docId: nil,
-                                                   taskName: "煮午餐",
-                                                   image: "home_normal",
-                                                   publisherName: "System",
-                                                   executorName: nil,
-                                                   executorUid: nil,
-                                                   taskPoint: 1,
-                                                   taskPriodDay: 1,
-                                                   compleyionTimeStamp: nil,
-                                                   taskStatus: 1),
-                                        TaskObject(docId: nil,
-                                                   taskName: "掃地",
-                                                   image: "home_normal",
-                                                   publisherName: "System",
-                                                   executorName: nil,
-                                                   executorUid: nil,
-                                                   taskPoint: 1,
-                                                   taskPriodDay: 1,
-                                                   compleyionTimeStamp: nil,
-                                                   taskStatus: 1)]
+    var dailyTaskList: [TaskObject] = []
     
-    var regularTaskList: [TaskObject] = [ TaskObject(docId: nil,
-                                                     taskName: "倒垃圾",
-                                                     image: "home_normal",
-                                                     publisherName: "System",
-                                                     executorName: nil,
-                                                     executorUid: nil,
-                                                     taskPoint: 1,
-                                                     taskPriodDay: 3,
-                                                     compleyionTimeStamp: nil,
-                                                     taskStatus: 1),
-                                          TaskObject(docId: nil,
-                                                     taskName: "洗衣服",
-                                                     image: "home_normal",
-                                                     publisherName: "System",
-                                                     executorName: nil,
-                                                     executorUid: nil,
-                                                     taskPoint: 1,
-                                                     taskPriodDay: 7,
-                                                     compleyionTimeStamp: nil,
-                                                     taskStatus: 1),
-                                          TaskObject(docId: nil,
-                                                     taskName: "洗床單",
-                                                     image: "home_normal",
-                                                     publisherName: "System",
-                                                     executorName: nil,
-                                                     executorUid: nil,
-                                                     taskPoint: 1,
-                                                     taskPriodDay: 14,
-                                                     compleyionTimeStamp: nil,
-                                                     taskStatus: 1)]
+    var regularTaskList: [TaskObject] = []
     
     let headerTitle = ["特殊任務", "每日任務", "常規任務"]
     let guideText = ["(非常規任務，創立任務後可執行一次)", "(每天執行的任務，系統將每天加入任務列表中)", "(定期執行的任務，系統將定期加入任務列表中)"]
@@ -86,6 +28,20 @@ class TaskSettingsViewController: HMBaseViewController {
         super.viewDidLoad()
         tableView.jq_registerCellWithNib(identifier: String(describing: AddingTaskHeaderViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: TaskListTableViewCell.self), bundle: nil)
+        
+        FirestoreGroupManager.shared.readDailyTaskList { [weak self] (tasks) in
+            self?.dailyTaskList = []
+            
+            self?.dailyTaskList = tasks
+
+            self?.tableView.reloadData()
+        }
+        
+        FirestoreGroupManager.shared.readRegularTaskList { [weak self] (tasks) in
+            self?.regularTaskList = []
+            self?.regularTaskList = tasks
+            self?.tableView.reloadData()
+        }
 
     }
 
@@ -155,20 +111,52 @@ extension TaskSettingsViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TaskListTableViewCell.self), for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TaskListTableViewCell.self),
+                                                 for: indexPath)
         guard let taskCell = cell as? TaskListTableViewCell else { return cell }
         switch indexPath.section {
         case 1:
-            taskCell.loadData(task: dailyTaskList[indexPath.row])
-            return taskCell
+            if dailyTaskList.count == 0 {
+                return UITableViewCell()
+            } else {
+                let dailyTask = dailyTaskList[indexPath.row]
+                taskCell.loadData(task: dailyTask)
+                return taskCell
+            }
+            
         case 2:
-            taskCell.loadData(task: regularTaskList[indexPath.row], isDaliyTask: false)
-            return taskCell
+            if regularTaskList.count == 0 {
+                return UITableViewCell()
+            } else {
+                let regularTask = regularTaskList[indexPath.row]
+                taskCell.loadData(task: regularTask, isDaliyTask: false)
+                return taskCell
+            }
+            
         default:
             return cell
  
         }
-//        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
+        
+        guard editingStyle == .delete else { return }
+        
+        if indexPath.section == 1 {
+            guard dailyTaskList.count != 0 else { return }
+            
+            let task = dailyTaskList[indexPath.row]
+            FirestoreGroupManager.shared.deleteTask(in: .dailyTasksList, docId: task.docId!)
+        } else if indexPath.section == 2 {
+            guard regularTaskList.count != 0 else { return }
+            let task = regularTaskList[indexPath.row]
+            FirestoreGroupManager.shared.deleteTask(in: .regularTaskList, docId: task.docId!)
+        }
+     
+        
     }
     
 }

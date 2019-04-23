@@ -140,12 +140,14 @@ extension LobbyViewController: UITableViewDataSource {
            if indexPath.section == 3 {
             let task = checkTaskList[indexPath.row]
             taskCell.loadData(taskObject: task, status: TaskCellStatus.checkTask)
+//            taskCell.clickHandler = {}
             
            } else {
             let task = willDoTaskList[indexPath.row]
             taskCell.loadData(taskObject: task, status: TaskCellStatus.acceptSpecialTask)
-    
+            
            }
+            
             return taskCell
 
         case 1:
@@ -165,11 +167,6 @@ extension LobbyViewController: UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView,
-                   commit editingStyle: UITableViewCell.EditingStyle,
-                   forRowAt indexPath: IndexPath) {
-        guard editingStyle == .delete else { return }
-    }
 }
 
 extension LobbyViewController: UITableViewDelegate {

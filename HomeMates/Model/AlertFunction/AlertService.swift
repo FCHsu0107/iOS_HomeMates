@@ -28,13 +28,13 @@ class AlertService {
     }
 
     static func addDailyTask(in presentVc: UIViewController, completion: @escaping (TaskObject) -> Void) {
-        addTask(in: presentVc, taskPriodDay: 1, title: "新增每日任務") { (task) in
+        addTask(in: presentVc, taskPriodDay: 1, title: "新增每日任務", publisherName: "System") { (task) in
             completion(task)
         }
     }
     
     static func addSpecialTask(in presentVc: UIViewController, completion: @escaping (TaskObject) -> Void) {
-        addTask(in: presentVc, taskPriodDay: 0, title: "新增特殊任務") { (task) in
+        addTask(in: presentVc, taskPriodDay: 0, title: "新增特殊任務", publisherName: UserDefaultManager.shared.userName!) { (task) in
             completion(task)
         }
     }
@@ -42,6 +42,7 @@ class AlertService {
      static func addTask(in presentVc: UIViewController,
                          taskPriodDay: Int,
                          title: String,
+                         publisherName: String,
                          completion: @escaping (TaskObject) -> Void) {
         let alert = UIAlertController(title: title, message: "請填入任務名稱及積分", preferredStyle: .alert)
         alert.addTextField { (taskNameTF) in
@@ -62,7 +63,7 @@ class AlertService {
             let task = TaskObject(docId: nil,
                                   taskName: taskName,
                                   image: "Housework_48px",
-                                  publisherName: "System",
+                                  publisherName: publisherName,
                                   executorName: nil,
                                   executorUid: nil,
                                   taskPoint: taskPoint,
@@ -106,7 +107,7 @@ class AlertService {
             let task = TaskObject(docId: nil,
                                   taskName: taskName,
                                   image: "Housework_48px",
-                                  publisherName: "System",
+                                  publisherName: "系統提醒",
                                   executorName: nil,
                                   executorUid: nil,
                                   taskPoint: taskPoint,

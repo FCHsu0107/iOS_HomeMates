@@ -119,13 +119,13 @@ class FIRFirestoreSerivce {
                             returning objectType: T.Type,
                             completion: @escaping ([T]) -> Void) {
         
-        reference(to: collectionReference).addSnapshotListener { (snapshot, _) in
+        reference(to: collectionReference).addSnapshotListener { (snapshots, _) in
             
-            guard let snapshot = snapshot else { return }
+            guard let snapshots = snapshots else { return }
             
             do {
                 var objects = [T]()
-                for document in snapshot.documents {
+                for document in snapshots.documents {
                     let object = try document.decode(as: objectType.self)
                     objects.append(object)
                 }
@@ -274,23 +274,6 @@ class FIRFirestoreSerivce {
         }
         
     }
-//
-//    func updateSubSingleStatus(in collectionReference: FIRCollectionReference,
-//                               inDocument: String,
-//                               inNext subCollectionReference: FIRCollectionReference,
-//                               inNextDoc: String,
-//                               status: String,
-//                               bool: Bool) {
-//        subReference(to: collectionReference,
-//                     in: inDocument,
-//                     toNext: subCollectionReference).document(inNextDoc).updateData([status: bool]) { err in
-//            if let err = err {
-//                print("Error updating document: \(err)")
-//            } else {
-//                print("Document successfully updated")
-//            }
-//        }
-//    }
     
     func delete(uid: String, in collectionReference: FIRCollectionReference) {
         reference(to: collectionReference).document(uid).delete()
@@ -336,24 +319,3 @@ class FIRFirestoreSerivce {
     }
     
 }
-//func read<T: Decodable>(from collectionReference: FIRCollectionReference,
-//                        returning objectType: T.Type,
-//                        completion: @escaping ([T]) -> Void) {
-//
-//    reference(to: collectionReference).addSnapshotListener { (snapshot, _) in
-//
-//        guard let snapshot = snapshot else { return }
-//
-//        do {
-//            var objects = [T]()
-//            for document in snapshot.documents {
-//                let object = try document.decode(as: objectType.self)
-//                objects.append(object)
-//            }
-//
-//            completion(objects)
-//        } catch {
-//            print(error)
-//        }
-//    }
-//}

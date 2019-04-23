@@ -19,11 +19,13 @@ class TaskListViewController: HMBaseViewController {
     
     let taskHeader = TaskListHeaderView()
 
-    var taskListTitle: [String] = ["每日任務", "常規任務"]
+    var taskListTitle: [String] = ["特殊任務", "每日任務", "常規任務"]
 
     var normalTaskList: [TaskObject] = []
 
     var regularTaskList: [TaskObject] = []
+    
+    var specialTaskList: [TaskObject] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,11 +35,14 @@ class TaskListViewController: HMBaseViewController {
         FIRFirestoreSerivce.shared.readAssigningTasks { [weak self] (tasks) in
             self?.normalTaskList = []
             self?.regularTaskList = []
+            self?.specialTaskList = []
             for task in tasks {
                 if task.taskPriodDay == 1 {
                     self?.normalTaskList.append(task)
+                } else if task.taskPriodDay == 0 {
+                    self?.specialTaskList.append(task)
                 } else {
-                    self?.regularTaskList.append(task)
+                     self?.regularTaskList.append(task)
                 }
             }
             
@@ -54,24 +59,6 @@ class TaskListViewController: HMBaseViewController {
     }
     
     @IBAction func addTask(_ sender: Any) {
-//        let newTask = TaskObject(docId: nil,
-//                                 taskName: "拖地",
-//                                 image: "home_normal",
-//                                 publisherName: "System",
-//                                 executorName: nil,
-//                                 executorUid: nil,
-//                                 taskPoint: 1,
-//                                 taskPriodDay: 1,
-//                                 compleyionTimeStamp: nil,
-//                                 taskStatus: 1)
-//        
-//        guard let groupId = UserDefaultManager.shared.groupId else { return }
-//        
-//        FIRFirestoreSerivce.shared.createSub(for: newTask,
-//                                             in: .groups,
-//                                             inDocument: groupId,
-//                                             inNext: .tasks)
-//        print("add a task")
        performSegue(withIdentifier: "AddTaskSegue", sender: nil)
     }
     
@@ -93,13 +80,14 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0: return normalTaskList.count
-        case 1: return regularTaskList.count
+        case 0: return specialTaskList.count
+        case 1: return normalTaskList.count
+        case 2: return regularTaskList.count
         default: return 0
         }
     }
@@ -112,43 +100,41 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let taskCell = cell as? TasksTableViewCell else { return cell }
 
-        if indexPath.section == 0 {
+        if indexPath.section == 1 {
             
             let task = normalTaskList[indexPath.row]
             
             taskCell.loadData(taskObject: task, status: TaskCellStatus.assignNormalTask)
             
-//            taskCell.clickHandler = {[weak self] cell, _ in
-//                guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
-//
-//                guard var updateTask = self?.normalTaskList[indexPath.row] else { return }
-//                updateTask.executorName = UserDefaultManager.shared.userName
-//                updateTask.executorUid = UserDefaultManager.shared.userUid
-//                updateTask.taskStatus = 2
-//                FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
-//            }
 
-        } else {
+        } else if indexPath.section == 2 {
             
             let task = regularTaskList[indexPath.row]
             taskCell.loadData(taskObject: task, status: TaskCellStatus.assignRegularTask)
 
+        } else {
+            let task = specialTaskList[indexPath.row]
+            taskCell.loadData(taskObject: task, status: .assignNormalTask)
         }
+        
         taskCell.clickHandler = {[weak self] cell, _ in
             guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
             
-            if indexPath.section == 0 {
-                guard var updateTask = self?.normalTaskList[indexPath.row] else { return }
-                updateTask.executorName = UserDefaultManager.shared.userName
-                updateTask.executorUid = UserDefaultManager.shared.userUid
-                updateTask.taskStatus = 2
-                FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
+            if indexPath.section == 1 {
+                guard let updateTask = self?.normalTaskList[indexPath.row] else { return }
+                let task = self?.updateTaskStatus(taskItem: updateTask)
+                FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: task)
+                
+            } else if indexPath.section == 2 {
+                guard let updateTask = self?.regularTaskList[indexPath.row] else { return }
+                let task = self?.updateTaskStatus(taskItem: updateTask)
+                FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: task)
             } else {
-                guard var updateTask = self?.regularTaskList[indexPath.row] else { return }
-                updateTask.executorName = UserDefaultManager.shared.userName
-                updateTask.executorUid = UserDefaultManager.shared.userUid
-                updateTask.taskStatus = 2
-                FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
+                guard let updateTask = self?.specialTaskList[indexPath.row] else {
+                    return
+                }
+                let task = self?.updateTaskStatus(taskItem: updateTask)
+                FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: task)
             }
             
         }
@@ -156,4 +142,11 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
         return taskCell
     }
 
+    private func updateTaskStatus(taskItem: TaskObject) -> TaskObject {
+        var task = taskItem
+        task.executorName = UserDefaultManager.shared.userName
+        task.executorUid = UserDefaultManager.shared.userUid
+        task.taskStatus = 2
+        return task
+    }
 }
