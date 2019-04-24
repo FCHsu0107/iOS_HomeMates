@@ -73,6 +73,7 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
             let currentDate = DateProvider.shared.getCurrentDate()
             self?.getDateTask(selectedDate: currentDate)
             self?.tableView.reloadData()
+            
         }
     }
 

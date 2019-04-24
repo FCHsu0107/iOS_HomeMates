@@ -61,35 +61,31 @@ class TrackerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerVie
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
-        return pickerOptions.count
+        if pickerOptions.count == 0 {
+            return 1
+        } else {
+            return pickerOptions.count
+        }
+       
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
-        return pickerOptions[row]
+        if pickerOptions.count == 0 {
+            return "無完成任務紀錄"
+        } else {
+            return pickerOptions[row]
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        selectTaskPicker.text = pickerOptions[row]
-        
-        taskTrackerHandler?(pickerOptions[row])
-        print(pickerOptions[row])
-        
-//        var taskDates: [String] = []
-//        var userNames: [String] = []
-//        for task in taskList {
-//            if pickerOptions[row] == task.taskName {
-//                guard let name = task.executorName, let date = task.completionDate else { return }
-//                taskDates.append(date)
-//                userNames.append(name)
-//            } else {}
-//        }
-//        let taskDateString = taskDates.joined(separator: "\n")
-//        let taskUserString = userNames.joined(separator: "\n")
-//        print(taskDateString)
-//        accomplishedDateTextLbl.text = taskDateString
-//        excutorNameTextLbl.text = taskUserString
+        if pickerOptions.count == 0 {
+            selectTaskPicker.text = "無完成任務紀錄"
+        } else {
+            selectTaskPicker.text = pickerOptions[row]
+            taskTrackerHandler?(pickerOptions[row])
+            print(pickerOptions[row])
+        }
+  
     }
 }
