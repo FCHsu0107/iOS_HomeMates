@@ -30,6 +30,8 @@ class ProfileViewController: HMBaseViewController {
     var doneTaskList: [TaskTracker] = []
     
     var taskRecord = TaskRecord()
+    
+    var userInfo: UserObject?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,10 @@ class ProfileViewController: HMBaseViewController {
         tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: TotalPointsTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: BlankTableViewCell.self), bundle: nil)
+        
+        FirestoreUserManager.shared.readUserInfo { [weak self] (user) in
+            self?.userInfo = user
+        }
         
         FIRFirestoreSerivce.shared.readDoingTasks { [weak self] (tasks) in
             self?.processTaskList = tasks
@@ -73,14 +79,13 @@ class ProfileViewController: HMBaseViewController {
         guard let goal = goal else {return }
         taskRecord.goal = goal
         
-        print(taskRecord)
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ProfileSettingsSegue" {
             guard let nextVc = segue.destination as? ProfileSettingsViewController else { return }
-            print(nextVc)
+            nextVc.user = userInfo
+            nextVc.goal = taskRecord.goal
         }
     }
     
@@ -178,8 +183,9 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                 blankCell.loadData(displayText: "待他人確認任務完成")
                 return blankCell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TotalPointsTableViewCell.self),
-                                                         for: indexPath)
+                let cell = tableView.dequeueReusableCell(
+                    withIdentifier: String(describing: TotalPointsTableViewCell.self),
+                    for: indexPath)
                 guard let pointsCell = cell as? TotalPointsTableViewCell else { return cell }
                 let task = doneTaskList[indexPath.row]
                 pointsCell.loadData(tasksTracker: task)

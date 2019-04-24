@@ -114,29 +114,7 @@ class FIRFirestoreSerivce {
             }
         }
     }
-    
-    func read<T: Decodable>(from collectionReference: FIRCollectionReference,
-                            returning objectType: T.Type,
-                            completion: @escaping ([T]) -> Void) {
         
-        reference(to: collectionReference).addSnapshotListener { (snapshots, _) in
-            
-            guard let snapshots = snapshots else { return }
-            
-            do {
-                var objects = [T]()
-                for document in snapshots.documents {
-                    let object = try document.decode(as: objectType.self)
-                    objects.append(object)
-                }
-                
-                completion(objects)
-            } catch {
-                print(error)
-            }
-        }
-    }
-    
     func readAssigningTasks(completionHandler: @escaping ([TaskObject]) -> Void) {
         readGroupTasks(status: 1) { (tasks) in
             completionHandler(tasks)
@@ -149,6 +127,12 @@ class FIRFirestoreSerivce {
         }
     }
 
+    func readDoneTask(comletionHandler: @escaping ([TaskObject]) -> Void) {
+        readGroupTasks(status: 4) { (tasks) in
+            comletionHandler(tasks)
+        }
+    }
+    
     private func readGroupTasks(status: Int,
                                 completion: @escaping ([TaskObject]) -> Void) {
         subReference(to: .groups, in: UserDefaultManager.shared.groupId!, toNext: .tasks)
@@ -193,33 +177,6 @@ class FIRFirestoreSerivce {
         }
     }
     
-    private func readSubGroup<T: Decodable>(docUid: String,
-                                            status: Int,
-                                            returning objectType: T.Type,
-                                            completion: @escaping ([T]) -> Void) {
-        reference(to: .groups)
-            .document(docUid)
-            .collection(FIRCollectionReference.tasks.rawValue)
-            .whereField(TaskObject.CodingKeys.taskStatus.rawValue, isEqualTo: status)
-            .addSnapshotListener { (snapshot, err) in
-            guard let snapshot = snapshot else {
-                print(err as Any)
-                return }
-            
-            do {
-                var objects = [T]()
-                for document in snapshot.documents {
-                    let object = try document.decode(as: objectType.self)
-                    objects.append(object)
-                }
-                
-                completion(objects)
-            } catch {
-                print(error)
-            }
-        }
-    }
-    
     typealias BoolCompleionHandler = (Bool?) -> Void
     
     func findUser(completionHandler completion: @escaping BoolCompleionHandler) {
@@ -238,18 +195,7 @@ class FIRFirestoreSerivce {
             completion(data[UserObject.CodingKeys.finishSignUp.rawValue] as? Bool)
         }
     }
-    
-    func update<T: Encodable>(uid: String,
-                              for encodableObject: T,
-                              in collectionReference: FIRCollectionReference) {
-        do {
-            let json = try encodableObject.toJSON()
-            reference(to: collectionReference).document(uid).setData(json)
-        } catch {
-            print(error)
-        }
-    }
-    
+
     func upadeSingleStatus(uid: String, in collectionReference: FIRCollectionReference, status: String, bool: Bool) {
         reference(to: collectionReference).document(uid).updateData([status: bool]) { err in
             if let err = err {
@@ -272,11 +218,6 @@ class FIRFirestoreSerivce {
         } catch {
             print(error)
         }
-        
-    }
-    
-    func delete(uid: String, in collectionReference: FIRCollectionReference) {
-        reference(to: collectionReference).document(uid).delete()
         
     }
     

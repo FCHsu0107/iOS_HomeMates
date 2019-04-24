@@ -40,10 +40,10 @@ class LobbySettingsViewController: HMBaseViewController {
         guard let groupInfo = groupInfo else { return }
         showGroupInfo(groupInfo: groupInfo)
         
-        FirestoreGroupManager.shared.readGroupMembers { [weak self] (members) in
-            self?.memberList = members
-            self?.tableView.reloadData()
-        }
+//        FirestoreGroupManager.shared.readGroupMembers { [weak self] (members) in
+//            self?.memberList = members
+//            self?.tableView.reloadData()
+//        }
 
     }
 

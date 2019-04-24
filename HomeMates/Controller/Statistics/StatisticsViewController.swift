@@ -51,9 +51,7 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
         return panGesture
         }()
 
-    var datesWithEvent = ["2019/04/03", "2019/04/04",
-                          "2019/04/05", "2019/04/06",
-                          "2019/04/10", "2019/04/11"]
+    var datesWithEvent: [String]  = []
     
     var datesWithMultipleEvents = ["2019/04/07", "2019/04/08", "2019/04/09", "2019/04/10"]
 
@@ -62,12 +60,34 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
 
     }
     
+    var taskList: [TaskObject] = []
+    
+    var dateTaskList: [TaskObject] = [] {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        FIRFirestoreSerivce.shared.readDoneTask { [weak self] (tasks) in
+            self?.getDateMark(tasks: tasks)
+        }
+        
     }
-    deinit {
-        print("\(#function)")
+    
+    func getDateMark(tasks: [TaskObject]) {
+        datesWithEvent = []
+        for task in tasks {
+            guard let timeStamp = task.compleyionTimeStamp else { return }
+            let date = DateProvider.shared.getCurrentDate(currentTimeStamp: timeStamp)
+            datesWithEvent.append(date)
+        }
+        taskList = tasks
+        for index in 0..<tasks.count {
+            taskList[index].completionDate = datesWithEvent[index]
+        }
     }
 
     @IBAction func weeklyBtnClicked(_ sender: Any) {
@@ -89,8 +109,15 @@ extension StatisticsViewController: FSCalendarDataSource, FSCalendarDelegate {
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print("did select date \(self.dateFormatter.string(from: date))")
-        let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
-        print("selected dates is \(selectedDates)")
+        let selectedDate = self.dateFormatter.string(from: date)
+        dateTaskList = []
+        for (index, element) in taskList.enumerated() {
+            if element.completionDate == selectedDate {
+                dateTaskList.append(taskList[index])
+            }
+            
+        }
+        
         if monthPosition == .next || monthPosition == .previous {
             calendar.setCurrentPage(date, animated: true)
         }
@@ -167,6 +194,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EventCell.self),
                                                      for: indexPath)
             guard let eventCell = cell as? EventCell else { return cell }
+            eventCell.loadData(tasks: dateTaskList)
 
             return eventCell
             

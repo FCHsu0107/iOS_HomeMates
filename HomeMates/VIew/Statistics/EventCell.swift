@@ -25,13 +25,28 @@ class EventCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
 
+    func loadData(tasks: [TaskObject]) {
+        var taskNames: [String] = []
+        var excutorNames: [String] = []
+        
+        for task in tasks {
+            let taskName = task.taskName
+            guard let name = task.executorName else { return }
+            taskNames.append(taskName)
+            excutorNames.append(name)
+        }
+        
+        let taskNameString = taskNames.joined(separator: "\n")
+        let userNameString = excutorNames.joined(separator: "\n")
+        doneEventTextLbl.text = taskNameString
+        excutorNameTextLbl.text = userNameString
+    }
+    
 }

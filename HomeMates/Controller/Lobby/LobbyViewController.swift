@@ -19,7 +19,7 @@ class LobbyViewController: HMBaseViewController {
         }
     }
 
-    var groupInfo: GroupObject? = nil
+    var groupInfo: GroupObject?
     
     override var navigationBarIsHidden: Bool {
         return true
@@ -32,6 +32,8 @@ class LobbyViewController: HMBaseViewController {
     var checkTaskList: [TaskObject] = []
 
     var willDoTaskList: [TaskObject] = []
+    
+    var memberList: [MemberObject] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,19 +44,25 @@ class LobbyViewController: HMBaseViewController {
 
         FIRFirestoreSerivce.shared.findMainGroup { [weak self] (object) in
             self?.groupInfo = object
-            FIRFirestoreSerivce.shared.readCheckTasks { [weak self] (tasks) in
-                self?.checkTaskList = []
-                for task in tasks {
-                    if task.executorUid != UserDefaultManager.shared.userUid {
-                        self?.checkTaskList.append(task)
-                    } else {}
-                }
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
-                }
-                
-            }
             
+            FirestoreGroupManager.shared.readGroupMembers(completion: { [weak self] (members) in
+                self?.memberList = members
+                FIRFirestoreSerivce.shared.readCheckTasks { [weak self] (tasks) in
+                    self?.checkTaskList = []
+                    if members.count == 1 {
+                        self?.checkTaskList = tasks
+                    } else {
+                        for task in tasks {
+                            if task.executorUid != UserDefaultManager.shared.userUid {
+                                self?.checkTaskList.append(task)
+                            }
+                        }
+                    }
+                    DispatchQueue.main.async {
+                        self?.tableView.reloadData()
+                    }
+                }
+            })
         }
     }
 
@@ -66,6 +74,7 @@ class LobbyViewController: HMBaseViewController {
         if segue.identifier == "LobbySettingsSegue" {
             guard let nextVc = segue.destination as? LobbySettingsViewController else { return }
             nextVc.groupInfo = groupInfo
+            nextVc.memberList = memberList
         }
     }
 }

@@ -25,8 +25,8 @@
                         <color key="backgroundColor" red="1" green="0.50980392156862742" blue="0.094117647058823528" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="洗衣服" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7h-cC-z0i">
-                        <rect key="frame" x="20" y="47.5" width="43" height="17"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <rect key="frame" x="20" y="43.5" width="46" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -36,21 +36,27 @@
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="預計完成任務" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppz-xH-Dg7">
-                        <rect key="frame" x="16" y="84.5" width="310" height="2"/>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="預計完成任務" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppz-xH-Dg7">
+                        <rect key="frame" x="16" y="73.5" width="310" height="13"/>
                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="洗衣服" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Epo-V8-sRH">
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="洗衣服" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Epo-V8-sRH">
                         <rect key="frame" x="20" y="98.5" width="306" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="執行者：小明" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fil-U2-syV">
-                        <rect key="frame" x="232" y="47.5" width="86" height="17"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <rect key="frame" x="226" y="43.5" width="92" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" name="Y4"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="執行者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uc4-JZ-Reh">
+                        <rect key="frame" x="273" y="16" width="49" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -59,9 +65,10 @@
                     <constraint firstAttribute="trailing" secondItem="Plj-PQ-7XT" secondAttribute="trailing" constant="16" id="0hH-CP-g7z"/>
                     <constraint firstItem="VNM-Oe-6nk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="1kf-XB-xeI"/>
                     <constraint firstItem="Epo-V8-sRH" firstAttribute="top" secondItem="ppz-xH-Dg7" secondAttribute="bottom" constant="12" id="6g7-Qi-eEm"/>
+                    <constraint firstItem="uc4-JZ-Reh" firstAttribute="top" secondItem="Plj-PQ-7XT" secondAttribute="top" id="7Vl-eG-q5X"/>
                     <constraint firstAttribute="trailing" secondItem="ppz-xH-Dg7" secondAttribute="trailing" constant="16" id="9Sr-8y-ieo"/>
                     <constraint firstAttribute="trailing" secondItem="Epo-V8-sRH" secondAttribute="trailing" constant="16" id="A2i-Fj-zHW"/>
-                    <constraint firstItem="d7h-cC-z0i" firstAttribute="top" secondItem="Plj-PQ-7XT" secondAttribute="bottom" constant="12" id="AkE-H3-rUq"/>
+                    <constraint firstItem="d7h-cC-z0i" firstAttribute="top" secondItem="Plj-PQ-7XT" secondAttribute="bottom" constant="8" id="AkE-H3-rUq"/>
                     <constraint firstItem="fil-U2-syV" firstAttribute="top" secondItem="d7h-cC-z0i" secondAttribute="top" id="DWC-CL-e2d"/>
                     <constraint firstAttribute="trailing" secondItem="fil-U2-syV" secondAttribute="trailing" constant="24" id="Fnk-ja-CfT"/>
                     <constraint firstItem="d7h-cC-z0i" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Gvg-ev-eRy"/>
@@ -70,8 +77,9 @@
                     <constraint firstItem="ppz-xH-Dg7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ZyM-hU-5QL"/>
                     <constraint firstItem="Epo-V8-sRH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="cmK-7t-z9L"/>
                     <constraint firstItem="VNM-Oe-6nk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="iR6-ai-T65"/>
+                    <constraint firstAttribute="trailing" secondItem="uc4-JZ-Reh" secondAttribute="trailing" constant="20" id="mMi-dM-2MW"/>
                     <constraint firstItem="Plj-PQ-7XT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="no9-9c-bBN"/>
-                    <constraint firstItem="ppz-xH-Dg7" firstAttribute="top" secondItem="d7h-cC-z0i" secondAttribute="bottom" constant="20" id="wbL-Pi-g4P"/>
+                    <constraint firstItem="ppz-xH-Dg7" firstAttribute="top" secondItem="d7h-cC-z0i" secondAttribute="bottom" constant="12" id="wbL-Pi-g4P"/>
                     <constraint firstAttribute="bottom" secondItem="VNM-Oe-6nk" secondAttribute="bottom" constant="8" id="ybU-Ea-cUs"/>
                     <constraint firstAttribute="trailing" secondItem="VNM-Oe-6nk" secondAttribute="trailing" constant="12" id="zUz-xJ-Who"/>
                 </constraints>

@@ -19,9 +19,11 @@ class ProfileSettingsViewController: HMBaseViewController {
     @IBOutlet weak var monthGoalTextField: HMBaseTextField!
     
     var user: UserObject?
+    var goal: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadUserInfo()
 
     }
     
@@ -30,5 +32,12 @@ class ProfileSettingsViewController: HMBaseViewController {
     }
     
     @IBAction func changeUserInfo(_ sender: Any) {
+    }
+    
+    func loadUserInfo() {
+        userNameTextField.text = user?.name
+        ownGroupTextField.text = user?.mainGroupId
+        guard let goal = goal else { return }
+        monthGoalTextField.text = String(goal)
     }
 }

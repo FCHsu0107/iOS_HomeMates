@@ -28,6 +28,8 @@ struct TaskObject: Codable, Identifiable {
     
     var compleyionTimeStamp: Int?
     
+    var completionDate: String?
+    
     var taskStatus: Int
     
     enum CodingKeys: String, CodingKey {
@@ -47,6 +49,8 @@ struct TaskObject: Codable, Identifiable {
         case taskPriodDay
         
         case compleyionTimeStamp
+        
+        case completionDate
         
         case taskStatus
         

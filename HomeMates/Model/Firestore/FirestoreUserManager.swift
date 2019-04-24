@@ -244,4 +244,23 @@ class FirestoreUserManager {
         }
     }
     
+    func readUserInfo(completion: @escaping (UserObject) -> Void) {
+        Firestore.firestore()
+            .collection(FIRCollectionReference.users.rawValue)
+            .document(UserDefaultManager.shared.userUid!).addSnapshotListener { (snapshot, err) in
+                if err == nil {
+                    guard let snapshot = snapshot else { return }
+                    do {
+                        let userInfo = try snapshot.decode(as: UserObject.self)
+                        completion(userInfo)
+                    } catch {
+                        print(error)
+                    }
+                    
+                } else {
+                    //err != nil
+                }
+        }
+    }
+    
 }
