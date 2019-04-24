@@ -37,7 +37,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="預計完成任務" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppz-xH-Dg7">
-                        <rect key="frame" x="16" y="73.5" width="310" height="13"/>
+                        <rect key="frame" x="16" y="61.5" width="310" height="37"/>
                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
@@ -64,7 +64,7 @@
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="Plj-PQ-7XT" secondAttribute="trailing" constant="16" id="0hH-CP-g7z"/>
                     <constraint firstItem="VNM-Oe-6nk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="1kf-XB-xeI"/>
-                    <constraint firstItem="Epo-V8-sRH" firstAttribute="top" secondItem="ppz-xH-Dg7" secondAttribute="bottom" constant="12" id="6g7-Qi-eEm"/>
+                    <constraint firstItem="Epo-V8-sRH" firstAttribute="top" secondItem="ppz-xH-Dg7" secondAttribute="bottom" id="6g7-Qi-eEm"/>
                     <constraint firstItem="uc4-JZ-Reh" firstAttribute="top" secondItem="Plj-PQ-7XT" secondAttribute="top" id="7Vl-eG-q5X"/>
                     <constraint firstAttribute="trailing" secondItem="ppz-xH-Dg7" secondAttribute="trailing" constant="16" id="9Sr-8y-ieo"/>
                     <constraint firstAttribute="trailing" secondItem="Epo-V8-sRH" secondAttribute="trailing" constant="16" id="A2i-Fj-zHW"/>
@@ -79,7 +79,7 @@
                     <constraint firstItem="VNM-Oe-6nk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="iR6-ai-T65"/>
                     <constraint firstAttribute="trailing" secondItem="uc4-JZ-Reh" secondAttribute="trailing" constant="20" id="mMi-dM-2MW"/>
                     <constraint firstItem="Plj-PQ-7XT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="no9-9c-bBN"/>
-                    <constraint firstItem="ppz-xH-Dg7" firstAttribute="top" secondItem="d7h-cC-z0i" secondAttribute="bottom" constant="12" id="wbL-Pi-g4P"/>
+                    <constraint firstItem="ppz-xH-Dg7" firstAttribute="top" secondItem="d7h-cC-z0i" secondAttribute="bottom" id="wbL-Pi-g4P"/>
                     <constraint firstAttribute="bottom" secondItem="VNM-Oe-6nk" secondAttribute="bottom" constant="8" id="ybU-Ea-cUs"/>
                     <constraint firstAttribute="trailing" secondItem="VNM-Oe-6nk" secondAttribute="trailing" constant="12" id="zUz-xJ-Who"/>
                 </constraints>

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6E9B27DAC4A97C50CD1D1CFC /* Pods_HomeMates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0D5E2E1A5658A395EF06F5E /* Pods_HomeMates.framework */; };
+		B91A696022704A98008C9B66 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91A695F22704A98008C9B66 /* Array+Extension.swift */; };
 		B91D3A9A2264ABD400C1A28F /* MemberObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3A992264ABD400C1A28F /* MemberObject.swift */; };
 		B91D3A9C2264BF1300C1A28F /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3A9B2264BF1300C1A28F /* String+Extension.swift */; };
 		B91D3A9F2264CA0F00C1A28F /* ApplicationObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3A9E2264CA0F00C1A28F /* ApplicationObject.swift */; };
@@ -96,6 +97,7 @@
 
 /* Begin PBXFileReference section */
 		A0D5E2E1A5658A395EF06F5E /* Pods_HomeMates.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomeMates.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B91A695F22704A98008C9B66 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		B91D3A992264ABD400C1A28F /* MemberObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberObject.swift; sourceTree = "<group>"; };
 		B91D3A9B2264BF1300C1A28F /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		B91D3A9E2264CA0F00C1A28F /* ApplicationObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationObject.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 				B91D3A9B2264BF1300C1A28F /* String+Extension.swift */,
 				B91D3AA0226594EF00C1A28F /* UIAlertController+Extension.swift */,
 				B91D3B002269BAF500C1A28F /* Date+Extension.swift */,
+				B91A695F22704A98008C9B66 /* Array+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -725,6 +728,7 @@
 				B9B99F4322631C6C00314BB6 /* FIRAuthService.swift in Sources */,
 				B9B7F535225D933600A6DA9E /* TrackerTableViewCell.swift in Sources */,
 				B9D295D72258CD7D00CF7869 /* TaskListViewController.swift in Sources */,
+				B91A696022704A98008C9B66 /* Array+Extension.swift in Sources */,
 				B98446CB22700DB700E5044A /* TaskRecordObject.swift in Sources */,
 				B91D3A9F2264CA0F00C1A28F /* ApplicationObject.swift in Sources */,
 				B98446C922700A9300E5044A /* SumInArray.swift in Sources */,

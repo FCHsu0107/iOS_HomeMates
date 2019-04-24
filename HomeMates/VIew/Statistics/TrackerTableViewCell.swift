@@ -27,16 +27,28 @@ class TrackerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerVie
         return picker
     }()
     
-    var pickerOptions = ["洗衣服", "洗碗", "準備早餐", "倒垃圾"]
+    var pickerOptions: [String] = []
     
     var taskTrackerHandler: ((String) -> Void)?
     
+    var taskList: [TaskObject] = []
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        selectTaskPicker.inputView = pickerView
     }
 
+    func loadData(tasks: [TaskObject]) {
+        var taskNames: [String] = []
+        
+        for task in tasks {
+            let taskName = task.taskName
+            taskNames.append(taskName)
+        }
+        pickerOptions = taskNames.removeDuplicates()
+        print(pickerView)
+        selectTaskPicker.inputView = pickerView
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -63,5 +75,21 @@ class TrackerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerVie
         selectTaskPicker.text = pickerOptions[row]
         
         taskTrackerHandler?(pickerOptions[row])
+        print(pickerOptions[row])
+        
+//        var taskDates: [String] = []
+//        var userNames: [String] = []
+//        for task in taskList {
+//            if pickerOptions[row] == task.taskName {
+//                guard let name = task.executorName, let date = task.completionDate else { return }
+//                taskDates.append(date)
+//                userNames.append(name)
+//            } else {}
+//        }
+//        let taskDateString = taskDates.joined(separator: "\n")
+//        let taskUserString = userNames.joined(separator: "\n")
+//        print(taskDateString)
+//        accomplishedDateTextLbl.text = taskDateString
+//        excutorNameTextLbl.text = taskUserString
     }
 }

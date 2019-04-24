@@ -55,7 +55,7 @@ class LobbyViewController: HMBaseViewController {
                         for task in tasks {
                             if task.executorUid != UserDefaultManager.shared.userUid {
                                 self?.checkTaskList.append(task)
-                            }
+                            } else {}
                         }
                     }
                     DispatchQueue.main.async {

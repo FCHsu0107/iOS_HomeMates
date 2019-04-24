@@ -27,7 +27,7 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
     @IBOutlet weak var calendar: FSCalendar! {
         didSet {
             self.calendar.select(Date())
-            self.calendar.scope = .week
+            self.calendar.scope = .month
             self.calendar.appearance.headerMinimumDissolvedAlpha = 0.0
             self.calendar.addGestureRecognizer(self.scopeGesture)
         }
@@ -60,7 +60,7 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
 
     }
     
-    var taskList: [TaskObject] = []
+    var taskList: [TaskObject] = [] 
     
     var dateTaskList: [TaskObject] = [] {
         didSet {
@@ -73,6 +73,7 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
         
         FIRFirestoreSerivce.shared.readDoneTask { [weak self] (tasks) in
             self?.getDateMark(tasks: tasks)
+            self?.tableView.reloadData()
         }
         
     }
@@ -202,6 +203,27 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TrackerTableViewCell.self),
                                                      for: indexPath)
             guard let trackerCell = cell as? TrackerTableViewCell else { return cell }
+            trackerCell.loadData(tasks: taskList)
+            trackerCell.taskTrackerHandler = { [weak self] (taskName) in
+                
+                var taskDates: [String] = []
+                var userNames: [String] = []
+                guard let taskList = self?.taskList else { return }
+                for task in taskList {
+                    if taskName == task.taskName {
+                        guard let name = task.executorName, let date = task.completionDate else { return }
+                        taskDates.append(date)
+                        userNames.append(name)
+                    } else {}
+                }
+                let taskDateString = taskDates.joined(separator: "\n")
+                let taskUserString = userNames.joined(separator: "\n")
+                print(taskDateString)
+                print(taskUserString)
+                trackerCell.accomplishedDateTextLbl.text = taskDateString
+                trackerCell.excutorNameTextLbl.text = taskUserString
+                self?.tableView.reloadData()
+            }
             
             return trackerCell
             
