@@ -32,7 +32,7 @@ class LobbyViewController: HMBaseViewController {
     let taskHeader = TaskListHeaderView()
 
     //mock data
-    var taskListTitle: [String] = ["", "已完成任務", "特殊任務", "本月目標達成率"]
+    var taskListTitle: [String] = ["", "已完成任務", "本月目標達成率"]
     var checkTaskList: [TaskObject] = []
 
     var willDoTaskList: [TaskObject] = []
@@ -42,6 +42,7 @@ class LobbyViewController: HMBaseViewController {
         tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: LobbyHeaderCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: PointGoalTableViewCell.self), bundle: nil)
+        tableView.jq_registerCellWithNib(identifier: String(describing: BlankTableViewCell.self), bundle: nil)
         
         FIRFirestoreSerivce.shared.findMainGroup { [weak self] (object) in
             self?.groupInfo = object
@@ -58,17 +59,6 @@ class LobbyViewController: HMBaseViewController {
                 
             }
             
-            FIRFirestoreSerivce.shared.readAssigningTasks { [weak self] (tasks) in
-                self?.willDoTaskList = []
-                for task in tasks {
-                    if task.taskPriodDay != 1 {
-                        self?.willDoTaskList.append(task)
-                    }
-                    DispatchQueue.main.async {
-                        self?.tableView.reloadData()
-                    }
-                }
-            }
         }
     }
 
@@ -117,14 +107,18 @@ extension LobbyViewController: UITableViewDataSource {
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 3
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 1: return checkTaskList.count
-        case 2: return willDoTaskList.count
-        case 3: return 2
+        case 1:
+            if checkTaskList.count == 0 {
+                return 1
+            } else {
+                return checkTaskList.count
+            }
+        case 2: return 2
         default:
             return 0
         }
@@ -132,38 +126,34 @@ extension LobbyViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let secondCell = tableView.dequeueReusableCell(withIdentifier: String(describing: BlankTableViewCell.self),
+                                                       for: indexPath)
+        guard let blankCell = secondCell as? BlankTableViewCell else { return secondCell}
+        
         switch indexPath.section {
-        case 1, 2 :
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self),
-                                                     for: indexPath)
-            guard let taskCell = cell as? TasksTableViewCell else { return cell }
-           if indexPath.section == 1 {
-            let task = checkTaskList[indexPath.row]
-            taskCell.loadData(taskObject: task, status: TaskCellStatus.checkTask)
-            taskCell.clickHandler = { [weak self] cell, _ in
-                guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
-                guard var updateTask = self?.checkTaskList[indexPath.row] else { return }
-                updateTask.taskStatus = 4
-                FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
-                FirestoreUserManager.shared.addTaskTracker(for: updateTask)
+        case 1 :
+            if checkTaskList.count == 0 {
+                blankCell.loadData(displayText: "待他人完成任務")
+                return blankCell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self),
+                                                         for: indexPath)
+                guard let taskCell = cell as? TasksTableViewCell else { return cell }
+                
+                let task = checkTaskList[indexPath.row]
+                taskCell.loadData(taskObject: task, status: TaskCellStatus.checkTask)
+                taskCell.clickHandler = { [weak self] cell, _ in
+                    guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
+                    guard var updateTask = self?.checkTaskList[indexPath.row] else { return }
+                    updateTask.taskStatus = 4
+                    FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
+                    FirestoreUserManager.shared.addTaskTracker(for: updateTask)
+                }
+                
+                return taskCell
             }
             
-           } else {
-            let task = willDoTaskList[indexPath.row]
-            taskCell.loadData(taskObject: task, status: TaskCellStatus.acceptSpecialTask)
-            taskCell.clickHandler = { [weak self] cell, _ in
-                guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
-                guard var updateTask = self?.willDoTaskList[indexPath.row] else { return }
-                updateTask.executorName = UserDefaultManager.shared.userName
-                updateTask.executorUid = UserDefaultManager.shared.userUid
-                updateTask.taskStatus = 2
-                FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
-            }
-           }
-            
-            return taskCell
-
-        case 3:
+        case 2:
             
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PointGoalTableViewCell.self),
                                                      for: indexPath)

@@ -34,6 +34,7 @@ class ProfileViewController: HMBaseViewController {
         tableView.jq_registerCellWithNib(identifier: String(describing: ProfileHeaderViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: TotalPointsTableViewCell.self), bundle: nil)
+        tableView.jq_registerCellWithNib(identifier: String(describing: BlankTableViewCell.self), bundle: nil)
         
         FIRFirestoreSerivce.shared.readDoingTasks { [weak self] (tasks) in
             self?.processTaskList = tasks
@@ -42,6 +43,7 @@ class ProfileViewController: HMBaseViewController {
                 self?.tableView.reloadData()
             }
         }
+        
         FirestoreUserManager.shared.readTracker { [weak self] (trackers, flag, _)  in
             if flag == true {
                 guard let trackers = trackers else { return }
@@ -100,49 +102,73 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 1: return processTaskList.count
-        case 2: return doneTaskList.count
+        case 1:
+            if processTaskList.count == 0 {
+                return 1
+            } else {
+                return processTaskList.count
+            }
+        case 2:
+            if doneTaskList.count == 0 {
+                return 1
+            } else {
+                return doneTaskList.count
+            }
+            
         default: return 0
         }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
+        let secondcell = tableView.dequeueReusableCell(withIdentifier: String(describing: BlankTableViewCell.self), for: indexPath)
+        guard let blankCell = secondcell as? BlankTableViewCell else { return secondcell }
+        
         switch indexPath.section {
 
         case 1:
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self),
-                                                     for: indexPath)
-            guard let taskCell = cell as? TasksTableViewCell else { return cell }
-            let task = processTaskList[indexPath.row]
-            taskCell.loadData(taskObject: task, status: TaskCellStatus.doingTask)
-            
-            taskCell.clickHandler = { [weak self] cell, tag in
-                guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
-
-                guard var updateTask = self?.processTaskList[indexPath.row] else { return }
-                updateTask.taskStatus += tag
-                if tag == 1 {
-                    let timeStamp = Int(DateProvider.shared.getTimeStamp())
-                    updateTask.compleyionTimeStamp = timeStamp
+            if processTaskList.count == 0 {
+                blankCell.loadData(displayText: "請至任務列表接受任務")
+                return blankCell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self),
+                                                         for: indexPath)
+                guard let taskCell = cell as? TasksTableViewCell else { return cell }
+                let task = processTaskList[indexPath.row]
+                taskCell.loadData(taskObject: task, status: TaskCellStatus.doingTask)
+                
+                taskCell.clickHandler = { [weak self] cell, tag in
+                    guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
                     
+                    guard var updateTask = self?.processTaskList[indexPath.row] else { return }
+                    updateTask.taskStatus += tag
+                    if tag == 1 {
+                        let timeStamp = Int(DateProvider.shared.getTimeStamp())
+                        updateTask.compleyionTimeStamp = timeStamp
+                        
+                    }
+                    
+                    FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
                 }
-                FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
+                
+                return taskCell
             }
-
-            return taskCell
-
+            
         case 2:
 
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TotalPointsTableViewCell.self),
-                                                     for: indexPath)
-            guard let pointsCell = cell as? TotalPointsTableViewCell else { return cell }
-            let task = doneTaskList[indexPath.row]
-            pointsCell.loadData(tasksTracker: task)
+            if doneTaskList.count == 0 {
+                blankCell.loadData(displayText: "待他人確認任務完成")
+                return blankCell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TotalPointsTableViewCell.self),
+                                                         for: indexPath)
+                guard let pointsCell = cell as? TotalPointsTableViewCell else { return cell }
+                let task = doneTaskList[indexPath.row]
+                pointsCell.loadData(tasksTracker: task)
+                
+                return pointsCell
+            }
             
-            return pointsCell
-
         default:
             return UITableViewCell()
         }

@@ -31,6 +31,7 @@ class TaskListViewController: HMBaseViewController {
         super.viewDidLoad()
         
         tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
+        tableView.jq_registerCellWithNib(identifier: String(describing: BlankTableViewCell.self), bundle: nil)
         
         FIRFirestoreSerivce.shared.readAssigningTasks { [weak self] (tasks) in
             self?.normalTaskList = []
@@ -85,9 +86,25 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0: return specialTaskList.count
-        case 1: return normalTaskList.count
-        case 2: return regularTaskList.count
+        case 0:
+            if specialTaskList.count == 0 {
+                return 1
+            } else {
+                return specialTaskList.count
+            }
+        case 1:
+            if normalTaskList.count == 0 {
+                return 1
+            } else {
+                return normalTaskList.count
+            }
+        case 2:
+            if regularTaskList.count == 0 {
+                return 1
+            } else {
+                return regularTaskList.count
+            }
+            
         default: return 0
         }
     }
@@ -100,45 +117,66 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let taskCell = cell as? TasksTableViewCell else { return cell }
 
-        if indexPath.section == 1 {
-            
-            let task = normalTaskList[indexPath.row]
-            
-            taskCell.loadData(taskObject: task, status: TaskCellStatus.assignNormalTask)
-            
-        } else if indexPath.section == 2 {
-            
-            let task = regularTaskList[indexPath.row]
-            taskCell.loadData(taskObject: task, status: TaskCellStatus.assignRegularTask)
-
-        } else {
-            let task = specialTaskList[indexPath.row]
-            taskCell.loadData(taskObject: task, status: .assignNormalTask)
-        }
+        let secondCell = tableView.dequeueReusableCell(withIdentifier: String(describing: BlankTableViewCell.self),
+                                                       for: indexPath)
+        guard let blankCell = secondCell as? BlankTableViewCell else { return secondCell}
         
-        taskCell.clickHandler = {[weak self] cell, _ in
-            guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
-            
-            if indexPath.section == 1 {
-                guard let updateTask = self?.normalTaskList[indexPath.row] else { return }
-                let task = self?.updateTaskStatus(taskItem: updateTask)
-                FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: task)
-                
-            } else if indexPath.section == 2 {
-                guard let updateTask = self?.regularTaskList[indexPath.row] else { return }
-                let task = self?.updateTaskStatus(taskItem: updateTask)
-                FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: task)
+        switch indexPath.section {
+        case 0:
+            if specialTaskList.count == 0 {
+                blankCell.loadData(displayText: "請新增任務")
+                return blankCell
             } else {
-                guard let updateTask = self?.specialTaskList[indexPath.row] else {
-                    return
+                let task = specialTaskList[indexPath.row]
+                taskCell.loadData(taskObject: task, status: .assignNormalTask)
+                taskCell.clickHandler = { [weak self] cell, _ in
+                    guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
+                    
+                    guard let updateTask = self?.specialTaskList[indexPath.row] else { return }
+                    let task = self?.updateTaskStatus(taskItem: updateTask)
+                    FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: task)
+ 
                 }
-                let task = self?.updateTaskStatus(taskItem: updateTask)
-                FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: task)
+                return taskCell
             }
-            
+        case 1:
+            if normalTaskList.count == 0 {
+                blankCell.loadData(displayText: "請新增任務")
+                return blankCell
+            } else {
+                let task = normalTaskList[indexPath.row]
+                taskCell.loadData(taskObject: task, status: TaskCellStatus.assignNormalTask)
+                taskCell.clickHandler = { [weak self] cell, _ in
+                    guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
+                    
+                    guard let updateTask = self?.normalTaskList[indexPath.row] else { return }
+                    let task = self?.updateTaskStatus(taskItem: updateTask)
+                    FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: task)
+                    
+                }
+                return taskCell
+            }
+        case 2:
+            if regularTaskList.count == 0 {
+                blankCell.loadData(displayText: "請新增任務")
+                return blankCell
+            } else {
+                let task = regularTaskList[indexPath.row]
+                taskCell.loadData(taskObject: task, status: TaskCellStatus.assignRegularTask)
+                taskCell.clickHandler = { [weak self] cell, _ in
+                    guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
+                    
+                    guard let updateTask = self?.regularTaskList[indexPath.row] else { return }
+                    let task = self?.updateTaskStatus(taskItem: updateTask)
+                    FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: task)
+                    
+                }
+                return taskCell
+            }
+        default:
+            return taskCell
         }
         
-        return taskCell
     }
 
     func tableView(_ tableView: UITableView,

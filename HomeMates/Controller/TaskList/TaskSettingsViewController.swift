@@ -28,6 +28,7 @@ class TaskSettingsViewController: HMBaseViewController {
         super.viewDidLoad()
         tableView.jq_registerCellWithNib(identifier: String(describing: AddingTaskHeaderViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: TaskListTableViewCell.self), bundle: nil)
+        tableView.jq_registerCellWithNib(identifier: String(describing: BlankTableViewCell.self), bundle: nil)
         
         FirestoreGroupManager.shared.readDailyTaskList { [weak self] (tasks) in
             self?.dailyTaskList = []
@@ -113,10 +114,16 @@ extension TaskSettingsViewController: UITableViewDataSource, UITableViewDelegate
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TaskListTableViewCell.self),
                                                  for: indexPath)
         guard let taskCell = cell as? TaskListTableViewCell else { return cell }
+        
+        let secondCell = tableView.dequeueReusableCell(withIdentifier: String(describing: BlankTableViewCell.self),
+                                                       for: indexPath)
+        guard let blankCell = secondCell as? BlankTableViewCell else { return secondCell }
+        
         switch indexPath.section {
         case 1:
             if dailyTaskList.count == 0 {
-                return UITableViewCell()
+                blankCell.loadData(displayText: "請新增任務")
+                return blankCell
             } else {
                 let dailyTask = dailyTaskList[indexPath.row]
                 taskCell.loadData(task: dailyTask)
@@ -125,7 +132,8 @@ extension TaskSettingsViewController: UITableViewDataSource, UITableViewDelegate
             
         case 2:
             if regularTaskList.count == 0 {
-                return UITableViewCell()
+                blankCell.loadData(displayText: "請新增任務")
+                return blankCell
             } else {
                 let regularTask = regularTaskList[indexPath.row]
                 taskCell.loadData(task: regularTask, isDaliyTask: false)
