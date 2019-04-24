@@ -28,6 +28,16 @@ class DateProvider {
         return outputFormat.string(from: date as Date)
     }
 
+    func getCurrentDate() -> String {
+        let currentTimeStamp = Date().toMillis()
+        let date = Date(timeIntervalSince1970: Double(currentTimeStamp!)/1000)
+        let outputFormat = DateFormatter()
+        outputFormat.locale = NSLocale(localeIdentifier: "en_US") as Locale
+        outputFormat.dateFormat = "yyyy/MM/dd"
+        
+        return outputFormat.string(from: date as Date)
+    }
+    
     func getCurrentMonths() -> String {
         let currentTimeStamp = getTimeStamp()
         let date = Date(timeIntervalSince1970: Double(currentTimeStamp)/1000)

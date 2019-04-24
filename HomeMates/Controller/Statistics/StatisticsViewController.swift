@@ -27,7 +27,7 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
     @IBOutlet weak var calendar: FSCalendar! {
         didSet {
             self.calendar.select(Date())
-            self.calendar.scope = .month
+            self.calendar.scope = .week
             self.calendar.appearance.headerMinimumDissolvedAlpha = 0.0
             self.calendar.addGestureRecognizer(self.scopeGesture)
         }
@@ -51,16 +51,13 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
         return panGesture
         }()
 
-    var datesWithEvent: [String]  = []
-    
-    var datesWithMultipleEvents = ["2019/04/07", "2019/04/08", "2019/04/09", "2019/04/10"]
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    var datesWithEvent: [String] = [] {
+        didSet {
+            self.calendar.reloadData()
+        }
     }
     
-    var taskList: [TaskObject] = [] 
+    var taskList: [TaskObject] = []
     
     var dateTaskList: [TaskObject] = [] {
         didSet {
@@ -68,16 +65,17 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         FIRFirestoreSerivce.shared.readDoneTask { [weak self] (tasks) in
             self?.getDateMark(tasks: tasks)
+            let currentDate = DateProvider.shared.getCurrentDate()
+            self?.getDateTask(selectedDate: currentDate)
             self?.tableView.reloadData()
         }
-        
     }
-    
+
     func getDateMark(tasks: [TaskObject]) {
         datesWithEvent = []
         for task in tasks {
@@ -99,6 +97,15 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
         }
     }
 
+    func getDateTask(selectedDate: String) {
+        dateTaskList = []
+        for (index, element) in taskList.enumerated() {
+            if element.completionDate == selectedDate {
+                dateTaskList.append(taskList[index])
+            }
+            
+        }
+    }
 }
 
 extension StatisticsViewController: FSCalendarDataSource, FSCalendarDelegate {
@@ -111,13 +118,7 @@ extension StatisticsViewController: FSCalendarDataSource, FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print("did select date \(self.dateFormatter.string(from: date))")
         let selectedDate = self.dateFormatter.string(from: date)
-        dateTaskList = []
-        for (index, element) in taskList.enumerated() {
-            if element.completionDate == selectedDate {
-                dateTaskList.append(taskList[index])
-            }
-            
-        }
+        getDateTask(selectedDate: selectedDate)
         
         if monthPosition == .next || monthPosition == .previous {
             calendar.setCurrentPage(date, animated: true)
@@ -133,21 +134,10 @@ extension StatisticsViewController: FSCalendarDataSource, FSCalendarDelegate {
         if self.datesWithEvent.contains(dateString) {
             return 1
         }
-        //        if self.datesWithMultipleEvents.contains(dateString) {
-        //            return 3
-        //        }
+
         return 0
     }
     
-    //    func calendar(_ calendar: FSCalendar,
-    //    appearance: FSCalendarAppearance,
-    //    eventDefaultColorsFor date: Date) -> [UIColor]? {
-    //        let key = self.dateFormatter.string(from: date)
-    //        if self.datesWithMultipleEvents.contains(key) {
-    //            return [UIColor.Y3 ?? UIColor.orange, appearance.eventDefaultColor, UIColor.black]
-    //        }
-    //        return nil
-    //    }
 }
 
 extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
