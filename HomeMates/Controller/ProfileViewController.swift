@@ -28,6 +28,8 @@ class ProfileViewController: HMBaseViewController {
     var processTaskList: [TaskObject] = []
 
     var doneTaskList: [TaskTracker] = []
+    
+    var taskRecord = TaskRecord()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,14 +46,14 @@ class ProfileViewController: HMBaseViewController {
             }
         }
         
-        FirestoreUserManager.shared.readTracker { [weak self] (trackers, flag, _)  in
+        FirestoreUserManager.shared.readTracker { [weak self] (trackers, flag, goal)  in
             if flag == true {
                 guard let trackers = trackers else { return }
                 self?.doneTaskList = trackers
+                self?.getTotalTime(trackers: trackers, goal: goal)
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                 }
-                
             } else {
                 
             }
@@ -59,6 +61,22 @@ class ProfileViewController: HMBaseViewController {
 
     }
 
+    func getTotalTime(trackers: [TaskTracker], goal: Int?) {
+        var totalTimes = 0
+        var totalPoints = 0
+        for track in trackers {
+            totalTimes += track.taskTimes
+            totalPoints += track.totalPoints
+        }
+        taskRecord.totalPoints = totalPoints
+        taskRecord.totalTimes = totalTimes
+        guard let goal = goal else {return }
+        taskRecord.goal = goal
+        
+        print(taskRecord)
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ProfileSettingsSegue" {
             guard let nextVc = segue.destination as? ProfileSettingsViewController else { return }
@@ -75,7 +93,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfileHeaderViewCell.self))
             guard let headerCell = cell as? ProfileHeaderViewCell else { return cell}
-            
+            headerCell.loadData(record: taskRecord)
             headerCell.settingsBtn.addTarget(self, action: #selector(clickSettingsBtn), for: .touchUpInside)
             return headerCell
 

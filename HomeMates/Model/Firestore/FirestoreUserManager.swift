@@ -224,18 +224,15 @@ class FirestoreUserManager {
                     
                 } else {
 
-                    var months = [MonthObject]()
-                    var monthGoal: Int?
-                    for document in snapshots.documents {
-                        do {
-                            let month = try document.decode(as: MonthObject.self)
-                            months.append(month)
-                        } catch {
-                            print(error)
-                        }
+                    var month = MonthObject(docId: nil, month: currentMonth, goal: nil)
+                    do {
+                        month = try snapshots.documents[0].decode(as: MonthObject.self)
+                    } catch {
+                        print(error)
                     }
-                    let currentMonthId = months[0].docId!
-                    monthGoal = months[0].goal
+
+                    let currentMonthId = month.docId!
+                    let monthGoal = month.goal
                     self?.readTrackerInMonth(monthId: currentMonthId, completion: { (trckers, flag) in
                         completionHandler(trckers, flag, monthGoal)
                     })

@@ -94,4 +94,25 @@ class FirestoreGroupManager {
     func deleteTask(in collectionReference: FIRCollectionReference, docId: String) {
         reference(to: collectionReference).document(docId).delete()
     }
+    
+    func readGroupMembers(completion: @escaping ([MemberObject]) -> Void) {
+        reference(to: .members).addSnapshotListener { (snapshots, err) in
+            if err == nil {
+                guard let snapshots = snapshots else { return }
+                var objects = [MemberObject]()
+                for document in snapshots.documents {
+                    do {
+                        let object = try document.decode(as: MemberObject.self)
+                        objects.append(object)
+                    } catch {
+                        print(error)
+                    }
+                    completion(objects)
+                }
+            } else {
+                // err != nil
+            }
+        }
+    }
+    
 }

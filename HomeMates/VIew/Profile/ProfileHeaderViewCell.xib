@@ -162,14 +162,14 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="contributionTextLbl" destination="KTg-Hc-UnR" id="bbJ-2n-ayV"/>
+                <outlet property="goalTextLbl" destination="KTg-Hc-UnR" id="bbJ-2n-ayV"/>
                 <outlet property="infoFrameView" destination="m8m-vg-zhh" id="eVg-yf-lhY"/>
                 <outlet property="memberNameTextLbl" destination="Y0J-0b-02z" id="GOI-N9-WgO"/>
                 <outlet property="profileImageView" destination="ENa-kW-vuh" id="0S1-8N-3va"/>
                 <outlet property="profilePictureImage" destination="1le-bz-hmJ" id="Gnx-JN-0w4"/>
                 <outlet property="settingsBtn" destination="vxe-Vf-N9g" id="Crs-20-idN"/>
                 <outlet property="signoutBtn" destination="vmg-fz-5XD" id="8wx-ge-E8V"/>
-                <outlet property="totalPointTextConstraint" destination="ACy-m4-uOf" id="eLs-Wa-yHE"/>
+                <outlet property="totalPointsTextLbl" destination="pdE-Iw-9bH" id="fPd-s4-zG1"/>
                 <outlet property="totalTimesTextLbl" destination="UNO-2n-Foa" id="srW-gV-z3R"/>
             </connections>
             <point key="canvasLocation" x="-152.89855072463769" y="112.83482142857142"/>

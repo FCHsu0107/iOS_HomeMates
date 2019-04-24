@@ -18,6 +18,8 @@ class ProfileSettingsViewController: HMBaseViewController {
     
     @IBOutlet weak var monthGoalTextField: HMBaseTextField!
     
+    var user: UserObject?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

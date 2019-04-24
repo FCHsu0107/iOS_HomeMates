@@ -1,5 +1,5 @@
 //
-//  TaskRecordObject.swift
+//  SumInArray.swift
 //  HomeMates
 //
 //  Created by Fu-Chiung HSU on 2019/4/24.
@@ -8,8 +8,9 @@
 
 import Foundation
 
-struct TaskRecord {
-    var totalTimes: Int = 0
-    var totalPoints: Int = 0
-    var goal: Int?
-}
+//
+//class SumInArray {
+//    func count(array, key) {
+//        return array
+//    }
+//}

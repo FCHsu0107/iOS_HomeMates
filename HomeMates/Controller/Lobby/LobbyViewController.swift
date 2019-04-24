@@ -19,11 +19,7 @@ class LobbyViewController: HMBaseViewController {
         }
     }
 
-    var groupInfo: GroupObject? = nil {
-        didSet {
-            print(groupInfo as Any)
-        }
-    }
+    var groupInfo: GroupObject? = nil
     
     override var navigationBarIsHidden: Bool {
         return true
@@ -43,7 +39,7 @@ class LobbyViewController: HMBaseViewController {
         tableView.jq_registerCellWithNib(identifier: String(describing: LobbyHeaderCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: PointGoalTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: BlankTableViewCell.self), bundle: nil)
-        
+
         FIRFirestoreSerivce.shared.findMainGroup { [weak self] (object) in
             self?.groupInfo = object
             FIRFirestoreSerivce.shared.readCheckTasks { [weak self] (tasks) in
@@ -69,7 +65,7 @@ class LobbyViewController: HMBaseViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LobbySettingsSegue" {
             guard let nextVc = segue.destination as? LobbySettingsViewController else { return }
-            print(nextVc)
+            nextVc.groupInfo = groupInfo
         }
     }
 }
@@ -107,7 +103,7 @@ extension LobbyViewController: UITableViewDataSource {
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 2
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -118,7 +114,7 @@ extension LobbyViewController: UITableViewDataSource {
             } else {
                 return checkTaskList.count
             }
-        case 2: return 2
+//        case 2: return 2
         default:
             return 0
         }
@@ -152,18 +148,17 @@ extension LobbyViewController: UITableViewDataSource {
                 
                 return taskCell
             }
-            
-        case 2:
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PointGoalTableViewCell.self),
-                                                     for: indexPath)
-            guard let goalCell = cell as? PointGoalTableViewCell else { return cell }
-            goalCell.showContributionView(member: "小明",
-                                          memberImage: "home_normal",
-                                          personalTotalPoints: 40,
-                                          persent: 20)
-
-            return goalCell
+//        case 2:
+//
+//            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PointGoalTableViewCell.self),
+//                                                     for: indexPath)
+//            guard let goalCell = cell as? PointGoalTableViewCell else { return cell }
+//            goalCell.showContributionView(member: "小明",
+//                                          memberImage: "home_normal",
+//                                          personalTotalPoints: 40,
+//                                          persent: 20)
+//
+//            return goalCell
 
         default:
             return UITableViewCell()

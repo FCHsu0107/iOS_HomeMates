@@ -23,34 +23,27 @@ class LobbySettingsViewController: HMBaseViewController {
     
     @IBOutlet weak var editButton: UIButton!
     
+    var groupInfo: GroupObject?
+    
     let memberHeader = TaskListHeaderView()
     
     var isSelected: Bool = false
     
     var actionSheet = UIAlertController()
     
-    var memberList: [MemberObject] = [MemberObject(docId: nil,
-                                                   userId: "A2g39Mxa0sMR3u0jtdv2IvgFwAu1",
-                                                   userName: "Test01",
-                                                   isCreator: false,
-                                                   permission: true,
-                                                   userPicture: "Profile_80px"),
-                                      MemberObject(docId: nil,
-                                                   userId: "sr5kfUXMgJbh2XeMTIicMaVEue52",
-                                                   userName: "test02",
-                                                   isCreator: false,
-                                                   permission: false,
-                                                   userPicture: "Profile_80px"),
-                                      MemberObject(docId: nil,
-                                                   userId: "ZxvDkvy5LuZv4rfeFV4iSWBsoz73",
-                                                   userName: "UserTest00",
-                                                   isCreator: true,
-                                                   permission: true,
-                                                   userPicture: "Profile_80px")]
+    var memberList: [MemberObject] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.jq_registerCellWithNib(identifier: String(describing: GroupMemberTableViewCell.self), bundle: nil)
+        
+        guard let groupInfo = groupInfo else { return }
+        showGroupInfo(groupInfo: groupInfo)
+        
+        FirestoreGroupManager.shared.readGroupMembers { [weak self] (members) in
+            self?.memberList = members
+            self?.tableView.reloadData()
+        }
 
     }
 
@@ -65,6 +58,11 @@ class LobbySettingsViewController: HMBaseViewController {
             groupNameTextField.becomeFirstResponder()
             isSelected = true
         }
+    }
+    
+    func showGroupInfo(groupInfo: GroupObject) {
+        groupIdLbl.text = "Home ID: \(groupInfo.groupId)"
+        groupNameTextField.text = groupInfo.name
     }
 }
 

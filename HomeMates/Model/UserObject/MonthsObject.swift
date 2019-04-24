@@ -14,7 +14,7 @@ struct MonthObject: Codable {
     
     let month: String
     
-    let goal: Int?
+    var goal: Int?
     
     enum CodingKeys: String, CodingKey {
         

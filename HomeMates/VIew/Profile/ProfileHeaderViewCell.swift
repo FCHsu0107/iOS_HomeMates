@@ -15,11 +15,11 @@ class ProfileHeaderViewCell: UITableViewCell {
 
     @IBOutlet weak var memberNameTextLbl: UILabel!
 
-    @IBOutlet weak var totalPointTextConstraint: NSLayoutConstraint!
-
+    @IBOutlet weak var totalPointsTextLbl: UILabel!
+    
     @IBOutlet weak var totalTimesTextLbl: UILabel!
 
-    @IBOutlet weak var contributionTextLbl: UILabel!
+    @IBOutlet weak var goalTextLbl: UILabel!
 
     @IBOutlet weak var infoFrameView: UIView!
 
@@ -57,4 +57,22 @@ class ProfileHeaderViewCell: UITableViewCell {
         try? Auth.auth().signOut()
         print("sign out")
     }
+    
+    func loadData(record: TaskRecord) {
+        totalTimesTextLbl.text = String(record.totalTimes)
+        totalPointsTextLbl.text = String(record.totalPoints)
+        if record.goal == nil || record.goal == 0 {
+            goalTextLbl.text = "--"
+            return
+        } else {
+            guard let goal = record.goal else { return }
+            let points = Double(record.totalPoints)
+
+            let myGoal = Double(goal)
+            let contribution = Int((points / myGoal) * 100)
+            
+            goalTextLbl.text = "\(contribution)%"
+        }
+    }
+    
 }
