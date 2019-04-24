@@ -48,5 +48,4 @@ class DateProvider {
         return outputFormat.string(from: date as Date)
     }
     
-
 }

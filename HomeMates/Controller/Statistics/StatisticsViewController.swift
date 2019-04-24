@@ -209,8 +209,6 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
                 }
                 let taskDateString = taskDates.joined(separator: "\n")
                 let taskUserString = userNames.joined(separator: "\n")
-                print(taskDateString)
-                print(taskUserString)
                 trackerCell.accomplishedDateTextLbl.text = taskDateString
                 trackerCell.excutorNameTextLbl.text = taskUserString
                 self?.tableView.reloadData()

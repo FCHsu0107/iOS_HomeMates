@@ -28,6 +28,8 @@ struct GroupObject: Codable, Identifiable {
     
     let groupId: String
     
+    var logInDate: String
+    
     enum CodingKeys: String, CodingKey {
         
         case docId
@@ -43,5 +45,7 @@ struct GroupObject: Codable, Identifiable {
         case shortcup
         
         case groupId
+        
+        case logInDate
     }
 }

@@ -59,7 +59,6 @@
 		B959F73F226EF6CA00D3CA68 /* FirestoreUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B959F73E226EF6CA00D3CA68 /* FirestoreUserManager.swift */; };
 		B98446C6226FF33100E5044A /* BlankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98446C4226FF33100E5044A /* BlankTableViewCell.swift */; };
 		B98446C7226FF33100E5044A /* BlankTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B98446C5226FF33100E5044A /* BlankTableViewCell.xib */; };
-		B98446C922700A9300E5044A /* SumInArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98446C822700A9300E5044A /* SumInArray.swift */; };
 		B98446CB22700DB700E5044A /* TaskRecordObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98446CA22700DB700E5044A /* TaskRecordObject.swift */; };
 		B9B10D732258A1780081C856 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B10D722258A1780081C856 /* UIView+Extension.swift */; };
 		B9B7F52C225CAD5700A6DA9E /* TaskCellStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F52B225CAD5700A6DA9E /* TaskCellStatus.swift */; };
@@ -148,7 +147,6 @@
 		B959F73E226EF6CA00D3CA68 /* FirestoreUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUserManager.swift; sourceTree = "<group>"; };
 		B98446C4226FF33100E5044A /* BlankTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankTableViewCell.swift; sourceTree = "<group>"; };
 		B98446C5226FF33100E5044A /* BlankTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlankTableViewCell.xib; sourceTree = "<group>"; };
-		B98446C822700A9300E5044A /* SumInArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumInArray.swift; sourceTree = "<group>"; };
 		B98446CA22700DB700E5044A /* TaskRecordObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRecordObject.swift; sourceTree = "<group>"; };
 		B9B10D722258A1780081C856 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		B9B7F52B225CAD5700A6DA9E /* TaskCellStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellStatus.swift; sourceTree = "<group>"; };
@@ -268,7 +266,6 @@
 				B91D3AEF226880A600C1A28F /* PieckerTextField.swift */,
 				B91D3AFE2269B7DE00C1A28F /* DateProvider.swift */,
 				B959F73A226EB91E00D3CA68 /* StatusBackgroundColor.swift */,
-				B98446C822700A9300E5044A /* SumInArray.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -731,7 +728,6 @@
 				B91A696022704A98008C9B66 /* Array+Extension.swift in Sources */,
 				B98446CB22700DB700E5044A /* TaskRecordObject.swift in Sources */,
 				B91D3A9F2264CA0F00C1A28F /* ApplicationObject.swift in Sources */,
-				B98446C922700A9300E5044A /* SumInArray.swift in Sources */,
 				B9B99F4D22648E4B00314BB6 /* GroupInfoInUser.swift in Sources */,
 				B91D3AF0226880A600C1A28F /* PieckerTextField.swift in Sources */,
 				B9D71AA022534D4F00F242DA /* AppDelegate.swift in Sources */,

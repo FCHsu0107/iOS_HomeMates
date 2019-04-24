@@ -45,7 +45,6 @@ class TrackerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerVie
             taskNames.append(taskName)
         }
         pickerOptions = taskNames.removeDuplicates()
-        print(pickerView)
         selectTaskPicker.inputView = pickerView
     }
     
@@ -84,7 +83,6 @@ class TrackerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerVie
         } else {
             selectTaskPicker.text = pickerOptions[row]
             taskTrackerHandler?(pickerOptions[row])
-            print(pickerOptions[row])
         }
   
     }

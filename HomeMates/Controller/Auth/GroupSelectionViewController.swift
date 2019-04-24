@@ -131,7 +131,8 @@ class GroupSelectionViewController: UIViewController {
                                    name: groupName,
                                    picture: nil,
                                    shortcup: " ",
-                                   groupId: groupId)
+                                   groupId: groupId,
+                                   logInDate: DateProvider.shared.getCurrentDate())
         
         FIRFirestoreSerivce.shared.createGroup(for: newGroup, in: .groups)
         

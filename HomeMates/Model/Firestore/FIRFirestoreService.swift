@@ -9,6 +9,7 @@
 import Foundation
 import Firebase
 import FirebaseFirestore
+import FirebaseAuth
 
 class FIRFirestoreSerivce {
     
@@ -260,7 +261,14 @@ class FIRFirestoreSerivce {
                                 return }
                             let object = try snapshot.decode(as: GroupObject.self)
 
+                            let currentDate = DateProvider.shared.getCurrentDate()
                             completion(object)
+                            if currentDate == object.logInDate {
+                                print("第二個登入的人")
+                            } else {
+                                print("第一個登入的人")
+                            }
+                            
                         } catch {
                             print(error)
                         }
