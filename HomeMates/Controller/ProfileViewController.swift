@@ -22,6 +22,8 @@ class ProfileViewController: HMBaseViewController {
     }
 
     let taskHeader = TaskListHeaderView()
+    
+    let dispatchGroup = DispatchGroup()
 
     //mock data
     var taskListTitle: [String] = ["", "個人任務清單", "任務日誌"]
@@ -40,31 +42,36 @@ class ProfileViewController: HMBaseViewController {
         tableView.jq_registerCellWithNib(identifier: String(describing: TotalPointsTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: BlankTableViewCell.self), bundle: nil)
         
+        dispatchGroup.enter()
         FirestoreUserManager.shared.readUserInfo { [weak self] (user) in
+            
             self?.userInfo = user
+            self?.dispatchGroup.leave()
         }
         
+        dispatchGroup.enter()
         FIRFirestoreSerivce.shared.readDoingTasks { [weak self] (tasks) in
             self?.processTaskList = tasks
-            
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
-            }
+            self?.dispatchGroup.leave()
         }
         
+        dispatchGroup.enter()
         FirestoreUserManager.shared.readTracker { [weak self] (trackers, flag, goal)  in
             if flag == true {
                 guard let trackers = trackers else { return }
                 self?.doneTaskList = trackers
                 self?.getTotalTime(trackers: trackers, goal: goal)
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
-                }
+               
             } else {
                 
             }
+            self?.dispatchGroup.leave()
         }
 
+        dispatchGroup.notify(queue: .main) {
+            self.tableView.reloadData()
+        }
+        
     }
 
     func getTotalTime(trackers: [TaskTracker], goal: Int?) {

@@ -101,12 +101,11 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
 
     func getDateTask(selectedDate: String) {
         dateTaskList = []
-        for (index, element) in taskList.enumerated() {
-            if element.completionDate == selectedDate {
+        for (index, element) in taskList.enumerated() where element.completionDate == selectedDate {
                 dateTaskList.append(taskList[index])
-            }
         }
     }
+    
 }
 
 extension StatisticsViewController: FSCalendarDataSource, FSCalendarDelegate {

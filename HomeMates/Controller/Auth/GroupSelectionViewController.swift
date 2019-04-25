@@ -120,6 +120,7 @@ class GroupSelectionViewController: UIViewController {
     }
     
     func createANewGroup() {
+        
         guard let userName = userNameTextField.text else { return }
         guard let groupName = secondGroupTextField.text else { return }
         guard let user = Auth.auth().currentUser else { return }

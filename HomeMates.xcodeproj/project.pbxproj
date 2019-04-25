@@ -218,7 +218,6 @@
 		B9261C72225384A50033ABC9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B9B99F3C226311B000314BB6 /* LoadingViewController.swift */,
 				B9B7F53F225DB71700A6DA9E /* Auth */,
 				B9261C9B2254955A0033ABC9 /* Lobby */,
 				B94D15B1225721D000F43B78 /* Profile */,
@@ -296,6 +295,7 @@
 		B9261C772253856E0033ABC9 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				B9B99F3C226311B000314BB6 /* LoadingViewController.swift */,
 				B9261C782253858A0033ABC9 /* HMTabBarViewController.swift */,
 				B94D15B222572A2200F43B78 /* HMBaseViewController.swift */,
 			);
