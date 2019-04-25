@@ -74,7 +74,7 @@
             <connections>
                 <outlet property="accomplishedDateTextLbl" destination="Zcb-PW-XLb" id="4Jg-EX-m3D"/>
                 <outlet property="excutorNameTextLbl" destination="8w8-o9-ApL" id="ukM-Yc-DRD"/>
-                <outlet property="selectTaskPicker" destination="ujM-iH-EOr" id="HDc-29-xRg"/>
+                <outlet property="selectTaskTextField" destination="ujM-iH-EOr" id="HDc-29-xRg"/>
             </connections>
             <point key="canvasLocation" x="8.6956521739130448" y="99.776785714285708"/>
         </tableViewCell>

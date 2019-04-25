@@ -8,9 +8,14 @@
 
 import UIKit
 
-class TrackerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
+protocol SelectDoneTaskDelegate: AnyObject {
+    
+    func doneBtnDidClick()
+}
 
-    @IBOutlet weak var selectTaskPicker: HMBaseTextField!
+class TrackerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+
+    @IBOutlet weak var selectTaskTextField: HMBaseTextField!
     
     @IBOutlet weak var accomplishedDateTextLbl: UILabel!
     
@@ -33,8 +38,11 @@ class TrackerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerVie
     
     var taskList: [TaskObject] = []
     
+    weak var delegate: SelectDoneTaskDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectTaskTextField.delegate = self
     }
 
     func loadData(tasks: [TaskObject]) {
@@ -45,7 +53,7 @@ class TrackerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerVie
             taskNames.append(taskName)
         }
         pickerOptions = taskNames.removeDuplicates()
-        selectTaskPicker.inputView = pickerView
+        selectTaskTextField.inputView = pickerView
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -79,11 +87,17 @@ class TrackerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerVie
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         if pickerOptions.count == 0 {
-            selectTaskPicker.text = "無完成任務紀錄"
+            selectTaskTextField.text = "無完成任務紀錄"
         } else {
-            selectTaskPicker.text = pickerOptions[row]
+            selectTaskTextField.text = pickerOptions[row]
             taskTrackerHandler?(pickerOptions[row])
+            
         }
   
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        delegate?.doneBtnDidClick()
+    }
+    
 }

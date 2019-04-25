@@ -81,7 +81,7 @@ class GroupSelectionViewController: UIViewController {
                 self?.secondGroupTextLbl.isHidden = true
                 self?.secondGroupTextField.isHidden = true
             } else {
-                self?.firstGroupTextLbl.text = "創立群組 ID"
+                self?.firstGroupTextLbl.text = "創立群組 ID (群組帳號不可修改)"
                 self?.secondGroupTextLbl.isHidden = false
                 self?.secondGroupTextField.isHidden = false
             }

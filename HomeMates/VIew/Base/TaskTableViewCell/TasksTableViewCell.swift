@@ -74,7 +74,7 @@ class TasksTableViewCell: UITableViewCell {
         case .checkTask:
 
             guard let executor = taskObject.executorName else { return }
-            guard let completionTimeStamp = taskObject.compleyionTimeStamp else { return }
+            guard let completionTimeStamp = taskObject.completionTimeStamp else { return }
             let completionDate = DateProvider.shared.getCurrentDate(currentTimeStamp: completionTimeStamp)
             pointTextLbl.text = "完成日期：\(completionDate)"
             taskNameTextLbl.text = "任務：\(taskObject.taskName) ;  積分：\(taskObject.taskPoint)點"

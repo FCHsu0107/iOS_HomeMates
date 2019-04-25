@@ -131,7 +131,7 @@ class FIRFirestoreSerivce {
     func readDoneTask(comletionHandler: @escaping ([TaskObject]) -> Void) {
         subReference(to: .groups, in: UserDefaultManager.shared.groupId!, toNext: .tasks)
             .whereField(TaskObject.CodingKeys.taskStatus.rawValue, isEqualTo: 4)
-            .order(by: TaskObject.CodingKeys.compleyionTimeStamp.rawValue, descending: true)
+            .order(by: TaskObject.CodingKeys.completionTimeStamp.rawValue, descending: true)
             .addSnapshotListener { (snapshot, err) in
                 guard let snapshot = snapshot else {
                     print(err as Any)
@@ -267,6 +267,8 @@ class FIRFirestoreSerivce {
                                 print("第二個登入的人")
                             } else {
                                 print("第一個登入的人")
+                                //新增每日任務
+                                //修改日期
                             }
                             
                         } catch {

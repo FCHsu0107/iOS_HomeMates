@@ -167,7 +167,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                     updateTask.taskStatus += tag
                     if tag == 1 {
                         let timeStamp = Int(DateProvider.shared.getTimeStamp())
-                        updateTask.compleyionTimeStamp = timeStamp
+                        updateTask.completionTimeStamp = timeStamp
                         
                     }
                     

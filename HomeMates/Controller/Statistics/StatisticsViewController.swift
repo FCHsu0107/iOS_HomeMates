@@ -75,12 +75,13 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
             self?.tableView.reloadData()
             
         }
+        
     }
 
     func getDateMark(tasks: [TaskObject]) {
         datesWithEvent = []
         for task in tasks {
-            guard let timeStamp = task.compleyionTimeStamp else { return }
+            guard let timeStamp = task.completionTimeStamp else { return }
             let date = DateProvider.shared.getCurrentDate(currentTimeStamp: timeStamp)
             datesWithEvent.append(date)
         }
@@ -104,7 +105,6 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
             if element.completionDate == selectedDate {
                 dateTaskList.append(taskList[index])
             }
-            
         }
     }
 }
@@ -144,10 +144,10 @@ extension StatisticsViewController: FSCalendarDataSource, FSCalendarDelegate {
 extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let taskHeaderTitle = ["過往紀錄", "任務分佈", "總貢獻度"]
+        let taskHeaderTitle = ["過往紀錄", "目標達成率"]
         
         switch section {
-        case 1, 2, 3:
+        case 1, 2:
             let headerView = taskHeaderView.taskTitle(tableView: tableView, titleText: taskHeaderTitle[section - 1])
             return headerView
 
@@ -169,13 +169,13 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 3
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0, 1, 2: return 1
-        case 3: return 3 // member count
+        case 0, 1 : return 1
+        case 2: return 3 // member count
         default: return 0
         }
     }
@@ -195,8 +195,9 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
                                                      for: indexPath)
             guard let trackerCell = cell as? TrackerTableViewCell else { return cell }
             trackerCell.loadData(tasks: taskList)
+            trackerCell.delegate = self
             trackerCell.taskTrackerHandler = { [weak self] (taskName) in
-                
+
                 var taskDates: [String] = []
                 var userNames: [String] = []
                 guard let taskList = self?.taskList else { return }
@@ -211,19 +212,18 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
                 let taskUserString = userNames.joined(separator: "\n")
                 trackerCell.accomplishedDateTextLbl.text = taskDateString
                 trackerCell.excutorNameTextLbl.text = taskUserString
-                self?.tableView.reloadData()
             }
             
             return trackerCell
             
+//        case 2:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ChartsTableViewCell.self),
+//                                                     for: indexPath)
+//            guard let chartCell = cell as? ChartsTableViewCell else { return cell }
+//
+//            return chartCell
+            
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ChartsTableViewCell.self),
-                                                     for: indexPath)
-            guard let chartCell = cell as? ChartsTableViewCell else { return cell }
-            
-            return chartCell
-            
-        case 3:
             
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PointGoalTableViewCell.self),
                                                      for: indexPath)
@@ -238,4 +238,12 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
     }
+}
+
+extension StatisticsViewController: SelectDoneTaskDelegate {
+    
+    func doneBtnDidClick() {
+        tableView.reloadData()
+    }
+    
 }

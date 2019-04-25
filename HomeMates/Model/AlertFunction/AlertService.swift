@@ -70,7 +70,7 @@ class AlertService {
                                   executorUid: nil,
                                   taskPoint: taskPoint,
                                   taskPriodDay: taskPriodDay,
-                                  compleyionTimeStamp: nil,
+                                  completionTimeStamp: nil,
                                   completionDate: nil,
                                   taskStatus: 1)
             completion(task)
@@ -115,7 +115,7 @@ class AlertService {
                                   executorUid: nil,
                                   taskPoint: taskPoint,
                                   taskPriodDay: taskPriodDay,
-                                  compleyionTimeStamp: nil,
+                                  completionTimeStamp: nil,
                                   completionDate: nil,
                                   taskStatus: 1)
             completion(task)

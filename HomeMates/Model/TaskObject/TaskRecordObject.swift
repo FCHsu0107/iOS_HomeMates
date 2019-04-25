@@ -9,7 +9,11 @@
 import Foundation
 
 struct TaskRecord {
+    
     var totalTimes: Int = 0
+    
     var totalPoints: Int = 0
+    
     var goal: Int?
+    
 }
