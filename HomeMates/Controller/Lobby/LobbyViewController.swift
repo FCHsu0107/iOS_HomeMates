@@ -77,6 +77,14 @@ class LobbyViewController: HMBaseViewController {
             nextVc.memberList = memberList
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        FirestoreGroupManager.shared.readGroupInfo { [weak self] groupInfo in
+            self?.groupInfo = groupInfo
+            self?.tableView.reloadData()
+        }
+    }
 }
 
 extension LobbyViewController: UITableViewDataSource {

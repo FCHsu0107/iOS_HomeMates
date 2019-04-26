@@ -23,6 +23,13 @@ class FirestoreGroupManager {
             .collection(collectionReference.rawValue)
     }
     
+    private func groupDocument() -> DocumentReference {
+        return Firestore.firestore()
+            .collection(FIRCollectionReference.groups.rawValue)
+            .document(UserDefaultManager.shared.groupId!)
+        
+    }
+    
     func addTask<T: Encodable>(for encodableObject: T) {
         var ref: DocumentReference?
         
@@ -122,5 +129,26 @@ class FirestoreGroupManager {
         
         userRef.collection(FIRCollectionReference.groups.rawValue).document(UserDefaultManager.shared.groupId!).delete()
         userRef.updateData([UserObject.CodingKeys.mainGroupId.rawValue: FieldValue.delete()])
+    }
+    
+    func updateGroupInfo(groupName: String) {
+        groupDocument().updateData([GroupObject.CodingKeys.name.rawValue: groupName])
+    }
+    
+    func readGroupInfo(completion: @escaping (GroupObject) -> Void) {
+        groupDocument().getDocument { (document, err) in
+            if err == nil {
+                do {
+                    guard let document = document else { return }
+                    let object = try document.decode(as: GroupObject.self)
+                    completion(object)
+                } catch {
+                    print(error)
+                }
+                
+            } else {
+                //err != nil
+            }
+        }
     }
 }

@@ -40,11 +40,6 @@ class LobbySettingsViewController: HMBaseViewController {
         guard let groupInfo = groupInfo else { return }
         showGroupInfo(groupInfo: groupInfo)
         
-//        FirestoreGroupManager.shared.readGroupMembers { [weak self] (members) in
-//            self?.memberList = members
-//            self?.tableView.reloadData()
-//        }
-
     }
 
     @IBAction func clickEditBtn(_ sender: Any) {
@@ -52,6 +47,7 @@ class LobbySettingsViewController: HMBaseViewController {
             editButton.isSelected = false
             groupNameTextField.isEnabled = false
             isSelected = false
+            FirestoreGroupManager.shared.updateGroupInfo(groupName: groupNameTextField.text!)
         } else {
             editButton.isSelected = true
             groupNameTextField.isEnabled = true
@@ -90,22 +86,25 @@ extension LobbySettingsViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GroupMemberTableViewCell.self))
         guard let memberCell = cell as? GroupMemberTableViewCell else { return cell! }
-        
-        memberCell.loadData(memberInfo: memberList[indexPath.row])
-        memberCell.clickHandler = { cell in
+        guard let groupInfo = groupInfo else { return memberCell }
+        memberCell.loadData(memberInfo: memberList[indexPath.row], groupInfo: groupInfo)
+        guard UserDefaultManager.shared.userUid == groupInfo.creatorId else {
+            return memberCell
+        }
+        memberCell.clickHandler = { [weak self] cell in
            guard let indexPath = tableView.indexPath(for: cell) else { return }
-            let alertSheet = UIAlertController.showDeleteActionSheet(member: self.memberList[indexPath.row].userName,
-                                                                     completion: { [weak self] (flag) in
+            let alertSheet = UIAlertController.showDeleteActionSheet(
+                member: (self?.memberList[indexPath.row].userName)!,
+                completion: { [weak self] (flag) in
                 if flag == true {
                     //delete member on the firestore
                     guard let docId = self?.memberList[indexPath.row].docId,
                         let userUid = self?.memberList[indexPath.row].userId else { return }
                     FirestoreGroupManager.shared.deleteMemberInGroup(memberDocId: docId, userUid: userUid)
-                    print(self?.memberList[indexPath.row].docId)
                     //哀哀
                 }
             })
-            self.present(alertSheet, animated: true, completion: nil)
+            self?.present(alertSheet, animated: true, completion: nil)
             StatusBarSettings.statusBarForAlertView()
         }
         

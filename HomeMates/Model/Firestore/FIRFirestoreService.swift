@@ -58,7 +58,7 @@ class FIRFirestoreSerivce {
         }
     }
     
-    func createGroup<T: Encodable>(for encodableObject: T, in collectionReference: FIRCollectionReference) {
+    func createGroup<T: Encodable>(for encodableObject: T, in collectionReference: FIRCollectionReference, completion: @escaping (String?) -> Void) {
         
         var ref: DocumentReference?
         
@@ -73,7 +73,28 @@ class FIRFirestoreSerivce {
             
             reference(to: collectionReference).document(ref.documentID).setData(json)
             UserDefaultManager.shared.groupId = ref.documentID
-   
+            completion(ref.documentID)
+            
+        } catch {
+            
+            print(error)
+        }
+    }
+    
+    func create<T: Encodable>(for encodableObject: T, in collectionReference: FIRCollectionReference) {
+        
+        var ref: DocumentReference?
+        
+        do {
+            var json = try encodableObject.toJSON()
+            
+            ref = reference(to: collectionReference).document()
+            
+            guard let ref = ref else { return }
+            json["docId"] = ref.documentID
+            
+            reference(to: collectionReference).document(ref.documentID).setData(json)
+            
         } catch {
             
             print(error)

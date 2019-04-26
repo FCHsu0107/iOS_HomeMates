@@ -52,12 +52,12 @@ class GroupSelectionViewController: UIViewController {
     
     @IBOutlet var selectGroupBtn: [UIButton]!
     
-    var userName: String?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
+    
+    var dispatchGroup = DispatchGroup()
     
     @IBAction func onChangeInfo(_ sender: UIButton) {
         for btn in selectGroupBtn {
@@ -124,38 +124,42 @@ class GroupSelectionViewController: UIViewController {
             guard let groupName = self?.secondGroupTextField.text else { return }
             guard let groupId = self?.firstGroupIDTextField.text else { return }
 
-            if flag == true {
+            UserDefaultManager.shared.userUid = user.uid
+            if flag == false {
                 guard let userInfo = userInfo else { return }
                 let newGroup = GroupObject(docId: nil, creatorId: user.uid,
                                            createrName: userInfo.name, name: groupName,
                                            picture: nil, shortcup: " ",
                                            groupId: groupId, logInDate: DateProvider.shared.getCurrentDate())
                 
-                FIRFirestoreSerivce.shared.createGroup(for: newGroup, in: .groups)
+                FIRFirestoreSerivce.shared.createGroup(for: newGroup, in: .groups, completion: { (groupId) in
+                    guard let groupId = groupId else { return }
+                    
+                    let newUser = UserObject(docId: nil, name: userInfo.name,
+                                             email: user.email!, picture: nil,
+                                             creator: true, application: false,
+                                             finishSignUp: true, mainGroupId: groupId)
+                    
+                    FIRFirestoreSerivce.shared.updateUser(uid: user.uid, for: newUser, in: .users)
+                    
+                    let groupInfoInUser = GroupInfoInUser(docId: UserDefaultManager.shared.groupId!,
+                                                          isMember: true,
+                                                          groupID: UserDefaultManager.shared.groupId!,
+                                                          groupName: groupName, isMainGroup: true)
+                    
+                    FirestoreUserManager.shared.createGroupInUser(for: groupInfoInUser)
+                    
+                    let groupMemnber = MemberObject(docId: nil, userId: user.uid,
+                                                    userName: userInfo.name, isCreator: true,
+                                                    permission: true, userPicture: "Profile_80px")
+                    
+                    FIRFirestoreSerivce.shared.createSub(for: groupMemnber, in: .groups,
+                                                         inDocument: groupId, inNext: .members)
+                    
+                    let tabBarVc = UIStoryboard.main.instantiateInitialViewController()!
+                    self?.present(tabBarVc, animated: true, completion: nil)
+                })
                 
-                let newUser = UserObject(docId: nil, name: userInfo.name,
-                                         email: user.email!, picture: nil,
-                                         creator: true, application: false,
-                                         finishSignUp: true, mainGroupId: UserDefaultManager.shared.groupId!)
-                
-                FIRFirestoreSerivce.shared.updateUser(uid: user.uid, for: newUser, in: .users)
-                
-                let groupInfoInUser = GroupInfoInUser(docId: UserDefaultManager.shared.groupId!,
-                                                      isMember: true,
-                                                      groupID: UserDefaultManager.shared.groupId!,
-                                                      groupName: groupName, isMainGroup: true)
-                
-                FirestoreUserManager.shared.createGroupInUser(for: groupInfoInUser)
-                
-                let groupMemnber = MemberObject(docId: nil, userId: user.uid,
-                                                userName: userInfo.name, isCreator: true,
-                                                permission: true, userPicture: "Profile_80px")
-                
-                FIRFirestoreSerivce.shared.createSub(for: groupMemnber, in: .groups,
-                                                     inDocument: UserDefaultManager.shared.groupId!, inNext: .members)
-                
-                let tabBarVc = UIStoryboard.main.instantiateInitialViewController()!
-                self?.present(tabBarVc, animated: true, completion: nil)
             }
         }
     }
@@ -187,7 +191,7 @@ class GroupSelectionViewController: UIViewController {
                             groupResults[index].docId = UserDefaultManager.shared.groupId
                                                             
                             let memberInfo = MemberObject(docId: nil, userId: user.uid,
-                                                          userName: (self?.userName)!, isCreator: false,
+                                                          userName: userInfo.name, isCreator: false,
                                                           permission: false, userPicture: "Profile_80px")
                             
                             FIRFirestoreSerivce.shared.createSub(for: memberInfo, in: .groups,
@@ -213,7 +217,7 @@ class GroupSelectionViewController: UIViewController {
                                                                 groupId: docIds[index],
                                                                 applicantName: userInfo.name)
                             
-                            FIRFirestoreSerivce.shared.createGroup(for: application, in: .applications)
+                            FIRFirestoreSerivce.shared.create(for: application, in: .applications)
                             
                             FIRFirestoreSerivce.shared.upadeSingleStatus(uid: groupResults[index].creatorId,
                                                                          in: .users,

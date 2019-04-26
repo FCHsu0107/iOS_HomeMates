@@ -34,15 +34,20 @@ class GroupMemberTableViewCell: UITableViewCell {
 
     }
     
-    func loadData(memberInfo: MemberObject) {
+    func loadData(memberInfo: MemberObject, groupInfo: GroupObject) {
         userNameLbl.text = memberInfo.userName
-        if memberInfo.permission == true {
-            statusLbl.text = ""
+        
+        
+        if memberInfo.permission == true && memberInfo.userName == groupInfo.createrName {
+            statusLbl.text = "創立者"
             
-        } else {
-//            statusLbl.text = "申請確認中"
+        } else if memberInfo.permission == true {
             statusLbl.text = ""
+        } else {
+            statusLbl.text = ""
+          //            statusLbl.text = "申請確認中"
         }
+        
         editBtn.addTarget(self, action: #selector(clickBtn(_:)), for: .touchUpInside)
     }
     

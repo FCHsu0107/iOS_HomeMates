@@ -119,8 +119,7 @@ class AuthViewController: HMBaseViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "selectGroupSegue" {
-            guard let nextVc = segue.destination as? GroupSelectionViewController else { return }
-            nextVc.userName = userNameTextField.text
+            guard segue.destination is GroupSelectionViewController else { return }
         }
     }
     
@@ -146,7 +145,7 @@ class AuthViewController: HMBaseViewController {
         }
     }
     
-    func createUserDoc() {
+    private func createUserDoc() {
         FIRAuthService.shared.createUser(withEmail: emailTextField.text!,
                                          password: passwordTextField.text!) { [weak self] (user, error) in
             if error == nil {
@@ -172,7 +171,7 @@ class AuthViewController: HMBaseViewController {
         }
     }
     
-    func signInAction() {
+    private func signInAction() {
         FIRAuthService.shared.signIn(withEmail: emailTextField.text!,
                                      password: passwordTextField.text!) { [weak self] (error) in
             if error == nil {

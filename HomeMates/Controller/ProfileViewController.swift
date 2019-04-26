@@ -42,34 +42,32 @@ class ProfileViewController: HMBaseViewController {
         tableView.jq_registerCellWithNib(identifier: String(describing: TotalPointsTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: BlankTableViewCell.self), bundle: nil)
         
-        dispatchGroup.enter()
+        getAllInfo()
+
+    }
+    
+    func getAllInfo() {
         FirestoreUserManager.shared.readUserInfo { [weak self] (user) in
             
             self?.userInfo = user
-            self?.dispatchGroup.leave()
+            
         }
         
-        dispatchGroup.enter()
         FIRFirestoreSerivce.shared.readDoingTasks { [weak self] (tasks) in
             self?.processTaskList = tasks
-            self?.dispatchGroup.leave()
+            self?.tableView.reloadData()
         }
         
-        dispatchGroup.enter()
         FirestoreUserManager.shared.readTracker { [weak self] (trackers, flag, goal)  in
             if flag == true {
                 guard let trackers = trackers else { return }
                 self?.doneTaskList = trackers
                 self?.getTotalTime(trackers: trackers, goal: goal)
-               
+                self?.tableView.reloadData()
+                
             } else {
                 
             }
-            self?.dispatchGroup.leave()
-        }
-
-        dispatchGroup.notify(queue: .main) {
-            self.tableView.reloadData()
         }
     }
 
