@@ -71,7 +71,6 @@ class ProfileViewController: HMBaseViewController {
         dispatchGroup.notify(queue: .main) {
             self.tableView.reloadData()
         }
-        
     }
 
     func getTotalTime(trackers: [TaskTracker], goal: Int?) {
@@ -130,6 +129,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 1:
@@ -207,5 +207,10 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     @objc func clickSettingsBtn() {
         self.performSegue(withIdentifier: "ProfileSettingsSegue", sender: nil)
+
+        print("__________userInfo_______")
+        print(userInfo)
+        print("__________goal_______")
+        print(taskRecord.goal)
     }
 }

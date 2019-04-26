@@ -97,15 +97,16 @@ class HMTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
         delegate = self
 
-        setStatusBarBackgroundColor(color: UIColor.Y1)
+        StatusBarSettings.setBackgroundColor(color: UIColor.Y1)
+//        setStatusBarBackgroundColor(color: UIColor.Y1)
     }
 
-    func setStatusBarBackgroundColor(color: UIColor?) {
-
-        guard let statusBar = UIApplication.shared.value(
-            forKeyPath: "statusBarWindow.statusBar") as? UIView else { return }
-
-        statusBar.backgroundColor = color
-    }
+//    func setStatusBarBackgroundColor(color: UIColor?) {
+//
+//        guard let statusBar = UIApplication.shared.value(
+//            forKeyPath: "statusBarWindow.statusBar") as? UIView else { return }
+//
+//        statusBar.backgroundColor = color
+//    }
 
 }

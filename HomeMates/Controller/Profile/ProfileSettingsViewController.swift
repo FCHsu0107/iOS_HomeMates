@@ -23,6 +23,8 @@ class ProfileSettingsViewController: HMBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("_______nextVC user_______")
+        print(user)
         loadUserInfo()
 
     }
@@ -35,6 +37,7 @@ class ProfileSettingsViewController: HMBaseViewController {
     }
     
     func loadUserInfo() {
+        guard let name = user?.name, let mainGroupId = user?.mainGroupId else { return }
         userNameTextField.text = user?.name
         ownGroupTextField.text = user?.mainGroupId
         guard let goal = goal else { return }

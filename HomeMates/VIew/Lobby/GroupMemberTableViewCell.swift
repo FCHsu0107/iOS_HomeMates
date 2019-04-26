@@ -40,7 +40,8 @@ class GroupMemberTableViewCell: UITableViewCell {
             statusLbl.text = ""
             
         } else {
-            statusLbl.text = "申請確認中"
+//            statusLbl.text = "申請確認中"
+            statusLbl.text = ""
         }
         editBtn.addTarget(self, action: #selector(clickBtn(_:)), for: .touchUpInside)
     }

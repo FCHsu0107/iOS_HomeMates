@@ -115,4 +115,12 @@ class FirestoreGroupManager {
         }
     }
     
+    func deleteMemberInGroup(memberDocId: String, userUid: String) {
+        reference(to: .members).document(memberDocId).delete()
+        //delete member Info
+        let userRef = Firestore.firestore().collection(FIRCollectionReference.users.rawValue).document(userUid)
+        
+        userRef.collection(FIRCollectionReference.groups.rawValue).document(UserDefaultManager.shared.groupId!).delete()
+        userRef.updateData([UserObject.CodingKeys.mainGroupId.rawValue: FieldValue.delete()])
+    }
 }

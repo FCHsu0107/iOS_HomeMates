@@ -47,6 +47,17 @@ class FIRFirestoreSerivce {
         }
     }
     
+    func updateUser<T: Encodable>(uid: String,
+                                  for encodableObject: T,
+                                  in collectionReference: FIRCollectionReference) {
+        do {
+            let json = try encodableObject.toJSON(excluding: ["name", "email"])
+            reference(to: collectionReference).document(uid).updateData(json)
+        } catch {
+            print(error)
+        }
+    }
+    
     func createGroup<T: Encodable>(for encodableObject: T, in collectionReference: FIRCollectionReference) {
         
         var ref: DocumentReference?
@@ -194,22 +205,30 @@ class FIRFirestoreSerivce {
         }
     }
     
-    typealias BoolCompleionHandler = (Bool?) -> Void
+    typealias BoolCompleionHandler = (Bool?, String?) -> Void
     
+    /*
+     Int表狀態
+     1 有main group
+     2 沒有main group
+ */
     func findUser(completionHandler completion: @escaping BoolCompleionHandler) {
         
         guard let user = Auth.auth().currentUser else {
-            completion(false)
+            completion(false, nil)
             return }
         let uid = user.uid
         
         reference(to: .users).document(uid).getDocument { (querySnapshot, _) in
             guard let data = querySnapshot?.data() else {
-                completion(false)
+                completion(false, nil)
                 return
             }
-            
-            completion(data[UserObject.CodingKeys.finishSignUp.rawValue] as? Bool)
+            guard let mainGroup = data[UserObject.CodingKeys.mainGroupId.rawValue] else {
+                completion(true, nil)
+                return 
+            }
+            completion(data[UserObject.CodingKeys.finishSignUp.rawValue] as? Bool, mainGroup as? String)
         }
     }
 
@@ -253,7 +272,7 @@ class FIRFirestoreSerivce {
                     UserDefaultManager.shared.groupId = groupId
                     UserDefaultManager.shared.userName = object.name
                    
-                    self?.reference(to: .groups).document(groupId).getDocument(completion: { (snapshot, err) in
+                    self?.reference(to: .groups).document(groupId!).getDocument(completion: { (snapshot, err) in
 
                         do {
                             guard let snapshot = snapshot else {

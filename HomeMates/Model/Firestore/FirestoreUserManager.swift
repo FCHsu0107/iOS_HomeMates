@@ -263,4 +263,8 @@ class FirestoreUserManager {
         }
     }
     
+    func updateUserInfo() {
+        
+    }
+    
 }

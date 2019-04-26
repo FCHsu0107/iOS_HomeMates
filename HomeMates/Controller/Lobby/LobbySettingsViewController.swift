@@ -95,13 +95,16 @@ extension LobbySettingsViewController: UITableViewDelegate, UITableViewDataSourc
         memberCell.clickHandler = { cell in
            guard let indexPath = tableView.indexPath(for: cell) else { return }
             let alertSheet = UIAlertController.showDeleteActionSheet(member: self.memberList[indexPath.row].userName,
-                                                                     completion: { (flag) in
+                                                                     completion: { [weak self] (flag) in
                 if flag == true {
                     //delete member on the firestore
+                    guard let docId = self?.memberList[indexPath.row].docId, let userUid = self?.memberList[indexPath.row].userId else { return }
+                    FirestoreGroupManager.shared.deleteMemberInGroup(memberDocId: docId, userUid: userUid)
+                    print(self?.memberList[indexPath.row].docId)
                 }
             })
             self.present(alertSheet, animated: true, completion: nil)
-            print(indexPath.row)
+            StatusBarSettings.statusBarForAlertView()
         }
         
         return memberCell

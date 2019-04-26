@@ -40,6 +40,8 @@
 		B9261C97225489110033ABC9 /* TaskObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C96225489110033ABC9 /* TaskObject.swift */; };
 		B9261C9D225495840033ABC9 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C9C225495840033ABC9 /* LobbyViewController.swift */; };
 		B9261C9F2254C2B20033ABC9 /* TableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C9E2254C2B20033ABC9 /* TableView+Extension.swift */; };
+		B93EA2202272DC2F002F18A3 /* StatusBarSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93EA21F2272DC2F002F18A3 /* StatusBarSettings.swift */; };
+		B93EA2222272E5EE002F18A3 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93EA2212272E5EE002F18A3 /* AddGroupViewController.swift */; };
 		B94D15A622560AA500F43B78 /* LobbyHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15A422560AA500F43B78 /* LobbyHeaderCell.swift */; };
 		B94D15A722560AA500F43B78 /* LobbyHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B94D15A522560AA500F43B78 /* LobbyHeaderCell.xib */; };
 		B94D15AF225721C500F43B78 /* ProfileHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15AD225721C500F43B78 /* ProfileHeaderViewCell.swift */; };
@@ -53,7 +55,6 @@
 		B959F736226DA57B00D3CA68 /* GroupMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B959F734226DA57B00D3CA68 /* GroupMemberTableViewCell.swift */; };
 		B959F737226DA57B00D3CA68 /* GroupMemberTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B959F735226DA57B00D3CA68 /* GroupMemberTableViewCell.xib */; };
 		B959F739226DD56900D3CA68 /* FirestoreGroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B959F738226DD56900D3CA68 /* FirestoreGroupManager.swift */; };
-		B959F73B226EB91E00D3CA68 /* StatusBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B959F73A226EB91E00D3CA68 /* StatusBackgroundColor.swift */; };
 		B959F73D226EC3E000D3CA68 /* MonthsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B959F73C226EC3E000D3CA68 /* MonthsObject.swift */; };
 		B959F73F226EF6CA00D3CA68 /* FirestoreUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B959F73E226EF6CA00D3CA68 /* FirestoreUserManager.swift */; };
 		B98446C6226FF33100E5044A /* BlankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98446C4226FF33100E5044A /* BlankTableViewCell.swift */; };
@@ -127,6 +128,8 @@
 		B9261C96225489110033ABC9 /* TaskObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskObject.swift; sourceTree = "<group>"; };
 		B9261C9C225495840033ABC9 /* LobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
 		B9261C9E2254C2B20033ABC9 /* TableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+Extension.swift"; sourceTree = "<group>"; };
+		B93EA21F2272DC2F002F18A3 /* StatusBarSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarSettings.swift; sourceTree = "<group>"; };
+		B93EA2212272E5EE002F18A3 /* AddGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
 		B94D15A422560AA500F43B78 /* LobbyHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyHeaderCell.swift; sourceTree = "<group>"; };
 		B94D15A522560AA500F43B78 /* LobbyHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LobbyHeaderCell.xib; sourceTree = "<group>"; };
 		B94D15AD225721C500F43B78 /* ProfileHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewCell.swift; sourceTree = "<group>"; };
@@ -140,7 +143,6 @@
 		B959F734226DA57B00D3CA68 /* GroupMemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberTableViewCell.swift; sourceTree = "<group>"; };
 		B959F735226DA57B00D3CA68 /* GroupMemberTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupMemberTableViewCell.xib; sourceTree = "<group>"; };
 		B959F738226DD56900D3CA68 /* FirestoreGroupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreGroupManager.swift; sourceTree = "<group>"; };
-		B959F73A226EB91E00D3CA68 /* StatusBackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBackgroundColor.swift; sourceTree = "<group>"; };
 		B959F73C226EC3E000D3CA68 /* MonthsObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthsObject.swift; sourceTree = "<group>"; };
 		B959F73E226EF6CA00D3CA68 /* FirestoreUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUserManager.swift; sourceTree = "<group>"; };
 		B98446C4226FF33100E5044A /* BlankTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankTableViewCell.swift; sourceTree = "<group>"; };
@@ -258,10 +260,7 @@
 				B9B99F332261899900314BB6 /* UserObject */,
 				B9B99F492264470300314BB6 /* GroupObject */,
 				B9B7F52D225CAD6100A6DA9E /* TaskObject */,
-				B9B7F52B225CAD5700A6DA9E /* TaskCellStatus.swift */,
-				B9B99F4722641FA100314BB6 /* HMCornerRadius.swift */,
 				B91D3AFE2269B7DE00C1A28F /* DateProvider.swift */,
-				B959F73A226EB91E00D3CA68 /* StatusBackgroundColor.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -385,6 +384,7 @@
 		B9B7F52D225CAD6100A6DA9E /* TaskObject */ = {
 			isa = PBXGroup;
 			children = (
+				B9B7F52B225CAD5700A6DA9E /* TaskCellStatus.swift */,
 				B9261C96225489110033ABC9 /* TaskObject.swift */,
 				B9D295D32258C18F00CF7869 /* TaskTracker.swift */,
 				B98446CA22700DB700E5044A /* TaskRecordObject.swift */,
@@ -395,6 +395,8 @@
 		B9B7F537225D959700A6DA9E /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				B9B7F538225D95B500A6DA9E /* HMBaseTextField.swift */,
+				B93EA21F2272DC2F002F18A3 /* StatusBarSettings.swift */,
 				B9261C9522545AA70033ABC9 /* TaskTableViewCell */,
 				B9B7F53B225D95DC00A6DA9E /* TaskHeaderView */,
 				B9B7F53A225D95CC00A6DA9E /* HMBaseTextField */,
@@ -407,7 +409,7 @@
 		B9B7F53A225D95CC00A6DA9E /* HMBaseTextField */ = {
 			isa = PBXGroup;
 			children = (
-				B9B7F538225D95B500A6DA9E /* HMBaseTextField.swift */,
+				B9B99F4722641FA100314BB6 /* HMCornerRadius.swift */,
 			);
 			path = HMBaseTextField;
 			sourceTree = "<group>";
@@ -425,6 +427,7 @@
 			children = (
 				B9B7F540225DB73D00A6DA9E /* AuthViewController.swift */,
 				B9B7F544225DEA8200A6DA9E /* GroupSelectionViewController.swift */,
+				B93EA2212272E5EE002F18A3 /* AddGroupViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -714,7 +717,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9D295DB225B003300CF7869 /* TaskListHeaderView.swift in Sources */,
-				B959F73B226EB91E00D3CA68 /* StatusBackgroundColor.swift in Sources */,
 				B9261C9D225495840033ABC9 /* LobbyViewController.swift in Sources */,
 				B9B7F548225EEA8E00A6DA9E /* AlertService.swift in Sources */,
 				B9B99F372262C44B00314BB6 /* FIRCollectionReference.swift in Sources */,
@@ -732,6 +734,7 @@
 				B9B99F3B2262DB0400314BB6 /* Snapshot+Entension.swift in Sources */,
 				B959F73F226EF6CA00D3CA68 /* FirestoreUserManager.swift in Sources */,
 				B959F73D226EC3E000D3CA68 /* MonthsObject.swift in Sources */,
+				B93EA2202272DC2F002F18A3 /* StatusBarSettings.swift in Sources */,
 				B9261C87225389FB0033ABC9 /* UIImage+Extension.swift in Sources */,
 				B94D15BD225754C700F43B78 /* ProfileViewController.swift in Sources */,
 				B9B7F539225D95B500A6DA9E /* HMBaseTextField.swift in Sources */,
@@ -768,6 +771,7 @@
 				B94D15CA225886FB00F43B78 /* EventCell.swift in Sources */,
 				B9B99F4822641FA100314BB6 /* HMCornerRadius.swift in Sources */,
 				B91D3A9A2264ABD400C1A28F /* MemberObject.swift in Sources */,
+				B93EA2222272E5EE002F18A3 /* AddGroupViewController.swift in Sources */,
 				B94D15AF225721C500F43B78 /* ProfileHeaderViewCell.swift in Sources */,
 				B91D3AFC22698CF700C1A28F /* PointGoalTableViewCell.swift in Sources */,
 				B9261C792253858A0033ABC9 /* HMTabBarViewController.swift in Sources */,

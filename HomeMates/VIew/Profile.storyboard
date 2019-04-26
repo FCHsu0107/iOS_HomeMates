@@ -50,7 +50,7 @@
                     <navigationItem key="navigationItem" id="5eL-8y-AZh"/>
                     <connections>
                         <outlet property="tableView" destination="2ZP-UN-se1" id="Cym-3B-pYu"/>
-                        <segue destination="MDT-Sf-d3h" kind="presentation" identifier="ProfileSettingsSegue" id="B9y-X5-dso"/>
+                        <segue destination="6Vt-eS-dAJ" kind="show" identifier="ProfileSettingsSegue" id="7gY-oZ-rwL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZ6-b4-L0Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -121,7 +121,7 @@
                                     <constraint firstAttribute="height" constant="1" id="Wak-9u-j7y"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="60" placeholder="輸入新密碼" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OYf-AD-099" customClass="HMBaseTextField" customModule="HomeMates" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="尚未設定" placeholder="輸入新密碼" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OYf-AD-099" customClass="HMBaseTextField" customModule="HomeMates" customModuleProvider="target">
                                 <rect key="frame" x="20" y="405" width="335" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Dli-Vl-lLi"/>
@@ -185,12 +185,6 @@
                         <viewLayoutGuide key="safeArea" id="3YC-Nz-e5s"/>
                     </view>
                     <navigationItem key="navigationItem" title="修改個人資料" id="gga-Mp-voD">
-                        <barButtonItem key="leftBarButtonItem" title="取消" id="4xn-kG-Zqt">
-                            <color key="tintColor" red="0.2901960784" green="0.22352941179999999" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            <connections>
-                                <action selector="dismissView:" destination="6Vt-eS-dAJ" id="457-Sk-JGG"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="完成" id="6by-eC-ABZ">
                             <color key="tintColor" red="0.2901960784" green="0.22352941179999999" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <connections>
@@ -207,7 +201,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lOh-JX-NYT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2688.8000000000002" y="117.39130434782609"/>
+            <point key="canvasLocation" x="1980" y="118"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KlG-H9-kJv">
@@ -229,27 +223,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BBA-0H-ZSz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-23.199999999999999" y="118.29085457271366"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="lgn-cv-olc">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MDT-Sf-d3h" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="r5s-1p-uRh">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.29019607843137252" green="0.22352941176470587" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="6Vt-eS-dAJ" kind="relationship" relationship="rootViewController" id="736-6I-PaQ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nUI-1E-kes" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1749.5999999999999" y="117.39130434782609"/>
         </scene>
     </scenes>
     <resources>

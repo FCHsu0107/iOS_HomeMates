@@ -44,8 +44,6 @@ class GroupSelectionViewController: UIViewController {
     
     @IBOutlet weak var firstGroupTextLbl: UILabel!
     
-    @IBOutlet weak var userNameTextField: UITextField!
-    
     @IBOutlet weak var secondGroupTextLbl: UILabel!
     
     @IBOutlet weak var firstGroupIDTextField: UITextField!
@@ -54,7 +52,7 @@ class GroupSelectionViewController: UIViewController {
     
     @IBOutlet var selectGroupBtn: [UIButton]!
     
-//    var alertView = AlertService()
+    var userName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,7 +79,7 @@ class GroupSelectionViewController: UIViewController {
                 self?.secondGroupTextLbl.isHidden = true
                 self?.secondGroupTextField.isHidden = true
             } else {
-                self?.firstGroupTextLbl.text = "創立群組 ID (群組帳號不可修改)"
+                self?.firstGroupTextLbl.text = "創立群組 ID (供搜尋用)"
                 self?.secondGroupTextLbl.isHidden = false
                 self?.secondGroupTextField.isHidden = false
             }
@@ -91,17 +89,16 @@ class GroupSelectionViewController: UIViewController {
     
     @IBAction func startAppBtnAction(_ sender: Any) {
         if selectGroupBtn[0].isSelected == true {
-            if firstGroupIDTextField.text?.isEmpty == true || userNameTextField.text?.isEmpty == true {
-                AlertService.sigleActionAlert(title: "注意", message: "請確認基本資料都已填寫", clickTitle: "收到", showInVc: self)
+            if firstGroupIDTextField.text?.isEmpty == true {
+                AlertService.sigleActionAlert(title: "注意", message: "請確認資料都已填寫", clickTitle: "收到", showInVc: self)
             } else {
                 searchTheGroup()
             }
                 
         } else if selectGroupBtn[1].isSelected == true {
-            if userNameTextField.text?.isEmpty == true ||
-                firstGroupIDTextField.text?.isEmpty == true ||
+            if firstGroupIDTextField.text?.isEmpty == true ||
                 secondGroupTextField.text?.isEmpty == true {
-                AlertService.sigleActionAlert(title: "注意", message: "請確認基本資料都已填寫", clickTitle: "收到", showInVc: self)
+                AlertService.sigleActionAlert(title: "注意", message: "請確認資料都已填寫", clickTitle: "收到", showInVc: self)
 
             } else {
                 guard let groupId = firstGroupIDTextField.text else { return }
@@ -120,8 +117,7 @@ class GroupSelectionViewController: UIViewController {
     }
     
     func createANewGroup() {
-        
-        guard let userName = userNameTextField.text else { return }
+        guard let userName = userName else { return }
         guard let groupName = secondGroupTextField.text else { return }
         guard let user = Auth.auth().currentUser else { return }
         guard let groupId = firstGroupIDTextField.text else { return }
@@ -146,7 +142,7 @@ class GroupSelectionViewController: UIViewController {
                                  finishSignUp: true,
                                  mainGroupId: UserDefaultManager.shared.groupId!)
         
-        FIRFirestoreSerivce.shared.createUser(uid: user.uid, for: newUser, in: .users)
+        FIRFirestoreSerivce.shared.updateUser(uid: user.uid, for: newUser, in: .users)
         
         let groupInfoInUser = GroupInfoInUser(docId: UserDefaultManager.shared.groupId!,
                                               isMember: true,
@@ -173,7 +169,7 @@ class GroupSelectionViewController: UIViewController {
     }
     
     func searchTheGroup() {
-        guard let userName = userNameTextField.text else { return }
+        guard let userName = userName else { return }
         guard let user = Auth.auth().currentUser else { return }
         
         var groupResults: [GroupObject] = []
@@ -198,7 +194,9 @@ class GroupSelectionViewController: UIViewController {
                     UIAlertController.showAlertSheet(title: "確認加入群組",
                                                      message: "確認群組名稱",
                                                      action: groupNames) { (index) in
+                                                        
                         groupResults[index].docId = UserDefaultManager.shared.groupId
+                                                        
                         let memberInfo = MemberObject(docId: nil,
                                                       userId: user.uid,
                                                       userName: userName,

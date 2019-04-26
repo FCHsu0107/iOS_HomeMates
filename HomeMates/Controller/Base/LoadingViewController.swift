@@ -36,11 +36,16 @@ class LoadingViewController: UIViewController {
                 return
                 
             } else {
-                FIRFirestoreSerivce.shared.findUser { [weak self] bool in
+                FIRFirestoreSerivce.shared.findUser { [weak self] bool, groupId in
                     if bool == true {
-                        let tabBarVc = UIStoryboard.main.instantiateInitialViewController()!
-                        
+                        if groupId != nil {
+                            let tabBarVc = UIStoryboard.main.instantiateInitialViewController()!
+                            
                             delegate.window?.rootViewController = tabBarVc
+
+                        } else {
+                            print("non-MainGroup")
+                        }
 
                     } else {
                         if let selectGroupVc =

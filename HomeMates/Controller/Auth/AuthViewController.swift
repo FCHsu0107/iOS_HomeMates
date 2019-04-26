@@ -22,6 +22,10 @@ class AuthViewController: HMBaseViewController {
     
     @IBOutlet weak var checkTextLbl: UILabel!
     
+    @IBOutlet weak var userNameTextField: UITextField!
+    
+    @IBOutlet weak var userNameLabel: UILabel!
+    
     @IBOutlet weak var enterbtnLbl: UILabel!
     
     @IBOutlet weak var authViewConstraint: NSLayoutConstraint!
@@ -54,21 +58,12 @@ class AuthViewController: HMBaseViewController {
         }
     }
     
-//    var alertView = AlertService()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setStatusBarBackgroundColor(color: UIColor.clear)
+        StatusBarSettings.setBackgroundColor(color: UIColor.clear)
     }
-    
-    private func setStatusBarBackgroundColor(color: UIColor?) {
-        guard let statusBar = UIApplication.shared.value(
-            forKeyPath: "statusBarWindow.statusBar") as? UIView else { return }
-        
-        statusBar.backgroundColor = color
-    }
-    
+
     @IBAction func onChangeStatus(_ sender: UIButton) {
         
         for btn in selectionBarBtn {
@@ -86,7 +81,9 @@ class AuthViewController: HMBaseViewController {
         enterbtnLbl.text = "創建新帳號"
         checkTextField.isHidden = false
         checkTextLbl.isHidden = false
-        authViewConstraint.constant = 290
+        userNameTextField.isHidden = false
+        userNameLabel.isHidden = false
+        authViewConstraint.constant = 350
         selectMovingBar.backgroundColor = UIColor.P1
     }
     
@@ -97,6 +94,8 @@ class AuthViewController: HMBaseViewController {
         enterbtnLbl.text = "開始旅程"
         checkTextField.isHidden = true
         checkTextLbl.isHidden = true
+        userNameTextField.isHidden = true
+        userNameLabel.isHidden = true
         authViewConstraint.constant = 230
         selectMovingBar.backgroundColor = UIColor.Y2
         
@@ -120,16 +119,16 @@ class AuthViewController: HMBaseViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "selectGroupSegue" {
-            guard segue.destination is GroupSelectionViewController else { return }
-//            guard let nextVc = segue.destination as? GroupSelectionViewController else { return }
+            guard let nextVc = segue.destination as? GroupSelectionViewController else { return }
+            nextVc.userName = userNameTextField.text
         }
     }
     
     @IBAction func enterBtnAction(_ sender: Any) {
         if selectionBarBtn[0].isSelected == true {
-            if emailTextField.text?.isEmpty == true {
+            if emailTextField.text?.isEmpty == true || userNameLabel.text?.isEmpty == true{
 
-                AlertService.sigleActionAlert(title: "錯誤", message: "請輸入電子郵件", clickTitle: "收到", showInVc: self)
+                AlertService.sigleActionAlert(title: "錯誤", message: "請填寫基本資料", clickTitle: "收到", showInVc: self)
                 
             } else if passwordTextField.text != checkTextField.text || passwordTextField.text?.isEmpty == true {
 
@@ -149,40 +148,40 @@ class AuthViewController: HMBaseViewController {
     
     func createUserDoc() {
         FIRAuthService.shared.createUser(withEmail: emailTextField.text!,
-                                         password: passwordTextField.text!) { (user, error) in
+                                         password: passwordTextField.text!) { [weak self] (user, error) in
             if error == nil {
                 guard let user = user else { return }
                 let newUser = UserObject(docId: nil,
-                                         name: " ",
+                                         name: (self?.userNameTextField.text)!,
                                          email: (user.email)!,
                                          picture: nil,
                                          creator: false,
                                          application: false,
                                          finishSignUp: false,
-                                         mainGroupId: " ")
+                                         mainGroupId: nil)
                 FIRFirestoreSerivce.shared.createUser(uid: user.uid,
                                                       for: newUser,
                                                       in: .users)
-                self.performSegue(withIdentifier: "selectGroupSegue", sender: nil)
+                self?.performSegue(withIdentifier: "selectGroupSegue", sender: nil)
             } else {
                 AlertService.sigleActionAlert(title: "錯誤",
                                            message: error?.localizedDescription,
                                            clickTitle: "收到",
-                                           showInVc: self)
+                                           showInVc: self!)
             }
         }
     }
     
     func signInAction() {
-        FIRAuthService.shared.signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (error) in
+        FIRAuthService.shared.signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { [weak self] (error) in
             if error == nil {
                 let tabBarVC = UIStoryboard.main.instantiateInitialViewController()!
-                self.present(tabBarVC, animated: true, completion: nil)
+                self?.present(tabBarVC, animated: true, completion: nil)
             } else {
                 AlertService.sigleActionAlert(title: "錯誤",
                                            message: error?.localizedDescription,
                                            clickTitle: "收到",
-                                           showInVc: self)
+                                           showInVc: self!)
             }
         }
     }

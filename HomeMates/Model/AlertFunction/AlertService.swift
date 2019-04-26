@@ -78,7 +78,8 @@ class AlertService {
         let cancel = UIAlertAction(title: "取消", style: .cancel) { _ -> Void in }
         alert.addAction(cancel)
         alert.addAction(add)
-        StatusBackgroundColor.statusBarForAlertView()
+        
+        StatusBarSettings.statusBarForAlertView()
         presentVc.present(alert, animated: true)
     }
     
@@ -124,7 +125,7 @@ class AlertService {
         let cancel = UIAlertAction(title: "取消", style: .cancel) { _ -> Void in }
         alert.addAction(cancel)
         alert.addAction(add)
-        StatusBackgroundColor.statusBarForAlertView()
+        StatusBarSettings.statusBarForAlertView()
         presentVc.present(alert, animated: true)
     }
 }

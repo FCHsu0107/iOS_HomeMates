@@ -24,7 +24,7 @@ struct UserObject: Codable, Identifiable {
     
     let finishSignUp: Bool
     
-    let mainGroupId: String
+    var mainGroupId: String?
     
     enum CodingKeys: String, CodingKey {
         
