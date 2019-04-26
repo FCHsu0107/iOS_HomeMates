@@ -151,7 +151,8 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let secondcell = tableView.dequeueReusableCell(withIdentifier: String(describing: BlankTableViewCell.self), for: indexPath)
+        let secondcell = tableView.dequeueReusableCell(withIdentifier: String(describing: BlankTableViewCell.self),
+                                                       for: indexPath)
         guard let blankCell = secondcell as? BlankTableViewCell else { return secondcell }
         
         switch indexPath.section {

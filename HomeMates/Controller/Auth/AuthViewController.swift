@@ -126,7 +126,7 @@ class AuthViewController: HMBaseViewController {
     
     @IBAction func enterBtnAction(_ sender: Any) {
         if selectionBarBtn[0].isSelected == true {
-            if emailTextField.text?.isEmpty == true || userNameLabel.text?.isEmpty == true{
+            if emailTextField.text?.isEmpty == true || userNameLabel.text?.isEmpty == true {
 
                 AlertService.sigleActionAlert(title: "錯誤", message: "請填寫基本資料", clickTitle: "收到", showInVc: self)
                 
@@ -173,10 +173,25 @@ class AuthViewController: HMBaseViewController {
     }
     
     func signInAction() {
-        FIRAuthService.shared.signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { [weak self] (error) in
+        FIRAuthService.shared.signIn(withEmail: emailTextField.text!,
+                                     password: passwordTextField.text!) { [weak self] (error) in
             if error == nil {
-                let tabBarVC = UIStoryboard.main.instantiateInitialViewController()!
-                self?.present(tabBarVC, animated: true, completion: nil)
+                FIRFirestoreSerivce.shared.findUser { [weak self] bool, userInfo  in
+                    if bool == true && userInfo?.mainGroupId != nil {
+                        let tabBarVC = UIStoryboard.main.instantiateInitialViewController()!
+                        self?.present(tabBarVC, animated: true, completion: nil)
+                    } else {
+                        if let selectGroupVc =
+                            UIStoryboard.auth.instantiateViewController(
+                                withIdentifier: String(describing: GroupSelectionViewController.self))
+                                as? GroupSelectionViewController {
+                            
+                            self?.present(selectGroupVc, animated: true, completion: nil)
+                            
+                        }
+                    }
+                }
+
             } else {
                 AlertService.sigleActionAlert(title: "錯誤",
                                            message: error?.localizedDescription,

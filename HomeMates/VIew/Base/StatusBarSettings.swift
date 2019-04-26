@@ -26,4 +26,3 @@ class StatusBarSettings {
         statusBar.backgroundColor = UIColor(red: 145, green: 125, blue: 51, alpha: 0)
     }
 }
-

@@ -205,13 +205,8 @@ class FIRFirestoreSerivce {
         }
     }
     
-    typealias BoolCompleionHandler = (Bool?, String?) -> Void
+    typealias BoolCompleionHandler = (Bool?, UserObject?) -> Void
     
-    /*
-     Int表狀態
-     1 有main group
-     2 沒有main group
- */
     func findUser(completionHandler completion: @escaping BoolCompleionHandler) {
         
         guard let user = Auth.auth().currentUser else {
@@ -224,11 +219,13 @@ class FIRFirestoreSerivce {
                 completion(false, nil)
                 return
             }
-            guard let mainGroup = data[UserObject.CodingKeys.mainGroupId.rawValue] else {
-                completion(true, nil)
-                return 
+            do {
+                let userObject = try querySnapshot?.decode(as: UserObject.self)
+                completion(data[UserObject.CodingKeys.finishSignUp.rawValue] as? Bool, userObject)
+            } catch {
+                
             }
-            completion(data[UserObject.CodingKeys.finishSignUp.rawValue] as? Bool, mainGroup as? String)
+
         }
     }
 
