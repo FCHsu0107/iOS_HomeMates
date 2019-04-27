@@ -93,6 +93,9 @@ extension LobbySettingsViewController: UITableViewDelegate, UITableViewDataSourc
         }
         memberCell.clickHandler = { [weak self] cell in
            guard let indexPath = tableView.indexPath(for: cell) else { return }
+            guard self?.memberList[indexPath.row].isCreator == false else {
+                return 
+            }
             let alertSheet = UIAlertController.showDeleteActionSheet(
                 member: (self?.memberList[indexPath.row].userName)!,
                 completion: { [weak self] (flag) in

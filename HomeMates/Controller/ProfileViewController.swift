@@ -46,11 +46,15 @@ class ProfileViewController: HMBaseViewController {
 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        getAllInfo()
+    }
+    
     func getAllInfo() {
         FirestoreUserManager.shared.readUserInfo { [weak self] (user) in
-            
             self?.userInfo = user
-            
         }
         
         FIRFirestoreSerivce.shared.readDoingTasks { [weak self] (tasks) in
@@ -207,9 +211,5 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     @objc func clickSettingsBtn() {
         self.performSegue(withIdentifier: "ProfileSettingsSegue", sender: nil)
 
-        print("__________userInfo_______")
-        print(userInfo)
-        print("__________goal_______")
-        print(taskRecord.goal)
     }
 }

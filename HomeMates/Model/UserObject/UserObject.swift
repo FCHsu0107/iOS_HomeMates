@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct UserObject: Codable, Identifiable {
+struct UserObject: Codable {
     
     var docId: String?
     
@@ -25,7 +25,7 @@ struct UserObject: Codable, Identifiable {
     let finishSignUp: Bool
     
     var mainGroupId: String?
-    
+ 
     enum CodingKeys: String, CodingKey {
         
         case docId
@@ -43,5 +43,6 @@ struct UserObject: Codable, Identifiable {
         case finishSignUp
         
         case mainGroupId
+
     }
 }

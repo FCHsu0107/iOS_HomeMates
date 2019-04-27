@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ApplicationObject: Codable, Identifiable {
+struct ApplicationObject: Codable {
     
     var docId: String? 
     

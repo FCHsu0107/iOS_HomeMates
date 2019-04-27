@@ -27,7 +27,6 @@ class FirestoreGroupManager {
         return Firestore.firestore()
             .collection(FIRCollectionReference.groups.rawValue)
             .document(UserDefaultManager.shared.groupId!)
-        
     }
     
     func addTask<T: Encodable>(for encodableObject: T) {

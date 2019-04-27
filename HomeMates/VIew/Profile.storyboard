@@ -71,11 +71,6 @@
                                     <constraint firstAttribute="height" constant="80" id="jC2-N9-Cdl"/>
                                     <constraint firstAttribute="width" constant="80" id="tHR-3G-1Bz"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="lkCornerRadius">
-                                        <real key="value" value="40"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名稱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="00R-dw-r26">
                                 <rect key="frame" x="20" y="194" width="335" height="21"/>
@@ -121,7 +116,7 @@
                                     <constraint firstAttribute="height" constant="1" id="Wak-9u-j7y"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="尚未設定" placeholder="輸入新密碼" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OYf-AD-099" customClass="HMBaseTextField" customModule="HomeMates" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="輸入目標積分" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OYf-AD-099" customClass="HMBaseTextField" customModule="HomeMates" customModuleProvider="target">
                                 <rect key="frame" x="20" y="405" width="335" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Dli-Vl-lLi"/>

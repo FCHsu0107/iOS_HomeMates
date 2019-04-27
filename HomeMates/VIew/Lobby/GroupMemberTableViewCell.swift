@@ -37,9 +37,8 @@ class GroupMemberTableViewCell: UITableViewCell {
     func loadData(memberInfo: MemberObject, groupInfo: GroupObject) {
         userNameLbl.text = memberInfo.userName
         
-        
         if memberInfo.permission == true && memberInfo.userName == groupInfo.createrName {
-            statusLbl.text = "創立者"
+            statusLbl.text = "管理者"
             
         } else if memberInfo.permission == true {
             statusLbl.text = ""

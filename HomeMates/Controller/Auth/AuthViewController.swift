@@ -177,6 +177,7 @@ class AuthViewController: HMBaseViewController {
             if error == nil {
                 FIRFirestoreSerivce.shared.findUser { [weak self] bool, userInfo  in
                     if bool == true && userInfo?.mainGroupId != nil {
+                        UserDefaultManager.shared.groupId = userInfo?.mainGroupId
                         let tabBarVC = UIStoryboard.main.instantiateInitialViewController()!
                         self?.present(tabBarVC, animated: true, completion: nil)
                     } else {

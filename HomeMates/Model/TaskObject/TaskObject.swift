@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TaskObject: Codable, Identifiable {
+struct TaskObject: Codable {
     
     var docId: String?
 

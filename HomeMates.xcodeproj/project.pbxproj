@@ -448,8 +448,8 @@
 		B9B99F332261899900314BB6 /* UserObject */ = {
 			isa = PBXGroup;
 			children = (
-				B9B99F312261898D00314BB6 /* UserObject.swift */,
 				B9B99F4A2264660100314BB6 /* UserDefault.swift */,
+				B9B99F312261898D00314BB6 /* UserObject.swift */,
 				B959F73C226EC3E000D3CA68 /* MonthsObject.swift */,
 			);
 			path = UserObject;

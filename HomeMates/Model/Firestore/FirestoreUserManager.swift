@@ -223,7 +223,6 @@ class FirestoreUserManager {
                     completionHandler(nil, false, nil)
                     
                 } else {
-
                     var month = MonthObject(docId: nil, month: currentMonth, goal: nil)
                     do {
                         month = try snapshots.documents[0].decode(as: MonthObject.self)
@@ -232,14 +231,33 @@ class FirestoreUserManager {
                     }
 
                     let currentMonthId = month.docId!
-                    let monthGoal = month.goal
+//                    let monthGoal = month.goal
                     self?.readTrackerInMonth(monthId: currentMonthId, completion: { (trckers, flag) in
-                        completionHandler(trckers, flag, monthGoal)
+                        self?.reference(userUid: UserDefaultManager.shared.userUid!, to: .groups)
+                            .document(UserDefaultManager.shared.groupId!)
+                            .getDocument(completion: { (document, err) in
+                            if err == nil {
+                                guard let documnet = document else { return }
+                                do {
+                                    let objcet = try documnet.decode(as: GroupInfoInUser.self)
+                                    let goal = objcet.goal
+                                    completionHandler(trckers, flag, goal)
+                                } catch {
+                                   print(error)
+                                }
+                                
+                            } else {
+                                print(err as Any)
+                                //err != nil reponse from firestore (get groupInfo)
+                            }
+                        })
+                        
                     })
                 }
                 
             } else {
-                //err != nil
+                print(err as Any)
+                //err != nil reponse from firestore(get monthInfo)
             }
         }
     }
@@ -263,8 +281,37 @@ class FirestoreUserManager {
         }
     }
     
-    func updateUserInfo() {
-        
-    }
+    func updateUserInfo(newName: String,
+                        goal: Int?) {
     
+        Firestore.firestore()
+            .collection(FIRCollectionReference.users.rawValue)
+            .document(UserDefaultManager.shared.userUid!)
+            .updateData([UserObject.CodingKeys.name.rawValue: newName])
+        
+        guard let goal = goal else { return }
+        reference(userUid: UserDefaultManager.shared.userUid!, to: .groups)
+            .document(UserDefaultManager.shared.groupId!)
+            .updateData([GroupInfoInUser.CodingKeys.goal.rawValue: goal])
+        
+        let groupDoc = Firestore.firestore()
+            .collection(FIRCollectionReference.groups.rawValue)
+            .document(UserDefaultManager.shared.groupId!)
+            .collection(FIRCollectionReference.members.rawValue)
+            
+            groupDoc.whereField(MemberObject.CodingKeys.userId.rawValue, isEqualTo: UserDefaultManager.shared.userUid!)
+                .getDocuments { (snapshots, err) in
+                if err == nil {
+                    guard let snapshots = snapshots else { return }
+                    let docId = snapshots.documents[0].documentID
+                    
+                groupDoc.document(docId)
+                    .updateData([MemberObject.CodingKeys.goal.rawValue: goal])
+                    
+                } else {
+                    //err != nil
+                }
+        }
+    }
+
 }

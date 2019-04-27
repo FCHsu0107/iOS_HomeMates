@@ -128,9 +128,9 @@ class GroupSelectionViewController: UIViewController {
             if flag == false {
                 guard let userInfo = userInfo else { return }
                 let newGroup = GroupObject(docId: nil, creatorId: user.uid,
-                                           createrName: userInfo.name, name: groupName,
-                                           picture: nil, shortcup: " ",
-                                           groupId: groupId, logInDate: DateProvider.shared.getCurrentDate())
+                                           createrName: userInfo.name, name: groupName, picture: nil,
+                                           shortcup: "", groupId: groupId,
+                                           logInDate: DateProvider.shared.getCurrentDate())               
                 
                 FIRFirestoreSerivce.shared.createGroup(for: newGroup, in: .groups, completion: { (groupId) in
                     guard let groupId = groupId else { return }
@@ -145,13 +145,13 @@ class GroupSelectionViewController: UIViewController {
                     let groupInfoInUser = GroupInfoInUser(docId: UserDefaultManager.shared.groupId!,
                                                           isMember: true,
                                                           groupID: UserDefaultManager.shared.groupId!,
-                                                          groupName: groupName, isMainGroup: true)
+                                                          isMainGroup: true, goal: nil)
                     
                     FirestoreUserManager.shared.createGroupInUser(for: groupInfoInUser)
                     
                     let groupMemnber = MemberObject(docId: nil, userId: user.uid,
                                                     userName: userInfo.name, isCreator: true,
-                                                    permission: true, userPicture: "Profile_80px")
+                                                    permission: true, userPicture: "Profile_80px", goal: nil)
                     
                     FIRFirestoreSerivce.shared.createSub(for: groupMemnber, in: .groups,
                                                          inDocument: groupId, inNext: .members)
@@ -192,7 +192,7 @@ class GroupSelectionViewController: UIViewController {
                                                             
                             let memberInfo = MemberObject(docId: nil, userId: user.uid,
                                                           userName: userInfo.name, isCreator: false,
-                                                          permission: false, userPicture: "Profile_80px")
+                                                          permission: false, userPicture: "Profile_80px", goal: nil)
                             
                             FIRFirestoreSerivce.shared.createSub(for: memberInfo, in: .groups,
                                                                  inDocument: docIds[index], inNext: .members)
@@ -207,8 +207,8 @@ class GroupSelectionViewController: UIViewController {
                             let groupInfoInUser = GroupInfoInUser(docId: nil,
                                                                   isMember: false,
                                                                   groupID: docIds[index],
-                                                                  groupName: groupResults[index].name,
-                                                                  isMainGroup: true)
+                                                                  isMainGroup: true,
+                                                                  goal: nil)
                             
                             FirestoreUserManager.shared.createGroupInUser(for: groupInfoInUser)
                             
@@ -219,9 +219,11 @@ class GroupSelectionViewController: UIViewController {
                             
                             FIRFirestoreSerivce.shared.create(for: application, in: .applications)
                             
+                            let applicationValue = UserObject.CodingKeys.application.rawValue
+                                                            
                             FIRFirestoreSerivce.shared.upadeSingleStatus(uid: groupResults[index].creatorId,
                                                                          in: .users,
-                                                                         status: UserObject.CodingKeys.application.rawValue,
+                                                                         status: applicationValue,
                                                                          bool: true)
                             
                             let tabBarVc = UIStoryboard.main.instantiateInitialViewController()!

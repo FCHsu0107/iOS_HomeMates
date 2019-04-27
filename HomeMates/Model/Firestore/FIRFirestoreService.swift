@@ -21,21 +21,7 @@ class FIRFirestoreSerivce {
         FirebaseApp.configure()
     }
     
-    private func reference(to collectionReference: FIRCollectionReference) -> CollectionReference {
-
-            return Firestore.firestore().collection(collectionReference.rawValue)
-    }
-    
-    private func subReference(to collectionReference: FIRCollectionReference,
-                              in document: String,
-                              toNext subCollectionReference: FIRCollectionReference)
-        -> CollectionReference {
-            return Firestore.firestore()
-                .collection(collectionReference.rawValue)
-                .document(document)
-                .collection(subCollectionReference.rawValue)
-    }
-    
+    // Create func
     func createUser<T: Encodable>(uid: String,
                                   for encodableObject: T,
                                   in collectionReference: FIRCollectionReference) {
@@ -47,18 +33,9 @@ class FIRFirestoreSerivce {
         }
     }
     
-    func updateUser<T: Encodable>(uid: String,
-                                  for encodableObject: T,
-                                  in collectionReference: FIRCollectionReference) {
-        do {
-            let json = try encodableObject.toJSON(excluding: ["name", "email"])
-            reference(to: collectionReference).document(uid).updateData(json)
-        } catch {
-            print(error)
-        }
-    }
-    
-    func createGroup<T: Encodable>(for encodableObject: T, in collectionReference: FIRCollectionReference, completion: @escaping (String?) -> Void) {
+    func createGroup<T: Encodable>(for encodableObject: T,
+                                   in collectionReference: FIRCollectionReference,
+                                   completion: @escaping (String?) -> Void) {
         
         var ref: DocumentReference?
         
@@ -125,6 +102,7 @@ class FIRFirestoreSerivce {
         }
     }
     
+    //read func
     func findGroup<T: Decodable>(groupId: String,
                                  returning objectType: T.Type,
                                  completion: @escaping ([T], [String]) -> Void) {
@@ -160,6 +138,7 @@ class FIRFirestoreSerivce {
         }
     }
 
+    //for statistic page
     func readDoneTask(comletionHandler: @escaping ([TaskObject]) -> Void) {
         subReference(to: .groups, in: UserDefaultManager.shared.groupId!, toNext: .tasks)
             .whereField(TaskObject.CodingKeys.taskStatus.rawValue, isEqualTo: 4)
@@ -179,28 +158,6 @@ class FIRFirestoreSerivce {
                 } catch {
                     print(error)
                 }
-        }
-    }
-    
-    private func readGroupTasks(status: Int,
-                                completion: @escaping ([TaskObject]) -> Void) {
-        subReference(to: .groups, in: UserDefaultManager.shared.groupId!, toNext: .tasks)
-            .whereField(TaskObject.CodingKeys.taskStatus.rawValue, isEqualTo: status)
-            .addSnapshotListener { (snapshot, err) in
-            guard let snapshot = snapshot else {
-                print(err as Any)
-                return }
-            
-            do {
-                var objects = [TaskObject]()
-                for document in snapshot.documents {
-                    let object = try document.decode(as: TaskObject.self)
-                    objects.append(object)
-                }
-                completion(objects)
-            } catch {
-                print(error)
-            }
         }
     }
     
@@ -242,6 +199,7 @@ class FIRFirestoreSerivce {
             }
             do {
                 let userObject = try querySnapshot?.decode(as: UserObject.self)
+                UserDefaultManager.shared.groupId = userObject?.mainGroupId
                 completion(data[UserObject.CodingKeys.finishSignUp.rawValue] as? Bool, userObject)
             } catch {
                 
@@ -249,7 +207,66 @@ class FIRFirestoreSerivce {
 
         }
     }
+    
+    func findMainGroup(completion: @escaping (GroupObject) -> Void) {
+        let user = Auth.auth().currentUser
+        guard let currentUser = user else { return }
+        UserDefaultManager.shared.userUid = currentUser.uid
+        let ref = reference(to: .users).document(currentUser.uid)
+        ref.getDocument { [ weak self ] (documnet, err) in
+            if let document = documnet, document.exists {
+                
+                guard document.data() != nil else { return }
+                do {
+                    let object = try document.decode(as: UserObject.self)
+                    let groupId = object.mainGroupId
+                    UserDefaultManager.shared.groupId = groupId
+                    UserDefaultManager.shared.userName = object.name
+                    
+                    self?.reference(to: .groups).document(groupId!).getDocument(completion: { (snapshot, err) in
+                        
+                        do {
+                            guard let snapshot = snapshot else {
+                                print(err as Any)
+                                return }
+                            let object = try snapshot.decode(as: GroupObject.self)
+                            
+                            let currentDate = DateProvider.shared.getCurrentDate()
+                            completion(object)
+                            if currentDate == object.logInDate {
+                                print("第二個登入的人")
+                            } else {
+                                print("第一個登入的人")
+                                //新增每日任務
+                                //修改日期
+                            }
+                            
+                        } catch {
+                            print(error)
+                        }
+                    })
+                } catch {
+                    print(error)
+                }
+                
+            } else {
+                print(err as Any)
+            }
+        }
+    }
 
+    //update func
+    func updateUser<T: Encodable>(uid: String,
+                                  for encodableObject: T,
+                                  in collectionReference: FIRCollectionReference) {
+        do {
+            let json = try encodableObject.toJSON(excluding: ["name", "email"])
+            reference(to: collectionReference).document(uid).updateData(json)
+        } catch {
+            print(error)
+        }
+    }
+    
     func upadeSingleStatus(uid: String, in collectionReference: FIRCollectionReference, status: String, bool: Bool) {
         reference(to: collectionReference).document(uid).updateData([status: bool]) { err in
             if let err = err {
@@ -275,51 +292,45 @@ class FIRFirestoreSerivce {
         
     }
     
-    func findMainGroup(completion: @escaping (GroupObject) -> Void) {
-        let user = Auth.auth().currentUser
-        guard let currentUser = user else { return }
-        UserDefaultManager.shared.userUid = currentUser.uid
-        let ref = reference(to: .users).document(currentUser.uid)
-        ref.getDocument { [ weak self ](documnet, err) in
-            if let document = documnet, document.exists {
+}
+
+extension FIRFirestoreSerivce {
+    //private func
+    private func readGroupTasks(status: Int,
+                                completion: @escaping ([TaskObject]) -> Void) {
+        subReference(to: .groups, in: UserDefaultManager.shared.groupId!, toNext: .tasks)
+            .whereField(TaskObject.CodingKeys.taskStatus.rawValue, isEqualTo: status)
+            .addSnapshotListener { (snapshot, err) in
+                guard let snapshot = snapshot else {
+                    print(err as Any)
+                    return }
                 
-                guard document.data() != nil else { return }
                 do {
-                    let object = try document.decode(as: UserObject.self)
-                    let groupId = object.mainGroupId
-                    UserDefaultManager.shared.groupId = groupId
-                    UserDefaultManager.shared.userName = object.name
-                   
-                    self?.reference(to: .groups).document(groupId!).getDocument(completion: { (snapshot, err) in
-
-                        do {
-                            guard let snapshot = snapshot else {
-                                print(err as Any)
-                                return }
-                            let object = try snapshot.decode(as: GroupObject.self)
-
-                            let currentDate = DateProvider.shared.getCurrentDate()
-                            completion(object)
-                            if currentDate == object.logInDate {
-                                print("第二個登入的人")
-                            } else {
-                                print("第一個登入的人")
-                                //新增每日任務
-                                //修改日期
-                            }
-                            
-                        } catch {
-                            print(error)
-                        }
-                    })
+                    var objects = [TaskObject]()
+                    for document in snapshot.documents {
+                        let object = try document.decode(as: TaskObject.self)
+                        objects.append(object)
+                    }
+                    completion(objects)
                 } catch {
                     print(error)
                 }
-                
-            } else {
-                print(err as Any)
-            }
         }
+    }
+    
+    private func reference(to collectionReference: FIRCollectionReference) -> CollectionReference {
+        
+        return Firestore.firestore().collection(collectionReference.rawValue)
+    }
+    
+    private func subReference(to collectionReference: FIRCollectionReference,
+                              in document: String,
+                              toNext subCollectionReference: FIRCollectionReference)
+        -> CollectionReference {
+            return Firestore.firestore()
+                .collection(collectionReference.rawValue)
+                .document(document)
+                .collection(subCollectionReference.rawValue)
     }
     
 }

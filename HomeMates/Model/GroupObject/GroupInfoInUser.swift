@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct GroupInfoInUser: Codable, Identifiable {
+struct GroupInfoInUser: Codable {
     
     var docId: String?
     
@@ -16,9 +16,9 @@ struct GroupInfoInUser: Codable, Identifiable {
     
     let groupID: String
     
-    let groupName: String
-    
     let isMainGroup: Bool
+    
+    var goal: Int?
     
     enum CodingKeys: String, CodingKey {
         
@@ -28,8 +28,8 @@ struct GroupInfoInUser: Codable, Identifiable {
         
         case groupID
         
-        case groupName
-        
         case isMainGroup
+        
+        case goal
     }
 }

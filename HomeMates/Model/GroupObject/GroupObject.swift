@@ -8,11 +8,7 @@
 
 import Foundation
 
-protocol Identifiable {
-    var docId: String? { get set }
-}
-
-struct GroupObject: Codable, Identifiable {
+struct GroupObject: Codable {
     
     var docId: String?
     
@@ -47,5 +43,6 @@ struct GroupObject: Codable, Identifiable {
         case groupId
         
         case logInDate
+
     }
 }
