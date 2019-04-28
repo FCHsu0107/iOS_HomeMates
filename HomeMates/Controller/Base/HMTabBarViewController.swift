@@ -88,7 +88,8 @@ private enum Tab {
 
 class HMTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
-    private let tabs: [Tab] = [.lobby, .profile, .task, .statistics, .more]
+//    private let tabs: [Tab] = [.lobby, .profile, .task, .statistics, .more]
+    private let tabs: [Tab] = [.lobby, .profile, .task, .statistics]
 
     override func viewDidLoad() {
         super.viewDidLoad()

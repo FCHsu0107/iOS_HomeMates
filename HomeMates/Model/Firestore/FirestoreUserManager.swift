@@ -256,7 +256,7 @@ class FirestoreUserManager {
                     })
                 
             } else {
-                print(err)
+                print(err as Any)
                 //err != nil reponse from firestore(get monthInfo)
             }
         }

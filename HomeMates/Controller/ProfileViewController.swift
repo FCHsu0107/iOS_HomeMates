@@ -73,6 +73,7 @@ class ProfileViewController: HMBaseViewController {
                 
             } else if goal != nil {
                 self?.goalWithoutTracker = goal
+                self?.tableView.reloadData()
             }
         }
     }
