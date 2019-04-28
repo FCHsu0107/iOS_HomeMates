@@ -150,4 +150,41 @@ class FirestoreGroupManager {
             }
         }
     }
+    
+    func addtheRegularTaskEveryDay() {
+        reference(to: .tasks)
+            .whereField(TaskObject.CodingKeys.taskStatus.rawValue, isEqualTo: 1)
+            .whereField(TaskObject.CodingKeys.taskPriodDay.rawValue, isEqualTo: 1)
+            .getDocuments { [weak self] (snapshots, err) in
+            if err == nil {
+                guard let snapshots = snapshots else { return }
+                if snapshots.count != 0 {
+                    for documnet in snapshots.documents {
+                        let taskDocId = documnet.documentID
+                        self?.deleteTask(in: .tasks, docId: taskDocId)
+                    }
+                    self?.addDailyTask()
+                } else {
+                    //snapshots == 0
+                    self?.addDailyTask()
+                }
+
+            } else {
+                //err != nil
+            }
+        }
+        
+        groupDocument()
+            .updateData([GroupObject.CodingKeys.logInDate.rawValue: DateProvider.shared.getCurrentDate()])
+        
+    }
+    
+    private func addDailyTask() {
+        readDailyTaskList(completionHandler: { [weak self] (tasks) in
+            for task in tasks {
+                self?.addTask(for: task)
+            }
+        })
+    }
+    
 }

@@ -253,12 +253,12 @@
 		B9261C74225384BC0033ABC9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B93EA22322760D9E002F18A3 /* DateProvider */,
 				B9B99F442263262900314BB6 /* Firestore */,
 				B9B7F546225EEA7000A6DA9E /* AlertFunction */,
 				B9B99F332261899900314BB6 /* UserObject */,
 				B9B99F492264470300314BB6 /* GroupObject */,
 				B9B7F52D225CAD6100A6DA9E /* TaskObject */,
-				B91D3AFE2269B7DE00C1A28F /* DateProvider.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -328,6 +328,14 @@
 				B921CA72226D8CED001FA942 /* LobbySettingsViewController.swift */,
 			);
 			path = Lobby;
+			sourceTree = "<group>";
+		};
+		B93EA22322760D9E002F18A3 /* DateProvider */ = {
+			isa = PBXGroup;
+			children = (
+				B91D3AFE2269B7DE00C1A28F /* DateProvider.swift */,
+			);
+			path = DateProvider;
 			sourceTree = "<group>";
 		};
 		B94D15AC2257217E00F43B78 /* Profile */ = {

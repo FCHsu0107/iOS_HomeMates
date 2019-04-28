@@ -32,8 +32,6 @@ class ProfileHeaderViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setCorner()
-        
-        memberNameTextLbl.text = UserDefaultManager.shared.userName
 
     }
 
@@ -58,7 +56,8 @@ class ProfileHeaderViewCell: UITableViewCell {
         print("sign out")
     }
     
-    func loadData(record: TaskRecord) {
+    func loadData(record: TaskRecord, userName: String) {
+         memberNameTextLbl.text = userName
         totalTimesTextLbl.text = String(record.totalTimes)
         totalPointsTextLbl.text = String(record.totalPoints)
         if record.goal == nil || record.goal == 0 {

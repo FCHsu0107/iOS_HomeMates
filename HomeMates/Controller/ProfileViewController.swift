@@ -114,7 +114,8 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfileHeaderViewCell.self))
             guard let headerCell = cell as? ProfileHeaderViewCell else { return cell}
-            headerCell.loadData(record: taskRecord)
+            guard let name = userInfo?.name else { return headerCell}
+            headerCell.loadData(record: taskRecord, userName: name)
             headerCell.settingsBtn.addTarget(self, action: #selector(clickSettingsBtn), for: .touchUpInside)
             return headerCell
 

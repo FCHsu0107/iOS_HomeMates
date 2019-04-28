@@ -42,7 +42,6 @@
                                 </subviews>
                                 <color key="backgroundColor" name="Y0"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="375" id="Bkf-cp-mO7"/>
                                     <constraint firstItem="dVH-Ii-0Vo" firstAttribute="centerY" secondItem="nln-1N-Vbe" secondAttribute="centerY" id="H4H-No-PZX"/>
                                     <constraint firstAttribute="height" constant="32" id="RFF-Gs-QRD"/>
                                     <constraint firstItem="JKt-7S-BEQ" firstAttribute="leading" secondItem="dVH-Ii-0Vo" secondAttribute="trailing" constant="16" id="Wxr-FD-uni"/>

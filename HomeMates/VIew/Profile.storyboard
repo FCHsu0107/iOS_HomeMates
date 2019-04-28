@@ -89,7 +89,7 @@
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oy1-aV-1yB">
                                 <rect key="frame" x="20" y="257" width="335" height="1"/>
-                                <color key="backgroundColor" name="B5"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="R3X-D5-khz"/>
                                 </constraints>
@@ -111,7 +111,7 @@
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OfE-7I-1UV">
                                 <rect key="frame" x="20" y="351" width="335" height="1"/>
-                                <color key="backgroundColor" name="B5"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Wak-9u-j7y"/>
                                 </constraints>
@@ -127,7 +127,7 @@
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9pf-98-aIt">
                                 <rect key="frame" x="20" y="445" width="335" height="1"/>
-                                <color key="backgroundColor" name="B5"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="yJy-0e-HPY"/>
                                 </constraints>
@@ -224,9 +224,6 @@
         <image name="Profile_80px" width="80" height="80"/>
         <namedColor name="B1">
             <color red="0.27843137254901962" green="0.32156862745098042" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="B5">
-            <color name="ibMissingResourceColor" catalog="#$assets-com.apple.dt.DVTKit" colorSpace="catalog"/>
         </namedColor>
         <namedColor name="Y1">
             <color red="0.97254901960784312" green="0.81176470588235294" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

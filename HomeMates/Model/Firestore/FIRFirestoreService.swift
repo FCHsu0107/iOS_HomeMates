@@ -237,6 +237,7 @@ class FIRFirestoreSerivce {
                                 print("第二個登入的人")
                             } else {
                                 print("第一個登入的人")
+                                FirestoreGroupManager.shared.addtheRegularTaskEveryDay()
                                 //新增每日任務
                                 //修改日期
                             }
