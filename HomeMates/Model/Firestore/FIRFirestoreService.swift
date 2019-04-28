@@ -191,7 +191,7 @@ class FIRFirestoreSerivce {
             completion(false, nil)
             return }
         let uid = user.uid
-        
+        UserDefaultManager.shared.userUid = uid
         reference(to: .users).document(uid).getDocument { (querySnapshot, _) in
             guard let data = querySnapshot?.data() else {
                 completion(false, nil)

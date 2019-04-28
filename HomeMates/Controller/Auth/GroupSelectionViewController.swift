@@ -188,7 +188,7 @@ class GroupSelectionViewController: UIViewController {
                     let alertSheet =
                         UIAlertController.showAlertSheet(title: "確認加入群組", message: "確認群組名稱",
                                                          action: groupNames) { (index) in
-                            groupResults[index].docId = UserDefaultManager.shared.groupId
+                            UserDefaultManager.shared.groupId = groupResults[index].docId
                                                             
                             let memberInfo = MemberObject(docId: nil, userId: user.uid,
                                                           userName: userInfo.name, isCreator: false,
