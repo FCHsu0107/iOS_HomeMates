@@ -134,6 +134,7 @@ class GroupSelectionViewController: UIViewController {
                 
                 FIRFirestoreSerivce.shared.createGroup(for: newGroup, in: .groups, completion: { (groupId) in
                     guard let groupId = groupId else { return }
+                    UserDefaultManager.shared.groupId = groupId
                     
                     let newUser = UserObject(docId: nil, name: userInfo.name,
                                              email: user.email!, picture: nil,
@@ -151,7 +152,7 @@ class GroupSelectionViewController: UIViewController {
                     
                     let groupMemnber = MemberObject(docId: nil, userId: user.uid,
                                                     userName: userInfo.name, isCreator: true,
-                                                    permission: true, userPicture: "Profile_80px", goal: nil)
+                                                    permission: true, userPicture: "profile_48px", goal: nil)
                     
                     FIRFirestoreSerivce.shared.createSub(for: groupMemnber, in: .groups,
                                                          inDocument: groupId, inNext: .members)
@@ -192,7 +193,7 @@ class GroupSelectionViewController: UIViewController {
                                                             
                             let memberInfo = MemberObject(docId: nil, userId: user.uid,
                                                           userName: userInfo.name, isCreator: false,
-                                                          permission: false, userPicture: "Profile_80px", goal: nil)
+                                                          permission: false, userPicture: "profile_48px", goal: nil)
                             
                             FIRFirestoreSerivce.shared.createSub(for: memberInfo, in: .groups,
                                                                  inDocument: docIds[index], inNext: .members)

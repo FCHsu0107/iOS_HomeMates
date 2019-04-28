@@ -215,48 +215,48 @@ class FirestoreUserManager {
         refInGroup(userUid: UserDefaultManager.shared.userUid!, to: .months)
             .whereField(MonthObject.CodingKeys.month.rawValue, isEqualTo: currentMonth)
             .getDocuments { [weak self] (snapshots, err) in
-                
+            
             if err == nil {
                 guard let snapshots = snapshots else { return }
-                if snapshots.count == 0 {
-                    //本月尚無資訊
-                    completionHandler(nil, false, nil)
-                    
-                } else {
-                    var month = MonthObject(docId: nil, month: currentMonth, goal: nil)
-                    do {
-                        month = try snapshots.documents[0].decode(as: MonthObject.self)
-                    } catch {
-                        print(error)
-                    }
-
-                    let currentMonthId = month.docId!
-//                    let monthGoal = month.goal
-                    self?.readTrackerInMonth(monthId: currentMonthId, completion: { (trckers, flag) in
-                        self?.reference(userUid: UserDefaultManager.shared.userUid!, to: .groups)
-                            .document(UserDefaultManager.shared.groupId!)
-                            .getDocument(completion: { (document, err) in
-                            if err == nil {
-                                guard let documnet = document else { return }
-                                do {
-                                    let objcet = try documnet.decode(as: GroupInfoInUser.self)
-                                    let goal = objcet.goal
-                                    completionHandler(trckers, flag, goal)
-                                } catch {
-                                   print(error)
-                                }
+                
+                self?.reference(userUid: UserDefaultManager.shared.userUid!, to: .groups)
+                    .document(UserDefaultManager.shared.groupId!)
+                    .getDocument(completion: { (document, error) in
+                        if error == nil {
+                            guard let documnet = document else { return }
+                            do {
+                                let objcet = try documnet.decode(as: GroupInfoInUser.self)
+                                let goal = objcet.goal
                                 
-                            } else {
-                                print(err as Any)
-                                //err != nil reponse from firestore (get groupInfo)
+                                if snapshots.count == 0 {
+                                    //本月尚無資訊
+                                    completionHandler(nil, false, goal)
+                                    
+                                } else {
+                                    var month = MonthObject(docId: nil, month: currentMonth, goal: nil)
+                                    do {
+                                        month = try snapshots.documents[0].decode(as: MonthObject.self)
+                                    } catch {
+                                        print(error)
+                                    }
+                                    
+                                    let currentMonthId = month.docId!
+                                    self?.readTrackerInMonth(monthId: currentMonthId, completion: { (trckers, flag) in
+                                    completionHandler(trckers, flag, goal)
+                                    })
+                                }
+                            } catch {
+                                print(error)
                             }
-                        })
-                        
+                            
+                        } else {
+                            print(error as Any)
+                            //err != nil reponse from firestore (get groupInfo)
+                        }
                     })
-                }
                 
             } else {
-                print(err as Any)
+                print(err)
                 //err != nil reponse from firestore(get monthInfo)
             }
         }

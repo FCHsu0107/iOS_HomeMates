@@ -33,6 +33,8 @@ class ProfileViewController: HMBaseViewController {
     var taskRecord = TaskRecord()
     
     var userInfo: UserObject?
+    
+    var goalWithoutTracker: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +56,7 @@ class ProfileViewController: HMBaseViewController {
     func getAllInfo() {
         FirestoreUserManager.shared.readUserInfo { [weak self] (user) in
             self?.userInfo = user
+            self?.tableView.reloadData()
         }
         
         FIRFirestoreSerivce.shared.readDoingTasks { [weak self] (tasks) in
@@ -68,8 +71,8 @@ class ProfileViewController: HMBaseViewController {
                 self?.getTotalTime(trackers: trackers, goal: goal)
                 self?.tableView.reloadData()
                 
-            } else {
-                
+            } else if goal != nil {
+                self?.goalWithoutTracker = goal
             }
         }
     }
@@ -92,7 +95,12 @@ class ProfileViewController: HMBaseViewController {
         if segue.identifier == "ProfileSettingsSegue" {
             guard let nextVc = segue.destination as? ProfileSettingsViewController else { return }
             nextVc.user = userInfo
-            nextVc.goal = taskRecord.goal
+            if doneTaskList.count == 0 {
+                nextVc.goal = goalWithoutTracker
+            } else {
+                nextVc.goal = taskRecord.goal
+            }
+            
         }
     }
     
