@@ -26,6 +26,7 @@
                                     <constraint firstAttribute="width" constant="200" id="OlG-2L-50B"/>
                                 </constraints>
                                 <color key="progressTintColor" name="P1"/>
+                                <color key="trackTintColor" name="Y2"/>
                             </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

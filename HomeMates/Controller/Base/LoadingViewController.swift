@@ -18,7 +18,7 @@ class LoadingViewController: UIViewController {
         UIView.animate(withDuration: 2) {
             self.progressView.setProgress(1, animated: true)
 
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.2, execute: {
                 self.checkStatus()
             })
         }
