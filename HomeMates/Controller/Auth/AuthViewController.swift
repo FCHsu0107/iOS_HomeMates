@@ -136,6 +136,7 @@ class AuthViewController: HMBaseViewController {
             } else {
                 createUserDoc()
             }
+            
         } else {
             if emailTextField.text?.isEmpty == true || passwordTextField.text?.isEmpty == true {
                 AlertService.sigleActionAlert(title: "錯誤", message: "請輸入帳號或密碼", clickTitle: "收到", showInVc: self)
@@ -158,6 +159,7 @@ class AuthViewController: HMBaseViewController {
                                          application: false,
                                          finishSignUp: false,
                                          mainGroupId: nil)
+                UserDefaultManager.shared.userUid = user.uid
                 FIRFirestoreSerivce.shared.createUser(uid: user.uid,
                                                       for: newUser,
                                                       in: .users)

@@ -35,6 +35,15 @@
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目前暫無設定目標" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XV8-hV-5bd">
+                        <rect key="frame" x="76" y="111.5" width="225" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="obV-b0-lmN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" name="P1"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jfx-5C-yjY">
                         <rect key="frame" x="76" y="116.5" width="225" height="6"/>
                         <color key="backgroundColor" name="Y1"/>
@@ -42,7 +51,7 @@
                             <constraint firstAttribute="height" constant="6" id="iNP-as-cvm"/>
                         </constraints>
                     </view>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="Gi3-P3-wIi">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="Gi3-P3-wIi">
                         <rect key="frame" x="16" y="0.0" width="48" height="138.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="48" id="RfJ-2b-Jsx"/>
@@ -54,10 +63,13 @@
                     <constraint firstItem="lLt-0e-Ttq" firstAttribute="leading" secondItem="Gi3-P3-wIi" secondAttribute="trailing" constant="12" id="7pj-n5-QcU"/>
                     <constraint firstItem="60X-OY-fFz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="16" id="AYu-tT-b4A"/>
                     <constraint firstAttribute="bottom" secondItem="Gi3-P3-wIi" secondAttribute="bottom" id="BDH-au-w86"/>
+                    <constraint firstItem="XV8-hV-5bd" firstAttribute="leading" secondItem="jfx-5C-yjY" secondAttribute="leading" id="BPC-L5-Vee"/>
                     <constraint firstItem="Gi3-P3-wIi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="G7F-Nr-M3T"/>
+                    <constraint firstItem="XV8-hV-5bd" firstAttribute="bottom" secondItem="jfx-5C-yjY" secondAttribute="bottom" constant="10" id="ItI-lj-2as"/>
                     <constraint firstItem="Gi3-P3-wIi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="JW7-z7-rwG"/>
                     <constraint firstItem="60X-OY-fFz" firstAttribute="leading" secondItem="Gi3-P3-wIi" secondAttribute="trailing" constant="12" id="Skq-Gf-jyH"/>
                     <constraint firstItem="lLt-0e-Ttq" firstAttribute="top" secondItem="60X-OY-fFz" secondAttribute="bottom" constant="4" id="TJF-js-YpT"/>
+                    <constraint firstItem="XV8-hV-5bd" firstAttribute="trailing" secondItem="jfx-5C-yjY" secondAttribute="trailing" id="YHC-x1-fZL"/>
                     <constraint firstItem="jfx-5C-yjY" firstAttribute="leading" secondItem="lLt-0e-Ttq" secondAttribute="leading" id="gXh-Ac-aRw"/>
                     <constraint firstItem="jfx-5C-yjY" firstAttribute="top" secondItem="lLt-0e-Ttq" secondAttribute="bottom" constant="8" id="mZe-Fm-B4i"/>
                     <constraint firstAttribute="bottom" secondItem="jfx-5C-yjY" secondAttribute="bottom" constant="16" id="zaa-g4-O92"/>
@@ -67,6 +79,7 @@
             <connections>
                 <outlet property="achievingRateView" destination="jfx-5C-yjY" id="ltr-DF-zkO"/>
                 <outlet property="memberImageView" destination="Gi3-P3-wIi" id="heu-uc-RJo"/>
+                <outlet property="noGoalLbl" destination="XV8-hV-5bd" id="Ehn-vH-2Kc"/>
                 <outlet property="totalPointsLbl" destination="lLt-0e-Ttq" id="wk4-sU-n8V"/>
                 <outlet property="userNameLbl" destination="60X-OY-fFz" id="mPz-d2-hxp"/>
             </connections>
@@ -75,6 +88,9 @@
     </objects>
     <resources>
         <image name="profile" width="24" height="24"/>
+        <namedColor name="P1">
+            <color red="0.62000000476837158" green="0.2199999988079071" blue="0.32499998807907104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Y1">
             <color red="0.97254901960784312" green="0.81176470588235294" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

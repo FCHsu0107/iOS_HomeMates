@@ -13,6 +13,8 @@ identifier_name:
     - nib
     - key
     - db
+    - i
+    - j
 
 excluded:
   - Carthage

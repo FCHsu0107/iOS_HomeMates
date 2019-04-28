@@ -41,3 +41,14 @@ struct MemberObject: Codable {
         case goal
     }
 }
+
+struct MemberWithPoint {
+    
+    let memberName: String
+    
+    let memberPicture: String
+    
+    var point: Int
+    
+    var goal: Int?
+}

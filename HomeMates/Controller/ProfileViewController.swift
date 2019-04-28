@@ -25,7 +25,6 @@ class ProfileViewController: HMBaseViewController {
     
     let dispatchGroup = DispatchGroup()
 
-    //mock data
     var taskListTitle: [String] = ["", "個人任務清單", "任務日誌"]
     var processTaskList: [TaskObject] = []
 

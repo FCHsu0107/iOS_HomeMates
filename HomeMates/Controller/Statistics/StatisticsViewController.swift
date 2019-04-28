@@ -65,20 +65,45 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
         }
     }
     
+    var memberInfo: [MemberObject] = []
+    
+    var memberInfoWithPoint: [MemberWithPoint] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        readDoneTask()
+    }
+
+    func readDoneTask() {
+
         FIRFirestoreSerivce.shared.readDoneTask { [weak self] (tasks) in
             self?.getDateMark(tasks: tasks)
             let currentDate = DateProvider.shared.getCurrentDate()
             self?.getDateTask(selectedDate: currentDate)
-            self?.tableView.reloadData()
             
-        }
-        
-    }
+            FirestoreGroupManager.shared.readGroupMembers { [weak self] (members) in
+                self?.memberInfoWithPoint = []
+                for member in members {
+                    let object: MemberWithPoint = MemberWithPoint(memberName: member.userName,
+                                                                  memberPicture: member.userPicture,
+                                                                  point: 0, goal: member.goal)
+                    self?.memberInfoWithPoint.append(object)
+                }
 
-    func getDateMark(tasks: [TaskObject]) {
+                for j in 0 ..< members.count {
+                    for i in 0 ..< tasks.count {
+                        if tasks[i].executorName == self?.memberInfoWithPoint[j].memberName {
+                            self?.memberInfoWithPoint[j].point += tasks[i].taskPoint
+                        }
+                    }
+                }
+                self?.tableView.reloadData()
+            }
+        }
+    }
+    
+    private func getDateMark(tasks: [TaskObject]) {
         datesWithEvent = []
         for task in tasks {
             guard let timeStamp = task.completionTimeStamp else { return }
@@ -174,7 +199,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0, 1 : return 1
-        case 2: return 3 // member count
+        case 2: return memberInfoWithPoint.count
         default: return 0
         }
     }
@@ -228,10 +253,8 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
                                                      for: indexPath)
             guard let contributionCell = cell as? PointGoalTableViewCell else { return cell}
             
-            contributionCell.showContributionView(member: "哎唷喂啊",
-                                                  memberImage: "profile",
-                                                  personalTotalPoints: 50,
-                                                  persent: 50)
+            contributionCell.showContributionView(memberInfo: memberInfoWithPoint[indexPath.row])
+            
             return contributionCell
         default:
             return UITableViewCell()
