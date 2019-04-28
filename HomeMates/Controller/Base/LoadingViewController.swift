@@ -15,12 +15,20 @@ class LoadingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        UIView.animate(withDuration: 2) {
+            self.progressView.setProgress(1, animated: true)
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                self.checkStatus()
+            })
+        }
+
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        FIRAuthService.shared.signOut()
-        checkStatus()
+
+//        checkStatus()
     }
     
     func checkStatus() {

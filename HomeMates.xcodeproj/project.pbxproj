@@ -244,8 +244,8 @@
 				B9261C7C225386810033ABC9 /* Task.storyboard */,
 				B9261C84225387070033ABC9 /* Statistics.storyboard */,
 				B9261C80225386AF0033ABC9 /* More.storyboard */,
-				B9D71AA822534D5100F242DA /* LaunchScreen.storyboard */,
 				B9B99F40226313D300314BB6 /* Loading.storyboard */,
+				B9D71AA822534D5100F242DA /* LaunchScreen.storyboard */,
 			);
 			path = VIew;
 			sourceTree = "<group>";
