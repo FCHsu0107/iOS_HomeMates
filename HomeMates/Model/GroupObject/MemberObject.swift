@@ -46,6 +46,8 @@ struct MemberWithPoint {
     
     let memberName: String
     
+    let memberUid: String
+    
     let memberPicture: String
     
     var point: Int

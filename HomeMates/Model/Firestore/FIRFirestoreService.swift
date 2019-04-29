@@ -102,6 +102,8 @@ class FIRFirestoreSerivce {
         }
     }
     
+//    func createMemberInG
+    
     //read func
     func findGroup<T: Decodable>(groupId: String,
                                  returning objectType: T.Type,

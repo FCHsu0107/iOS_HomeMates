@@ -101,10 +101,14 @@ extension LobbySettingsViewController: UITableViewDelegate, UITableViewDataSourc
                 completion: { [weak self] (flag) in
                 if flag == true {
                     //delete member on the firestore
-                    guard let docId = self?.memberList[indexPath.row].docId,
-                        let userUid = self?.memberList[indexPath.row].userId else { return }
+                    let row = indexPath.row
+                    guard let docId = self?.memberList[row].docId,
+                        let userUid = self?.memberList[row].userId else { return }
+                   
                     FirestoreGroupManager.shared.deleteMemberInGroup(memberDocId: docId, userUid: userUid)
-                    //哀哀
+                    self?.memberList.remove(at: row)
+                    self?.tableView.reloadData()
+                    
                 }
             })
             self?.present(alertSheet, animated: true, completion: nil)

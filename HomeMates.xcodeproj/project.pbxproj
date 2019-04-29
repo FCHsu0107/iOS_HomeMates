@@ -315,8 +315,6 @@
 			children = (
 				B9261C9122545A9D0033ABC9 /* TasksTableViewCell.swift */,
 				B9261C9222545A9D0033ABC9 /* TasksTableViewCell.xib */,
-				B91D3AFA22698CF700C1A28F /* PointGoalTableViewCell.swift */,
-				B91D3AFB22698CF700C1A28F /* PointGoalTableViewCell.xib */,
 			);
 			path = TaskTableViewCell;
 			sourceTree = "<group>";
@@ -369,6 +367,8 @@
 		B94D15BE22585B7100F43B78 /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
+				B91D3AFA22698CF700C1A28F /* PointGoalTableViewCell.swift */,
+				B91D3AFB22698CF700C1A28F /* PointGoalTableViewCell.xib */,
 				B94D15C8225886FB00F43B78 /* EventCell.swift */,
 				B94D15C9225886FB00F43B78 /* EventCell.xib */,
 				B9B7F52F225CC00000A6DA9E /* ChartsTableViewCell.swift */,
@@ -551,6 +551,7 @@
 				B9D71A9A22534D4F00F242DA /* Resources */,
 				B756100DE390F1E6304BDA6B /* [CP] Embed Pods Frameworks */,
 				B9B7F529225C993A00A6DA9E /* SwiftLint */,
+				B93EA2242276C515002F18A3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -695,6 +696,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HomeMates/Pods-HomeMates-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		B93EA2242276C515002F18A3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Info.plist",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\"\n";
 		};
 		B9B7F529225C993A00A6DA9E /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -928,6 +947,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = R66LF8J636;
 				INFOPLIST_FILE = HomeMates/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;

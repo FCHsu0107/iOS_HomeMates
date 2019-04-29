@@ -125,7 +125,9 @@ class AuthViewController: HMBaseViewController {
     
     @IBAction func enterBtnAction(_ sender: Any) {
         if selectionBarBtn[0].isSelected == true {
-            if emailTextField.text?.isEmpty == true || userNameLabel.text?.isEmpty == true {
+            if emailTextField.text?.isEmpty == true
+                || userNameLabel.text?.isEmpty == true
+                || userNameLabel.text?.isEmpty == true {
 
                 AlertService.sigleActionAlert(title: "錯誤", message: "請填寫基本資料", clickTitle: "收到", showInVc: self)
                 

@@ -71,13 +71,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDb-M4-jOE">
-                                <rect key="frame" x="324" y="139.5" width="31" height="24"/>
+                                <rect key="frame" x="324" y="141" width="31" height="24"/>
                                 <state key="normal" image="OtherMember"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" name="Y1"/>
                         <constraints>
-                            <constraint firstItem="nln-1N-Vbe" firstAttribute="top" secondItem="gDb-M4-jOE" secondAttribute="bottom" constant="4" id="76b-La-Pjk"/>
                             <constraint firstAttribute="trailing" secondItem="nln-1N-Vbe" secondAttribute="trailing" id="Cgs-f4-16m"/>
                             <constraint firstItem="ua9-dG-jSk" firstAttribute="top" secondItem="iwy-Gm-tme" secondAttribute="bottom" constant="8" symbolic="YES" id="Fgl-jA-zkz"/>
                             <constraint firstItem="iwy-Gm-tme" firstAttribute="centerX" secondItem="q1h-s6-dEj" secondAttribute="centerX" id="Fgz-Ln-Et6"/>
@@ -86,6 +85,7 @@
                             <constraint firstAttribute="trailing" secondItem="gDb-M4-jOE" secondAttribute="trailing" constant="20" id="kQ6-O5-eSE"/>
                             <constraint firstItem="q1h-s6-dEj" firstAttribute="centerX" secondItem="4B4-Db-hDp" secondAttribute="centerX" id="lCT-sO-Q6F"/>
                             <constraint firstItem="nln-1N-Vbe" firstAttribute="leading" secondItem="4B4-Db-hDp" secondAttribute="leading" id="lWi-Y8-Hd1"/>
+                            <constraint firstItem="gDb-M4-jOE" firstAttribute="centerY" secondItem="ua9-dG-jSk" secondAttribute="centerY" id="pjm-w1-KPF"/>
                             <constraint firstItem="ua9-dG-jSk" firstAttribute="centerX" secondItem="iwy-Gm-tme" secondAttribute="centerX" id="y0X-vX-9cU"/>
                             <constraint firstItem="q1h-s6-dEj" firstAttribute="top" secondItem="4B4-Db-hDp" secondAttribute="top" constant="20" id="yXd-BZ-T0x"/>
                         </constraints>

@@ -86,6 +86,7 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
                 self?.memberInfoWithPoint = []
                 for member in members {
                     let object: MemberWithPoint = MemberWithPoint(memberName: member.userName,
+                                                                  memberUid: member.userId,
                                                                   memberPicture: member.userPicture,
                                                                   point: 0, goal: member.goal)
                     self?.memberInfoWithPoint.append(object)
@@ -93,7 +94,7 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
 
                 for j in 0 ..< members.count {
                     for i in 0 ..< tasks.count {
-                        if tasks[i].executorName == self?.memberInfoWithPoint[j].memberName {
+                        if tasks[i].executorUid == self?.memberInfoWithPoint[j].memberUid {
                             self?.memberInfoWithPoint[j].point += tasks[i].taskPoint
                         }
                     }

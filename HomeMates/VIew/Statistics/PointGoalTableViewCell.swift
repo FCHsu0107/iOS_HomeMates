@@ -56,7 +56,7 @@ class PointGoalTableViewCell: UITableViewCell {
         let fullWidth: CGFloat = achievingRateView.bounds.width
         let newWidth = progress / 100 * fullWidth
         
-        UIView.animate(withDuration: 3) {
+        UIView.animate(withDuration: 2) {
             self.progressView.frame.size = CGSize(width: newWidth, height: self.progressView.frame.height)
         }
     }

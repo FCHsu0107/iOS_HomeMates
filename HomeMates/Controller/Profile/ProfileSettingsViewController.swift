@@ -45,6 +45,7 @@ class ProfileSettingsViewController: HMBaseViewController {
     
     func loadUserInfo() {
         guard let name = user?.name, let mainGroupId = user?.mainGroupId else { return }
+        
         userNameTextField.text = name
         ownGroupTextField.text = mainGroupId
         guard let goal = goal else { return }

@@ -109,7 +109,7 @@ extension LobbyViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 0:
-            return 200
+            return 170
         default:
             return 40
         }
