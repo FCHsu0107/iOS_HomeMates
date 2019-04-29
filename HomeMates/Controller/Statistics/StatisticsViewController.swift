@@ -17,7 +17,6 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
             tableView.dataSource = self
             tableView.jq_registerCellWithNib(identifier: String(describing: EventCell.self), bundle: nil)
             tableView.jq_registerCellWithNib(identifier: String(describing: PointGoalTableViewCell.self), bundle: nil)
-//            tableView.jq_registerCellWithNib(identifier: String(describing: ChartsTableViewCell.self), bundle: nil)
             tableView.jq_registerCellWithNib(identifier: String(describing: TrackerTableViewCell.self), bundle: nil)
         }
     }
@@ -240,14 +239,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
             return trackerCell
-            
-//        case 2:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ChartsTableViewCell.self),
-//                                                     for: indexPath)
-//            guard let chartCell = cell as? ChartsTableViewCell else { return cell }
-//
-//            return chartCell
-            
+
         case 2:
             
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PointGoalTableViewCell.self),

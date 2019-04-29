@@ -88,8 +88,8 @@ private enum Tab {
 
 class HMTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
-//    private let tabs: [Tab] = [.lobby, .profile, .task, .statistics, .more]
-    private let tabs: [Tab] = [.lobby, .profile, .task, .statistics]
+    private let tabs: [Tab] = [.lobby, .profile, .task, .statistics, .more]
+//    private let tabs: [Tab] = [.lobby, .profile, .task, .statistics]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,15 +99,6 @@ class HMTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         delegate = self
 
         StatusBarSettings.setBackgroundColor(color: UIColor.Y1)
-//        setStatusBarBackgroundColor(color: UIColor.Y1)
     }
-
-//    func setStatusBarBackgroundColor(color: UIColor?) {
-//
-//        guard let statusBar = UIApplication.shared.value(
-//            forKeyPath: "statusBarWindow.statusBar") as? UIView else { return }
-//
-//        statusBar.backgroundColor = color
-//    }
 
 }

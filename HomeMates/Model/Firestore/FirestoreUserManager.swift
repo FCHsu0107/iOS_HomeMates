@@ -178,12 +178,15 @@ class FirestoreUserManager {
             .document(UserDefaultManager.shared.groupId!)
             .collection(FIRCollectionReference.members.rawValue)
             
-        groupMemberRef.whereField(MemberObject.CodingKeys.userId.rawValue, isEqualTo: UserDefaultManager.shared.userUid!)
+        groupMemberRef
+            .whereField(MemberObject.CodingKeys.userId.rawValue,
+                        isEqualTo: UserDefaultManager.shared.userUid!)
             .getDocuments {(snapshots, err) in
                 if err == nil {
                     guard let snapshots = snapshots else { return }
                     let docId = snapshots.documents[0].documentID
-                    groupMemberRef.document(docId).updateData([MemberObject.CodingKeys.userName.rawValue:newName])
+                    groupMemberRef.document(docId)
+                        .updateData([MemberObject.CodingKeys.userName.rawValue: newName])
                 }
         }
         
