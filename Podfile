@@ -14,7 +14,6 @@ target 'HomeMates' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'SwiftLint'
-  pod 'Charts'
   pod 'Fabric', '~> 1.9.0'
   pod 'Crashlytics', '~> 3.12.0'
   
