@@ -139,6 +139,26 @@ class FIRFirestoreSerivce {
             comletionHandler(tasks)
         }
     }
+    
+    func readAllTasks(comletionHandler: @escaping ([TaskObject]) -> Void) {
+        subReference(to: .groups, in: UserDefaultManager.shared.groupId!, toNext: .tasks)
+            .addSnapshotListener { (snapshot, err) in
+                guard let snapshot = snapshot else {
+                    print(err as Any)
+                    return }
+                
+                do {
+                    var objects = [TaskObject]()
+                    for document in snapshot.documents {
+                        let object = try document.decode(as: TaskObject.self)
+                        objects.append(object)
+                    }
+                    comletionHandler(objects)
+                } catch {
+                    print(error)
+                }
+        }
+    }
 
     //for statistic page
     func readDoneTask(comletionHandler: @escaping ([TaskObject]) -> Void) {
@@ -162,6 +182,8 @@ class FIRFirestoreSerivce {
                 }
         }
     }
+    
+    
     
     func readDoingTasks(completionHandler: @escaping ([TaskObject]) -> Void) {
         subReference(to: .groups, in: UserDefaultManager.shared.groupId!, toNext: .tasks)

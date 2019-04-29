@@ -28,43 +28,92 @@ class LobbyViewController: HMBaseViewController {
     let taskHeader = TaskListHeaderView()
 
     //mock data
-    var taskListTitle: [String] = ["", "已完成任務", "本月目標達成率"]
+    var taskListTitle: [String] = ["", "已完成任務", "特殊任務", "每日任務", "常規任務"]
     var checkTaskList: [TaskObject] = []
 
     var willDoTaskList: [TaskObject] = []
+    
+    var normalTaskList: [TaskObject] = []
+    
+    var regularTaskList: [TaskObject] = []
+    
+    var specialTaskList: [TaskObject] = []
     
     var memberList: [MemberObject] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        registerCellWithNib()
+        readGroupTaskInfo()
+    }
+
+    private func registerCellWithNib() {
         tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: LobbyHeaderCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: PointGoalTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: BlankTableViewCell.self), bundle: nil)
-
+    }
+    
+    private func readGroupTaskInfo() {
         FIRFirestoreSerivce.shared.findMainGroup { [weak self] (object) in
             self?.groupInfo = object
             
             FirestoreGroupManager.shared.readGroupMembers(completion: { [weak self] (members) in
                 self?.memberList = members
-                FIRFirestoreSerivce.shared.readCheckTasks { [weak self] (tasks) in
+                FIRFirestoreSerivce.shared.readAllTasks(comletionHandler: { (tasks) in
                     self?.checkTaskList = []
-                    if members.count == 1 {
-                        self?.checkTaskList = tasks
-                    } else {
-                        for task in tasks {
-                            if task.executorUid != UserDefaultManager.shared.userUid {
+                    self?.normalTaskList = []
+                    self?.regularTaskList = []
+                    self?.specialTaskList = []
+                    for task in tasks {
+                        if task.taskStatus == 3 {
+                            if members.count == 1 {
                                 self?.checkTaskList.append(task)
-                            } else {}
+                            } else if task.executorUid != UserDefaultManager.shared.userUid {
+                                self?.checkTaskList.append(task)
+                            }
+                        } else if task.taskStatus == 1 {
+                            if task.taskPriodDay == 1 {
+                                self?.normalTaskList.append(task)
+                            } else if task.taskPriodDay == 0 {
+                                self?.specialTaskList.append(task)
+                            } else {
+                                self?.regularTaskList.append(task)
+                            }
                         }
                     }
                     DispatchQueue.main.async {
                         self?.tableView.reloadData()
                     }
-                }
+                })
             })
         }
     }
+//    private func readGroupTaskInfo() {
+//        FIRFirestoreSerivce.shared.findMainGroup { [weak self] (object) in
+//            self?.groupInfo = object
+//
+//            FirestoreGroupManager.shared.readGroupMembers(completion: { [weak self] (members) in
+//                self?.memberList = members
+//                FIRFirestoreSerivce.shared.readCheckTasks { [weak self] (tasks) in
+//                    self?.checkTaskList = []
+//                    if members.count == 1 {
+//                        self?.checkTaskList = tasks
+//                    } else {
+//                        for task in tasks {
+//                            if task.executorUid != UserDefaultManager.shared.userUid {
+//                                self?.checkTaskList.append(task)
+//                            } else {}
+//                        }
+//                    }
+//                    DispatchQueue.main.async {
+//                        self?.tableView.reloadData()
+//                    }
+//                }
+//            })
+//        }
+//    }
 
     @objc func clickSettingBtn() {
         self.performSegue(withIdentifier: "LobbySettingsSegue", sender: nil)
@@ -120,7 +169,7 @@ extension LobbyViewController: UITableViewDataSource {
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 5
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -131,7 +180,25 @@ extension LobbyViewController: UITableViewDataSource {
             } else {
                 return checkTaskList.count
             }
-//        case 2: return 2
+        case 2:
+            if specialTaskList.count == 0 {
+                return 1
+            } else {
+                return specialTaskList.count
+            }
+        case 3:
+            if normalTaskList.count == 0 {
+                return 1
+            } else {
+                return normalTaskList.count
+            }
+        case 4:
+            if regularTaskList.count == 0 {
+                return 1
+            } else {
+                return regularTaskList.count
+            }
+
         default:
             return 0
         }
@@ -143,15 +210,16 @@ extension LobbyViewController: UITableViewDataSource {
                                                        for: indexPath)
         guard let blankCell = secondCell as? BlankTableViewCell else { return secondCell}
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self),
+                                                 for: indexPath)
+        guard let taskCell = cell as? TasksTableViewCell else { return cell }
+        
         switch indexPath.section {
         case 1 :
             if checkTaskList.count == 0 {
                 blankCell.loadData(displayText: "待他人完成任務")
                 return blankCell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self),
-                                                         for: indexPath)
-                guard let taskCell = cell as? TasksTableViewCell else { return cell }
                 
                 let task = checkTaskList[indexPath.row]
                 taskCell.loadData(taskObject: task, status: TaskCellStatus.checkTask)
@@ -165,23 +233,95 @@ extension LobbyViewController: UITableViewDataSource {
                 
                 return taskCell
             }
-//        case 2:
-//
-//            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PointGoalTableViewCell.self),
-//                                                     for: indexPath)
-//            guard let goalCell = cell as? PointGoalTableViewCell else { return cell }
-//            goalCell.showContributionView(member: "小明",
-//                                          memberImage: "home_normal",
-//                                          personalTotalPoints: 40,
-//                                          persent: 20)
-//
-//            return goalCell
+        case 2:
+            if specialTaskList.count == 0 {
+                blankCell.loadData(displayText: "請新增任務")
+                return blankCell
+            } else {
+                let task = specialTaskList[indexPath.row]
+                taskCell.loadData(taskObject: task, status: .assignNormalTask)
+                taskCell.clickHandler = { [weak self] cell, _ in
+                    guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
+                    
+                    guard let updateTask = self?.specialTaskList[indexPath.row] else { return }
+                    let task = self?.updateTaskStatus(taskItem: updateTask)
+                    FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: task)
+                    
+                }
+                return taskCell
+            }
+        case 3:
+            if normalTaskList.count == 0 {
+                blankCell.loadData(displayText: "請新增任務")
+                return blankCell
+            } else {
+                let task = normalTaskList[indexPath.row]
+                taskCell.loadData(taskObject: task, status: TaskCellStatus.assignNormalTask)
+                taskCell.clickHandler = { [weak self] cell, _ in
+                    guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
+                    
+                    guard let updateTask = self?.normalTaskList[indexPath.row] else { return }
+                    let task = self?.updateTaskStatus(taskItem: updateTask)
+                    FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: task)
+                    
+                }
+                return taskCell
+            }
+        case 4:
+            if regularTaskList.count == 0 {
+                blankCell.loadData(displayText: "請新增任務")
+                return blankCell
+            } else {
+                let task = regularTaskList[indexPath.row]
+                taskCell.loadData(taskObject: task, status: TaskCellStatus.assignRegularTask)
+                taskCell.clickHandler = { [weak self] cell, _ in
+                    guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
+                    
+                    guard let updateTask = self?.regularTaskList[indexPath.row] else { return }
+                    let task = self?.updateTaskStatus(taskItem: updateTask)
+                    FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: task)
+                    
+                }
+                return taskCell
+            }
 
         default:
             return UITableViewCell()
         }
     }
     
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
+        if indexPath.section != 0 || indexPath.section != 1 {
+            guard editingStyle == .delete else { return }
+            if indexPath.section == 2 {
+                guard specialTaskList.count != 0 else { return }
+                
+                let task = specialTaskList[indexPath.row]
+                FirestoreGroupManager.shared.deleteTask(in: .tasks, docId: task.docId!)
+                
+            } else if indexPath.section == 3 {
+                guard normalTaskList.count != 0 else { return }
+                
+                let task = normalTaskList[indexPath.row]
+                FirestoreGroupManager.shared.deleteTask(in: .tasks, docId: task.docId!)
+            } else {
+                guard regularTaskList.count != 4 else { return }
+                
+                let task = regularTaskList[indexPath.row]
+                FirestoreGroupManager.shared.deleteTask(in: .tasks, docId: task.docId!)
+            }
+        }
+    }
+  
+    private func updateTaskStatus(taskItem: TaskObject) -> TaskObject {
+        var task = taskItem
+        task.executorName = UserDefaultManager.shared.userName
+        task.executorUid = UserDefaultManager.shared.userUid
+        task.taskStatus = 2
+        return task
+    }
 }
 
 extension LobbyViewController: UITableViewDelegate {
