@@ -106,14 +106,18 @@ class AuthViewController: HMBaseViewController {
         selectMovingBarCenterXConstraint = selectMovingBar.centerXAnchor.constraint(equalTo: reference.centerXAnchor)
         selectMovingBarCenterXConstraint.isActive = true
 
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, animations: { [weak self] in
-            if reference.tag == 0 {
-                self?.setSignUpMode()
-            } else {
-                self?.setLogInMode()
-            }
-            self?.view.layoutIfNeeded()
-        }, completion: nil)
+        if #available(iOS 10.0, *) {
+            UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, animations: { [weak self] in
+                if reference.tag == 0 {
+                    self?.setSignUpMode()
+                } else {
+                    self?.setLogInMode()
+                }
+                self?.view.layoutIfNeeded()
+                }, completion: nil)
+        } else {
+            // Fallback on earlier versions
+        }
 
     }
     

@@ -25,6 +25,7 @@ private enum HMColor: String {
     case Y4
 }
 
+@available(iOS 11.0, *)
 extension UIColor {
 
     static let B1 = HMColor(.B1)
