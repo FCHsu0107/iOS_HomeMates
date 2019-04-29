@@ -73,7 +73,7 @@
                                         <color key="textColor" name="Y4"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="輸入名鞥" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TR9-xT-Gzh">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="輸入名稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TR9-xT-Gzh">
                                         <rect key="frame" x="20" y="280" width="240" height="30"/>
                                         <color key="textColor" name="Y4"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>

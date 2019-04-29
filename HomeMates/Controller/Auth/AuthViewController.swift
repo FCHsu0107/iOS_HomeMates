@@ -65,7 +65,7 @@ class AuthViewController: HMBaseViewController {
     }
 
     @IBAction func onChangeStatus(_ sender: UIButton) {
-        
+
         for btn in selectionBarBtn {
             btn.isSelected = false
         }
