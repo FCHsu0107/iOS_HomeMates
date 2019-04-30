@@ -23,6 +23,8 @@ enum ImageAsset: String {
     case Tips_24px
     case Idea_24px_normal
     case Idea_24px
+    case Task_24px_normal
+    case Task_24px
 
     case Bullhorn_36px
     case Back_24px

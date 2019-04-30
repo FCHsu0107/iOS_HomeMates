@@ -115,7 +115,6 @@ class AuthViewController: HMBaseViewController {
             self?.view.layoutIfNeeded()
             }, completion: nil)
        
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

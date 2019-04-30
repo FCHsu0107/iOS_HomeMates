@@ -65,8 +65,8 @@ private enum Tab {
         case .task:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.Task_36px),
-                selectedImage: UIImage.asset(.Task_36px_noraml)
+                image: UIImage.asset(.Task_24px),
+                selectedImage: UIImage.asset(.Task_24px_normal)
             )
 
         case .statistics:
@@ -88,8 +88,8 @@ private enum Tab {
 
 class HMTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
-    private let tabs: [Tab] = [.lobby, .profile, .task, .statistics, .more]
-//    private let tabs: [Tab] = [.lobby, .profile, .task, .statistics]
+//    private let tabs: [Tab] = [.lobby, .profile, .task, .statistics, .more]
+    private let tabs: [Tab] = [.lobby, .statistics, .task, .profile]
 
     override func viewDidLoad() {
         super.viewDidLoad()

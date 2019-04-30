@@ -46,7 +46,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="3x3-6Y-jpy" id="OLd-jn-9na"/>
-                        <segue destination="fxI-zm-ekD" kind="show" identifier="AddTaskSegue" id="p5j-pk-oRE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ban-gq-fe6" userLabel="First Responder" sceneMemberID="firstResponder"/>
