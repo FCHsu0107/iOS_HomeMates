@@ -21,8 +21,8 @@ class TaskSettingsViewController: HMBaseViewController {
     
     var regularTaskList: [TaskObject] = []
     
-    let headerTitle = ["特殊任務", "每日任務", "常規任務"]
-    let guideText = ["(非常規任務，創立任務後可執行一次)", "(每天執行的任務，系統將每天加入任務列表中)", "(定期執行的任務，系統將定期加入任務列表中)"]
+    let headerTitle = ["一次任務", "每日任務", "常規任務"]
+    let guideText = ["(創立任務後可執行一次)", "(預計每天執行的任務，系統將每天加入)", "(定期執行的任務，系統將定期加入任務列表中)"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +87,7 @@ extension TaskSettingsViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 2
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -99,12 +99,12 @@ extension TaskSettingsViewController: UITableViewDataSource, UITableViewDelegate
                 return dailyTaskList.count
             }
             
-        case 2:
-            if regularTaskList.count == 0 {
-                return 1
-            } else {
-                return regularTaskList.count
-            }
+//        case 2:
+//            if regularTaskList.count == 0 {
+//                return 1
+//            } else {
+//                return regularTaskList.count
+//            }
         default: return 0
             
         }
@@ -130,15 +130,15 @@ extension TaskSettingsViewController: UITableViewDataSource, UITableViewDelegate
                 return taskCell
             }
             
-        case 2:
-            if regularTaskList.count == 0 {
-                blankCell.loadData(displayText: "請新增任務")
-                return blankCell
-            } else {
-                let regularTask = regularTaskList[indexPath.row]
-                taskCell.loadData(task: regularTask, isDaliyTask: false)
-                return taskCell
-            }
+//        case 2:
+//            if regularTaskList.count == 0 {
+//                blankCell.loadData(displayText: "請新增任務")
+//                return blankCell
+//            } else {
+//                let regularTask = regularTaskList[indexPath.row]
+//                taskCell.loadData(task: regularTask, isDaliyTask: false)
+//                return taskCell
+//            }
             
         default:
             return cell
@@ -149,19 +149,22 @@ extension TaskSettingsViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView,
                    commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
+        guard dailyTaskList.count != 0 else { return }
         
+        let task = dailyTaskList[indexPath.row]
+        FirestoreGroupManager.shared.deleteTask(in: .dailyTasksList, docId: task.docId!)
         guard editingStyle == .delete else { return }
         
-        if indexPath.section == 1 {
-            guard dailyTaskList.count != 0 else { return }
-            
-            let task = dailyTaskList[indexPath.row]
-            FirestoreGroupManager.shared.deleteTask(in: .dailyTasksList, docId: task.docId!)
-        } else if indexPath.section == 2 {
-            guard regularTaskList.count != 0 else { return }
-            let task = regularTaskList[indexPath.row]
-            FirestoreGroupManager.shared.deleteTask(in: .regularTaskList, docId: task.docId!)
-        }
+//        if indexPath.section == 1 {
+//            guard dailyTaskList.count != 0 else { return }
+//            
+//            let task = dailyTaskList[indexPath.row]
+//            FirestoreGroupManager.shared.deleteTask(in: .dailyTasksList, docId: task.docId!)
+//        } else if indexPath.section == 2 {
+//            guard regularTaskList.count != 0 else { return }
+//            let task = regularTaskList[indexPath.row]
+//            FirestoreGroupManager.shared.deleteTask(in: .regularTaskList, docId: task.docId!)
+//        }
      
     }
     
