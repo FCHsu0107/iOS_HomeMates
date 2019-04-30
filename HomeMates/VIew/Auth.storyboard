@@ -186,6 +186,21 @@
                                     <constraint firstAttribute="height" constant="36" id="f9n-s3-gJF"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="完成註冊即表示同意隱私權條款" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZI-2M-DSd">
+                                <rect key="frame" x="101.5" y="556" width="172" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="B2"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TkT-pW-rfg">
+                                <rect key="frame" x="223.5" y="540.5" width="50" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="7tG-Sh-gSM"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="jwe-vT-yeQ" kind="show" id="9na-rn-wVQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -193,12 +208,14 @@
                             <constraint firstItem="ZPG-zo-gb3" firstAttribute="centerY" secondItem="d8X-bJ-qQD" secondAttribute="centerY" id="8eJ-Nx-NvQ"/>
                             <constraint firstAttribute="trailing" secondItem="G44-l7-vwY" secondAttribute="trailing" id="8jB-2e-IjE"/>
                             <constraint firstAttribute="trailing" secondItem="esF-37-Ouv" secondAttribute="trailing" id="8pQ-3n-d5y"/>
+                            <constraint firstItem="TkT-pW-rfg" firstAttribute="bottom" secondItem="oZI-2M-DSd" secondAttribute="bottom" id="CJD-hS-qoj"/>
                             <constraint firstItem="Gae-wN-ICx" firstAttribute="leading" secondItem="BY4-Qv-htF" secondAttribute="leading" id="Elv-jj-P0T"/>
                             <constraint firstItem="buA-dK-xB2" firstAttribute="top" secondItem="esF-37-Ouv" secondAttribute="bottom" constant="40" id="EvT-6q-Xzu"/>
                             <constraint firstItem="buA-dK-xB2" firstAttribute="centerX" secondItem="yM8-no-6d7" secondAttribute="centerX" id="HUe-DR-Ume"/>
                             <constraint firstItem="BxJ-8k-7Ng" firstAttribute="top" secondItem="esF-37-Ouv" secondAttribute="bottom" constant="60" id="KMX-2H-mcy"/>
                             <constraint firstItem="7To-Ao-FSc" firstAttribute="top" secondItem="buA-dK-xB2" secondAttribute="top" id="KP2-N7-fSw"/>
                             <constraint firstItem="BY4-Qv-htF" firstAttribute="bottom" secondItem="BxJ-8k-7Ng" secondAttribute="bottom" constant="20" id="Kng-sW-B0p"/>
+                            <constraint firstItem="oZI-2M-DSd" firstAttribute="top" secondItem="BY4-Qv-htF" secondAttribute="bottom" constant="40" id="REV-vB-pZa"/>
                             <constraint firstItem="Gae-wN-ICx" firstAttribute="centerX" secondItem="BY4-Qv-htF" secondAttribute="centerX" id="SxQ-HF-UZX"/>
                             <constraint firstItem="7To-Ao-FSc" firstAttribute="bottom" secondItem="buA-dK-xB2" secondAttribute="bottom" id="bZn-jz-iNh"/>
                             <constraint firstItem="7To-Ao-FSc" firstAttribute="leading" secondItem="buA-dK-xB2" secondAttribute="leading" id="fXY-e3-9dN"/>
@@ -211,8 +228,10 @@
                             <constraint firstItem="G44-l7-vwY" firstAttribute="leading" secondItem="yM8-no-6d7" secondAttribute="leading" id="mQl-dQ-cW1"/>
                             <constraint firstItem="BY4-Qv-htF" firstAttribute="centerX" secondItem="yM8-no-6d7" secondAttribute="centerX" id="mwh-8o-iGG"/>
                             <constraint firstItem="W8B-Ru-1Vy" firstAttribute="trailing" secondItem="BxJ-8k-7Ng" secondAttribute="trailing" constant="47.5" id="n4l-VX-Qp9"/>
+                            <constraint firstItem="oZI-2M-DSd" firstAttribute="centerX" secondItem="yM8-no-6d7" secondAttribute="centerX" id="qD1-ri-Hv6"/>
                             <constraint firstItem="Gae-wN-ICx" firstAttribute="trailing" secondItem="BY4-Qv-htF" secondAttribute="trailing" id="rQ3-qh-zJ9"/>
                             <constraint firstItem="esF-37-Ouv" firstAttribute="top" secondItem="yM8-no-6d7" secondAttribute="top" id="tNv-d5-d2U"/>
+                            <constraint firstItem="TkT-pW-rfg" firstAttribute="trailing" secondItem="oZI-2M-DSd" secondAttribute="trailing" id="xcO-fo-Oje"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="W8B-Ru-1Vy"/>
                     </view>
@@ -240,6 +259,81 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eXb-wa-lG9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="184.80000000000001" y="39.130434782608695"/>
+        </scene>
+        <!--Privacy Policy View Controller-->
+        <scene sceneID="1Ma-TI-rhk">
+            <objects>
+                <viewController id="jwe-vT-yeQ" customClass="PrivacyPolicyViewController" customModule="HomeMates" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iJ1-Ww-YQP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kr5-gP-4Xm">
+                                <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <mutableString key="text">Privacy Policy
+Fu-Chiung Hsu built the HomeMates app as a Free app. This SERVICE is provided by Fu- Chiung Hsu at no cost and is intended for use as is.
+This page is used to inform visitors regarding my policies with the collection, use, and disclosure of Personal Information if anyone decided to use my Service.
+If you choose to use my Service, then you agree to the collection and use of information in relation to this policy. The Personal Information that I collect is used for providing and improving the Service. I will not use or share your information with anyone except as described in this Privacy Policy.
+The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which is accessible at HomeMates unless otherwise defined in this Privacy Policy.
+Information Collection and Use
+For a better experience, while using our Service, I may require you to provide us with certain personally identifiable information. The information that I request will be retained on your device and is not collected by me in any way.
+The app does use third party services that may collect information used to identify you. Link to privacy policy of third party service providers used by the app
+Firebase Analytics
+Log Data
+I want to inform you that whenever you use my Service, in a case of an error in the app I collect data and information (through third party products) on your phone called Log Data. This Log Data may include information such as your device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilizing my Service, the time and date of your use of the Service, and other statistics.
+Cookies
+Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device's internal memory.
+This Service does not use these “cookies” explicitly. However, the app may use third party code and libraries that use “cookies” to collect information and improve their services. You have the option to either accept or refuse these cookies and know when a cookie is being sent to your device. If you choose to refuse our cookies, you may not be able to use some portions of this Service.
+Service Providers
+I may employ third-party companies and individuals due to the following reasons:
+  
+To facilitate our Service;
+To provide the Service on our behalf;
+To perform Service-related services; or
+To assist us in analyzing how our Service is used.
+I want to inform users of this Service that these third parties have access to your Personal Information. The reason is to perform the tasks assigned to them on our behalf. However, they are obligated not to disclose or use the information for any other purpose.
+Security
+I value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and I cannot guarantee its absolute security.
+Links to Other Sites
+This Service may contain links to other sites. If you click on a third-party link, you will be directed to that site. Note that these external sites are not operated by me. Therefore, I strongly advise you to review the Privacy Policy of these websites. I have no control over and assume no responsibility for the content, privacy policies, or practices of any third- party sites or services.
+Children’s Privacy
+These Services do not address anyone under the age of 13. I do not knowingly collect personally identifiable information from children under 13. In the case I discover that a child under 13 has provided me with personal information, I immediately delete this from our servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact me so that I will be able to do necessary actions.
+Changes to This Privacy Policy
+I may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Privacy Policy on this page. These changes are effective immediately after they are posted on this page.
+Contact Us
+If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at hsufuchiung@gmail.com.
+This privacy policy page was created at privacypolicytemplate.net and modified/generated by App Privacy Policy Generator</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2f-H5-NFh">
+                                <rect key="frame" x="329" y="30" width="36" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="UEN-r1-eIe"/>
+                                    <constraint firstAttribute="height" constant="36" id="nwC-To-Q7q"/>
+                                </constraints>
+                                <state key="normal" image="Icons_24px_Close"/>
+                                <connections>
+                                    <action selector="dismissBtn:" destination="jwe-vT-yeQ" eventType="touchUpInside" id="s5T-gV-JLo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="E64-TS-9oL" firstAttribute="trailing" secondItem="c2f-H5-NFh" secondAttribute="trailing" constant="10" id="5eb-N0-i51"/>
+                            <constraint firstItem="E64-TS-9oL" firstAttribute="bottom" secondItem="kr5-gP-4Xm" secondAttribute="bottom" id="DPw-mM-oLK"/>
+                            <constraint firstItem="c2f-H5-NFh" firstAttribute="top" secondItem="E64-TS-9oL" secondAttribute="top" constant="10" id="UTF-qR-9FY"/>
+                            <constraint firstItem="E64-TS-9oL" firstAttribute="trailing" secondItem="kr5-gP-4Xm" secondAttribute="trailing" id="buy-25-j5M"/>
+                            <constraint firstItem="kr5-gP-4Xm" firstAttribute="leading" secondItem="E64-TS-9oL" secondAttribute="leading" id="cU4-AQ-Dko"/>
+                            <constraint firstItem="kr5-gP-4Xm" firstAttribute="top" secondItem="E64-TS-9oL" secondAttribute="top" constant="40" id="mT2-Yp-2qU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="E64-TS-9oL"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HDl-73-Iyr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="185" y="923"/>
         </scene>
         <!--Group Selection View Controller-->
         <scene sceneID="Nvx-bA-LSv">
@@ -453,6 +547,10 @@
     <resources>
         <image name="AuthBottomView" width="375" height="66"/>
         <image name="AuthTopView" width="375" height="86"/>
+        <image name="Icons_24px_Close" width="24" height="24"/>
+        <namedColor name="B2">
+            <color red="0.25098039215686274" green="0.29019607843137257" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="P1">
             <color red="0.62000000476837158" green="0.2199999988079071" blue="0.32499998807907104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

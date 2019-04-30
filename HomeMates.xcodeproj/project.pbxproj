@@ -41,6 +41,7 @@
 		B9261C9D225495840033ABC9 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C9C225495840033ABC9 /* LobbyViewController.swift */; };
 		B9261C9F2254C2B20033ABC9 /* TableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C9E2254C2B20033ABC9 /* TableView+Extension.swift */; };
 		B93EA2202272DC2F002F18A3 /* StatusBarSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93EA21F2272DC2F002F18A3 /* StatusBarSettings.swift */; };
+		B93EA22622784C3C002F18A3 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93EA22522784C3C002F18A3 /* PrivacyPolicyViewController.swift */; };
 		B94D15A622560AA500F43B78 /* LobbyHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15A422560AA500F43B78 /* LobbyHeaderCell.swift */; };
 		B94D15A722560AA500F43B78 /* LobbyHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B94D15A522560AA500F43B78 /* LobbyHeaderCell.xib */; };
 		B94D15AF225721C500F43B78 /* ProfileHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15AD225721C500F43B78 /* ProfileHeaderViewCell.swift */; };
@@ -128,6 +129,7 @@
 		B9261C9C225495840033ABC9 /* LobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
 		B9261C9E2254C2B20033ABC9 /* TableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+Extension.swift"; sourceTree = "<group>"; };
 		B93EA21F2272DC2F002F18A3 /* StatusBarSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarSettings.swift; sourceTree = "<group>"; };
+		B93EA22522784C3C002F18A3 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
 		B94D15A422560AA500F43B78 /* LobbyHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyHeaderCell.swift; sourceTree = "<group>"; };
 		B94D15A522560AA500F43B78 /* LobbyHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LobbyHeaderCell.xib; sourceTree = "<group>"; };
 		B94D15AD225721C500F43B78 /* ProfileHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewCell.swift; sourceTree = "<group>"; };
@@ -433,6 +435,7 @@
 			children = (
 				B9B7F540225DB73D00A6DA9E /* AuthViewController.swift */,
 				B9B7F544225DEA8200A6DA9E /* GroupSelectionViewController.swift */,
+				B93EA22522784C3C002F18A3 /* PrivacyPolicyViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -738,6 +741,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B93EA22622784C3C002F18A3 /* PrivacyPolicyViewController.swift in Sources */,
 				B9D295DB225B003300CF7869 /* TaskListHeaderView.swift in Sources */,
 				B9261C9D225495840033ABC9 /* LobbyViewController.swift in Sources */,
 				B9B7F548225EEA8E00A6DA9E /* AlertService.swift in Sources */,
@@ -857,7 +861,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -956,7 +960,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Jacqueline.HomeMates;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -976,7 +980,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Jacqueline.HomeMates;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

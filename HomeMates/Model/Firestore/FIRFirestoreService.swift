@@ -183,8 +183,6 @@ class FIRFirestoreSerivce {
         }
     }
     
-    
-    
     func readDoingTasks(completionHandler: @escaping ([TaskObject]) -> Void) {
         subReference(to: .groups, in: UserDefaultManager.shared.groupId!, toNext: .tasks)
             .whereField(TaskObject.CodingKeys.taskStatus.rawValue, isEqualTo: 2)

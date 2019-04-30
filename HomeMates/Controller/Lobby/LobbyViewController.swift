@@ -29,9 +29,9 @@ class LobbyViewController: HMBaseViewController {
 
     //mock data
     var taskListTitle: [String] = ["", "已完成任務", "可接取任務"]
+    
     var checkTaskList: [TaskObject] = []
 
-    
     var taskList: [TaskObject] = []
     
     var memberList: [MemberObject] = []
