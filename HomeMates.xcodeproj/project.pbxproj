@@ -30,7 +30,6 @@
 		B9261C7B225386030033ABC9 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C7A225386030033ABC9 /* UIStoryboard+Extension.swift */; };
 		B9261C7D225386810033ABC9 /* Task.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9261C7C225386810033ABC9 /* Task.storyboard */; };
 		B9261C7F225386930033ABC9 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9261C7E225386930033ABC9 /* Profile.storyboard */; };
-		B9261C81225386AF0033ABC9 /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9261C80225386AF0033ABC9 /* More.storyboard */; };
 		B9261C83225386C40033ABC9 /* Lobby.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9261C82225386C40033ABC9 /* Lobby.storyboard */; };
 		B9261C85225387070033ABC9 /* Statistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9261C84225387070033ABC9 /* Statistics.storyboard */; };
 		B9261C87225389FB0033ABC9 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C86225389FB0033ABC9 /* UIImage+Extension.swift */; };
@@ -72,7 +71,6 @@
 		B9B7F541225DB73D00A6DA9E /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F540225DB73D00A6DA9E /* AuthViewController.swift */; };
 		B9B7F545225DEA8200A6DA9E /* GroupSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F544225DEA8200A6DA9E /* GroupSelectionViewController.swift */; };
 		B9B7F548225EEA8E00A6DA9E /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F547225EEA8E00A6DA9E /* AlertService.swift */; };
-		B9B99F3022602A3800314BB6 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F2F22602A3800314BB6 /* MoreViewController.swift */; };
 		B9B99F322261898D00314BB6 /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F312261898D00314BB6 /* UserObject.swift */; };
 		B9B99F352262151100314BB6 /* FIRFirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F342262151100314BB6 /* FIRFirestoreService.swift */; };
 		B9B99F372262C44B00314BB6 /* FIRCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F362262C44B00314BB6 /* FIRCollectionReference.swift */; };
@@ -119,7 +117,6 @@
 		B9261C7A225386030033ABC9 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		B9261C7C225386810033ABC9 /* Task.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Task.storyboard; sourceTree = "<group>"; };
 		B9261C7E225386930033ABC9 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
-		B9261C80225386AF0033ABC9 /* More.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = More.storyboard; sourceTree = "<group>"; };
 		B9261C82225386C40033ABC9 /* Lobby.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Lobby.storyboard; sourceTree = "<group>"; };
 		B9261C84225387070033ABC9 /* Statistics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Statistics.storyboard; sourceTree = "<group>"; };
 		B9261C86225389FB0033ABC9 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -161,7 +158,6 @@
 		B9B7F540225DB73D00A6DA9E /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		B9B7F544225DEA8200A6DA9E /* GroupSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSelectionViewController.swift; sourceTree = "<group>"; };
 		B9B7F547225EEA8E00A6DA9E /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
-		B9B99F2F22602A3800314BB6 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		B9B99F312261898D00314BB6 /* UserObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
 		B9B99F342262151100314BB6 /* FIRFirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRFirestoreService.swift; sourceTree = "<group>"; };
 		B9B99F362262C44B00314BB6 /* FIRCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRCollectionReference.swift; sourceTree = "<group>"; };
@@ -227,7 +223,6 @@
 				B94D15B1225721D000F43B78 /* Profile */,
 				B9D295D52258CD4C00CF7869 /* TaskList */,
 				B94D15C322585D4400F43B78 /* Statistics */,
-				B9B99F2C226029FE00314BB6 /* More */,
 				B9261C772253856E0033ABC9 /* Base */,
 			);
 			path = Controller;
@@ -247,7 +242,6 @@
 				B9261C7E225386930033ABC9 /* Profile.storyboard */,
 				B9261C7C225386810033ABC9 /* Task.storyboard */,
 				B9261C84225387070033ABC9 /* Statistics.storyboard */,
-				B9261C80225386AF0033ABC9 /* More.storyboard */,
 				B9B99F40226313D300314BB6 /* Loading.storyboard */,
 				B9D71AA822534D5100F242DA /* LaunchScreen.storyboard */,
 			);
@@ -297,9 +291,9 @@
 		B9261C772253856E0033ABC9 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				B9B99F3C226311B000314BB6 /* LoadingViewController.swift */,
 				B9261C782253858A0033ABC9 /* HMTabBarViewController.swift */,
 				B94D15B222572A2200F43B78 /* HMBaseViewController.swift */,
+				B9B99F3C226311B000314BB6 /* LoadingViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -451,14 +445,6 @@
 			path = AlertFunction;
 			sourceTree = "<group>";
 		};
-		B9B99F2C226029FE00314BB6 /* More */ = {
-			isa = PBXGroup;
-			children = (
-				B9B99F2F22602A3800314BB6 /* MoreViewController.swift */,
-			);
-			path = More;
-			sourceTree = "<group>";
-		};
 		B9B99F332261899900314BB6 /* UserObject */ = {
 			isa = PBXGroup;
 			children = (
@@ -607,7 +593,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9D71AAA22534D5100F242DA /* LaunchScreen.storyboard in Resources */,
-				B9261C81225386AF0033ABC9 /* More.storyboard in Resources */,
 				B9D295D9225A3E1D00CF7869 /* GoogleService-Info.plist in Resources */,
 				B91D3AFD22698CF700C1A28F /* PointGoalTableViewCell.xib in Resources */,
 				B9261C7D225386810033ABC9 /* Task.storyboard in Resources */,
@@ -788,7 +773,6 @@
 				B91D3B012269BAF500C1A28F /* Date+Extension.swift in Sources */,
 				B9B7F541225DB73D00A6DA9E /* AuthViewController.swift in Sources */,
 				B94D15B322572A2200F43B78 /* HMBaseViewController.swift in Sources */,
-				B9B99F3022602A3800314BB6 /* MoreViewController.swift in Sources */,
 				B9B99F462263690C00314BB6 /* GroupObject.swift in Sources */,
 				B91D3AF8226970AF00C1A28F /* TotalPointsTableViewCell.swift in Sources */,
 				B9B10D732258A1780081C856 /* UIView+Extension.swift in Sources */,

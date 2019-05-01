@@ -26,7 +26,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nln-1N-Vbe">
                                 <rect key="frame" x="0.0" y="167.5" width="375" height="32"/>
                                 <subviews>
-                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bullhorn_36px" translatesAutoresizingMaskIntoConstraints="NO" id="dVH-Ii-0Vo">
+                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bulletin_36px" translatesAutoresizingMaskIntoConstraints="NO" id="dVH-Ii-0Vo">
                                         <rect key="frame" x="20" y="1" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="8pI-lF-xR0"/>
@@ -114,7 +114,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Bullhorn_36px" width="37" height="36"/>
+        <image name="Bulletin_36px" width="37" height="36"/>
         <image name="Setting_36px" width="36" height="36"/>
         <namedColor name="Y0">
             <color red="0.9882352941176471" green="0.8784313725490196" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

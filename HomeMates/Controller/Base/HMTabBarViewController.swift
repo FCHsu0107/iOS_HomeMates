@@ -18,8 +18,6 @@ private enum Tab {
 
     case statistics
 
-    case more
-
     func controller() -> UIViewController {
 
         var controller: UIViewController
@@ -34,7 +32,6 @@ private enum Tab {
 
         case .statistics: controller = UIStoryboard.statistics.instantiateInitialViewController()!
 
-        case .more: controller = UIStoryboard.more.instantiateInitialViewController()!
         }
 
         controller.tabBarItem = tabBarItem()
@@ -51,45 +48,38 @@ private enum Tab {
         case .lobby:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.home_normal),
-                selectedImage: UIImage.asset(.home)
+                image: UIImage.asset(.Home_24px),
+                selectedImage: UIImage.asset(.Home_selected_24px)
             )
 
         case .profile:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.profile_normal),
-                selectedImage: UIImage.asset(.profile)
+                image: UIImage.asset(.Profile_24px),
+                selectedImage: UIImage.asset(.Profile_selected_24px)
             )
 
         case .task:
             return UITabBarItem(
                 title: nil,
                 image: UIImage.asset(.Task_24px),
-                selectedImage: UIImage.asset(.Task_24px_normal)
+                selectedImage: UIImage.asset(.Task_selected_24px)
             )
 
         case .statistics:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.Statistic_24px_normal),
-                selectedImage: UIImage.asset(.Statistic_24px)
+                image: UIImage.asset(.Statistic_24px),
+                selectedImage: UIImage.asset(.Statistic_selected_24px)
             )
 
-        case .more:
-            return UITabBarItem(
-                title: nil,
-                image: UIImage.asset(.Idea_24px_normal),
-                selectedImage: UIImage.asset(.Idea_24px)
-            )
         }
     }
 }
 
 class HMTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
-//    private let tabs: [Tab] = [.lobby, .profile, .task, .statistics, .more]
-    private let tabs: [Tab] = [.lobby, .statistics, .task, .profile]
+    private let tabs: [Tab] = [.lobby, .task, .statistics, .profile]
 
     override func viewDidLoad() {
         super.viewDidLoad()
