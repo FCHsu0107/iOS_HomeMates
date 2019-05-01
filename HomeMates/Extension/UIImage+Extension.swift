@@ -45,6 +45,8 @@ enum ImageAsset: String {
     
     case profile_48px
     
+    case HomeMates
+    
 }
 
 extension UIImage {

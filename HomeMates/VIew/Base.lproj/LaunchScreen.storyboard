@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,22 +17,7 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Hs-Ya-Llh">
-                                <rect key="frame" x="87.5" y="332.5" width="200" height="2"/>
-                                <color key="backgroundColor" name="Y2"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="rOI-u4-Fcv"/>
-                                </constraints>
-                                <color key="progressTintColor" name="P1"/>
-                                <color key="trackTintColor" name="Y2"/>
-                            </progressView>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="2Hs-Ya-Llh" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="EZF-Aw-qVh"/>
-                            <constraint firstItem="2Hs-Ya-Llh" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="xRQ-CP-wdl"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -42,12 +26,4 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
-    <resources>
-        <namedColor name="P1">
-            <color red="0.62000000476837158" green="0.2199999988079071" blue="0.32499998807907104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Y2">
-            <color red="1" green="0.70196078431372544" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-    </resources>
 </document>

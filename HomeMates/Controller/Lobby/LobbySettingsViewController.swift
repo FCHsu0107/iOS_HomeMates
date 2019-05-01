@@ -23,6 +23,12 @@ class LobbySettingsViewController: HMBaseViewController {
     
     @IBOutlet weak var editButton: UIButton!
     
+    @IBOutlet weak var homematesImage: UIImageView! {
+        didSet {
+            homematesImage.layer.cornerRadius = 5
+        }
+    }
+    
     var groupInfo: GroupObject?
     
     let memberHeader = TaskListHeaderView()
@@ -89,8 +95,10 @@ extension LobbySettingsViewController: UITableViewDelegate, UITableViewDataSourc
         guard let groupInfo = groupInfo else { return memberCell }
         memberCell.loadData(memberInfo: memberList[indexPath.row], groupInfo: groupInfo)
         guard UserDefaultManager.shared.userUid == groupInfo.creatorId else {
+            memberCell.editBtn.isHidden = true
             return memberCell
         }
+        
         memberCell.clickHandler = { [weak self] cell in
            guard let indexPath = tableView.indexPath(for: cell) else { return }
             guard self?.memberList[indexPath.row].isCreator == false else {

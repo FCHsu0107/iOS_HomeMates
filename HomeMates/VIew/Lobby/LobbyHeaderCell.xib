@@ -71,8 +71,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDb-M4-jOE">
-                                <rect key="frame" x="324" y="141" width="31" height="24"/>
-                                <state key="normal" image="OtherMember"/>
+                                <rect key="frame" x="331" y="141" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="aq3-uW-wtU"/>
+                                    <constraint firstAttribute="width" constant="24" id="yZZ-Os-Yr1"/>
+                                </constraints>
+                                <state key="normal" image="Setting_36px"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" name="Y1"/>
@@ -111,7 +115,7 @@
     </objects>
     <resources>
         <image name="Bullhorn_36px" width="37" height="36"/>
-        <image name="OtherMember" width="31" height="24"/>
+        <image name="Setting_36px" width="36" height="36"/>
         <namedColor name="Y0">
             <color red="0.9882352941176471" green="0.8784313725490196" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

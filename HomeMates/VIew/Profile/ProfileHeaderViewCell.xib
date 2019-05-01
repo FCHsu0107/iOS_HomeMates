@@ -34,45 +34,45 @@
                                 <rect key="frame" x="30" y="88.5" width="341" height="120"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="家庭成員名稱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0J-0b-02z">
-                                        <rect key="frame" x="121.5" y="14" width="98" height="19.5"/>
+                                        <rect key="frame" x="121.5" y="20" width="98" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" name="B2"/>
+                                        <color key="textColor" name="Y4"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNO-2n-Foa">
-                                        <rect key="frame" x="155" y="75.5" width="31" height="36"/>
+                                        <rect key="frame" x="155" y="79.5" width="31" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <color key="textColor" name="Y4"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdE-Iw-9bH">
-                                        <rect key="frame" x="37.5" y="75.5" width="37" height="36"/>
+                                        <rect key="frame" x="37.5" y="79.5" width="37" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <color key="textColor" name="Y4"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTg-Hc-UnR">
-                                        <rect key="frame" x="253" y="75.5" width="60" height="36"/>
+                                        <rect key="frame" x="253" y="79.5" width="60" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <color key="textColor" name="Y4"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="累積積分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZh-ng-U1s">
-                                        <rect key="frame" x="25" y="49.5" width="62" height="18"/>
+                                        <rect key="frame" x="25" y="53.5" width="62" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" name="B2"/>
+                                        <color key="textColor" name="Y4"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="完成次數" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0s-d0-dMD">
-                                        <rect key="frame" x="139.5" y="49.5" width="62" height="18"/>
+                                        <rect key="frame" x="139.5" y="53.5" width="62" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" name="B2"/>
+                                        <color key="textColor" name="Y4"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目標達成率" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d78-R2-aE3">
-                                        <rect key="frame" x="244.5" y="49.5" width="76.5" height="18"/>
+                                        <rect key="frame" x="244.5" y="53.5" width="76.5" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" name="B2"/>
+                                        <color key="textColor" name="Y4"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vxe-Vf-N9g">
@@ -88,10 +88,10 @@
                                 <constraints>
                                     <constraint firstItem="S0s-d0-dMD" firstAttribute="top" secondItem="GZh-ng-U1s" secondAttribute="top" id="18P-bN-sIe"/>
                                     <constraint firstItem="d78-R2-aE3" firstAttribute="top" secondItem="S0s-d0-dMD" secondAttribute="top" id="64P-Hn-2mG"/>
-                                    <constraint firstItem="Y0J-0b-02z" firstAttribute="top" secondItem="m8m-vg-zhh" secondAttribute="top" constant="14" id="7yN-cY-XlU"/>
+                                    <constraint firstItem="Y0J-0b-02z" firstAttribute="top" secondItem="m8m-vg-zhh" secondAttribute="top" constant="20" id="7yN-cY-XlU"/>
                                     <constraint firstItem="Y0J-0b-02z" firstAttribute="centerX" secondItem="m8m-vg-zhh" secondAttribute="centerX" id="8pV-6e-WOV"/>
                                     <constraint firstItem="pdE-Iw-9bH" firstAttribute="centerX" secondItem="GZh-ng-U1s" secondAttribute="centerX" id="ACy-m4-uOf"/>
-                                    <constraint firstItem="UNO-2n-Foa" firstAttribute="top" secondItem="Y0J-0b-02z" secondAttribute="bottom" constant="42" id="CNf-D5-XT2"/>
+                                    <constraint firstItem="UNO-2n-Foa" firstAttribute="top" secondItem="Y0J-0b-02z" secondAttribute="bottom" constant="40" id="CNf-D5-XT2"/>
                                     <constraint firstItem="vxe-Vf-N9g" firstAttribute="top" secondItem="m8m-vg-zhh" secondAttribute="top" constant="6" id="Eex-Li-exn"/>
                                     <constraint firstItem="pdE-Iw-9bH" firstAttribute="top" secondItem="UNO-2n-Foa" secondAttribute="top" id="HlQ-eZ-dVu"/>
                                     <constraint firstItem="GZh-ng-U1s" firstAttribute="leading" secondItem="m8m-vg-zhh" secondAttribute="leading" constant="25" id="Qpa-xI-wDU"/>
@@ -178,9 +178,6 @@
     <resources>
         <image name="Profile_80px" width="80" height="80"/>
         <image name="Setting_36px" width="36" height="36"/>
-        <namedColor name="B2">
-            <color red="0.25098039215686274" green="0.29019607843137257" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="Y0">
             <color red="0.9882352941176471" green="0.8784313725490196" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -20,10 +20,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rVq-Vp-Nmu">
-                                <rect key="frame" x="107" y="447" width="200" height="2"/>
+                                <rect key="frame" x="107" y="446" width="200" height="4"/>
                                 <color key="backgroundColor" name="Y2"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="OlG-2L-50B"/>
+                                    <constraint firstAttribute="height" constant="4" id="cKh-S0-75c"/>
                                 </constraints>
                                 <color key="progressTintColor" name="P1"/>
                                 <color key="trackTintColor" name="Y2"/>
