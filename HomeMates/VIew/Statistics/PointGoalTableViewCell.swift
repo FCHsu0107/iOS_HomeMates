@@ -24,7 +24,6 @@ class PointGoalTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setCornerRadius()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -51,6 +50,8 @@ class PointGoalTableViewCell: UITableViewCell {
     }
     
     private func setProgress(_ progress: CGFloat) {
+        achievingRateView.layer.cornerRadius = 3
+        progressView.layer.cornerRadius = 3
         progressView.backgroundColor = UIColor.P1
         achievingRateView.addSubview(progressView)
         let fullWidth: CGFloat = achievingRateView.bounds.width
@@ -61,8 +62,4 @@ class PointGoalTableViewCell: UITableViewCell {
         }
     }
     
-    private func setCornerRadius() {
-        achievingRateView.layer.cornerRadius = 3
-        progressView.layer.cornerRadius = 3
-    }
 }
