@@ -138,7 +138,7 @@
                                 <color key="textColor" name="Y4"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8I-PC-CSm">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8I-PC-CSm">
                                 <rect key="frame" x="149" y="162" width="77" height="30"/>
                                 <state key="normal" title="更換大頭貼">
                                     <color key="titleColor" name="Y4"/>

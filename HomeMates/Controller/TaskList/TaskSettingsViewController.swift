@@ -24,26 +24,39 @@ class TaskSettingsViewController: HMBaseViewController {
     let headerTitle = ["一次任務", "每日任務", "常規任務"]
     let guideText = ["(創立任務後可執行一次)", "(預計每天執行的任務，系統將每天加入)", "(定期執行的任務，系統將定期加入任務列表中)"]
     
+    let dispatchGroup = DispatchGroup()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.jq_registerCellWithNib(identifier: String(describing: AddingTaskHeaderViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: TaskListTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: BlankTableViewCell.self), bundle: nil)
         
+       
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        dispatchGroup.enter()
         FirestoreGroupManager.shared.readDailyTaskList { [weak self] (tasks) in
             self?.dailyTaskList = []
-            
             self?.dailyTaskList = tasks
+            self?.dispatchGroup.leave()
 
-            self?.tableView.reloadData()
         }
         
+        dispatchGroup.enter()
         FirestoreGroupManager.shared.readRegularTaskList { [weak self] (tasks) in
             self?.regularTaskList = []
             self?.regularTaskList = tasks
-            self?.tableView.reloadData()
+            self?.dispatchGroup.leave()
         }
-
+        
+        dispatchGroup.notify(queue: .main) {
+            self.tableView.reloadData()
+        }
     }
 
 }

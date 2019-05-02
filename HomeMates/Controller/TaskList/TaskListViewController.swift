@@ -33,6 +33,12 @@ class TaskListViewController: HMBaseViewController {
         tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: BlankTableViewCell.self), bundle: nil)
         
+        
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         FIRFirestoreSerivce.shared.readAssigningTasks { [weak self] (tasks) in
             self?.normalTaskList = []
             self?.regularTaskList = []
@@ -43,13 +49,12 @@ class TaskListViewController: HMBaseViewController {
                 } else if task.taskPriodDay == 0 {
                     self?.specialTaskList.append(task)
                 } else {
-                     self?.regularTaskList.append(task)
+                    self?.regularTaskList.append(task)
                 }
             }
             
             self?.tableView.reloadData()
         }
-
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -16,5 +16,6 @@ target 'HomeMates' do
   pod 'SwiftLint'
   pod 'Fabric', '~> 1.9.0'
   pod 'Crashlytics', '~> 3.12.0'
+  pod 'SwiftMessages'
   
 end

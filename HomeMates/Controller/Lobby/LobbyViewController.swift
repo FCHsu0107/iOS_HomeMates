@@ -27,7 +27,6 @@ class LobbyViewController: HMBaseViewController {
 
     let taskHeader = TaskListHeaderView()
 
-    //mock data
     var taskListTitle: [String] = ["", "已完成任務", "可接取任務"]
     
     var checkTaskList: [TaskObject] = []
@@ -35,12 +34,32 @@ class LobbyViewController: HMBaseViewController {
     var taskList: [TaskObject] = []
     
     var memberList: [MemberObject] = []
+    
+    let dispatchGroup = DispatchGroup()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         registerCellWithNib()
+        
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        dispatchGroup.enter()
         readGroupTaskInfo()
+        
+        dispatchGroup.enter()
+        FirestoreGroupManager.shared.readGroupInfo { [weak self] groupInfo in
+            self?.groupInfo = groupInfo
+            self?.dispatchGroup.leave()
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            self.tableView.reloadData()
+        }
     }
 
     private func registerCellWithNib() {
@@ -70,9 +89,7 @@ class LobbyViewController: HMBaseViewController {
                             self?.taskList.append(task)
                         }
                     }
-                    DispatchQueue.main.async {
-                        self?.tableView.reloadData()
-                    }
+                    self?.dispatchGroup.leave()
                 })
             })
         }
@@ -90,13 +107,7 @@ class LobbyViewController: HMBaseViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        FirestoreGroupManager.shared.readGroupInfo { [weak self] groupInfo in
-            self?.groupInfo = groupInfo
-            self?.tableView.reloadData()
-        }
-    }
+
 }
 
 extension LobbyViewController: UITableViewDataSource {

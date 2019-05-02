@@ -76,7 +76,7 @@ class FirestoreUserManager {
     private func readTrackerInMonth(monthId: String,
                                     completion: @escaping ([TaskTracker]?, Bool) -> Void) {
         refInMonth(userUid: UserDefaultManager.shared.userUid!, monthId: monthId, to: .taskTrackers)
-            .addSnapshotListener { (snapshots, err) in
+            .getDocuments { (snapshots, err) in
                 if err == nil {
                     guard let snapshots = snapshots else { return }
                     var objects = [TaskTracker]()
@@ -150,7 +150,7 @@ class FirestoreUserManager {
     func readUserInfo(completion: @escaping (UserObject) -> Void) {
         Firestore.firestore()
             .collection(FIRCollectionReference.users.rawValue)
-            .document(UserDefaultManager.shared.userUid!).addSnapshotListener { (snapshot, err) in
+            .document(UserDefaultManager.shared.userUid!).getDocument { (snapshot, err) in
                 if err == nil {
                     guard let snapshot = snapshot else { return }
                     do {

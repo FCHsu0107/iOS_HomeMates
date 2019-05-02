@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftMessages
 
 class ProfileViewController: HMBaseViewController {
 
@@ -42,39 +43,42 @@ class ProfileViewController: HMBaseViewController {
         tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: TotalPointsTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: BlankTableViewCell.self), bundle: nil)
-        
-        getAllInfo()
 
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         getAllInfo()
     }
     
     func getAllInfo() {
+        dispatchGroup.enter()
         FirestoreUserManager.shared.readUserInfo { [weak self] (user) in
             self?.userInfo = user
-            self?.tableView.reloadData()
+            self?.dispatchGroup.leave()
         }
         
+        dispatchGroup.enter()
         FIRFirestoreSerivce.shared.readDoingTasks { [weak self] (tasks) in
             self?.processTaskList = tasks
-            self?.tableView.reloadData()
+            self?.dispatchGroup.leave()
         }
         
+        dispatchGroup.enter()
         FirestoreUserManager.shared.readTracker { [weak self] (trackers, flag, goal)  in
             if flag == true {
                 guard let trackers = trackers else { return }
                 self?.doneTaskList = trackers
                 self?.getTotalTime(trackers: trackers, goal: goal)
-                self?.tableView.reloadData()
                 
             } else if goal != nil {
                 self?.goalWithoutTracker = goal
-                self?.tableView.reloadData()
             }
+            self?.dispatchGroup.leave()
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            self.tableView.reloadData()
         }
     }
 
@@ -191,6 +195,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                     }
                     
                     FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
+                    self?.getAllInfo()
                 }
                 
                 return taskCell

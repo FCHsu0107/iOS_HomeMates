@@ -109,6 +109,9 @@ PODS:
   - nanopb/encode (0.3.901)
   - Protobuf (3.7.0)
   - SwiftLint (0.31.0)
+  - SwiftMessages (6.0.2):
+    - SwiftMessages/App (= 6.0.2)
+  - SwiftMessages/App (6.0.2)
 
 DEPENDENCIES:
   - Crashlytics (~> 3.12.0)
@@ -121,6 +124,7 @@ DEPENDENCIES:
   - JGProgressHUD
   - MJRefresh
   - SwiftLint
+  - SwiftMessages
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -147,6 +151,7 @@ SPEC REPOS:
     - nanopb
     - Protobuf
     - SwiftLint
+    - SwiftMessages
 
 SPEC CHECKSUMS:
   BoringSSL-GRPC: 2a230d9cd93e7ce39916044f645cebb31f37dde6
@@ -172,7 +177,8 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
+  SwiftMessages: 8b3cc68dba2f1c91aac1a74c90b10287aac35371
 
-PODFILE CHECKSUM: 094c0bf3ad18fce3f4217fda462fe9e70e8b1cf3
+PODFILE CHECKSUM: b2a28d8c9e6f2dadd7dced2488b0132c25bb8f73
 
 COCOAPODS: 1.6.1

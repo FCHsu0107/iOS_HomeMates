@@ -130,6 +130,21 @@
             </objects>
             <point key="canvasLocation" x="2421.5999999999999" y="97.601199400299862"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="ChK-VJ-Ahd">
+            <objects>
+                <viewController id="nmE-Tw-19e" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="U4H-hB-JEi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="P9W-fO-i9H"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="chj-CN-neY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2422" y="859"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Edit02_24px" width="24" height="24"/>

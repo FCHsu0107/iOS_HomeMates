@@ -69,7 +69,7 @@ class FirestoreGroupManager {
     
     private func readtaskList(from collectionReference: FIRCollectionReference,
                               completion: @escaping ([TaskObject]) -> Void) {
-        reference(to: collectionReference).addSnapshotListener { (snapshots, _) in
+        reference(to: collectionReference).getDocuments { (snapshots, _) in
             guard let snapshots = snapshots else { return }
             
             do {
@@ -102,7 +102,7 @@ class FirestoreGroupManager {
     }
     
     func readGroupMembers(completion: @escaping ([MemberObject]) -> Void) {
-        reference(to: .members).addSnapshotListener { (snapshots, err) in
+        reference(to: .members).getDocuments { (snapshots, err) in
             if err == nil {
                 guard let snapshots = snapshots else { return }
                 var objects = [MemberObject]()
