@@ -47,8 +47,7 @@ class LobbyViewController: HMBaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        dispatchGroup.enter()
+    
         readGroupTaskInfo()
         
         dispatchGroup.enter()
@@ -70,11 +69,14 @@ class LobbyViewController: HMBaseViewController {
     }
     
     private func readGroupTaskInfo() {
+        dispatchGroup.enter()
         FIRFirestoreSerivce.shared.findMainGroup { [weak self] (object) in
             self?.groupInfo = object
-            
+            self?.dispatchGroup.enter()
             FirestoreGroupManager.shared.readGroupMembers(completion: { [weak self] (members) in
                 self?.memberList = members
+                self?.dispatchGroup.enter()
+               
                 FIRFirestoreSerivce.shared.readAllTasks(comletionHandler: { (tasks) in
                     self?.checkTaskList = []
                     self?.taskList = []
@@ -91,7 +93,9 @@ class LobbyViewController: HMBaseViewController {
                     }
                     self?.dispatchGroup.leave()
                 })
+                self?.dispatchGroup.leave()
             })
+            self?.dispatchGroup.leave()
         }
     }
 
@@ -191,6 +195,7 @@ extension LobbyViewController: UITableViewDataSource {
                     updateTask.taskStatus = 4
                     FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
                     FirestoreUserManager.shared.addTaskTracker(for: updateTask)
+                    
                 }
                 
                 return taskCell
