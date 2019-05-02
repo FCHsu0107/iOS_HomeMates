@@ -41,24 +41,13 @@ class LobbyViewController: HMBaseViewController {
         super.viewDidLoad()
         
         registerCellWithNib()
-        
+        readGroupTaskInfo()
+
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     
-        readGroupTaskInfo()
-        
-        dispatchGroup.enter()
-        FirestoreGroupManager.shared.readGroupInfo { [weak self] groupInfo in
-            self?.groupInfo = groupInfo
-            self?.dispatchGroup.leave()
-        }
-        
-        dispatchGroup.notify(queue: .main) {
-            self.tableView.reloadData()
-        }
     }
 
     private func registerCellWithNib() {
@@ -69,34 +58,35 @@ class LobbyViewController: HMBaseViewController {
     }
     
     private func readGroupTaskInfo() {
-        dispatchGroup.enter()
+       
         FIRFirestoreSerivce.shared.findMainGroup { [weak self] (object) in
             self?.groupInfo = object
-            self?.dispatchGroup.enter()
-            FirestoreGroupManager.shared.readGroupMembers(completion: { [weak self] (members) in
-                self?.memberList = members
-                self?.dispatchGroup.enter()
-               
-                FIRFirestoreSerivce.shared.readAllTasks(comletionHandler: { (tasks) in
-                    self?.checkTaskList = []
-                    self?.taskList = []
-                    for task in tasks {
-                        if task.taskStatus == 3 {
-                            if members.count == 1 {
-                                self?.checkTaskList.append(task)
-                            } else if task.executorUid != UserDefaultManager.shared.userUid {
-                                self?.checkTaskList.append(task)
-                            }
-                        } else if task.taskStatus == 1 {
-                            self?.taskList.append(task)
-                        }
-                    }
-                    self?.dispatchGroup.leave()
-                })
-                self?.dispatchGroup.leave()
-            })
-            self?.dispatchGroup.leave()
+            self?.readTaskLisk()
         }
+    }
+    
+    private func readTaskLisk() {
+        FirestoreGroupManager.shared.readGroupMembers(completion: { [weak self] (members) in
+            self?.memberList = members
+            
+            FIRFirestoreSerivce.shared.readAllTasks(comletionHandler: { (tasks) in
+                self?.checkTaskList = []
+                self?.taskList = []
+                for task in tasks {
+                    if task.taskStatus == 3 {
+                        if members.count == 1 {
+                            self?.checkTaskList.append(task)
+                        } else if task.executorUid != UserDefaultManager.shared.userUid {
+                            self?.checkTaskList.append(task)
+                        }
+                    } else if task.taskStatus == 1 {
+                        self?.taskList.append(task)
+                    }
+                }
+                self?.tableView.reloadData()
+            })
+            
+        })
     }
 
     @objc func clickSettingBtn() {
@@ -111,7 +101,6 @@ class LobbyViewController: HMBaseViewController {
         }
     }
     
-
 }
 
 extension LobbyViewController: UITableViewDataSource {
@@ -195,7 +184,6 @@ extension LobbyViewController: UITableViewDataSource {
                     updateTask.taskStatus = 4
                     FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
                     FirestoreUserManager.shared.addTaskTracker(for: updateTask)
-                    
                 }
                 
                 return taskCell
@@ -233,7 +221,6 @@ extension LobbyViewController: UITableViewDataSource {
             
             let task = taskList[indexPath.row]
             FirestoreGroupManager.shared.deleteTask(in: .tasks, docId: task.docId!)
-            
         }
     }
   

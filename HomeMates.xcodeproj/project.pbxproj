@@ -42,6 +42,7 @@
 		B93EA2202272DC2F002F18A3 /* StatusBarSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93EA21F2272DC2F002F18A3 /* StatusBarSettings.swift */; };
 		B93EA22622784C3C002F18A3 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93EA22522784C3C002F18A3 /* PrivacyPolicyViewController.swift */; };
 		B93EA2282279E79E002F18A3 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93EA2272279E79E002F18A3 /* ProgressBar.swift */; };
+		B93EA22C227AD862002F18A3 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93EA22B227AD862002F18A3 /* MessageView.swift */; };
 		B94D15A622560AA500F43B78 /* LobbyHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15A422560AA500F43B78 /* LobbyHeaderCell.swift */; };
 		B94D15A722560AA500F43B78 /* LobbyHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B94D15A522560AA500F43B78 /* LobbyHeaderCell.xib */; };
 		B94D15AF225721C500F43B78 /* ProfileHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15AD225721C500F43B78 /* ProfileHeaderViewCell.swift */; };
@@ -129,6 +130,7 @@
 		B93EA21F2272DC2F002F18A3 /* StatusBarSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarSettings.swift; sourceTree = "<group>"; };
 		B93EA22522784C3C002F18A3 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
 		B93EA2272279E79E002F18A3 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		B93EA22B227AD862002F18A3 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		B94D15A422560AA500F43B78 /* LobbyHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyHeaderCell.swift; sourceTree = "<group>"; };
 		B94D15A522560AA500F43B78 /* LobbyHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LobbyHeaderCell.xib; sourceTree = "<group>"; };
 		B94D15AD225721C500F43B78 /* ProfileHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewCell.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 		B9261C74225384BC0033ABC9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B93EA22A227AD839002F18A3 /* MessageView */,
 				B93EA22322760D9E002F18A3 /* DateProvider */,
 				B9B99F442263262900314BB6 /* Firestore */,
 				B9B7F546225EEA7000A6DA9E /* AlertFunction */,
@@ -333,6 +336,14 @@
 				B91D3AFE2269B7DE00C1A28F /* DateProvider.swift */,
 			);
 			path = DateProvider;
+			sourceTree = "<group>";
+		};
+		B93EA22A227AD839002F18A3 /* MessageView */ = {
+			isa = PBXGroup;
+			children = (
+				B93EA22B227AD862002F18A3 /* MessageView.swift */,
+			);
+			path = MessageView;
 			sourceTree = "<group>";
 		};
 		B94D15AC2257217E00F43B78 /* Profile */ = {
@@ -749,6 +760,7 @@
 				B9D295D42258C18F00CF7869 /* TaskTracker.swift in Sources */,
 				B9B99F3B2262DB0400314BB6 /* Snapshot+Entension.swift in Sources */,
 				B959F73F226EF6CA00D3CA68 /* FirestoreUserManager.swift in Sources */,
+				B93EA22C227AD862002F18A3 /* MessageView.swift in Sources */,
 				B959F73D226EC3E000D3CA68 /* MonthsObject.swift in Sources */,
 				B93EA2202272DC2F002F18A3 /* StatusBarSettings.swift in Sources */,
 				B9261C87225389FB0033ABC9 /* UIImage+Extension.swift in Sources */,

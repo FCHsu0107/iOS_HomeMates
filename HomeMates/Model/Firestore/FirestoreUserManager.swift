@@ -99,6 +99,7 @@ class FirestoreUserManager {
         let currentMonth = DateProvider.shared.getCurrentMonths()
         refInGroup(userUid: UserDefaultManager.shared.userUid!, to: .months)
             .whereField(MonthObject.CodingKeys.month.rawValue, isEqualTo: currentMonth)
+            .order(by: TaskTracker.CodingKeys.totalPoints.rawValue, descending: true)
             .getDocuments { [weak self] (snapshots, err) in
             
             if err == nil {

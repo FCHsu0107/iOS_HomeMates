@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftMessages
 
 class ProfileViewController: HMBaseViewController {
 
@@ -27,6 +26,7 @@ class ProfileViewController: HMBaseViewController {
     let dispatchGroup = DispatchGroup()
 
     var taskListTitle: [String] = ["", "個人任務清單", "任務日誌"]
+    
     var processTaskList: [TaskObject] = []
 
     var doneTaskList: [TaskTracker] = []
@@ -36,6 +36,8 @@ class ProfileViewController: HMBaseViewController {
     var userInfo: UserObject?
     
     var goalWithoutTracker: Int?
+    
+    let messagesView = MessagesViewProvider()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +81,7 @@ class ProfileViewController: HMBaseViewController {
         
         dispatchGroup.notify(queue: .main) {
             self.tableView.reloadData()
+
         }
     }
 
@@ -108,6 +111,17 @@ class ProfileViewController: HMBaseViewController {
             
         }
     }
+    
+//    func showSuccessMessage() {
+//        let view = MessageView.viewFromNib(layout: .cardView)
+//        view.configureTheme(.success)
+//        view.configureDropShadow()
+//        view.configureContent(title: "完成任務", body: "待其他成員確認任務後即可獲得積分")
+//        view.layoutMarginAdditions = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+//        (view.backgroundView as? CornerRoundingView)?.cornerRadius = 10
+//        view.button?.isHidden = true
+//        SwiftMessages.show(view: view)
+//    }
     
 }
 
@@ -191,11 +205,14 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                     if tag == 1 {
                         let timeStamp = Int(DateProvider.shared.getTimeStamp())
                         updateTask.completionTimeStamp = timeStamp
-                        
+                        self?.dispatchGroup.notify(queue: .main, execute: {
+                            self?.messagesView.showSuccessView(title: "完成任務", body: "待其他成員確認任務後即可獲得積分")
+                        })
                     }
                     
                     FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
                     self?.getAllInfo()
+                    
                 }
                 
                 return taskCell
