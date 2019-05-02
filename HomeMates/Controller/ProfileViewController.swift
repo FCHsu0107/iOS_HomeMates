@@ -81,7 +81,6 @@ class ProfileViewController: HMBaseViewController {
         
         dispatchGroup.notify(queue: .main) {
             self.tableView.reloadData()
-
         }
     }
 
@@ -111,17 +110,6 @@ class ProfileViewController: HMBaseViewController {
             
         }
     }
-    
-//    func showSuccessMessage() {
-//        let view = MessageView.viewFromNib(layout: .cardView)
-//        view.configureTheme(.success)
-//        view.configureDropShadow()
-//        view.configureContent(title: "完成任務", body: "待其他成員確認任務後即可獲得積分")
-//        view.layoutMarginAdditions = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-//        (view.backgroundView as? CornerRoundingView)?.cornerRadius = 10
-//        view.button?.isHidden = true
-//        SwiftMessages.show(view: view)
-//    }
     
 }
 

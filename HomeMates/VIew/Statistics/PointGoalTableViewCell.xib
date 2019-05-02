@@ -21,13 +21,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="任務名稱底家" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lLt-0e-Ttq">
-                        <rect key="frame" x="76" y="93" width="92" height="15.5"/>
+                        <rect key="frame" x="76" y="49" width="92" height="59.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="這裡是家庭成員的名字" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60X-OY-fFz">
-                        <rect key="frame" x="76" y="71" width="153" height="18"/>
+                        <rect key="frame" x="76" y="27" width="153" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="I9A-Gh-ZUa"/>
                         </constraints>
@@ -51,7 +51,7 @@
                             <constraint firstAttribute="height" constant="6" id="iNP-as-cvm"/>
                         </constraints>
                     </view>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="Gi3-P3-wIi">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gi3-P3-wIi">
                         <rect key="frame" x="16" y="0.0" width="48" height="138.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="48" id="RfJ-2b-Jsx"/>
@@ -87,7 +87,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="profile" width="24" height="24"/>
         <namedColor name="P1">
             <color red="0.62000000476837158" green="0.2199999988079071" blue="0.32499998807907104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

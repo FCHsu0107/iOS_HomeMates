@@ -20,7 +20,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="118.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="SMu-4E-Fsk">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SMu-4E-Fsk">
                         <rect key="frame" x="16" y="0.0" width="48" height="118.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="48" id="b27-vJ-IoA"/>
@@ -113,7 +113,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="profile" width="24" height="24"/>
         <namedColor name="Y2">
             <color red="1" green="0.70196078431372544" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
