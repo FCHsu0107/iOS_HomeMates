@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SwiftMessages
 
-class MessagesViewProvider {
+class MessagesView {
     func showSuccessView(title: String, body: String) {
         let view = MessageView.viewFromNib(layout: .cardView)
         view.configureTheme(.success)

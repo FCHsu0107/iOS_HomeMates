@@ -24,14 +24,15 @@ class LoadingViewController: UIViewController {
         let fullWidth: CGFloat = backgroundView.bounds.width
         let newWidth = 100 / 100 * fullWidth
         
-        UIView.animate(withDuration: 1.2) {
+        UIView.animate(withDuration: 1.0) {
             self.progressView.frame.size = CGSize(width: newWidth, height: self.progressView.frame.height)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.4, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.1, execute: {
                 self.checkStatus()
             })
         }
 
     }
+    
 
     func getCornerRadius() {
         

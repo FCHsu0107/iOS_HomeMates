@@ -130,26 +130,162 @@
             </objects>
             <point key="canvasLocation" x="2421.5999999999999" y="97.601199400299862"/>
         </scene>
-        <!--View Controller-->
+        <!--Adding Tasks View Controller-->
         <scene sceneID="ChK-VJ-Ahd">
             <objects>
-                <viewController id="nmE-Tw-19e" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewTaskSB" id="nmE-Tw-19e" customClass="AddingTasksViewController" customModule="HomeMates" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U4H-hB-JEi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0aE-EP-OgH">
+                                <rect key="frame" x="67.5" y="213.5" width="240" height="240"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新增任務" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAK-3z-wp2">
+                                        <rect key="frame" x="89.5" y="20" width="61.5" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" name="Y4"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NtX-py-7qv">
+                                        <rect key="frame" x="212" y="12" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="16" id="3sr-g2-ax5"/>
+                                            <constraint firstAttribute="height" constant="16" id="CfB-hb-m4R"/>
+                                        </constraints>
+                                        <state key="normal" image="Icons_24px_Close"/>
+                                        <connections>
+                                            <action selector="dismissView:" destination="nmE-Tw-19e" eventType="touchUpInside" id="nyy-mp-Se2"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="任務名稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wek-Dq-ogI" customClass="HMBaseTextField" customModule="HomeMates" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="54" width="200" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="LCG-8e-ITu"/>
+                                        </constraints>
+                                        <color key="textColor" name="Y4"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="任務積分" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j8J-Jf-XsS" customClass="HMBaseTextField" customModule="HomeMates" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="96" width="200" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="TMn-JC-a6y"/>
+                                        </constraints>
+                                        <color key="textColor" name="Y4"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bya-3G-76O">
+                                        <rect key="frame" x="80" y="186" width="80" height="30"/>
+                                        <color key="backgroundColor" name="Y2"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="3k7-Ju-wH3"/>
+                                            <constraint firstAttribute="height" constant="30" id="kDE-Yd-GXd"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <state key="normal" title="新增">
+                                            <color key="titleColor" name="Y4"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gP4-QP-31T">
+                                        <rect key="frame" x="24" y="134" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="16" id="YM4-40-lcO"/>
+                                            <constraint firstAttribute="height" constant="16" id="met-zh-Fdo"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="CheckBox_normal_24px"/>
+                                        <state key="selected" image="CheckBox_24px"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每日任務" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIJ-8o-2Gv">
+                                        <rect key="frame" x="48" y="133.5" width="58" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" name="Y4"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(系統將每日自動加入)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lqq-gI-YRm">
+                                        <rect key="frame" x="48" y="154.5" width="120" height="15"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" name="Y4"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="lqq-gI-YRm" firstAttribute="leading" secondItem="vIJ-8o-2Gv" secondAttribute="leading" id="3mY-v5-0uR"/>
+                                    <constraint firstAttribute="bottom" secondItem="Bya-3G-76O" secondAttribute="bottom" constant="24" id="4EK-A2-EBm"/>
+                                    <constraint firstItem="j8J-Jf-XsS" firstAttribute="leading" secondItem="Wek-Dq-ogI" secondAttribute="leading" id="8Lu-Vj-LiK"/>
+                                    <constraint firstItem="j8J-Jf-XsS" firstAttribute="trailing" secondItem="Wek-Dq-ogI" secondAttribute="trailing" id="90D-A2-nQb"/>
+                                    <constraint firstAttribute="trailing" secondItem="NtX-py-7qv" secondAttribute="trailing" constant="12" id="QF7-YP-f46"/>
+                                    <constraint firstItem="bAK-3z-wp2" firstAttribute="top" secondItem="0aE-EP-OgH" secondAttribute="top" constant="20" id="Ygl-2S-anG"/>
+                                    <constraint firstAttribute="height" constant="240" id="aDH-rU-v73"/>
+                                    <constraint firstItem="vIJ-8o-2Gv" firstAttribute="centerY" secondItem="gP4-QP-31T" secondAttribute="centerY" id="drX-mm-5S1"/>
+                                    <constraint firstItem="lqq-gI-YRm" firstAttribute="top" secondItem="vIJ-8o-2Gv" secondAttribute="bottom" constant="4" id="edA-ys-G3c"/>
+                                    <constraint firstItem="Wek-Dq-ogI" firstAttribute="top" secondItem="bAK-3z-wp2" secondAttribute="bottom" constant="16" id="fD8-Hd-tbH"/>
+                                    <constraint firstItem="NtX-py-7qv" firstAttribute="top" secondItem="0aE-EP-OgH" secondAttribute="top" constant="12" id="hAZ-JL-NaL"/>
+                                    <constraint firstAttribute="trailing" secondItem="Wek-Dq-ogI" secondAttribute="trailing" constant="20" id="htB-Xz-QpE"/>
+                                    <constraint firstItem="vIJ-8o-2Gv" firstAttribute="leading" secondItem="gP4-QP-31T" secondAttribute="trailing" constant="8" id="jPR-Ei-3Kn"/>
+                                    <constraint firstItem="j8J-Jf-XsS" firstAttribute="top" secondItem="Wek-Dq-ogI" secondAttribute="bottom" constant="12" id="nTB-sz-Hdr"/>
+                                    <constraint firstAttribute="width" constant="240" id="qA8-y0-gTZ"/>
+                                    <constraint firstItem="gP4-QP-31T" firstAttribute="leading" secondItem="j8J-Jf-XsS" secondAttribute="leading" constant="4" id="suu-7v-anD"/>
+                                    <constraint firstItem="Wek-Dq-ogI" firstAttribute="leading" secondItem="0aE-EP-OgH" secondAttribute="leading" constant="20" id="tRk-r5-1mb"/>
+                                    <constraint firstItem="bAK-3z-wp2" firstAttribute="centerX" secondItem="0aE-EP-OgH" secondAttribute="centerX" id="vHb-RC-B4c"/>
+                                    <constraint firstItem="Bya-3G-76O" firstAttribute="centerX" secondItem="0aE-EP-OgH" secondAttribute="centerX" id="wmr-RW-9fb"/>
+                                    <constraint firstItem="gP4-QP-31T" firstAttribute="top" secondItem="j8J-Jf-XsS" secondAttribute="bottom" constant="8" id="xrQ-bs-PaX"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0aE-EP-OgH" firstAttribute="centerY" secondItem="U4H-hB-JEi" secondAttribute="centerY" id="Pke-Mi-7qW"/>
+                            <constraint firstItem="0aE-EP-OgH" firstAttribute="centerX" secondItem="U4H-hB-JEi" secondAttribute="centerX" id="gou-Ml-c8v"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="P9W-fO-i9H"/>
                     </view>
+                    <connections>
+                        <outlet property="checkBoxBtn" destination="gP4-QP-31T" id="qT4-gb-bEc"/>
+                        <outlet property="taskNameTextField" destination="Wek-Dq-ogI" id="1EK-8P-5eP"/>
+                        <outlet property="taskPointsTextField" destination="j8J-Jf-XsS" id="4eS-Kl-gJH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="chj-CN-neY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2422" y="859"/>
+            <point key="canvasLocation" x="2422" y="890"/>
         </scene>
     </scenes>
     <resources>
+        <image name="CheckBox_24px" width="24" height="24"/>
+        <image name="CheckBox_normal_24px" width="24" height="24"/>
         <image name="Edit02_24px" width="24" height="24"/>
+        <image name="Icons_24px_Close" width="24" height="24"/>
         <namedColor name="W1">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Y2">
+            <color red="1" green="0.70196078431372544" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Y4">
+            <color red="0.29019607843137257" green="0.22352941176470589" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

@@ -22,6 +22,6 @@ class BlankTableViewCell: UITableViewCell {
     }
     
     func loadData(displayText: String) {
-        displayTextLbl.text = displayText
+        displayTextLbl.text = "(\(displayText))"
     }
 }

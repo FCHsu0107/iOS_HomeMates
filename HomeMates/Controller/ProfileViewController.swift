@@ -25,7 +25,7 @@ class ProfileViewController: HMBaseViewController {
     
     let dispatchGroup = DispatchGroup()
 
-    var taskListTitle: [String] = ["", "個人任務清單", "任務日誌"]
+    var taskListTitle: [String] = ["", "個人任務", "任務日誌"]
     
     var processTaskList: [TaskObject] = []
 
@@ -37,7 +37,7 @@ class ProfileViewController: HMBaseViewController {
     
     var goalWithoutTracker: Int?
     
-    let messagesView = MessagesViewProvider()
+    let messagesView = MessagesView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,7 +135,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         case 0:
             return 220
         default:
-            return 40
+            return 60
         }
     }
 
@@ -176,7 +176,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
 
         case 1:
             if processTaskList.count == 0 {
-                blankCell.loadData(displayText: "請至任務列表接受任務")
+                blankCell.loadData(displayText: "請至任務列表接取任務")
                 return blankCell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self),

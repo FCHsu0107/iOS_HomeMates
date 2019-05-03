@@ -127,7 +127,7 @@ extension LobbyViewController: UITableViewDataSource {
         case 0:
             return 170
         default:
-            return 40
+            return 60
         }
     }
 

@@ -32,8 +32,6 @@ class TaskSettingsViewController: HMBaseViewController {
         tableView.jq_registerCellWithNib(identifier: String(describing: TaskListTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: BlankTableViewCell.self), bundle: nil)
         
-       
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,9 +66,15 @@ extension TaskSettingsViewController: UITableViewDataSource, UITableViewDelegate
         guard let headerCell = cell as? AddingTaskHeaderViewCell else { return cell }
         headerCell.loadData(titleText: headerTitle[section], guideText: guideText[section])
         headerCell.addingTaskBtn.tag = section
+        let newTaskVc = storyboard?.instantiateViewController(withIdentifier: "NewTaskSB") as? AddingTasksViewController
+        newTaskVc?.loadViewIfNeeded()
+        newTaskVc?.view.frame = self.view.frame
+        newTaskVc?.view.backgroundColor = UIColor.clear
+        
         headerCell.taskTypeHandler = { tag in
             
             if tag == 0 {
+
                 AlertService.addSpecialTask(in: self, completion: { (task) in
                     FirestoreGroupManager.shared.addTask(for: task)
                 })
@@ -164,9 +168,11 @@ extension TaskSettingsViewController: UITableViewDataSource, UITableViewDelegate
                    forRowAt indexPath: IndexPath) {
         guard dailyTaskList.count != 0 else { return }
         
+        guard editingStyle == .delete else { return }
         let task = dailyTaskList[indexPath.row]
         FirestoreGroupManager.shared.deleteTask(in: .dailyTasksList, docId: task.docId!)
-        guard editingStyle == .delete else { return }
+        dailyTaskList.remove(at: indexPath.row)
+        tableView.reloadData()
         
 //        if indexPath.section == 1 {
 //            guard dailyTaskList.count != 0 else { return }

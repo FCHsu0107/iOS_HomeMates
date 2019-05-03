@@ -10,11 +10,7 @@ import UIKit
 
 class GroupMemberTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var memberImageView: UIImageView! {
-        didSet {
-            memberImageView.layer.cornerRadius = 23
-        }
-    }
+    @IBOutlet weak var memberImageView: UIImageView!
     
     @IBOutlet weak var userNameLbl: UILabel!
     
@@ -44,7 +40,7 @@ class GroupMemberTableViewCell: UITableViewCell {
             statusLbl.text = ""
         } else {
             statusLbl.text = ""
-          //            statusLbl.text = "申請確認中"
+          // statusLbl.text = "申請確認中"
         }
         
         editBtn.addTarget(self, action: #selector(clickBtn(_:)), for: .touchUpInside)

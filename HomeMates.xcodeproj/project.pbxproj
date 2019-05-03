@@ -41,8 +41,8 @@
 		B9261C9F2254C2B20033ABC9 /* TableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9261C9E2254C2B20033ABC9 /* TableView+Extension.swift */; };
 		B93EA2202272DC2F002F18A3 /* StatusBarSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93EA21F2272DC2F002F18A3 /* StatusBarSettings.swift */; };
 		B93EA22622784C3C002F18A3 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93EA22522784C3C002F18A3 /* PrivacyPolicyViewController.swift */; };
-		B93EA2282279E79E002F18A3 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93EA2272279E79E002F18A3 /* ProgressBar.swift */; };
 		B93EA22C227AD862002F18A3 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93EA22B227AD862002F18A3 /* MessageView.swift */; };
+		B93EA22E227AE103002F18A3 /* AddingTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93EA22D227AE103002F18A3 /* AddingTasksViewController.swift */; };
 		B94D15A622560AA500F43B78 /* LobbyHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15A422560AA500F43B78 /* LobbyHeaderCell.swift */; };
 		B94D15A722560AA500F43B78 /* LobbyHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B94D15A522560AA500F43B78 /* LobbyHeaderCell.xib */; };
 		B94D15AF225721C500F43B78 /* ProfileHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15AD225721C500F43B78 /* ProfileHeaderViewCell.swift */; };
@@ -129,8 +129,8 @@
 		B9261C9E2254C2B20033ABC9 /* TableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+Extension.swift"; sourceTree = "<group>"; };
 		B93EA21F2272DC2F002F18A3 /* StatusBarSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarSettings.swift; sourceTree = "<group>"; };
 		B93EA22522784C3C002F18A3 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
-		B93EA2272279E79E002F18A3 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		B93EA22B227AD862002F18A3 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		B93EA22D227AE103002F18A3 /* AddingTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingTasksViewController.swift; sourceTree = "<group>"; };
 		B94D15A422560AA500F43B78 /* LobbyHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyHeaderCell.swift; sourceTree = "<group>"; };
 		B94D15A522560AA500F43B78 /* LobbyHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LobbyHeaderCell.xib; sourceTree = "<group>"; };
 		B94D15AD225721C500F43B78 /* ProfileHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewCell.swift; sourceTree = "<group>"; };
@@ -253,14 +253,12 @@
 		B9261C74225384BC0033ABC9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B93EA22A227AD839002F18A3 /* MessageView */,
 				B93EA22322760D9E002F18A3 /* DateProvider */,
 				B9B99F442263262900314BB6 /* Firestore */,
 				B9B7F546225EEA7000A6DA9E /* AlertFunction */,
 				B9B99F332261899900314BB6 /* UserObject */,
 				B9B99F492264470300314BB6 /* GroupObject */,
 				B9B7F52D225CAD6100A6DA9E /* TaskObject */,
-				B93EA2272279E79E002F18A3 /* ProgressBar.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -369,6 +367,7 @@
 		B94D15B42257327D00F43B78 /* Third-party framework */ = {
 			isa = PBXGroup;
 			children = (
+				B93EA22A227AD839002F18A3 /* MessageView */,
 				B94D15BA225749B500F43B78 /* MJRefreshWrapper.swift */,
 			);
 			path = "Third-party framework";
@@ -494,6 +493,7 @@
 			children = (
 				B9D295D62258CD7D00CF7869 /* TaskListViewController.swift */,
 				B91D3B06226AE3BF00C1A28F /* TaskSettingsViewController.swift */,
+				B93EA22D227AE103002F18A3 /* AddingTasksViewController.swift */,
 			);
 			path = TaskList;
 			sourceTree = "<group>";
@@ -765,7 +765,6 @@
 				B93EA2202272DC2F002F18A3 /* StatusBarSettings.swift in Sources */,
 				B9261C87225389FB0033ABC9 /* UIImage+Extension.swift in Sources */,
 				B94D15BD225754C700F43B78 /* ProfileViewController.swift in Sources */,
-				B93EA2282279E79E002F18A3 /* ProgressBar.swift in Sources */,
 				B9B7F539225D95B500A6DA9E /* HMBaseTextField.swift in Sources */,
 				B94D15BB225749B500F43B78 /* MJRefreshWrapper.swift in Sources */,
 				B9261C89225392C60033ABC9 /* UIColor+Extension.swift in Sources */,
@@ -775,6 +774,7 @@
 				B91D3AFF2269B7DE00C1A28F /* DateProvider.swift in Sources */,
 				B9B99F392262D51C00314BB6 /* Encodable+Extension.swift in Sources */,
 				B91D3B07226AE3BF00C1A28F /* TaskSettingsViewController.swift in Sources */,
+				B93EA22E227AE103002F18A3 /* AddingTasksViewController.swift in Sources */,
 				B9B7F545225DEA8200A6DA9E /* GroupSelectionViewController.swift in Sources */,
 				B94D15C522585DA200F43B78 /* StatisticsViewController.swift in Sources */,
 				B9B99F3E226311B000314BB6 /* LoadingViewController.swift in Sources */,

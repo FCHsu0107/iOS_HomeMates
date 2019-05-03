@@ -52,17 +52,11 @@ class TasksTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        btnCornerRadius()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-    }
-
-    private func btnCornerRadius() {
-        taskRightBtn.layer.cornerRadius = 5
-        taskLeftBtn.layer.cornerRadius = 5
     }
     
     func loadData(taskObject: TaskObject, status: TaskCellStatus) {

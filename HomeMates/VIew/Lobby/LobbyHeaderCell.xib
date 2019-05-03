@@ -57,6 +57,11 @@
                                     <constraint firstAttribute="width" constant="80" id="SVn-XO-bc9"/>
                                     <constraint firstAttribute="height" constant="80" id="V7I-Pq-VAr"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="群組名稱在這邊" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwy-Gm-tme">
                                 <rect key="frame" x="116" y="112" width="143" height="24"/>
