@@ -61,11 +61,11 @@
                         </userDefinedRuntimeAttributes>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="這裡是家庭成員的名字" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0RN-Pe-QGG">
-                        <rect key="frame" x="64" y="16" width="153" height="18"/>
+                        <rect key="frame" x="64" y="16" width="163.5" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="XbR-pH-z0J"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
                     </label>

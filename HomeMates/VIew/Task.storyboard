@@ -52,7 +52,7 @@
             </objects>
             <point key="canvasLocation" x="1047.2" y="112.89355322338831"/>
         </scene>
-        <!--任務列表-->
+        <!--每日任務列表-->
         <scene sceneID="h53-aU-Xbh">
             <objects>
                 <viewController id="EAY-Hn-gKg" customClass="TaskSettingsViewController" customModule="HomeMates" customModuleProvider="target" sceneMemberID="viewController">
@@ -60,9 +60,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="GrO-Ll-dP5">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GrO-Ll-dP5">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" name="W1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" name="W1"/>
                                 <connections>
                                     <outlet property="dataSource" destination="EAY-Hn-gKg" id="oEd-gp-vUh"/>
@@ -79,7 +79,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZEF-0J-MQS"/>
                     </view>
-                    <navigationItem key="navigationItem" title="任務列表" id="wll-st-0QS"/>
+                    <navigationItem key="navigationItem" title="每日任務列表" id="wll-st-0QS"/>
                     <connections>
                         <outlet property="tableView" destination="GrO-Ll-dP5" id="T3r-BA-1OD"/>
                     </connections>
@@ -133,7 +133,7 @@
         <!--Adding Tasks View Controller-->
         <scene sceneID="ChK-VJ-Ahd">
             <objects>
-                <viewController storyboardIdentifier="NewTaskSB" id="nmE-Tw-19e" customClass="AddingTasksViewController" customModule="HomeMates" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddingTasksViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nmE-Tw-19e" customClass="AddingTasksViewController" customModule="HomeMates" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U4H-hB-JEi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

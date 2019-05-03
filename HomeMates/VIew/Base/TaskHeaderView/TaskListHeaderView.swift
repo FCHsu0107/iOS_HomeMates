@@ -25,11 +25,14 @@ class TaskListHeaderView {
         
         let headerLabel = UILabel(frame: CGRect(x: 20,
                                                 y: 32,
-                                                width: tableView.bounds.size.width,
+                                                width: 100,
                                                 height: tableView.bounds.size.height))
         
         headerLabel.font = UIFont.boldSystemFont(ofSize: 16)
         headerLabel.text = titleText
+
+        headerLabel.textAlignment = .center
+        
         headerLabel.textColor = UIColor.Y4
         headerLabel.sizeToFit()
         

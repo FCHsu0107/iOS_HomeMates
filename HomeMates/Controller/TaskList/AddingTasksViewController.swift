@@ -16,17 +16,15 @@ class AddingTasksViewController: UIViewController {
     
     @IBOutlet weak var checkBoxBtn: UIButton!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        StatusBarSettings.setBackgroundColor(color: UIColor(red: 173/255, green: 144/255, blue: 38/255, alpha: 1))
     }
-    
-    
     
     @IBAction func dismissView(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+        StatusBarSettings.setBackgroundColor(color: UIColor.Y1)
     }
     
 }

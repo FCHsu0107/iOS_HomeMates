@@ -27,7 +27,7 @@ class LobbyViewController: HMBaseViewController {
 
     let taskHeader = TaskListHeaderView()
 
-    var taskListTitle: [String] = ["", "已完成任務", "可接取任務"]
+    var taskListTitle: [String] = ["", "已完成任務", "可接取任務", ""]
     
     var checkTaskList: [TaskObject] = []
 
@@ -47,14 +47,14 @@ class LobbyViewController: HMBaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    
+        
     }
 
     private func registerCellWithNib() {
         tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: LobbyHeaderCell.self), bundle: nil)
-        tableView.jq_registerCellWithNib(identifier: String(describing: PointGoalTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: BlankTableViewCell.self), bundle: nil)
+        tableView.jq_registerCellWithNib(identifier: String(describing: AddTaskTableViewCell.self), bundle: nil)
     }
     
     private func readGroupTaskInfo() {
@@ -113,6 +113,7 @@ extension LobbyViewController: UITableViewDataSource {
             headerCell.groupInfo = groupInfo
             headerCell.settingsBtn.addTarget(self, action: #selector(clickSettingBtn), for: .touchUpInside)
             return headerCell
+        case 3: return nil
 
         default :
 
@@ -126,6 +127,8 @@ extension LobbyViewController: UITableViewDataSource {
         switch section {
         case 0:
             return 170
+        case 3:
+            return 0
         default:
             return 60
         }
@@ -136,7 +139,7 @@ extension LobbyViewController: UITableViewDataSource {
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -154,6 +157,8 @@ extension LobbyViewController: UITableViewDataSource {
                 return taskList.count
             }
 
+        case 3:
+            return 1
         default:
             return 0
         }
@@ -190,7 +195,7 @@ extension LobbyViewController: UITableViewDataSource {
             }
         case 2:
             if taskList.count == 0 {
-                blankCell.loadData(displayText: "請至任務列表新增任務")
+                blankCell.loadData(displayText: "請新增任務")
                 return blankCell
             } else {
                 let task = taskList[indexPath.row]
@@ -205,7 +210,13 @@ extension LobbyViewController: UITableViewDataSource {
                 }
                 return taskCell
             }
-
+        case 3:
+            let thirdCell = tableView.dequeueReusableCell(withIdentifier: String(describing: AddTaskTableViewCell.self),
+                                                          for: indexPath)
+            guard let addingTaskCell = thirdCell as? AddTaskTableViewCell else { return thirdCell}
+            
+            addingTaskCell.addTaskBtn.addTarget(self, action: #selector(addingTaskPage), for: .touchUpInside)
+            return addingTaskCell
         default:
             return UITableViewCell()
         }
@@ -230,6 +241,15 @@ extension LobbyViewController: UITableViewDataSource {
         task.executorUid = UserDefaultManager.shared.userUid
         task.taskStatus = 2
         return task
+    }
+    
+    @objc func addingTaskPage() {
+        guard let newTaskVc = UIStoryboard.task.instantiateViewController(
+            withIdentifier: String(describing: AddingTasksViewController.self))
+            as? AddingTasksViewController else { return }
+        newTaskVc.modalPresentationStyle = .overFullScreen
+        present(newTaskVc, animated: false, completion: nil)
+        
     }
 }
 
