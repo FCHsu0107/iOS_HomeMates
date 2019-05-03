@@ -117,13 +117,19 @@ extension TaskSettingsViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView,
                    commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
-        guard dailyTaskList.count != 0 else { return }
+        switch indexPath.section {
+        case 0:
+            guard dailyTaskList.count != 0 else { return }
+            
+            guard editingStyle == .delete else { return }
+            let task = dailyTaskList[indexPath.row]
+            FirestoreGroupManager.shared.deleteTask(in: .dailyTasksList, docId: task.docId!)
+            dailyTaskList.remove(at: indexPath.row)
+            tableView.reloadData()
+        default:
+            break
+        }
         
-        guard editingStyle == .delete else { return }
-        let task = dailyTaskList[indexPath.row]
-        FirestoreGroupManager.shared.deleteTask(in: .dailyTasksList, docId: task.docId!)
-        dailyTaskList.remove(at: indexPath.row)
-        tableView.reloadData()
 
     }
     

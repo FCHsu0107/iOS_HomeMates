@@ -91,7 +91,6 @@ class TrackerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerVie
         } else {
             selectTaskTextField.text = pickerOptions[row]
             taskTrackerHandler?(pickerOptions[row])
-            
         }
   
     }

@@ -36,7 +36,7 @@ class AddingTasksViewController: UIViewController {
     }
     
     @IBAction func dismissView(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: false, completion: nil)
         StatusBarSettings.setBackgroundColor(color: UIColor.Y1)
     }
     
@@ -49,7 +49,7 @@ class AddingTasksViewController: UIViewController {
         } else {
             addNewTask()
             
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: false, completion: nil)
             StatusBarSettings.setBackgroundColor(color: UIColor.Y1)
         }
     }

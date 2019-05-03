@@ -32,7 +32,7 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="本日完成任務" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Plj-PQ-7XT">
                         <rect key="frame" x="16" y="16" width="310" height="19.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -56,7 +56,7 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="執行者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uc4-JZ-Reh">
                         <rect key="frame" x="273" y="16" width="49" height="20"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
                     </label>

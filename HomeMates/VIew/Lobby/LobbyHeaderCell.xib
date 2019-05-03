@@ -23,33 +23,6 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4B4-Db-hDp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nln-1N-Vbe">
-                                <rect key="frame" x="0.0" y="167.5" width="375" height="32"/>
-                                <subviews>
-                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bulletin_36px" translatesAutoresizingMaskIntoConstraints="NO" id="dVH-Ii-0Vo">
-                                        <rect key="frame" x="20" y="1" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="8pI-lF-xR0"/>
-                                            <constraint firstAttribute="height" constant="30" id="uAm-VX-uEr"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="這裡希望做一個跑馬燈的訊息公告？" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKt-7S-BEQ">
-                                        <rect key="frame" x="66" y="7" width="293" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" name="Y0"/>
-                                <constraints>
-                                    <constraint firstItem="dVH-Ii-0Vo" firstAttribute="centerY" secondItem="nln-1N-Vbe" secondAttribute="centerY" id="H4H-No-PZX"/>
-                                    <constraint firstAttribute="height" constant="32" id="RFF-Gs-QRD"/>
-                                    <constraint firstItem="JKt-7S-BEQ" firstAttribute="leading" secondItem="dVH-Ii-0Vo" secondAttribute="trailing" constant="16" id="Wxr-FD-uni"/>
-                                    <constraint firstItem="JKt-7S-BEQ" firstAttribute="centerY" secondItem="nln-1N-Vbe" secondAttribute="centerY" id="jOd-7M-dtn"/>
-                                    <constraint firstAttribute="trailing" secondItem="JKt-7S-BEQ" secondAttribute="trailing" constant="16" id="tYe-Co-sOv"/>
-                                    <constraint firstItem="dVH-Ii-0Vo" firstAttribute="leading" secondItem="nln-1N-Vbe" secondAttribute="leading" constant="20" id="u17-MY-XMA"/>
-                                </constraints>
-                            </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q1h-s6-dEj">
                                 <rect key="frame" x="147.5" y="20" width="80" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -65,18 +38,18 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="群組名稱在這邊" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwy-Gm-tme">
                                 <rect key="frame" x="116" y="112" width="143" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" name="Y4"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home ID:  88888888" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ua9-dG-jSk">
                                 <rect key="frame" x="114" y="144" width="147" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="Y4"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDb-M4-jOE">
-                                <rect key="frame" x="331" y="141" width="24" height="24"/>
+                                <rect key="frame" x="271" y="112" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="aq3-uW-wtU"/>
                                     <constraint firstAttribute="width" constant="24" id="yZZ-Os-Yr1"/>
@@ -86,15 +59,12 @@
                         </subviews>
                         <color key="backgroundColor" name="Y1"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="nln-1N-Vbe" secondAttribute="trailing" id="Cgs-f4-16m"/>
                             <constraint firstItem="ua9-dG-jSk" firstAttribute="top" secondItem="iwy-Gm-tme" secondAttribute="bottom" constant="8" symbolic="YES" id="Fgl-jA-zkz"/>
                             <constraint firstItem="iwy-Gm-tme" firstAttribute="centerX" secondItem="q1h-s6-dEj" secondAttribute="centerX" id="Fgz-Ln-Et6"/>
-                            <constraint firstAttribute="bottom" secondItem="nln-1N-Vbe" secondAttribute="bottom" id="L1o-7v-LpW"/>
                             <constraint firstItem="iwy-Gm-tme" firstAttribute="top" secondItem="q1h-s6-dEj" secondAttribute="bottom" constant="12" id="LjK-sg-cam"/>
-                            <constraint firstAttribute="trailing" secondItem="gDb-M4-jOE" secondAttribute="trailing" constant="20" id="kQ6-O5-eSE"/>
+                            <constraint firstItem="gDb-M4-jOE" firstAttribute="centerY" secondItem="iwy-Gm-tme" secondAttribute="centerY" id="UdK-eq-9BP"/>
+                            <constraint firstItem="gDb-M4-jOE" firstAttribute="leading" secondItem="iwy-Gm-tme" secondAttribute="trailing" constant="12" id="bZ2-Ed-A8t"/>
                             <constraint firstItem="q1h-s6-dEj" firstAttribute="centerX" secondItem="4B4-Db-hDp" secondAttribute="centerX" id="lCT-sO-Q6F"/>
-                            <constraint firstItem="nln-1N-Vbe" firstAttribute="leading" secondItem="4B4-Db-hDp" secondAttribute="leading" id="lWi-Y8-Hd1"/>
-                            <constraint firstItem="gDb-M4-jOE" firstAttribute="centerY" secondItem="ua9-dG-jSk" secondAttribute="centerY" id="pjm-w1-KPF"/>
                             <constraint firstItem="ua9-dG-jSk" firstAttribute="centerX" secondItem="iwy-Gm-tme" secondAttribute="centerX" id="y0X-vX-9cU"/>
                             <constraint firstItem="q1h-s6-dEj" firstAttribute="top" secondItem="4B4-Db-hDp" secondAttribute="top" constant="20" id="yXd-BZ-T0x"/>
                         </constraints>
@@ -112,20 +82,18 @@
                 <outlet property="groupIDLbl" destination="ua9-dG-jSk" id="tdH-HL-JnZ"/>
                 <outlet property="groupImageView" destination="q1h-s6-dEj" id="l4n-Gp-qVC"/>
                 <outlet property="groupNameLbl" destination="iwy-Gm-tme" id="foC-cN-77w"/>
-                <outlet property="lubbyBulletinLbl" destination="JKt-7S-BEQ" id="HH7-54-yBG"/>
                 <outlet property="settingsBtn" destination="gDb-M4-jOE" id="YRy-Z6-KIx"/>
             </connections>
             <point key="canvasLocation" x="-194.20289855072465" y="23.772321428571427"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Bulletin_36px" width="37" height="36"/>
         <image name="Setting_36px" width="36" height="36"/>
-        <namedColor name="Y0">
-            <color red="0.9882352941176471" green="0.8784313725490196" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="Y1">
             <color red="0.97254901960784312" green="0.81176470588235294" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Y4">
+            <color red="0.29019607843137257" green="0.22352941176470589" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
