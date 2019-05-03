@@ -193,7 +193,7 @@
                                             <constraint firstAttribute="width" constant="80" id="3k7-Ju-wH3"/>
                                             <constraint firstAttribute="height" constant="30" id="kDE-Yd-GXd"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                         <state key="normal" title="新增">
                                             <color key="titleColor" name="Y4"/>
                                         </state>

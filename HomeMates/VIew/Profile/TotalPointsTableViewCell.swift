@@ -32,7 +32,7 @@ class TotalPointsTableViewCell: UITableViewCell {
     func loadData(tasksTracker: TaskTracker) {
         
         taskNameLbl.text = tasksTracker.taskName
-        taskImage.image = UIImage(named: tasksTracker.taskImage ?? "home_normal")
+//        taskImage.image = UIImage(named: tasksTracker.taskImage ?? "home_normal")
         taskTimesLbl.text = "完成  \(String(tasksTracker.taskTimes)) 次"
         totalPointsLbl.text = "\(tasksTracker.totalPoints) 點"
         
