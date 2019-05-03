@@ -27,6 +27,8 @@ enum ImageAsset: String {
     case profile_48px
     case Housework_48px
     
+    case Target_48px
+    
     //App logo
     case HomeMates
     

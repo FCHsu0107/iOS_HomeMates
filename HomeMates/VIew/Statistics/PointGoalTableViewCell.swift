@@ -33,7 +33,7 @@ class PointGoalTableViewCell: UITableViewCell {
  
     func showContributionView(memberInfo: MemberWithPoint) {
         
-        memberImageView.image = UIImage(named: memberInfo.memberPicture)
+        memberImageView.image = UIImage.asset(.Target_48px)
         userNameLbl.text = memberInfo.memberName
         totalPointsLbl.text = "累計積分： \(memberInfo.point) 點"
         

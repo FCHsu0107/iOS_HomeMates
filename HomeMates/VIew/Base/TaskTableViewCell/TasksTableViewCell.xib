@@ -33,7 +33,7 @@
                             <constraint firstAttribute="width" constant="50" id="Pv3-CH-kd5"/>
                             <constraint firstAttribute="height" constant="30" id="zD3-Dg-b0R"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                         <state key="normal" title="功能">
                             <color key="titleColor" name="Y4"/>
                         </state>
@@ -45,14 +45,14 @@
                     </button>
                     <button hidden="YES" opaque="NO" tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djh-Vm-S9V">
                         <rect key="frame" x="243" y="44.5" width="50" height="30"/>
-                        <color key="backgroundColor" name="Y2"/>
+                        <color key="backgroundColor" name="P2"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="8d9-Ix-Ke9"/>
                             <constraint firstAttribute="height" constant="30" id="ZIA-nw-nhJ"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                         <state key="normal" title="功能">
-                            <color key="titleColor" name="Y4"/>
+                            <color key="titleColor" name="W1"/>
                         </state>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -123,6 +123,12 @@
         </tableViewCell>
     </objects>
     <resources>
+        <namedColor name="P2">
+            <color red="0.86274509803921573" green="0.28627450980392155" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="W1">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Y2">
             <color red="1" green="0.70196078431372544" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
