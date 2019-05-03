@@ -81,7 +81,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="HkG-ja-O0R">
-                                <rect key="frame" x="0.0" y="224" width="375" height="443"/>
+                                <rect key="frame" x="0.0" y="204" width="375" height="463"/>
                                 <color key="backgroundColor" name="W1"/>
                                 <connections>
                                     <outlet property="dataSource" destination="vJS-VE-AjH" id="iGD-1N-yZs"/>
@@ -118,7 +118,7 @@
                             <constraint firstItem="5rh-pw-oAa" firstAttribute="leading" secondItem="GC7-Yi-r5l" secondAttribute="leading" id="Rlp-6k-CPV"/>
                             <constraint firstItem="qbp-la-C1j" firstAttribute="bottom" secondItem="GC7-Yi-r5l" secondAttribute="bottom" constant="-4" id="TjS-i0-sei"/>
                             <constraint firstItem="GNs-sp-xiL" firstAttribute="top" secondItem="GC7-Yi-r5l" secondAttribute="bottom" constant="20" id="Uqw-SY-6ho"/>
-                            <constraint firstItem="HkG-ja-O0R" firstAttribute="top" secondItem="idq-Ee-uyT" secondAttribute="bottom" constant="60" id="bsh-IZ-2T8"/>
+                            <constraint firstItem="HkG-ja-O0R" firstAttribute="top" secondItem="idq-Ee-uyT" secondAttribute="bottom" constant="40" id="bsh-IZ-2T8"/>
                             <constraint firstItem="LR4-YV-gkv" firstAttribute="trailing" secondItem="qbp-la-C1j" secondAttribute="trailing" constant="40" id="e85-FK-FPm"/>
                             <constraint firstItem="GC7-Yi-r5l" firstAttribute="leading" secondItem="idq-Ee-uyT" secondAttribute="trailing" constant="20" id="mE7-Xf-QCK"/>
                             <constraint firstItem="HkG-ja-O0R" firstAttribute="leading" secondItem="LR4-YV-gkv" secondAttribute="leading" id="md4-O7-Heh"/>

@@ -226,9 +226,9 @@
 			children = (
 				B9B7F53F225DB71700A6DA9E /* Auth */,
 				B9261C9B2254955A0033ABC9 /* Lobby */,
-				B94D15B1225721D000F43B78 /* Profile */,
 				B9D295D52258CD4C00CF7869 /* TaskList */,
 				B94D15C322585D4400F43B78 /* Statistics */,
+				B94D15B1225721D000F43B78 /* Profile */,
 				B9261C772253856E0033ABC9 /* Base */,
 			);
 			path = Controller;

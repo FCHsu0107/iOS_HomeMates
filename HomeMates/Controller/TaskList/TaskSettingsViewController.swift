@@ -28,10 +28,7 @@ class TaskSettingsViewController: HMBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.jq_registerCellWithNib(identifier: String(describing: AddingTaskHeaderViewCell.self), bundle: nil)
-        tableView.jq_registerCellWithNib(identifier: String(describing: TaskListTableViewCell.self), bundle: nil)
-        tableView.jq_registerCellWithNib(identifier: String(describing: BlankTableViewCell.self), bundle: nil)
-        
+        registerCell()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,49 +54,17 @@ class TaskSettingsViewController: HMBaseViewController {
         }
     }
 
+    func registerCell() {
+        tableView.jq_registerCellWithNib(identifier: String(describing: TaskListTableViewCell.self), bundle: nil)
+        tableView.jq_registerCellWithNib(identifier: String(describing: BlankTableViewCell.self), bundle: nil)
+        tableView.jq_registerCellWithNib(identifier: String(describing: AddTaskTableViewCell.self), bundle: nil)
+    }
 }
 
 extension TaskSettingsViewController: UITableViewDataSource, UITableViewDelegate {
-//
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: AddingTaskHeaderViewCell.self))
-//        guard let headerCell = cell as? AddingTaskHeaderViewCell else { return cell }
-//        headerCell.loadData(titleText: headerTitle[section], guideText: guideText[section])
-//        headerCell.addingTaskBtn.tag = section
-//        let newTaskVc = storyboard?.instantiateViewController(withIdentifier: "NewTaskSB") as? AddingTasksViewController
-//        newTaskVc?.loadViewIfNeeded()
-//        newTaskVc?.view.frame = self.view.frame
-//        newTaskVc?.view.backgroundColor = UIColor.clear
-//
-//        headerCell.taskTypeHandler = { tag in
-//
-//            if tag == 0 {
-//
-//                AlertService.addSpecialTask(in: self, completion: { (task) in
-//                    FirestoreGroupManager.shared.addTask(for: task)
-//                })
-//            } else if tag == 1 {
-//                AlertService.addDailyTask(in: self, completion: { (task) in
-//                    FirestoreGroupManager.shared.addTask(for: task)
-//                    FirestoreGroupManager.shared.addDailyTaskList(task: task)
-//                })
-//            }
-//
-//        }
-//        return headerCell
-//
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 76
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return 0.1
-//    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -111,6 +76,7 @@ extension TaskSettingsViewController: UITableViewDataSource, UITableViewDelegate
                 return dailyTaskList.count
             }
 
+        case 1: return 1
         default: return 0
             
         }
@@ -136,6 +102,12 @@ extension TaskSettingsViewController: UITableViewDataSource, UITableViewDelegate
                 return taskCell
             }
 
+        case 1:
+            let thirdCell = tableView.dequeueReusableCell(withIdentifier: String(describing: AddTaskTableViewCell.self),
+                                                          for: indexPath)
+            guard let addTaskCell = thirdCell as? AddTaskTableViewCell else { return thirdCell }
+            addTaskCell.addTaskBtn.addTarget(self, action: #selector(addingTaskPage), for: .touchUpInside)
+            return addTaskCell
         default:
             return cell
  
@@ -153,6 +125,15 @@ extension TaskSettingsViewController: UITableViewDataSource, UITableViewDelegate
         dailyTaskList.remove(at: indexPath.row)
         tableView.reloadData()
 
+    }
+    
+    @objc func addingTaskPage() {
+        guard let newTaskVc = UIStoryboard.task.instantiateViewController(
+            withIdentifier: String(describing: AddingTasksViewController.self))
+            as? AddingTasksViewController else { return }
+        newTaskVc.modalPresentationStyle = .overFullScreen
+        present(newTaskVc, animated: false, completion: nil)
+        
     }
     
 }
