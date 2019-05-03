@@ -129,7 +129,7 @@ class AuthViewController: HMBaseViewController {
                 || userNameLabel.text?.isEmpty == true
                 || userNameLabel.text?.isEmpty == true {
 
-                AlertService.sigleActionAlert(title: "錯誤", message: "請填寫基本資料", clickTitle: "收到", showInVc: self)
+                AlertService.sigleActionAlert(title: "錯誤", message: "請填寫確實基本資料", clickTitle: "收到", showInVc: self)
                 
             } else if passwordTextField.text != checkTextField.text || passwordTextField.text?.isEmpty == true {
 

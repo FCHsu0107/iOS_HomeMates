@@ -24,7 +24,7 @@ struct TaskObject: Codable {
 
     let taskPoint: Int
 
-    let taskPriodDay: Int
+    var taskPriodDay: Int
     
     var completionTimeStamp: Int?
     

@@ -32,8 +32,6 @@ class TaskListViewController: HMBaseViewController {
         
         tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: BlankTableViewCell.self), bundle: nil)
-        
-        
 
     }
     

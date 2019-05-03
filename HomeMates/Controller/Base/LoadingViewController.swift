@@ -33,7 +33,6 @@ class LoadingViewController: UIViewController {
 
     }
     
-
     func getCornerRadius() {
         
         backgroundView.layer.cornerRadius = 3

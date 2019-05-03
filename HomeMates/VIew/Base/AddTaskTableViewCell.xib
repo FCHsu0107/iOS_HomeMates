@@ -21,7 +21,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="79y-oc-cQ0">
-                        <rect key="frame" x="99" y="23" width="122" height="36"/>
+                        <rect key="frame" x="99" y="16" width="122" height="36"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add_36px" translatesAutoresizingMaskIntoConstraints="NO" id="nsg-IS-hrw">
                                 <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
@@ -45,13 +45,15 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WHS-tj-eue">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="81.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                     </button>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="79y-oc-cQ0" secondAttribute="bottom" constant="20" id="0U4-bH-Xid"/>
                     <constraint firstItem="WHS-tj-eue" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="72p-nh-Ggl"/>
                     <constraint firstItem="79y-oc-cQ0" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Am2-HG-mVl"/>
                     <constraint firstAttribute="trailing" secondItem="WHS-tj-eue" secondAttribute="trailing" id="GlP-I8-t0A"/>
+                    <constraint firstItem="79y-oc-cQ0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="L8i-vz-Ud4"/>
                     <constraint firstAttribute="bottom" secondItem="WHS-tj-eue" secondAttribute="bottom" id="Oxh-so-1uY"/>
                     <constraint firstItem="WHS-tj-eue" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ZEj-Me-n4e"/>
                     <constraint firstItem="79y-oc-cQ0" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="leK-jD-qje"/>

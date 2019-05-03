@@ -143,7 +143,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新增任務" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAK-3z-wp2">
                                         <rect key="frame" x="89.5" y="20" width="61.5" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <color key="textColor" name="Y4"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -187,7 +187,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bya-3G-76O">
-                                        <rect key="frame" x="80" y="186" width="80" height="30"/>
+                                        <rect key="frame" x="80" y="190" width="80" height="30"/>
                                         <color key="backgroundColor" name="Y2"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="3k7-Ju-wH3"/>
@@ -202,24 +202,30 @@
                                                 <integer key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="addTaskAction:" destination="nmE-Tw-19e" eventType="touchUpInside" id="xkO-zz-7dI"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gP4-QP-31T">
-                                        <rect key="frame" x="24" y="134" width="16" height="16"/>
+                                        <rect key="frame" x="24" y="138" width="16" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="16" id="YM4-40-lcO"/>
                                             <constraint firstAttribute="height" constant="16" id="met-zh-Fdo"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="CheckBox_normal_24px"/>
                                         <state key="selected" image="CheckBox_24px"/>
+                                        <connections>
+                                            <action selector="selectedDaliyTask:" destination="nmE-Tw-19e" eventType="touchUpInside" id="eoV-uh-oYo"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每日任務" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIJ-8o-2Gv">
-                                        <rect key="frame" x="48" y="133.5" width="58" height="17"/>
+                                        <rect key="frame" x="48" y="137.5" width="58" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" name="Y4"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(系統將每日自動加入)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lqq-gI-YRm">
-                                        <rect key="frame" x="48" y="154.5" width="120" height="15"/>
+                                        <rect key="frame" x="48" y="158.5" width="120" height="15"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" name="Y4"/>
                                         <nil key="highlightedColor"/>
@@ -228,7 +234,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="lqq-gI-YRm" firstAttribute="leading" secondItem="vIJ-8o-2Gv" secondAttribute="leading" id="3mY-v5-0uR"/>
-                                    <constraint firstAttribute="bottom" secondItem="Bya-3G-76O" secondAttribute="bottom" constant="24" id="4EK-A2-EBm"/>
+                                    <constraint firstAttribute="bottom" secondItem="Bya-3G-76O" secondAttribute="bottom" constant="20" id="4EK-A2-EBm"/>
                                     <constraint firstItem="j8J-Jf-XsS" firstAttribute="leading" secondItem="Wek-Dq-ogI" secondAttribute="leading" id="8Lu-Vj-LiK"/>
                                     <constraint firstItem="j8J-Jf-XsS" firstAttribute="trailing" secondItem="Wek-Dq-ogI" secondAttribute="trailing" id="90D-A2-nQb"/>
                                     <constraint firstAttribute="trailing" secondItem="NtX-py-7qv" secondAttribute="trailing" constant="12" id="QF7-YP-f46"/>
@@ -246,7 +252,7 @@
                                     <constraint firstItem="Wek-Dq-ogI" firstAttribute="leading" secondItem="0aE-EP-OgH" secondAttribute="leading" constant="20" id="tRk-r5-1mb"/>
                                     <constraint firstItem="bAK-3z-wp2" firstAttribute="centerX" secondItem="0aE-EP-OgH" secondAttribute="centerX" id="vHb-RC-B4c"/>
                                     <constraint firstItem="Bya-3G-76O" firstAttribute="centerX" secondItem="0aE-EP-OgH" secondAttribute="centerX" id="wmr-RW-9fb"/>
-                                    <constraint firstItem="gP4-QP-31T" firstAttribute="top" secondItem="j8J-Jf-XsS" secondAttribute="bottom" constant="8" id="xrQ-bs-PaX"/>
+                                    <constraint firstItem="gP4-QP-31T" firstAttribute="top" secondItem="j8J-Jf-XsS" secondAttribute="bottom" constant="12" id="xrQ-bs-PaX"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -263,7 +269,7 @@
                         <viewLayoutGuide key="safeArea" id="P9W-fO-i9H"/>
                     </view>
                     <connections>
-                        <outlet property="checkBoxBtn" destination="gP4-QP-31T" id="qT4-gb-bEc"/>
+                        <outlet property="dailyTaskBtn" destination="gP4-QP-31T" id="qT4-gb-bEc"/>
                         <outlet property="taskNameTextField" destination="Wek-Dq-ogI" id="1EK-8P-5eP"/>
                         <outlet property="taskPointsTextField" destination="j8J-Jf-XsS" id="4eS-Kl-gJH"/>
                     </connections>
