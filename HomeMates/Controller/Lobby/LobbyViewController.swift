@@ -48,6 +48,10 @@ class LobbyViewController: HMBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        FIRFirestoreSerivce.shared.findMainGroup { [weak self](object) in
+            self?.groupInfo = object
+        }
+        
     }
 
     private func registerCellWithNib() {
