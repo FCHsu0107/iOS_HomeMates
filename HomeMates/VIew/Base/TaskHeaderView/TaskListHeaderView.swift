@@ -18,12 +18,12 @@ class TaskListHeaderView {
         
         headerView.backgroundColor = UIColor.white
         
-        let labelBackgroundView = UIView(frame: CGRect(x: 10, y: 26, width: 100, height: 30))
+        let labelBackgroundView = UIView(frame: CGRect(x: 20, y: 26, width: 100, height: 30))
         
         labelBackgroundView.backgroundColor = UIColor.Y1
         labelBackgroundView.layer.cornerRadius = 15
         
-        let headerLabel = UILabel(frame: CGRect(x: 20,
+        let headerLabel = UILabel(frame: CGRect(x: 30,
                                                 y: 32,
                                                 width: 100,
                                                 height: tableView.bounds.size.height))

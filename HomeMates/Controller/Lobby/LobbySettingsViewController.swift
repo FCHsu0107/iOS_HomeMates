@@ -63,7 +63,7 @@ class LobbySettingsViewController: HMBaseViewController {
     }
     
     func showGroupInfo(groupInfo: GroupObject) {
-        groupIdLbl.text = "Home ID: \(groupInfo.groupId)"
+        groupIdLbl.text = groupInfo.groupId
         groupNameTextField.text = groupInfo.name
     }
 }

@@ -21,13 +21,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="目前暫無任務" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5L-5Y-YmF">
-                        <rect key="frame" x="20" y="12" width="280" height="53.5"/>
+                        <rect key="frame" x="30" y="12" width="270" height="53.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" name="P1"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="等待他人完成任務" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sl7-Ju-sT4">
-                        <rect key="frame" x="120" y="30" width="180" height="18"/>
+                        <rect key="frame" x="130" y="30" width="170" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" name="P1"/>
                         <nil key="highlightedColor"/>
@@ -36,7 +36,7 @@
                 <constraints>
                     <constraint firstItem="Sl7-Ju-sT4" firstAttribute="trailing" secondItem="J5L-5Y-YmF" secondAttribute="trailing" id="9k9-tg-pmm"/>
                     <constraint firstAttribute="bottom" secondItem="J5L-5Y-YmF" secondAttribute="bottom" constant="20" id="HaJ-LX-DbR"/>
-                    <constraint firstItem="J5L-5Y-YmF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="cvF-2L-Odg"/>
+                    <constraint firstItem="J5L-5Y-YmF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="cvF-2L-Odg"/>
                     <constraint firstItem="J5L-5Y-YmF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="msN-9r-uNL"/>
                     <constraint firstAttribute="trailing" secondItem="J5L-5Y-YmF" secondAttribute="trailing" constant="20" id="pGS-ry-bLl"/>
                     <constraint firstItem="Sl7-Ju-sT4" firstAttribute="centerY" secondItem="J5L-5Y-YmF" secondAttribute="centerY" id="r5Z-Zw-hWH"/>

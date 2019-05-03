@@ -129,8 +129,6 @@ extension TaskSettingsViewController: UITableViewDataSource, UITableViewDelegate
         default:
             break
         }
-        
-
     }
     
     @objc func addingTaskPage() {
