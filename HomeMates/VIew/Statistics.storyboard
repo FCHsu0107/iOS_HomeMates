@@ -21,7 +21,6 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ag8-sq-ljg" customClass="FSCalendar">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
-                                <color key="backgroundColor" red="0.9882352941176471" green="0.8784313725490196" blue="0.46274509803921571" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="RCy-Ge-gW3"/>
                                 </constraints>

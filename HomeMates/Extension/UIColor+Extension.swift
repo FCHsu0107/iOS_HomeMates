@@ -25,9 +25,10 @@ private enum HMColor: String {
     case Y3
 
     case Y4
+    
+    case BL1
 }
 
-@available(iOS 11.0, *)
 extension UIColor {
 
     static let B1 = HMColor(.B1)
@@ -45,6 +46,8 @@ extension UIColor {
     static let Y3 = HMColor(.Y3)
 
     static let Y4 = HMColor(.Y4)
+    
+    static let BL1 = HMColor(.BL1)
 
     private static func HMColor(_ color: HMColor) -> UIColor? {
 

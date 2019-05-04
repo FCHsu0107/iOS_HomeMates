@@ -20,9 +20,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="342" height="135.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VNM-Oe-6nk">
-                        <rect key="frame" x="12" y="8" width="318" height="119.5"/>
-                        <color key="backgroundColor" red="1" green="0.50980392156862742" blue="0.094117647058823528" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uif-GV-jGS">
+                        <rect key="frame" x="20" y="10" width="100" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="E5D-Jd-he9"/>
+                            <constraint firstAttribute="width" constant="100" id="rL9-Ed-6Ua"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="洗衣服" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7h-cC-z0i">
                         <rect key="frame" x="20" y="43.5" width="46" height="18"/>
@@ -31,7 +39,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="本日完成任務" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Plj-PQ-7XT">
-                        <rect key="frame" x="16" y="16" width="310" height="19.5"/>
+                        <rect key="frame" x="20.5" y="16" width="305.5" height="19.5"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
@@ -63,7 +71,6 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="Plj-PQ-7XT" secondAttribute="trailing" constant="16" id="0hH-CP-g7z"/>
-                    <constraint firstItem="VNM-Oe-6nk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="1kf-XB-xeI"/>
                     <constraint firstItem="Epo-V8-sRH" firstAttribute="top" secondItem="ppz-xH-Dg7" secondAttribute="bottom" id="6g7-Qi-eEm"/>
                     <constraint firstItem="uc4-JZ-Reh" firstAttribute="top" secondItem="Plj-PQ-7XT" secondAttribute="top" id="7Vl-eG-q5X"/>
                     <constraint firstAttribute="trailing" secondItem="ppz-xH-Dg7" secondAttribute="trailing" constant="16" id="9Sr-8y-ieo"/>
@@ -73,20 +80,18 @@
                     <constraint firstAttribute="trailing" secondItem="fil-U2-syV" secondAttribute="trailing" constant="24" id="Fnk-ja-CfT"/>
                     <constraint firstItem="d7h-cC-z0i" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Gvg-ev-eRy"/>
                     <constraint firstAttribute="bottom" secondItem="Epo-V8-sRH" secondAttribute="bottom" id="R5F-7p-oCH"/>
-                    <constraint firstItem="Plj-PQ-7XT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="W9F-Oi-aOF"/>
+                    <constraint firstItem="Plj-PQ-7XT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20.5" id="W9F-Oi-aOF"/>
+                    <constraint firstItem="Uif-GV-jGS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Wr4-lO-JvD"/>
                     <constraint firstItem="ppz-xH-Dg7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ZyM-hU-5QL"/>
                     <constraint firstItem="Epo-V8-sRH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="cmK-7t-z9L"/>
-                    <constraint firstItem="VNM-Oe-6nk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="iR6-ai-T65"/>
                     <constraint firstAttribute="trailing" secondItem="uc4-JZ-Reh" secondAttribute="trailing" constant="20" id="mMi-dM-2MW"/>
                     <constraint firstItem="Plj-PQ-7XT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="no9-9c-bBN"/>
+                    <constraint firstItem="Uif-GV-jGS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="qtK-Ji-1Ig"/>
                     <constraint firstItem="ppz-xH-Dg7" firstAttribute="top" secondItem="d7h-cC-z0i" secondAttribute="bottom" id="wbL-Pi-g4P"/>
-                    <constraint firstAttribute="bottom" secondItem="VNM-Oe-6nk" secondAttribute="bottom" constant="8" id="ybU-Ea-cUs"/>
-                    <constraint firstAttribute="trailing" secondItem="VNM-Oe-6nk" secondAttribute="trailing" constant="12" id="zUz-xJ-Who"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="backgroundViewImage" destination="VNM-Oe-6nk" id="V1H-ML-1TP"/>
                 <outlet property="doneEventTextLbl" destination="d7h-cC-z0i" id="8j4-F0-Imf"/>
                 <outlet property="excutorNameTextLbl" destination="fil-U2-syV" id="LEB-TI-6LO"/>
                 <outlet property="willdoEventTextLbl" destination="Epo-V8-sRH" id="7G0-na-45S"/>

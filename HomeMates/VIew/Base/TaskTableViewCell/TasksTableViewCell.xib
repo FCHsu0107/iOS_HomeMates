@@ -45,7 +45,7 @@
                     </button>
                     <button hidden="YES" opaque="NO" tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djh-Vm-S9V">
                         <rect key="frame" x="243" y="44.5" width="50" height="30"/>
-                        <color key="backgroundColor" name="P2"/>
+                        <color key="backgroundColor" name="P1"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="8d9-Ix-Ke9"/>
                             <constraint firstAttribute="height" constant="30" id="ZIA-nw-nhJ"/>
@@ -123,8 +123,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="P2">
-            <color red="0.83921568627450982" green="0.32156862745098042" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="P1">
+            <color red="0.62000000476837158" green="0.2199999988079071" blue="0.32499998807907104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="W1">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
