@@ -25,6 +25,8 @@ struct UserObject: Codable {
     let finishSignUp: Bool
     
     var mainGroupId: String?
+    
+    var fcmToken: String?
  
     enum CodingKeys: String, CodingKey {
         
@@ -43,6 +45,8 @@ struct UserObject: Codable {
         case finishSignUp
         
         case mainGroupId
+        
+        case fcmToken
 
     }
 }

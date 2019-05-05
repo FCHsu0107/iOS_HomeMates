@@ -149,7 +149,7 @@ class AuthViewController: HMBaseViewController {
     }
     
     private func createUserDoc() {
-        FIRAuthService.shared.createUser(withEmail: emailTextField.text!,
+        FIRAuthManager.shared.createUser(withEmail: emailTextField.text!,
                                          password: passwordTextField.text!) { [weak self] (user, error) in
             if error == nil {
                 guard let user = user else { return }
@@ -160,7 +160,8 @@ class AuthViewController: HMBaseViewController {
                                          creator: false,
                                          application: false,
                                          finishSignUp: false,
-                                         mainGroupId: nil)
+                                         mainGroupId: nil,
+                                         fcmToken: nil)
                 UserDefaultManager.shared.userUid = user.uid
                 FIRFirestoreSerivce.shared.createUser(uid: user.uid,
                                                       for: newUser,
@@ -176,7 +177,7 @@ class AuthViewController: HMBaseViewController {
     }
     
     private func signInAction() {
-        FIRAuthService.shared.signIn(withEmail: emailTextField.text!,
+        FIRAuthManager.shared.signIn(withEmail: emailTextField.text!,
                                      password: passwordTextField.text!) { [weak self] (error) in
             if error == nil {
                 FIRFirestoreSerivce.shared.findUser { [weak self] bool, userInfo  in

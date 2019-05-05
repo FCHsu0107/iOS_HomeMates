@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+// swiftlint:disable cyclomatic_complexity
 class LobbyViewController: HMBaseViewController {
 
     @IBOutlet weak var tableView: UITableView! {
@@ -43,6 +43,8 @@ class LobbyViewController: HMBaseViewController {
         registerCellWithNib()
         readGroupTaskInfo()
 
+        PushNotificationManager.shared.registerForPushNotifications()
+        PushNotificationManager.shared.updateFirestorePushTokenIfNeeded()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -189,16 +191,28 @@ extension LobbyViewController: UITableViewDataSource {
                 let task = processTaskList[indexPath.row]
                 
                 taskCell.loadData(taskObject: task, status: TaskCellStatus.doingTask)
-                
+    
                 taskCell.clickHandler = { [weak self] cell, tag in
                     guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
-                    
                     guard var updateTask = self?.processTaskList[indexPath.row] else { return }
                     updateTask.taskStatus += tag
                     if tag == 1 {
                         let timeStamp = Int(DateProvider.shared.getTimeStamp())
                         updateTask.completionTimeStamp = timeStamp
                         self?.messageView.showSuccessView(title: "完成任務", body: "待其他成員確認任務後即可獲得積分")
+                        
+                        PushNotificationSender.shared.sendPushNotification(
+                            to: "foyXMcEO79o:APA91bEY97DJAvGQiEyhGW-UqOHVRQyfHauRhgWwpkyEu4gVzEC8md-F5466CClPOL3h4IsD4twEdGQB8fJG_k0LBLpwWswaXQaXl7U7HeS9qdQnGRGM2pa1U0LwtTroZOtH5CAacORG",
+                            title: "test",
+                            body: "test")
+//                        guard let members = self?.memberList else { return }
+//                        for member in members {
+//                            guard let memberToken = member.fmcToken else { return }
+//                            PushNotificationSender.shared
+//                                .sendPushNotification(to: memberToken,
+//                                                      title: "提示",
+//                                                      body: "\(String(describing: UserDefaultManager.shared.userName)) 已經完成家事 \(updateTask.taskName)，快來確認吧！")
+//                        }
                     }
                     
                     FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
@@ -234,7 +248,7 @@ extension LobbyViewController: UITableViewDataSource {
                 let task = taskList[indexPath.row]
                 taskCell.loadData(taskObject: task, status: .acceptSpecialTask)
                 taskCell.clickHandler = { [weak self] cell, _ in
-                    self?.messageView.showSuccessView(title: "已接取任務", body: "待任務完成後點選確認建")
+                    self?.messageView.showSuccessView(title: "已接取任務", body: "待任務完成後點選確認鍵")
                     guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
                     
                     guard let updateTask = self?.taskList[indexPath.row] else { return }
@@ -266,6 +280,15 @@ extension LobbyViewController: UITableViewDataSource {
             FirestoreGroupManager.shared.deleteTask(in: .tasks, docId: task.docId!)
         }
     }
+    
+    internal func tableView(_ tableView: UITableView,
+                          editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        if indexPath.section == 2 && taskList.count != 0 {
+            return UITableViewCell.EditingStyle.delete
+        } else {
+            return UITableViewCell.EditingStyle.none
+        }
+    }
   
     private func updateTaskStatus(taskItem: TaskObject) -> TaskObject {
         var task = taskItem
@@ -288,3 +311,5 @@ extension LobbyViewController: UITableViewDataSource {
 extension LobbyViewController: UITableViewDelegate {
 
 }
+
+// swiftlint: enable cyclomatic_complexity

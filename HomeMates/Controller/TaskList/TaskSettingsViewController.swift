@@ -131,6 +131,15 @@ extension TaskSettingsViewController: UITableViewDataSource, UITableViewDelegate
         }
     }
     
+    public func tableView(_ tableView: UITableView,
+                          editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        if indexPath.section == 0 && dailyTaskList.count != 0 {
+            return UITableViewCell.EditingStyle.delete
+        } else {
+            return UITableViewCell.EditingStyle.none
+        }
+    }
+    
     @objc func addingTaskPage() {
         guard let newTaskVc = UIStoryboard.task.instantiateViewController(
             withIdentifier: String(describing: AddingTasksViewController.self))

@@ -49,10 +49,10 @@ class ProfileHeaderViewCell: UITableViewCell {
     }
 
     @IBAction func logoutBtn(_ sender: Any) {
-        UserDefaultManager.shared.groupId = nil
-        UserDefaultManager.shared.userUid = nil
-        UserDefaultManager.shared.userName = nil
+        
+        PushNotificationManager.shared.deletePushToken()
         try? Auth.auth().signOut()
+
         print("sign out")
     }
     

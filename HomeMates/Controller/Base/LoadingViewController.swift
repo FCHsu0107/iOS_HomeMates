@@ -51,7 +51,7 @@ class LoadingViewController: UIViewController {
             return
         }
         
-        FIRAuthService.shared.addSignUpListener { (flag) in
+        FIRAuthManager.shared.addSignUpListener { (flag) in
             if flag == false {
                 print(flag)
                let authVc = UIStoryboard.auth.instantiateInitialViewController()!

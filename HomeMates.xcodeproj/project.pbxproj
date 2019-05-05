@@ -82,7 +82,7 @@
 		B9B99F3B2262DB0400314BB6 /* Snapshot+Entension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F3A2262DB0400314BB6 /* Snapshot+Entension.swift */; };
 		B9B99F3E226311B000314BB6 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F3C226311B000314BB6 /* LoadingViewController.swift */; };
 		B9B99F41226313D300314BB6 /* Loading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9B99F40226313D300314BB6 /* Loading.storyboard */; };
-		B9B99F4322631C6C00314BB6 /* FIRAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F4222631C6C00314BB6 /* FIRAuthService.swift */; };
+		B9B99F4322631C6C00314BB6 /* FIRAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F4222631C6C00314BB6 /* FIRAuthManager.swift */; };
 		B9B99F462263690C00314BB6 /* GroupObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F452263690C00314BB6 /* GroupObject.swift */; };
 		B9B99F4B2264660100314BB6 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F4A2264660100314BB6 /* UserDefault.swift */; };
 		B9B99F4D22648E4B00314BB6 /* GroupInfoInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F4C22648E4B00314BB6 /* GroupInfoInUser.swift */; };
@@ -94,6 +94,8 @@
 		B9D71AA522534D4F00F242DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D71AA322534D4F00F242DA /* Main.storyboard */; };
 		B9D71AA722534D5100F242DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9D71AA622534D5100F242DA /* Assets.xcassets */; };
 		B9D71AAA22534D5100F242DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D71AA822534D5100F242DA /* LaunchScreen.storyboard */; };
+		B9EE7EF6227EC55800647600 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EE7EF5227EC55800647600 /* PushNotificationManager.swift */; };
+		B9EE7EF8227EE43B00647600 /* PushNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EE7EF7227EE43B00647600 /* PushNotificationSender.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -172,7 +174,7 @@
 		B9B99F3A2262DB0400314BB6 /* Snapshot+Entension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Snapshot+Entension.swift"; sourceTree = "<group>"; };
 		B9B99F3C226311B000314BB6 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		B9B99F40226313D300314BB6 /* Loading.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
-		B9B99F4222631C6C00314BB6 /* FIRAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRAuthService.swift; sourceTree = "<group>"; };
+		B9B99F4222631C6C00314BB6 /* FIRAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRAuthManager.swift; sourceTree = "<group>"; };
 		B9B99F452263690C00314BB6 /* GroupObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupObject.swift; sourceTree = "<group>"; };
 		B9B99F4A2264660100314BB6 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		B9B99F4C22648E4B00314BB6 /* GroupInfoInUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoInUser.swift; sourceTree = "<group>"; };
@@ -186,6 +188,9 @@
 		B9D71AA622534D5100F242DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9D71AA922534D5100F242DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B9D71AAB22534D5100F242DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9EE7EF4227EC51600647600 /* HomeMates.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HomeMates.entitlements; sourceTree = "<group>"; };
+		B9EE7EF5227EC55800647600 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
+		B9EE7EF7227EE43B00647600 /* PushNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSender.swift; sourceTree = "<group>"; };
 		D95E51F3504518D6A60A4E46 /* Pods-HomeMates.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeMates.debug.xcconfig"; path = "Target Support Files/Pods-HomeMates/Pods-HomeMates.debug.xcconfig"; sourceTree = "<group>"; };
 		E5C452DD2D14E69356D08726 /* Pods-HomeMates.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeMates.release.xcconfig"; path = "Target Support Files/Pods-HomeMates/Pods-HomeMates.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -483,10 +488,12 @@
 			isa = PBXGroup;
 			children = (
 				B9B99F342262151100314BB6 /* FIRFirestoreService.swift */,
-				B9B99F4222631C6C00314BB6 /* FIRAuthService.swift */,
+				B9B99F4222631C6C00314BB6 /* FIRAuthManager.swift */,
 				B959F738226DD56900D3CA68 /* FirestoreGroupManager.swift */,
 				B959F73E226EF6CA00D3CA68 /* FirestoreUserManager.swift */,
 				B9B99F362262C44B00314BB6 /* FIRCollectionReference.swift */,
+				B9EE7EF5227EC55800647600 /* PushNotificationManager.swift */,
+				B9EE7EF7227EE43B00647600 /* PushNotificationSender.swift */,
 			);
 			path = Firestore;
 			sourceTree = "<group>";
@@ -533,6 +540,7 @@
 		B9D71A9E22534D4F00F242DA /* HomeMates */ = {
 			isa = PBXGroup;
 			children = (
+				B9EE7EF4227EC51600647600 /* HomeMates.entitlements */,
 				B94D15B42257327D00F43B78 /* Third-party framework */,
 				B9261C762253852C0033ABC9 /* Resource */,
 				B9261C75225385130033ABC9 /* Extension */,
@@ -591,6 +599,11 @@
 				TargetAttributes = {
 					B9D71A9B22534D4F00F242DA = {
 						CreatedOnToolsVersion = 10.2;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -763,7 +776,7 @@
 				B9B7F548225EEA8E00A6DA9E /* AlertService.swift in Sources */,
 				B9B99F372262C44B00314BB6 /* FIRCollectionReference.swift in Sources */,
 				B959F739226DD56900D3CA68 /* FirestoreGroupManager.swift in Sources */,
-				B9B99F4322631C6C00314BB6 /* FIRAuthService.swift in Sources */,
+				B9B99F4322631C6C00314BB6 /* FIRAuthManager.swift in Sources */,
 				B9B7F535225D933600A6DA9E /* TrackerTableViewCell.swift in Sources */,
 				B9D295D72258CD7D00CF7869 /* TaskListViewController.swift in Sources */,
 				B91A696022704A98008C9B66 /* Array+Extension.swift in Sources */,
@@ -805,6 +818,7 @@
 				B9B7F541225DB73D00A6DA9E /* AuthViewController.swift in Sources */,
 				B94D15B322572A2200F43B78 /* HMBaseViewController.swift in Sources */,
 				B9B99F462263690C00314BB6 /* GroupObject.swift in Sources */,
+				B9EE7EF8227EE43B00647600 /* PushNotificationSender.swift in Sources */,
 				B91D3AF8226970AF00C1A28F /* TotalPointsTableViewCell.swift in Sources */,
 				B9B10D732258A1780081C856 /* UIView+Extension.swift in Sources */,
 				B91D3B0F226B11F200C1A28F /* TaskListTableViewCell.swift in Sources */,
@@ -813,6 +827,7 @@
 				B91D3B0B226AED2900C1A28F /* AddingTaskHeaderViewCell.swift in Sources */,
 				B91D3B12226B62BC00C1A28F /* ProfileSettingsViewController.swift in Sources */,
 				B98446C6226FF33100E5044A /* BlankTableViewCell.swift in Sources */,
+				B9EE7EF6227EC55800647600 /* PushNotificationManager.swift in Sources */,
 				B94D15CA225886FB00F43B78 /* EventCell.swift in Sources */,
 				B91D3A9A2264ABD400C1A28F /* MemberObject.swift in Sources */,
 				B94D15AF225721C500F43B78 /* ProfileHeaderViewCell.swift in Sources */,
@@ -966,6 +981,7 @@
 			baseConfigurationReference = D95E51F3504518D6A60A4E46 /* Pods-HomeMates.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HomeMates/HomeMates.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = R66LF8J636;
@@ -987,6 +1003,7 @@
 			baseConfigurationReference = E5C452DD2D14E69356D08726 /* Pods-HomeMates.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HomeMates/HomeMates.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R66LF8J636;
 				INFOPLIST_FILE = HomeMates/Info.plist;

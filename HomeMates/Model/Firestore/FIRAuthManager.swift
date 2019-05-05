@@ -10,11 +10,11 @@ import Foundation
 import Firebase
 import FirebaseAuth
 
-class FIRAuthService {
+class FIRAuthManager {
     
     private init() {}
     
-    static let shared = FIRAuthService()
+    static let shared = FIRAuthManager()
     
     func createUser(withEmail: String,
                     password: String,
@@ -43,6 +43,7 @@ class FIRAuthService {
     
     func signOut() {
         try? Auth.auth().signOut()
+        
     }
     
     func addSignUpListener(listener: @escaping (Bool) -> Void) {

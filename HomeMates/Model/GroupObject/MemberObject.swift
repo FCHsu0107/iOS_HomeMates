@@ -24,6 +24,8 @@ struct MemberObject: Codable {
     
     var goal: Int?
     
+    var fmcToken: String?
+    
     enum CodingKeys: String, CodingKey {
         
         case docId
@@ -39,6 +41,8 @@ struct MemberObject: Codable {
         case userPicture
         
         case goal
+        
+        case fmcToken
     }
 }
 
