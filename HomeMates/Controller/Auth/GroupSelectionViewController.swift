@@ -154,7 +154,7 @@ class GroupSelectionViewController: UIViewController {
                     let groupMemnber = MemberObject(docId: nil, userId: user.uid,
                                                     userName: userInfo.name, isCreator: true,
                                                     permission: true, userPicture: "profile_48px", goal: nil,
-                                                    fmcToken: nil)
+                                                    fcmToken: nil)
                     
                     FIRFirestoreSerivce.shared.createSub(for: groupMemnber, in: .groups,
                                                          inDocument: groupId, inNext: .members)
@@ -196,7 +196,7 @@ class GroupSelectionViewController: UIViewController {
                             let memberInfo = MemberObject(docId: nil, userId: user.uid,
                                                           userName: userInfo.name, isCreator: false,
                                                           permission: false, userPicture: "profile_48px",
-                                                          goal: nil, fmcToken: nil)
+                                                          goal: nil, fcmToken: nil)
                             
                             FIRFirestoreSerivce.shared.createSub(for: memberInfo, in: .groups,
                                                                  inDocument: docIds[index], inNext: .members)
