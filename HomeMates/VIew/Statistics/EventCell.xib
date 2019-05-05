@@ -33,7 +33,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="洗衣服" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7h-cC-z0i">
-                        <rect key="frame" x="20" y="43.5" width="46" height="18"/>
+                        <rect key="frame" x="20" y="43.5" width="46" height="82"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
@@ -44,20 +44,8 @@
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="預計完成任務" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppz-xH-Dg7">
-                        <rect key="frame" x="16" y="61.5" width="310" height="57"/>
-                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="1"/>
-                        <color key="textColor" name="Y4"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="洗衣服" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Epo-V8-sRH">
-                        <rect key="frame" x="20" y="118.5" width="306" height="17"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" name="Y4"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="執行者：小明" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fil-U2-syV">
-                        <rect key="frame" x="226" y="43.5" width="92" height="18"/>
+                        <rect key="frame" x="226" y="43.5" width="92" height="72"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
@@ -71,30 +59,24 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="Plj-PQ-7XT" secondAttribute="trailing" constant="16" id="0hH-CP-g7z"/>
-                    <constraint firstItem="Epo-V8-sRH" firstAttribute="top" secondItem="ppz-xH-Dg7" secondAttribute="bottom" id="6g7-Qi-eEm"/>
                     <constraint firstItem="uc4-JZ-Reh" firstAttribute="top" secondItem="Plj-PQ-7XT" secondAttribute="top" id="7Vl-eG-q5X"/>
-                    <constraint firstAttribute="trailing" secondItem="ppz-xH-Dg7" secondAttribute="trailing" constant="16" id="9Sr-8y-ieo"/>
-                    <constraint firstAttribute="trailing" secondItem="Epo-V8-sRH" secondAttribute="trailing" constant="16" id="A2i-Fj-zHW"/>
                     <constraint firstItem="d7h-cC-z0i" firstAttribute="top" secondItem="Plj-PQ-7XT" secondAttribute="bottom" constant="8" id="AkE-H3-rUq"/>
+                    <constraint firstAttribute="bottom" secondItem="d7h-cC-z0i" secondAttribute="bottom" constant="10" id="D3H-iW-Mbs"/>
                     <constraint firstItem="fil-U2-syV" firstAttribute="top" secondItem="d7h-cC-z0i" secondAttribute="top" id="DWC-CL-e2d"/>
                     <constraint firstAttribute="trailing" secondItem="fil-U2-syV" secondAttribute="trailing" constant="24" id="Fnk-ja-CfT"/>
+                    <constraint firstAttribute="bottom" secondItem="fil-U2-syV" secondAttribute="bottom" constant="20" id="FwB-h8-GV5"/>
                     <constraint firstItem="d7h-cC-z0i" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Gvg-ev-eRy"/>
-                    <constraint firstAttribute="bottom" secondItem="Epo-V8-sRH" secondAttribute="bottom" id="R5F-7p-oCH"/>
                     <constraint firstItem="Plj-PQ-7XT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20.5" id="W9F-Oi-aOF"/>
                     <constraint firstItem="Uif-GV-jGS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Wr4-lO-JvD"/>
-                    <constraint firstItem="ppz-xH-Dg7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ZyM-hU-5QL"/>
-                    <constraint firstItem="Epo-V8-sRH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="cmK-7t-z9L"/>
                     <constraint firstAttribute="trailing" secondItem="uc4-JZ-Reh" secondAttribute="trailing" constant="20" id="mMi-dM-2MW"/>
                     <constraint firstItem="Plj-PQ-7XT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="no9-9c-bBN"/>
                     <constraint firstItem="Uif-GV-jGS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="qtK-Ji-1Ig"/>
-                    <constraint firstItem="ppz-xH-Dg7" firstAttribute="top" secondItem="d7h-cC-z0i" secondAttribute="bottom" id="wbL-Pi-g4P"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="doneEventTextLbl" destination="d7h-cC-z0i" id="8j4-F0-Imf"/>
                 <outlet property="excutorNameTextLbl" destination="fil-U2-syV" id="LEB-TI-6LO"/>
-                <outlet property="willdoEventTextLbl" destination="Epo-V8-sRH" id="7G0-na-45S"/>
             </connections>
             <point key="canvasLocation" x="140.57971014492756" y="150.66964285714286"/>
         </tableViewCell>

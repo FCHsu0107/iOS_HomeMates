@@ -25,7 +25,7 @@ class ProfileViewController: HMBaseViewController {
     
     let dispatchGroup = DispatchGroup()
 
-    var taskListTitle: [String] = ["", "個人任務", "任務日誌"]
+    var taskListTitle: [String] = ["", "任務日誌"]
     
     var processTaskList: [TaskObject] = []
 
@@ -144,18 +144,18 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
+//        case 1:
+//            if processTaskList.count == 0 {
+//                return 1
+//            } else {
+//                return processTaskList.count
+//            }
         case 1:
-            if processTaskList.count == 0 {
-                return 1
-            } else {
-                return processTaskList.count
-            }
-        case 2:
             if doneTaskList.count == 0 {
                 return 1
             } else {
@@ -174,39 +174,39 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         
         switch indexPath.section {
 
-        case 1:
-            if processTaskList.count == 0 {
-                blankCell.loadData(displayText: "請至任務列表接取任務")
-                return blankCell
-            } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self),
-                                                         for: indexPath)
-                guard let taskCell = cell as? TasksTableViewCell else { return cell }
-                let task = processTaskList[indexPath.row]
-                taskCell.loadData(taskObject: task, status: TaskCellStatus.doingTask)
-                
-                taskCell.clickHandler = { [weak self] cell, tag in
-                    guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
-                    
-                    guard var updateTask = self?.processTaskList[indexPath.row] else { return }
-                    updateTask.taskStatus += tag
-                    if tag == 1 {
-                        let timeStamp = Int(DateProvider.shared.getTimeStamp())
-                        updateTask.completionTimeStamp = timeStamp
-                        self?.dispatchGroup.notify(queue: .main, execute: {
-                            self?.messagesView.showSuccessView(title: "完成任務", body: "待其他成員確認任務後即可獲得積分")
-                        })
-                    }
-                    
-                    FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
-                    self?.getAllInfo()
-                    
-                }
-                
-                return taskCell
-            }
+//        case 1:
+//            if processTaskList.count == 0 {
+//                blankCell.loadData(displayText: "請至任務列表接取任務")
+//                return blankCell
+//            } else {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self),
+//                                                         for: indexPath)
+//                guard let taskCell = cell as? TasksTableViewCell else { return cell }
+//                let task = processTaskList[indexPath.row]
+//                taskCell.loadData(taskObject: task, status: TaskCellStatus.doingTask)
+//
+//                taskCell.clickHandler = { [weak self] cell, tag in
+//                    guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
+//
+//                    guard var updateTask = self?.processTaskList[indexPath.row] else { return }
+//                    updateTask.taskStatus += tag
+//                    if tag == 1 {
+//                        let timeStamp = Int(DateProvider.shared.getTimeStamp())
+//                        updateTask.completionTimeStamp = timeStamp
+//                        self?.dispatchGroup.notify(queue: .main, execute: {
+//                            self?.messagesView.showSuccessView(title: "完成任務", body: "待其他成員確認任務後即可獲得積分")
+//                        })
+//                    }
+//
+//                    FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
+//                    self?.getAllInfo()
+//
+//                }
+//
+//                return taskCell
+//            }
             
-        case 2:
+        case 1:
 
             if doneTaskList.count == 0 {
                 blankCell.loadData(displayText: "待他人確認任務完成")

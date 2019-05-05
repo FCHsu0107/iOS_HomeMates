@@ -73,7 +73,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="710-HS-9KF"/>
                     </view>
-                    <navigationItem key="navigationItem" title="任務紀錄員" id="csF-aD-Vni">
+                    <navigationItem key="navigationItem" title="任務紀錄" id="csF-aD-Vni">
                         <barButtonItem key="rightBarButtonItem" image="Toggle_24px" id="EnN-gB-xsD">
                             <color key="tintColor" name="Y4"/>
                             <connections>

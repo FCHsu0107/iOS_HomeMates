@@ -14,19 +14,25 @@ class ProfileSettingsViewController: HMBaseViewController {
     
     @IBOutlet weak var userNameTextField: HMBaseTextField!
     
-    @IBOutlet weak var ownGroupTextField: HMBaseTextField! {
+    @IBOutlet weak var ownGroupTextField: HMBaseTextField!
+    
+    @IBOutlet weak var ownGroupIDTextField: HMBaseTextField!
+    
+    @IBOutlet weak var monthGoalTextField: HMBaseTextField! {
         didSet {
             monthGoalTextField.keyboardType = .numberPad
         }
     }
     
-    @IBOutlet weak var monthGoalTextField: HMBaseTextField!
-    
     var user: UserObject?
+    var groupInfo: GroupObject?
     var goal: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        FirestoreGroupManager.shared.readGroupInfo { [weak self] (object) in
+            self?.groupInfo = object
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,15 +50,18 @@ class ProfileSettingsViewController: HMBaseViewController {
         
         FirestoreUserManager.shared.updateUserInfo(newName: userName, goal: Int(goal))
         navigationController?.popToRootViewController(animated: false)
-
     }
     
     func loadUserInfo() {
-        guard let name = user?.name, let mainGroupId = user?.mainGroupId else { return }
+        guard let name = user?.name else { return }
         
         userNameTextField.text = name
-        ownGroupTextField.text = mainGroupId
         guard let goal = goal else { return }
         monthGoalTextField.text = String(goal)
+        guard let mainGroupId = groupInfo?.name,
+            let mainGroupID = groupInfo?.groupId else { return }
+        ownGroupTextField.text = mainGroupId
+        ownGroupIDTextField.text = mainGroupID
+       
     }
 }

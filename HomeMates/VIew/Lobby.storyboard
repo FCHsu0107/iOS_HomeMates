@@ -33,7 +33,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Nyd-dX-Vwa"/>
                     </view>
-                    <navigationItem key="navigationItem" title="任務大廳" id="xj5-wC-5dc"/>
+                    <navigationItem key="navigationItem" title="任務大廳" id="xj5-wC-5dc">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="Setting_24px" id="juw-KB-UQR">
+                            <connections>
+                                <segue destination="vJS-VE-AjH" kind="show" identifier="LobbySettingsSegue" id="OKu-im-GhX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="yPU-2H-rY1" id="RiE-Nx-5nh"/>
                         <segue destination="vJS-VE-AjH" kind="show" identifier="LobbySettingsSegue" id="yWp-UW-c5X"/>
@@ -43,7 +49,7 @@
             </objects>
             <point key="canvasLocation" x="903" y="-10"/>
         </scene>
-        <!--群組管理-->
+        <!--群組資訊-->
         <scene sceneID="rqT-3P-deY">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="vJS-VE-AjH" customClass="LobbySettingsViewController" customModule="HomeMates" customModuleProvider="target" sceneMemberID="viewController">
@@ -163,7 +169,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LR4-YV-gkv"/>
                     </view>
-                    <navigationItem key="navigationItem" title="群組管理" id="r8b-kZ-UeM"/>
+                    <navigationItem key="navigationItem" title="群組資訊" id="r8b-kZ-UeM"/>
                     <connections>
                         <outlet property="editButton" destination="qbp-la-C1j" id="5Jz-KE-Puc"/>
                         <outlet property="groupIdLbl" destination="GNs-sp-xiL" id="qo0-vr-kbN"/>
@@ -201,6 +207,7 @@
     <resources>
         <image name="Editor_24px" width="24" height="24"/>
         <image name="HomeMates" width="200" height="200"/>
+        <image name="Setting_24px" width="24" height="24"/>
         <image name="Tick_20px" width="20" height="20"/>
         <namedColor name="W1">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -212,4 +219,7 @@
             <color red="0.29019607843137257" green="0.22352941176470589" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="OKu-im-GhX"/>
+    </inferredMetricsTieBreakers>
 </document>

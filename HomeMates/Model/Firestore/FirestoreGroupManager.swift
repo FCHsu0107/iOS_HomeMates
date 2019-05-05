@@ -69,6 +69,24 @@ class FirestoreGroupManager {
         addTaskToList(for: dailyTask, in: .dailyTasksList)
     }
     
+    func readGroupInfo(completion: @escaping (GroupObject) -> Void) {
+        groupDocument().getDocument { (document, err) in
+            if err == nil {
+                guard let document = document else { return }
+                do {
+                    
+                    let object = try document.decode(as: GroupObject.self)
+                     
+                    completion(object)
+                } catch {
+                    print(error)
+                }
+            } else {
+                //err != nil
+            }
+        }
+    }
+    
     private func readtaskList(from collectionReference: FIRCollectionReference,
                               completion: @escaping ([TaskObject]) -> Void) {
         reference(to: collectionReference).getDocuments { (snapshots, _) in
@@ -134,23 +152,6 @@ class FirestoreGroupManager {
     
     func updateGroupInfo(groupName: String) {
         groupDocument().updateData([GroupObject.CodingKeys.name.rawValue: groupName])
-    }
-    
-    func readGroupInfo(completion: @escaping (GroupObject) -> Void) {
-        groupDocument().getDocument { (document, err) in
-            if err == nil {
-                do {
-                    guard let document = document else { return }
-                    let object = try document.decode(as: GroupObject.self)
-                    completion(object)
-                } catch {
-                    print(error)
-                }
-                
-            } else {
-                //err != nil
-            }
-        }
     }
     
     func addtheRegularTaskEveryDay() {

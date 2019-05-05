@@ -44,8 +44,10 @@ class PointGoalTableViewCell: UITableViewCell {
         }
         let point = Double(memberInfo.point)
         let presentGoal = Double(goal)
-        let persent = point / presentGoal * 100
-        
+        var persent = point / presentGoal * 100
+        if persent > 100 {
+            persent = 100
+        }
             setProgress(CGFloat(persent))
     }
     
@@ -54,7 +56,7 @@ class PointGoalTableViewCell: UITableViewCell {
         progressView.layer.cornerRadius = 3
         progressView.backgroundColor = UIColor.P1
         achievingRateView.addSubview(progressView)
-        let fullWidth: CGFloat = achievingRateView.bounds.width
+        let fullWidth: CGFloat = achievingRateView.frame.width
         let newWidth = progress / 100 * fullWidth
         
         UIView.animate(withDuration: 2) {
