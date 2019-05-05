@@ -64,7 +64,9 @@ class FirestoreGroupManager {
     }
     
     func addDailyTaskList(task: TaskObject) {
-        addTaskToList(for: task, in: .dailyTasksList)
+        var dailyTask = task
+        dailyTask.publisherName = "系統提示"
+        addTaskToList(for: dailyTask, in: .dailyTasksList)
     }
     
     private func readtaskList(from collectionReference: FIRCollectionReference,

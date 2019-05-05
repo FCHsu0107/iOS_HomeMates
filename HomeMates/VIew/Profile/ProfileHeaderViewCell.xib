@@ -128,9 +128,13 @@
                                     <constraint firstAttribute="bottom" secondItem="1le-bz-hmJ" secondAttribute="bottom" id="tJn-Dj-IUV"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmg-fz-5XD">
-                                <rect key="frame" x="340" y="20" width="31" height="30"/>
-                                <state key="normal" title="登出">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmg-fz-5XD">
+                                <rect key="frame" x="359" y="20" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Z40-xU-eOK"/>
+                                    <constraint firstAttribute="width" constant="30" id="wIk-GJ-J2g"/>
+                                </constraints>
+                                <state key="normal" image="Logout_36px">
                                     <color key="titleColor" name="Y4"/>
                                 </state>
                                 <connections>
@@ -149,7 +153,7 @@
                             <constraint firstItem="ENa-kW-vuh" firstAttribute="top" secondItem="7sA-hh-dIV" secondAttribute="top" constant="18" id="iCe-4Q-1o5"/>
                             <constraint firstAttribute="trailing" secondItem="KI6-DD-HrT" secondAttribute="trailing" id="ohk-b4-2FQ"/>
                             <constraint firstItem="vmg-fz-5XD" firstAttribute="top" secondItem="7sA-hh-dIV" secondAttribute="top" constant="20" id="qL6-Xn-RPw"/>
-                            <constraint firstAttribute="trailing" secondItem="vmg-fz-5XD" secondAttribute="trailing" constant="30" id="wCw-Pw-tCd"/>
+                            <constraint firstAttribute="trailing" secondItem="vmg-fz-5XD" secondAttribute="trailing" constant="12" id="wCw-Pw-tCd"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -176,6 +180,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="Logout_36px" width="36" height="36"/>
         <image name="Profile_80px" width="80" height="80"/>
         <image name="Setting_36px" width="36" height="36"/>
         <namedColor name="Y0">

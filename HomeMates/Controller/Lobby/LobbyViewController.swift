@@ -20,14 +20,12 @@ class LobbyViewController: HMBaseViewController {
     }
 
     var groupInfo: GroupObject?
-    
-    override var navigationBarIsHidden: Bool {
-        return true
-    }
 
     let taskHeader = TaskListHeaderView()
 
-    var taskListTitle: [String] = ["", "已完成任務", "可接取任務", ""]
+    var taskListTitle: [String] = ["已接取任務", "已完成任務", "可接取任務"]
+    
+    var processTaskList: [TaskObject] = []
     
     var checkTaskList: [TaskObject] = []
 
@@ -36,6 +34,8 @@ class LobbyViewController: HMBaseViewController {
     var memberList: [MemberObject] = []
     
     let dispatchGroup = DispatchGroup()
+    
+    let messageView = MessagesView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,15 +48,10 @@ class LobbyViewController: HMBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        FIRFirestoreSerivce.shared.findMainGroup { [weak self](object) in
-            self?.groupInfo = object
-        }
-        
     }
 
     private func registerCellWithNib() {
         tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
-        tableView.jq_registerCellWithNib(identifier: String(describing: LobbyHeaderCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: BlankTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: AddTaskTableViewCell.self), bundle: nil)
     }
@@ -74,19 +69,27 @@ class LobbyViewController: HMBaseViewController {
             self?.memberList = members
             
             FIRFirestoreSerivce.shared.readAllTasks(comletionHandler: { (tasks) in
+                self?.processTaskList = []
                 self?.checkTaskList = []
                 self?.taskList = []
                 for task in tasks {
-                    if task.taskStatus == 3 {
+                    switch task.taskStatus {
+                    case 1:
+                        self?.taskList.append(task)
+                    case 2:
+                        if task.executorUid == UserDefaultManager.shared.userUid {
+                            self?.processTaskList.append(task)
+                        }
+                    case 3:
                         if members.count == 1 {
                             self?.checkTaskList.append(task)
                         } else if task.executorUid != UserDefaultManager.shared.userUid {
                             self?.checkTaskList.append(task)
                         }
-                    } else if task.taskStatus == 1 {
-                        self?.taskList.append(task)
+                    default: break
                     }
                 }
+                
                 self?.tableView.reloadData()
             })
             
@@ -111,16 +114,10 @@ extension LobbyViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {
-        case 0 :
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: LobbyHeaderCell.self))
-            guard let headerCell = cell as? LobbyHeaderCell else { return cell}
-            headerCell.groupInfo = groupInfo
-            headerCell.settingsBtn.addTarget(self, action: #selector(clickSettingBtn), for: .touchUpInside)
-            return headerCell
+
         case 3: return nil
-
+            
         default :
-
             let headerView = taskHeader.taskTitle(tableView: tableView, titleText: taskListTitle[section])
              return headerView
         }
@@ -129,8 +126,6 @@ extension LobbyViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
-        case 0:
-            return 170
         case 3:
             return 0
         default:
@@ -148,6 +143,12 @@ extension LobbyViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
+        case 0:
+            if processTaskList.count == 0 {
+                return 1
+            } else {
+                return processTaskList.count
+            }
         case 1:
             if checkTaskList.count == 0 {
                 return 1
@@ -179,6 +180,33 @@ extension LobbyViewController: UITableViewDataSource {
         guard let taskCell = cell as? TasksTableViewCell else { return cell }
         
         switch indexPath.section {
+            
+        case 0:
+            if processTaskList.count == 0 {
+                blankCell.loadData(displayText: "請接取任務")
+                return blankCell
+            } else {
+                let task = processTaskList[indexPath.row]
+                
+                taskCell.loadData(taskObject: task, status: TaskCellStatus.doingTask)
+                
+                taskCell.clickHandler = { [weak self] cell, tag in
+                    guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
+                    
+                    guard var updateTask = self?.processTaskList[indexPath.row] else { return }
+                    updateTask.taskStatus += tag
+                    if tag == 1 {
+                        let timeStamp = Int(DateProvider.shared.getTimeStamp())
+                        updateTask.completionTimeStamp = timeStamp
+                        self?.messageView.showSuccessView(title: "完成任務", body: "待其他成員確認任務後即可獲得積分")
+                    }
+                    
+                    FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
+                    
+                }
+                
+                return taskCell
+            }
         case 1 :
             if checkTaskList.count == 0 {
                 blankCell.loadData(displayText: "待他人完成任務")
@@ -203,7 +231,7 @@ extension LobbyViewController: UITableViewDataSource {
                 return blankCell
             } else {
                 let task = taskList[indexPath.row]
-                taskCell.loadData(taskObject: task, status: .assignNormalTask)
+                taskCell.loadData(taskObject: task, status: .acceptSpecialTask)
                 taskCell.clickHandler = { [weak self] cell, _ in
                     guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
                     
@@ -229,11 +257,9 @@ extension LobbyViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
-        if indexPath.section != 0 || indexPath.section != 1 {
+        if indexPath.section == 2 {
             guard editingStyle == .delete else { return }
-            
             guard taskList.count != 0 else { return }
-            
             let task = taskList[indexPath.row]
             FirestoreGroupManager.shared.deleteTask(in: .tasks, docId: task.docId!)
         }

@@ -78,12 +78,7 @@ class TasksTableViewCell: UITableViewCell {
         case .acceptSpecialTask:
 
             pointTextLbl.text = "積分： \(taskObject.taskPoint) 點"
-            if taskObject.taskPriodDay == 0 {
-                memberNameTextLbl.text = "發佈人：\(taskObject.publisherName)"
-            } else {
-                memberNameTextLbl.text = "發佈人：\(taskObject.publisherName)(每\(taskObject.taskPriodDay)天一次)"
-            }
-            
+            memberNameTextLbl.text = "發佈人：\(taskObject.publisherName)"
             taskRightBtn.setTitle("接受", for: .normal)
 
         case .doingTask:

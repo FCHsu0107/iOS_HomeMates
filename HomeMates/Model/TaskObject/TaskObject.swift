@@ -16,7 +16,7 @@ struct TaskObject: Codable {
 
     let image: String
 
-    let publisherName: String
+    var publisherName: String
 
     var executorName: String?
     

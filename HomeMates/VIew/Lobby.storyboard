@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Lobby View Controller-->
+        <!--任務大廳-->
         <scene sceneID="Vi8-Pg-iDw">
             <objects>
                 <viewController id="giY-eB-eZy" customClass="LobbyViewController" customModule="HomeMates" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,13 +19,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xCI-xV-f3G">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
-                                <color key="backgroundColor" name="Y1"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="tXs-RD-zKg"/>
-                                </constraints>
-                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="yPU-2H-rY1">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -33,17 +26,14 @@
                         </subviews>
                         <color key="backgroundColor" name="W1"/>
                         <constraints>
-                            <constraint firstItem="xCI-xV-f3G" firstAttribute="leading" secondItem="Nyd-dX-Vwa" secondAttribute="leading" id="Hxo-vu-LQA"/>
                             <constraint firstItem="yPU-2H-rY1" firstAttribute="leading" secondItem="Nyd-dX-Vwa" secondAttribute="leading" id="L8W-Rf-gmT"/>
                             <constraint firstItem="yPU-2H-rY1" firstAttribute="top" secondItem="HGr-dZ-Fuu" secondAttribute="top" id="OFQ-Z1-UKa"/>
                             <constraint firstItem="Nyd-dX-Vwa" firstAttribute="bottom" secondItem="yPU-2H-rY1" secondAttribute="bottom" id="dsY-OO-djk"/>
-                            <constraint firstItem="xCI-xV-f3G" firstAttribute="top" secondItem="HGr-dZ-Fuu" secondAttribute="top" id="qJ8-9d-h7i"/>
-                            <constraint firstItem="Nyd-dX-Vwa" firstAttribute="trailing" secondItem="xCI-xV-f3G" secondAttribute="trailing" id="r1C-kn-n5I"/>
                             <constraint firstItem="Nyd-dX-Vwa" firstAttribute="trailing" secondItem="yPU-2H-rY1" secondAttribute="trailing" id="vEK-av-Wx2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Nyd-dX-Vwa"/>
                     </view>
-                    <navigationItem key="navigationItem" id="xj5-wC-5dc"/>
+                    <navigationItem key="navigationItem" title="任務大廳" id="xj5-wC-5dc"/>
                     <connections>
                         <outlet property="tableView" destination="yPU-2H-rY1" id="RiE-Nx-5nh"/>
                         <segue destination="vJS-VE-AjH" kind="show" identifier="LobbySettingsSegue" id="yWp-UW-c5X"/>
