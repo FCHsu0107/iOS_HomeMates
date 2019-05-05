@@ -209,7 +209,7 @@ extension LobbyViewController: UITableViewDataSource {
                                                       title: "任務已完成",
                                                       body: "\(UserDefaultManager.shared.userName!) 已經完成\(updateTask.taskName)任務，快來確認吧！")
                                 
-                            } else {}
+                            } 
                         }
                     }
                     FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)

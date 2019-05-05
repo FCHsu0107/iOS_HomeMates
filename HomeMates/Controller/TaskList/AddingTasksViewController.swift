@@ -22,11 +22,18 @@ class AddingTasksViewController: UIViewController {
     
     let messageView = MessagesView()
     
+    var membersInfo: [MemberObject] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         StatusBarSettings.setBackgroundColor(color: UIColor(red: 173/255, green: 144/255, blue: 38/255, alpha: 1))
+        
+        FirestoreGroupManager.shared.readGroupMembers { [weak self] (members) in
+            self?.membersInfo = members
+        }
     }
+    
     @IBAction func selectedDaliyTask(_ sender: Any) {
         if dailyTaskBtn.isSelected == true {
             dailyTaskBtn.isSelected = false
@@ -80,5 +87,15 @@ class AddingTasksViewController: UIViewController {
             FirestoreGroupManager.shared.addTask(for: task)
         }
         messageView.showSuccessView(title: "新增任務成功", body: "請至大廳接取任務")
+        
+        for member in membersInfo {
+            if let memberToken = member.fcmToken {
+                PushNotificationSender.shared
+                    .sendPushNotification(to: memberToken,
+                                          title: "有一項新任務",
+                                          body: "\(UserDefaultManager.shared.userName!) 發佈一項新任務\(taskName)，快來認大廳接任務吧！")
+                
+            }
+        }
     }
 }
