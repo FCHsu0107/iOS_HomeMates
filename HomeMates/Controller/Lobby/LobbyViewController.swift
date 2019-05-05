@@ -216,6 +216,7 @@ extension LobbyViewController: UITableViewDataSource {
                 let task = checkTaskList[indexPath.row]
                 taskCell.loadData(taskObject: task, status: TaskCellStatus.checkTask)
                 taskCell.clickHandler = { [weak self] cell, _ in
+                    self?.messageView.showSuccessView(title: "確認完成任務", body: "可至任務紀錄中查看紀錄")
                     guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
                     guard var updateTask = self?.checkTaskList[indexPath.row] else { return }
                     updateTask.taskStatus = 4
@@ -233,12 +234,13 @@ extension LobbyViewController: UITableViewDataSource {
                 let task = taskList[indexPath.row]
                 taskCell.loadData(taskObject: task, status: .acceptSpecialTask)
                 taskCell.clickHandler = { [weak self] cell, _ in
+                    self?.messageView.showSuccessView(title: "已接取任務", body: "待任務完成後點選確認建")
                     guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
                     
                     guard let updateTask = self?.taskList[indexPath.row] else { return }
                     let task = self?.updateTaskStatus(taskItem: updateTask)
                     FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: task)
-                    
+                
                 }
                 return taskCell
             }
