@@ -44,18 +44,18 @@ class ProfileViewController: HMBaseViewController {
         
         registerCell()
         
-        tableView.addRefreshHeader(refreshingBlock: { [weak self] in
-            
-            self?.tableView.endHeaderRefreshing()
-        })
         
-        tableView.beginHeaderRefreshing()
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getAllInfo()
+        tableView.addRefreshHeader(refreshingBlock: { [weak self] in
+            self?.getAllInfo()
+            
+        })
+        
+        tableView.beginHeaderRefreshing()
     }
     
     func registerCell() {
@@ -94,6 +94,7 @@ class ProfileViewController: HMBaseViewController {
         
         dispatchGroup.notify(queue: .main) {
             self.tableView.reloadData()
+            self.tableView.endHeaderRefreshing()
         }
     }
 

@@ -71,17 +71,17 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.addRefreshHeader(refreshingBlock: { [weak self] in
-            
-            self?.tableView.endHeaderRefreshing()
-        })
-        
-        tableView.beginHeaderRefreshing()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        readDoneTask()
+        
+        tableView.addRefreshHeader(refreshingBlock: { [weak self] in
+            self?.readDoneTask()
+        })
+        
+        tableView.beginHeaderRefreshing()
+
     }
 
     func readDoneTask() {
@@ -109,6 +109,7 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
                     }
                 }
                 self?.tableView.reloadData()
+                self?.tableView.endHeaderRefreshing()
             }
         }
     }

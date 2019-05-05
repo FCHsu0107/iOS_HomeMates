@@ -41,15 +41,14 @@ class LobbyViewController: HMBaseViewController {
         super.viewDidLoad()
         
         registerCellWithNib()
-        readGroupTaskInfo()
+//        readGroupTaskInfo()
 
         //PushNotification
         PushNotificationManager.shared.registerForPushNotifications()
         PushNotificationManager.shared.updateFirestorePushTokenIfNeeded()
         
         tableView.addRefreshHeader(refreshingBlock: { [weak self] in
-            
-            self?.tableView.endHeaderRefreshing()
+            self?.readGroupTaskInfo()
         })
         
         tableView.beginHeaderRefreshing()
@@ -101,6 +100,7 @@ class LobbyViewController: HMBaseViewController {
                 }
                 
                 self?.tableView.reloadData()
+                self?.tableView.endHeaderRefreshing()
             })
             
         })
@@ -179,7 +179,8 @@ extension LobbyViewController: UITableViewDataSource {
         }
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let secondCell = tableView.dequeueReusableCell(withIdentifier: String(describing: BlankTableViewCell.self),
                                                        for: indexPath)

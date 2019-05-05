@@ -30,23 +30,26 @@ class TaskSettingsViewController: HMBaseViewController {
         super.viewDidLoad()
         registerCell()
         
-        tableView.addRefreshHeader(refreshingBlock: { [weak self] in
-            
-            self?.tableView.endHeaderRefreshing()
-        })
-        
-        tableView.beginHeaderRefreshing()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        tableView.addRefreshHeader(refreshingBlock: { [weak self] in
+            self?.readTaskInfo()
+            
+        })
+        
+        tableView.beginHeaderRefreshing()
+    }
+    
+    func readTaskInfo() {
         dispatchGroup.enter()
         FirestoreGroupManager.shared.readDailyTaskList { [weak self] (tasks) in
             self?.dailyTaskList = []
             self?.dailyTaskList = tasks
             self?.dispatchGroup.leave()
-
+            
         }
         
         dispatchGroup.enter()
@@ -58,6 +61,7 @@ class TaskSettingsViewController: HMBaseViewController {
         
         dispatchGroup.notify(queue: .main) {
             self.tableView.reloadData()
+            self.tableView.endHeaderRefreshing()
         }
     }
 
