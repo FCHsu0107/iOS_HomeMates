@@ -43,8 +43,16 @@ class LobbyViewController: HMBaseViewController {
         registerCellWithNib()
         readGroupTaskInfo()
 
+        //PushNotification
         PushNotificationManager.shared.registerForPushNotifications()
         PushNotificationManager.shared.updateFirestorePushTokenIfNeeded()
+        
+        tableView.addRefreshHeader(refreshingBlock: { [weak self] in
+            
+            self?.tableView.endHeaderRefreshing()
+        })
+        
+        tableView.beginHeaderRefreshing()
     }
     
     override func viewWillAppear(_ animated: Bool) {

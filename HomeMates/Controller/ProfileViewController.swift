@@ -41,16 +41,29 @@ class ProfileViewController: HMBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.jq_registerCellWithNib(identifier: String(describing: ProfileHeaderViewCell.self), bundle: nil)
-        tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
-        tableView.jq_registerCellWithNib(identifier: String(describing: TotalPointsTableViewCell.self), bundle: nil)
-        tableView.jq_registerCellWithNib(identifier: String(describing: BlankTableViewCell.self), bundle: nil)
+        
+        registerCell()
+        
+        tableView.addRefreshHeader(refreshingBlock: { [weak self] in
+            
+            self?.tableView.endHeaderRefreshing()
+        })
+        
+        tableView.beginHeaderRefreshing()
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getAllInfo()
+    }
+    
+    func registerCell() {
+        tableView.jq_registerCellWithNib(identifier: String(describing: ProfileHeaderViewCell.self), bundle: nil)
+        tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
+        tableView.jq_registerCellWithNib(identifier: String(describing: TotalPointsTableViewCell.self), bundle: nil)
+        tableView.jq_registerCellWithNib(identifier: String(describing: BlankTableViewCell.self), bundle: nil)
+        
     }
     
     func getAllInfo() {

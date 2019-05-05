@@ -70,6 +70,13 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.addRefreshHeader(refreshingBlock: { [weak self] in
+            
+            self?.tableView.endHeaderRefreshing()
+        })
+        
+        tableView.beginHeaderRefreshing()
     }
     
     override func viewWillAppear(_ animated: Bool) {
