@@ -88,7 +88,6 @@
 		B9B99F4D22648E4B00314BB6 /* GroupInfoInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F4C22648E4B00314BB6 /* GroupInfoInUser.swift */; };
 		B9D295D42258C18F00CF7869 /* TaskTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D295D32258C18F00CF7869 /* TaskTracker.swift */; };
 		B9D295D72258CD7D00CF7869 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D295D62258CD7D00CF7869 /* TaskListViewController.swift */; };
-		B9D295D9225A3E1D00CF7869 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9D295D8225A3E1D00CF7869 /* GoogleService-Info.plist */; };
 		B9D295DB225B003300CF7869 /* TaskListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D295DA225B003300CF7869 /* TaskListHeaderView.swift */; };
 		B9D71AA022534D4F00F242DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D71A9F22534D4F00F242DA /* AppDelegate.swift */; };
 		B9D71AA522534D4F00F242DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D71AA322534D4F00F242DA /* Main.storyboard */; };
@@ -180,7 +179,6 @@
 		B9B99F4C22648E4B00314BB6 /* GroupInfoInUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoInUser.swift; sourceTree = "<group>"; };
 		B9D295D32258C18F00CF7869 /* TaskTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTracker.swift; sourceTree = "<group>"; };
 		B9D295D62258CD7D00CF7869 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
-		B9D295D8225A3E1D00CF7869 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B9D295DA225B003300CF7869 /* TaskListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListHeaderView.swift; sourceTree = "<group>"; };
 		B9D71A9C22534D4F00F242DA /* HomeMates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeMates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9D71A9F22534D4F00F242DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -549,7 +547,6 @@
 				B9261C73225384B60033ABC9 /* VIew */,
 				B9D71A9F22534D4F00F242DA /* AppDelegate.swift */,
 				B9D71AAB22534D5100F242DA /* Info.plist */,
-				B9D295D8225A3E1D00CF7869 /* GoogleService-Info.plist */,
 			);
 			path = HomeMates;
 			sourceTree = "<group>";
@@ -631,7 +628,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9D71AAA22534D5100F242DA /* LaunchScreen.storyboard in Resources */,
-				B9D295D9225A3E1D00CF7869 /* GoogleService-Info.plist in Resources */,
 				B91D3AFD22698CF700C1A28F /* PointGoalTableViewCell.xib in Resources */,
 				B9261C7D225386810033ABC9 /* Task.storyboard in Resources */,
 				B94D15A722560AA500F43B78 /* LobbyHeaderCell.xib in Resources */,
