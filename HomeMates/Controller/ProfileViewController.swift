@@ -42,23 +42,16 @@ class ProfileViewController: HMBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        registerCell()
-        
-        
+        setUpTableView()
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.addRefreshHeader(refreshingBlock: { [weak self] in
-            self?.getAllInfo()
-            
-        })
-        
-        tableView.beginHeaderRefreshing()
+        headerLoader()
     }
     
-    func registerCell() {
+    private func setUpTableView() {
         tableView.jq_registerCellWithNib(identifier: String(describing: ProfileHeaderViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: TotalPointsTableViewCell.self), bundle: nil)
@@ -66,7 +59,14 @@ class ProfileViewController: HMBaseViewController {
         
     }
     
-    func getAllInfo() {
+    private func headerLoader() {
+        tableView.addRefreshHeader(refreshingBlock: { [weak self] in
+            self?.getAllInfo()
+        })
+        tableView.beginHeaderRefreshing()
+    }
+    
+    private func getAllInfo() {
         dispatchGroup.enter()
         FirestoreUserManager.shared.readUserInfo { [weak self] (user) in
             self?.userInfo = user
@@ -98,7 +98,7 @@ class ProfileViewController: HMBaseViewController {
         }
     }
 
-    func getTotalTime(trackers: [TaskTracker], goal: Int?) {
+    private func getTotalTime(trackers: [TaskTracker], goal: Int?) {
         var totalTimes = 0
         var totalPoints = 0
         for track in trackers {

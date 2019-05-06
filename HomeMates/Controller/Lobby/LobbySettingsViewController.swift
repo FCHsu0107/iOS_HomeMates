@@ -23,11 +23,7 @@ class LobbySettingsViewController: HMBaseViewController {
     
     @IBOutlet weak var editButton: UIButton!
     
-    @IBOutlet weak var homematesImage: UIImageView! {
-        didSet {
-            homematesImage.layer.cornerRadius = 5
-        }
-    }
+    @IBOutlet weak var homematesImage: UIImageView!
     
     var groupInfo: GroupObject?
     
@@ -41,13 +37,22 @@ class LobbySettingsViewController: HMBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setUpTableView()
+    }
+
+    private func setUpTableView() {
         tableView.jq_registerCellWithNib(identifier: String(describing: GroupMemberTableViewCell.self), bundle: nil)
         
         guard let groupInfo = groupInfo else { return }
         showGroupInfo(groupInfo: groupInfo)
-        
     }
-
+    
+    private func showGroupInfo(groupInfo: GroupObject) {
+        groupIdLbl.text = groupInfo.groupId
+        groupNameTextField.text = groupInfo.name
+    }
+    
     @IBAction func clickEditBtn(_ sender: Any) {
         if editButton.isSelected == true {
             editButton.isSelected = false
@@ -60,11 +65,6 @@ class LobbySettingsViewController: HMBaseViewController {
             groupNameTextField.becomeFirstResponder()
             isSelected = true
         }
-    }
-    
-    func showGroupInfo(groupInfo: GroupObject) {
-        groupIdLbl.text = groupInfo.groupId
-        groupNameTextField.text = groupInfo.name
     }
 }
 

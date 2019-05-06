@@ -63,6 +63,11 @@
                                     <constraint firstAttribute="height" constant="80" id="Tif-hN-7WZ"/>
                                     <constraint firstAttribute="width" constant="80" id="cPE-0V-slw"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HkG-ja-O0R">
                                 <rect key="frame" x="0.0" y="327" width="375" height="340"/>

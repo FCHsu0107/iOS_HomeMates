@@ -75,16 +75,18 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        headerLoaer()
+    }
+
+    private func headerLoaer() {
         tableView.addRefreshHeader(refreshingBlock: { [weak self] in
             self?.readDoneTask()
         })
         
         tableView.beginHeaderRefreshing()
-
     }
-
-    func readDoneTask() {
+    
+    private func readDoneTask() {
 
         FIRFirestoreSerivce.shared.readDoneTask { [weak self] (tasks) in
             self?.getDateMark(tasks: tasks)
@@ -135,7 +137,7 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
         }
     }
 
-    func getDateTask(selectedDate: String) {
+    private func getDateTask(selectedDate: String) {
         dateTaskList = []
         for (index, element) in taskList.enumerated() where element.completionDate == selectedDate {
                 dateTaskList.append(taskList[index])

@@ -27,6 +27,10 @@ class AddingTasksViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setUpView()
+    }
+    
+    private func setUpView() {
         StatusBarSettings.setBackgroundColor(color: UIColor(red: 173/255, green: 144/255, blue: 38/255, alpha: 1))
         
         FirestoreGroupManager.shared.readGroupMembers { [weak self] (members) in

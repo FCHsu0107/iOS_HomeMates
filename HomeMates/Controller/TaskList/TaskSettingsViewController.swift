@@ -28,22 +28,18 @@ class TaskSettingsViewController: HMBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerCell()
+        
+        setUpTableView()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        tableView.addRefreshHeader(refreshingBlock: { [weak self] in
-            self?.readTaskInfo()
-            
-        })
-        
-        tableView.beginHeaderRefreshing()
+        headerLoder()
     }
     
-    func readTaskInfo() {
+    private func readTaskInfo() {
         dispatchGroup.enter()
         FirestoreGroupManager.shared.readDailyTaskList { [weak self] (tasks) in
             self?.dailyTaskList = []
@@ -65,10 +61,18 @@ class TaskSettingsViewController: HMBaseViewController {
         }
     }
 
-    func registerCell() {
+    private func setUpTableView() {
         tableView.jq_registerCellWithNib(identifier: String(describing: TaskListTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: BlankTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: AddTaskTableViewCell.self), bundle: nil)
+    }
+    
+    private func headerLoder() {
+        tableView.addRefreshHeader(refreshingBlock: { [weak self] in
+            self?.readTaskInfo()
+        })
+        
+        tableView.beginHeaderRefreshing()
     }
 }
 

@@ -40,18 +40,9 @@ class LobbyViewController: HMBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        registerCellWithNib()
-//        readGroupTaskInfo()
-
-        //PushNotification
-        PushNotificationManager.shared.registerForPushNotifications()
-        PushNotificationManager.shared.updateFirestorePushTokenIfNeeded()
-        
-        tableView.addRefreshHeader(refreshingBlock: { [weak self] in
-            self?.readGroupTaskInfo()
-        })
-        
-        tableView.beginHeaderRefreshing()
+        setUpTableView()
+        setUpNotification()
+        headerLoader()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,10 +50,24 @@ class LobbyViewController: HMBaseViewController {
         
     }
 
-    private func registerCellWithNib() {
+    //PushNotification
+    private func setUpNotification() {
+        PushNotificationManager.shared.registerForPushNotifications()
+        PushNotificationManager.shared.updateFirestorePushTokenIfNeeded()
+    }
+    
+    private func setUpTableView() {
         tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: BlankTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: AddTaskTableViewCell.self), bundle: nil)
+    }
+    
+    private func headerLoader() {
+        tableView.addRefreshHeader(refreshingBlock: { [weak self] in
+            self?.readGroupTaskInfo()
+        })
+        
+        tableView.beginHeaderRefreshing()
     }
     
     private func readGroupTaskInfo() {
