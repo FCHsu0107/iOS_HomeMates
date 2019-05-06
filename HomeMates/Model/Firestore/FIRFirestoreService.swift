@@ -142,7 +142,7 @@ class FIRFirestoreSerivce {
     
     func readAllTasks(comletionHandler: @escaping ([TaskObject]) -> Void) {
         subReference(to: .groups, in: UserDefaultManager.shared.groupId!, toNext: .tasks)
-            .addSnapshotListener { (snapshot, err) in
+            .getDocuments { (snapshot, err) in
                 guard let snapshot = snapshot else {
                     print(err as Any)
                     return }

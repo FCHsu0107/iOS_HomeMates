@@ -42,12 +42,11 @@ class LobbyViewController: HMBaseViewController {
         
         setUpTableView()
         setUpNotification()
-        headerLoader()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        headerLoader()
     }
 
     //PushNotification
@@ -64,6 +63,7 @@ class LobbyViewController: HMBaseViewController {
     
     private func headerLoader() {
         tableView.addRefreshHeader(refreshingBlock: { [weak self] in
+            
             self?.readGroupTaskInfo()
         })
         
@@ -71,7 +71,6 @@ class LobbyViewController: HMBaseViewController {
     }
     
     private func readGroupTaskInfo() {
-       
         FIRFirestoreSerivce.shared.findMainGroup { [weak self] (object) in
             self?.groupInfo = object
             self?.readTaskLisk()
@@ -79,6 +78,7 @@ class LobbyViewController: HMBaseViewController {
     }
     
     private func readTaskLisk() {
+        
         FirestoreGroupManager.shared.readGroupMembers(completion: { [weak self] (members) in
             self?.memberList = members
             
@@ -106,6 +106,7 @@ class LobbyViewController: HMBaseViewController {
                 
                 self?.tableView.reloadData()
                 self?.tableView.endHeaderRefreshing()
+                
             })
             
         })
@@ -222,11 +223,11 @@ extension LobbyViewController: UITableViewDataSource {
                                 .sendPushNotification(to: memberToken,
                                                       title: "任務已完成",
                                                       body: "\(UserDefaultManager.shared.userName!) 已經完成\(updateTask.taskName)任務，快來確認吧！")
-                                
                             } 
                         }
                     }
                     FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
+                    self?.readTaskLisk()
                     
                 }
                 
@@ -247,6 +248,7 @@ extension LobbyViewController: UITableViewDataSource {
                     updateTask.taskStatus = 4
                     FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
                     FirestoreUserManager.shared.addTaskTracker(for: updateTask)
+                    self?.readTaskLisk()
                 }
                 
                 return taskCell
@@ -265,10 +267,12 @@ extension LobbyViewController: UITableViewDataSource {
                     guard let updateTask = self?.taskList[indexPath.row] else { return }
                     let task = self?.updateTaskStatus(taskItem: updateTask)
                     FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: task)
+                    self?.readTaskLisk()
                 
                 }
                 return taskCell
             }
+            
         case 3:
             let thirdCell = tableView.dequeueReusableCell(withIdentifier: String(describing: AddTaskTableViewCell.self),
                                                           for: indexPath)
@@ -293,7 +297,7 @@ extension LobbyViewController: UITableViewDataSource {
     }
     
     internal func tableView(_ tableView: UITableView,
-                          editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+                            editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         if indexPath.section == 2 && taskList.count != 0 {
             return UITableViewCell.EditingStyle.delete
         } else {

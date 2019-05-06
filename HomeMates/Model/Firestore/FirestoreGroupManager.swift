@@ -133,8 +133,8 @@ class FirestoreGroupManager {
                     } catch {
                         print(error)
                     }
-                    completion(objects)
                 }
+                completion(objects)
             } else {
                 // err != nil
             }
