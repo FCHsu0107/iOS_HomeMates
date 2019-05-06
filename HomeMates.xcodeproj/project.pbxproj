@@ -95,6 +95,7 @@
 		B9D71AAA22534D5100F242DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D71AA822534D5100F242DA /* LaunchScreen.storyboard */; };
 		B9EE7EF6227EC55800647600 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EE7EF5227EC55800647600 /* PushNotificationManager.swift */; };
 		B9EE7EF8227EE43B00647600 /* PushNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EE7EF7227EE43B00647600 /* PushNotificationSender.swift */; };
+		B9EE7EFA227FE3E700647600 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9EE7EF9227FE3E700647600 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -189,6 +190,7 @@
 		B9EE7EF4227EC51600647600 /* HomeMates.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HomeMates.entitlements; sourceTree = "<group>"; };
 		B9EE7EF5227EC55800647600 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		B9EE7EF7227EE43B00647600 /* PushNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSender.swift; sourceTree = "<group>"; };
+		B9EE7EF9227FE3E700647600 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D95E51F3504518D6A60A4E46 /* Pods-HomeMates.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeMates.debug.xcconfig"; path = "Target Support Files/Pods-HomeMates/Pods-HomeMates.debug.xcconfig"; sourceTree = "<group>"; };
 		E5C452DD2D14E69356D08726 /* Pods-HomeMates.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeMates.release.xcconfig"; path = "Target Support Files/Pods-HomeMates/Pods-HomeMates.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -547,6 +549,7 @@
 				B9261C73225384B60033ABC9 /* VIew */,
 				B9D71A9F22534D4F00F242DA /* AppDelegate.swift */,
 				B9D71AAB22534D5100F242DA /* Info.plist */,
+				B9EE7EF9227FE3E700647600 /* GoogleService-Info.plist */,
 			);
 			path = HomeMates;
 			sourceTree = "<group>";
@@ -646,6 +649,7 @@
 				B91D3B10226B11F200C1A28F /* TaskListTableViewCell.xib in Resources */,
 				B9B99F41226313D300314BB6 /* Loading.storyboard in Resources */,
 				B91D3AF9226970AF00C1A28F /* TotalPointsTableViewCell.xib in Resources */,
+				B9EE7EFA227FE3E700647600 /* GoogleService-Info.plist in Resources */,
 				B94D15CB225886FB00F43B78 /* EventCell.xib in Resources */,
 				B9261C85225387070033ABC9 /* Statistics.storyboard in Resources */,
 				B9B7F536225D933600A6DA9E /* TrackerTableViewCell.xib in Resources */,
