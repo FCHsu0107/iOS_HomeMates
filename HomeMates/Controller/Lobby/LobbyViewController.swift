@@ -293,6 +293,8 @@ extension LobbyViewController: UITableViewDataSource {
             guard taskList.count != 0 else { return }
             let task = taskList[indexPath.row]
             FirestoreGroupManager.shared.deleteTask(in: .tasks, docId: task.docId!)
+            taskList.remove(at: indexPath.row)
+            tableView.reloadData()
         }
     }
     

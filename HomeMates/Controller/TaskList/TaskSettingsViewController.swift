@@ -10,12 +10,7 @@ import UIKit
 
 class TaskSettingsViewController: HMBaseViewController {
 
-    @IBOutlet weak var tableView: UITableView! {
-        didSet {
-            tableView.delegate = self
-            tableView.dataSource = self
-        }
-    }
+    @IBOutlet weak var tableView: UITableView! 
     
     var dailyTaskList: [TaskObject] = []
     
@@ -62,6 +57,8 @@ class TaskSettingsViewController: HMBaseViewController {
     }
 
     private func setUpTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.jq_registerCellWithNib(identifier: String(describing: TaskListTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: BlankTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: AddTaskTableViewCell.self), bundle: nil)
