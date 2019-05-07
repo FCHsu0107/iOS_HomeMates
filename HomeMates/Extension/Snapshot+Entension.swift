@@ -11,7 +11,7 @@ import FirebaseFirestore
 
 extension DocumentSnapshot {
     
-    func decode<T: Decodable>(as objectType: T.Type, includingId: Bool = true) throws  -> T {
+    func decode<T: Decodable>(as objectType: T.Type, includingId: Bool = true) throws -> T {
         
         let documentJson = data()
     

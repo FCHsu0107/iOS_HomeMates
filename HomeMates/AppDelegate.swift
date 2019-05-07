@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         IQKeyboardManager.shared().shouldResignOnTouchOutside = true
         
-        FIRFirestoreSerivce.shared.configure()
+        FirebaseClient.shared.configure()
         
         Fabric.with([Crashlytics.self])
         

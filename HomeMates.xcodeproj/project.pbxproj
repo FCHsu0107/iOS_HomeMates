@@ -93,6 +93,7 @@
 		B9D71AA522534D4F00F242DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D71AA322534D4F00F242DA /* Main.storyboard */; };
 		B9D71AA722534D5100F242DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9D71AA622534D5100F242DA /* Assets.xcassets */; };
 		B9D71AAA22534D5100F242DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D71AA822534D5100F242DA /* LaunchScreen.storyboard */; };
+		B9DB5F3722816E7F00F5DF4F /* FIrebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB5F3622816E7F00F5DF4F /* FIrebaseClient.swift */; };
 		B9EE7EF6227EC55800647600 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EE7EF5227EC55800647600 /* PushNotificationManager.swift */; };
 		B9EE7EF8227EE43B00647600 /* PushNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EE7EF7227EE43B00647600 /* PushNotificationSender.swift */; };
 		B9EE7EFC227FFDBC00647600 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9EE7EFB227FFDBC00647600 /* GoogleService-Info.plist */; };
@@ -187,6 +188,7 @@
 		B9D71AA622534D5100F242DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9D71AA922534D5100F242DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B9D71AAB22534D5100F242DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9DB5F3622816E7F00F5DF4F /* FIrebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIrebaseClient.swift; sourceTree = "<group>"; };
 		B9EE7EF4227EC51600647600 /* HomeMates.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HomeMates.entitlements; sourceTree = "<group>"; };
 		B9EE7EF5227EC55800647600 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		B9EE7EF7227EE43B00647600 /* PushNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSender.swift; sourceTree = "<group>"; };
@@ -494,6 +496,7 @@
 				B9B99F362262C44B00314BB6 /* FIRCollectionReference.swift */,
 				B9EE7EF5227EC55800647600 /* PushNotificationManager.swift */,
 				B9EE7EF7227EE43B00647600 /* PushNotificationSender.swift */,
+				B9DB5F3622816E7F00F5DF4F /* FIrebaseClient.swift */,
 			);
 			path = Firestore;
 			sourceTree = "<group>";
@@ -823,6 +826,7 @@
 				B9B10D732258A1780081C856 /* UIView+Extension.swift in Sources */,
 				B91D3B0F226B11F200C1A28F /* TaskListTableViewCell.swift in Sources */,
 				B9261C7B225386030033ABC9 /* UIStoryboard+Extension.swift in Sources */,
+				B9DB5F3722816E7F00F5DF4F /* FIrebaseClient.swift in Sources */,
 				B9B99F352262151100314BB6 /* FIRFirestoreService.swift in Sources */,
 				B91D3B0B226AED2900C1A28F /* AddingTaskHeaderViewCell.swift in Sources */,
 				B91D3B12226B62BC00C1A28F /* ProfileSettingsViewController.swift in Sources */,

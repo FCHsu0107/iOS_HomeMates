@@ -12,8 +12,6 @@ class DateProvider {
     
     static let shared = DateProvider()
     
-//    static let 
-    
     func getTimeStamp() -> Int {
         let currentTimeStamp = Date().toMillis()
         return currentTimeStamp!
