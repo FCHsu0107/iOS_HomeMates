@@ -134,13 +134,13 @@ class FIRFirestoreSerivce {
         }
     }
     
-    func readCheckTasks(comletionHandler: @escaping ([TaskObject]) -> Void) {
+    func readCheckTasks(completionHandler: @escaping ([TaskObject]) -> Void) {
         readGroupTasks(status: 3) { (tasks) in
-            comletionHandler(tasks)
+            completionHandler(tasks)
         }
     }
     
-    func readAllTasks(comletionHandler: @escaping ([TaskObject]) -> Void) {
+    func readAllTasks(completionHandler: @escaping ([TaskObject]) -> Void) {
         subReference(to: .groups, in: UserDefaultManager.shared.groupId!, toNext: .tasks)
             .getDocuments { (snapshot, err) in
                 guard let snapshot = snapshot else {
@@ -153,7 +153,7 @@ class FIRFirestoreSerivce {
                         let object = try document.decode(as: TaskObject.self)
                         objects.append(object)
                     }
-                    comletionHandler(objects)
+                    completionHandler(objects)
                 } catch {
                     print(error)
                 }
@@ -161,7 +161,7 @@ class FIRFirestoreSerivce {
     }
 
     //for statistic page
-    func readDoneTask(comletionHandler: @escaping ([TaskObject]) -> Void) {
+    func readDoneTask(completionHandler: @escaping ([TaskObject]) -> Void) {
         subReference(to: .groups, in: UserDefaultManager.shared.groupId!, toNext: .tasks)
             .whereField(TaskObject.CodingKeys.taskStatus.rawValue, isEqualTo: 4)
             .order(by: TaskObject.CodingKeys.completionTimeStamp.rawValue, descending: true)
@@ -176,7 +176,7 @@ class FIRFirestoreSerivce {
                         let object = try document.decode(as: TaskObject.self)
                         objects.append(object)
                     }
-                    comletionHandler(objects)
+                    completionHandler(objects)
                 } catch {
                     print(error)
                 }

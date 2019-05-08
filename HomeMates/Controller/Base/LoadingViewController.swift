@@ -26,7 +26,7 @@ class LoadingViewController: UIViewController {
         
         UIView.animate(withDuration: 1.0) {
             self.progressView.frame.size = CGSize(width: newWidth, height: self.progressView.frame.height)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.1, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.05, execute: {
                 self.checkStatus()
             })
         }
@@ -38,12 +38,6 @@ class LoadingViewController: UIViewController {
         backgroundView.layer.cornerRadius = 3
         progressView.layer.cornerRadius = 3
         logoView.layer.cornerRadius = 5
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-//        checkStatus()
     }
     
     func checkStatus() {

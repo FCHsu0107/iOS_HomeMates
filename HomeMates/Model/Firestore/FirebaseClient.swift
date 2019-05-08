@@ -13,14 +13,10 @@ enum Result<T> {
     
     case success(T)
     
-    case createSuccessfully
-    
     case failure(Error)
 }
 
 enum HMFirebaseClientError: Error {
-    
-    case encodingError
     
     case decodingError
     
@@ -40,26 +36,16 @@ enum HMFirebaseMethod: String {
     
     case createWithUid
     
-    case readCollectionDocuments
+    case read
     
-    case readDocumentWithUid
+    case readDocWithPath
     
     case update
     
-    case updateOneItem
+    case updateTheStatus
     
     case delete
 }
-
-//
-//protocol HMRequest {
-//
-//    var method: String { get }
-//
-//    var data
-//
-//}
-
 
 class FirebaseClient {
     
@@ -73,7 +59,7 @@ class FirebaseClient {
     
     func create<T: Encodable>(for encodableObject: T,
                               in collectionRef: CollectionReference,
-                              completion:  @escaping (Result<T>) -> Void) {
+                              completion:  @escaping (Result<Bool>) -> Void) {
         
         var ref: DocumentReference?
         do {
@@ -83,13 +69,14 @@ class FirebaseClient {
             json["docId"] = ref.documentID
             collectionRef.document(ref.documentID).setData(json) { (err) in
                 if err == nil {
-                    completion(Result.createSuccessfully)
+                    completion(Result.success(true))
                 } else {
-                    completion(Result.failure(HMFirebaseClientError.clientError(err as! Data)))
+                    guard let err = err else { return }
+                    completion(Result.failure(err))
                 }
             }
         } catch {
-            completion(Result.failure(HMError.encodingError))
+            completion(Result.failure(error))
         }
  
     }
@@ -97,25 +84,35 @@ class FirebaseClient {
     func createWithUid<T: Encodable>(for encodableObject: T,
                                      in collectionRef: CollectionReference,
                                      uid: String,
-                                     completion: @escaping (Result<T>) -> Void) {
+                                     completion: @escaping (Result<Bool>) -> Void) {
         do {
             let json = try encodableObject.toJSON()
             collectionRef.document(uid).setData(json) { (err) in
+                
                 if err == nil {
-                    completion(Result.createSuccessfully)
+                    completion(Result.success(true))
                 } else {
-                    completion(Result.failure(err!))
+                    guard let err = err else { return }
+                    completion(Result.failure(err))
                 }
             }
         } catch {
-            completion(Result.failure(HMFirebaseClientError.encodingError))
+            completion(Result.failure(error))
         }
 
     }
 
-    func readCollectionDocuments<T: Decodable>(form collectionRef: CollectionReference,
-                                               returning objectType: T.Type,
-                                               completion: @escaping (Result<[T]>) -> Void) {
+    func read<T: Decodable>(form collectionRef: CollectionReference,
+                            returning objectType: T.Type,
+                            query: Query?,
+                            completion: @escaping (Result<[T]>) -> Void) {
+        if query == nil {
+            let ref = collectionRef
+            
+        } else {
+            let ref = query
+        }
+    
         collectionRef.getDocuments { (snapshot, err) in
             if err == nil {
                 guard let snapshot = snapshot else {
@@ -128,21 +125,21 @@ class FirebaseClient {
                         objects.append(object)
                     }
                     completion(Result.success(objects))
-                    
                 } catch {
-                    completion(Result.failure(HMFirebaseClientError.decodingError))
+                    completion(Result.failure(error))
                 }
                 
             } else {
-                completion(Result.failure(err!))
+                guard let err = err else { return }
+                completion(Result.failure(err))
             }
         }
     }
     
-    func readDocumentWithUid<T: Decodable>(uid: String,
+    func readDocWithPath<T: Decodable>(uid: String,
                                            form collectionRef: CollectionReference,
                                            returning objectType: T.Type,
-                                           completion: @escaping (Result<[T]>) -> Void) {
+                                           completion: @escaping (Result<T>) -> Void) {
         collectionRef.document(uid).getDocument { (document, err) in
             if err == nil {
                 guard let document = document else {
@@ -155,33 +152,55 @@ class FirebaseClient {
                     completion(Result.failure(HMFirebaseClientError.decodingError))
                 }
             } else {
+                guard let err = err else { return }
                 completion(Result.failure(err))
             }
         }
     }
     
-    func update<T: Encodable>(uid: String, in collectionRef: CollectionReference, for encodableObject: T, completion: @escaping (Result<T>) -> Void) {
+    func update<T: Encodable>(uid: String,
+                              in collectionRef: CollectionReference,
+                              for encodableObject: T,
+                              completion: @escaping (Result<Bool>) -> Void) {
 
         do {
-            let json = encodableObject.toJSON()
+            let json = try encodableObject.toJSON()
             collectionRef.document(uid).updateData(json) { (err) in
                 if err == nil {
-                    completion(Result.createSuccessfully)
+                    completion(Result.success(true))
                 } else {
+                    guard let err = err else { return }
                     completion(Result.failure(err))
                 }
             }
         } catch {
-            completion(Result.failure(HMFirebaseClientError.encodingError))
+            completion(Result.failure(error))
         }
         
     }
     
-    func updateOneItem(uid: String, in collectionRef: CollectionReference, updateItem: [String: Any], completion: @escaping (Result<T>) -> Void) {
+    func updateTheStatus(uid: String,
+                         in collectionRef: CollectionReference,
+                         updateItem: [String: Any],
+                         completion: @escaping (Result<Bool>) -> Void) {
         collectionRef.document(uid).updateData(updateItem) { (err) in
             if err == nil {
-                completion(Result.createSuccessfully)
+                completion(Result.success(true))
             } else {
+                guard let err = err else { return }
+                completion(Result.failure(err))
+            }
+        }
+    }
+    
+    func delete(uid: String,
+                in collectionRef: CollectionReference,
+                completion: @escaping (Result<Bool>) -> Void) {
+        collectionRef.document(uid).delete { (err) in
+            if err == nil {
+                completion(Result.success(true))
+            } else {
+                guard let err = err else { return }
                 completion(Result.failure(err))
             }
         }
