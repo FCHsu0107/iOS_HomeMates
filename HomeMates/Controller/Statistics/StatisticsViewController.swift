@@ -11,17 +11,7 @@ import FSCalendar
 
 class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegate {
 
-    @IBOutlet weak var tableView: UITableView! {
-        didSet {
-            tableView.delegate = self
-            tableView.dataSource = self
-            tableView.jq_registerCellWithNib(identifier: String(describing: EventCell.self), bundle: nil)
-            tableView.jq_registerCellWithNib(identifier: String(describing: PointGoalTableViewCell.self), bundle: nil)
-            tableView.jq_registerCellWithNib(identifier: String(describing: TrackerTableViewCell.self), bundle: nil)
-        }
-    }
-
-    let taskHeaderView = TaskListHeaderView()
+    @IBOutlet weak var tableView: UITableView!
 
     @IBOutlet weak var calendar: FSCalendar! {
         didSet {
@@ -56,6 +46,8 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
         }
     }
     
+    let taskHeaderView = TaskListHeaderView()
+    
     var taskList: [TaskObject] = []
     
     var dateTaskList: [TaskObject] = [] {
@@ -70,6 +62,7 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpTableView()
         
     }
     
@@ -78,6 +71,14 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
         headerLoaer()
     }
 
+    private func setUpTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.jq_registerCellWithNib(identifier: String(describing: EventCell.self), bundle: nil)
+        tableView.jq_registerCellWithNib(identifier: String(describing: PointGoalTableViewCell.self), bundle: nil)
+        tableView.jq_registerCellWithNib(identifier: String(describing: TrackerTableViewCell.self), bundle: nil)
+    }
+    
     private func headerLoaer() {
         tableView.addRefreshHeader(refreshingBlock: { [weak self] in
             self?.readDoneTask()
@@ -116,6 +117,13 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
         }
     }
     
+    private func getDateTask(selectedDate: String) {
+        dateTaskList = []
+        for (index, element) in taskList.enumerated() where element.completionDate == selectedDate {
+            dateTaskList.append(taskList[index])
+        }
+    }
+    
     private func getDateMark(tasks: [TaskObject]) {
         datesWithEvent = []
         for task in tasks {
@@ -136,14 +144,7 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
             self.calendar.setScope(.month, animated: true)
         }
     }
-
-    private func getDateTask(selectedDate: String) {
-        dateTaskList = []
-        for (index, element) in taskList.enumerated() where element.completionDate == selectedDate {
-                dateTaskList.append(taskList[index])
-        }
-    }
-    
+   
 }
 
 extension StatisticsViewController: FSCalendarDataSource, FSCalendarDelegate {
@@ -165,14 +166,15 @@ extension StatisticsViewController: FSCalendarDataSource, FSCalendarDelegate {
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         print("\(self.dateFormatter.string(from: calendar.currentPage))")
+        //不同月份換資料
     }
     
+    //日曆下方的圓點
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         let dateString = self.dateFormatter.string(from: date)
         if self.datesWithEvent.contains(dateString) {
             return 1
         }
-
         return 0
     }
     
