@@ -71,7 +71,7 @@ class LobbySettingsViewController: HMBaseViewController {
 extension LobbySettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = memberHeader.taskTitle(tableView: tableView, titleText: "成員列表")
+        let headerView = memberHeader.taskTitle(tableView: tableView, titleText: " 成員列表")
         return headerView
     }
     

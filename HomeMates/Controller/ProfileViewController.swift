@@ -10,13 +10,8 @@ import UIKit
 
 class ProfileViewController: HMBaseViewController {
 
-    @IBOutlet weak var tableView: UITableView! {
-        didSet {
-            tableView.delegate = self
-            tableView.dataSource = self
-        }
-    }
-
+    @IBOutlet weak var tableView: UITableView!
+    
     override var navigationBarIsHidden: Bool {
         return true
     }
@@ -25,7 +20,7 @@ class ProfileViewController: HMBaseViewController {
     
     let dispatchGroup = DispatchGroup()
 
-    var taskListTitle: [String] = ["", "任務日誌"]
+    var taskListTitle: [String] = ["", " 任務日誌"]
     
     var processTaskList: [TaskObject] = []
 
@@ -43,7 +38,6 @@ class ProfileViewController: HMBaseViewController {
         super.viewDidLoad()
         
         setUpTableView()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,6 +46,8 @@ class ProfileViewController: HMBaseViewController {
     }
     
     private func setUpTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.jq_registerCellWithNib(identifier: String(describing: ProfileHeaderViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: TotalPointsTableViewCell.self), bundle: nil)

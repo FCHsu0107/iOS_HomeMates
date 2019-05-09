@@ -38,11 +38,7 @@ class AuthViewController: HMBaseViewController {
         }
     }
     
-    @IBOutlet weak var selectMovingBar: UIView! {
-        didSet {
-            selectMovingBar.layer.cornerRadius = 18
-        }
-    }
+    @IBOutlet weak var selectMovingBar: UIView!
     
     @IBOutlet weak var selectMovingBarCenterXConstraint: NSLayoutConstraint!
     

@@ -82,7 +82,7 @@ class LobbyViewController: HMBaseViewController {
         FirestoreGroupManager.shared.readGroupMembers(completion: { [weak self] (members) in
             self?.memberList = members
             
-            FIRFirestoreSerivce.shared.readAllTasks(comletionHandler: { (tasks) in
+            FIRFirestoreSerivce.shared.readAllTasks(completionHandler: { (tasks) in
                 self?.processTaskList = []
                 self?.checkTaskList = []
                 self?.taskList = []
@@ -313,6 +313,10 @@ extension LobbyViewController: UITableViewDataSource {
         task.executorUid = UserDefaultManager.shared.userUid
         task.taskStatus = 2
         return task
+    }
+    
+    private func clickTaskBtnAction() {
+        
     }
     
     @objc func addingTaskPage() {
