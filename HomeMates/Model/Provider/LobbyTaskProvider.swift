@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+protocol ProviderDelegate: AnyObject {
+    func dataReady()
+}
+
 class LobbyTaskProvider {
     
     private enum CellType {
@@ -40,12 +44,18 @@ class LobbyTaskProvider {
         }
     }
     
+    weak var delegate: ProviderDelegate?
+    
     init() {
         
         dispatchGroup.enter()
         fetchData()
         dispatchGroup.notify(queue: .main) {
             print("get all task data")
+            print(self.checkTaskList)
+            print(self.ongoingTaskList)
+            print(self.taskList)
+            self.delegate?.dataReady()
         }
     }
     
@@ -95,17 +105,18 @@ class LobbyTaskProvider {
                         }
                     default: break
                     }
-                    self.datas = [.ongoingTasks(self.ongoingTaskList.count),
-                                  .waitingForCheckTasks(self.checkTaskList.count),
-                                  .acceptableTasks(self.taskList.count),
-                                  .addingANewTask]
                 }
+                self.datas = [.ongoingTasks(self.ongoingTaskList.count),
+                              .waitingForCheckTasks(self.checkTaskList.count),
+                              .acceptableTasks(self.taskList.count),
+                              .addingANewTask]
                self.dispatchGroup.leave()
             })
         })
     }
     
     func manipulateCell(_ cell: UITableViewCell, at indexPath: IndexPath)  {
+        print("++++++++++++Load DATA++++++++++")
         switch datas[indexPath.section] {
         case .ongoingTasks(let count):
             if count == 0 {
