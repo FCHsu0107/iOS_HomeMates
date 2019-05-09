@@ -100,20 +100,19 @@ class FirebaseClient {
             completion(Result.failure(error))
         }
 
+//        read(form: collectionRef, returning: String.self, query: { query in
+//            
+//            return query.whereField("name", isEqualTo: "Jaq")
+//            
+//        }, completion: <#T##(Result<[Decodable]>) -> Void#>)
     }
 
     func read<T: Decodable>(form collectionRef: CollectionReference,
                             returning objectType: T.Type,
-                            query: Query?,
+                            query: (Query) -> (Query) = { $0 },
                             completion: @escaping (Result<[T]>) -> Void) {
-        if query == nil {
-            let ref = collectionRef
-            
-        } else {
-            let ref = query
-        }
-    
-        collectionRef.getDocuments { (snapshot, err) in
+       
+        query(collectionRef).getDocuments { (snapshot, err) in
             if err == nil {
                 guard let snapshot = snapshot else {
                     return completion(Result.failure(HMFirebaseClientError.documentDoesNotExist))

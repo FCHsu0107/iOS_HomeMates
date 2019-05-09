@@ -315,6 +315,10 @@ extension LobbyViewController: UITableViewDataSource {
         return task
     }
     
+    private func clickTaskBtnAction() {
+        
+    }
+    
     @objc func addingTaskPage() {
         guard let newTaskVc = UIStoryboard.task.instantiateViewController(
             withIdentifier: String(describing: AddingTasksViewController.self))

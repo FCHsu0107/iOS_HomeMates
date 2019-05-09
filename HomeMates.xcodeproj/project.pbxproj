@@ -431,12 +431,11 @@
 			isa = PBXGroup;
 			children = (
 				B93EA21F2272DC2F002F18A3 /* StatusBarSettings.swift */,
+				B9B7F53A225D95CC00A6DA9E /* HMBaseTextField */,
+				B9B7F53B225D95DC00A6DA9E /* TaskHeaderView */,
 				B93EA235227C00E6002F18A3 /* BlankTableViewCell */,
 				B9261C9522545AA70033ABC9 /* TaskTableViewCell */,
-				B9B7F53B225D95DC00A6DA9E /* TaskHeaderView */,
-				B9B7F53A225D95CC00A6DA9E /* HMBaseTextField */,
-				B93EA231227C00C0002F18A3 /* AddTaskTableViewCell.swift */,
-				B93EA232227C00C0002F18A3 /* AddTaskTableViewCell.xib */,
+				B9DB5F3822830B4200F5DF4F /* AddTaskTableViewCell */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -555,6 +554,15 @@
 				B9D71AAB22534D5100F242DA /* Info.plist */,
 			);
 			path = HomeMates;
+			sourceTree = "<group>";
+		};
+		B9DB5F3822830B4200F5DF4F /* AddTaskTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				B93EA231227C00C0002F18A3 /* AddTaskTableViewCell.swift */,
+				B93EA232227C00C0002F18A3 /* AddTaskTableViewCell.xib */,
+			);
+			path = AddTaskTableViewCell;
 			sourceTree = "<group>";
 		};
 		C75B0ED5492584CA900C8D58 /* Pods */ = {

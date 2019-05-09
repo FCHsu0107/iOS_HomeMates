@@ -28,11 +28,7 @@ class GroupSelectionViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var movingSelectView: UIView! {
-        didSet {
-            movingSelectView.layer.cornerRadius = 18
-        }
-    }
+    @IBOutlet weak var movingSelectView: UIView!
     
     @IBOutlet weak var movingViewXContraint: NSLayoutConstraint!
     
@@ -76,11 +72,11 @@ class GroupSelectionViewController: UIViewController {
         
         UIView.animate(withDuration: 0.3, animations: { [weak self] in
             if reference.tag == 0 {
-                self?.firstGroupTextLbl.text = "搜尋群組 ID"
+                self?.firstGroupTextLbl.text = "搜尋群組代碼"
                 self?.secondGroupTextLbl.isHidden = true
                 self?.secondGroupTextField.isHidden = true
             } else {
-                self?.firstGroupTextLbl.text = "創立群組 ID (供搜尋用)"
+                self?.firstGroupTextLbl.text = "創立群組代碼 (供搜尋用)"
                 self?.secondGroupTextLbl.isHidden = false
                 self?.secondGroupTextField.isHidden = false
             }

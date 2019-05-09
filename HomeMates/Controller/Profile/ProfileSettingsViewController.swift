@@ -18,14 +18,12 @@ class ProfileSettingsViewController: HMBaseViewController {
     
     @IBOutlet weak var ownGroupIDTextField: HMBaseTextField!
     
-    @IBOutlet weak var monthGoalTextField: HMBaseTextField! {
-        didSet {
-            monthGoalTextField.keyboardType = .numberPad
-        }
-    }
+    @IBOutlet weak var monthGoalTextField: HMBaseTextField!
     
     var user: UserObject?
+    
     var groupInfo: GroupObject?
+    
     var goal: Int?
     
     override func viewDidLoad() {
@@ -52,7 +50,7 @@ class ProfileSettingsViewController: HMBaseViewController {
         navigationController?.popToRootViewController(animated: false)
     }
     
-    func loadUserInfo() {
+    private func loadUserInfo() {
         guard let name = user?.name else { return }
         
         userNameTextField.text = name

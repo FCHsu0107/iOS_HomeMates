@@ -20,7 +20,7 @@ class ProfileViewController: HMBaseViewController {
     
     let dispatchGroup = DispatchGroup()
 
-    var taskListTitle: [String] = ["", "任務日誌"]
+    var taskListTitle: [String] = ["", " 任務日誌"]
     
     var processTaskList: [TaskObject] = []
 

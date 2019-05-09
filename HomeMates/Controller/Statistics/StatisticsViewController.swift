@@ -183,7 +183,7 @@ extension StatisticsViewController: FSCalendarDataSource, FSCalendarDelegate {
 extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let taskHeaderTitle = ["過往紀錄", "目標達成率"]
+        let taskHeaderTitle = [" 過往紀錄", "目標達成率"]
         
         switch section {
         case 1, 2:

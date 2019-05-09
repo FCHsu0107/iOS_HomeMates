@@ -12,11 +12,7 @@ class AddingTasksViewController: UIViewController {
 
     @IBOutlet weak var taskNameTextField: HMBaseTextField!
     
-    @IBOutlet weak var taskPointsTextField: HMBaseTextField! {
-        didSet {
-            taskPointsTextField.keyboardType = .numberPad
-        }
-    }
+    @IBOutlet weak var taskPointsTextField: HMBaseTextField! 
     
     @IBOutlet weak var dailyTaskBtn: UIButton!
     
@@ -28,11 +24,15 @@ class AddingTasksViewController: UIViewController {
         super.viewDidLoad()
 
         setUpView()
+        readGroupInfo()
     }
     
     private func setUpView() {
         StatusBarSettings.setBackgroundColor(color: UIColor(red: 173/255, green: 144/255, blue: 38/255, alpha: 1))
-        
+
+    }
+    
+    private func readGroupInfo() {
         FirestoreGroupManager.shared.readGroupMembers { [weak self] (members) in
             self?.membersInfo = members
         }
