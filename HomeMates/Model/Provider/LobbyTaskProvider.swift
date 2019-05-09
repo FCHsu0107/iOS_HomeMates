@@ -44,6 +44,8 @@ class LobbyTaskProvider {
         }
     }
     
+    var clousure: (() -> Void)?
+    
     weak var delegate: ProviderDelegate?
     
     init() {
@@ -56,6 +58,7 @@ class LobbyTaskProvider {
             print(self.ongoingTaskList)
             print(self.taskList)
             self.delegate?.dataReady()
+            self.clousure?()
         }
     }
     

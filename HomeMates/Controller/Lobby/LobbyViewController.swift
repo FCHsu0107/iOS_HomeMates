@@ -23,7 +23,7 @@ class LobbyViewController: HMBaseViewController {
 
     var taskListTitle: [String] = ["已接取任務", "已完成任務", "可接取任務"]
     
-    var lobbyTaskProvider = LobbyTaskProvider() 
+    var lobbyTaskProvider = LobbyTaskProvider()
     
     var ongoingTaskList: [TaskObject] = []
 
@@ -37,7 +37,11 @@ class LobbyViewController: HMBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        lobbyTaskProvider.delegate = self
+//        lobbyTaskProvider.delegate = self
+        lobbyTaskProvider.clousure = { [weak self] in
+            self?.tableView.reloadData()
+        }
+        
         setUpTableView()
         setUpNotification()
     }
