@@ -27,5 +27,5 @@ enum FIRCollectionReference: String {
     case months
     
     case taskTrackers
-    
+
 }

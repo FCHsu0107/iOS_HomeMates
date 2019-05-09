@@ -10,15 +10,8 @@ import UIKit
 // swiftlint:disable cyclomatic_complexity
 class LobbyViewController: HMBaseViewController {
 
-    @IBOutlet weak var tableView: UITableView! {
-        
-        didSet {
-            tableView.delegate = self
-
-            tableView.dataSource = self
-        }
-    }
-
+    @IBOutlet weak var tableView: UITableView!
+    
     var groupInfo: GroupObject?
 
     let taskHeader = TaskListHeaderView()
@@ -56,6 +49,8 @@ class LobbyViewController: HMBaseViewController {
     }
     
     private func setUpTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.jq_registerCellWithNib(identifier: String(describing: TasksTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: BlankTableViewCell.self), bundle: nil)
         tableView.jq_registerCellWithNib(identifier: String(describing: AddTaskTableViewCell.self), bundle: nil)

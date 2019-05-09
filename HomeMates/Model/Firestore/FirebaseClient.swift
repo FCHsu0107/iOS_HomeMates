@@ -47,6 +47,56 @@ enum HMFirebaseMethod: String {
     case delete
 }
 
+enum FIRCollectionRef: String {
+    // data struct
+    //User collection items
+    case users
+    
+    case groupsInUser
+    
+    case months
+    
+    case taskTrackers
+    
+    //Group collection items
+    case groups
+    
+    case members
+    
+    case dailyTasksList
+    
+    case regularTaskList
+    
+    case tasks
+    
+    //Application collection
+    case applications
+    
+//    func collectionRef() -> CollectionReference {
+//        var ref = Firestore.firestore()
+//
+//        switch self {
+//        case .users:
+//            return ref.collection(FIRCollectionReference.users.rawValue)
+//        case .groupsInUser:
+//            return ref.collection(FIRCollectionReference.users.rawValue)
+//                .document(UserDefaultManager.shared.userUid!)
+//                .collection(FIRCollectionReference.groups.rawValue)
+//        case .months:
+//            return ref.collection(FIRCollectionReference.users.rawValue)
+//            .document(UserDefaultManager.shared.userUid!).collection(FIRCollectionReference.groups)
+//        case .groups:
+//            return ref.collection(FIRCollectionReference.groups.rawValue)
+//
+//        case .applications:
+//            return ref.collection(FIRCollectionReference.applications.rawValue)
+//
+//        default:
+//            <#code#>
+//        }
+//    }
+}
+
 class FirebaseClient {
     
     private init() {}
@@ -204,7 +254,5 @@ class FirebaseClient {
             }
         }
     }
-    
-    
-    
+
 }

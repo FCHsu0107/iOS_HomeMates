@@ -183,38 +183,6 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         guard let blankCell = secondcell as? BlankTableViewCell else { return secondcell }
         
         switch indexPath.section {
-
-//        case 1:
-//            if processTaskList.count == 0 {
-//                blankCell.loadData(displayText: "請至任務列表接取任務")
-//                return blankCell
-//            } else {
-//                let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self),
-//                                                         for: indexPath)
-//                guard let taskCell = cell as? TasksTableViewCell else { return cell }
-//                let task = processTaskList[indexPath.row]
-//                taskCell.loadData(taskObject: task, status: TaskCellStatus.doingTask)
-//
-//                taskCell.clickHandler = { [weak self] cell, tag in
-//                    guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
-//
-//                    guard var updateTask = self?.processTaskList[indexPath.row] else { return }
-//                    updateTask.taskStatus += tag
-//                    if tag == 1 {
-//                        let timeStamp = Int(DateProvider.shared.getTimeStamp())
-//                        updateTask.completionTimeStamp = timeStamp
-//                        self?.dispatchGroup.notify(queue: .main, execute: {
-//                            self?.messagesView.showSuccessView(title: "完成任務", body: "待其他成員確認任務後即可獲得積分")
-//                        })
-//                    }
-//
-//                    FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
-//                    self?.getAllInfo()
-//
-//                }
-//
-//                return taskCell
-//            }
             
         case 1:
 
