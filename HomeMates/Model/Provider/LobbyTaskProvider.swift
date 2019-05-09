@@ -32,11 +32,24 @@ class LobbyTaskProvider {
             case .addingANewTask: return ""
             }
         }
+        func heightForHeader() -> CGFloat {
+            switch self {
+            case .ongoingTasks, .acceptableTasks, .waitingForCheckTasks: return 60
+            case .addingANewTask: return 0
+            }
+        }
     }
     
     init() {
+        
+        dispatchGroup.enter()
         fetchData()
+        dispatchGroup.notify(queue: .main) {
+            print("get all task data")
+        }
     }
+    
+    let dispatchGroup = DispatchGroup()
     
     func numberOfSection() -> Int {
         return datas.count
@@ -48,6 +61,10 @@ class LobbyTaskProvider {
     
     func titleFofSection(_ section: Int) -> String {
         return datas[section].title()
+    }
+    
+    func heightForHeader(_ section: Int) -> CGFloat {
+        return datas[section].heightForHeader()
     }
     
     func identifier(indexPath: IndexPath) -> String {
@@ -83,12 +100,12 @@ class LobbyTaskProvider {
                                   .acceptableTasks(self.taskList.count),
                                   .addingANewTask]
                 }
-               
+               self.dispatchGroup.leave()
             })
         })
     }
     
-    func manipulateCell(_ cell: UITableViewCell, at indexPath: IndexPath) {
+    func manipulateCell(_ cell: UITableViewCell, at indexPath: IndexPath)  {
         switch datas[indexPath.section] {
         case .ongoingTasks(let count):
             if count == 0 {
@@ -123,13 +140,13 @@ class LobbyTaskProvider {
         }
     }
     
-    private var memberList: [MemberObject] = []
+    var memberList: [MemberObject] = []
     
     private var ongoingTaskList: [TaskObject] = []
     
     private var checkTaskList: [TaskObject] = []
     
-    private var taskList: [TaskObject] = []
+    var taskList: [TaskObject] = []
     
     private var datas: [CellType] = [.ongoingTasks(0),
                                      .waitingForCheckTasks(0),

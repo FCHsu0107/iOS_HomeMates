@@ -66,7 +66,7 @@ class TasksTableViewCell: UITableViewCell {
         
         switch status {
         case .checkTask:
-
+            secondBtnAppear = false
             guard let executor = taskObject.executorName else { return }
             guard let completionTimeStamp = taskObject.completionTimeStamp else { return }
             let completionDate = DateProvider.shared.getCurrentDate(currentTimeStamp: completionTimeStamp)
@@ -76,7 +76,7 @@ class TasksTableViewCell: UITableViewCell {
             taskRightBtn.setTitle("確認", for: .normal)
 
         case .acceptSpecialTask:
-
+            secondBtnAppear = false
             pointTextLbl.text = "積分： \(taskObject.taskPoint) 點"
             memberNameTextLbl.text = "發佈人：\(taskObject.publisherName)"
             taskRightBtn.setTitle("接受", for: .normal)
@@ -88,21 +88,8 @@ class TasksTableViewCell: UITableViewCell {
             pointTextLbl.text = "積分： \(taskObject.taskPoint) 點"
             taskRightBtn.setTitle("完成", for: .normal)
             taskLeftBtn.setTitle("放棄", for: .normal)
-
-        case .assignNormalTask:
-            hiddenFirstText = true
-            taskPeriodTextLbl.text = ""
-            pointTextLbl.text = "積分： \(taskObject.taskPoint) 點"
-            taskRightBtn.setTitle("接受", for: .normal)
-
-        case .assignRegularTask:
-            hiddenFirstText = true
-
-            pointTextLbl.text = "積分： \(taskObject.taskPoint) 點"
-            taskRightBtn.setTitle("接受", for: .normal)
-            taskPeriodTextLbl.isHidden = false
-            taskPeriodTextLbl.text = "每 \(taskObject.taskPriodDay) 天一次"
         }
+        
         taskRightBtn.addTarget(self, action: #selector(clickBtnAction(_:)), for: .touchUpInside)
         taskLeftBtn.addTarget(self, action: #selector(clickBtnAction(_:)), for: .touchUpInside)
         

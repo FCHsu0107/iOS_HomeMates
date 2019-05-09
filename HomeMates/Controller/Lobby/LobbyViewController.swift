@@ -18,15 +18,15 @@ class LobbyViewController: HMBaseViewController {
 
     var taskListTitle: [String] = ["已接取任務", "已完成任務", "可接取任務"]
     
-    var processTaskList: [TaskObject] = []
+    let lobbyTaskProvider = LobbyTaskProvider()
     
+    var ongoingTaskList: [TaskObject] = []
+
     var checkTaskList: [TaskObject] = []
 
     var taskList: [TaskObject] = []
-    
+
     var memberList: [MemberObject] = []
-    
-    let dispatchGroup = DispatchGroup()
     
     let messageView = MessagesView()
 
@@ -73,38 +73,16 @@ class LobbyViewController: HMBaseViewController {
     }
     
     private func readTaskLisk() {
-        
-        FirestoreGroupManager.shared.readGroupMembers(completion: { [weak self] (members) in
+
+        FirestoreGroupManager.shared.readLobbyInfo { [weak self] (members, ongoingTasks, checksTasks, tasks) in
             self?.memberList = members
-            
-            FIRFirestoreSerivce.shared.readAllTasks(completionHandler: { (tasks) in
-                self?.processTaskList = []
-                self?.checkTaskList = []
-                self?.taskList = []
-                for task in tasks {
-                    switch task.taskStatus {
-                    case 1:
-                        self?.taskList.append(task)
-                    case 2:
-                        if task.executorUid == UserDefaultManager.shared.userUid {
-                            self?.processTaskList.append(task)
-                        }
-                    case 3:
-                        if members.count == 1 {
-                            self?.checkTaskList.append(task)
-                        } else if task.executorUid != UserDefaultManager.shared.userUid {
-                            self?.checkTaskList.append(task)
-                        }
-                    default: break
-                    }
-                }
-                
-                self?.tableView.reloadData()
-                self?.tableView.endHeaderRefreshing()
-                
-            })
-            
-        })
+            self?.ongoingTaskList = ongoingTasks
+            self?.checkTaskList = checksTasks
+            self?.taskList = tasks
+            self?.tableView.reloadData()
+            self?.tableView.endHeaderRefreshing()
+        }
+
     }
 
     @objc func clickSettingBtn() {
@@ -115,7 +93,7 @@ class LobbyViewController: HMBaseViewController {
         if segue.identifier == "LobbySettingsSegue" {
             guard let nextVc = segue.destination as? LobbySettingsViewController else { return }
             nextVc.groupInfo = groupInfo
-            nextVc.memberList = memberList
+            nextVc.memberList = lobbyTaskProvider.memberList
         }
     }
     
@@ -127,12 +105,11 @@ extension LobbyViewController: UITableViewDataSource {
         switch section {
 
         case 3: return nil
-            
+
         default :
             let headerView = taskHeader.taskTitle(tableView: tableView, titleText: taskListTitle[section])
              return headerView
         }
-
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -155,10 +132,10 @@ extension LobbyViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            if processTaskList.count == 0 {
+            if ongoingTaskList.count == 0 {
                 return 1
             } else {
-                return processTaskList.count
+                return ongoingTaskList.count
             }
         case 1:
             if checkTaskList.count == 0 {
@@ -182,50 +159,30 @@ extension LobbyViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let secondCell = tableView.dequeueReusableCell(withIdentifier: String(describing: BlankTableViewCell.self),
-                                                       for: indexPath)
-        guard let blankCell = secondCell as? BlankTableViewCell else { return secondCell}
-        
+
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self),
                                                  for: indexPath)
         guard let taskCell = cell as? TasksTableViewCell else { return cell }
         
+        let secondCell = tableView.dequeueReusableCell(withIdentifier: String(describing: BlankTableViewCell.self),
+                                                       for: indexPath)
+        guard let blankCell = secondCell as? BlankTableViewCell else { return secondCell}
+
         switch indexPath.section {
-            
+
         case 0:
-            if processTaskList.count == 0 {
+            if ongoingTaskList.count == 0 {
                 blankCell.loadData(displayText: "請接取任務")
                 return blankCell
             } else {
-                let task = processTaskList[indexPath.row]
-                
-                taskCell.loadData(taskObject: task, status: TaskCellStatus.doingTask)
-    
-                taskCell.clickHandler = { [weak self] cell, tag in
-                    guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
-                    guard var updateTask = self?.processTaskList[indexPath.row] else { return }
-                    updateTask.taskStatus += tag
-                    if tag == 1 {
-                        let timeStamp = Int(DateProvider.shared.getTimeStamp())
-                        updateTask.completionTimeStamp = timeStamp
-                        self?.messageView.showSuccessView(title: "完成任務", body: "待其他成員確認任務後即可獲得積分")
+                let task = ongoingTaskList[indexPath.row]
 
-                        guard let members = self?.memberList else { return }
-                        for member in members {
-                            if let memberToken = member.fcmToken {
-                            PushNotificationSender.shared
-                                .sendPushNotification(to: memberToken,
-                                                      title: "任務已完成",
-                                                      body: "\(UserDefaultManager.shared.userName!) 已經完成\(updateTask.taskName)任務，快來確認吧！")
-                            } 
-                        }
-                    }
-                    FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
-                    self?.readTaskLisk()
-                    
+                taskCell.loadData(taskObject: task, status: TaskCellStatus.doingTask)
+
+                taskCell.clickHandler = { [weak self] cell, tag in
+                    self?.clickOngoingTask(cell: cell, tag: tag)
                 }
-                
+
                 return taskCell
             }
         case 1 :
@@ -233,19 +190,15 @@ extension LobbyViewController: UITableViewDataSource {
                 blankCell.loadData(displayText: "待他人完成任務")
                 return blankCell
             } else {
-                
+
                 let task = checkTaskList[indexPath.row]
                 taskCell.loadData(taskObject: task, status: TaskCellStatus.checkTask)
-                taskCell.clickHandler = { [weak self] cell, _ in
-                    self?.messageView.showSuccessView(title: "確認完成任務", body: "可至任務紀錄中查看紀錄")
-                    guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
-                    guard var updateTask = self?.checkTaskList[indexPath.row] else { return }
-                    updateTask.taskStatus = 4
-                    FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
-                    FirestoreUserManager.shared.addTaskTracker(for: updateTask)
-                    self?.readTaskLisk()
-                }
                 
+                taskCell.clickHandler = { [weak self] cell, _ in
+                    self?.clickCheckTask(cell: cell)
+
+                }
+
                 return taskCell
             }
         case 2:
@@ -255,24 +208,20 @@ extension LobbyViewController: UITableViewDataSource {
             } else {
                 let task = taskList[indexPath.row]
                 taskCell.loadData(taskObject: task, status: .acceptSpecialTask)
-                taskCell.clickHandler = { [weak self] cell, _ in
-                    self?.messageView.showSuccessView(title: "已接取任務", body: "待任務完成後點選確認鍵")
-                    guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
-                    
-                    guard let updateTask = self?.taskList[indexPath.row] else { return }
-                    let task = self?.updateTaskStatus(taskItem: updateTask)
-                    FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: task)
-                    self?.readTaskLisk()
                 
+                taskCell.clickHandler = { [weak self] cell, _ in
+                    self?.clickTask(cell: cell)
+
+
                 }
                 return taskCell
             }
-            
+
         case 3:
             let thirdCell = tableView.dequeueReusableCell(withIdentifier: String(describing: AddTaskTableViewCell.self),
                                                           for: indexPath)
             guard let addingTaskCell = thirdCell as? AddTaskTableViewCell else { return thirdCell}
-            
+
             addingTaskCell.addTaskBtn.addTarget(self, action: #selector(addingTaskPage), for: .touchUpInside)
             return addingTaskCell
         default:
@@ -292,7 +241,7 @@ extension LobbyViewController: UITableViewDataSource {
             tableView.reloadData()
         }
     }
-    
+
     internal func tableView(_ tableView: UITableView,
                             editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         if indexPath.section == 2 && taskList.count != 0 {
@@ -301,17 +250,57 @@ extension LobbyViewController: UITableViewDataSource {
             return UITableViewCell.EditingStyle.none
         }
     }
-  
+    
+    private func clickOngoingTask(cell: UITableViewCell, tag: Int) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        var updateTask = ongoingTaskList[indexPath.row]
+        updateTask.taskStatus += tag
+        if tag == 1 {
+            let timeStamp = Int(DateProvider.shared.getTimeStamp())
+            updateTask.completionTimeStamp = timeStamp
+            messageView.showSuccessView(title: "完成任務", body: "待其他成員確認任務後即可獲得積分")
+            
+            for member in memberList {
+                if let memberToken = member.fcmToken {
+                    PushNotificationSender.shared
+                        .sendPushNotification(to: memberToken,
+                                              title: "任務已完成",
+                                              body: "\(UserDefaultManager.shared.userName!) 已經完成\(updateTask.taskName)任務，快來確認吧！")
+                }
+            }
+        }
+        
+        FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!,
+                                                    for: updateTask)
+        readTaskLisk()
+    }
+    
+    private func clickCheckTask(cell: UITableViewCell) {
+        messageView.showSuccessView(title: "確認完成任務", body: "可至任務紀錄中查看紀錄")
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        var updateTask = checkTaskList[indexPath.row]
+        updateTask.taskStatus = 4
+        FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
+        FirestoreUserManager.shared.addTaskTracker(for: updateTask)
+        readTaskLisk()
+    }
+    
+    private func clickTask(cell: UITableViewCell) {
+        messageView.showSuccessView(title: "已接取任務", body: "待任務完成後點選確認鍵")
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        
+        let updateTask = taskList[indexPath.row]
+        let task = updateTaskStatus(taskItem: updateTask)
+        FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: task)
+        readTaskLisk()
+    }
+    
     private func updateTaskStatus(taskItem: TaskObject) -> TaskObject {
         var task = taskItem
         task.executorName = UserDefaultManager.shared.userName
         task.executorUid = UserDefaultManager.shared.userUid
         task.taskStatus = 2
         return task
-    }
-    
-    private func clickTaskBtnAction() {
-        
     }
     
     @objc func addingTaskPage() {

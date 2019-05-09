@@ -190,4 +190,39 @@ class FirestoreGroupManager {
         })
     }
     
+    func readLobbyInfo(compleation: @escaping ([MemberObject], [TaskObject], [TaskObject], [TaskObject]) -> Void) {
+        FirestoreGroupManager.shared.readGroupMembers(completion: { (members) in
+//            var memberList = members
+            
+            FIRFirestoreSerivce.shared.readAllTasks(completionHandler: { (tasks) in
+                var processTaskList: [TaskObject] = []
+                var checkTaskList: [TaskObject] = []
+                var taskList: [TaskObject] = []
+                for task in tasks {
+                    switch task.taskStatus {
+                    case 1:
+                        taskList.append(task)
+                    case 2:
+                        if task.executorUid == UserDefaultManager.shared.userUid {
+                            processTaskList.append(task)
+                        }
+                    case 3:
+                        if members.count == 1 {
+                            checkTaskList.append(task)
+                        } else if task.executorUid != UserDefaultManager.shared.userUid {
+                            checkTaskList.append(task)
+                        }
+                    default: break
+                    }
+                }
+
+                compleation(members, processTaskList, checkTaskList, taskList)
+                
+            })
+            
+        })
+
+    }
+    
+    
 }

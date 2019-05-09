@@ -16,7 +16,4 @@ enum TaskCellStatus {
     
     case doingTask
     
-    case assignNormalTask
-    
-    case assignRegularTask
 }
