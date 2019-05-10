@@ -7,3 +7,14 @@
 //
 
 import Foundation
+
+enum TaskType {
+    
+    case ongoingTask
+    
+    case waitingForCheckTask
+    
+    case acceptableTask
+    
+    case addingANewTask
+}
