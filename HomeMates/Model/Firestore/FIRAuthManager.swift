@@ -62,4 +62,9 @@ class FIRAuthManager {
             listener(true)
         }
     }
+    
+}
+
+extension FIRAuthManager {
+
 }

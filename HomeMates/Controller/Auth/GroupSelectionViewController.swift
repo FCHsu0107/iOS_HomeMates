@@ -11,32 +11,17 @@ import FirebaseAuth
 
 class GroupSelectionViewController: UIViewController {
 
-    @IBOutlet weak var baseInfoLbl: UILabel! {
-        didSet {
-            HMCornerRadius.shared.setLayer(view: baseInfoLbl, cornerRadius: 18)
-        }
-    }
-    @IBOutlet weak var backgroundView: UIView! {
-        didSet {
-            HMCornerRadius.shared.setLayer(view: backgroundView, cornerRadius: 10)
-        }
-    }
+    @IBOutlet weak var baseInfoLbl: UILabel!
     
-    @IBOutlet weak var selectGroupView: UIView! {
-        didSet {
-            HMCornerRadius.shared.setLayer(view: selectGroupView, cornerRadius: 18)
-        }
-    }
+    @IBOutlet weak var backgroundView: UIView!
+    
+    @IBOutlet weak var selectGroupView: UIView!
     
     @IBOutlet weak var movingSelectView: UIView!
     
     @IBOutlet weak var movingViewXContraint: NSLayoutConstraint!
     
-    @IBOutlet weak var enterBtn: UIButton! {
-        didSet {
-            HMCornerRadius.shared.setLayer(view: enterBtn, cornerRadius: 18)
-        }
-    }
+    @IBOutlet weak var enterBtn: UIButton!
     
     @IBOutlet weak var firstGroupTextLbl: UILabel!
     

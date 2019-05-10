@@ -30,6 +30,8 @@ class ProfileSettingsViewController: HMBaseViewController {
         super.viewDidLoad()
         FirestoreGroupManager.shared.readGroupInfo { [weak self] (object) in
             self?.groupInfo = object
+            self?.ownGroupTextField.text = object.name
+            self?.ownGroupIDTextField.text = object.groupId
         }
     }
     

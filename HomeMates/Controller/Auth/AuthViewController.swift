@@ -32,27 +32,15 @@ class AuthViewController: HMBaseViewController {
     
     @IBOutlet var selectionBarBtn: [UIButton]!
     
-    @IBOutlet weak var authInfoView: UIView! {
-        didSet {
-            HMCornerRadius.shared.setLayer(view: authInfoView, cornerRadius: 10)
-        }
-    }
+    @IBOutlet weak var authInfoView: UIView!
     
     @IBOutlet weak var selectMovingBar: UIView!
     
     @IBOutlet weak var selectMovingBarCenterXConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var enterButton: UIButton! {
-        didSet {
-            HMCornerRadius.shared.setLayer(view: enterButton, cornerRadius: 18)
-        }
-    }
+    @IBOutlet weak var enterButton: UIButton!
     
-    @IBOutlet weak var selectModeBackgroundView: UIView! {
-        didSet {
-            HMCornerRadius.shared.setLayer(view: selectModeBackgroundView, cornerRadius: 18)
-        }
-    }
+    @IBOutlet weak var selectModeBackgroundView: UIView! 
     
     override func viewDidLoad() {
         super.viewDidLoad()

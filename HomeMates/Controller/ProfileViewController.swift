@@ -21,8 +21,6 @@ class ProfileViewController: HMBaseViewController {
     let dispatchGroup = DispatchGroup()
 
     var taskListTitle: [String] = ["", " 任務日誌"]
-    
-    var processTaskList: [TaskObject] = []
 
     var doneTaskList: [TaskTracker] = []
     
@@ -66,12 +64,6 @@ class ProfileViewController: HMBaseViewController {
         dispatchGroup.enter()
         FirestoreUserManager.shared.readUserInfo { [weak self] (user) in
             self?.userInfo = user
-            self?.dispatchGroup.leave()
-        }
-        
-        dispatchGroup.enter()
-        FIRFirestoreSerivce.shared.readDoingTasks { [weak self] (tasks) in
-            self?.processTaskList = tasks
             self?.dispatchGroup.leave()
         }
         
@@ -159,12 +151,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-//        case 1:
-//            if processTaskList.count == 0 {
-//                return 1
-//            } else {
-//                return processTaskList.count
-//            }
+            
         case 1:
             if doneTaskList.count == 0 {
                 return 1
