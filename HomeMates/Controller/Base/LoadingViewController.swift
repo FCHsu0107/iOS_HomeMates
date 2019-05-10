@@ -47,11 +47,12 @@ class LoadingViewController: UIViewController {
         
         FIRAuthManager.shared.addSignUpListener { (flag) in
             if flag == false {
-                print(flag)
-               let authVc = UIStoryboard.auth.instantiateInitialViewController()!
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                    let authVc = UIStoryboard.auth.instantiateInitialViewController()!
                     
                     delegate.window?.rootViewController = authVc
-                return
+                    return
+                })
                 
             } else {
                 FIRFirestoreSerivce.shared.findUser { [weak self] bool, userInfo  in
