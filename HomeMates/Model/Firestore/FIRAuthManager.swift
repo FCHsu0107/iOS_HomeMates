@@ -66,5 +66,53 @@ class FIRAuthManager {
 }
 
 extension FIRAuthManager {
+    
+    // Auth page - sign up and log in
+    func createUserDoc(email: String,
+                       password: String,
+                       userName: String,
+                       completion: @escaping (Bool, Error?) -> Void) {
+        FIRAuthManager.shared.createUser(withEmail: email,
+                                         password: password) {(user, error) in
+            if error == nil {
+                guard let user = user else { return }
+                let newUser = UserObject(docId: nil,
+                                         name: userName,
+                                         email: (user.email)!,
+                                         picture: nil,
+                                         creator: false,
+                                         application: false,
+                                         finishSignUp: false,
+                                         mainGroupId: nil,
+                                         fcmToken: nil)
+                UserDefaultManager.shared.userUid = user.uid
+                FIRFirestoreSerivce.shared.createUser(uid: user.uid,
+                                                      for: newUser,
+                                                      in: .users)
+                completion(true, nil)
+            } else {
+                completion(false, error)
+            }
+        }
+    }
+    
+    //Auth page - log in
+    func signInAction(email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
+        FIRAuthManager.shared.signIn(withEmail: email, password: password) { (error) in
+            if error == nil {
+                FIRFirestoreSerivce.shared.findUser { bool, userInfo  in
+                    if bool == true && userInfo?.mainGroupId != nil {
+                            UserDefaultManager.shared.groupId = userInfo?.mainGroupId
+                            completion(true, nil)
+                        } else {
+                            completion(false, nil)
+                        
+                        }
+                    }
+                } else {
+                completion(false, error)
+            }
+        }
+    }
 
 }

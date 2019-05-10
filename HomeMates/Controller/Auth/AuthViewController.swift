@@ -133,59 +133,41 @@ class AuthViewController: HMBaseViewController {
     }
     
     private func createUserDoc() {
-        FIRAuthManager.shared.createUser(withEmail: emailTextField.text!,
-                                         password: passwordTextField.text!) { [weak self] (user, error) in
-            if error == nil {
-                guard let user = user else { return }
-                let newUser = UserObject(docId: nil,
-                                         name: (self?.userNameTextField.text)!,
-                                         email: (user.email)!,
-                                         picture: nil,
-                                         creator: false,
-                                         application: false,
-                                         finishSignUp: false,
-                                         mainGroupId: nil,
-                                         fcmToken: nil)
-                UserDefaultManager.shared.userUid = user.uid
-                FIRFirestoreSerivce.shared.createUser(uid: user.uid,
-                                                      for: newUser,
-                                                      in: .users)
+        FIRAuthManager.shared.createUserDoc(email: emailTextField.text!,
+                                            password: passwordTextField.text!,
+                                            userName: userNameTextField.text!) { [weak self] (flag, error) in
+            if flag == true {
                 self?.performSegue(withIdentifier: "selectGroupSegue", sender: nil)
             } else {
                 AlertService.sigleActionAlert(title: "錯誤",
-                                           message: error?.localizedDescription,
-                                           clickTitle: "收到",
-                                           showInVc: self!)
+                                              message: error?.localizedDescription,
+                                              clickTitle: "收到",
+                                              showInVc: self!)
             }
         }
     }
     
     private func signInAction() {
-        FIRAuthManager.shared.signIn(withEmail: emailTextField.text!,
-                                     password: passwordTextField.text!) { [weak self] (error) in
-            if error == nil {
-                FIRFirestoreSerivce.shared.findUser { [weak self] bool, userInfo  in
-                    if bool == true && userInfo?.mainGroupId != nil {
-                        UserDefaultManager.shared.groupId = userInfo?.mainGroupId
-                        let tabBarVC = UIStoryboard.main.instantiateInitialViewController()!
-                        self?.present(tabBarVC, animated: true, completion: nil)
-                    } else {
-                        if let selectGroupVc =
-                            UIStoryboard.auth.instantiateViewController(
-                                withIdentifier: String(describing: GroupSelectionViewController.self))
-                                as? GroupSelectionViewController {
-                            
-                            self?.present(selectGroupVc, animated: true, completion: nil)
-                            
-                        }
+        FIRAuthManager.shared.signInAction(email: emailTextField.text!,
+                                           password: passwordTextField.text!) { [weak self] (flag, err) in
+            if err == nil {
+                if flag == true {
+                    let tabBarVC = UIStoryboard.main.instantiateInitialViewController()!
+                    self?.present(tabBarVC, animated: true, completion: nil)
+                } else {
+                    if let selectGroupVc =
+                        UIStoryboard.auth.instantiateViewController(
+                            withIdentifier: String(describing: GroupSelectionViewController.self))
+                            as? GroupSelectionViewController {
+                        
+                        self?.present(selectGroupVc, animated: true, completion: nil)
                     }
                 }
-
             } else {
                 AlertService.sigleActionAlert(title: "錯誤",
-                                           message: error?.localizedDescription,
-                                           clickTitle: "收到",
-                                           showInVc: self!)
+                                              message: err?.localizedDescription,
+                                              clickTitle: "收到",
+                                              showInVc: self!)
             }
         }
     }
