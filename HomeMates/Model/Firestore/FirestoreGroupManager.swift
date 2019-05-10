@@ -224,6 +224,4 @@ class FirestoreGroupManager {
 
     }
     
-    
-    
 }

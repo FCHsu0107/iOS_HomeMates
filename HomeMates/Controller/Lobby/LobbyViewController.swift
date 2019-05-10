@@ -304,10 +304,3 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension LobbyViewController: ProviderDelegate {
-    func dataReady() {
-        tableView.reloadData()
-    }
-    
-    
-}

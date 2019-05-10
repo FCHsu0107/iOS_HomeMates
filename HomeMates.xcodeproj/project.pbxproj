@@ -86,6 +86,7 @@
 		B9B99F462263690C00314BB6 /* GroupObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F452263690C00314BB6 /* GroupObject.swift */; };
 		B9B99F4B2264660100314BB6 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F4A2264660100314BB6 /* UserDefault.swift */; };
 		B9B99F4D22648E4B00314BB6 /* GroupInfoInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F4C22648E4B00314BB6 /* GroupInfoInUser.swift */; };
+		B9CA00C122856B0A00EC550C /* HomeMatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CA00C022856B0A00EC550C /* HomeMatesTests.swift */; };
 		B9D295D42258C18F00CF7869 /* TaskTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D295D32258C18F00CF7869 /* TaskTracker.swift */; };
 		B9D295DB225B003300CF7869 /* TaskListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D295DA225B003300CF7869 /* TaskListHeaderView.swift */; };
 		B9D71AA022534D4F00F242DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D71A9F22534D4F00F242DA /* AppDelegate.swift */; };
@@ -93,7 +94,6 @@
 		B9D71AA722534D5100F242DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9D71AA622534D5100F242DA /* Assets.xcassets */; };
 		B9D71AAA22534D5100F242DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D71AA822534D5100F242DA /* LaunchScreen.storyboard */; };
 		B9DB5F3722816E7F00F5DF4F /* FIrebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB5F3622816E7F00F5DF4F /* FIrebaseClient.swift */; };
-		B9DB5F3A2283D20600F5DF4F /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB5F392283D20600F5DF4F /* FirebaseManager.swift */; };
 		B9DB5F3C2283D34D00F5DF4F /* TaskProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB5F3B2283D34D00F5DF4F /* TaskProvider.swift */; };
 		B9DB5F3E2283EEF300F5DF4F /* LobbyTaskProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB5F3D2283EEF300F5DF4F /* LobbyTaskProvider.swift */; };
 		B9DB5F42228437E700F5DF4F /* TaskType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB5F41228437E700F5DF4F /* TaskType.swift */; };
@@ -101,6 +101,16 @@
 		B9EE7EF8227EE43B00647600 /* PushNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EE7EF7227EE43B00647600 /* PushNotificationSender.swift */; };
 		B9EE7EFC227FFDBC00647600 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9EE7EFB227FFDBC00647600 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B9CA00C322856B0A00EC550C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9D71A9422534D4F00F242DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9D71A9B22534D4F00F242DA;
+			remoteInfo = HomeMates;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		A0D5E2E1A5658A395EF06F5E /* Pods_HomeMates.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomeMates.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,6 +192,9 @@
 		B9B99F452263690C00314BB6 /* GroupObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupObject.swift; sourceTree = "<group>"; };
 		B9B99F4A2264660100314BB6 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		B9B99F4C22648E4B00314BB6 /* GroupInfoInUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoInUser.swift; sourceTree = "<group>"; };
+		B9CA00BE22856B0A00EC550C /* HomeMatesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeMatesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9CA00C022856B0A00EC550C /* HomeMatesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMatesTests.swift; sourceTree = "<group>"; };
+		B9CA00C222856B0A00EC550C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9D295D32258C18F00CF7869 /* TaskTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTracker.swift; sourceTree = "<group>"; };
 		B9D295DA225B003300CF7869 /* TaskListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListHeaderView.swift; sourceTree = "<group>"; };
 		B9D71A9C22534D4F00F242DA /* HomeMates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeMates.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,7 +204,6 @@
 		B9D71AA922534D5100F242DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B9D71AAB22534D5100F242DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9DB5F3622816E7F00F5DF4F /* FIrebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIrebaseClient.swift; sourceTree = "<group>"; };
-		B9DB5F392283D20600F5DF4F /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		B9DB5F3B2283D34D00F5DF4F /* TaskProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskProvider.swift; sourceTree = "<group>"; };
 		B9DB5F3D2283EEF300F5DF4F /* LobbyTaskProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyTaskProvider.swift; sourceTree = "<group>"; };
 		B9DB5F41228437E700F5DF4F /* TaskType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskType.swift; sourceTree = "<group>"; };
@@ -204,6 +216,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B9CA00BB22856B0A00EC550C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B9D71A9922534D4F00F242DA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -505,7 +524,6 @@
 				B9EE7EF5227EC55800647600 /* PushNotificationManager.swift */,
 				B9EE7EF7227EE43B00647600 /* PushNotificationSender.swift */,
 				B9DB5F3622816E7F00F5DF4F /* FIrebaseClient.swift */,
-				B9DB5F392283D20600F5DF4F /* FirebaseManager.swift */,
 			);
 			path = Firestore;
 			sourceTree = "<group>";
@@ -521,6 +539,15 @@
 			path = GroupObject;
 			sourceTree = "<group>";
 		};
+		B9CA00BF22856B0A00EC550C /* HomeMatesTests */ = {
+			isa = PBXGroup;
+			children = (
+				B9CA00C022856B0A00EC550C /* HomeMatesTests.swift */,
+				B9CA00C222856B0A00EC550C /* Info.plist */,
+			);
+			path = HomeMatesTests;
+			sourceTree = "<group>";
+		};
 		B9D295D52258CD4C00CF7869 /* TaskList */ = {
 			isa = PBXGroup;
 			children = (
@@ -534,6 +561,7 @@
 			isa = PBXGroup;
 			children = (
 				B9D71A9E22534D4F00F242DA /* HomeMates */,
+				B9CA00BF22856B0A00EC550C /* HomeMatesTests */,
 				B9D71A9D22534D4F00F242DA /* Products */,
 				C75B0ED5492584CA900C8D58 /* Pods */,
 				6027FDD169EC46F3E3A6B242 /* Frameworks */,
@@ -544,6 +572,7 @@
 			isa = PBXGroup;
 			children = (
 				B9D71A9C22534D4F00F242DA /* HomeMates.app */,
+				B9CA00BE22856B0A00EC550C /* HomeMatesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -586,6 +615,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B9CA00BD22856B0A00EC550C /* HomeMatesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9CA00C722856B0A00EC550C /* Build configuration list for PBXNativeTarget "HomeMatesTests" */;
+			buildPhases = (
+				B9CA00BA22856B0A00EC550C /* Sources */,
+				B9CA00BB22856B0A00EC550C /* Frameworks */,
+				B9CA00BC22856B0A00EC550C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B9CA00C422856B0A00EC550C /* PBXTargetDependency */,
+			);
+			name = HomeMatesTests;
+			productName = HomeMatesTests;
+			productReference = B9CA00BE22856B0A00EC550C /* HomeMatesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		B9D71A9B22534D4F00F242DA /* HomeMates */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B9D71AAE22534D5100F242DA /* Build configuration list for PBXNativeTarget "HomeMates" */;
@@ -617,6 +664,10 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Fu-Chiung HSU";
 				TargetAttributes = {
+					B9CA00BD22856B0A00EC550C = {
+						CreatedOnToolsVersion = 10.2;
+						TestTargetID = B9D71A9B22534D4F00F242DA;
+					};
 					B9D71A9B22534D4F00F242DA = {
 						CreatedOnToolsVersion = 10.2;
 						SystemCapabilities = {
@@ -641,11 +692,19 @@
 			projectRoot = "";
 			targets = (
 				B9D71A9B22534D4F00F242DA /* HomeMates */,
+				B9CA00BD22856B0A00EC550C /* HomeMatesTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B9CA00BC22856B0A00EC550C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B9D71A9A22534D4F00F242DA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -786,6 +845,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B9CA00BA22856B0A00EC550C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9CA00C122856B0A00EC550C /* HomeMatesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B9D71A9822534D4F00F242DA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -847,7 +914,6 @@
 				B9DB5F3722816E7F00F5DF4F /* FIrebaseClient.swift in Sources */,
 				B9B99F352262151100314BB6 /* FIRFirestoreService.swift in Sources */,
 				B91D3B0B226AED2900C1A28F /* AddingTaskHeaderViewCell.swift in Sources */,
-				B9DB5F3A2283D20600F5DF4F /* FirebaseManager.swift in Sources */,
 				B91D3B12226B62BC00C1A28F /* ProfileSettingsViewController.swift in Sources */,
 				B98446C6226FF33100E5044A /* BlankTableViewCell.swift in Sources */,
 				B9EE7EF6227EC55800647600 /* PushNotificationManager.swift in Sources */,
@@ -863,6 +929,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B9CA00C422856B0A00EC550C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9D71A9B22534D4F00F242DA /* HomeMates */;
+			targetProxy = B9CA00C322856B0A00EC550C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B9D71AA322534D4F00F242DA /* Main.storyboard */ = {
@@ -884,6 +958,49 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B9CA00C522856B0A00EC550C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = R66LF8J636;
+				INFOPLIST_FILE = HomeMatesTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Jacqueline.HomeMatesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HomeMates.app/HomeMates";
+			};
+			name = Debug;
+		};
+		B9CA00C622856B0A00EC550C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R66LF8J636;
+				INFOPLIST_FILE = HomeMatesTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Jacqueline.HomeMatesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HomeMates.app/HomeMates";
+			};
+			name = Release;
+		};
 		B9D71AAC22534D5100F242DA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1046,6 +1163,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B9CA00C722856B0A00EC550C /* Build configuration list for PBXNativeTarget "HomeMatesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9CA00C522856B0A00EC550C /* Debug */,
+				B9CA00C622856B0A00EC550C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B9D71A9722534D4F00F242DA /* Build configuration list for PBXProject "HomeMates" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

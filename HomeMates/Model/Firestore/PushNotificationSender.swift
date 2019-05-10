@@ -29,7 +29,7 @@ class PushNotificationSender {
             "key=AAAAG9D4lGs:APA91bGtf_eUY_70sMMLNY1GpYkAAT9t5nOfYu3l9zezM9dGYGmbwI_Fw4i35YCi_Bs1VtLOhmpfhypl2JQubo9W7eu9Y1p_U0cuqXtv2jUEGP9Bzkr73BihjVrfyxqdpdiqO0uE29Qi",
             forHTTPHeaderField: "Authorization")
         
-        let task = URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, _) in
             do {
                 if let jsonData = data {
                     if let jsonDataDict  = try JSONSerialization.jsonObject(
