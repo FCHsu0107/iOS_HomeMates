@@ -71,7 +71,7 @@ extension FIRAuthManager {
     func createUserDoc(email: String,
                        password: String,
                        userName: String,
-                       completion: @escaping (Bool, Error?) -> Void) {
+                       ownVc: UIViewController) {
         FIRAuthManager.shared.createUser(withEmail: email,
                                          password: password) {(user, error) in
             if error == nil {
@@ -89,28 +89,40 @@ extension FIRAuthManager {
                 FIRFirestoreSerivce.shared.createUser(uid: user.uid,
                                                       for: newUser,
                                                       in: .users)
-                completion(true, nil)
+                ownVc.performSegue(withIdentifier: "selectGroupSegue", sender: nil)
             } else {
-                completion(false, error)
+                AlertService.sigleActionAlert(title: "錯誤",
+                                              message: error?.localizedDescription,
+                                              clickTitle: "收到",
+                                              showInVc: ownVc)
             }
         }
     }
     
     //Auth page - log in
-    func signInAction(email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
+    func signInAction(email: String, password: String, ownVc: UIViewController) {
         FIRAuthManager.shared.signIn(withEmail: email, password: password) { (error) in
             if error == nil {
                 FIRFirestoreSerivce.shared.findUser { bool, userInfo  in
                     if bool == true && userInfo?.mainGroupId != nil {
-                            UserDefaultManager.shared.groupId = userInfo?.mainGroupId
-                            completion(true, nil)
-                        } else {
-                            completion(false, nil)
-                        
+                        UserDefaultManager.shared.groupId = userInfo?.mainGroupId
+                        let tabBarVC = UIStoryboard.main.instantiateInitialViewController()!
+                        ownVc.present(tabBarVC, animated: true, completion: nil)
+                    } else {
+                        if let selectGroupVc =
+                            UIStoryboard.auth.instantiateViewController(
+                                withIdentifier: String(describing: GroupSelectionViewController.self))
+                                as? GroupSelectionViewController {
+                            
+                                ownVc.present(selectGroupVc, animated: true, completion: nil)
+                            }
                         }
                     }
                 } else {
-                completion(false, error)
+                AlertService.sigleActionAlert(title: "錯誤",
+                                              message: error?.localizedDescription,
+                                              clickTitle: "收到",
+                                              showInVc: ownVc)
             }
         }
     }
