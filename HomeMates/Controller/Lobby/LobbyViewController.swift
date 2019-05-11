@@ -110,25 +110,11 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
         let headerView = cellTypes[section].headerView(title: cellTypes[section].title(), tableView: tableView)
         return headerView
 
-//        switch section {
-//
-//        case 3: return nil
-//
-//        default :
-//            let headerView = taskHeader.taskTitle(tableView: tableView, titleText: taskListTitle[section])
-//             return headerView
-//        }
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let height = cellTypes[section].heightForHeader()
         return height
-//        switch section {
-//        case 3:
-//            return 0
-//        default:
-//            return 60
-//        }
     }
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -137,7 +123,6 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return cellTypes.count
-//        return 4
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -258,52 +243,6 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-//    private func clickOngoingTask(cell: UITableViewCell, tag: Int) {
-//        guard let indexPath = tableView.indexPath(for: cell) else { return }
-//        var updateTask = ongoingTaskList[indexPath.row]
-//        updateTask.taskStatus += tag
-//
-//        if tag == 1 {
-//            let timeStamp = Int(DateProvider.shared.getTimeStamp())
-//            updateTask.completionTimeStamp = timeStamp
-//            messageView.showSuccessView(title: "完成任務", body: "待其他成員確認任務後即可獲得積分")
-//
-//            for member in memberList {
-//                if let memberToken = member.fcmToken {
-//                    PushNotificationSender.shared.sendPushNotification(
-//                            to: memberToken, title: "任務已完成",
-//                            body: "\(UserDefaultManager.shared.userName!) 已經完成\(updateTask.taskName)任務，快來確認吧！")
-//                }
-//            }
-//        }
-//
-//        FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!,
-//                                                    for: updateTask)
-//        readTaskLisk()
-//    }
-//
-//    private func clickCheckTask(cell: UITableViewCell) {
-//        messageView.showSuccessView(title: "確認完成任務", body: "可至任務紀錄中查看紀錄")
-//        guard let indexPath = tableView.indexPath(for: cell) else { return }
-//        var updateTask = checkTaskList[indexPath.row]
-//        updateTask.taskStatus = 4
-//        FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
-//        FirestoreUserManager.shared.addTaskTracker(for: updateTask)
-//        readTaskLisk()
-//    }
-//
-//    private func clickTask(cell: UITableViewCell) {
-//        messageView.showSuccessView(title: "已接取任務", body: "待任務完成後點選確認鍵")
-//        guard let indexPath = tableView.indexPath(for: cell) else { return }
-//
-//        var updateTask = taskList[indexPath.row]
-//        updateTask.executorName = UserDefaultManager.shared.userName
-//        updateTask.executorUid = UserDefaultManager.shared.userUid
-//        updateTask.taskStatus = 2
-//        FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: updateTask.docId!, for: updateTask)
-//        readTaskLisk()
-//    }
-
     private func verifyCount(_ count: Int) -> Int {
         if count == 0 {
             return 1
@@ -318,6 +257,5 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
             as? AddingTasksViewController else { return }
         newTaskVc.modalPresentationStyle = .overFullScreen
         present(newTaskVc, animated: false, completion: nil)
-        
     }
 }
