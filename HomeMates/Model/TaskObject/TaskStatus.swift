@@ -102,20 +102,29 @@ enum TaskStatus: Int {
         }
     }
     
-    func identifier(tasks: [TaskObject]) -> String {
-
-        switch self {
-
-        case .acceptableTask, .ongoingTask, .waitingForCheckTask:
-            return verifyCountForIdentifer(tasks.count)
-
-        case .createNewTask:
-            return String(describing: AddTaskTableViewCell.self)
-            
-        default:
-            return String(describing: BlankTableViewCell.self)
-        }
-    }
+//    func numberOfRow(tasks: [TaskObject]) -> String {
+//        switch self {
+//        case .acceptableTask, .ongoingTask, .waitingForCheckTask:
+//            <#code#>
+//        default:
+//            <#code#>
+//        }
+//    }
+    
+//    func identifier(tasks: [TaskObject]) -> String {
+//
+//        switch self {
+//
+//        case .acceptableTask, .ongoingTask, .waitingForCheckTask:
+//            return verifyCountForIdentifer(tasks.count)
+//
+//        case .createNewTask:
+//            return String(describing: AddTaskTableViewCell.self)
+//            
+//        default:
+//            return String(describing: BlankTableViewCell.self)
+//        }
+//    }
 
 //    func cellForIndexPath(_ indexPath: IndexPath,
 //                          tableView: UITableView, tasks: [TaskObject]) -> UITableViewCell {
@@ -126,7 +135,7 @@ enum TaskStatus: Int {
 //        default:
 //            <#code#>
 //        }
-//        
+//
 //    }
     
     private func verifyCountForRow(_ count: Int) -> Int {
