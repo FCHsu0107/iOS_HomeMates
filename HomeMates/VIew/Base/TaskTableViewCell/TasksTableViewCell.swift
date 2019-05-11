@@ -81,7 +81,7 @@ class TasksTableViewCell: UITableViewCell {
             memberNameTextLbl.text = "發佈人：\(taskObject.publisherName)"
             taskRightBtn.setTitle("接受", for: .normal)
 
-        case .doingTask:
+        case .ongingTask:
             hiddenFirstText = true
             secondBtnAppear = true
             taskRightBtn.isHidden = false

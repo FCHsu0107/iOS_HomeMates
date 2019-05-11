@@ -102,7 +102,7 @@ class FIRFirestoreSerivce {
         }
     }
     
-//    func createMemberInG
+//    func createMemberInGroup
     
     //read func
     func findGroup<T: Decodable>(groupId: String,

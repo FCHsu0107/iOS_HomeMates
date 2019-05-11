@@ -29,6 +29,10 @@ class LobbyViewController: HMBaseViewController {
 
     var taskList: [TaskObject] = []
 
+    let cellTypes: [TaskStatus] = [.ongoingTask, .waitingForCheckTask, .acceptableTask, .createNewTask]
+    
+    lazy var cellDatas: [[TaskObject]] = [ongoingTaskList, checkTaskList, taskList, []]
+    
     var memberList: [MemberObject] = []
     
     let messageView = MessagesView()
@@ -103,23 +107,28 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        switch section {
+        let headerView = cellTypes[section].headerView(title: cellTypes[section].title(), tableView: tableView)
+        return headerView
 
-        case 3: return nil
-
-        default :
-            let headerView = taskHeader.taskTitle(tableView: tableView, titleText: taskListTitle[section])
-             return headerView
-        }
+//        switch section {
+//
+//        case 3: return nil
+//
+//        default :
+//            let headerView = taskHeader.taskTitle(tableView: tableView, titleText: taskListTitle[section])
+//             return headerView
+//        }
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        switch section {
-        case 3:
-            return 0
-        default:
-            return 60
-        }
+        let height = cellTypes[section].heightForHeader()
+        return height
+//        switch section {
+//        case 3:
+//            return 0
+//        default:
+//            return 60
+//        }
     }
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -127,19 +136,19 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        
-        return 4
+        return cellTypes.count
+//        return 4
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
+        switch cellTypes[section] {
+        case .ongoingTask:
             return verifyCount(ongoingTaskList.count)
-        case 1:
+        case .waitingForCheckTask:
             return verifyCount(checkTaskList.count)
-        case 2:
+        case .acceptableTask:
             return verifyCount(taskList.count)
-        case 3:
+        case .createNewTask:
             return 1
         default:
             return 0
@@ -157,24 +166,26 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
                                                        for: indexPath)
         guard let blankCell = secondCell as? BlankTableViewCell else { return secondCell}
 
-        switch indexPath.section {
+        switch cellTypes[indexPath.section] {
 
-        case 0:
+        case .ongoingTask:
             if ongoingTaskList.count == 0 {
                 blankCell.loadData(displayText: "請接取任務")
                 return blankCell
             } else {
                 let task = ongoingTaskList[indexPath.row]
 
-                taskCell.loadData(taskObject: task, status: TaskCellStatus.doingTask)
+                taskCell.loadData(taskObject: task, status: TaskCellStatus.ongingTask)
 
                 taskCell.clickHandler = { [weak self] cell, tag in
-                    self?.clickOngoingTask(cell: cell, tag: tag)
+                    guard let tasks = self?.ongoingTaskList,
+                        let tableView = self?.tableView else { return }
+                    self?.cellTypes[indexPath.section].updateStatus(tag: tag, tableView: tableView, cell: cell, tasks: tasks)
                 }
 
                 return taskCell
             }
-        case 1 :
+        case .waitingForCheckTask :
             if checkTaskList.count == 0 {
                 blankCell.loadData(displayText: "待他人完成任務")
                 return blankCell
@@ -190,7 +201,7 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
 
                 return taskCell
             }
-        case 2:
+        case .acceptableTask:
             if taskList.count == 0 {
                 blankCell.loadData(displayText: "請新增任務")
                 return blankCell
@@ -205,7 +216,7 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
                 return taskCell
             }
 
-        case 3:
+        case .createNewTask:
             let thirdCell = tableView.dequeueReusableCell(withIdentifier: String(describing: AddTaskTableViewCell.self),
                                                           for: indexPath)
             guard let addingTaskCell = thirdCell as? AddTaskTableViewCell else { return thirdCell}

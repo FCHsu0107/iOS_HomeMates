@@ -87,6 +87,7 @@
 		B9B99F4B2264660100314BB6 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F4A2264660100314BB6 /* UserDefault.swift */; };
 		B9B99F4D22648E4B00314BB6 /* GroupInfoInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F4C22648E4B00314BB6 /* GroupInfoInUser.swift */; };
 		B9CA00C92286548700EC550C /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CA00C82286548700EC550C /* AuthProvider.swift */; };
+		B9CA00CB2286D90500EC550C /* TaskStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CA00CA2286D90500EC550C /* TaskStatus.swift */; };
 		B9D295D42258C18F00CF7869 /* TaskTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D295D32258C18F00CF7869 /* TaskTracker.swift */; };
 		B9D295DB225B003300CF7869 /* TaskListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D295DA225B003300CF7869 /* TaskListHeaderView.swift */; };
 		B9D71AA022534D4F00F242DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D71A9F22534D4F00F242DA /* AppDelegate.swift */; };
@@ -184,6 +185,7 @@
 		B9B99F4A2264660100314BB6 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		B9B99F4C22648E4B00314BB6 /* GroupInfoInUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoInUser.swift; sourceTree = "<group>"; };
 		B9CA00C82286548700EC550C /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
+		B9CA00CA2286D90500EC550C /* TaskStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatus.swift; sourceTree = "<group>"; };
 		B9D295D32258C18F00CF7869 /* TaskTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTracker.swift; sourceTree = "<group>"; };
 		B9D295DA225B003300CF7869 /* TaskListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListHeaderView.swift; sourceTree = "<group>"; };
 		B9D71A9C22534D4F00F242DA /* HomeMates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeMates.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -279,6 +281,10 @@
 				B9B99F492264470300314BB6 /* GroupObject */,
 				B9B7F52D225CAD6100A6DA9E /* TaskObject */,
 				B9DB5F41228437E700F5DF4F /* TaskType.swift */,
+				B9DB5F3D2283EEF300F5DF4F /* LobbyTaskProvider.swift */,
+				B9DB5F3B2283D34D00F5DF4F /* TaskProvider.swift */,
+				B9DB5F392283D20600F5DF4F /* FirebaseManager.swift */,
+				B9DB5F3622816E7F00F5DF4F /* FIrebaseClient.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -352,7 +358,6 @@
 			isa = PBXGroup;
 			children = (
 				B91D3AFE2269B7DE00C1A28F /* DateProvider.swift */,
-				B9DB5F3D2283EEF300F5DF4F /* LobbyTaskProvider.swift */,
 				B9CA00C82286548700EC550C /* AuthProvider.swift */,
 			);
 			path = Provider;
@@ -434,7 +439,7 @@
 				B9261C96225489110033ABC9 /* TaskObject.swift */,
 				B9D295D32258C18F00CF7869 /* TaskTracker.swift */,
 				B98446CA22700DB700E5044A /* TaskRecordObject.swift */,
-				B9DB5F3B2283D34D00F5DF4F /* TaskProvider.swift */,
+				B9CA00CA2286D90500EC550C /* TaskStatus.swift */,
 			);
 			path = TaskObject;
 			sourceTree = "<group>";
@@ -493,6 +498,7 @@
 				B9B99F4A2264660100314BB6 /* UserDefault.swift */,
 				B9B99F312261898D00314BB6 /* UserObject.swift */,
 				B959F73C226EC3E000D3CA68 /* MonthsObject.swift */,
+				B9B99F4C22648E4B00314BB6 /* GroupInfoInUser.swift */,
 			);
 			path = UserObject;
 			sourceTree = "<group>";
@@ -507,8 +513,6 @@
 				B9B99F362262C44B00314BB6 /* FIRCollectionReference.swift */,
 				B9EE7EF5227EC55800647600 /* PushNotificationManager.swift */,
 				B9EE7EF7227EE43B00647600 /* PushNotificationSender.swift */,
-				B9DB5F3622816E7F00F5DF4F /* FIrebaseClient.swift */,
-				B9DB5F392283D20600F5DF4F /* FirebaseManager.swift */,
 			);
 			path = Firestore;
 			sourceTree = "<group>";
@@ -517,7 +521,6 @@
 			isa = PBXGroup;
 			children = (
 				B9B99F452263690C00314BB6 /* GroupObject.swift */,
-				B9B99F4C22648E4B00314BB6 /* GroupInfoInUser.swift */,
 				B91D3A992264ABD400C1A28F /* MemberObject.swift */,
 				B91D3A9E2264CA0F00C1A28F /* ApplicationObject.swift */,
 			);
@@ -841,6 +844,7 @@
 				B91D3B012269BAF500C1A28F /* Date+Extension.swift in Sources */,
 				B9B7F541225DB73D00A6DA9E /* AuthViewController.swift in Sources */,
 				B94D15B322572A2200F43B78 /* HMBaseViewController.swift in Sources */,
+				B9CA00CB2286D90500EC550C /* TaskStatus.swift in Sources */,
 				B9B99F462263690C00314BB6 /* GroupObject.swift in Sources */,
 				B9EE7EF8227EE43B00647600 /* PushNotificationSender.swift in Sources */,
 				B9DB5F3E2283EEF300F5DF4F /* LobbyTaskProvider.swift in Sources */,

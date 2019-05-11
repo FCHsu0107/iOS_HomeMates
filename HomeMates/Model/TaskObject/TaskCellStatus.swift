@@ -14,6 +14,6 @@ enum TaskCellStatus {
     
     case acceptSpecialTask
     
-    case doingTask
+    case ongingTask
     
 }
