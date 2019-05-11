@@ -55,7 +55,7 @@ class LoadingViewController: UIViewController {
                 })
                 
             } else {
-                FIRFirestoreSerivce.shared.findUser { [weak self] bool, userInfo  in
+                FIRFirestoreSerivce.shared.findUser { [weak self] _, bool, userInfo  in
                     if bool == true && userInfo?.mainGroupId != nil {
                         let tabBarVc = UIStoryboard.main.instantiateInitialViewController()!
                         

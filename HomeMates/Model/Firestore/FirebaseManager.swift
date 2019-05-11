@@ -13,6 +13,8 @@ import Firebase
 //class FirebaseManager {
 //    //Read Tasks
 //    func readAllTasks() {
-//        FirebaseClient.shared.read(form: <#T##CollectionReference#>, returning: <#T##Decodable.Protocol#>, query: <#T##(Query) -> (Query)#>, completion: <#T##(Result<[Decodable]>) -> Void#>)
+//        FirebaseClient.shared.read(form: <#T##CollectionReference#>,
+//                                   returning: <#T##Decodable.Protocol#>,
+//                                   query: <#T##(Query) -> (Query)#>, completion: <#T##(Result<[Decodable]>) -> Void#>)
 //    }
 //}

@@ -251,10 +251,9 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
 
             for member in memberList {
                 if let memberToken = member.fcmToken {
-                    PushNotificationSender.shared
-                        .sendPushNotification(to: memberToken,
-                                              title: "任務已完成",
-                                              body: "\(UserDefaultManager.shared.userName!) 已經完成\(updateTask.taskName)任務，快來確認吧！")
+                    PushNotificationSender.shared.sendPushNotification(
+                            to: memberToken, title: "任務已完成",
+                            body: "\(UserDefaultManager.shared.userName!) 已經完成\(updateTask.taskName)任務，快來確認吧！")
                 }
             }
         }
@@ -302,12 +301,4 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
         present(newTaskVc, animated: false, completion: nil)
         
     }
-}
-
-extension LobbyViewController: ProviderDelegate {
-    func dataReady() {
-        tableView.reloadData()
-    }
-    
-    
 }

@@ -42,6 +42,8 @@ class AuthViewController: HMBaseViewController {
     
     @IBOutlet weak var selectModeBackgroundView: UIView! 
     
+    let authProvider = AuthProvider()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -90,17 +92,18 @@ class AuthViewController: HMBaseViewController {
     }
     
     private func createUserDoc() {
-        FIRAuthManager.shared.createUserDoc(email: emailTextField.text!,
-                                            password: passwordTextField.text!,
-                                            userName: userNameTextField.text!,
-                                            ownVc: self)
+        authProvider.createUserDoc(email: emailTextField.text!,
+                                   password: passwordTextField.text!,
+                                   userName: userNameTextField.text!,
+                                   ownVc: self)
+
     }
     
     private func signInAction() {
-        FIRAuthManager.shared.signInAction(email: emailTextField.text!,
-                                           password: passwordTextField.text!,
-                                           ownVc: self)
-        
+        authProvider.signInAction(email: emailTextField.text!,
+                                  password: passwordTextField.text!,
+                                  ownVc: self)
+
     }
     
     private func setSignUpMode() {

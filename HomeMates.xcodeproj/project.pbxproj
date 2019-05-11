@@ -86,6 +86,7 @@
 		B9B99F462263690C00314BB6 /* GroupObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F452263690C00314BB6 /* GroupObject.swift */; };
 		B9B99F4B2264660100314BB6 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F4A2264660100314BB6 /* UserDefault.swift */; };
 		B9B99F4D22648E4B00314BB6 /* GroupInfoInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F4C22648E4B00314BB6 /* GroupInfoInUser.swift */; };
+		B9CA00C92286548700EC550C /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CA00C82286548700EC550C /* AuthProvider.swift */; };
 		B9D295D42258C18F00CF7869 /* TaskTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D295D32258C18F00CF7869 /* TaskTracker.swift */; };
 		B9D295DB225B003300CF7869 /* TaskListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D295DA225B003300CF7869 /* TaskListHeaderView.swift */; };
 		B9D71AA022534D4F00F242DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D71A9F22534D4F00F242DA /* AppDelegate.swift */; };
@@ -182,6 +183,7 @@
 		B9B99F452263690C00314BB6 /* GroupObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupObject.swift; sourceTree = "<group>"; };
 		B9B99F4A2264660100314BB6 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		B9B99F4C22648E4B00314BB6 /* GroupInfoInUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoInUser.swift; sourceTree = "<group>"; };
+		B9CA00C82286548700EC550C /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
 		B9D295D32258C18F00CF7869 /* TaskTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTracker.swift; sourceTree = "<group>"; };
 		B9D295DA225B003300CF7869 /* TaskListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListHeaderView.swift; sourceTree = "<group>"; };
 		B9D71A9C22534D4F00F242DA /* HomeMates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeMates.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -351,6 +353,7 @@
 			children = (
 				B91D3AFE2269B7DE00C1A28F /* DateProvider.swift */,
 				B9DB5F3D2283EEF300F5DF4F /* LobbyTaskProvider.swift */,
+				B9CA00C82286548700EC550C /* AuthProvider.swift */,
 			);
 			path = Provider;
 			sourceTree = "<group>";
@@ -833,6 +836,7 @@
 				B94D15A622560AA500F43B78 /* LobbyHeaderCell.swift in Sources */,
 				B959F736226DA57B00D3CA68 /* GroupMemberTableViewCell.swift in Sources */,
 				B9B7F531225CC00000A6DA9E /* ChartsTableViewCell.swift in Sources */,
+				B9CA00C92286548700EC550C /* AuthProvider.swift in Sources */,
 				B921CA73226D8CED001FA942 /* LobbySettingsViewController.swift in Sources */,
 				B91D3B012269BAF500C1A28F /* Date+Extension.swift in Sources */,
 				B9B7F541225DB73D00A6DA9E /* AuthViewController.swift in Sources */,

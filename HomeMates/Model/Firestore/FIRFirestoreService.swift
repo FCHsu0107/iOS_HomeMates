@@ -205,24 +205,24 @@ class FIRFirestoreSerivce {
         }
     }
     
-    typealias BoolCompleionHandler = (Bool?, UserObject?) -> Void
+    typealias BoolCompleionHandler = (User?, Bool?, UserObject?) -> Void
     
     func findUser(completionHandler completion: @escaping BoolCompleionHandler) {
         
         guard let user = Auth.auth().currentUser else {
-            completion(false, nil)
+            completion(nil, false, nil)
             return }
         let uid = user.uid
         UserDefaultManager.shared.userUid = uid
         reference(to: .users).document(uid).getDocument { (querySnapshot, _) in
             guard let data = querySnapshot?.data() else {
-                completion(false, nil)
+                completion(user, false, nil)
                 return
             }
             do {
                 let userObject = try querySnapshot?.decode(as: UserObject.self)
                 UserDefaultManager.shared.groupId = userObject?.mainGroupId
-                completion(data[UserObject.CodingKeys.finishSignUp.rawValue] as? Bool, userObject)
+                completion(user, data[UserObject.CodingKeys.finishSignUp.rawValue] as? Bool, userObject)
             } catch {
                 
             }
@@ -290,8 +290,8 @@ class FIRFirestoreSerivce {
         }
     }
     
-    func upadeSingleStatus(uid: String, in collectionReference: FIRCollectionReference, status: String, bool: Bool) {
-        reference(to: collectionReference).document(uid).updateData([status: bool]) { err in
+    func upadeSingleStatus(uid: String, in collectionReference: FIRCollectionReference, updateInfo: [String: Any]) {
+        reference(to: collectionReference).document(uid).updateData(updateInfo) { err in
             if let err = err {
                  print("Error updating document: \(err)")
             } else {

@@ -105,10 +105,10 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
                 }
 
                 for j in 0 ..< members.count {
-                    for i in 0 ..< tasks.count {
-                        if tasks[i].executorUid == self?.memberInfoWithPoint[j].memberUid {
+                    for i in 0 ..< tasks.count where tasks[i].executorUid == self?.memberInfoWithPoint[j].memberUid {
+//                        if tasks[i].executorUid == self?.memberInfoWithPoint[j].memberUid {
                             self?.memberInfoWithPoint[j].point += tasks[i].taskPoint
-                        }
+//                        }
                     }
                 }
                 self?.tableView.reloadData()
