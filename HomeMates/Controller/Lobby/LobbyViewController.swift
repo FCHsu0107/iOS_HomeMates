@@ -259,3 +259,16 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
         present(newTaskVc, animated: false, completion: nil)
     }
 }
+<<<<<<< HEAD
+||||||| merged common ancestors
+
+extension LobbyViewController: ProviderDelegate {
+    func dataReady() {
+        tableView.reloadData()
+    }
+    
+    
+}
+=======
+
+>>>>>>> develop

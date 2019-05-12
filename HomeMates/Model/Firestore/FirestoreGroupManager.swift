@@ -223,5 +223,13 @@ class FirestoreGroupManager {
         })
 
     }
+<<<<<<< HEAD
   
+||||||| merged common ancestors
+    
+    
+    
+=======
+    
+>>>>>>> develop
 }
