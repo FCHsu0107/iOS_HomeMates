@@ -31,7 +31,7 @@ class LobbyViewController: HMBaseViewController {
 
     let cellTypes: [TaskStatus] = [.ongoingTask, .waitingForCheckTask, .acceptableTask, .createNewTask]
     
-    lazy var cellDatas: [[TaskObject]] = [ongoingTaskList, checkTaskList, taskList, []]
+//    lazy var cellDatas: [[TaskObject]] = [ongoingTaskList, checkTaskList, taskList, []]
     
     var memberList: [MemberObject] = []
     

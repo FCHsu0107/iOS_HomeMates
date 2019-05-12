@@ -96,9 +96,7 @@
 		B9D71AAA22534D5100F242DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D71AA822534D5100F242DA /* LaunchScreen.storyboard */; };
 		B9DB5F3722816E7F00F5DF4F /* FIrebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB5F3622816E7F00F5DF4F /* FIrebaseClient.swift */; };
 		B9DB5F3A2283D20600F5DF4F /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB5F392283D20600F5DF4F /* FirebaseManager.swift */; };
-		B9DB5F3C2283D34D00F5DF4F /* TaskProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB5F3B2283D34D00F5DF4F /* TaskProvider.swift */; };
 		B9DB5F3E2283EEF300F5DF4F /* LobbyTaskProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB5F3D2283EEF300F5DF4F /* LobbyTaskProvider.swift */; };
-		B9DB5F42228437E700F5DF4F /* TaskType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB5F41228437E700F5DF4F /* TaskType.swift */; };
 		B9EE7EF6227EC55800647600 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EE7EF5227EC55800647600 /* PushNotificationManager.swift */; };
 		B9EE7EF8227EE43B00647600 /* PushNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EE7EF7227EE43B00647600 /* PushNotificationSender.swift */; };
 		B9EE7EFC227FFDBC00647600 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9EE7EFB227FFDBC00647600 /* GoogleService-Info.plist */; };
@@ -196,9 +194,7 @@
 		B9D71AAB22534D5100F242DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9DB5F3622816E7F00F5DF4F /* FIrebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIrebaseClient.swift; sourceTree = "<group>"; };
 		B9DB5F392283D20600F5DF4F /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
-		B9DB5F3B2283D34D00F5DF4F /* TaskProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskProvider.swift; sourceTree = "<group>"; };
 		B9DB5F3D2283EEF300F5DF4F /* LobbyTaskProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyTaskProvider.swift; sourceTree = "<group>"; };
-		B9DB5F41228437E700F5DF4F /* TaskType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskType.swift; sourceTree = "<group>"; };
 		B9EE7EF4227EC51600647600 /* HomeMates.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HomeMates.entitlements; sourceTree = "<group>"; };
 		B9EE7EF5227EC55800647600 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		B9EE7EF7227EE43B00647600 /* PushNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSender.swift; sourceTree = "<group>"; };
@@ -280,11 +276,8 @@
 				B9B99F332261899900314BB6 /* UserObject */,
 				B9B99F492264470300314BB6 /* GroupObject */,
 				B9B7F52D225CAD6100A6DA9E /* TaskObject */,
-				B9DB5F41228437E700F5DF4F /* TaskType.swift */,
 				B9DB5F3D2283EEF300F5DF4F /* LobbyTaskProvider.swift */,
-				B9DB5F3B2283D34D00F5DF4F /* TaskProvider.swift */,
 				B9DB5F392283D20600F5DF4F /* FirebaseManager.swift */,
-				B9DB5F3622816E7F00F5DF4F /* FIrebaseClient.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -506,6 +499,7 @@
 		B9B99F442263262900314BB6 /* Firestore */ = {
 			isa = PBXGroup;
 			children = (
+				B9DB5F3622816E7F00F5DF4F /* FIrebaseClient.swift */,
 				B9B99F4222631C6C00314BB6 /* FIRAuthManager.swift */,
 				B9B99F342262151100314BB6 /* FIRFirestoreService.swift */,
 				B959F738226DD56900D3CA68 /* FirestoreGroupManager.swift */,
@@ -797,7 +791,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B93EA22622784C3C002F18A3 /* PrivacyPolicyViewController.swift in Sources */,
-				B9DB5F42228437E700F5DF4F /* TaskType.swift in Sources */,
 				B9D295DB225B003300CF7869 /* TaskListHeaderView.swift in Sources */,
 				B9261C9D225495840033ABC9 /* LobbyViewController.swift in Sources */,
 				B9B7F548225EEA8E00A6DA9E /* AlertService.swift in Sources */,
@@ -866,7 +859,6 @@
 				B9261C792253858A0033ABC9 /* HMTabBarViewController.swift in Sources */,
 				B9261C9F2254C2B20033ABC9 /* TableView+Extension.swift in Sources */,
 				B91D3A9C2264BF1300C1A28F /* String+Extension.swift in Sources */,
-				B9DB5F3C2283D34D00F5DF4F /* TaskProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
