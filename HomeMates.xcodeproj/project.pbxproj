@@ -89,6 +89,7 @@
 		B9CA00C92286548700EC550C /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CA00C82286548700EC550C /* AuthProvider.swift */; };
 		B9CA00CB2286D90500EC550C /* TaskStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CA00CA2286D90500EC550C /* TaskStatus.swift */; };
 		B9CA00CD22882A0500EC550C /* ProfileInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CA00CC22882A0500EC550C /* ProfileInfoViewController.swift */; };
+		B9CA00D522882B9A00EC550C /* HomeMatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CA00D422882B9A00EC550C /* HomeMatesTests.swift */; };
 		B9D295D42258C18F00CF7869 /* TaskTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D295D32258C18F00CF7869 /* TaskTracker.swift */; };
 		B9D295DB225B003300CF7869 /* TaskListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D295DA225B003300CF7869 /* TaskListHeaderView.swift */; };
 		B9D71AA022534D4F00F242DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D71A9F22534D4F00F242DA /* AppDelegate.swift */; };
@@ -103,7 +104,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B9CA00C322856B0A00EC550C /* PBXContainerItemProxy */ = {
+		B9CA00D722882B9A00EC550C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B9D71A9422534D4F00F242DA /* Project object */;
 			proxyType = 1;
@@ -195,6 +196,9 @@
 		B9CA00C82286548700EC550C /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
 		B9CA00CA2286D90500EC550C /* TaskStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatus.swift; sourceTree = "<group>"; };
 		B9CA00CC22882A0500EC550C /* ProfileInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoViewController.swift; sourceTree = "<group>"; };
+		B9CA00D222882B9A00EC550C /* HomeMatesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeMatesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9CA00D422882B9A00EC550C /* HomeMatesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMatesTests.swift; sourceTree = "<group>"; };
+		B9CA00D622882B9A00EC550C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9D295D32258C18F00CF7869 /* TaskTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTracker.swift; sourceTree = "<group>"; };
 		B9D295DA225B003300CF7869 /* TaskListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListHeaderView.swift; sourceTree = "<group>"; };
 		B9D71A9C22534D4F00F242DA /* HomeMates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeMates.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,7 +219,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B9CA00BB22856B0A00EC550C /* Frameworks */ = {
+		B9CA00CF22882B9A00EC550C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -540,9 +544,11 @@
 			path = GroupObject;
 			sourceTree = "<group>";
 		};
-		B9CA00BF22856B0A00EC550C /* HomeMatesTests */ = {
+		B9CA00D322882B9A00EC550C /* HomeMatesTests */ = {
 			isa = PBXGroup;
 			children = (
+				B9CA00D422882B9A00EC550C /* HomeMatesTests.swift */,
+				B9CA00D622882B9A00EC550C /* Info.plist */,
 			);
 			path = HomeMatesTests;
 			sourceTree = "<group>";
@@ -560,7 +566,7 @@
 			isa = PBXGroup;
 			children = (
 				B9D71A9E22534D4F00F242DA /* HomeMates */,
-				B9CA00BF22856B0A00EC550C /* HomeMatesTests */,
+				B9CA00D322882B9A00EC550C /* HomeMatesTests */,
 				B9D71A9D22534D4F00F242DA /* Products */,
 				C75B0ED5492584CA900C8D58 /* Pods */,
 				6027FDD169EC46F3E3A6B242 /* Frameworks */,
@@ -571,6 +577,7 @@
 			isa = PBXGroup;
 			children = (
 				B9D71A9C22534D4F00F242DA /* HomeMates.app */,
+				B9CA00D222882B9A00EC550C /* HomeMatesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -613,21 +620,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B9CA00BD22856B0A00EC550C /* HomeMatesTests */ = {
+		B9CA00D122882B9A00EC550C /* HomeMatesTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B9CA00C722856B0A00EC550C /* Build configuration list for PBXNativeTarget "HomeMatesTests" */;
+			buildConfigurationList = B9CA00D922882B9A00EC550C /* Build configuration list for PBXNativeTarget "HomeMatesTests" */;
 			buildPhases = (
-				B9CA00BA22856B0A00EC550C /* Sources */,
-				B9CA00BB22856B0A00EC550C /* Frameworks */,
-				B9CA00BC22856B0A00EC550C /* Resources */,
+				B9CA00CE22882B9A00EC550C /* Sources */,
+				B9CA00CF22882B9A00EC550C /* Frameworks */,
+				B9CA00D022882B9A00EC550C /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B9CA00C422856B0A00EC550C /* PBXTargetDependency */,
+				B9CA00D822882B9A00EC550C /* PBXTargetDependency */,
 			);
 			name = HomeMatesTests;
 			productName = HomeMatesTests;
+			productReference = B9CA00D222882B9A00EC550C /* HomeMatesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		B9D71A9B22534D4F00F242DA /* HomeMates */ = {
@@ -661,7 +669,7 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Fu-Chiung HSU";
 				TargetAttributes = {
-					B9CA00BD22856B0A00EC550C = {
+					B9CA00D122882B9A00EC550C = {
 						CreatedOnToolsVersion = 10.2;
 						TestTargetID = B9D71A9B22534D4F00F242DA;
 					};
@@ -689,13 +697,13 @@
 			projectRoot = "";
 			targets = (
 				B9D71A9B22534D4F00F242DA /* HomeMates */,
-				B9CA00BD22856B0A00EC550C /* HomeMatesTests */,
+				B9CA00D122882B9A00EC550C /* HomeMatesTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		B9CA00BC22856B0A00EC550C /* Resources */ = {
+		B9CA00D022882B9A00EC550C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -842,10 +850,11 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		B9CA00BA22856B0A00EC550C /* Sources */ = {
+		B9CA00CE22882B9A00EC550C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9CA00D522882B9A00EC550C /* HomeMatesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -928,10 +937,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B9CA00C422856B0A00EC550C /* PBXTargetDependency */ = {
+		B9CA00D822882B9A00EC550C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B9D71A9B22534D4F00F242DA /* HomeMates */;
-			targetProxy = B9CA00C322856B0A00EC550C /* PBXContainerItemProxy */;
+			targetProxy = B9CA00D722882B9A00EC550C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -955,7 +964,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		B9CA00C522856B0A00EC550C /* Debug */ = {
+		B9CA00DA22882B9A00EC550C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -977,7 +986,7 @@
 			};
 			name = Debug;
 		};
-		B9CA00C622856B0A00EC550C /* Release */ = {
+		B9CA00DB22882B9A00EC550C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1160,11 +1169,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B9CA00C722856B0A00EC550C /* Build configuration list for PBXNativeTarget "HomeMatesTests" */ = {
+		B9CA00D922882B9A00EC550C /* Build configuration list for PBXNativeTarget "HomeMatesTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B9CA00C522856B0A00EC550C /* Debug */,
-				B9CA00C622856B0A00EC550C /* Release */,
+				B9CA00DA22882B9A00EC550C /* Debug */,
+				B9CA00DB22882B9A00EC550C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
