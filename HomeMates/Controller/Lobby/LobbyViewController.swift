@@ -21,18 +21,12 @@ class LobbyViewController: HMBaseViewController {
 
     let taskHeader = TaskListHeaderView()
 
-    var taskListTitle: [String] = ["已接取任務", "已完成任務", "可接取任務"]
-    
-    var ongoingTaskList: [TaskObject] = []
+//    var taskListTitle: [String] = ["已接取任務", "已完成任務", "可接取任務"]
 
-    var checkTaskList: [TaskObject] = []
-
-    var taskList: [TaskObject] = []
-
-    let cellTypes: [TaskStatus] = [.ongoingTask, .waitingForCheckTask, .acceptableTask, .createNewTask]
+//    var taskList: [TaskObject] = []
     
-//    lazy var cellDatas: [[TaskObject]] = [ongoingTaskList, checkTaskList, taskList, []]
-    
+    var cellTypes: [TaskStatus] = [.ongoingTask([]), .waitingForCheckTask([]), .acceptableTask([]), .createNewTask]
+
     var memberList: [MemberObject] = []
     
     let messageView = MessagesView()
@@ -79,10 +73,9 @@ class LobbyViewController: HMBaseViewController {
     
     private func readTaskLisk() {
         FirestoreGroupManager.shared.readLobbyInfo { [weak self] (members, ongoingTasks, checksTasks, tasks) in
+            self?.cellTypes = [.ongoingTask(ongoingTasks),
+                               .waitingForCheckTask(checksTasks), .acceptableTask(tasks), .createNewTask]
             self?.memberList = members
-            self?.ongoingTaskList = ongoingTasks
-            self?.checkTaskList = checksTasks
-            self?.taskList = tasks
             self?.tableView.reloadData()
             self?.tableView.endHeaderRefreshing()
         }
@@ -126,18 +119,7 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch cellTypes[section] {
-        case .ongoingTask:
-            return verifyCount(ongoingTaskList.count)
-        case .waitingForCheckTask:
-            return verifyCount(checkTaskList.count)
-        case .acceptableTask:
-            return verifyCount(taskList.count)
-        case .createNewTask:
-            return 1
-        default:
-            return 0
-        }
+        return cellTypes[section].numberOfRow()
     }
 
     func tableView(_ tableView: UITableView,
@@ -153,57 +135,56 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
 
         switch cellTypes[indexPath.section] {
 
-        case .ongoingTask:
-            if ongoingTaskList.count == 0 {
+        case .ongoingTask(let tasks):
+            if tasks.count == 0 {
                 blankCell.loadData(displayText: "請接取任務")
                 return blankCell
             } else {
-                let task = ongoingTaskList[indexPath.row]
+                let task = tasks[indexPath.row]
 
                 taskCell.loadData(taskObject: task, status: TaskCellStatus.ongingTask)
 
                 taskCell.clickHandler = { [weak self] cell, tag in
-                    guard let tasks = self?.ongoingTaskList,
-                        let tableView = self?.tableView else { return }
+                    guard let tableView = self?.tableView else { return }
                     self?.cellTypes[indexPath.section].updateStatus(
-                        tag: tag, tableView: tableView, cell: cell, tasks: tasks)
+                        tag: tag, tableView: tableView, cell: cell)
                     self?.readTaskLisk()
                 }
 
                 return taskCell
             }
-        case .waitingForCheckTask :
-            if checkTaskList.count == 0 {
+            
+        case .waitingForCheckTask(let tasks):
+            if tasks.count == 0 {
                 blankCell.loadData(displayText: "待他人完成任務")
                 return blankCell
             } else {
 
-                let task = checkTaskList[indexPath.row]
+                let task = tasks[indexPath.row]
                 taskCell.loadData(taskObject: task, status: TaskCellStatus.checkTask)
 
                 taskCell.clickHandler = { [weak self] cell, tag in
-                    guard let tasks = self?.checkTaskList,
-                        let tableView = self?.tableView else { return }
+                    guard let tableView = self?.tableView else { return }
                     self?.cellTypes[indexPath.section].updateStatus(
-                        tag: tag, tableView: tableView, cell: cell, tasks: tasks)
+                        tag: tag, tableView: tableView, cell: cell)
                     self?.readTaskLisk()
                 }
 
                 return taskCell
             }
-        case .acceptableTask:
-            if taskList.count == 0 {
+            
+        case .acceptableTask(let tasks):
+            if tasks.count == 0 {
                 blankCell.loadData(displayText: "請新增任務")
                 return blankCell
             } else {
-                let task = taskList[indexPath.row]
+                let task = tasks[indexPath.row]
                 taskCell.loadData(taskObject: task, status: .acceptSpecialTask)
 
                 taskCell.clickHandler = { [weak self] cell, tag in
-                    guard let tasks = self?.taskList,
-                        let tableView = self?.tableView else { return }
+                    guard let tableView = self?.tableView else { return }
                     self?.cellTypes[indexPath.section].updateStatus(
-                        tag: tag, tableView: tableView, cell: cell, tasks: tasks)
+                        tag: tag, tableView: tableView, cell: cell)
                     self?.readTaskLisk()
                 }
                 return taskCell
@@ -216,6 +197,7 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
 
             addingTaskCell.addTaskBtn.addTarget(self, action: #selector(addingTaskPage), for: .touchUpInside)
             return addingTaskCell
+            
         default:
             return UITableViewCell()
         }
@@ -224,31 +206,45 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
-        if indexPath.section == 2 {
+        switch cellTypes[indexPath.section] {
+        case .acceptableTask(var tasks):
+            guard tasks.count != 0 else { return }
             guard editingStyle == .delete else { return }
-            guard taskList.count != 0 else { return }
-            let task = taskList[indexPath.row]
+            let task = tasks[indexPath.row]
+            tasks.remove(at: indexPath.row)
             FirestoreGroupManager.shared.deleteTask(in: .tasks, docId: task.docId!)
-            taskList.remove(at: indexPath.row)
             tableView.reloadData()
+            
+        default:
+            break
         }
+//        if indexPath.section == 2 {
+//            guard editingStyle == .delete else { return }
+//            guard taskList.count != 0 else { return }
+//            let task = taskList[indexPath.row]
+//            FirestoreGroupManager.shared.deleteTask(in: .tasks, docId: task.docId!)
+//            taskList.remove(at: indexPath.row)
+//            tableView.reloadData()
+//        }
     }
 
     internal func tableView(_ tableView: UITableView,
                             editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        if indexPath.section == 2 && taskList.count != 0 {
-            return UITableViewCell.EditingStyle.delete
-        } else {
+        switch cellTypes[indexPath.section] {
+        case .acceptableTask(let tasks):
+            if tasks.count == 0 {
+                return UITableViewCell.EditingStyle.none
+            } else {
+                return UITableViewCell.EditingStyle.delete
+            }
+        default:
             return UITableViewCell.EditingStyle.none
         }
-    }
-    
-    private func verifyCount(_ count: Int) -> Int {
-        if count == 0 {
-            return 1
-        } else {
-            return count
-        }
+//        if indexPath.section == 2 && taskList.count != 0 {
+//            return UITableViewCell.EditingStyle.delete
+//        } else {
+//            return UITableViewCell.EditingStyle.none
+//        }
     }
     
     @objc func addingTaskPage() {
@@ -259,4 +255,3 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
         present(newTaskVc, animated: false, completion: nil)
     }
 }
-

@@ -92,7 +92,8 @@ class GroupSelectionViewController: UIViewController {
                     if groups.count == 0 {
                         self.createANewGroup()
                     } else {
-                        let alert = UIAlertController.sigleActionAlert(title: "群組代碼已存在", message: "請輸入其他代碼", clickTitle: "收到")
+                        let alert = UIAlertController.sigleActionAlert(
+                            title: "群組代碼已存在", message: "請輸入其他代碼", clickTitle: "收到")
                         self.present(alert, animated: false, completion: nil)
                         
                     }

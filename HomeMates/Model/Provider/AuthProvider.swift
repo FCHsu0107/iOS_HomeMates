@@ -110,7 +110,8 @@ class AuthProvider {
             FIRFirestoreSerivce.shared.findGroup(
             groupId: groupId, returning: GroupObject.self) { [weak self] groups, docIds  in
                 if groups.count == 0 {
-                    let alert = UIAlertController.sigleActionAlert(title: "群組不存在", message: "請確認群組 ID 或創立新群組", clickTitle: "收到")
+                    let alert = UIAlertController.sigleActionAlert(
+                        title: "群組不存在", message: "請確認群組 ID 或創立新群組", clickTitle: "收到")
                     ownVc.present(alert, animated: false, completion: nil)
                     
                 } else {

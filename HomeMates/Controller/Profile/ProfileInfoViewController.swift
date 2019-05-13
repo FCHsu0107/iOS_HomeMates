@@ -14,6 +14,5 @@ class ProfileInfoViewController: HMBaseViewController {
         super.viewDidLoad()
 
     }
-    
 
 }

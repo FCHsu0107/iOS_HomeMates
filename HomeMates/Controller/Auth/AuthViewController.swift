@@ -76,7 +76,6 @@ class AuthViewController: HMBaseViewController {
                     title: "注意", message: "請確實填寫基本資料", clickTitle: "收到")
                 self.present(alert, animated: false, completion: nil)
                 
-                
             } else if passwordTextField.text != checkTextField.text || passwordTextField.text?.isEmpty == true {
                 let alert = UIAlertController.sigleActionAlert(
                     title: "注意", message: "請確認密碼無誤", clickTitle: "收到")
@@ -97,7 +96,9 @@ class AuthViewController: HMBaseViewController {
     }
     
     private func createUserDoc() {
-        authProvider.createUserDoc(email: emailTextField.text!, password: passwordTextField.text!, userName: userNameTextField.text!) { [weak self] (result) in
+        authProvider.createUserDoc(
+        email: emailTextField.text!, password: passwordTextField.text!,
+        userName: userNameTextField.text!) { [weak self] (result) in
             switch result {
             
             case .success(_):
