@@ -19,4 +19,9 @@ target 'HomeMates' do
   pod 'Crashlytics', '~> 3.12.0'
   pod 'SwiftMessages'
   
+  target 'HomeMatesTests' do
+    inherit! :search_paths
+    pod 'Firebase'
+  end
+  
 end

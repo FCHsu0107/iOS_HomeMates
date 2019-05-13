@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B0A2B88B46FE71F06411340 /* Pods_HomeMatesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B99F655248785A7C2D6FC83E /* Pods_HomeMatesTests.framework */; };
 		6E9B27DAC4A97C50CD1D1CFC /* Pods_HomeMates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0D5E2E1A5658A395EF06F5E /* Pods_HomeMates.framework */; };
 		B91A696022704A98008C9B66 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91A695F22704A98008C9B66 /* Array+Extension.swift */; };
 		B91D3A9A2264ABD400C1A28F /* MemberObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3A992264ABD400C1A28F /* MemberObject.swift */; };
@@ -65,6 +66,7 @@
 		B98446C7226FF33100E5044A /* BlankTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B98446C5226FF33100E5044A /* BlankTableViewCell.xib */; };
 		B98446CB22700DB700E5044A /* TaskRecordObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98446CA22700DB700E5044A /* TaskRecordObject.swift */; };
 		B9B10D732258A1780081C856 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B10D722258A1780081C856 /* UIView+Extension.swift */; };
+		B9B3582322886C9100CC1AEE /* HomeMatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3582222886C9100CC1AEE /* HomeMatesTests.swift */; };
 		B9B7F52C225CAD5700A6DA9E /* TaskCellStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F52B225CAD5700A6DA9E /* TaskCellStatus.swift */; };
 		B9B7F531225CC00000A6DA9E /* ChartsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F52F225CC00000A6DA9E /* ChartsTableViewCell.swift */; };
 		B9B7F532225CC00000A6DA9E /* ChartsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9B7F530225CC00000A6DA9E /* ChartsTableViewCell.xib */; };
@@ -89,7 +91,6 @@
 		B9CA00C92286548700EC550C /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CA00C82286548700EC550C /* AuthProvider.swift */; };
 		B9CA00CB2286D90500EC550C /* TaskStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CA00CA2286D90500EC550C /* TaskStatus.swift */; };
 		B9CA00CD22882A0500EC550C /* ProfileInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CA00CC22882A0500EC550C /* ProfileInfoViewController.swift */; };
-		B9CA00D522882B9A00EC550C /* HomeMatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CA00D422882B9A00EC550C /* HomeMatesTests.swift */; };
 		B9D295D42258C18F00CF7869 /* TaskTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D295D32258C18F00CF7869 /* TaskTracker.swift */; };
 		B9D295DB225B003300CF7869 /* TaskListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D295DA225B003300CF7869 /* TaskListHeaderView.swift */; };
 		B9D71AA022534D4F00F242DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D71A9F22534D4F00F242DA /* AppDelegate.swift */; };
@@ -104,7 +105,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B9CA00D722882B9A00EC550C /* PBXContainerItemProxy */ = {
+		B9B3582522886C9100CC1AEE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B9D71A9422534D4F00F242DA /* Project object */;
 			proxyType = 1;
@@ -114,6 +115,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		452F3EE272153B0FA55F4D5A /* Pods-HomeMatesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeMatesTests.debug.xcconfig"; path = "Target Support Files/Pods-HomeMatesTests/Pods-HomeMatesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A0D5E2E1A5658A395EF06F5E /* Pods_HomeMates.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomeMates.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B91A695F22704A98008C9B66 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		B91D3A992264ABD400C1A28F /* MemberObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberObject.swift; sourceTree = "<group>"; };
@@ -171,7 +173,11 @@
 		B98446C4226FF33100E5044A /* BlankTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankTableViewCell.swift; sourceTree = "<group>"; };
 		B98446C5226FF33100E5044A /* BlankTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlankTableViewCell.xib; sourceTree = "<group>"; };
 		B98446CA22700DB700E5044A /* TaskRecordObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRecordObject.swift; sourceTree = "<group>"; };
+		B99F655248785A7C2D6FC83E /* Pods_HomeMatesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomeMatesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9B10D722258A1780081C856 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		B9B3582022886C9100CC1AEE /* HomeMatesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeMatesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9B3582222886C9100CC1AEE /* HomeMatesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMatesTests.swift; sourceTree = "<group>"; };
+		B9B3582422886C9100CC1AEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9B7F52B225CAD5700A6DA9E /* TaskCellStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellStatus.swift; sourceTree = "<group>"; };
 		B9B7F52F225CC00000A6DA9E /* ChartsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsTableViewCell.swift; sourceTree = "<group>"; };
 		B9B7F530225CC00000A6DA9E /* ChartsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartsTableViewCell.xib; sourceTree = "<group>"; };
@@ -196,7 +202,6 @@
 		B9CA00C82286548700EC550C /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
 		B9CA00CA2286D90500EC550C /* TaskStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatus.swift; sourceTree = "<group>"; };
 		B9CA00CC22882A0500EC550C /* ProfileInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoViewController.swift; sourceTree = "<group>"; };
-		B9CA00D222882B9A00EC550C /* HomeMatesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeMatesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9CA00D422882B9A00EC550C /* HomeMatesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMatesTests.swift; sourceTree = "<group>"; };
 		B9CA00D622882B9A00EC550C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9D295D32258C18F00CF7869 /* TaskTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTracker.swift; sourceTree = "<group>"; };
@@ -214,15 +219,17 @@
 		B9EE7EF5227EC55800647600 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		B9EE7EF7227EE43B00647600 /* PushNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSender.swift; sourceTree = "<group>"; };
 		B9EE7EFB227FFDBC00647600 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C189427B24EFE5888A5A091C /* Pods-HomeMatesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeMatesTests.release.xcconfig"; path = "Target Support Files/Pods-HomeMatesTests/Pods-HomeMatesTests.release.xcconfig"; sourceTree = "<group>"; };
 		D95E51F3504518D6A60A4E46 /* Pods-HomeMates.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeMates.debug.xcconfig"; path = "Target Support Files/Pods-HomeMates/Pods-HomeMates.debug.xcconfig"; sourceTree = "<group>"; };
 		E5C452DD2D14E69356D08726 /* Pods-HomeMates.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeMates.release.xcconfig"; path = "Target Support Files/Pods-HomeMates/Pods-HomeMates.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B9CA00CF22882B9A00EC550C /* Frameworks */ = {
+		B9B3581D22886C9100CC1AEE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B0A2B88B46FE71F06411340 /* Pods_HomeMatesTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				A0D5E2E1A5658A395EF06F5E /* Pods_HomeMates.framework */,
+				B99F655248785A7C2D6FC83E /* Pods_HomeMatesTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -448,6 +456,15 @@
 			path = Statistics;
 			sourceTree = "<group>";
 		};
+		B9B3582122886C9100CC1AEE /* HomeMatesTests */ = {
+			isa = PBXGroup;
+			children = (
+				B9B3582222886C9100CC1AEE /* HomeMatesTests.swift */,
+				B9B3582422886C9100CC1AEE /* Info.plist */,
+			);
+			path = HomeMatesTests;
+			sourceTree = "<group>";
+		};
 		B9B7F52D225CAD6100A6DA9E /* TaskObject */ = {
 			isa = PBXGroup;
 			children = (
@@ -567,6 +584,7 @@
 			children = (
 				B9D71A9E22534D4F00F242DA /* HomeMates */,
 				B9CA00D322882B9A00EC550C /* HomeMatesTests */,
+				B9B3582122886C9100CC1AEE /* HomeMatesTests */,
 				B9D71A9D22534D4F00F242DA /* Products */,
 				C75B0ED5492584CA900C8D58 /* Pods */,
 				6027FDD169EC46F3E3A6B242 /* Frameworks */,
@@ -577,7 +595,7 @@
 			isa = PBXGroup;
 			children = (
 				B9D71A9C22534D4F00F242DA /* HomeMates.app */,
-				B9CA00D222882B9A00EC550C /* HomeMatesTests.xctest */,
+				B9B3582022886C9100CC1AEE /* HomeMatesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -613,6 +631,8 @@
 			children = (
 				D95E51F3504518D6A60A4E46 /* Pods-HomeMates.debug.xcconfig */,
 				E5C452DD2D14E69356D08726 /* Pods-HomeMates.release.xcconfig */,
+				452F3EE272153B0FA55F4D5A /* Pods-HomeMatesTests.debug.xcconfig */,
+				C189427B24EFE5888A5A091C /* Pods-HomeMatesTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -620,22 +640,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B9CA00D122882B9A00EC550C /* HomeMatesTests */ = {
+		B9B3581F22886C9100CC1AEE /* HomeMatesTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B9CA00D922882B9A00EC550C /* Build configuration list for PBXNativeTarget "HomeMatesTests" */;
+			buildConfigurationList = B9B3582722886C9100CC1AEE /* Build configuration list for PBXNativeTarget "HomeMatesTests" */;
 			buildPhases = (
-				B9CA00CE22882B9A00EC550C /* Sources */,
-				B9CA00CF22882B9A00EC550C /* Frameworks */,
-				B9CA00D022882B9A00EC550C /* Resources */,
+				E2455CBE671EC77719CA06ED /* [CP] Check Pods Manifest.lock */,
+				B9B3581C22886C9100CC1AEE /* Sources */,
+				B9B3581D22886C9100CC1AEE /* Frameworks */,
+				B9B3581E22886C9100CC1AEE /* Resources */,
+				8BB49DD7B4E3C65F83BE539E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B9CA00D822882B9A00EC550C /* PBXTargetDependency */,
+				B9B3582622886C9100CC1AEE /* PBXTargetDependency */,
 			);
 			name = HomeMatesTests;
 			productName = HomeMatesTests;
-			productReference = B9CA00D222882B9A00EC550C /* HomeMatesTests.xctest */;
+			productReference = B9B3582022886C9100CC1AEE /* HomeMatesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		B9D71A9B22534D4F00F242DA /* HomeMates */ = {
@@ -669,7 +691,7 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Fu-Chiung HSU";
 				TargetAttributes = {
-					B9CA00D122882B9A00EC550C = {
+					B9B3581F22886C9100CC1AEE = {
 						CreatedOnToolsVersion = 10.2;
 						TestTargetID = B9D71A9B22534D4F00F242DA;
 					};
@@ -697,13 +719,13 @@
 			projectRoot = "";
 			targets = (
 				B9D71A9B22534D4F00F242DA /* HomeMates */,
-				B9CA00D122882B9A00EC550C /* HomeMatesTests */,
+				B9B3581F22886C9100CC1AEE /* HomeMatesTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		B9CA00D022882B9A00EC550C /* Resources */ = {
+		B9B3581E22886C9100CC1AEE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -743,6 +765,30 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		8BB49DD7B4E3C65F83BE539E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HomeMatesTests/Pods-HomeMatesTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HomeMatesTests/Pods-HomeMatesTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		93A4507F3EF7B890DACBC5D6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -847,14 +893,36 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
+		E2455CBE671EC77719CA06ED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HomeMatesTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		B9CA00CE22882B9A00EC550C /* Sources */ = {
+		B9B3581C22886C9100CC1AEE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9CA00D522882B9A00EC550C /* HomeMatesTests.swift in Sources */,
+				B9B3582322886C9100CC1AEE /* HomeMatesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -937,10 +1005,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B9CA00D822882B9A00EC550C /* PBXTargetDependency */ = {
+		B9B3582622886C9100CC1AEE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B9D71A9B22534D4F00F242DA /* HomeMates */;
-			targetProxy = B9CA00D722882B9A00EC550C /* PBXContainerItemProxy */;
+			targetProxy = B9B3582522886C9100CC1AEE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -964,8 +1032,9 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		B9CA00DA22882B9A00EC550C /* Debug */ = {
+		B9B3582822886C9100CC1AEE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 452F3EE272153B0FA55F4D5A /* Pods-HomeMatesTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -986,8 +1055,9 @@
 			};
 			name = Debug;
 		};
-		B9CA00DB22882B9A00EC550C /* Release */ = {
+		B9B3582922886C9100CC1AEE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C189427B24EFE5888A5A091C /* Pods-HomeMatesTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1065,6 +1135,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};
@@ -1169,11 +1240,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B9CA00D922882B9A00EC550C /* Build configuration list for PBXNativeTarget "HomeMatesTests" */ = {
+		B9B3582722886C9100CC1AEE /* Build configuration list for PBXNativeTarget "HomeMatesTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B9CA00DA22882B9A00EC550C /* Debug */,
-				B9CA00DB22882B9A00EC550C /* Release */,
+				B9B3582822886C9100CC1AEE /* Debug */,
+				B9B3582922886C9100CC1AEE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
