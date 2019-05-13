@@ -67,6 +67,7 @@
 		B98446CB22700DB700E5044A /* TaskRecordObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98446CA22700DB700E5044A /* TaskRecordObject.swift */; };
 		B9B10D732258A1780081C856 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B10D722258A1780081C856 /* UIView+Extension.swift */; };
 		B9B3582322886C9100CC1AEE /* HomeMatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3582222886C9100CC1AEE /* HomeMatesTests.swift */; };
+		B9B3582D2289BE2E00CC1AEE /* ProfileInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3582C2289BE2E00CC1AEE /* ProfileInfoProvider.swift */; };
 		B9B7F52C225CAD5700A6DA9E /* TaskCellStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F52B225CAD5700A6DA9E /* TaskCellStatus.swift */; };
 		B9B7F531225CC00000A6DA9E /* ChartsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F52F225CC00000A6DA9E /* ChartsTableViewCell.swift */; };
 		B9B7F532225CC00000A6DA9E /* ChartsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9B7F530225CC00000A6DA9E /* ChartsTableViewCell.xib */; };
@@ -177,6 +178,7 @@
 		B9B3582022886C9100CC1AEE /* HomeMatesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeMatesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9B3582222886C9100CC1AEE /* HomeMatesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMatesTests.swift; sourceTree = "<group>"; };
 		B9B3582422886C9100CC1AEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9B3582C2289BE2E00CC1AEE /* ProfileInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoProvider.swift; sourceTree = "<group>"; };
 		B9B7F52B225CAD5700A6DA9E /* TaskCellStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellStatus.swift; sourceTree = "<group>"; };
 		B9B7F52F225CC00000A6DA9E /* ChartsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsTableViewCell.swift; sourceTree = "<group>"; };
 		B9B7F530225CC00000A6DA9E /* ChartsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartsTableViewCell.xib; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				B9B7F52D225CAD6100A6DA9E /* TaskObject */,
 				B9DB5F3D2283EEF300F5DF4F /* LobbyTaskProvider.swift */,
 				B9DB5F392283D20600F5DF4F /* FirebaseManager.swift */,
+				B9B3582C2289BE2E00CC1AEE /* ProfileInfoProvider.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -963,6 +966,7 @@
 				B9B7F531225CC00000A6DA9E /* ChartsTableViewCell.swift in Sources */,
 				B9CA00C92286548700EC550C /* AuthProvider.swift in Sources */,
 				B921CA73226D8CED001FA942 /* LobbySettingsViewController.swift in Sources */,
+				B9B3582D2289BE2E00CC1AEE /* ProfileInfoProvider.swift in Sources */,
 				B91D3B012269BAF500C1A28F /* Date+Extension.swift in Sources */,
 				B9B7F541225DB73D00A6DA9E /* AuthViewController.swift in Sources */,
 				B94D15B322572A2200F43B78 /* HMBaseViewController.swift in Sources */,

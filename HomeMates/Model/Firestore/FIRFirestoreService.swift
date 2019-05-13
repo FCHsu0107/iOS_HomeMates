@@ -128,18 +128,18 @@ class FIRFirestoreSerivce {
         }
     }
         
-    func readAssigningTasks(completionHandler: @escaping ([TaskObject]) -> Void) {
-        readGroupTasks(status: 1) { (tasks) in
-            completionHandler(tasks)
-        }
-    }
-    
-    func readCheckTasks(completionHandler: @escaping ([TaskObject]) -> Void) {
-        readGroupTasks(status: 3) { (tasks) in
-            completionHandler(tasks)
-        }
-    }
-    
+//    func readAssigningTasks(completionHandler: @escaping ([TaskObject]) -> Void) {
+//        readGroupTasks(status: 1) { (tasks) in
+//            completionHandler(tasks)
+//        }
+//    }
+//
+//    func readCheckTasks(completionHandler: @escaping ([TaskObject]) -> Void) {
+//        readGroupTasks(status: 3) { (tasks) in
+//            completionHandler(tasks)
+//        }
+//    }
+//
     func readAllTasks(completionHandler: @escaping ([TaskObject]) -> Void) {
         subReference(to: .groups, in: UserDefaultManager.shared.groupId!, toNext: .tasks)
             .getDocuments { (snapshot, err) in
@@ -183,27 +183,27 @@ class FIRFirestoreSerivce {
         }
     }
     
-    func readDoingTasks(completionHandler: @escaping ([TaskObject]) -> Void) {
-        subReference(to: .groups, in: UserDefaultManager.shared.groupId!, toNext: .tasks)
-            .whereField(TaskObject.CodingKeys.taskStatus.rawValue, isEqualTo: 2)
-            .whereField(TaskObject.CodingKeys.executorUid.rawValue,
-                        isEqualTo: UserDefaultManager.shared.userUid!)
-            .getDocuments { (snapshot, err) in
-                guard let snapshpt = snapshot else {
-                    print(err as Any)
-                    return }
-                do {
-                    var objects = [TaskObject]()
-                    for document in snapshpt.documents {
-                        let object = try document.decode(as: TaskObject.self)
-                        objects.append(object)
-                    }
-                    completionHandler(objects)
-                } catch {
-                    print(error)
-                }
-        }
-    }
+//    func readDoingTasks(completionHandler: @escaping ([TaskObject]) -> Void) {
+//        subReference(to: .groups, in: UserDefaultManager.shared.groupId!, toNext: .tasks)
+//            .whereField(TaskObject.CodingKeys.taskStatus.rawValue, isEqualTo: 2)
+//            .whereField(TaskObject.CodingKeys.executorUid.rawValue,
+//                        isEqualTo: UserDefaultManager.shared.userUid!)
+//            .getDocuments { (snapshot, err) in
+//                guard let snapshpt = snapshot else {
+//                    print(err as Any)
+//                    return }
+//                do {
+//                    var objects = [TaskObject]()
+//                    for document in snapshpt.documents {
+//                        let object = try document.decode(as: TaskObject.self)
+//                        objects.append(object)
+//                    }
+//                    completionHandler(objects)
+//                } catch {
+//                    print(error)
+//                }
+//        }
+//    }
     
     typealias BoolCompleionHandler = (User?, Bool?, UserObject?) -> Void
     
@@ -319,27 +319,27 @@ class FIRFirestoreSerivce {
 
 extension FIRFirestoreSerivce {
     //private func
-    private func readGroupTasks(status: Int,
-                                completion: @escaping ([TaskObject]) -> Void) {
-        subReference(to: .groups, in: UserDefaultManager.shared.groupId!, toNext: .tasks)
-            .whereField(TaskObject.CodingKeys.taskStatus.rawValue, isEqualTo: status)
-            .getDocuments { (snapshot, err) in
-                guard let snapshot = snapshot else {
-                    print(err as Any)
-                    return }
-                
-                do {
-                    var objects = [TaskObject]()
-                    for document in snapshot.documents {
-                        let object = try document.decode(as: TaskObject.self)
-                        objects.append(object)
-                    }
-                    completion(objects)
-                } catch {
-                    print(error)
-                }
-        }
-    }
+//    private func readGroupTasks(status: Int,
+//                                completion: @escaping ([TaskObject]) -> Void) {
+//        subReference(to: .groups, in: UserDefaultManager.shared.groupId!, toNext: .tasks)
+//            .whereField(TaskObject.CodingKeys.taskStatus.rawValue, isEqualTo: status)
+//            .getDocuments { (snapshot, err) in
+//                guard let snapshot = snapshot else {
+//                    print(err as Any)
+//                    return }
+//
+//                do {
+//                    var objects = [TaskObject]()
+//                    for document in snapshot.documents {
+//                        let object = try document.decode(as: TaskObject.self)
+//                        objects.append(object)
+//                    }
+//                    completion(objects)
+//                } catch {
+//                    print(error)
+//                }
+//        }
+//    }
     
     private func reference(to collectionReference: FIRCollectionReference) -> CollectionReference {
         
@@ -355,9 +355,5 @@ extension FIRFirestoreSerivce {
                 .document(document)
                 .collection(subCollectionReference.rawValue)
     }
-    
-}
-
-extension FIRFirestoreSerivce {
     
 }

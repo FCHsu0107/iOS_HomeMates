@@ -101,7 +101,7 @@ class AuthViewController: HMBaseViewController {
         userName: userNameTextField.text!) { [weak self] (result) in
             switch result {
             
-            case .success(_):
+            case .success:
                 self?.performSegue(withIdentifier: "selectGroupSegue", sender: nil)
                 
             case .failure(let error):

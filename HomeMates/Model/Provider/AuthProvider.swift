@@ -82,8 +82,16 @@ class AuthProvider {
                                                       groupID: UserDefaultManager.shared.groupId!,
                                                       isMainGroup: true, goal: nil)
                 
-                FirestoreUserManager.shared.createGroupInUser(for: groupInfoInUser)
-                
+                FirestoreUserManager.shared.createGroupInUser(for: groupInfoInUser, completionHandler: { (result) in
+                    switch result {
+                    case .success: break
+                        
+                    case .failure(let err):
+                        print(err)
+                        
+                    }
+                })
+    
                 let groupMemnber = MemberObject(docId: nil, userId: user.uid,
                                                 userName: userInfo.name, isCreator: true,
                                                 permission: true, userPicture: "profile_48px", goal: nil,
@@ -92,10 +100,7 @@ class AuthProvider {
                 FIRFirestoreSerivce.shared.createSub(for: groupMemnber, in: .groups,
                                                      inDocument: groupId, inNext: .members)
                 completionHandler(Result.success(true))
-//                let tabBarVc = UIStoryboard.main.instantiateInitialViewController()!
-//                ownVc.present(tabBarVc, animated: true, completion: nil)
             })
-
         }
     }
     
@@ -156,7 +161,14 @@ class AuthProvider {
                                   newUser: UserObject, groupInfoInUser: GroupInfoInUser) {
         FIRFirestoreSerivce.shared.createSub(for: memberInfo, in: .groups, inDocument: groupId, inNext: .members)
         FIRFirestoreSerivce.shared.updateUser(uid: userId, for: newUser, in: .users)
-        FirestoreUserManager.shared.createGroupInUser(for: groupInfoInUser)
+        FirestoreUserManager.shared.createGroupInUser(for: groupInfoInUser) { (result) in
+            switch result {
+            case .success:
+                break
+            case .failure(let err):
+                print(err)
+            }
+        }
         
     }
     

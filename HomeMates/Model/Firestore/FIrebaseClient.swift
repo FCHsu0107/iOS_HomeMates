@@ -30,7 +30,7 @@ enum HMFirebaseClientError: Error {
     
 }
 
-enum HMFirebaseMethod: String {
+enum HMFirebaseMethod {
     
     case create
     
@@ -72,29 +72,29 @@ enum FIRCollectionRef: String {
     //Application collection
     case applications
     
-//    func collectionRef() -> CollectionReference {
-//        var ref = Firestore.firestore()
-//
-//        switch self {
-//        case .users:
-//            return ref.collection(FIRCollectionReference.users.rawValue)
-//        case .groupsInUser:
-//            return ref.collection(FIRCollectionReference.users.rawValue)
-//                .document(UserDefaultManager.shared.userUid!)
-//                .collection(FIRCollectionReference.groups.rawValue)
-//        case .months:
-//            return ref.collection(FIRCollectionReference.users.rawValue)
-//            .document(UserDefaultManager.shared.userUid!).collection(FIRCollectionReference.groups)
-//        case .groups:
-//            return ref.collection(FIRCollectionReference.groups.rawValue)
-//
-//        case .applications:
-//            return ref.collection(FIRCollectionReference.applications.rawValue)
-//
-//        default:
-//            <#code#>
-//        }
-//    }
+    func collectionRef(uid: String?) -> CollectionReference {
+        let ref = Firestore.firestore()
+
+        switch self {
+        case .users:
+            return ref.collection(FIRCollectionReference.users.rawValue)
+        case .groupsInUser:
+            return ref.collection(FIRCollectionReference.users.rawValue)
+                .document(UserDefaultManager.shared.userUid!)
+                .collection(FIRCollectionReference.groups.rawValue)
+        case .months:
+            return ref.collection(FIRCollectionReference.users.rawValue)
+                .document(UserDefaultManager.shared.userUid!).collection(FIRCollectionReference.groups.rawValue)
+        case .groups:
+            return ref.collection(FIRCollectionReference.groups.rawValue)
+
+        case .applications:
+            return ref.collection(FIRCollectionReference.applications.rawValue)
+
+        default:
+            return ref.collection(FIRCollectionReference.groups.rawValue)
+        }
+    }
 }
 
 class FirebaseClient {

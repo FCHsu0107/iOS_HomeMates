@@ -20,10 +20,6 @@ class LobbyViewController: HMBaseViewController {
     var groupInfo: GroupObject?
 
     let taskHeader = TaskListHeaderView()
-
-//    var taskListTitle: [String] = ["已接取任務", "已完成任務", "可接取任務"]
-
-//    var taskList: [TaskObject] = []
     
     var cellTypes: [TaskStatus] = [.ongoingTask([]), .waitingForCheckTask([]), .acceptableTask([]), .createNewTask]
 
@@ -218,14 +214,6 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
         default:
             break
         }
-//        if indexPath.section == 2 {
-//            guard editingStyle == .delete else { return }
-//            guard taskList.count != 0 else { return }
-//            let task = taskList[indexPath.row]
-//            FirestoreGroupManager.shared.deleteTask(in: .tasks, docId: task.docId!)
-//            taskList.remove(at: indexPath.row)
-//            tableView.reloadData()
-//        }
     }
 
     internal func tableView(_ tableView: UITableView,
@@ -240,11 +228,6 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
         default:
             return UITableViewCell.EditingStyle.none
         }
-//        if indexPath.section == 2 && taskList.count != 0 {
-//            return UITableViewCell.EditingStyle.delete
-//        } else {
-//            return UITableViewCell.EditingStyle.none
-//        }
     }
     
     @objc func addingTaskPage() {

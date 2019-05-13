@@ -15,15 +15,22 @@ class FirestoreUserManager {
     
     static var shared = FirestoreUserManager()
     
-    func createGroupInUser(for encodableObject: GroupInfoInUser) {
+    func createGroupInUser(for encodableObject: GroupInfoInUser,
+                           completionHandler: @escaping (Result<Bool>) -> Void) {
         do {
             var json = try encodableObject.toJSON()
             json["docId"] = encodableObject.groupID
             reference(userUid: UserDefaultManager.shared.userUid!, to: .groups)
                 .document(encodableObject.groupID)
-                .setData(json)
+                .setData(json) { (err) in
+                    if err == nil {
+                        return completionHandler(Result.success(true))
+                    } else {
+                        return completionHandler(Result.failure(err!))
+                    }
+            }
         } catch {
-            print(error)
+            return completionHandler(Result.failure(HMError.encodingError))
         }
     }
     

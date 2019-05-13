@@ -32,6 +32,8 @@ class ProfileViewController: HMBaseViewController {
     
     let messagesView = MessagesView()
 
+    let profileProvider = ProfileProvider()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,9 +64,14 @@ class ProfileViewController: HMBaseViewController {
     
     private func getAllInfo() {
         dispatchGroup.enter()
-        FirestoreUserManager.shared.readUserInfo { [weak self] (user) in
-            self?.userInfo = user
-            self?.dispatchGroup.leave()
+        profileProvider.readUserInfo { [weak self] (result) in
+            switch result {
+            case .success(let user):
+                self?.userInfo = user
+                self?.dispatchGroup.leave()
+            case .failure:
+                self?.dispatchGroup.leave()
+            }
         }
         
         dispatchGroup.enter()

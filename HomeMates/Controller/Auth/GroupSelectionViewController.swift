@@ -106,7 +106,7 @@ class GroupSelectionViewController: UIViewController {
         authProvider.createANewGroup(groupName: secondGroupTextField.text!,
                                      groupId: firstGroupIDTextField.text!) { [weak self] (result) in
             switch result {
-            case .success(_):
+            case .success:
                 let tabBarVc = UIStoryboard.main.instantiateInitialViewController()!
                 self?.present(tabBarVc, animated: true, completion: nil)
             default: break
