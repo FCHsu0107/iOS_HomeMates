@@ -10,6 +10,19 @@ import UIKit
 
 extension UIAlertController {
 
+    static func sigleActionAlert(title: String,
+                                 message: String?,
+                                 clickTitle: String) -> UIAlertController {
+        
+        let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let sigleAction = UIAlertAction(title: clickTitle, style: .default, handler: nil)
+        
+        controller.addAction(sigleAction)
+        
+        return controller
+    }
+    
     static func showAlertSheet(title: String?,
                                message: String?,
                                action: [(String)],

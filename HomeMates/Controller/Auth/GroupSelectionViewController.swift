@@ -74,7 +74,8 @@ class GroupSelectionViewController: UIViewController {
     @IBAction func startAppBtnAction(_ sender: Any) {
         if selectGroupBtn[0].isSelected == true {
             if firstGroupIDTextField.text?.isEmpty == true {
-                AlertService.sigleActionAlert(title: "注意", message: "請確認資料都已填寫", clickTitle: "收到", showInVc: self)
+                let alert = UIAlertController.sigleActionAlert(title: "注意", message: "請確認資料都已填寫", clickTitle: "收到")
+                self.present(alert, animated: false, completion: nil)
             } else {
                 searchTheGroup()
             }
@@ -82,7 +83,8 @@ class GroupSelectionViewController: UIViewController {
         } else if selectGroupBtn[1].isSelected == true {
             if firstGroupIDTextField.text?.isEmpty == true ||
                 secondGroupTextField.text?.isEmpty == true {
-                AlertService.sigleActionAlert(title: "注意", message: "請確認資料都已填寫", clickTitle: "收到", showInVc: self)
+                let alert = UIAlertController.sigleActionAlert(title: "注意", message: "請確認資料都已填寫", clickTitle: "收到")
+                self.present(alert, animated: false, completion: nil)
 
             } else {
                 guard let groupId = firstGroupIDTextField.text else { return }
@@ -90,10 +92,9 @@ class GroupSelectionViewController: UIViewController {
                     if groups.count == 0 {
                         self.createANewGroup()
                     } else {
-                        AlertService.sigleActionAlert(title: "群組 ID 已存在",
-                                                   message: "請選擇其他 ID",
-                                                   clickTitle: "收到",
-                                                   showInVc: self)
+                        let alert = UIAlertController.sigleActionAlert(title: "群組代碼已存在", message: "請輸入其他代碼", clickTitle: "收到")
+                        self.present(alert, animated: false, completion: nil)
+                        
                     }
                 }
             }
@@ -102,7 +103,14 @@ class GroupSelectionViewController: UIViewController {
     
     func createANewGroup() {
         authProvider.createANewGroup(groupName: secondGroupTextField.text!,
-                                     groupId: firstGroupIDTextField.text!, ownVc: self)
+                                     groupId: firstGroupIDTextField.text!) { [weak self] (result) in
+            switch result {
+            case .success(_):
+                let tabBarVc = UIStoryboard.main.instantiateInitialViewController()!
+                self?.present(tabBarVc, animated: true, completion: nil)
+            default: break
+            }
+        }
     }
     
     func searchTheGroup() {

@@ -186,9 +186,9 @@ class FirebaseClient {
     }
     
     func readDocWithPath<T: Decodable>(uid: String,
-                                           form collectionRef: CollectionReference,
-                                           returning objectType: T.Type,
-                                           completion: @escaping (Result<T>) -> Void) {
+                                       form collectionRef: CollectionReference,
+                                       returning objectType: T.Type,
+                                       completion: @escaping (Result<T>) -> Void) {
         collectionRef.document(uid).getDocument { (document, err) in
             if err == nil {
                 guard let document = document else {

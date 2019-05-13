@@ -12,86 +12,23 @@ import UIKit
 
 class HomeMatesTests: XCTestCase {
 
+    var authProviderTest: AuthProvider!
+    
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        super.setUp()
+        authProviderTest = AuthProvider()
+       
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-    
-    func add(aaa: Int, bbb: Int) -> Int {
-        return 30
-    }
-    
-    func fib(_ index: Int) -> Int {
-        if index < 0 {
-            return 0
-        } else if index <= 1 {
-            return 1
-        } else {
-            return fib(index - 1) + fib(index - 2)
-        }
-    }
-    
-    func fibArr(_ index: Int) -> Int {
-        var fibs: [Int] = [1, 1]
-        (2...index).forEach { iii in
-            fibs.append(fibs[iii - 1] + fibs[iii - 2])
-        }
-        return fibs.last!
-    }
-    
-    func fibF(_ index: Int) -> Int {
-        var first = 1
-        var second = 1
-        guard index > 1 else { return first }
+        super.tearDown()
+        authProviderTest = nil
         
-        (2...index).forEach { _ in
-            (first, second) = (first + second, first)
-        }
-        return first
     }
-    
-    func testInitialInput() {
-        let fib1 = 1
-        let expectedResult = fib1
-        let actualResult = fib(1)
+    func test_authManager_signIn() {
+//        authProviderTest.signInAction(email: <#T##String#>, password: <#T##String#>, ownVc: <#T##UIViewController#>)
         
-        XCTAssertEqual(actualResult, expectedResult)
     }
-    
-    func testNumber() {
-        let fib2 = 2
-        let expectedResult = fib2
-        let actualResult = fib(2)
-        
-        XCTAssertEqual(actualResult, expectedResult)
-    }
-    
-    func testCorrect() {
-        let n10 = fib(10)
-        let n11 = fib(11)
-        let expectedResult = n10 + n11
-        let actualResult = fib(12)
-        
-        XCTAssertEqual(actualResult, expectedResult)
-    }
-    
-    func testNegative() {
-        let expectedResult = 0
-        let actualResult = fib(-1)
-        
-        XCTAssertEqual(expectedResult, actualResult)
-    }
-    
-    //跑太久
-//    func testBigNumber() {
-//        let test = fibArr(9999)
-//        print("__________")
-//        print(test)
-//        print("---------------")
-//    }
     
     func testJacqueline() {
         // 3A - Arrange, Action, Assert
@@ -107,6 +44,82 @@ class HomeMatesTests: XCTestCase {
         // Assert
         XCTAssertEqual(actualResult, expectedResult)
     }
+    
+    func add(aaa: Int, bbb: Int) -> Int {
+        return 30
+    }
+    
+//
+//    func fib(_ index: Int) -> Int {
+//        if index < 0 {
+//            return 0
+//        } else if index <= 1 {
+//            return 1
+//        } else {
+//            return fib(index - 1) + fib(index - 2)
+//        }
+//    }
+//
+//    func fibArr(_ index: Int) -> Int {
+//        var fibs: [Int] = [1, 1]
+//        (2...index).forEach { number in
+//            fibs.append(fibs[number - 1] + fibs[number - 2])
+//        }
+//        return fibs.last!
+//    }
+//
+//    func fibF(_ index: Int) -> Int {
+//        var first = 1
+//        var second = 1
+//        guard index > 1 else { return first }
+//
+//        (2...index).forEach { _ in
+//            (first, second) = (first + second, first)
+//        }
+//        return first
+//    }
+//
+//    func test_initial_input() {
+//        let fib1 = 1
+//        let expectedResult = fib1
+//        let actualResult = fib(1)
+//
+//        XCTAssertEqual(actualResult, expectedResult)
+//    }
+//
+//    func test_number() {
+//        let fib2 = 2
+//        let expectedResult = fib2
+//        let actualResult = fib(2)
+//
+//        XCTAssertEqual(actualResult, expectedResult)
+//    }
+//
+//    func test_correct() {
+//        let n10 = fib(10)
+//        let n11 = fib(11)
+//        let expectedResult = n10 + n11
+//        let actualResult = fib(12)
+//
+//        XCTAssertEqual(actualResult, expectedResult)
+//    }
+//
+//    func test_negative() {
+//        let expectedResult = 0
+//        let actualResult = fib(-1)
+//
+//        XCTAssertEqual(expectedResult, actualResult)
+//    }
+//
+//    //跑太久
+////    func testBigNumber() {
+////        let test = fibArr(9999)
+////        print("__________")
+////        print(test)
+////        print("---------------")
+////    }
+//
+   
 
     func testExample() {
         // This is an example of a functional test case.

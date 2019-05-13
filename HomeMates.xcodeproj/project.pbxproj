@@ -76,7 +76,6 @@
 		B9B7F53E225DB6B900A6DA9E /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9B7F53D225DB6B900A6DA9E /* Auth.storyboard */; };
 		B9B7F541225DB73D00A6DA9E /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F540225DB73D00A6DA9E /* AuthViewController.swift */; };
 		B9B7F545225DEA8200A6DA9E /* GroupSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F544225DEA8200A6DA9E /* GroupSelectionViewController.swift */; };
-		B9B7F548225EEA8E00A6DA9E /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F547225EEA8E00A6DA9E /* AlertService.swift */; };
 		B9B99F322261898D00314BB6 /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F312261898D00314BB6 /* UserObject.swift */; };
 		B9B99F352262151100314BB6 /* FIRFirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F342262151100314BB6 /* FIRFirestoreService.swift */; };
 		B9B99F372262C44B00314BB6 /* FIRCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B99F362262C44B00314BB6 /* FIRCollectionReference.swift */; };
@@ -187,7 +186,6 @@
 		B9B7F53D225DB6B900A6DA9E /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		B9B7F540225DB73D00A6DA9E /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		B9B7F544225DEA8200A6DA9E /* GroupSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSelectionViewController.swift; sourceTree = "<group>"; };
-		B9B7F547225EEA8E00A6DA9E /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
 		B9B99F312261898D00314BB6 /* UserObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
 		B9B99F342262151100314BB6 /* FIRFirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRFirestoreService.swift; sourceTree = "<group>"; };
 		B9B99F362262C44B00314BB6 /* FIRCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRCollectionReference.swift; sourceTree = "<group>"; };
@@ -302,7 +300,6 @@
 			children = (
 				B93EA22322760D9E002F18A3 /* Provider */,
 				B9B99F442263262900314BB6 /* Firestore */,
-				B9B7F546225EEA7000A6DA9E /* AlertFunction */,
 				B9B99F332261899900314BB6 /* UserObject */,
 				B9B99F492264470300314BB6 /* GroupObject */,
 				B9B7F52D225CAD6100A6DA9E /* TaskObject */,
@@ -515,14 +512,6 @@
 				B93EA22522784C3C002F18A3 /* PrivacyPolicyViewController.swift */,
 			);
 			path = Auth;
-			sourceTree = "<group>";
-		};
-		B9B7F546225EEA7000A6DA9E /* AlertFunction */ = {
-			isa = PBXGroup;
-			children = (
-				B9B7F547225EEA8E00A6DA9E /* AlertService.swift */,
-			);
-			path = AlertFunction;
 			sourceTree = "<group>";
 		};
 		B9B99F332261899900314BB6 /* UserObject */ = {
@@ -933,7 +922,6 @@
 				B93EA22622784C3C002F18A3 /* PrivacyPolicyViewController.swift in Sources */,
 				B9D295DB225B003300CF7869 /* TaskListHeaderView.swift in Sources */,
 				B9261C9D225495840033ABC9 /* LobbyViewController.swift in Sources */,
-				B9B7F548225EEA8E00A6DA9E /* AlertService.swift in Sources */,
 				B9B99F372262C44B00314BB6 /* FIRCollectionReference.swift in Sources */,
 				B959F739226DD56900D3CA68 /* FirestoreGroupManager.swift in Sources */,
 				B9B99F4322631C6C00314BB6 /* FIRAuthManager.swift in Sources */,

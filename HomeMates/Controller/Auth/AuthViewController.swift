@@ -72,19 +72,24 @@ class AuthViewController: HMBaseViewController {
                 || userNameLabel.text?.isEmpty == true
                 || userNameLabel.text?.isEmpty == true {
 
-                AlertService.sigleActionAlert(title: "錯誤", message: "請填寫確實基本資料", clickTitle: "收到", showInVc: self)
+                let alert = UIAlertController.sigleActionAlert(
+                    title: "注意", message: "請確實填寫基本資料", clickTitle: "收到")
+                self.present(alert, animated: false, completion: nil)
+                
                 
             } else if passwordTextField.text != checkTextField.text || passwordTextField.text?.isEmpty == true {
-
-                AlertService.sigleActionAlert(title: "錯誤", message: "請確認密碼無誤", clickTitle: "收到", showInVc: self)
-                
+                let alert = UIAlertController.sigleActionAlert(
+                    title: "注意", message: "請確認密碼無誤", clickTitle: "收到")
+                self.present(alert, animated: false, completion: nil)
             } else {
                 createUserDoc()
             }
             
         } else {
             if emailTextField.text?.isEmpty == true || passwordTextField.text?.isEmpty == true {
-                AlertService.sigleActionAlert(title: "錯誤", message: "請輸入帳號或密碼", clickTitle: "收到", showInVc: self)
+                let alert = UIAlertController.sigleActionAlert(
+                    title: "注意", message: "請輸入帳號或密碼", clickTitle: "收到")
+                self.present(alert, animated: false, completion: nil)
             } else {
               signInAction()
             }
@@ -92,17 +97,43 @@ class AuthViewController: HMBaseViewController {
     }
     
     private func createUserDoc() {
-        authProvider.createUserDoc(email: emailTextField.text!,
-                                   password: passwordTextField.text!,
-                                   userName: userNameTextField.text!,
-                                   ownVc: self)
-
+        authProvider.createUserDoc(email: emailTextField.text!, password: passwordTextField.text!, userName: userNameTextField.text!) { [weak self] (result) in
+            switch result {
+            
+            case .success(_):
+                self?.performSegue(withIdentifier: "selectGroupSegue", sender: nil)
+                
+            case .failure(let error):
+                let alert = UIAlertController.sigleActionAlert(
+                    title: "發生錯誤", message: error.localizedDescription, clickTitle: "收到")
+                self?.present(alert, animated: false, completion: nil)
+            }
+        }
     }
     
     private func signInAction() {
         authProvider.signInAction(email: emailTextField.text!,
-                                  password: passwordTextField.text!,
-                                  ownVc: self)
+                                  password: passwordTextField.text!) { [weak self] (result) in
+            switch result {
+            case .success(let flag):
+                if flag == true {
+                    let tabBarVC = UIStoryboard.main.instantiateInitialViewController()!
+                    self?.present(tabBarVC, animated: true, completion: nil)
+                } else {
+                    if let selectGroupVc = UIStoryboard.auth.instantiateViewController(
+                        withIdentifier: String(describing: GroupSelectionViewController.self))
+                        as? GroupSelectionViewController {
+                        self?.present(selectGroupVc, animated: true, completion: nil)
+                    }
+
+                }
+            case .failure(let error):
+                let alert = UIAlertController.sigleActionAlert(
+                    title: "錯誤", message: error.localizedDescription, clickTitle: "收到")
+                
+                self?.present(alert, animated: false, completion: nil)
+            }
+        }
 
     }
     

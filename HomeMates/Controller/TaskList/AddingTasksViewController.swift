@@ -53,10 +53,8 @@ class AddingTasksViewController: UIViewController {
     
     @IBAction func addTaskAction(_ sender: Any) {
         if taskNameTextField.text?.isEmpty == true || taskPointsTextField.text?.isEmpty == true {
-            AlertService.sigleActionAlert(title: "提醒",
-                                          message: "請輸入名稱及積分",
-                                          clickTitle: "收到",
-                                          showInVc: self)
+            let alert = UIAlertController.sigleActionAlert(title: "提醒", message: "請輸入名稱及積分", clickTitle: "收到")
+            self.present(alert, animated: false, completion: nil)
         } else {
             addNewTask()
             

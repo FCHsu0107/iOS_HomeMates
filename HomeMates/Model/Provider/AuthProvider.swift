@@ -12,7 +12,7 @@ import UIKit
 class AuthProvider {
     // Auth page - sign up and log in
     func createUserDoc(
-        email: String, password: String, userName: String, ownVc: UIViewController) {
+        email: String, password: String, userName: String, completionHandler: @escaping (Result<Bool>) -> Void) {
         FIRAuthManager.shared.createUser(
             withEmail: email, password: password) {(user, error) in
                 if error == nil {
@@ -25,45 +25,34 @@ class AuthProvider {
                     FIRFirestoreSerivce.shared.createUser(uid: user.uid,
                                                           for: newUser,
                                                           in: .users)
-                    ownVc.performSegue(withIdentifier: "selectGroupSegue", sender: nil)
+                    completionHandler(Result.success(true))
                 } else {
-                    AlertService.sigleActionAlert(title: "錯誤",
-                                                  message: error?.localizedDescription,
-                                                  clickTitle: "收到",
-                                                  showInVc: ownVc)
+                    completionHandler(Result.failure(error!))
                 }
         }
     }
     
     //Auth page - log in
-    func signInAction(email: String, password: String, ownVc: UIViewController) {
+    func signInAction(email: String, password: String, completionHandler: @escaping (Result<Bool>) -> Void) {
         FIRAuthManager.shared.signIn(withEmail: email, password: password) { (error) in
             if error == nil {
                 FIRFirestoreSerivce.shared.findUser { _, bool, userInfo  in
                     if bool == true && userInfo?.mainGroupId != nil {
                         UserDefaultManager.shared.groupId = userInfo?.mainGroupId
-                        let tabBarVC = UIStoryboard.main.instantiateInitialViewController()!
-                        ownVc.present(tabBarVC, animated: true, completion: nil)
+                        
+                        completionHandler(Result.success(true))
                     } else {
-                        if let selectGroupVc =
-                            UIStoryboard.auth.instantiateViewController(
-                                withIdentifier: String(describing: GroupSelectionViewController.self))
-                                as? GroupSelectionViewController {
-                            
-                            ownVc.present(selectGroupVc, animated: true, completion: nil)
-                        }
+                        completionHandler(Result.success(false))
                     }
                 }
             } else {
-                AlertService.sigleActionAlert(title: "錯誤",
-                                              message: error?.localizedDescription,
-                                              clickTitle: "收到",
-                                              showInVc: ownVc)
+                completionHandler(Result.failure(error!))
             }
         }
     }
     
-    func createANewGroup(groupName: String, groupId: String, ownVc: UIViewController) {
+    func createANewGroup(groupName: String, groupId: String,
+                         completionHandler: @escaping (Result<Bool>) -> Void) {
         
         FIRFirestoreSerivce.shared.findUser {(user, _, userInfo) in
             
@@ -102,9 +91,9 @@ class AuthProvider {
                 
                 FIRFirestoreSerivce.shared.createSub(for: groupMemnber, in: .groups,
                                                      inDocument: groupId, inNext: .members)
-                
-                let tabBarVc = UIStoryboard.main.instantiateInitialViewController()!
-                ownVc.present(tabBarVc, animated: true, completion: nil)
+                completionHandler(Result.success(true))
+//                let tabBarVc = UIStoryboard.main.instantiateInitialViewController()!
+//                ownVc.present(tabBarVc, animated: true, completion: nil)
             })
 
         }
@@ -121,8 +110,9 @@ class AuthProvider {
             FIRFirestoreSerivce.shared.findGroup(
             groupId: groupId, returning: GroupObject.self) { [weak self] groups, docIds  in
                 if groups.count == 0 {
-                    AlertService.sigleActionAlert(title: "群組不存在", message: "請確認群組 ID 或創立新群組",
-                                                  clickTitle: "收到", showInVc: ownVc)
+                    let alert = UIAlertController.sigleActionAlert(title: "群組不存在", message: "請確認群組 ID 或創立新群組", clickTitle: "收到")
+                    ownVc.present(alert, animated: false, completion: nil)
+                    
                 } else {
                     for index in groups {
                         groupResults.append(index)
