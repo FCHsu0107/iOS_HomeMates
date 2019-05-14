@@ -120,6 +120,7 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        return cellTypes[indexPath.section].cellForIndexPath(indexPath, tableView: tableView)
 
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self),
                                                  for: indexPath)
@@ -149,7 +150,7 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
 
                 return taskCell
             }
-            
+
         case .waitingForCheckTask(let tasks):
             if tasks.count == 0 {
                 blankCell.loadData(displayText: "待他人完成任務")
@@ -168,7 +169,7 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
 
                 return taskCell
             }
-            
+
         case .acceptableTask(let tasks):
             if tasks.count == 0 {
                 blankCell.loadData(displayText: "請新增任務")
@@ -193,7 +194,7 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
 
             addingTaskCell.addTaskBtn.addTarget(self, action: #selector(addingTaskPage), for: .touchUpInside)
             return addingTaskCell
-            
+
         default:
             return UITableViewCell()
         }
@@ -209,8 +210,8 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
             let task = tasks[indexPath.row]
             tasks.remove(at: indexPath.row)
             FirestoreGroupManager.shared.deleteTask(in: .tasks, docId: task.docId!)
+            cellTypes[indexPath.section] = .acceptableTask(tasks)
             tableView.reloadData()
-            
         default:
             break
         }

@@ -63,7 +63,8 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
                 if err == nil {
                     guard let snapshots = snapshots else { return }
                     let memberId = snapshots.documents[0].documentID
-                    memberRef.document(memberId).updateData([UserObject.CodingKeys.fcmToken.rawValue: FieldValue.delete()])
+                    memberRef.document(memberId)
+                        .updateData([UserObject.CodingKeys.fcmToken.rawValue: FieldValue.delete()])
                     UserDefaultManager.shared.groupId = nil
                     UserDefaultManager.shared.userUid = nil
                     UserDefaultManager.shared.userName = nil

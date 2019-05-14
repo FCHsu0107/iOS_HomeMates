@@ -21,6 +21,21 @@ enum TaskStatus {
     
     case finishedTask
     
+    var cellStatus: TaskCellStatus {
+        
+        switch self {
+        case .acceptableTask:
+            return .acceptSpecialTask
+        case .ongoingTask:
+            return .ongingTask
+        case .waitingForCheckTask:
+            return .checkTask
+        default:
+            return .acceptSpecialTask
+        }
+        
+    }
+    
     func updateStatus(tag: Int, tableView: UITableView, cell: UITableViewCell) {
         let messageView = MessagesView()
         switch self {
@@ -139,13 +154,19 @@ enum TaskStatus {
         guard let taskCell = cell as? TasksTableViewCell else { return cell }
         guard let addTaskCell = cell as? AddTaskTableViewCell else { return cell }
         switch self {
-        case .acceptableTask(let tasks):
+        case .acceptableTask(let tasks)
+//        , .ongoingTask(let tasks), .waitingForCheckTask(let tasks)
+            :
             if tasks.count == 0 {
                 blankCell.loadData(displayText: "請接取任務")
                 return blankCell
             } else {
                 let task = tasks[indexPath.row]
-                taskCell.loadData(taskObject: task, status: TaskCellStatus.ongingTask)
+                taskCell.loadData(taskObject: task, status: cellStatus)
+                taskCell.clickHandler = { cell, tag in
+                    self.updateStatus(tag: tag, tableView: tableView, cell: cell)
+                    
+                }
                 return taskCell
             }
             
@@ -155,7 +176,11 @@ enum TaskStatus {
                 return blankCell
             } else {
                 let task = tasks[indexPath.row]
-                taskCell.loadData(taskObject: task, status: TaskCellStatus.checkTask)
+                taskCell.loadData(taskObject: task, status: cellStatus)
+                taskCell.clickHandler = { cell, tag in
+                    self.updateStatus(tag: tag, tableView: tableView, cell: cell)
+                    
+                }
                 return taskCell
             }
             
@@ -165,7 +190,11 @@ enum TaskStatus {
                 return blankCell
             } else {
                 let task = tasks[indexPath.row]
-                taskCell.loadData(taskObject: task, status: TaskCellStatus.checkTask)
+                taskCell.loadData(taskObject: task, status: cellStatus)
+                taskCell.clickHandler = { cell, tag in
+                    self.updateStatus(tag: tag, tableView: tableView, cell: cell)
+                    
+                }
                 return taskCell
             }
             

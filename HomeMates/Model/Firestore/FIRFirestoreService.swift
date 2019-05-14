@@ -300,7 +300,6 @@ extension FIRFirestoreSerivce {
     
 }
 
-
 //class FirestoreMock: FirebaseClient {
 //    var ref: CollectionReference?
 //    var completionIsAction = false
