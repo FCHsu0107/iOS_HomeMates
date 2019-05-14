@@ -97,6 +97,12 @@ enum FIRCollectionRef: String {
     }
 }
 
+protocol FirebaseClientable {
+    
+    typealias Handler = (Result<Bool>) -> Void
+}
+
+
 class FirebaseClient {
     
     private init() {}

@@ -168,6 +168,7 @@ enum TaskStatus {
                 taskCell.loadData(taskObject: task, status: TaskCellStatus.checkTask)
                 return taskCell
             }
+            
         case .createNewTask:
             
             return addTaskCell

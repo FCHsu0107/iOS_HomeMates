@@ -36,7 +36,7 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
     func updateFirestorePushTokenIfNeeded() {
         if let token = Messaging.messaging().fcmToken {
             let usersRef = usersReference()
-            usersRef.setData(["fcmToken": token], merge: true)
+            usersRef.setData([UserObject.CodingKeys.fcmToken.rawValue: token], merge: true)
             
             let memberRef = membersReference()
             memberRef
@@ -45,7 +45,7 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
                 if err == nil {
                     guard let snapshots = snapshots else { return }
                     let memberId = snapshots.documents[0].documentID
-                    memberRef.document(memberId).setData(["fcmToken": token], merge: true)
+                    memberRef.document(memberId).setData([UserObject.CodingKeys.fcmToken.rawValue: token], merge: true)
                 }
             }
         }
@@ -54,7 +54,7 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
     func deletePushToken() {
         
         let usersRef = usersReference()
-        usersRef.updateData(["fcmToken": FieldValue.delete()])
+        usersRef.updateData([UserObject.CodingKeys.fcmToken.rawValue: FieldValue.delete()])
         
         let memberRef = membersReference()
         memberRef
@@ -63,7 +63,7 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
                 if err == nil {
                     guard let snapshots = snapshots else { return }
                     let memberId = snapshots.documents[0].documentID
-                    memberRef.document(memberId).updateData(["fcmToken": FieldValue.delete()])
+                    memberRef.document(memberId).updateData([UserObject.CodingKeys.fcmToken.rawValue: FieldValue.delete()])
                     UserDefaultManager.shared.groupId = nil
                     UserDefaultManager.shared.userUid = nil
                     UserDefaultManager.shared.userName = nil

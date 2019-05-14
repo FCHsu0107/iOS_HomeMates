@@ -10,8 +10,14 @@ import Foundation
 
 class ProfileProvider {
     
+    private let firebaseClient: FirebaseClient
+    
+    init(firebaseClient: FirebaseClient = FirebaseClient.shared) {
+        self.firebaseClient = firebaseClient
+    }
+    
     func readUserInfo(completion: @escaping (Result<UserObject>) -> Void) {
-        FirebaseClient.shared.readDocWithPath(
+        firebaseClient.readDocWithPath(
         uid: UserDefaultManager.shared.userUid!,
         form: FIRCollectionRef.users.collectionRef(uid: nil),
         returning: UserObject.self) { (result) in
