@@ -70,7 +70,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HkG-ja-O0R">
-                                <rect key="frame" x="0.0" y="327" width="375" height="340"/>
+                                <rect key="frame" x="0.0" y="382" width="375" height="285"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="vJS-VE-AjH" id="iGD-1N-yZs"/>
@@ -151,6 +151,31 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PEC-ts-461">
+                                <rect key="frame" x="20" y="352" width="100" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="成員列表" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2S0-Ju-COS">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <color key="textColor" name="Y4"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="Y1"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="2S0-Ju-COS" secondAttribute="bottom" id="9eg-nG-JN8"/>
+                                    <constraint firstAttribute="width" constant="100" id="Rhg-wK-Irs"/>
+                                    <constraint firstItem="2S0-Ju-COS" firstAttribute="leading" secondItem="PEC-ts-461" secondAttribute="leading" id="RxZ-lV-Di5"/>
+                                    <constraint firstAttribute="trailing" secondItem="2S0-Ju-COS" secondAttribute="trailing" id="TdU-p9-GoL"/>
+                                    <constraint firstAttribute="height" constant="30" id="fqt-md-dbk"/>
+                                    <constraint firstItem="2S0-Ju-COS" firstAttribute="top" secondItem="PEC-ts-461" secondAttribute="top" id="wM1-35-tlA"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -158,17 +183,19 @@
                             <constraint firstItem="GNs-sp-xiL" firstAttribute="top" secondItem="2PV-4Q-cZR" secondAttribute="bottom" constant="8" id="6XZ-Ua-QUE"/>
                             <constraint firstItem="buC-RR-gcy" firstAttribute="leading" secondItem="LR4-YV-gkv" secondAttribute="leading" constant="20" id="Fjj-dN-wRe"/>
                             <constraint firstItem="GC7-Yi-r5l" firstAttribute="leading" secondItem="LR4-YV-gkv" secondAttribute="leading" constant="25" id="G7i-au-hVl"/>
+                            <constraint firstItem="PEC-ts-461" firstAttribute="top" secondItem="GNs-sp-xiL" secondAttribute="bottom" constant="25" id="G7x-re-tu2"/>
                             <constraint firstItem="GNs-sp-xiL" firstAttribute="leading" secondItem="GC7-Yi-r5l" secondAttribute="leading" id="G8c-Z4-3YD"/>
                             <constraint firstItem="idq-Ee-uyT" firstAttribute="top" secondItem="LR4-YV-gkv" secondAttribute="top" constant="20" id="Hgi-Cc-ZP1"/>
                             <constraint firstItem="LR4-YV-gkv" firstAttribute="bottom" secondItem="HkG-ja-O0R" secondAttribute="bottom" id="MQz-fm-aPD"/>
                             <constraint firstItem="GC7-Yi-r5l" firstAttribute="top" secondItem="buC-RR-gcy" secondAttribute="bottom" constant="8" id="OfM-h9-O82"/>
                             <constraint firstItem="qbp-la-C1j" firstAttribute="bottom" secondItem="GC7-Yi-r5l" secondAttribute="bottom" constant="-4" id="TjS-i0-sei"/>
                             <constraint firstItem="buC-RR-gcy" firstAttribute="top" secondItem="LR4-YV-gkv" secondAttribute="top" constant="120" id="aoR-o9-Lsv"/>
+                            <constraint firstItem="PEC-ts-461" firstAttribute="leading" secondItem="fXe-Sv-kzV" secondAttribute="leading" id="e5x-xP-3uy"/>
                             <constraint firstItem="2PV-4Q-cZR" firstAttribute="top" secondItem="GC7-Yi-r5l" secondAttribute="bottom" constant="25" id="m6G-hC-yiy"/>
                             <constraint firstItem="HkG-ja-O0R" firstAttribute="leading" secondItem="LR4-YV-gkv" secondAttribute="leading" id="md4-O7-Heh"/>
                             <constraint firstItem="idq-Ee-uyT" firstAttribute="centerX" secondItem="34Z-6s-y9E" secondAttribute="centerX" id="meg-Ni-Rsc"/>
                             <constraint firstItem="GNs-sp-xiL" firstAttribute="leading" secondItem="GC7-Yi-r5l" secondAttribute="leading" id="sxd-ph-4bQ"/>
-                            <constraint firstItem="HkG-ja-O0R" firstAttribute="top" secondItem="GNs-sp-xiL" secondAttribute="bottom" id="t78-lY-55P"/>
+                            <constraint firstItem="HkG-ja-O0R" firstAttribute="top" secondItem="GNs-sp-xiL" secondAttribute="bottom" constant="55" id="t78-lY-55P"/>
                             <constraint firstItem="2PV-4Q-cZR" firstAttribute="leading" secondItem="vps-0a-tmZ" secondAttribute="leading" id="xzd-of-Mhg"/>
                             <constraint firstItem="qbp-la-C1j" firstAttribute="leading" secondItem="GC7-Yi-r5l" secondAttribute="trailing" constant="12" id="ylC-AO-8hT"/>
                         </constraints>

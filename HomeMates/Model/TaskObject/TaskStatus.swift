@@ -162,7 +162,7 @@ enum TaskStatus {
                 return blankCell
             } else {
                 let task = tasks[indexPath.row]
-                taskCell.loadData(taskObject: task, status: cellStatus)
+                taskCell.loadData(taskObject: task, status: TaskCellStatus.acceptSpecialTask)
                 taskCell.clickHandler = { cell, tag in
                     self.updateStatus(tag: tag, tableView: tableView, cell: cell)
                     
