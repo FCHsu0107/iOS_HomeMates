@@ -13,9 +13,11 @@ import FirebaseAuth
 
 class FIRFirestoreSerivce {
     
-    private init() {}
-    
     static let shared = FIRFirestoreSerivce()
+    
+    init() {
+        
+    }
     
     func configure() {
         FirebaseApp.configure()

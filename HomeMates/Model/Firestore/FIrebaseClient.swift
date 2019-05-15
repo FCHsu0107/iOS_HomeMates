@@ -97,7 +97,7 @@ enum FIRCollectionRef: String {
     }
 }
 
-class FirebaseClient {
+class FirebaseClient: FirebaseManageable {
     
     private init() {}
     
@@ -255,4 +255,13 @@ class FirebaseClient {
         }
     }
 
+}
+
+protocol FirebaseManageable {
+    
+    func readDocWithPath<T: Decodable>(uid: String,
+                                       form collectionRef: CollectionReference,
+                                       returning objectType: T.Type,
+                                       completion: @escaping (Result<T>) -> Void)
+    
 }

@@ -10,9 +10,9 @@ import Foundation
 
 class ProfileProvider {
     
-    private let firebaseClient: FirebaseClient
+    private let firebaseClient: FirebaseManageable
     
-    init(firebaseClient: FirebaseClient = FirebaseClient.shared) {
+    init(firebaseClient: FirebaseManageable = FirebaseClient.shared) {
         self.firebaseClient = firebaseClient
     }
     

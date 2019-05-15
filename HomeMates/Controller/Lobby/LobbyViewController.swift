@@ -138,7 +138,7 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
                 return blankCell
             } else {
                 let task = tasks[indexPath.row]
-
+        
                 taskCell.loadData(taskObject: task, status: TaskCellStatus.ongingTask)
 
                 taskCell.clickHandler = { [weak self] cell, tag in

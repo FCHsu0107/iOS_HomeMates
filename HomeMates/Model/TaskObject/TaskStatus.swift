@@ -35,7 +35,7 @@ enum TaskStatus {
         }
         
     }
-    
+
     func updateStatus(tag: Int, tableView: UITableView, cell: UITableViewCell) {
         let messageView = MessagesView()
         switch self {

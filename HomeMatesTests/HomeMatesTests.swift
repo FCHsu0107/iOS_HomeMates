@@ -8,26 +8,112 @@
 
 import XCTest
 import UIKit
+import Firebase
 @testable import HomeMates
+
+//class MockFirestore: Firestore {
+//    var path: String = " "
+//    
+//    init(test: String) {
+//        
+//    }
+//    
+//    override func collection(_ collectionPath: String) -> CollectionReference {
+//        path += (collectionPath + "/")
+//        
+//        return super.collection(collectionPath)
+//    }
+//    
+//    override func document(_ documentPath: String) -> DocumentReference {
+//        path += (documentPath + "/")
+//        return super.document(documentPath)
+//    }
+//}
+//
+//class MockCollectionReference: CollectionReference {
+//    init(test: String) {
+//        
+//    }
+//}
+//
+//class MockDocumentReference: DocumentReference {
+//    init(test: String) {
+//        
+//    }
+//}
+
+class FirebaseClientMock: FirebaseManageable {
+    
+    var user: UserObject!
+    
+    func readDocWithPath<T>(
+        uid: String, form collectionRef: CollectionReference, returning objectType: T.Type,
+        completion: @escaping (Result<T>) -> Void) where T: Decodable {
+        
+        do {
+            
+            let data = try JSONEncoder().encode(user)
+            
+            let result = try JSONDecoder().decode(T.self, from: data)
+            
+            completion(Result.success(result))
+            
+        } catch {
+            
+            completion(Result.failure(error))
+        }
+    }
+    
+}
 
 class HomeMatesTests: XCTestCase {
 
-    var authProviderTest: AuthProvider!
+    var firebaseClientTest: FirebaseClient!
     
     override func setUp() {
         super.setUp()
-        authProviderTest = AuthProvider()
        
     }
 
     override func tearDown() {
         super.tearDown()
-        authProviderTest = nil
         
     }
-    func test_authManager_signIn() {
-//        authProviderTest.signInAction(email: <#T##String#>, password: <#T##String#>, ownVc: <#T##UIViewController#>)
+    
+    func test_readUserInfo_getData() {
+        //Arrange
+        let firebasClient = FirebaseClientMock()
+        let provider = ProfileProvider(firebaseClient: firebasClient)
+//        let expectedResult = Result<UserObject>.failure(HMFirebaseClientError.decodingError)
+
+        let user = UserObject(
+            docId: nil, name: "test", email: "unitTest@mail.com", picture: nil, creator: false,
+            application: false, finishSignUp: true, mainGroupId: "test", fcmToken: "unitTest")
         
+        firebasClient.user = user
+        //Action
+        var actualResult: UserObject?
+        
+        var actualError: Error?
+        
+        provider.readUserInfo { (result) in
+            
+            switch result {
+                
+            case .success(let userObject):
+                
+                actualResult = userObject
+                
+            case .failure(let error):
+                
+                actualError = error
+            }
+        }
+
+        // Assert
+        
+        XCTAssertNil(actualError)
+        XCTAssertEqual(user.email, actualResult?.email)
     }
     
     func testJacqueline() {
@@ -47,89 +133,6 @@ class HomeMatesTests: XCTestCase {
     
     func add(aaa: Int, bbb: Int) -> Int {
         return 30
-    }
-    
-//
-//    func fib(_ index: Int) -> Int {
-//        if index < 0 {
-//            return 0
-//        } else if index <= 1 {
-//            return 1
-//        } else {
-//            return fib(index - 1) + fib(index - 2)
-//        }
-//    }
-//
-//    func fibArr(_ index: Int) -> Int {
-//        var fibs: [Int] = [1, 1]
-//        (2...index).forEach { number in
-//            fibs.append(fibs[number - 1] + fibs[number - 2])
-//        }
-//        return fibs.last!
-//    }
-//
-//    func fibF(_ index: Int) -> Int {
-//        var first = 1
-//        var second = 1
-//        guard index > 1 else { return first }
-//
-//        (2...index).forEach { _ in
-//            (first, second) = (first + second, first)
-//        }
-//        return first
-//    }
-//
-//    func test_initial_input() {
-//        let fib1 = 1
-//        let expectedResult = fib1
-//        let actualResult = fib(1)
-//
-//        XCTAssertEqual(actualResult, expectedResult)
-//    }
-//
-//    func test_number() {
-//        let fib2 = 2
-//        let expectedResult = fib2
-//        let actualResult = fib(2)
-//
-//        XCTAssertEqual(actualResult, expectedResult)
-//    }
-//
-//    func test_correct() {
-//        let n10 = fib(10)
-//        let n11 = fib(11)
-//        let expectedResult = n10 + n11
-//        let actualResult = fib(12)
-//
-//        XCTAssertEqual(actualResult, expectedResult)
-//    }
-//
-//    func test_negative() {
-//        let expectedResult = 0
-//        let actualResult = fib(-1)
-//
-//        XCTAssertEqual(expectedResult, actualResult)
-//    }
-//
-//    //跑太久
-////    func testBigNumber() {
-////        let test = fibArr(9999)
-////        print("__________")
-////        print(test)
-////        print("---------------")
-////    }
-//
-   
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
     }
 
 }
