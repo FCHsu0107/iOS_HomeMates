@@ -208,9 +208,15 @@ class FIRFirestoreSerivce {
                 do {
                     let object = try document.decode(as: UserObject.self)
                     let groupId = object.mainGroupId
+                    let currentDate = DateProvider.shared.getCurrentDate()
                     UserDefaultManager.shared.groupId = groupId
                     UserDefaultManager.shared.userName = object.name
-                    
+                    FirebaseClient.shared.updateTheStatus(
+                        uid: currentUser.uid, in: FIRCollectionRef.users.collectionRef(),
+                        updateItem: [UserObject.CodingKeys.lastLogInDate.rawValue: currentDate],
+                        completion: { (result) in
+                        print(result)
+                    })
                     self?.reference(to: .groups).document(groupId!).getDocument(completion: { (snapshot, err) in
                         
                         do {
@@ -218,9 +224,8 @@ class FIRFirestoreSerivce {
                                 print(err as Any)
                                 return }
                             let object = try snapshot.decode(as: GroupObject.self)
-                            
-                            let currentDate = DateProvider.shared.getCurrentDate()
                             completion(object)
+                            
                             if currentDate == object.logInDate {
                                 print("第二個登入的人")
                             } else {

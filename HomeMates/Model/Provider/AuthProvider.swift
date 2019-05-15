@@ -17,10 +17,11 @@ class AuthProvider {
             withEmail: email, password: password) {(user, error) in
                 if error == nil {
                     guard let user = user else { return }
+                    let currentDate = DateProvider.shared.getCurrentDate()
                     let newUser = UserObject(
                         docId: nil, name: userName, email: (user.email)!, picture: nil,
                         creator: false, application: false, finishSignUp: false,
-                        mainGroupId: nil, fcmToken: nil)
+                        mainGroupId: nil, fcmToken: nil, lastLogInDate: currentDate)
                     UserDefaultManager.shared.userUid = user.uid
                     FIRFirestoreSerivce.shared.createUser(uid: user.uid,
                                                           for: newUser,
@@ -69,11 +70,13 @@ class AuthProvider {
                 guard let groupId = groupId else { return }
                 UserDefaultManager.shared.groupId = groupId
                 
+                let currentDate = DateProvider.shared.getCurrentDate()
+                
                 let newUser = UserObject(docId: nil, name: userInfo.name,
                                          email: user.email!, picture: nil,
                                          creator: true, application: false,
                                          finishSignUp: true, mainGroupId: groupId,
-                                         fcmToken: nil)
+                                         fcmToken: nil, lastLogInDate: currentDate)
                 
                 FIRFirestoreSerivce.shared.updateUser(uid: user.uid, for: newUser, in: .users)
                 
@@ -132,10 +135,12 @@ class AuthProvider {
                             docId: nil, userId: user.uid, userName: userInfo.name, isCreator: false,
                             permission: false, userPicture: "profile_48px", goal: nil, fcmToken: nil)
                         
+                        let currentDate = DateProvider.shared.getCurrentDate()
+                        
                         let newUser = UserObject(
                             docId: nil, name: userInfo.name, email: user.email!, picture: nil,
                             creator: false, application: false, finishSignUp: true,
-                            mainGroupId: docIds[index], fcmToken: nil)
+                            mainGroupId: docIds[index], fcmToken: nil, lastLogInDate: currentDate)
                         
                         let groupInfoInUser = GroupInfoInUser(
                             docId: nil, isMember: false, groupID: docIds[index], isMainGroup: true, goal: nil)

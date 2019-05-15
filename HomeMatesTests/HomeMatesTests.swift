@@ -12,7 +12,8 @@ import Firebase
 @testable import HomeMates
 
 class FirebaseClientMock: FirebaseManageable {
-    func deleteTheStatus(uid: String, in collectionRef: CollectionReference, deleteItem: String, completion: @escaping (Result<Bool>) -> Void) {
+    func deleteTheStatus(uid: String, in collectionRef: CollectionReference,
+                         deleteItem: String, completion: @escaping (Result<Bool>) -> Void) {
         completion(Result.failure(HMError.encodingError))
     }
     
@@ -73,7 +74,7 @@ class HomeMatesTests: XCTestCase {
 
         let user = UserObject(
             docId: nil, name: "test", email: "unitTest@mail.com", picture: nil, creator: false,
-            application: false, finishSignUp: true, mainGroupId: "test", fcmToken: "unitTest")
+            application: false, finishSignUp: true, mainGroupId: "test", fcmToken: "unitTest", lastLogInDate: nil)
         firebasClient.user = user
 
 //        let userObject: [[String: Any]] = [[ "email": "unitTest@mail.com", "creator": false]]

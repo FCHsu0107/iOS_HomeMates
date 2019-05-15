@@ -89,6 +89,8 @@ class HMTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         delegate = self
 
         StatusBarSettings.setBackgroundColor(color: UIColor.Y1)
+//        UITabBar.appearance().layer.borderWidth = 0.0
+//        UITabBar.appearance().clipsToBounds = true
     }
 
 }

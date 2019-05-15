@@ -64,7 +64,7 @@ extension UIAlertController {
         }
         
         let alertViewController = UIAlertController(
-            title: "退出所屬群組",  message: message, preferredStyle: .actionSheet)
+            title: "退出所屬群組", message: message, preferredStyle: .actionSheet)
         
         let alertAction = UIAlertAction(title: "確認退出所屬群組", style: .destructive) { (_) in
             completion(true)
@@ -78,10 +78,10 @@ extension UIAlertController {
     
     private func singleOptionAlterSheet(
         title: String, message: String, optionTitle: String,
-        completion: @escaping (Bool) -> Void)  -> UIAlertController {
+        completion: @escaping (Bool) -> Void) -> UIAlertController {
         
         let alertViewController = UIAlertController(
-            title: title,  message: message, preferredStyle: .actionSheet)
+            title: title, message: message, preferredStyle: .actionSheet)
         
         let alertAction = UIAlertAction(title: optionTitle, style: .destructive) { (_) in
             completion(true)

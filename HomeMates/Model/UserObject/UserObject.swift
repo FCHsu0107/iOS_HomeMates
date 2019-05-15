@@ -27,6 +27,8 @@ struct UserObject: Codable {
     var mainGroupId: String?
     
     var fcmToken: String?
+    
+    var lastLogInDate: String?
  
     enum CodingKeys: String, CodingKey {
         
@@ -47,6 +49,8 @@ struct UserObject: Codable {
         case mainGroupId
         
         case fcmToken
+        
+        case lastLogInDate
 
     }
 }
