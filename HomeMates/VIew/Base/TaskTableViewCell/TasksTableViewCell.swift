@@ -78,7 +78,12 @@ class TasksTableViewCell: UITableViewCell {
         case .acceptSpecialTask:
             secondBtnAppear = false
             pointTextLbl.text = "積分： \(taskObject.taskPoint) 點"
-            memberNameTextLbl.text = "發佈人：\(taskObject.publisherName)"
+            if taskObject.publisherName == "系統提示" {
+                memberNameTextLbl.text = "系統提示"
+            } else {
+                memberNameTextLbl.text = "發佈人：\(taskObject.publisherName)"
+            }
+            
             taskRightBtn.setTitle("接受", for: .normal)
 
         case .ongingTask:

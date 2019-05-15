@@ -110,6 +110,7 @@ class HomeMatesTests: XCTestCase {
 
         //Action
         var actualResult: UserObject?
+        print(actualResult)
         var actualError: Error?
 
         provider.readUserInfo { (result) in
