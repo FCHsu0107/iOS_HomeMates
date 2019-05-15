@@ -11,40 +11,10 @@ import UIKit
 import Firebase
 @testable import HomeMates
 
-//class MockFirestore: Firestore {
-//    var path: String = " "
-//    
-//    init(test: String) {
-//        
-//    }
-//    
-//    override func collection(_ collectionPath: String) -> CollectionReference {
-//        path += (collectionPath + "/")
-//        
-//        return super.collection(collectionPath)
-//    }
-//    
-//    override func document(_ documentPath: String) -> DocumentReference {
-//        path += (documentPath + "/")
-//        return super.document(documentPath)
-//    }
-//}
-//
-//class MockCollectionReference: CollectionReference {
-//    init(test: String) {
-//        
-//    }
-//}
-//
-//class MockDocumentReference: DocumentReference {
-//    init(test: String) {
-//        
-//    }
-//}
-
 class FirebaseClientMock: FirebaseManageable {
     
     var user: UserObject!
+//    var dictData: [[String: Any]]!
     
     func readDocWithPath<T>(
         uid: String, form collectionRef: CollectionReference, returning objectType: T.Type,
@@ -52,14 +22,16 @@ class FirebaseClientMock: FirebaseManageable {
         
         do {
             
-            let data = try JSONEncoder().encode(user)
+//            let dataDict = try JSONSerialization.data(withJSONObject: dictData!, options: [])
+//            let dictResult = try JSONDecoder().decode(T.self, from: dataDict)
+//            completion(Result.success(dictResult))
             
+            let data = try JSONEncoder().encode(user)
             let result = try JSONDecoder().decode(T.self, from: data)
             
             completion(Result.success(result))
             
         } catch {
-            
             completion(Result.failure(error))
         }
     }
@@ -80,17 +52,18 @@ class HomeMatesTests: XCTestCase {
         
     }
     
-    func test_readUserInfo_getData() {
+    func test_profileProvieder_readUserInfo_getDataSuccessfully() {
         //Arrange
         let firebasClient = FirebaseClientMock()
         let provider = ProfileProvider(firebaseClient: firebasClient)
-//        let expectedResult = Result<UserObject>.failure(HMFirebaseClientError.decodingError)
 
         let user = UserObject(
             docId: nil, name: "test", email: "unitTest@mail.com", picture: nil, creator: false,
             application: false, finishSignUp: true, mainGroupId: "test", fcmToken: "unitTest")
-        
         firebasClient.user = user
+        
+//        let userObject: [[String: Any]] = [[ "email": "unitTest@mail.com", "creator": false]]
+//        firebasClient.dictData = userObject
         //Action
         var actualResult: UserObject?
         
@@ -114,6 +87,47 @@ class HomeMatesTests: XCTestCase {
         
         XCTAssertNil(actualError)
         XCTAssertEqual(user.email, actualResult?.email)
+    }
+    
+    func test_profileProvieder_readUserInfo_getDataWithError() {
+        //Arrange
+        let firebasClient = FirebaseClientMock()
+        let provider = ProfileProvider(firebaseClient: firebasClient)
+        
+        //Action
+        var actualResult: UserObject?
+        var actualError: Error?
+        
+        provider.readUserInfo { (result) in
+            
+            switch result {
+                
+            case .success(let userObject):
+                
+                actualResult = userObject
+                
+            case .failure(let error):
+                
+                actualError = error
+            }
+        }
+        
+        // Assert
+        
+        XCTAssertNotNil(actualError)
+    }
+    
+    func test_dateProvider_getCorrectString() {
+        //Arrange
+        let timeStamp = 1557886002000
+        let expectedResult = "2019/05/15"
+        
+        //Action
+        let actualResult = DateProvider.shared.getCurrentDate(currentTimeStamp: timeStamp)
+        
+        //Assert
+        XCTAssertEqual(actualResult, expectedResult)
+        
     }
     
     func testJacqueline() {
