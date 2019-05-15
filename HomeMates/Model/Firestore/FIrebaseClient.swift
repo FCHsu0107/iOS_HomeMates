@@ -72,7 +72,7 @@ enum FIRCollectionRef: String {
     //Application collection
     case applications
     
-    func collectionRef(uid: String?) -> CollectionReference {
+    func collectionRef(uid: String = "") -> CollectionReference {
         let ref = Firestore.firestore()
 
         switch self {
@@ -85,8 +85,13 @@ enum FIRCollectionRef: String {
         case .months:
             return ref.collection(FIRCollectionReference.users.rawValue)
                 .document(UserDefaultManager.shared.userUid!).collection(FIRCollectionReference.groups.rawValue)
+            
         case .groups:
             return ref.collection(FIRCollectionReference.groups.rawValue)
+            
+        case .members:
+            return ref.collection(FIRCollectionReference.groups.rawValue)
+                .document(uid).collection(FIRCollectionReference.members.rawValue)
 
         case .applications:
             return ref.collection(FIRCollectionReference.applications.rawValue)
@@ -242,6 +247,20 @@ class FirebaseClient: FirebaseManageable {
         }
     }
     
+    func deleteTheStatus(uid: String,
+                         in collectionRef: CollectionReference,
+                         deleteItem: String,
+                         completion: @escaping (Result<Bool>) -> Void) {
+        collectionRef.document(uid).updateData([deleteItem: FieldValue.delete()]) { (err) in
+            if err == nil {
+                completion(Result.success(true))
+            } else {
+                guard let err = err else { return }
+                completion(Result.failure(err))
+            }
+        }
+    }
+    
     func delete(uid: String,
                 in collectionRef: CollectionReference,
                 completion: @escaping (Result<Bool>) -> Void) {
@@ -259,9 +278,23 @@ class FirebaseClient: FirebaseManageable {
 
 protocol FirebaseManageable {
     
-    func readDocWithPath<T: Decodable>(uid: String,
-                                       form collectionRef: CollectionReference,
-                                       returning objectType: T.Type,
-                                       completion: @escaping (Result<T>) -> Void)
+    func readDocWithPath<T: Decodable>(
+        uid: String, form collectionRef: CollectionReference,
+        returning objectType: T.Type, completion: @escaping (Result<T>) -> Void)
+    
+    func read<T: Decodable>(
+        form collectionRef: CollectionReference, returning objectType: T.Type,
+        query: (Query) -> (Query), completion: @escaping (Result<[T]>) -> Void)
+    
+    func delete(uid: String, in collectionRef: CollectionReference,
+                completion: @escaping (Result<Bool>) -> Void)
+    
+    func updateTheStatus(uid: String, in collectionRef: CollectionReference,
+                         updateItem: [String: Any], completion: @escaping (Result<Bool>) -> Void)
+    
+    func deleteTheStatus(uid: String,
+                         in collectionRef: CollectionReference,
+                         deleteItem: String,
+                         completion: @escaping (Result<Bool>) -> Void)
     
 }

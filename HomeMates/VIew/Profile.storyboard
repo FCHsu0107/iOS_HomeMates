@@ -200,8 +200,8 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8I-PC-CSm">
-                                <rect key="frame" x="149" y="162" width="77" height="30"/>
-                                <state key="normal" title="更換大頭貼">
+                                <rect key="frame" x="156.5" y="162" width="62" height="30"/>
+                                <state key="normal" title="更換頭像">
                                     <color key="titleColor" name="Y4"/>
                                 </state>
                             </button>
@@ -215,14 +215,18 @@
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6C-au-POT">
-                                <rect key="frame" x="273" y="354" width="62" height="30"/>
+                                <rect key="frame" x="273" y="162" width="62" height="30"/>
                                 <state key="normal" title="退出群組">
                                     <color key="titleColor" name="Y4"/>
                                 </state>
+                                <connections>
+                                    <action selector="dropOutMainGroup:" destination="6Vt-eS-dAJ" eventType="touchUpInside" id="B5L-Fb-aeH"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="d6C-au-POT" firstAttribute="centerY" secondItem="Z8I-PC-CSm" secondAttribute="centerY" id="2yp-ei-Ch5"/>
                             <constraint firstItem="LaK-nd-kQw" firstAttribute="leading" secondItem="9i8-lp-015" secondAttribute="leading" id="5GQ-wW-JAE"/>
                             <constraint firstItem="Rrt-Kc-BxC" firstAttribute="top" secondItem="TK0-Hm-ZDa" secondAttribute="bottom" constant="2" id="7Au-pE-ru2"/>
                             <constraint firstItem="qoq-qg-ipi" firstAttribute="top" secondItem="GXt-6Y-rXV" secondAttribute="bottom" constant="2" id="7xy-fM-viX"/>
@@ -248,7 +252,6 @@
                             <constraint firstItem="TK0-Hm-ZDa" firstAttribute="leading" secondItem="9i8-lp-015" secondAttribute="leading" id="v3L-l1-mEY"/>
                             <constraint firstItem="Rrt-Kc-BxC" firstAttribute="leading" secondItem="qoq-qg-ipi" secondAttribute="leading" id="vIT-GV-RLq"/>
                             <constraint firstItem="qyg-Bl-KSX" firstAttribute="leading" secondItem="3YC-Nz-e5s" secondAttribute="leading" constant="20" id="wwZ-Il-fuT"/>
-                            <constraint firstItem="d6C-au-POT" firstAttribute="centerY" secondItem="5vT-d9-BcQ" secondAttribute="centerY" id="yf5-ZP-qNe"/>
                             <constraint firstItem="fHl-Y3-25R" firstAttribute="top" secondItem="3YC-Nz-e5s" secondAttribute="top" constant="10" id="znQ-yQ-gnn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3YC-Nz-e5s"/>

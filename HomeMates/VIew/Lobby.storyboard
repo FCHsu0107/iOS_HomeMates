@@ -220,7 +220,6 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="G46-i1-s5g" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Sy1-DO-Twv">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="0.29019607843137252" green="0.22352941176470587" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>

@@ -20,6 +20,8 @@ class ProfileSettingsViewController: HMBaseViewController {
     
     @IBOutlet weak var monthGoalTextField: HMBaseTextField!
     
+    let profileProvider = ProfileProvider()
+    
     var user: UserObject?
     
     var groupInfo: GroupObject?
@@ -64,4 +66,40 @@ class ProfileSettingsViewController: HMBaseViewController {
         ownGroupIDTextField.text = mainGroupID
        
     }
+    
+    @IBAction func dropOutMainGroup(_ sender: Any) {
+        profileProvider.readMemberInfo { [weak self] (result) in
+            switch result {
+            case .success(let members):
+                StatusBarSettings.statusBarForAlertView()
+                let alertSheet = UIAlertController.dropOutGroupActionSheet(
+                    memberNumber: members.count, completion: { (flag) in
+                    if flag == true {
+                        self?.profileProvider.dropOutMainGroup(memberNumber: members.count, completion: { (flag) in
+                            if flag == true {
+                                if let selectGroupVc =
+                                    UIStoryboard.auth.instantiateViewController(
+                                        withIdentifier: String(describing: GroupSelectionViewController.self))
+                                        as? GroupSelectionViewController {
+                                    
+                                    self?.present(selectGroupVc, animated: true, completion: nil)
+                                    StatusBarSettings.setBackgroundColor(color: .clear)
+                                }
+                            } else {
+                                print("刪除資料發生錯誤")
+                            }
+                        })
+                        
+                    }
+                    
+                })
+                self?.present(alertSheet, animated: false, completion: nil)
+                
+            case .failure:
+                break
+            }
+        }
+        
+    }
+    
 }

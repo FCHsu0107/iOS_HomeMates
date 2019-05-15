@@ -212,7 +212,6 @@
 		B9D71AA922534D5100F242DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B9D71AAB22534D5100F242DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9DB5F3622816E7F00F5DF4F /* FIrebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIrebaseClient.swift; sourceTree = "<group>"; };
-		B9DB5F392283D20600F5DF4F /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		B9EE7EF4227EC51600647600 /* HomeMates.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HomeMates.entitlements; sourceTree = "<group>"; };
 		B9EE7EF5227EC55800647600 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		B9EE7EF7227EE43B00647600 /* PushNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSender.swift; sourceTree = "<group>"; };
@@ -304,8 +303,6 @@
 				B9B99F332261899900314BB6 /* UserObject */,
 				B9B99F492264470300314BB6 /* GroupObject */,
 				B9B7F52D225CAD6100A6DA9E /* TaskObject */,
-				B9DB5F392283D20600F5DF4F /* FirebaseManager.swift */,
-				B9B3582C2289BE2E00CC1AEE /* ProfileInfoProvider.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -380,6 +377,7 @@
 			children = (
 				B91D3AFE2269B7DE00C1A28F /* DateProvider.swift */,
 				B9CA00C82286548700EC550C /* AuthProvider.swift */,
+				B9B3582C2289BE2E00CC1AEE /* ProfileInfoProvider.swift */,
 			);
 			path = Provider;
 			sourceTree = "<group>";

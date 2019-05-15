@@ -17,10 +17,10 @@ class DateProvider {
         return currentTimeStamp!
     }
     
-    func getCurrentDate(currentTimeStamp: Int) -> String {
+    func getCurrentDate(currentTimeStamp: Int, timeZone: TimeZone = TimeZone.current) -> String {
         let date = Date(timeIntervalSince1970: Double(currentTimeStamp)/1000)
         let outputFormat = DateFormatter()
-        outputFormat.locale = NSLocale(localeIdentifier: "en_US") as Locale
+        outputFormat.timeZone = timeZone
         outputFormat.dateFormat = "yyyy/MM/dd"
         
         return outputFormat.string(from: date as Date)
@@ -30,7 +30,7 @@ class DateProvider {
         let currentTimeStamp = Date().toMillis()
         let date = Date(timeIntervalSince1970: Double(currentTimeStamp!)/1000)
         let outputFormat = DateFormatter()
-        outputFormat.locale = NSLocale(localeIdentifier: "en_US") as Locale
+        outputFormat.timeZone = TimeZone.current
         outputFormat.dateFormat = "yyyy/MM/dd"
         
         return outputFormat.string(from: date as Date)
@@ -40,7 +40,7 @@ class DateProvider {
         let currentTimeStamp = getTimeStamp()
         let date = Date(timeIntervalSince1970: Double(currentTimeStamp)/1000)
         let outputFormat = DateFormatter()
-        outputFormat.locale = NSLocale(localeIdentifier: "en_US") as Locale
+        outputFormat.timeZone = TimeZone.current
         outputFormat.dateFormat = "yyyy/MM"
         
         return outputFormat.string(from: date as Date)
