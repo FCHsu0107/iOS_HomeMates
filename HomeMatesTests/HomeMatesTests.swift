@@ -77,8 +77,6 @@ class HomeMatesTests: XCTestCase {
             application: false, finishSignUp: true, mainGroupId: "test", fcmToken: "unitTest", lastLogInDate: nil)
         firebasClient.user = user
 
-//        let userObject: [[String: Any]] = [[ "email": "unitTest@mail.com", "creator": false]]
-//        firebasClient.dictData = userObject
         //Action
         var actualResult: UserObject?
 
@@ -111,7 +109,7 @@ class HomeMatesTests: XCTestCase {
 
         //Action
         var actualResult: UserObject?
-        print(actualResult)
+        print(actualResult as Any)
         var actualError: Error?
 
         provider.readUserInfo { (result) in

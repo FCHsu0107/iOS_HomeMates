@@ -120,77 +120,26 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        return cellTypes[indexPath.section].cellForIndexPath(indexPath, tableView: tableView)
-
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksTableViewCell.self),
-                                                 for: indexPath)
-        guard let taskCell = cell as? TasksTableViewCell else { return cell }
-
-        let secondCell = tableView.dequeueReusableCell(withIdentifier: String(describing: BlankTableViewCell.self),
-                                                       for: indexPath)
-        guard let blankCell = secondCell as? BlankTableViewCell else { return secondCell}
 
         switch cellTypes[indexPath.section] {
 
         case .ongoingTask(let tasks):
-            if tasks.count == 0 {
-                blankCell.loadData(displayText: "請接取任務")
-                return blankCell
-            } else {
-                let task = tasks[indexPath.row]
-        
-                taskCell.loadData(taskObject: task, status: TaskCellStatus.ongingTask)
-
-                taskCell.clickHandler = { [weak self] cell, tag in
-                    guard let tableView = self?.tableView else { return }
-                    self?.cellTypes[indexPath.section].updateStatus(
-                        tag: tag, tableView: tableView, cell: cell)
-                    self?.readTaskLisk()
-                }
-
-                return taskCell
-            }
+            let taskCell = setUpCell(tasks: tasks, status: .ongoingTask(tasks), indexPath: indexPath)
+            return taskCell
 
         case .waitingForCheckTask(let tasks):
-            if tasks.count == 0 {
-                blankCell.loadData(displayText: "待他人完成任務")
-                return blankCell
-            } else {
-
-                let task = tasks[indexPath.row]
-                taskCell.loadData(taskObject: task, status: TaskCellStatus.checkTask)
-
-                taskCell.clickHandler = { [weak self] cell, tag in
-                    guard let tableView = self?.tableView else { return }
-                    self?.cellTypes[indexPath.section].updateStatus(
-                        tag: tag, tableView: tableView, cell: cell)
-                    self?.readTaskLisk()
-                }
-
-                return taskCell
-            }
+            let taskCell = setUpCell(tasks: tasks, status: .waitingForCheckTask(tasks), indexPath: indexPath)
+            return taskCell
 
         case .acceptableTask(let tasks):
-            if tasks.count == 0 {
-                blankCell.loadData(displayText: "請新增任務")
-                return blankCell
-            } else {
-                let task = tasks[indexPath.row]
-                taskCell.loadData(taskObject: task, status: .acceptSpecialTask)
-
-                taskCell.clickHandler = { [weak self] cell, tag in
-                    guard let tableView = self?.tableView else { return }
-                    self?.cellTypes[indexPath.section].updateStatus(
-                        tag: tag, tableView: tableView, cell: cell)
-                    self?.readTaskLisk()
-                }
-                return taskCell
-            }
+            let taskCell = setUpCell(tasks: tasks, status: .acceptableTask(tasks), indexPath: indexPath)
+            return taskCell
 
         case .createNewTask:
-            let thirdCell = tableView.dequeueReusableCell(withIdentifier: String(describing: AddTaskTableViewCell.self),
-                                                          for: indexPath)
-            guard let addingTaskCell = thirdCell as? AddTaskTableViewCell else { return thirdCell}
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: String(describing: AddTaskTableViewCell.self), for: indexPath)
+            
+            guard let addingTaskCell = cell as? AddTaskTableViewCell else { return cell}
 
             addingTaskCell.addTaskBtn.addTarget(self, action: #selector(addingTaskPage), for: .touchUpInside)
             return addingTaskCell
@@ -228,6 +177,32 @@ extension LobbyViewController: UITableViewDataSource, UITableViewDelegate {
             }
         default:
             return UITableViewCell.EditingStyle.none
+        }
+    }
+    
+    private func setUpCell(tasks: [TaskObject], status: TaskStatus, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: String(describing: TasksTableViewCell.self), for: indexPath)
+        guard let taskCell = cell as? TasksTableViewCell else { return cell }
+        
+        let secondCell = tableView.dequeueReusableCell(
+            withIdentifier: String(describing: BlankTableViewCell.self), for: indexPath)
+        guard let blankCell = secondCell as? BlankTableViewCell else { return secondCell}
+
+        if tasks.count == 0 {
+            blankCell.loadData(displayText: status.blankCellTitle())
+            return blankCell
+        } else {
+            let task = tasks[indexPath.row]
+            taskCell.loadData(taskObject: task, status: status.cellStatus)
+            
+            taskCell.clickHandler = { [weak self] cell, tag in
+                guard let tableView = self?.tableView else { return }
+                self?.cellTypes[indexPath.section].updateStatus(
+                    tag: tag, tableView: tableView, cell: cell)
+                self?.readTaskLisk()
+            }
+            return taskCell
         }
     }
     

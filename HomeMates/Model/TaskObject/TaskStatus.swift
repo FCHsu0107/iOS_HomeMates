@@ -95,6 +95,20 @@ enum TaskStatus {
         default:
             return " "
         }
+    
+    }
+    
+    func blankCellTitle() -> String {
+        switch self {
+        case .acceptableTask:
+            return "新增任務"
+        case .ongoingTask:
+            return "請接取任務請"
+        case .waitingForCheckTask:
+            return "待他人完成任務"
+        default:
+            return " "
+        }
     }
     
     func headerView(title: String, tableView: UITableView) -> UIView? {
@@ -147,66 +161,66 @@ enum TaskStatus {
         }
     }
     
-    func cellForIndexPath(_ indexPath: IndexPath,
-                          tableView: UITableView) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier(), for: indexPath)
-        guard let blankCell = cell as? BlankTableViewCell else { return cell }
-        guard let taskCell = cell as? TasksTableViewCell else { return cell }
-        guard let addTaskCell = cell as? AddTaskTableViewCell else { return cell }
-        switch self {
-        case .acceptableTask(let tasks)
-//        , .ongoingTask(let tasks), .waitingForCheckTask(let tasks)
-            :
-            if tasks.count == 0 {
-                blankCell.loadData(displayText: "請接取任務")
-                return blankCell
-            } else {
-                let task = tasks[indexPath.row]
-                taskCell.loadData(taskObject: task, status: TaskCellStatus.acceptSpecialTask)
-                taskCell.clickHandler = { cell, tag in
-                    self.updateStatus(tag: tag, tableView: tableView, cell: cell)
-                    
-                }
-                return taskCell
-            }
-            
-        case .ongoingTask(let tasks):
-            if tasks.count == 0 {
-                blankCell.loadData(displayText: "待他人完成任務")
-                return blankCell
-            } else {
-                let task = tasks[indexPath.row]
-                taskCell.loadData(taskObject: task, status: cellStatus)
-                taskCell.clickHandler = { cell, tag in
-                    self.updateStatus(tag: tag, tableView: tableView, cell: cell)
-                    
-                }
-                return taskCell
-            }
-            
-        case .waitingForCheckTask(let tasks):
-            if tasks.count == 0 {
-                blankCell.loadData(displayText: "請新增任務")
-                return blankCell
-            } else {
-                let task = tasks[indexPath.row]
-                taskCell.loadData(taskObject: task, status: cellStatus)
-                taskCell.clickHandler = { cell, tag in
-                    self.updateStatus(tag: tag, tableView: tableView, cell: cell)
-                    
-                }
-                return taskCell
-            }
-            
-        case .createNewTask:
-            
-            return addTaskCell
-
-        default:
-            return UITableViewCell()
-        }
-
-    }
+//    func cellForIndexPath(_ indexPath: IndexPath,
+//                          tableView: UITableView) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: identifier(), for: indexPath)
+//        guard let blankCell = cell as? BlankTableViewCell else { return cell }
+//        guard let taskCell = cell as? TasksTableViewCell else { return cell }
+//        guard let addTaskCell = cell as? AddTaskTableViewCell else { return cell }
+//        switch self {
+//        case .acceptableTask(let tasks)
+////        , .ongoingTask(let tasks), .waitingForCheckTask(let tasks)
+//            :
+//            if tasks.count == 0 {
+//                blankCell.loadData(displayText: "請接取任務")
+//                return blankCell
+//            } else {
+//                let task = tasks[indexPath.row]
+//                taskCell.loadData(taskObject: task, status: TaskCellStatus.acceptSpecialTask)
+//                taskCell.clickHandler = { cell, tag in
+//                    self.updateStatus(tag: tag, tableView: tableView, cell: cell)
+//                    
+//                }
+//                return taskCell
+//            }
+//            
+//        case .ongoingTask(let tasks):
+//            if tasks.count == 0 {
+//                blankCell.loadData(displayText: "待他人完成任務")
+//                return blankCell
+//            } else {
+//                let task = tasks[indexPath.row]
+//                taskCell.loadData(taskObject: task, status: cellStatus)
+//                taskCell.clickHandler = { cell, tag in
+//                    self.updateStatus(tag: tag, tableView: tableView, cell: cell)
+//                    
+//                }
+//                return taskCell
+//            }
+//            
+//        case .waitingForCheckTask(let tasks):
+//            if tasks.count == 0 {
+//                blankCell.loadData(displayText: "請新增任務")
+//                return blankCell
+//            } else {
+//                let task = tasks[indexPath.row]
+//                taskCell.loadData(taskObject: task, status: cellStatus)
+//                taskCell.clickHandler = { cell, tag in
+//                    self.updateStatus(tag: tag, tableView: tableView, cell: cell)
+//                    
+//                }
+//                return taskCell
+//            }
+//            
+//        case .createNewTask:
+//            
+//            return addTaskCell
+//
+//        default:
+//            return UITableViewCell()
+//        }
+//
+//    }
 
     private func verifyCountForRow(_ count: Int) -> Int {
         if count == 0 {

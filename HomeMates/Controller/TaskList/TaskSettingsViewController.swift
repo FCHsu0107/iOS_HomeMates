@@ -16,9 +16,6 @@ class TaskSettingsViewController: HMBaseViewController {
     
     var regularTaskList: [TaskObject] = []
     
-    let headerTitle = ["一次任務", "每日任務", "常規任務"]
-    let guideText = ["(創立任務後可執行一次)", "(預計每天執行的任務，系統將每天加入)"]
-    
     let dispatchGroup = DispatchGroup()
     
     override func viewDidLoad() {

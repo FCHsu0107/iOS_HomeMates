@@ -26,7 +26,7 @@
                             <constraint firstAttribute="width" constant="36" id="b27-vJ-IoA"/>
                         </constraints>
                     </imageView>
-                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a7J-EE-SG2">
+                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a7J-EE-SG2">
                         <rect key="frame" x="305" y="44.5" width="50" height="30"/>
                         <color key="backgroundColor" name="Y2"/>
                         <constraints>
@@ -43,7 +43,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </button>
-                    <button hidden="YES" opaque="NO" tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djh-Vm-S9V">
+                    <button hidden="YES" opaque="NO" tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djh-Vm-S9V">
                         <rect key="frame" x="243" y="44.5" width="50" height="30"/>
                         <color key="backgroundColor" name="P1"/>
                         <constraints>
