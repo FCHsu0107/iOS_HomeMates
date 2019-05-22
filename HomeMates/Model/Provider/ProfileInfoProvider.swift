@@ -59,10 +59,13 @@ class ProfileProvider {
                 dispatchGroup.leave()
             }
         } else {
+            
             let ref = FIRCollectionRef.members.collectionRef(uid: groupDocId)
-            firebaseClient.read(form: ref, returning: MemberObject.self, query: { (query) in
-                return query.whereField(MemberObject.CodingKeys.userId.rawValue, isEqualTo: userDocId)
-            }) { [weak self] (result) in
+            let userIdKey = MemberObject.CodingKeys.userId.rawValue
+            firebaseClient.read(
+                form: ref, returning: MemberObject.self,
+                query: { (query) in return query.whereField(userIdKey, isEqualTo: userDocId)},
+                completion: { [weak self] (result) in
                 switch result {
                 case .success(let members):
                     guard let memberDocId = members[0].docId else { return }
@@ -73,7 +76,7 @@ class ProfileProvider {
                 case .failure(let error):
                     print(error)
                 }
-            }
+            })
         }
         
         let userCollectionRef = FIRCollectionRef.users.collectionRef()
@@ -88,7 +91,9 @@ class ProfileProvider {
         }
         
         dispatchGroup.enter()
-        firebaseClient.deleteTheStatus(uid: userDocId, in: FIRCollectionRef.users.collectionRef(), deleteItem: UserObject.CodingKeys.mainGroupId.rawValue) { (result) in
+        firebaseClient.deleteTheStatus(
+            uid: userDocId, in: FIRCollectionRef.users.collectionRef(),
+            deleteItem: UserObject.CodingKeys.mainGroupId.rawValue) { (result) in
             print(result)
             dispatchGroup.leave()
         }
@@ -96,6 +101,5 @@ class ProfileProvider {
             completion(true)
         }
     }
-
-    
+  
 }
