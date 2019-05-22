@@ -36,7 +36,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="執行者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jdQ-ZD-7hp">
-                        <rect key="frame" x="228" y="50" width="46" height="18"/>
+                        <rect key="frame" x="213" y="50" width="46" height="18"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
@@ -47,8 +47,8 @@
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8w8-o9-ApL">
-                        <rect key="frame" x="251" y="80" width="0.0" height="47.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8w8-o9-ApL">
+                        <rect key="frame" x="236" y="80" width="0.0" height="47.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
@@ -59,7 +59,7 @@
                     <constraint firstItem="8w8-o9-ApL" firstAttribute="top" secondItem="Zcb-PW-XLb" secondAttribute="top" id="5bw-aW-8G0"/>
                     <constraint firstItem="Zcb-PW-XLb" firstAttribute="centerX" secondItem="1bG-cK-Vmh" secondAttribute="centerX" id="Bw6-S9-j69"/>
                     <constraint firstAttribute="bottom" secondItem="Zcb-PW-XLb" secondAttribute="bottom" constant="12" id="RaL-QJ-2gk"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="jdQ-ZD-7hp" secondAttribute="trailing" constant="30" id="WFn-Kk-V4P"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="jdQ-ZD-7hp" secondAttribute="trailing" constant="45" id="WFn-Kk-V4P"/>
                     <constraint firstItem="1bG-cK-Vmh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="igv-TR-02U"/>
                     <constraint firstItem="ujM-iH-EOr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="j8v-p9-EKg"/>
                     <constraint firstItem="jdQ-ZD-7hp" firstAttribute="centerY" secondItem="1bG-cK-Vmh" secondAttribute="centerY" id="jzE-6E-plj"/>

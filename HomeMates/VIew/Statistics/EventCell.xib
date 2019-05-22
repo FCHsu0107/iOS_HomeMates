@@ -32,45 +32,49 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="洗衣服" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7h-cC-z0i">
-                        <rect key="frame" x="20" y="43.5" width="46" height="82"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="洗衣服" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7h-cC-z0i">
+                        <rect key="frame" x="20" y="43.5" width="100.5" height="82"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="本日完成任務" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Plj-PQ-7XT">
-                        <rect key="frame" x="20.5" y="16" width="305.5" height="19.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="本日完成任務" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Plj-PQ-7XT">
+                        <rect key="frame" x="20.5" y="16" width="100" height="19.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="tz4-Cj-xW1"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="執行者：小明" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fil-U2-syV">
-                        <rect key="frame" x="226" y="43.5" width="92" height="72"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="小明" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fil-U2-syV">
+                        <rect key="frame" x="257" y="43.5" width="31" height="72"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="執行者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uc4-JZ-Reh">
-                        <rect key="frame" x="273" y="16" width="49" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="執行者" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uc4-JZ-Reh">
+                        <rect key="frame" x="248" y="16" width="49" height="20"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                         <color key="textColor" name="Y4"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="Plj-PQ-7XT" secondAttribute="trailing" constant="16" id="0hH-CP-g7z"/>
+                    <constraint firstItem="fil-U2-syV" firstAttribute="centerX" secondItem="uc4-JZ-Reh" secondAttribute="centerX" id="54G-k9-WBl"/>
                     <constraint firstItem="uc4-JZ-Reh" firstAttribute="top" secondItem="Plj-PQ-7XT" secondAttribute="top" id="7Vl-eG-q5X"/>
                     <constraint firstItem="d7h-cC-z0i" firstAttribute="top" secondItem="Plj-PQ-7XT" secondAttribute="bottom" constant="8" id="AkE-H3-rUq"/>
                     <constraint firstAttribute="bottom" secondItem="d7h-cC-z0i" secondAttribute="bottom" constant="10" id="D3H-iW-Mbs"/>
                     <constraint firstItem="fil-U2-syV" firstAttribute="top" secondItem="d7h-cC-z0i" secondAttribute="top" id="DWC-CL-e2d"/>
-                    <constraint firstAttribute="trailing" secondItem="fil-U2-syV" secondAttribute="trailing" constant="24" id="Fnk-ja-CfT"/>
                     <constraint firstAttribute="bottom" secondItem="fil-U2-syV" secondAttribute="bottom" constant="20" id="FwB-h8-GV5"/>
                     <constraint firstItem="d7h-cC-z0i" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Gvg-ev-eRy"/>
+                    <constraint firstItem="d7h-cC-z0i" firstAttribute="trailing" secondItem="Plj-PQ-7XT" secondAttribute="trailing" id="KxA-xG-7hN"/>
+                    <constraint firstAttribute="trailing" secondItem="uc4-JZ-Reh" secondAttribute="trailing" constant="45" id="MQd-1v-ukU"/>
                     <constraint firstItem="Plj-PQ-7XT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20.5" id="W9F-Oi-aOF"/>
                     <constraint firstItem="Uif-GV-jGS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Wr4-lO-JvD"/>
-                    <constraint firstAttribute="trailing" secondItem="uc4-JZ-Reh" secondAttribute="trailing" constant="20" id="mMi-dM-2MW"/>
                     <constraint firstItem="Plj-PQ-7XT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="no9-9c-bBN"/>
                     <constraint firstItem="Uif-GV-jGS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="qtK-Ji-1Ig"/>
+                    <constraint firstItem="fil-U2-syV" firstAttribute="top" secondItem="uc4-JZ-Reh" secondAttribute="bottom" constant="7.5" id="rCv-eP-a6L"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
