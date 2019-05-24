@@ -237,21 +237,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
             trackerCell.loadData(tasks: taskList)
             trackerCell.delegate = self
             trackerCell.taskTrackerHandler = { [weak self] (taskName) in
-
-                var taskDates: [String] = []
-                var userNames: [String] = []
-                guard let taskList = self?.taskList else { return }
-                for task in taskList {
-                    if taskName == task.taskName {
-                        guard let name = task.executorName, let date = task.completionDate else { return }
-                        taskDates.append(date)
-                        userNames.append(name)
-                    } else {}
-                }
-                let taskDateString = taskDates.joined(separator: "\n")
-                let taskUserString = userNames.joined(separator: "\n")
-                trackerCell.accomplishedDateTextLbl.text = taskDateString
-                trackerCell.excutorNameTextLbl.text = taskUserString
+                self?.selectedSpecificTask(taskName: taskName, trackerCell: trackerCell)
             }
             
             return trackerCell
@@ -268,6 +254,22 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             return UITableViewCell()
         }
+    }
+    
+    private func selectedSpecificTask(taskName: String, trackerCell: TrackerTableViewCell) {
+        var taskDates: [String] = []
+        var userNames: [String] = []
+        for task in taskList {
+            if taskName == task.taskName {
+                guard let name = task.executorName, let date = task.completionDate else { return }
+                taskDates.append(date)
+                userNames.append(name)
+            } else {}
+        }
+        let taskDateString = taskDates.joined(separator: "\n")
+        let taskUserString = userNames.joined(separator: "\n")
+        trackerCell.accomplishedDateTextLbl.text = taskDateString
+        trackerCell.excutorNameTextLbl.text = taskUserString
     }
 }
 

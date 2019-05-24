@@ -124,7 +124,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bya-3G-76O">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bya-3G-76O">
                                         <rect key="frame" x="80" y="190" width="80" height="30"/>
                                         <color key="backgroundColor" name="Y2"/>
                                         <constraints>
@@ -133,6 +133,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                         <state key="normal" title="新增">
+                                            <color key="titleColor" name="Y4"/>
+                                        </state>
+                                        <state key="selected">
                                             <color key="titleColor" name="Y4"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>

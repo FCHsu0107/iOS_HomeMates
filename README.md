@@ -18,28 +18,27 @@ HomeMates 是一款家事紀錄的 App ，透過任務的互動形式讓家庭�
 
 - 群組功能
 
-- 登入/註冊系統
+    - 登入/註冊系統
 
-<img src="https://i.imgur.com/c0c5chr.gif" width="200"  align=center>
+    <img src="https://i.imgur.com/c0c5chr.gif" width="200"  align=center>
 
 
-- 以群組為單位雲端管理群組事務，可從不同 iOS 裝置登入獲取及管理資料。
+    - 以群組為單位雲端管理群組事務，可從不同 iOS 裝置登入獲取及管理資料。
 
 - 建立任務機制： **發佈任務**、**接取任務**、**確認完成任務**
 
 - 發布任務：讓群組成員了解當前的家庭事務。
 
 - 接取任務：成員可主動認領家庭事務。
-
 - 確認完成任務：透過其他成員確認任務獲取積分。
 
-<img src="https://i.imgur.com/SiHKhhk.gif" width="200"  align=center> <img src="https://i.imgur.com/auEFPfI.gif" width="200"  align=center> <img src="https://i.imgur.com/v8059eZ.gif" width="200"  align=center> 
+    <img src="https://i.imgur.com/SiHKhhk.gif" width="200"  align=center> <img src="https://i.imgur.com/auEFPfI.gif" width="200"  align=center> <img src="https://i.imgur.com/v8059eZ.gif" width="200"  align=center> 
 
 
 
 - 每日任務
 
-- 設定每日任務列表，每天登入後任務會自動添加至可接取任務列表。
+-  設定每日任務列表，每天登入後任務會自動添加至可接取任務列表。
 
 
 - 積分制度
@@ -51,6 +50,12 @@ HomeMates 是一款家事紀錄的 App ，透過任務的互動形式讓家庭�
 
 - 任務紀錄
 
+   - 回顧群組過往完成任務，追蹤過去的執行者及完成日期。
+   
+        <img src="https://i.imgur.com/oOFNeC7.gif" width="200"  align=center>  <img src="https://i.imgur.com/KjSW80r.gif" width="200"  align=center> 
+ 
+   - 瀏覽群組成員的目標達成率。
+ 
 - 回顧群組過往完成任務，追蹤過去的執行者及完成日期。
 
 <img src="https://i.imgur.com/oOFNeC7.gif" width="200"  align=center>  <img src="https://i.imgur.com/KjSW80r.gif" width="200"  align=center> 

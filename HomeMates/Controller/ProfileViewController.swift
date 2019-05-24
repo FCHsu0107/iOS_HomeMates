@@ -171,16 +171,16 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        let secondcell = tableView.dequeueReusableCell(withIdentifier: String(describing: BlankTableViewCell.self),
-                                                       for: indexPath)
-        guard let blankCell = secondcell as? BlankTableViewCell else { return secondcell }
-        
+  
         switch indexPath.section {
             
         case 1:
 
             if doneTaskList.count == 0 {
+                let secondcell = tableView.dequeueReusableCell(
+                    withIdentifier: String(describing: BlankTableViewCell.self), for: indexPath)
+                guard let blankCell = secondcell as? BlankTableViewCell else { return secondcell }
+                
                 blankCell.loadData(displayText: "待他人確認任務完成")
                 return blankCell
             } else {

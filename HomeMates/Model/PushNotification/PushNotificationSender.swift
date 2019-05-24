@@ -20,14 +20,14 @@ class PushNotificationSender {
                                            "data": ["user": "test_id"]]
         
         let request = NSMutableURLRequest(url: url as URL)
-        let requestFirstHalf = "AAAAG9D4lGs:APA91bGtf_eUY_70sMMLNY1GpYkAAT9t5nOfYu3l9zezM9dGYGmbwI_"
-        let requestLastHalf = "Fw4i35YCi_Bs1VtLOhmpfhypl2JQubo9W7eu9Y1p_U0cuqXtv2jUEGP9Bzkr73BihjVrfyxqdpdiqO0uE29Qi"
+        let keyFirstHalf = "AAAAG9D4lGs:APA91bGtf_eUY_70sMMLNY1GpYkAAT9t5nOfYu3l9zezM9dGYGmbwI_"
+        let keyLastHalf = "Fw4i35YCi_Bs1VtLOhmpfhypl2JQubo9W7eu9Y1p_U0cuqXtv2jUEGP9Bzkr73BihjVrfyxqdpdiqO0uE29Qi"
         request.httpMethod = "POST"
         request.httpBody = try? JSONSerialization.data(withJSONObject: paramString,
                                                        options: [.prettyPrinted])
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue(
-            "key=\(requestFirstHalf)\(requestLastHalf)",
+            "key=\(keyFirstHalf)\(keyLastHalf)",
             forHTTPHeaderField: "Authorization")
         
         let task = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, _) in
