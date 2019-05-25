@@ -82,7 +82,8 @@ class FirestoreUserManager {
     
     private func readTrackerInMonth(monthId: String,
                                     completion: @escaping ([TaskTracker]?, Bool) -> Void) {
-        refInMonth(userUid: UserDefaultManager.shared.userUid!, monthId: monthId, to: .taskTrackers)
+        guard let useruid = UserDefaultManager.shared.userUid else { return }
+        refInMonth(userUid: useruid, monthId: monthId, to: .taskTrackers)
             .getDocuments { (snapshots, err) in
                 if err == nil {
                     guard let snapshots = snapshots else { return }
