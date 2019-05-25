@@ -17,10 +17,11 @@ class FirestoreUserManager {
     
     func createGroupInUser(for encodableObject: GroupInfoInUser,
                            completionHandler: @escaping (Result<Bool>) -> Void) {
+        guard let userUid = UserDefaultManager.shared.userUid else { return }
         do {
             var json = try encodableObject.toJSON()
             json["docId"] = encodableObject.groupID
-            reference(userUid: UserDefaultManager.shared.userUid!, to: .groups)
+            reference(userUid: userUid, to: .groups)
                 .document(encodableObject.groupID)
                 .setData(json) { (err) in
                     if err == nil {
@@ -82,7 +83,8 @@ class FirestoreUserManager {
     
     private func readTrackerInMonth(monthId: String,
                                     completion: @escaping ([TaskTracker]?, Bool) -> Void) {
-        refInMonth(userUid: UserDefaultManager.shared.userUid!, monthId: monthId, to: .taskTrackers)
+        guard let useruid = UserDefaultManager.shared.userUid else { return }
+        refInMonth(userUid: useruid, monthId: monthId, to: .taskTrackers)
             .getDocuments { (snapshots, err) in
                 if err == nil {
                     guard let snapshots = snapshots else { return }
@@ -104,15 +106,17 @@ class FirestoreUserManager {
     
     func readTracker(completionHandler: @escaping ( [TaskTracker]?, Bool, Int?) -> Void) {
         let currentMonth = DateProvider.shared.getCurrentMonths()
-        refInGroup(userUid: UserDefaultManager.shared.userUid!, to: .months)
+        guard let userUid = UserDefaultManager.shared.userUid,
+            let groupId = UserDefaultManager.shared.groupId else { return }
+        refInGroup(userUid: userUid, to: .months)
             .whereField(MonthObject.CodingKeys.month.rawValue, isEqualTo: currentMonth)
             .getDocuments { [weak self] (snapshots, err) in
             
             if err == nil {
                 guard let snapshots = snapshots else { return }
                 
-                self?.reference(userUid: UserDefaultManager.shared.userUid!, to: .groups)
-                    .document(UserDefaultManager.shared.groupId!)
+                self?.reference(userUid: userUid, to: .groups)
+                    .document(groupId)
                     .getDocument(completion: { (document, error) in
                         if error == nil {
                             guard let documnet = document else { return }
@@ -155,9 +159,10 @@ class FirestoreUserManager {
     }
     
     func readUserInfo(completion: @escaping (UserObject) -> Void) {
+        guard let userUid = UserDefaultManager.shared.userUid else { return }
         Firestore.firestore()
             .collection(FIRCollectionReference.users.rawValue)
-            .document(UserDefaultManager.shared.userUid!).getDocument { (snapshot, err) in
+            .document(userUid).getDocument { (snapshot, err) in
                 if err == nil {
                     guard let snapshot = snapshot else { return }
                     do {
@@ -197,17 +202,19 @@ class FirestoreUserManager {
                 }
         }
         
-        guard let goal = goal else { return }
-        reference(userUid: UserDefaultManager.shared.userUid!, to: .groups)
-            .document(UserDefaultManager.shared.groupId!)
+        guard let goal = goal,
+            let userUid = UserDefaultManager.shared.userUid,
+            let groupId = UserDefaultManager.shared.groupId else { return }
+        reference(userUid: userUid, to: .groups)
+            .document(groupId)
             .updateData([GroupInfoInUser.CodingKeys.goal.rawValue: goal])
         
         let groupDoc = Firestore.firestore()
             .collection(FIRCollectionReference.groups.rawValue)
-            .document(UserDefaultManager.shared.groupId!)
+            .document(groupId)
             .collection(FIRCollectionReference.members.rawValue)
             
-            groupDoc.whereField(MemberObject.CodingKeys.userId.rawValue, isEqualTo: UserDefaultManager.shared.userUid!)
+            groupDoc.whereField(MemberObject.CodingKeys.userId.rawValue, isEqualTo: userUid)
                 .getDocuments { (snapshots, err) in
                 if err == nil {
                     guard let snapshots = snapshots else { return }

@@ -6,7 +6,6 @@
 //  Copyright © 2019 Fu-Chiung HSU. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class AuthProvider {
@@ -19,7 +18,7 @@ class AuthProvider {
                     guard let user = user else { return }
                     let currentDate = DateProvider.shared.getCurrentDate()
                     let newUser = UserObject(
-                        docId: nil, name: userName, email: (user.email)!, picture: nil,
+                        docId: nil, name: userName, email: email, picture: nil,
                         creator: false, application: false, finishSignUp: false,
                         mainGroupId: nil, fcmToken: nil, lastLogInDate: currentDate)
                     UserDefaultManager.shared.userUid = user.uid
@@ -58,8 +57,8 @@ class AuthProvider {
         FIRFirestoreSerivce.shared.findUser {(user, _, userInfo) in
             
             guard let user = user else { return }
-             UserDefaultManager.shared.userUid = user.uid
-
+            UserDefaultManager.shared.userUid = user.uid
+            
             guard let userInfo = userInfo else { return }
             let newGroup = GroupObject(docId: nil, creatorId: user.uid,
                                        createrName: userInfo.name, name: groupName, picture: nil,

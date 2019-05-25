@@ -31,11 +31,11 @@ class LobbyViewController: HMBaseViewController {
         super.viewDidLoad()
         setUpTableView()
         setUpNotification()
+        headerLoader()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        headerLoader()
     }
 
     //PushNotification

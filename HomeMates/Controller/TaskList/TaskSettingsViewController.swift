@@ -22,13 +22,12 @@ class TaskSettingsViewController: HMBaseViewController {
         super.viewDidLoad()
         
         setUpTableView()
+        headerLoder()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        headerLoder()
     }
     
     private func readTaskInfo() {

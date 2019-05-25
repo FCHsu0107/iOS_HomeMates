@@ -29,7 +29,7 @@
                                         <color key="value" name="Y3"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="eventDefaultColor">
-                                        <color key="value" name="P1"/>
+                                        <color key="value" name="Y2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
                                         <color key="value" cocoaTouchSystemColor="darkTextColor"/>
@@ -39,7 +39,7 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="allowsMultipleSelection" value="NO"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
-                                        <color key="value" name="P1"/>
+                                        <color key="value" name="Y2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="allowsSelection" value="YES"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="pagingEnabled" value="YES"/>
@@ -115,11 +115,11 @@
     </scenes>
     <resources>
         <image name="Toggle_24px" width="24" height="24"/>
-        <namedColor name="P1">
-            <color red="0.62000000476837158" green="0.2199999988079071" blue="0.32499998807907104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="W1">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Y2">
+            <color red="1" green="0.70196078431372544" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Y3">
             <color red="1" green="0.50980392156862742" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

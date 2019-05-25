@@ -144,9 +144,10 @@ class FirestoreGroupManager {
     func deleteMemberInGroup(memberDocId: String, userUid: String) {
         reference(to: .members).document(memberDocId).delete()
         //delete member Info
+        guard let groupId = UserDefaultManager.shared.groupId else { return }
         let userRef = Firestore.firestore().collection(FIRCollectionReference.users.rawValue).document(userUid)
-        
-        userRef.collection(FIRCollectionReference.groups.rawValue).document(UserDefaultManager.shared.groupId!).delete()
+        userRef.collection(FIRCollectionReference.groups.rawValue)
+            .document(groupId).delete()
         userRef.updateData([UserObject.CodingKeys.mainGroupId.rawValue: FieldValue.delete()])
     }
     
@@ -192,7 +193,6 @@ class FirestoreGroupManager {
     
     func readLobbyInfo(compleation: @escaping ([MemberObject], [TaskObject], [TaskObject], [TaskObject]) -> Void) {
         FirestoreGroupManager.shared.readGroupMembers(completion: { (members) in
-//            var memberList = members
             
             FIRFirestoreSerivce.shared.readAllTasks(completionHandler: { (tasks) in
                 var processTaskList: [TaskObject] = []

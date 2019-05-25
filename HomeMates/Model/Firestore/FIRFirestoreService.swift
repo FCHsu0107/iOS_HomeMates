@@ -129,7 +129,8 @@ class FIRFirestoreSerivce {
     }
 
     func readAllTasks(completionHandler: @escaping ([TaskObject]) -> Void) {
-        subReference(to: .groups, in: UserDefaultManager.shared.groupId!, toNext: .tasks)
+        guard let groupId = UserDefaultManager.shared.groupId else { return }
+        subReference(to: .groups, in: groupId, toNext: .tasks)
             .getDocuments { (snapshot, err) in
                 guard let snapshot = snapshot else {
                     print(err as Any)
@@ -150,7 +151,8 @@ class FIRFirestoreSerivce {
 
     //for statistic page
     func readDoneTask(completionHandler: @escaping ([TaskObject]) -> Void) {
-        subReference(to: .groups, in: UserDefaultManager.shared.groupId!, toNext: .tasks)
+        guard let groupId = UserDefaultManager.shared.groupId else { return }
+        subReference(to: .groups, in: groupId, toNext: .tasks)
             .whereField(TaskObject.CodingKeys.taskStatus.rawValue, isEqualTo: 4)
             .order(by: TaskObject.CodingKeys.completionTimeStamp.rawValue, descending: true)
             .getDocuments { (snapshot, err) in
@@ -272,11 +274,11 @@ class FIRFirestoreSerivce {
     }
     
     func updateTaskStatus<T: Encodable>(taskUid: String, for encodableOject: T) {
-        
+        guard let groupId = UserDefaultManager.shared.groupId else { return }
         do {
             let json = try encodableOject.toJSON()
             subReference(to: .groups,
-                         in: UserDefaultManager.shared.groupId!,
+                         in: groupId,
                          toNext: .tasks)
                 .document(taskUid)
                 .setData(json)
@@ -306,18 +308,3 @@ extension FIRFirestoreSerivce {
     }
     
 }
-
-//class FirestoreMock: FirebaseClient {
-//    var ref: CollectionReference?
-//    var completionIsAction = false
-//    
-////    var result
-////    private let handler: (QuerySnapshot?, Error?) -> Void
-//    
-//
-////    init(handler: @escaping (QuerySnapshot?, Error?) -> Void) {
-////        self.handler = handler
-////    }
-//
-//   
-//}

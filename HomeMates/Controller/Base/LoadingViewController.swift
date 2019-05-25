@@ -45,8 +45,8 @@ class LoadingViewController: UIViewController {
             return
         }
         
-        FIRAuthManager.shared.addSignUpListener { (flag) in
-            if flag == false {
+        FIRAuthManager.shared.addSignUpListener { (signUpStatus) in
+            if signUpStatus == false {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                     let authVc = UIStoryboard.auth.instantiateInitialViewController()!
                     
@@ -55,8 +55,8 @@ class LoadingViewController: UIViewController {
                 })
                 
             } else {
-                FIRFirestoreSerivce.shared.findUser { [weak self] _, bool, userInfo  in
-                    if bool == true && userInfo?.mainGroupId != nil {
+                FIRFirestoreSerivce.shared.findUser { [weak self] _, findUser, userInfo  in
+                    if findUser == true && userInfo?.mainGroupId != nil {
                         let tabBarVc = UIStoryboard.main.instantiateInitialViewController()!
                         
                             delegate.window?.rootViewController = tabBarVc
