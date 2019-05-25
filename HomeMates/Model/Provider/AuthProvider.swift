@@ -57,9 +57,8 @@ class AuthProvider {
         FIRFirestoreSerivce.shared.findUser {(user, _, userInfo) in
             
             guard let user = user else { return }
-             UserDefaultManager.shared.userUid = user.uid
-
-
+            UserDefaultManager.shared.userUid = user.uid
+            
             guard let userInfo = userInfo else { return }
             let newGroup = GroupObject(docId: nil, creatorId: user.uid,
                                        createrName: userInfo.name, name: groupName, picture: nil,
