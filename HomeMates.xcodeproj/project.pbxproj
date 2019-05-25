@@ -46,7 +46,6 @@
 		B93EA22E227AE103002F18A3 /* AddingTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93EA22D227AE103002F18A3 /* AddingTasksViewController.swift */; };
 		B93EA233227C00C0002F18A3 /* AddTaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93EA231227C00C0002F18A3 /* AddTaskTableViewCell.swift */; };
 		B93EA234227C00C0002F18A3 /* AddTaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B93EA232227C00C0002F18A3 /* AddTaskTableViewCell.xib */; };
-		B93EA237227C0A55002F18A3 /* HMCornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93EA236227C0A55002F18A3 /* HMCornerRadius.swift */; };
 		B94D15A622560AA500F43B78 /* LobbyHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15A422560AA500F43B78 /* LobbyHeaderCell.swift */; };
 		B94D15A722560AA500F43B78 /* LobbyHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B94D15A522560AA500F43B78 /* LobbyHeaderCell.xib */; };
 		B94D15AF225721C500F43B78 /* ProfileHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D15AD225721C500F43B78 /* ProfileHeaderViewCell.swift */; };
@@ -153,7 +152,6 @@
 		B93EA22D227AE103002F18A3 /* AddingTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingTasksViewController.swift; sourceTree = "<group>"; };
 		B93EA231227C00C0002F18A3 /* AddTaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskTableViewCell.swift; sourceTree = "<group>"; };
 		B93EA232227C00C0002F18A3 /* AddTaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTaskTableViewCell.xib; sourceTree = "<group>"; };
-		B93EA236227C0A55002F18A3 /* HMCornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMCornerRadius.swift; sourceTree = "<group>"; };
 		B94D15A422560AA500F43B78 /* LobbyHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyHeaderCell.swift; sourceTree = "<group>"; };
 		B94D15A522560AA500F43B78 /* LobbyHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LobbyHeaderCell.xib; sourceTree = "<group>"; };
 		B94D15AD225721C500F43B78 /* ProfileHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewCell.swift; sourceTree = "<group>"; };
@@ -498,7 +496,6 @@
 		B9B7F53A225D95CC00A6DA9E /* HMBaseTextField */ = {
 			isa = PBXGroup;
 			children = (
-				B93EA236227C0A55002F18A3 /* HMCornerRadius.swift */,
 				B9B7F538225D95B500A6DA9E /* HMBaseTextField.swift */,
 			);
 			path = HMBaseTextField;
@@ -946,7 +943,6 @@
 				B93EA2202272DC2F002F18A3 /* StatusBarSettings.swift in Sources */,
 				B9261C87225389FB0033ABC9 /* UIImage+Extension.swift in Sources */,
 				B94D15BD225754C700F43B78 /* ProfileViewController.swift in Sources */,
-				B93EA237227C0A55002F18A3 /* HMCornerRadius.swift in Sources */,
 				B93EA233227C00C0002F18A3 /* AddTaskTableViewCell.swift in Sources */,
 				B9B7F539225D95B500A6DA9E /* HMBaseTextField.swift in Sources */,
 				B94D15BB225749B500F43B78 /* MJRefreshWrapper.swift in Sources */,
@@ -1122,7 +1118,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1178,7 +1174,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

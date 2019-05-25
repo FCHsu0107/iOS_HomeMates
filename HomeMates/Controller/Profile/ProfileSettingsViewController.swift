@@ -35,11 +35,12 @@ class ProfileSettingsViewController: HMBaseViewController {
             self?.ownGroupTextField.text = object.name
             self?.ownGroupIDTextField.text = object.groupId
         }
+        loadUserInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadUserInfo()
+        
     }
     
     @IBAction func changeUserInfo(_ sender: Any) {

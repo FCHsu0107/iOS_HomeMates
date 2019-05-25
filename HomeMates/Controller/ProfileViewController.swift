@@ -38,11 +38,12 @@ class ProfileViewController: HMBaseViewController {
         super.viewDidLoad()
         
         setUpTableView()
+        headerLoader()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        headerLoader()
+        
     }
     
     private func setUpTableView() {

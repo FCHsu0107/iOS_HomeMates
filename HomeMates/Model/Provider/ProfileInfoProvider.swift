@@ -31,7 +31,8 @@ class ProfileProvider {
     }
     
     func readMemberInfo(completion: @escaping (Result<[MemberObject]>) -> Void) {
-        let ref = FIRCollectionRef.members.collectionRef(uid: UserDefaultManager.shared.groupId!)
+        guard let uid = UserDefaultManager.shared.groupId else { return }
+        let ref = FIRCollectionRef.members.collectionRef(uid: uid)
         
         firebaseClient.read(form: ref, returning: MemberObject.self,
                             query: { $0 }, completion: { (result) in
@@ -46,8 +47,8 @@ class ProfileProvider {
     
     func dropOutMainGroup(memberNumber: Int, completion: @escaping (Bool) -> Void) {
         
-        let userDocId = UserDefaultManager.shared.userUid!
-        let groupDocId = UserDefaultManager.shared.groupId!
+        guard let userDocId = UserDefaultManager.shared.userUid,
+            let groupDocId = UserDefaultManager.shared.groupId else { return }
         
         let dispatchGroup = DispatchGroup()
         // delete memner info in the group collection

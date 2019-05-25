@@ -23,7 +23,7 @@ class DateProvider {
         outputFormat.timeZone = timeZone
         outputFormat.dateFormat = "yyyy/MM/dd"
         
-        return outputFormat.string(from: date as Date)
+        return outputFormat.string(from: date)
     }
 
     func getCurrentDate() -> String {
@@ -33,7 +33,7 @@ class DateProvider {
         outputFormat.timeZone = TimeZone.current
         outputFormat.dateFormat = "yyyy/MM/dd"
         
-        return outputFormat.string(from: date as Date)
+        return outputFormat.string(from: date)
     }
     
     func getCurrentMonths() -> String {
@@ -43,7 +43,7 @@ class DateProvider {
         outputFormat.timeZone = TimeZone.current
         outputFormat.dateFormat = "yyyy/MM"
         
-        return outputFormat.string(from: date as Date)
+        return outputFormat.string(from: date)
     }
     
 }

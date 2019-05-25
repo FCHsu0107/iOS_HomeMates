@@ -149,24 +149,5 @@ class HomeMatesTests: XCTestCase {
         XCTAssertEqual(secondActualResult, secondExpectedResult)
         
     }
-    
-    func testJacqueline() {
-        // 3A - Arrange, Action, Assert
-        // Arrange
-        let aaa = 10
-        let bbb = 20
-        
-        let expectedResult = aaa + bbb
-        
-        //Action
-        let actualResult = add(aaa: aaa, bbb: bbb)
-        
-        // Assert
-        XCTAssertEqual(actualResult, expectedResult)
-    }
-    
-    func add(aaa: Int, bbb: Int) -> Int {
-        return 30
-    }
 
 }

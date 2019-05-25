@@ -19,7 +19,7 @@ class AuthProvider {
                     guard let user = user else { return }
                     let currentDate = DateProvider.shared.getCurrentDate()
                     let newUser = UserObject(
-                        docId: nil, name: userName, email: (user.email)!, picture: nil,
+                        docId: nil, name: userName, email: email, picture: nil,
                         creator: false, application: false, finishSignUp: false,
                         mainGroupId: nil, fcmToken: nil, lastLogInDate: currentDate)
                     UserDefaultManager.shared.userUid = user.uid
@@ -59,6 +59,7 @@ class AuthProvider {
             
             guard let user = user else { return }
              UserDefaultManager.shared.userUid = user.uid
+
 
             guard let userInfo = userInfo else { return }
             let newGroup = GroupObject(docId: nil, creatorId: user.uid,
