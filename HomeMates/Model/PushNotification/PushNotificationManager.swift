@@ -6,14 +6,16 @@
 //  Copyright © 2019 Fu-Chiung HSU. All rights reserved.
 //
 
+import UIKit
 import FirebaseFirestore
 import FirebaseMessaging
-import UIKit
 import UserNotificationsUI
 
 class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCenterDelegate {
     
     static let shared = PushNotificationManager()
+    
+    private override init() {}
     
     func registerForPushNotifications() {
         if #available(iOS 10.0, *) {
@@ -80,10 +82,31 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
         updateFirestorePushTokenIfNeeded()
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                didReceive response: UNNotificationResponse,
-                                withCompletionHandler completionHandler: @escaping () -> Void) {
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        didReceive response: UNNotificationResponse,
+        withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let tabBarVc = UIStoryboard.main.instantiateInitialViewController()!
+        
+        delegate.window?.rootViewController = tabBarVc
+        
         print(response)
+        
+    }
+    
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        print("willPresent", notification.request.content)
+        
+        completionHandler([.alert])
     }
     
 }
