@@ -26,6 +26,11 @@
                                     <constraint firstAttribute="height" constant="6" id="27b-hE-ZPv"/>
                                     <constraint firstAttribute="width" constant="200" id="3A7-p4-2jx"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progressView.layer.cornerRadius">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeMates" translatesAutoresizingMaskIntoConstraints="NO" id="jRH-dM-gAJ">
                                 <rect key="frame" x="157" y="325" width="100" height="100"/>
@@ -33,6 +38,11 @@
                                     <constraint firstAttribute="width" constant="100" id="R4P-bg-9Oe"/>
                                     <constraint firstAttribute="height" constant="100" id="vru-7w-Vyh"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -55,7 +65,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="HomeMates" width="125" height="125"/>
+        <image name="HomeMates" width="200" height="200"/>
         <namedColor name="Y0">
             <color red="0.9882352941176471" green="0.8784313725490196" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

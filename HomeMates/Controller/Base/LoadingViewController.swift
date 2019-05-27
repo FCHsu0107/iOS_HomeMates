@@ -26,7 +26,7 @@ class LoadingViewController: UIViewController {
         
         UIView.animate(withDuration: 1.0) {
             self.progressView.frame.size = CGSize(width: newWidth, height: self.progressView.frame.height)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.05, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
                 self.checkStatus()
             })
         }
@@ -34,10 +34,7 @@ class LoadingViewController: UIViewController {
     }
     
     func getCornerRadius() {
-        
-        backgroundView.layer.cornerRadius = 3
         progressView.layer.cornerRadius = 3
-        logoView.layer.cornerRadius = 5
     }
     
     func checkStatus() {
@@ -47,12 +44,9 @@ class LoadingViewController: UIViewController {
         
         FIRAuthManager.shared.addSignUpListener { (signUpStatus) in
             if signUpStatus == false {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                    let authVc = UIStoryboard.auth.instantiateInitialViewController()!
-                    
-                    delegate.window?.rootViewController = authVc
-                    return
-                })
+                let authVc = UIStoryboard.auth.instantiateInitialViewController()!
+                
+                delegate.window?.rootViewController = authVc
                 
             } else {
                 FIRFirestoreSerivce.shared.findUser { [weak self] _, findUser, userInfo  in
