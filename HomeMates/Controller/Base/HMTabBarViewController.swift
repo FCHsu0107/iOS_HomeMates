@@ -89,6 +89,25 @@ class HMTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         delegate = self
 
         StatusBarSettings.setBackgroundColor(color: UIColor.Y1)
+    
+        addNotificationObserver()
+    }
+    
+    private func addNotificationObserver() {
+        
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(refreshNewTask(noti:)),
+            name: Notification.Name(NotificationName.didReceivePushNoti.rawValue), object: nil)
     }
 
+    @objc func refreshNewTask(noti: Notification) {
+        guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+
+        let tabBarController = delegate.window?.rootViewController as? HMTabBarViewController
+
+        tabBarController?.selectedIndex = 0
+    }
+    
 }

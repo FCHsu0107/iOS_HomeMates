@@ -142,7 +142,8 @@ class HomeMatesTests: XCTestCase {
         //Action
         let actualResult = DateProvider.shared.getCurrentDate(
             currentTimeStamp: timeStampToMillis, timeZone: TimeZone(secondsFromGMT: 8*60*60)!)
-        let secondActualResult = DateProvider.shared.getCurrentDate(currentTimeStamp: secondTimeStampToMillis)
+        let secondActualResult = DateProvider.shared.getCurrentDate(
+            currentTimeStamp: secondTimeStampToMillis, timeZone: TimeZone(secondsFromGMT: 8*60*60)!)
         
         //Assert
         XCTAssertEqual(actualResult, expectedResult)

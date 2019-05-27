@@ -32,10 +32,7 @@ class LobbyViewController: HMBaseViewController {
         setUpTableView()
         setUpNotification()
         headerLoader()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        addNotificationObserver()
     }
 
     //PushNotification
@@ -62,7 +59,6 @@ class LobbyViewController: HMBaseViewController {
     private func readGroupTaskInfo() {
         FIRFirestoreSerivce.shared.findMainGroup { [weak self] (object) in
             self?.groupInfo = object
-            self?.tableView.endHeaderRefreshing()
             self?.readTaskLisk()
         }
     }
@@ -77,6 +73,15 @@ class LobbyViewController: HMBaseViewController {
         }
     }
 
+    private func addNotificationObserver() {
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(refreshNewTask(noti:)),
+            name: Notification.Name(NotificationName.newTask.rawValue), object: nil)
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(refreshNewTask(noti:)),
+            name: Notification.Name(NotificationName.didReceivePushNoti.rawValue), object: nil)
+    }
+    
     @objc func clickSettingBtn() {
         self.performSegue(withIdentifier: "LobbySettingsSegue", sender: nil)
         
@@ -88,6 +93,10 @@ class LobbyViewController: HMBaseViewController {
             nextVc.groupInfo = groupInfo
             nextVc.memberList = memberList
         }
+    }
+    
+    @objc func refreshNewTask(noti: Notification) {
+        headerLoader()
     }
     
 }

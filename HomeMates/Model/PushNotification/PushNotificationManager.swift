@@ -6,12 +6,12 @@
 //  Copyright © 2019 Fu-Chiung HSU. All rights reserved.
 //
 
+import UIKit
 import FirebaseFirestore
 import FirebaseMessaging
-import UIKit
 import UserNotificationsUI
 
-class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCenterDelegate {
+class PushNotificationManager: NSObject, UNUserNotificationCenterDelegate, MessagingDelegate {
     
     static let shared = PushNotificationManager()
     
@@ -38,9 +38,10 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
             let usersRef = usersReference()
             usersRef.setData([UserObject.CodingKeys.fcmToken.rawValue: token], merge: true)
             
+            guard let userUid = UserDefaultManager.shared.userUid else { return }
             let memberRef = membersReference()
             memberRef
-                .whereField(MemberObject.CodingKeys.userId.rawValue, isEqualTo: UserDefaultManager.shared.userUid!)
+                .whereField(MemberObject.CodingKeys.userId.rawValue, isEqualTo: userUid)
                 .getDocuments { (snapshots, err) in
                 if err == nil {
                     guard let snapshots = snapshots else { return }
@@ -56,9 +57,11 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
         let usersRef = usersReference()
         usersRef.updateData([UserObject.CodingKeys.fcmToken.rawValue: FieldValue.delete()])
         
+        guard let userUid = UserDefaultManager.shared.userUid else { return }
+        
         let memberRef = membersReference()
         memberRef
-            .whereField(MemberObject.CodingKeys.userId.rawValue, isEqualTo: UserDefaultManager.shared.userUid!)
+            .whereField(MemberObject.CodingKeys.userId.rawValue, isEqualTo: userUid)
             .getDocuments { (snapshots, err) in
                 if err == nil {
                     guard let snapshots = snapshots else { return }
@@ -80,10 +83,26 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
         updateFirestorePushTokenIfNeeded()
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                didReceive response: UNNotificationResponse,
-                                withCompletionHandler completionHandler: @escaping () -> Void) {
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        didReceive response: UNNotificationResponse,
+        withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        NotificationCenter.default.post(
+            name: Notification.Name(NotificationName.didReceivePushNoti.rawValue), object: nil)
+        
         print(response)
+        
+    }
+    
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        print("willPresent", notification.request.content)
+        
+        completionHandler([.alert])
     }
     
 }

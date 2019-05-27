@@ -37,7 +37,12 @@ class FirestoreGroupManager {
             ref = reference(to: .tasks).document()
             guard let docId = ref?.documentID else { return }
             json[TaskObject.CodingKeys.docId.rawValue] = docId
-            reference(to: .tasks).document(docId).setData(json)
+            reference(to: .tasks).document(docId).setData(json) { (err) in
+                if err == nil {
+                    NotificationCenter.default.post(
+                        name: Notification.Name(NotificationName.newTask.rawValue), object: nil)
+                }
+            }
         } catch {
             print(error)
         }
@@ -52,7 +57,14 @@ class FirestoreGroupManager {
             ref = reference(to: collectionReference).document()
             guard let docId = ref?.documentID else { return }
             json[TaskObject.CodingKeys.docId.rawValue] = docId
-            reference(to: collectionReference).document(docId).setData(json)
+            
+            reference(to: collectionReference).document(docId).setData(json) { (err) in
+                if err == nil {
+                    NotificationCenter.default.post(
+                        name: Notification.Name(NotificationName.newDailyTask.rawValue), object: nil)
+                }
+            }
+//            reference(to: collectionReference).document(docId).setData(json)
             
         } catch {
             

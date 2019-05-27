@@ -20,10 +20,9 @@ class TaskSettingsViewController: HMBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setUpTableView()
-        headerLoder()
-        
+        headerLoader()
+        addNotificationObserver()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,12 +59,22 @@ class TaskSettingsViewController: HMBaseViewController {
         tableView.jq_registerCellWithNib(identifier: String(describing: AddTaskTableViewCell.self), bundle: nil)
     }
     
-    private func headerLoder() {
+    private func headerLoader() {
         tableView.addRefreshHeader(refreshingBlock: { [weak self] in
             self?.readTaskInfo()
         })
         
         tableView.beginHeaderRefreshing()
+    }
+    
+    private func addNotificationObserver() {
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(refreshNewTask(noti:)),
+            name: Notification.Name(NotificationName.newDailyTask.rawValue), object: nil)
+    }
+    
+    @objc func refreshNewTask(noti: Notification) {
+        headerLoader()
     }
 }
 
