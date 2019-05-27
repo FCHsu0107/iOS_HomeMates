@@ -106,11 +106,11 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
 
                 for j in 0 ..< members.count {
                     for i in 0 ..< tasks.count where tasks[i].executorUid == self?.memberInfoWithPoint[j].memberUid {
-//                        if tasks[i].executorUid == self?.memberInfoWithPoint[j].memberUid {
                             self?.memberInfoWithPoint[j].point += tasks[i].taskPoint
-//                        }
+
                     }
                 }
+                
                 self?.tableView.reloadData()
                 self?.tableView.endHeaderRefreshing()
             }
@@ -266,8 +266,10 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
                 userNames.append(name)
             } else {}
         }
-        let taskDateString = taskDates.joined(separator: "\n")
-        let taskUserString = userNames.joined(separator: "\n")
+        let fiveTaskDates = taskDates.prefix(5)
+        let fiveTaskNames = userNames.prefix(5)
+        let taskDateString = fiveTaskDates.joined(separator: "\n")
+        let taskUserString = fiveTaskNames.joined(separator: "\n")
         trackerCell.accomplishedDateTextLbl.text = taskDateString
         trackerCell.excutorNameTextLbl.text = taskUserString
     }

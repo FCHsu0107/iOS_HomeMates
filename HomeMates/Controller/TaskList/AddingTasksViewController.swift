@@ -18,6 +18,8 @@ class AddingTasksViewController: UIViewController {
     
     let messageView = MessagesView()
     
+    let sender = PushNotificationSender()
+    
     var membersInfo: [MemberObject] = []
     
     override func viewDidLoad() {
@@ -92,10 +94,10 @@ class AddingTasksViewController: UIViewController {
         
         for member in membersInfo {
             if let memberToken = member.fcmToken {
-                PushNotificationSender.shared
-                    .sendPushNotification(to: memberToken,
-                                          title: "有一項新任務",
-                                          body: "\(UserDefaultManager.shared.userName!) 發佈一項新任務\(taskName)，快來認大廳接任務吧！")
+                guard let userName = UserDefaultManager.shared.userName else { return }
+                sender.sendPushNotification(
+                    to: memberToken, title: "有一項新任務",
+                    body: "\(userName) 發佈一項新任務\(taskName)，快來認大廳接任務吧！")
                 
             }
         }

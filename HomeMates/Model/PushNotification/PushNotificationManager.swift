@@ -11,11 +11,9 @@ import FirebaseFirestore
 import FirebaseMessaging
 import UserNotificationsUI
 
-class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCenterDelegate {
+class PushNotificationManager: NSObject, UNUserNotificationCenterDelegate, MessagingDelegate {
     
     static let shared = PushNotificationManager()
-    
-    private override init() {}
     
     func registerForPushNotifications() {
         if #available(iOS 10.0, *) {
@@ -40,9 +38,10 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
             let usersRef = usersReference()
             usersRef.setData([UserObject.CodingKeys.fcmToken.rawValue: token], merge: true)
             
+            guard let userUid = UserDefaultManager.shared.userUid else { return }
             let memberRef = membersReference()
             memberRef
-                .whereField(MemberObject.CodingKeys.userId.rawValue, isEqualTo: UserDefaultManager.shared.userUid!)
+                .whereField(MemberObject.CodingKeys.userId.rawValue, isEqualTo: userUid)
                 .getDocuments { (snapshots, err) in
                 if err == nil {
                     guard let snapshots = snapshots else { return }
@@ -58,9 +57,11 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
         let usersRef = usersReference()
         usersRef.updateData([UserObject.CodingKeys.fcmToken.rawValue: FieldValue.delete()])
         
+        guard let userUid = UserDefaultManager.shared.userUid else { return }
+        
         let memberRef = membersReference()
         memberRef
-            .whereField(MemberObject.CodingKeys.userId.rawValue, isEqualTo: UserDefaultManager.shared.userUid!)
+            .whereField(MemberObject.CodingKeys.userId.rawValue, isEqualTo: userUid)
             .getDocuments { (snapshots, err) in
                 if err == nil {
                     guard let snapshots = snapshots else { return }
@@ -86,13 +87,13 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
         _ center: UNUserNotificationCenter,
         didReceive response: UNNotificationResponse,
         withCompletionHandler completionHandler: @escaping () -> Void) {
-        
+
         guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
-        
+
         let tabBarVc = UIStoryboard.main.instantiateInitialViewController()!
-        
+
         delegate.window?.rootViewController = tabBarVc
         
         print(response)
