@@ -424,8 +424,8 @@
 		B94D15B42257327D00F43B78 /* Third-party framework */ = {
 			isa = PBXGroup;
 			children = (
+				B9E409A9229BD90800228720 /* MJRefresh */,
 				B93EA22A227AD839002F18A3 /* MessageView */,
-				B94D15BA225749B500F43B78 /* MJRefreshWrapper.swift */,
 			);
 			path = "Third-party framework";
 			sourceTree = "<group>";
@@ -619,6 +619,14 @@
 				B93EA232227C00C0002F18A3 /* AddTaskTableViewCell.xib */,
 			);
 			path = AddTaskTableViewCell;
+			sourceTree = "<group>";
+		};
+		B9E409A9229BD90800228720 /* MJRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				B94D15BA225749B500F43B78 /* MJRefreshWrapper.swift */,
+			);
+			path = MJRefresh;
 			sourceTree = "<group>";
 		};
 		C75B0ED5492584CA900C8D58 /* Pods */ = {
