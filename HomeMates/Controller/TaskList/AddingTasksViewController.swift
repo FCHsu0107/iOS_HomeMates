@@ -89,6 +89,7 @@ class AddingTasksViewController: UIViewController {
         } else {
             task.taskPriodDay = 0
             FirestoreGroupManager.shared.addTask(for: task)
+            
         }
         messageView.showSuccessView(title: "新增任務成功", body: "請至大廳接取任務")
         
