@@ -63,8 +63,8 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTableView()
-        headerLoaer()
-        
+        headerLoader()
+        addNotificationObserver()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,7 +79,7 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
         tableView.jq_registerCellWithNib(identifier: String(describing: TrackerTableViewCell.self), bundle: nil)
     }
     
-    private func headerLoaer() {
+    private func headerLoader() {
         tableView.addRefreshHeader(refreshingBlock: { [weak self] in
             self?.readDoneTask()
         })
@@ -143,6 +143,16 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
         } else {
             self.calendar.setScope(.month, animated: true)
         }
+    }
+    
+    private func addNotificationObserver() {
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(refreshNewTask(noti:)),
+            name: Notification.Name(NotificationName.taskIsDone.rawValue), object: nil)
+    }
+    
+    @objc func refreshNewTask(noti: Notification) {
+        headerLoader()
     }
    
 }

@@ -40,7 +40,7 @@ class FirestoreGroupManager {
             reference(to: .tasks).document(docId).setData(json) { (err) in
                 if err == nil {
                     NotificationCenter.default.post(
-                        name: Notification.Name(NotificiationName.newTask.rawValue), object: nil)
+                        name: Notification.Name(NotificationName.newTask.rawValue), object: nil)
                 }
             }
         } catch {
@@ -61,7 +61,7 @@ class FirestoreGroupManager {
             reference(to: collectionReference).document(docId).setData(json) { (err) in
                 if err == nil {
                     NotificationCenter.default.post(
-                        name: Notification.Name(NotificiationName.newDailyTask.rawValue), object: nil)
+                        name: Notification.Name(NotificationName.newDailyTask.rawValue), object: nil)
                 }
             }
 //            reference(to: collectionReference).document(docId).setData(json)

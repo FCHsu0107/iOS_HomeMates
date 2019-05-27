@@ -76,7 +76,10 @@ class LobbyViewController: HMBaseViewController {
     private func addNotificationObserver() {
         NotificationCenter.default.addObserver(
             self, selector: #selector(refreshNewTask(noti:)),
-            name: Notification.Name(NotificiationName.newTask.rawValue), object: nil)
+            name: Notification.Name(NotificationName.newTask.rawValue), object: nil)
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(refreshNewTask(noti:)),
+            name: Notification.Name(NotificationName.didReceivePushNoti.rawValue), object: nil)
     }
     
     @objc func clickSettingBtn() {

@@ -70,7 +70,7 @@ class TaskSettingsViewController: HMBaseViewController {
     private func addNotificationObserver() {
         NotificationCenter.default.addObserver(
             self, selector: #selector(refreshNewTask(noti:)),
-            name: Notification.Name(NotificiationName.newDailyTask.rawValue), object: nil)
+            name: Notification.Name(NotificationName.newDailyTask.rawValue), object: nil)
     }
     
     @objc func refreshNewTask(noti: Notification) {

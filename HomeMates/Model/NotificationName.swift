@@ -8,7 +8,11 @@
 
 import Foundation
 
-enum NotificiationName: String {
+enum NotificationName: String {
+    
     case newDailyTask
     case newTask
+    case taskIsDone
+    
+    case didReceivePushNoti
 }

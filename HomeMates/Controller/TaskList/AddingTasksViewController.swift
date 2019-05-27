@@ -93,10 +93,10 @@ class AddingTasksViewController: UIViewController {
         }
         messageView.showSuccessView(title: "新增任務成功", body: "請至大廳接取任務")
         
-        for member in membersInfo {
+        guard let userName = UserDefaultManager.shared.userName else { return }
+        for member in membersInfo where member.userName != userName {
             if let memberToken = member.fcmToken {
-                guard let userName = UserDefaultManager.shared.userName else { return }
-                sender.sendPushNotification(
+                sender.sendPushNotification (
                     to: memberToken, title: "有一項新任務",
                     body: "\(userName) 發佈一項新任務\(taskName)，快來認大廳接任務吧！")
                 

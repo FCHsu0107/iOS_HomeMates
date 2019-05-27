@@ -153,8 +153,9 @@ enum TaskStatus {
             messageView.showSuccessView(title: "完成任務", body: "待其他成員確認任務後即可獲得積分")
             
             guard let userName = UserDefaultManager.shared.userName else { return }
+            
             FirestoreGroupManager.shared.readGroupMembers { (members) in
-                for member in members {
+                for member in members where member.userName != userName {
                     if let memberToken = member.fcmToken {
                         sender.sendPushNotification(
                             to: memberToken, title: "任務已完成",
@@ -174,6 +175,8 @@ enum TaskStatus {
         guard let taskUid = updateTask.docId else { return }
         FIRFirestoreSerivce.shared.updateTaskStatus(taskUid: taskUid, for: updateTask)
         FirestoreUserManager.shared.addTaskTracker(for: updateTask)
+        NotificationCenter.default.post(
+            name: Notification.Name(NotificationName.taskIsDone.rawValue), object: nil)
     }
     
 }

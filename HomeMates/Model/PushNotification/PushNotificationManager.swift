@@ -87,14 +87,9 @@ class PushNotificationManager: NSObject, UNUserNotificationCenterDelegate, Messa
         _ center: UNUserNotificationCenter,
         didReceive response: UNNotificationResponse,
         withCompletionHandler completionHandler: @escaping () -> Void) {
-
-        guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-
-        let tabBarVc = UIStoryboard.main.instantiateInitialViewController()!
-
-        delegate.window?.rootViewController = tabBarVc
+        
+        NotificationCenter.default.post(
+            name: Notification.Name(NotificationName.didReceivePushNoti.rawValue), object: nil)
         
         print(response)
         
