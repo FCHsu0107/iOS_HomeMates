@@ -36,6 +36,10 @@ class TasksTableViewCell: UITableViewCell {
                 memberNameTextLbl.isHidden = true
                 firstTextConstraint.constant = 0
                 secondTextConstraint.constant = 0
+            } else {
+                memberNameTextLbl.isHidden = false
+                firstTextConstraint.constant = 18
+                secondTextConstraint.constant = 4
             }
         }
     }
@@ -66,6 +70,7 @@ class TasksTableViewCell: UITableViewCell {
         
         switch status {
         case .checkTask:
+            hiddenFirstText = false
             secondBtnAppear = false
             guard let executor = taskObject.executorName else { return }
             guard let completionTimeStamp = taskObject.completionTimeStamp else { return }
@@ -76,6 +81,7 @@ class TasksTableViewCell: UITableViewCell {
             taskRightBtn.setTitle("確認", for: .normal)
 
         case .acceptSpecialTask:
+            hiddenFirstText = false
             secondBtnAppear = false
             pointTextLbl.text = "積分： \(taskObject.taskPoint) 點"
             if taskObject.publisherName == "系統提示" {
