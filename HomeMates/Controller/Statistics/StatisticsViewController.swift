@@ -106,8 +106,12 @@ class StatisticsViewController: HMBaseViewController, UIGestureRecognizerDelegat
 
                 for j in 0 ..< members.count {
                     for i in 0 ..< tasks.count where tasks[i].executorUid == self?.memberInfoWithPoint[j].memberUid {
+                        guard let timeStamp = tasks[i].completionTimeStamp else { return }
+                        let currentMonth = DateProvider.shared.getCurrentMonth()
+                        let tasksMonth = DateProvider.shared.getCurrentMonth(currentTimeStamp: timeStamp)
+                        if tasksMonth == currentMonth {
                             self?.memberInfoWithPoint[j].point += tasks[i].taskPoint
-
+                        }
                     }
                 }
                 
@@ -286,8 +290,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension StatisticsViewController: SelectDoneTaskDelegate {
-    
-    func doneBtnDidClick() {
+    func doneBtnDidClick(_ cell: UITableViewCell) {
         tableView.reloadData()
     }
     

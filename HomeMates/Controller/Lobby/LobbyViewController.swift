@@ -47,7 +47,7 @@ class LobbyViewController: HMBaseViewController {
         tableView.jq_registerCellWithNib(identifier: String(describing: AddTaskTableViewCell.self), bundle: nil)
     }
     
-    private func headerLoader() {
+    func headerLoader() {
         tableView.addRefreshHeader(refreshingBlock: { [weak self] in
             
             self?.readGroupTaskInfo()
@@ -77,9 +77,6 @@ class LobbyViewController: HMBaseViewController {
         NotificationCenter.default.addObserver(
             self, selector: #selector(refreshNewTask(noti:)),
             name: Notification.Name(NotificationName.newTask.rawValue), object: nil)
-        NotificationCenter.default.addObserver(
-            self, selector: #selector(refreshNewTask(noti:)),
-            name: Notification.Name(NotificationName.didReceivePushNoti.rawValue), object: nil)
     }
     
     @objc func clickSettingBtn() {

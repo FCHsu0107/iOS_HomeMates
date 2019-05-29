@@ -10,12 +10,12 @@ import UIKit
 
 protocol SelectDoneTaskDelegate: AnyObject {
     
-    func doneBtnDidClick()
+    func doneBtnDidClick(_ cell: UITableViewCell)
 }
 
 class TrackerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
 
-    @IBOutlet weak var selectTaskTextField: HMBaseTextField!
+    @IBOutlet weak var selectTaskTextField: NoEditTextField!
     
     @IBOutlet weak var accomplishedDateTextLbl: UILabel!
     
@@ -58,8 +58,6 @@ class TrackerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerVie
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -95,8 +93,17 @@ class TrackerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerVie
   
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if pickerOptions.count == 0 {
+            selectTaskTextField.text = "無完成任務紀錄"
+        } else {
+            selectTaskTextField.text = pickerOptions[0]
+            taskTrackerHandler?(pickerOptions[0])
+        }
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
-        delegate?.doneBtnDidClick()
+        delegate?.doneBtnDidClick(self)
     }
     
 }

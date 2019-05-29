@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddingTasksViewController: UIViewController {
+class AddingTasksViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var taskNameTextField: HMBaseTextField!
     
@@ -27,6 +27,7 @@ class AddingTasksViewController: UIViewController {
 
         setUpView()
         readGroupInfo()
+        taskNameTextField.delegate = self
     }
     
     private func setUpView() {
@@ -54,15 +55,38 @@ class AddingTasksViewController: UIViewController {
     }
     
     @IBAction func addTaskAction(_ sender: Any) {
+        
         if taskNameTextField.text?.isEmpty == true || taskPointsTextField.text?.isEmpty == true {
             let alert = UIAlertController.sigleActionAlert(title: "提醒", message: "請輸入名稱及積分", clickTitle: "收到")
             self.present(alert, animated: false, completion: nil)
         } else {
-            addNewTask()
-            
-            dismiss(animated: false, completion: nil)
-            StatusBarSettings.setBackgroundColor(color: UIColor.Y1)
+            guard let taskPoint = Int(taskPointsTextField.text!) else {
+                return
+            }
+            if taskPoint > 10 {
+                let alert = UIAlertController.sigleActionAlert(title: "提醒", message: "任務積分須小於 100", clickTitle: "收到")
+                self.present(alert, animated: false, completion: nil)
+            } else {
+                addNewTask()
+                
+                dismiss(animated: false, completion: nil)
+                StatusBarSettings.setBackgroundColor(color: UIColor.Y1)
+            }
         }
+    }
+    
+    func textField(
+        _ textField: UITextField, shouldChangeCharactersIn range: NSRange,
+        replacementString string: String) -> Bool {
+        let maxLength = 6
+        guard let text = textField.text else {
+            return true
+        }
+            let currentString: NSString = text as NSString
+            let newString: NSString =
+                currentString.replacingCharacters(in: range, with: string) as NSString
+            return newString.length <= maxLength
+        
     }
     
     private func addNewTask() {

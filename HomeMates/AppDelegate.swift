@@ -12,9 +12,12 @@ import Fabric
 import Crashlytics
 
 @UIApplicationMain
+// swiftlint:disable force_cast
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    static let shared = UIApplication.shared.delegate as! AppDelegate
+    
     var window: UIWindow?
 
     func application(_ application: UIApplication,
@@ -34,3 +37,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+// swiftlint:ensable force_cast

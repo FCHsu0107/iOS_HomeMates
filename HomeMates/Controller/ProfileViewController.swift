@@ -39,6 +39,7 @@ class ProfileViewController: HMBaseViewController {
         
         setUpTableView()
         headerLoader()
+        addNotificationObserver()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -119,6 +120,16 @@ class ProfileViewController: HMBaseViewController {
             }
             
         }
+    }
+    
+    private func addNotificationObserver() {
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(refreshNewTask(noti:)),
+            name: Notification.Name(NotificationName.changeUserInfo.rawValue), object: nil)
+    }
+    
+    @objc func refreshNewTask(noti: Notification) {
+        headerLoader()
     }
     
 }
@@ -205,3 +216,4 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
 
     }
 }
+
