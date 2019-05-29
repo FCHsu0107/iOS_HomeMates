@@ -25,3 +25,10 @@ class HMBaseTextField: UITextField {
     }
     
 }
+
+class NoEditTextField: HMBaseTextField {
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        return false
+    }
+    
+}

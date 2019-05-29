@@ -37,7 +37,7 @@ class FirestoreUserManager {
     
     func addTaskTracker(for doneTask: TaskObject) {
         
-        let currentMonth = DateProvider.shared.getCurrentMonths()
+        let currentMonth = DateProvider.shared.getCurrentMonth()
         refInGroup(userUid: doneTask.executorUid!, to: .months)
             .whereField(MonthObject.CodingKeys.month.rawValue, isEqualTo: currentMonth)
             .getDocuments { [weak self] (snapshots, error) in
@@ -105,7 +105,7 @@ class FirestoreUserManager {
     }
     
     func readTracker(completionHandler: @escaping ( [TaskTracker]?, Bool, Int?) -> Void) {
-        let currentMonth = DateProvider.shared.getCurrentMonths()
+        let currentMonth = DateProvider.shared.getCurrentMonth()
         guard let userUid = UserDefaultManager.shared.userUid,
             let groupId = UserDefaultManager.shared.groupId else { return }
         refInGroup(userUid: userUid, to: .months)

@@ -36,7 +36,7 @@ class DateProvider {
         return outputFormat.string(from: date)
     }
     
-    func getCurrentMonths() -> String {
+    func getCurrentMonth() -> String {
         let currentTimeStamp = getTimeStamp()
         let date = Date(timeIntervalSince1970: Double(currentTimeStamp)/1000)
         let outputFormat = DateFormatter()
@@ -45,5 +45,15 @@ class DateProvider {
         
         return outputFormat.string(from: date)
     }
+    
+    func getCurrentMonth(currentTimeStamp: Int, timeZone: TimeZone = TimeZone.current) -> String {
+        let date = Date(timeIntervalSince1970: Double(currentTimeStamp)/1000)
+        let outputFormat = DateFormatter()
+        outputFormat.timeZone = timeZone
+        outputFormat.dateFormat = "yyyy/MM"
+        
+        return outputFormat.string(from: date)
+    }
+    
     
 }

@@ -20,7 +20,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="139.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="選擇任務" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ujM-iH-EOr" customClass="HMBaseTextField" customModule="HomeMates" customModuleProvider="target">
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="選擇任務" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ujM-iH-EOr" customClass="NoEditTextField" customModule="HomeMates" customModuleProvider="target">
                         <rect key="frame" x="20" y="8" width="280" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="FAq-V3-5ma"/>

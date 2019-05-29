@@ -15,7 +15,7 @@ protocol SelectDoneTaskDelegate: AnyObject {
 
 class TrackerTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
 
-    @IBOutlet weak var selectTaskTextField: HMBaseTextField!
+    @IBOutlet weak var selectTaskTextField: NoEditTextField!
     
     @IBOutlet weak var accomplishedDateTextLbl: UILabel!
     
