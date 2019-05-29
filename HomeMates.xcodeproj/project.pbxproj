@@ -10,6 +10,7 @@
 		2B0A2B88B46FE71F06411340 /* Pods_HomeMatesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B99F655248785A7C2D6FC83E /* Pods_HomeMatesTests.framework */; };
 		6E9B27DAC4A97C50CD1D1CFC /* Pods_HomeMates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0D5E2E1A5658A395EF06F5E /* Pods_HomeMates.framework */; };
 		B91A696022704A98008C9B66 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91A695F22704A98008C9B66 /* Array+Extension.swift */; };
+		B91BE9D4229E88FB0052290D /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91BE9D3229E88FB0052290D /* JGProgressHUDWrapper.swift */; };
 		B91D3A9A2264ABD400C1A28F /* MemberObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3A992264ABD400C1A28F /* MemberObject.swift */; };
 		B91D3A9C2264BF1300C1A28F /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3A9B2264BF1300C1A28F /* String+Extension.swift */; };
 		B91D3A9F2264CA0F00C1A28F /* ApplicationObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D3A9E2264CA0F00C1A28F /* ApplicationObject.swift */; };
@@ -115,6 +116,7 @@
 		452F3EE272153B0FA55F4D5A /* Pods-HomeMatesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeMatesTests.debug.xcconfig"; path = "Target Support Files/Pods-HomeMatesTests/Pods-HomeMatesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A0D5E2E1A5658A395EF06F5E /* Pods_HomeMates.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomeMates.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B91A695F22704A98008C9B66 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		B91BE9D3229E88FB0052290D /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
 		B91D3A992264ABD400C1A28F /* MemberObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberObject.swift; sourceTree = "<group>"; };
 		B91D3A9B2264BF1300C1A28F /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		B91D3A9E2264CA0F00C1A28F /* ApplicationObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationObject.swift; sourceTree = "<group>"; };
@@ -379,14 +381,6 @@
 			path = Provider;
 			sourceTree = "<group>";
 		};
-		B93EA22A227AD839002F18A3 /* MessageView */ = {
-			isa = PBXGroup;
-			children = (
-				B93EA22B227AD862002F18A3 /* MessageView.swift */,
-			);
-			path = MessageView;
-			sourceTree = "<group>";
-		};
 		B93EA235227C00E6002F18A3 /* BlankTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -420,8 +414,9 @@
 		B94D15B42257327D00F43B78 /* Third-party framework */ = {
 			isa = PBXGroup;
 			children = (
-				B9E409A9229BD90800228720 /* MJRefresh */,
-				B93EA22A227AD839002F18A3 /* MessageView */,
+				B94D15BA225749B500F43B78 /* MJRefreshWrapper.swift */,
+				B93EA22B227AD862002F18A3 /* MessageView.swift */,
+				B91BE9D3229E88FB0052290D /* JGProgressHUDWrapper.swift */,
 			);
 			path = "Third-party framework";
 			sourceTree = "<group>";
@@ -613,14 +608,6 @@
 				B93EA232227C00C0002F18A3 /* AddTaskTableViewCell.xib */,
 			);
 			path = AddTaskTableViewCell;
-			sourceTree = "<group>";
-		};
-		B9E409A9229BD90800228720 /* MJRefresh */ = {
-			isa = PBXGroup;
-			children = (
-				B94D15BA225749B500F43B78 /* MJRefreshWrapper.swift */,
-			);
-			path = MJRefresh;
 			sourceTree = "<group>";
 		};
 		C75B0ED5492584CA900C8D58 /* Pods */ = {
@@ -927,6 +914,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B93EA22622784C3C002F18A3 /* PrivacyPolicyViewController.swift in Sources */,
+				B91BE9D4229E88FB0052290D /* JGProgressHUDWrapper.swift in Sources */,
 				B9D295DB225B003300CF7869 /* TaskListHeaderView.swift in Sources */,
 				B9261C9D225495840033ABC9 /* LobbyViewController.swift in Sources */,
 				B9B99F372262C44B00314BB6 /* FIRCollectionReference.swift in Sources */,

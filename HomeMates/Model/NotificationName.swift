@@ -15,4 +15,5 @@ enum NotificationName: String {
     case taskIsDone
     
     case didReceivePushNoti
+    case changeUserInfo
 }

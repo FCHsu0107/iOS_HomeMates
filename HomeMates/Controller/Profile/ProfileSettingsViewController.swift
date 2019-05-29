@@ -47,12 +47,23 @@ class ProfileSettingsViewController: HMBaseViewController {
         guard let userName = userNameTextField.text else { return }
         guard let goal = monthGoalTextField.text else {
             FirestoreUserManager.shared.updateUserInfo(newName: userName, goal: nil)
-            navigationController?.popToRootViewController(animated: false)
+            NotificationCenter.default.post(
+                name: Notification.Name(NotificationName.changeUserInfo.rawValue), object: nil)
+            HMProgressHUD.showSuccess(text: "修改成功")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.navigationController?.popToRootViewController(animated: false)
+            }
             return
         }
         
         FirestoreUserManager.shared.updateUserInfo(newName: userName, goal: Int(goal))
-        navigationController?.popToRootViewController(animated: false)
+        NotificationCenter.default.post(
+            name: Notification.Name(NotificationName.changeUserInfo.rawValue), object: nil)
+        HMProgressHUD.showSuccess(text: "修改成功")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.navigationController?.popToRootViewController(animated: false)
+        }
+        
     }
     
     private func loadUserInfo() {
