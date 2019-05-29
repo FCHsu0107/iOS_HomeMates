@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileSettingsViewController: HMBaseViewController {
+class ProfileSettingsViewController: HMBaseViewController, UITextFieldDelegate {
 
     @IBOutlet weak var userPictrueImage: UIImageView!
     
@@ -36,10 +36,21 @@ class ProfileSettingsViewController: HMBaseViewController {
             self?.ownGroupIDTextField.text = object.groupId
         }
         loadUserInfo()
+        
+        userNameTextField.delegate = self
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    func textField(
+        _ textField: UITextField, shouldChangeCharactersIn range: NSRange,
+        replacementString string: String) -> Bool {
+        let maxLength = 8
+        guard let text = textField.text else {
+            return true
+        }
+        let currentString: NSString = text as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        return newString.length <= maxLength
         
     }
     
@@ -49,7 +60,6 @@ class ProfileSettingsViewController: HMBaseViewController {
             FirestoreUserManager.shared.updateUserInfo(newName: userName, goal: nil)
             NotificationCenter.default.post(
                 name: Notification.Name(NotificationName.changeUserInfo.rawValue), object: nil)
-            HMProgressHUD.showSuccess(text: "修改成功")
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.navigationController?.popToRootViewController(animated: false)
             }
@@ -59,7 +69,6 @@ class ProfileSettingsViewController: HMBaseViewController {
         FirestoreUserManager.shared.updateUserInfo(newName: userName, goal: Int(goal))
         NotificationCenter.default.post(
             name: Notification.Name(NotificationName.changeUserInfo.rawValue), object: nil)
-        HMProgressHUD.showSuccess(text: "修改成功")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.navigationController?.popToRootViewController(animated: false)
         }

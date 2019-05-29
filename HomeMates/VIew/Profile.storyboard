@@ -97,7 +97,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" placeholder="輸入新名稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cor-AS-tax" customClass="HMBaseTextField" customModule="HomeMates" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" placeholder="稱稱 (不稱過 8 個字)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cor-AS-tax" customClass="HMBaseTextField" customModule="HomeMates" customModuleProvider="target">
                                 <rect key="frame" x="25" y="218" width="330" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="d92-p0-uEB"/>

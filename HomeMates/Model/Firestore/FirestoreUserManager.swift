@@ -222,7 +222,7 @@ class FirestoreUserManager {
                     
                 groupDoc.document(docId)
                     .updateData([MemberObject.CodingKeys.goal.rawValue: goal])
-                    
+                   HMProgressHUD.showSuccess(text: "修改成功")
                 } else {
                     //err != nil
                 }
