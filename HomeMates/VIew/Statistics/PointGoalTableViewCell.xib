@@ -52,7 +52,7 @@
                         </constraints>
                     </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Target_48px" translatesAutoresizingMaskIntoConstraints="NO" id="Gi3-P3-wIi">
-                        <rect key="frame" x="30" y="0.0" width="36" height="138.5"/>
+                        <rect key="frame" x="30" y="0.0" width="36.000000000000014" height="138.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="36" id="RfJ-2b-Jsx"/>
                         </constraints>

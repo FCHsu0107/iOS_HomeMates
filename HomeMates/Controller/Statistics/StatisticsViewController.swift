@@ -290,8 +290,7 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension StatisticsViewController: SelectDoneTaskDelegate {
-    
-    func doneBtnDidClick() {
+    func doneBtnDidClick(_ cell: UITableViewCell) {
         tableView.reloadData()
     }
     

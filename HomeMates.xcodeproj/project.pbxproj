@@ -68,8 +68,6 @@
 		B9B3582322886C9100CC1AEE /* HomeMatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3582222886C9100CC1AEE /* HomeMatesTests.swift */; };
 		B9B3582D2289BE2E00CC1AEE /* ProfileInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3582C2289BE2E00CC1AEE /* ProfileInfoProvider.swift */; };
 		B9B7F52C225CAD5700A6DA9E /* TaskCellStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F52B225CAD5700A6DA9E /* TaskCellStatus.swift */; };
-		B9B7F531225CC00000A6DA9E /* ChartsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F52F225CC00000A6DA9E /* ChartsTableViewCell.swift */; };
-		B9B7F532225CC00000A6DA9E /* ChartsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9B7F530225CC00000A6DA9E /* ChartsTableViewCell.xib */; };
 		B9B7F535225D933600A6DA9E /* TrackerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F533225D933600A6DA9E /* TrackerTableViewCell.swift */; };
 		B9B7F536225D933600A6DA9E /* TrackerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9B7F534225D933600A6DA9E /* TrackerTableViewCell.xib */; };
 		B9B7F539225D95B500A6DA9E /* HMBaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7F538225D95B500A6DA9E /* HMBaseTextField.swift */; };
@@ -178,8 +176,6 @@
 		B9B3582422886C9100CC1AEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9B3582C2289BE2E00CC1AEE /* ProfileInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoProvider.swift; sourceTree = "<group>"; };
 		B9B7F52B225CAD5700A6DA9E /* TaskCellStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellStatus.swift; sourceTree = "<group>"; };
-		B9B7F52F225CC00000A6DA9E /* ChartsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsTableViewCell.swift; sourceTree = "<group>"; };
-		B9B7F530225CC00000A6DA9E /* ChartsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartsTableViewCell.xib; sourceTree = "<group>"; };
 		B9B7F533225D933600A6DA9E /* TrackerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerTableViewCell.swift; sourceTree = "<group>"; };
 		B9B7F534225D933600A6DA9E /* TrackerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackerTableViewCell.xib; sourceTree = "<group>"; };
 		B9B7F538225D95B500A6DA9E /* HMBaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMBaseTextField.swift; sourceTree = "<group>"; };
@@ -437,8 +433,6 @@
 				B91D3AFB22698CF700C1A28F /* PointGoalTableViewCell.xib */,
 				B94D15C8225886FB00F43B78 /* EventCell.swift */,
 				B94D15C9225886FB00F43B78 /* EventCell.xib */,
-				B9B7F52F225CC00000A6DA9E /* ChartsTableViewCell.swift */,
-				B9B7F530225CC00000A6DA9E /* ChartsTableViewCell.xib */,
 				B9B7F533225D933600A6DA9E /* TrackerTableViewCell.swift */,
 				B9B7F534225D933600A6DA9E /* TrackerTableViewCell.xib */,
 			);
@@ -745,7 +739,6 @@
 				B94D15A722560AA500F43B78 /* LobbyHeaderCell.xib in Resources */,
 				B91D3B0C226AED2900C1A28F /* AddingTaskHeaderViewCell.xib in Resources */,
 				B9261C7F225386930033ABC9 /* Profile.storyboard in Resources */,
-				B9B7F532225CC00000A6DA9E /* ChartsTableViewCell.xib in Resources */,
 				B959F737226DA57B00D3CA68 /* GroupMemberTableViewCell.xib in Resources */,
 				B9D71AA722534D5100F242DA /* Assets.xcassets in Resources */,
 				B9B7F53E225DB6B900A6DA9E /* Auth.storyboard in Resources */,
@@ -974,7 +967,6 @@
 				B9B99F322261898D00314BB6 /* UserObject.swift in Sources */,
 				B94D15A622560AA500F43B78 /* LobbyHeaderCell.swift in Sources */,
 				B959F736226DA57B00D3CA68 /* GroupMemberTableViewCell.swift in Sources */,
-				B9B7F531225CC00000A6DA9E /* ChartsTableViewCell.swift in Sources */,
 				B9CA00C92286548700EC550C /* AuthProvider.swift in Sources */,
 				B921CA73226D8CED001FA942 /* LobbySettingsViewController.swift in Sources */,
 				B9B3582D2289BE2E00CC1AEE /* ProfileInfoProvider.swift in Sources */,
