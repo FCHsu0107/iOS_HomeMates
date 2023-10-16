@@ -4,7 +4,6 @@ HomeMates is a cloud-based household management iOS application with essential f
 ![](https://i.imgur.com/4HsikIz.png)
 
 This App was launched in the App Store in April 2019 and is currently unavailable.
-
 <img src="https://github.com/nick1ee/Shalk/raw/master/screenshot/DownloadAppStoreBadge.png" width="160" height="50" align=center>
 
 
@@ -15,7 +14,13 @@ If you would like to build the project, please
 2. add the file "GoogleService-Inf.plist" in the project
 ```
 
-## Features 
+## Technologies
+Swift 
+Notification center
+Firebase
+Unit Testing
+
+## Key Features 
 
 
 - Group 
@@ -83,15 +88,11 @@ If you would like to build the project, please
 
 - 1.1.1 - 2019/05/15
 
-  - Updated UI layout 
-
   - Added the feature of notification 
 
   - Added the feature of leaving the group 
 
 - 1.1 - 2019/05/03
-
-  - Updated UI layout 
 
   - Optimized user experience
 
