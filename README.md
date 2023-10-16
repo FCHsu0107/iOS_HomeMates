@@ -15,10 +15,10 @@ If you would like to build the project, please
 ```
 
 ## Technologies
-Swift 
-Notification center
-Firebase
-Unit Testing
+- Swift 
+- Notification center
+- Firebase
+- Unit Testing
 
 ## Key Features 
 
